@@ -36,7 +36,7 @@ class Manga
      *
      * See https://symfony.com/doc/current/best_practices/configuration.html#constants-vs-configuration-options
      */
-    public const NUM_ITEMS = 10;
+    public const NUM_ITEMS = 5;
 
     /**
      * @var int
@@ -90,7 +90,7 @@ class Manga
      * @ORM\ManyToMany(targetEntity="Tag")
      * @ORM\JoinTable(name="mangas_tags",
      *      joinColumns={@ORM\JoinColumn(name="manga_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id", unique=true)}
+     *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}
      *      )
      */
     private $tags;

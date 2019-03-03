@@ -15,14 +15,6 @@
         "/build/js/login.71306f38.js"
       ]
     },
-    "js/admin": {
-      "js": [
-        "/build/runtime.6cf710cd.js",
-        "/build/0.830d5dde.js",
-        "/build/1.bdd72f15.js",
-        "/build/js/admin.4ca6ad4a.js"
-      ]
-    },
     "js/search": {
       "js": [
         "/build/runtime.6cf710cd.js",
@@ -30,20 +22,24 @@
         "/build/js/search.6682ea4d.js"
       ]
     },
-    "css/app": {
+    "js/show": {
       "js": [
-        "/build/runtime.6cf710cd.js"
-      ],
-      "css": [
-        "/build/css/app.4aa95248.css"
+        "/build/js/show.js"
       ]
     },
-    "css/admin": {
+    "css/show": {
+      "css": [
+        "/build/css/show.css"
+      ]
+    },
+    "css/app": {
       "js": [
+        "/build/0.830d5dde.js",
         "/build/runtime.6cf710cd.js"
       ],
       "css": [
-        "/build/css/admin.1b3ff8e3.css"
+        "/build/css/app.4aa95248.css",
+        "/build/css/index.css"
       ]
     }
   }

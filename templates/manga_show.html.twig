@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('css/show') }}
+{% endblock %}
+{% block body_id 'manga_show' %}
+
+{% block main %}
+    <h1>{{ manga.title }}</h1>
+
+    <p class="manga-metadata">
+        <span class="metadata"><i class="fa fa-calendar"></i> {{ manga.publishedAt|localizeddate('long', 'none', null, 'UTC') }}</span>
+        {% if manga.author.name is defined %}
+            <span class="metadata"><i class="fa fa-user"></i> {{ manga.author.name }}</span>
+        {% endif %}
+        {% if not manga.tags.empty %}
+            <p class="manga-tags">
+                {% for tag in manga.tags %}
+                    <a href="{{ path('index', {'tag': tag.name == app.request.query.get('tag') ? null : tag.name}) }}"
+                    class="label label-{{ tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
+                    >
+                        <i class="fa fa-tag"></i> {{ tag.name }}
+                    </a>
+                {% endfor %}
+            </p>
+        {% endif %}
+    </p>
+    <div class="row">
+        {% for image in images %}
+                <article class="image col-sm-3">
+                    <img class='img-view' src='{{ asset( 'media/' ~ manga.link ~ '/' ~ image ) }}'>
+                </article>
+            {% else %}
+                <div class="well">{{ 'manga.no_images_found'|trans }}</div>
+            {% endfor %}
+    </div>
+    {% block javascripts %}
+        {{ parent() }}
+        <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+        {{ encore_entry_script_tags('js/show') }}
+    {% endblock %}
+{% endblock %}

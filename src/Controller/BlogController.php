@@ -26,11 +26,12 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Finder\Finder;
 
 /**
  * Controller used to manage blog contents in the public part of the site.
  *
- * @Route("/blog")
+ * @Route("/")
  *
  * @author Ryan Weaver <weaverryan@gmail.com>
  * @author Javier Eguiluz <javier.eguiluz@gmail.com>
@@ -38,31 +39,29 @@ use Symfony\Component\Routing\Annotation\Route;
 class BlogController extends AbstractController
 {
     /**
-     * @Route("/", defaults={"page": "1", "_format"="html"}, methods={"GET"}, name="blog_index")
-     * @Route("/rss.xml", defaults={"page": "1", "_format"="xml"}, methods={"GET"}, name="blog_rss")
-     * @Route("/page/{page<[1-9]\d*>}", defaults={"_format"="html"}, methods={"GET"}, name="blog_index_paginated")
+     * @Route("/", defaults={"page": "1", "_format"="html"}, methods={"GET"}, name="index")
+     * @Route("/page/{page<[1-9]\d*>}", methods={"GET"}, name="index_paginated")
      * @Cache(smaxage="10")
      *
      * NOTE: For standard formats, Symfony will also automatically choose the best
      * Content-Type header for the response.
      * See https://symfony.com/doc/current/quick_tour/the_controller.html#using-formats
      */
-    public function index(Request $request, int $page, string $_format, MangaRepository $mangas, TagRepository $tags): Response
+    public function index(Request $request, int $page,  MangaRepository $mangas, TagRepository $tags): Response
     {
         $tag = null;
         if ($request->query->has('tag')) {
             $tag = $tags->findOneBy(['name' => $request->query->get('tag')]);
         }
         $latestMangas = $mangas->findLatest($page, $tag);
-        dump($latestMangas);
         // Every template name also has two extensions that specify the format and
         // engine for that template.
         // See https://symfony.com/doc/current/templating.html#template-suffix
-        return $this->render('blog/index.'.$_format.'.twig', ['mangas' => $latestMangas]);
+        return $this->render('index.html.twig', ['mangas' => $latestMangas]);
     }
 
     /**
-     * @Route("/mangas/{id}", methods={"GET"}, name="blog_manga")
+     * @Route("/mangas/{id}", methods={"GET"}, name="manga")
      *
      * NOTE: The $manga controller argument is automatically injected by Symfony
      * after performing a database query looking for a Manga with the 'id'
@@ -77,34 +76,66 @@ class BlogController extends AbstractController
         // have enabled the DebugBundle. Uncomment the following line to see it in action:
         //
         // dump($manga, $this->getUser(), new \DateTime());
-
-        return $this->render('blog/manga_show.html.twig', ['manga' => $manga]);
+        $images = array();
+        if (is_dir ('media/'.$manga->getLink().'/')){
+            $finder = new Finder();
+            $finder->files()->in('media/'.$manga->getLink().'/');
+            foreach ($finder as $file) {
+                // dumps the relative path to the file
+                array_push($images,$file->getRelativePathname());
+            }
+        }
+        return $this->render('manga_show.html.twig', ['manga' => $manga, 'images'=> $images]);
     }
 
     /**
-     * @Route("/search", methods={"GET"}, name="blog_search")
+     * @Route("/search", methods={"GET"}, name="search")
+     * @Route("/search/page/{page<[1-9]\d*>}", methods={"GET"}, name="search_paginated")
      */
-    public function search(Request $request, MangaRepository $mangas): Response
+    public function search(Request $request, int $page = 1, MangaRepository $mangas): Response
     {
-        if (!$request->isXmlHttpRequest()) {
-            return $this->render('blog/search.html.twig');
+        // No query parameter
+        $foundMangas = null;
+        if($request->query->get('q') !== null && $request->query->get('q') == ''){
+            return $this->redirectToRoute('index');
+        }else if ($request->query->get('q') != '') {
+            $query = $request->query->get('q', '');
+            $foundMangas = $mangas->findBySearchQuery($query, $page);
         }
 
-        $query = $request->query->get('q', '');
-        $limit = $request->query->get('l', 10);
-        $foundMangas = $mangas->findBySearchQuery($query, $limit);
+        return $this->render('search.html.twig',['mangas' => $foundMangas]);
+    }
 
-        $results = [];
-        foreach ($foundMangas as $manga) {
-            $results[] = [
-                'title' => htmlspecialchars($manga->getTitle(), ENT_COMPAT | ENT_HTML5),
-                'date' => $manga->getPublishedAt()->format('M d, Y'),
-                'author' => htmlspecialchars($manga->getAuthor()->getName(), ENT_COMPAT | ENT_HTML5),
-                'title' => htmlspecialchars($manga->getTitle(), ENT_COMPAT | ENT_HTML5),
-                'url' => $this->generateUrl('blog_manga', ['link' => $manga->getLink()]),
-            ];
+    /**
+     * @Route("/download/{id}", methods={"GET"}, name="download")
+     */
+    public function mangaDownload(Manga $manga): Response
+    {
+        if (is_dir ('media/'.$manga->getLink().'/')){
+            $zipName = 'Documents_' . time() . ".zip";
+            $images = array();
+            $files = array();
+            $em = $this->getDoctrine()->getManager();
+            $finder = new Finder();
+            $finder->files()->in('media/'.$manga->getLink().'/');
+            foreach ($finder as $file) {
+                array_push($files, $file);
+            }
+
+            $zip = new \ZipArchive();
+            $zip->open($zipName,  \ZipArchive::CREATE);
+            foreach ($files as $f) {
+                $zip->addFromString(basename($f),  file_get_contents($f));
+            }
+            $zip->close();
+            $response = new Response(file_get_contents($zipName));
+            $response->headers->set('Content-Type', 'application/zip');
+            $response->headers->set('Content-Disposition', 'attachment;filename="' . $zipName . '"');
+            $response->headers->set('Content-length', filesize($zipName));
+            return $response;
+        }else{
+            throw $this->createNotFoundException('Sorry download file doesn\'t exist');
         }
 
-        return $this->json($results);
     }
 }

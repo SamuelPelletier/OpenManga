@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block javascripts %}
+    {{ parent() }}
+{% endblock %}
+
+{% block body_id 'search' %}
+
+{% block main %}
+    <form action="{{ path('search') }}" method="get">
+        <div class="form-group">
+            <input name="q"
+                   class="form-control search-field"
+                   placeholder="{{ 'post.search_for'|trans }}"
+                   autocomplete="off"
+                   autofocus
+                   data-no-results-message="{{ 'post.search_no_results'|trans }}"
+            >
+        </div>
+    </form>
+    {% if app.request.query.get('q') is not empty %}
+        <div class='manga-container'>
+            {% for manga in mangas %}
+                <article class="manga col-sm-3">
+                    <a href="{{ path('manga', {id: manga.id}) }}">
+                        <img class='img-thumbnail' src='{{ manga.link }}'>
+                        <h2 class='img-name'>{{ manga.title }}</h2>
+                    </a>
+                </article>
+            {% else %}
+                <div class="well">{{ 'manga.no_mangas_found'|trans }}</div>
+            {% endfor %}
+        </div>
+        {% if mangas.haveToPaginate %}
+            <div class="navigation text-center">
+                {{ pagerfanta(mangas, 'twitter_bootstrap3_translated', {routeName: 'search_paginated', routeParams: app.request.query.all}) }}
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block sidebar %}
+    {{ parent() }}
+
+    {{ show_source_code(_self) }}
+{% endblock %}

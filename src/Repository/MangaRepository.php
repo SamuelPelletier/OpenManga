@@ -61,7 +61,7 @@ class MangaRepository extends ServiceEntityRepository
     /**
      * @return Manga[]
      */
-    public function findBySearchQuery(string $rawQuery, int $limit = Manga::NUM_ITEMS): array
+    public function findBySearchQuery(string $rawQuery, int $page = 1): Pagerfanta
     {
         $query = $this->sanitizeSearchQuery($rawQuery);
         $searchTerms = $this->extractSearchTerms($query);
@@ -69,21 +69,20 @@ class MangaRepository extends ServiceEntityRepository
         if (0 === \count($searchTerms)) {
             return [];
         }
-
+       
         $queryBuilder = $this->createQueryBuilder('p');
 
         foreach ($searchTerms as $key => $term) {
             $queryBuilder
-                ->orWhere('p.title LIKE :t_'.$key)
+                ->andWhere('p.title LIKE :t_'.$key)
                 ->setParameter('t_'.$key, '%'.$term.'%')
             ;
         }
-
-        return $queryBuilder
+        $queryBuilder
             ->orderBy('p.publishedAt', 'DESC')
-            ->setMaxResults($limit)
             ->getQuery()
             ->getResult();
+        return $this->createPaginator($queryBuilder->getQuery(), $page);
     }
 
     /**
@@ -102,7 +101,7 @@ class MangaRepository extends ServiceEntityRepository
         $terms = array_unique(explode(' ', $searchQuery));
 
         return array_filter($terms, function ($term) {
-            return 2 <= mb_strlen($term);
+            return 1 <= mb_strlen($term);
         });
     }
 }

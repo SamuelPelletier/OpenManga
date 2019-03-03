@@ -1,0 +1,50 @@
+body{
+    background-color: #4c4c4c;
+}
+
+.navbar{
+    background-color: #2b2b2b;
+}
+
+footer{
+    background-color: #4c4c4c;
+}
+
+.body-container{
+    width:100%;
+}
+
+article{
+    padding:1%;
+    display: inline-block;
+}
+
+article a:hover{
+    text-decoration: none;
+}
+
+h1,h2,h3,h4,p,a{
+    color:white;
+}
+
+.manga-container{
+    display: flow-root;
+}
+
+.img-thumbnail{
+    display: block;
+    margin: auto;
+    border-radius: 0px;
+    border-top-left-radius: 1%;
+    border-top-right-radius: 1%;
+}
+
+.img-name{
+    margin:0;
+    text-align: center;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color: #2b2b2b;
+    border-radius: 1%;
+}
