@@ -15,6 +15,7 @@
                    autocomplete="off"
                    autofocus
                    data-no-results-message="{{ 'post.search_no_results'|trans }}"
+                   value="{{ app.request.query.get('q') }}"
             >
         </div>
     </form>

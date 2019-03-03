@@ -34,19 +34,12 @@ class MangaRepository extends ServiceEntityRepository
         parent::__construct($registry, Manga::class);
     }
 
-    public function findLatest(int $page = 1, Tag $tag = null): Pagerfanta
+    public function findLatest(int $page = 1): Pagerfanta
     {
-        $qb = $this->createQueryBuilder('p')
-            ->where('p.publishedAt <= :now')
-            ->orderBy('p.publishedAt', 'DESC')
-            ->setParameter('now', new \DateTime());
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->orderBy('p.publishedAt', 'DESC');
 
-        if (null !== $tag) {
-            $qb->andWhere(':tag MEMBER OF p.tags')
-                ->setParameter('tag', $tag);
-        }
-
-        return $this->createPaginator($qb->getQuery(), $page);
+        return $this->createPaginator($queryBuilder->getQuery(), $page);
     }
 
     private function createPaginator(Query $query, int $page): Pagerfanta
@@ -71,17 +64,17 @@ class MangaRepository extends ServiceEntityRepository
         }
        
         $queryBuilder = $this->createQueryBuilder('p');
-
+        
         foreach ($searchTerms as $key => $term) {
+            $tag = $this->getEntityManager()->getRepository(Tag::class)->findOneBy(['name' => $term]);
             $queryBuilder
-                ->andWhere('p.title LIKE :t_'.$key)
+                ->andWhere(':tag MEMBER OF p.tags')
+                ->setParameter('tag', $tag)
+                ->orWhere('p.title LIKE :t_'.$key)
                 ->setParameter('t_'.$key, '%'.$term.'%')
-            ;
+                ->orderBy('p.publishedAt', 'DESC');
         }
-        $queryBuilder
-            ->orderBy('p.publishedAt', 'DESC')
-            ->getQuery()
-            ->getResult();
+
         return $this->createPaginator($queryBuilder->getQuery(), $page);
     }
 
