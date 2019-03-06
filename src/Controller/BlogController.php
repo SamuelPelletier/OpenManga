@@ -115,7 +115,6 @@ class BlogController extends AbstractController
             $zipName = 'Documents_' . time() . ".zip";
             $images = array();
             $files = array();
-            $em = $this->getDoctrine()->getManager();
             $finder = new Finder();
             $finder->files()->in('media/'.$manga->getLink().'/');
             foreach ($finder as $file) {
