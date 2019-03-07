@@ -24,7 +24,7 @@
             {% for manga in mangas %}
                 <article class="manga col-sm-3">
                     <a href="{{ path('manga', {id: manga.id}) }}">
-                        <img class='img-thumbnail' src='{{ manga.link }}'>
+                        <img class='img-thumbnail' src='{{ asset( 'media/' ~ manga.id ~ '/01.jpg' ) }}'>
                         <h2 class='img-name'>{{ manga.title }}</h2>
                     </a>
                 </article>

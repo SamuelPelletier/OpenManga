@@ -56,13 +56,6 @@ class Manga
     private $title;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     */
-    private $link;
-
-    /**
      * @var int
      *
      * @ORM\Column(type="integer")
@@ -114,16 +107,6 @@ class Manga
     public function setTitle(string $title): void
     {
         $this->title = $title;
-    }
-
-    public function getLink(): ?string
-    {
-        return $this->link;
-    }
-
-    public function setLink(string $link): void
-    {
-        $this->link = $link;
     }
 
     public function getCountPages(): ?int

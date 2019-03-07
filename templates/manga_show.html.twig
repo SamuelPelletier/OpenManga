@@ -28,7 +28,7 @@
     <div class="row">
         {% for image in images %}
                 <article class="image col-sm-3">
-                    <img class='img-view' src='{{ asset( 'media/' ~ manga.link ~ '/' ~ image ) }}'>
+                    <img class='img-view' src='{{ asset( 'media/' ~ manga.id ~ '/' ~ image ) }}'>
                 </article>
             {% else %}
                 <div class="well">{{ 'manga.no_images_found'|trans }}</div>

@@ -21,6 +21,8 @@ use Symfony\Component\Console\Output\BufferedOutput;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 
 /**
  * A console command that lists all the existing users.
@@ -93,7 +95,7 @@ class ImportMangaCommand extends Command
               }'),true)['gmetadata'][0]['title'];
         }*/
         $emManga = $this->entityManager->getRepository(Manga::class);
-        $explode = explode("/",$mangasLink[2]);
+        $explode = explode("/",$mangasLink[0]);
         $mangaId = $explode[4];
         $this->logger->info('Try to import - manga id : '.$mangaId);
         $token = $explode[5];
@@ -104,17 +106,37 @@ class ImportMangaCommand extends Command
             ],
             "namespace": 1
           }'),true)['gmetadata'][0];
-        
+
         if($emManga->findOneBy(['title' => $json['title']])){
             $this->logger->warning('Manga already exist - id : '.$mangaId);
         }else{
             $manga = new Manga();
             $manga->setTitle($json['title']);
-            $manga->setLink("test");
             $manga->setCountPages($json['filecount']);
             $manga->setPublishedAt(new \DateTime('NOW'));
             $this->entityManager->persist($manga);
             $this->entityManager->flush();
+            $fileSystem = new Filesystem();
+            $fileSystem->mkdir(dirname(__DIR__).'/../public/media/'.$manga->getId(), 0700);
+            $data=file_get_contents($_ENV['API_MANGA_URL'].$mangaId.'/'.$token);
+            $data = strip_tags($data,"<a>");
+            $d = preg_split("/<\/a>/",$data);
+            $mangasLink = array();
+            $i = 1;
+            foreach ( $d as $k=>$u ){
+                if( strpos($u, "<a href=") !== FALSE ){
+                    $u = preg_replace("/.*<a\s+href=\"/sm","",$u);
+                    $u = preg_replace("/\".*/","",$u);
+                    if(strstr($u,$_ENV['API_IMAGE_URL']) != false){
+                        $datau = file_get_contents($u);
+                        preg_match_all( '@src="([^"]+)"@' , $datau, $match );
+                        $src = array_pop($match);
+                        $i = str_pad($i, 3, "0", STR_PAD_LEFT);
+                        $fileSystem->copy($src[5], dirname(__DIR__).'/../public/media/'.$manga->getId().'/'.$i.'.jpg');
+                        $i++;
+                    }
+                }
+            }
             $this->logger->info('End of import - manga id : '.$mangaId);
         }
     }

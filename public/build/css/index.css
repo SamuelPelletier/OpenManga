@@ -32,11 +32,12 @@ h1,h2,h3,h4,p,a{
 }
 
 .img-thumbnail{
-    display: block;
-    margin: auto;
-    border-radius: 0px;
-    border-top-left-radius: 1%;
-    border-top-right-radius: 1%;
+    background-color: transparent;
+    border-color: transparent;
+    border:none;
+    z-index: 2;
+    text-decoration: none;
+    padding: 0;
 }
 
 .img-name{

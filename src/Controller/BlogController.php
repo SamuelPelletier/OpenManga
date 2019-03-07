@@ -77,9 +77,9 @@ class BlogController extends AbstractController
         //
         // dump($manga, $this->getUser(), new \DateTime());
         $images = array();
-        if (is_dir ('media/'.$manga->getLink().'/')){
+        if (is_dir ('media/'.$manga->getId().'/')){
             $finder = new Finder();
-            $finder->files()->in('media/'.$manga->getLink().'/');
+            $finder->files()->in('media/'.$manga->getId().'/');
             foreach ($finder as $file) {
                 // dumps the relative path to the file
                 array_push($images,$file->getRelativePathname());
@@ -111,12 +111,12 @@ class BlogController extends AbstractController
      */
     public function mangaDownload(Manga $manga): Response
     {
-        if (is_dir ('media/'.$manga->getLink().'/')){
+        if (is_dir ('media/'.$manga->getId().'/')){
             $zipName = 'Documents_' . time() . ".zip";
             $images = array();
             $files = array();
             $finder = new Finder();
-            $finder->files()->in('media/'.$manga->getLink().'/');
+            $finder->files()->in('media/'.$manga->getId().'/');
             foreach ($finder as $file) {
                 array_push($files, $file);
             }
