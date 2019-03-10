@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity
- * @ORM\Table(name="author")
+ * @ORM\Table(name="language")
  *
  * Defines the properties of the Author entity to represent the blog authors.
  * See https://symfony.com/doc/current/book/doctrine.html#creating-an-entity-class
@@ -27,9 +27,9 @@ use Symfony\Component\Validator\Constraints as Assert;
  * See https://symfony.com/doc/current/cookbook/doctrine/reverse_engineering.html
  *
  */
-class Author implements \JsonSerializable
+class Language implements \JsonSerializable
 {
-        /**
+    /**
      * @var int
      *
      * @ORM\Id

@@ -70,12 +70,16 @@ class Manga
     private $publishedAt;
 
     /**
-     * @var Author
+     * @var Author[]|ArrayCollection
      *
-     * @ORM\ManyToOne(targetEntity="App\Entity\Author", inversedBy="author")
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\ManyToMany(targetEntity="Author")
+     * @ORM\JoinTable(name="mangas_authors",
+     *      joinColumns={@ORM\JoinColumn(name="manga_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="author_id", referencedColumnName="id")}
+     *      )
      */
-    private $author;
+    private $authors;
+
 
     /**
      * @var Tag[]|ArrayCollection
@@ -88,10 +92,35 @@ class Manga
      */
     private $tags;
 
+        /**
+     * @var Language[]|ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Language")
+     * @ORM\JoinTable(name="mangas_languages",
+     *      joinColumns={@ORM\JoinColumn(name="manga_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="language_id", referencedColumnName="id")}
+     *      )
+     */
+    private $languages;
+
+            /**
+     * @var Parody[]|ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Parody")
+     * @ORM\JoinTable(name="mangas_parodies",
+     *      joinColumns={@ORM\JoinColumn(name="manga_id", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="language_id", referencedColumnName="id")}
+     *      )
+     */
+    private $parodies;
+
     public function __construct()
     {
         $this->publishedAt = new \DateTime();
         $this->tags = new ArrayCollection();
+        $this->authors = new ArrayCollection();
+        $this->languages = new ArrayCollection();
+        $this->parodies = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -129,14 +158,27 @@ class Manga
         $this->publishedAt = $publishedAt;
     }
 
-    public function getAuthor(): ?Author
+    public function addAuthor(Author ...$authors): void
     {
-        return $this->author;
+        foreach ($authors as $author) {
+            if (!$this->authors->contains($author)) {
+                $this->authors->add($author);
+            }
+        }
+    }
+    
+    public function getAuthors(): Collection
+    {
+        return $this->authors;
     }
 
-    public function setAuthor(Author $author): void
+    public function removeAuthor(Author $author): self
     {
-        $this->author = $author;
+        if ($this->authors->contains($author)) {
+            $this->authors->removeElement($author);
+        }
+
+        return $this;
     }
 
     public function addTag(Tag ...$tags): void
@@ -157,6 +199,52 @@ class Manga
     {
         if ($this->tags->contains($tag)) {
             $this->tags->removeElement($tag);
+        }
+
+        return $this;
+    }
+
+    public function addLanguage(Language ...$languages): void
+    {
+        foreach ($languages as $language) {
+            if (!$this->languages->contains($language)) {
+                $this->languages->add($language);
+            }
+        }
+    }
+    
+    public function getLanguages(): Collection
+    {
+        return $this->languages;
+    }
+
+    public function removeLanguage(Language $language): self
+    {
+        if ($this->languages->contains($language)) {
+            $this->languages->removeElement($language);
+        }
+
+        return $this;
+    }
+
+    public function addParody(Parody ...$parodies): void
+    {
+        foreach ($parodies as $parody) {
+            if (!$this->parodies->contains($parody)) {
+                $this->parodies->add($parody);
+            }
+        }
+    }
+    
+    public function getParodies(): Collection
+    {
+        return $this->parodies;
+    }
+
+    public function removeParody(Parody $parody): self
+    {
+        if ($this->parodies->contains($parody)) {
+            $this->parodies->removeElement($parody);
         }
 
         return $this;

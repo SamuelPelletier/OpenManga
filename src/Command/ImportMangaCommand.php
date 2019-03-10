@@ -12,6 +12,10 @@
 namespace App\Command;
 
 use App\Entity\Manga;
+use App\Entity\Language;
+use App\Entity\Author;
+use App\Entity\Tag;
+use App\Entity\Parody;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
@@ -42,7 +46,7 @@ class ImportMangaCommand extends Command
     // a good practice is to use the 'app:' prefix to group all your custom application commands
     protected static $defaultName = 'app:import-manga';
 
-    private $entityManager;
+    private $em;
     private $logger;
 
     public function __construct(EntityManagerInterface $em, LoggerInterface $logger)
@@ -81,21 +85,23 @@ class ImportMangaCommand extends Command
                 }
             }
         }
+    
+        for($i=count($mangasLink); $i > 0; $i--){
+            $this->downloadManga($mangasLink[$i-1]);
+            if($i == count($mangasLink)-6){
+                break;
+            }
+        }
+    }
 
-        /*foreach($mangasLink as $link){
-            $explode = explode("/",$link);
-            $mangaId = $explode[4];
-            $token = $explode[5];
-            $json_decode($this->CallAPI("POST",$_ENV['API_URL'],'{
-                "method": "gdata",
-                "gidlist": [
-                    ['.$mangaId.',"'.$token.'"]
-                ],
-                "namespace": 1
-              }'),true)['gmetadata'][0]['title'];
-        }*/
-        $emManga = $this->entityManager->getRepository(Manga::class);
-        $explode = explode("/",$mangasLink[0]);
+    private function downloadManga($link){
+        $em = $this->entityManager;
+        $repoManga = $em->getRepository(Manga::class);
+        $repoLanguage = $em->getRepository(Language::class);
+        $repoTag = $em->getRepository(Tag::class);
+        $repoAuthor = $em->getRepository(Author::class);
+        $repoParody = $em->getRepository(Parody::class);
+        $explode = explode("/",$link);
         $mangaId = $explode[4];
         $this->logger->info('Try to import - manga id : '.$mangaId);
         $token = $explode[5];
@@ -107,15 +113,66 @@ class ImportMangaCommand extends Command
             "namespace": 1
           }'),true)['gmetadata'][0];
 
-        if($emManga->findOneBy(['title' => $json['title']])){
+        if($repoManga->findOneBy(['title' => $json['title']])){
             $this->logger->warning('Manga already exist - id : '.$mangaId);
         }else{
             $manga = new Manga();
             $manga->setTitle($json['title']);
             $manga->setCountPages($json['filecount']);
             $manga->setPublishedAt(new \DateTime('NOW'));
-            $this->entityManager->persist($manga);
-            $this->entityManager->flush();
+
+            $tags = $json['tags'];
+            foreach ($tags as $tagName) {
+                $explodeTag = explode(':',$tagName);
+                if(!isset($explodeTag[1])){
+                    array_unshift($explodeTag,'empty');
+                }
+                switch ($explodeTag[0]) {
+                    case 'artist':
+                    case 'group':
+                        if(($author = $repoAuthor->findOneBy(['name' => $explodeTag[1]])) == null){
+                            $author = new Author();
+                            $author->setName($explodeTag[1]);
+                            $em->persist($author);
+                            $em->flush();
+                        }
+                        $manga->addAuthor($author);
+                        break;
+
+                    case 'parody':
+                        if(($parody = $repoParody->findOneBy(['name' => $explodeTag[1]])) == null){
+                            $parody = new Parody();
+                            $parody->setName($explodeTag[1]);
+                            $em->persist($parody);
+                            $em->flush();
+                        }
+                        $manga->addParody($parody);
+                        break;
+
+                    case 'language':
+                        if(($language = $repoLanguage->findOneBy(['name' => $explodeTag[1]])) == null){
+                            $language = new Language();
+                            $language->setName($explodeTag[1]);
+                            $em->persist($language);
+                            $em->flush();
+                        }
+                        $manga->addLanguage($language);
+                        break;
+
+                    default:
+                        if(($tagObject = $repoTag->findOneBy(['name' => $explodeTag[1]])) == null){
+                            $tagObject = new Tag();
+                            $tagObject->setName($explodeTag[1]);
+                            $em->persist($tagObject);
+                            $em->flush();
+                        }
+                        $manga->addTag($tagObject);
+                        break;
+                }
+            }
+
+            $em->persist($manga);
+            $em->flush();
             $fileSystem = new Filesystem();
             $fileSystem->mkdir(dirname(__DIR__).'/../public/media/'.$manga->getId(), 0700);
             $data=file_get_contents($_ENV['API_MANGA_URL'].$mangaId.'/'.$token);
@@ -132,7 +189,7 @@ class ImportMangaCommand extends Command
                         preg_match_all( '@src="([^"]+)"@' , $datau, $match );
                         $src = array_pop($match);
                         $i = str_pad($i, 3, "0", STR_PAD_LEFT);
-                        $fileSystem->copy($src[5], dirname(__DIR__).'/../public/media/'.$manga->getId().'/'.$i.'.jpg');
+                        $fileSystem->copy($src[5], dirname(__DIR__).'/../public/media/'.$manga->getId().'/'.$i.'.jpg',true);
                         $i++;
                     }
                 }
