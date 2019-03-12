@@ -112,7 +112,8 @@ class BlogController extends AbstractController
     public function mangaDownload(Manga $manga): Response
     {
         if (is_dir ('media/'.$manga->getId().'/')){
-            $zipName = 'Documents_' . time() . ".zip";
+            $zipName = htmlspecialchars_decode($manga->getTitle(),ENT_QUOTES) . ".zip";
+            $zipName = str_replace(['|','/','\\'],'',$zipName);
             $images = array();
             $files = array();
             $finder = new Finder();
@@ -133,7 +134,7 @@ class BlogController extends AbstractController
             $response->headers->set('Content-length', filesize($zipName));
             return $response;
         }else{
-            throw $this->createNotFoundException('Sorry download file doesn\'t exist');
+            throw $this->createNotFoundException('Sorry this file doesn\'t exist');
         }
 
     }

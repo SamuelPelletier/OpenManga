@@ -8,7 +8,7 @@
             <article class="manga col-sm-3">
                 <a href="{{ path('manga', {id: manga.id}) }}">
                     <img class='img-thumbnail' src='{{ asset( 'media/' ~ manga.id ~ '/001.jpg' ) }}'>
-                    <h2 class='img-name'>{{ manga.title }}</h2>
+                    <h2 class='img-name'>{{ manga.title |raw }}</h2>
                 </a>
             </article>
         {% else %}
