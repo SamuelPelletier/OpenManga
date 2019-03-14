@@ -167,6 +167,20 @@ function viewer(path) {
         }
     })
 
+    $( document ).swipe({
+        swipeLeft:function(event, direction, distance, duration, fingerCount) {
+            var predName = imageList[getPred(name)]
+            $(".imgViewer").attr("src", onlyPath.concat(predName))
+            name = predName
+        },
+        swipeRight:function(event, direction, distance, duration, fingerCount) {
+            var nextName = imageList[getNext(name)]
+            $(".imgViewer").attr("src", onlyPath.concat(nextName))
+            name = nextName
+        }
+      });
+
+
     $(document).keydown(function (e) {
         switch (e.keyCode) {
             case 39:

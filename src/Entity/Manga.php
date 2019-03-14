@@ -36,7 +36,7 @@ class Manga
      *
      * See https://symfony.com/doc/current/best_practices/configuration.html#constants-vs-configuration-options
      */
-    public const NUM_ITEMS = 5;
+    public const NUM_ITEMS = 16;
 
     /**
      * @var int

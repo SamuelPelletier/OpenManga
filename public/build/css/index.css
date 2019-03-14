@@ -28,7 +28,8 @@ h1,h2,h3,h4,p,a{
 }
 
 .manga-container{
-    display: flow-root;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .img-thumbnail{
@@ -41,11 +42,27 @@ h1,h2,h3,h4,p,a{
 }
 
 .img-name{
-    margin:0;
     text-align: center;
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
     background-color: #2b2b2b;
     border-radius: 1%;
+    font-size: 1.6em;
 }
+
+
+.img-name:hover{
+    white-space: inherit;
+    position: absolute;
+    z-index: 1;
+    margin-right:15px;
+
+}
+
+::selection {
+    background: #e84a5fd1; /* WebKit/Blink Browsers */
+  }
+  ::-moz-selection {
+    background: #e84a5fd1; /* Gecko Browsers */
+  }

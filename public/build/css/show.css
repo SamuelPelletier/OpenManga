@@ -592,3 +592,35 @@ li:last-child .page {
     width: 34px;
     top: 35px;
 }
+
+.label-default{
+    margin: 0px 2px;
+    background-color: #E84A5F;
+}
+
+.label-default[href]:hover{
+    background-color: #f17384;
+}
+
+.download{
+      border-radius: 5px;
+      font-size: 22px;
+      text-decoration: none;
+      color: #fff;
+      background-color: #55acee;
+      box-shadow: 0px 5px 0px 0px #3C93D5;
+}
+    
+.download:active{
+    transform: translate(0px, 5px);
+    -webkit-transform: translate(0px, 5px);
+    box-shadow: 0px 1px 0px 0px;
+}
+
+.download:hover {
+    background-color: #6FC6FF;
+}
+
+.download a:hover {
+    color: white;
+}

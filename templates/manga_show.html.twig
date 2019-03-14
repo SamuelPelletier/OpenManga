@@ -62,7 +62,7 @@
             </p>
         {% endif %}
     </p>
-    <button class="btn"><a target="_blank" href="{{ path('download', {'id':manga.id}) }}">{{ 'manga.download'|trans }}</a></button>
+    <a class="btn download" target="_blank" href="{{ path('download', {'id':manga.id}) }}">{{ 'manga.download'|trans }}</a>
     <div class="row">
         {% for image in images %}
                 <article class="image col-sm-3">
@@ -78,6 +78,7 @@
         src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
         {{ encore_entry_script_tags('js/show') }}
     {% endblock %}
 {% endblock %}
