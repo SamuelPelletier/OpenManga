@@ -27,6 +27,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Controller used to manage blog contents in the public part of the site.
@@ -39,7 +40,7 @@ use Symfony\Component\Finder\Finder;
 class BlogController extends AbstractController
 {
     /**
-     * @Route("/", defaults={"page": "1", "_format"="html"}, methods={"GET"}, name="index")
+     * @Route("/", defaults={"page": "1"}, methods={"GET"}, name="index")
      * @Route("/page/{page<[1-9]\d*>}", methods={"GET"}, name="index_paginated")
      * @Cache(smaxage="10")
      *
@@ -47,8 +48,9 @@ class BlogController extends AbstractController
      * Content-Type header for the response.
      * See https://symfony.com/doc/current/quick_tour/the_controller.html#using-formats
      */
-    public function index(Request $request, int $page,  MangaRepository $mangas, TagRepository $tags): Response
+    public function index(SessionInterface $session, Request $request, int $page,  MangaRepository $mangas, TagRepository $tags): Response
     {
+        //$session->clear();
         $tag = null;
         if ($request->query->has('tag')) {
             $tag = $tags->findOneBy(['name' => $request->query->get('tag')]);
@@ -57,6 +59,15 @@ class BlogController extends AbstractController
         // Every template name also has two extensions that specify the format and
         // engine for that template.
         // See https://symfony.com/doc/current/templating.html#template-suffix
+
+        // Check disclaimer
+
+        if($request->query->get('disclaimer') == 1){
+            $session->set('disclaimer', true);
+        }else if($session->get('disclaimer') != true && $_ENV['USE_DISCLAIMER'] == 1){
+            return $this->render('disclaimer.html.twig');
+        }
+        
         return $this->render('index.html.twig', ['mangas' => $latestMangas]);
     }
 

@@ -60,34 +60,65 @@ class MangaRepository extends ServiceEntityRepository
     {
         $query = $this->sanitizeSearchQuery($rawQuery);
         $searchTerms = $this->extractSearchTerms($query);
-        $searchTermsConcat = $this->concatTerm($searchTerms);
 
         if (0 === \count($searchTerms)) {
             return [];
         }
-       
+
         $em = $this->getEntityManager();
         $repoLanguage = $em->getRepository(Language::class);
         $repoTag = $em->getRepository(Tag::class);
         $repoAuthor = $em->getRepository(Author::class);
         $repoParody = $em->getRepository(Parody::class);
-
         $queryBuilder = $this->createQueryBuilder('p');
 
-        foreach ($searchTermsConcat as $key => $term) {
-            $tag = $repoTag->findOneBy(['name' => $term]);
-            $language = $repoLanguage->findOneBy(['name' => $term]);
-            $parody = $repoParody->findOneBy(['name' => $term]);
-            $author = $repoAuthor->findOneBy(['name' => $term]);
+        foreach ($searchTerms as $key => $term) {
+            $tags = $repoTag->getEntityManager()->createQueryBuilder()
+            ->select('a')
+            ->from($repoTag->_entityName, 'a')->where('a.name like :name')
+            ->setParameter('name', '%'.$term.'%')->getQuery()->getResult();
+
+            foreach ($tags as $tag) {
+                $queryBuilder
+                    ->orWhere(':tag MEMBER OF p.tags')
+                    ->setParameter('tag', $tag);
+            }
+
+            $languages = $repoLanguage->getEntityManager()->createQueryBuilder()
+            ->select('a')
+            ->from($repoLanguage->_entityName, 'a')->where('a.name like :name')
+            ->setParameter('name', '%'.$term.'%')->getQuery()->getResult();
+
+            foreach ($languages as $language) {
+                $queryBuilder
+                    ->orWhere(':language MEMBER OF p.languages')
+                    ->setParameter('language', $language);
+            }
+
+            $parodies = $repoParody->getEntityManager()->createQueryBuilder()
+            ->select('a')
+            ->from($repoParody->_entityName, 'a')->where('a.name like :name')
+            ->setParameter('name', '%'.$term.'%')->getQuery()->getResult();
+
+            foreach ($parodies as $parody) {
+                $queryBuilder
+                    ->orWhere(':parody MEMBER OF p.parodies')
+                    ->setParameter('parody', $parody);
+            }
+
+            $authors = $repoAuthor->getEntityManager()->createQueryBuilder()
+            ->select('a')
+            ->from($repoAuthor->_entityName, 'a')->where('a.name like :name')
+            ->setParameter('name', '%'.$term.'%')->getQuery()->getResult();
+
+
+            foreach ($authors as $author) {
+                $queryBuilder
+                    ->orWhere(':author MEMBER OF p.authors')
+                    ->setParameter('author', $author);
+            }
+
             $queryBuilder
-                ->andWhere(':tag MEMBER OF p.tags')
-                ->setParameter('tag', $tag)
-                ->orWhere(':language MEMBER OF p.languages')
-                ->setParameter('language', $language)
-                ->orWhere(':parody MEMBER OF p.parodies')
-                ->setParameter('parody', $parody)
-                ->orWhere(':author MEMBER OF p.authors')
-                ->setParameter('author', $author)
                 ->orWhere('p.title LIKE :t_'.$key)
                 ->setParameter('t_'.$key, '%'.$term.'%')
                 ->orderBy('p.publishedAt', 'DESC');
@@ -114,26 +145,5 @@ class MangaRepository extends ServiceEntityRepository
         return array_filter($terms, function ($term) {
             return 1 <= mb_strlen($term);
         });
-    }
-
-    private function concatTerm(array $terms) : array
-    {
-        $concatTermsOnTwo = array();
-        for($i = 0; $i < count($terms)-1; $i++){
-            array_push($concatTermsOnTwo,$terms[$i].' '.$terms[$i+1]);
-        }
-        $concatTermsOnThree = array();
-        for($i = 0; $i < count($terms)-2; $i++){
-            array_push($concatTermsOnThree,$terms[$i].' '.$terms[$i+1].' '.$terms[$i+2]);
-        }
-        $concatTermsOnFour = array();
-        for($i = 0; $i < count($terms)-3; $i++){
-            array_push($concatTermsOnFour,$terms[$i].' '.$terms[$i+1].' '.$terms[$i+2].' '.$terms[$i+3]);
-        }
-        $concatTermsOnFive = array();
-        for($i = 0; $i < count($terms)-4; $i++){
-            array_push($concatTermsOnFive,$terms[$i].' '.$terms[$i+1].' '.$terms[$i+2].' '.$terms[$i+3].' '.$terms[$i+4]);
-        }
-        return array_merge($terms,$concatTermsOnTwo,$concatTermsOnThree,$concatTermsOnFour, $concatTermsOnFive);
     }
 }

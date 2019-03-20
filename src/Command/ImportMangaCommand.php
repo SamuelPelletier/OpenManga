@@ -160,6 +160,11 @@ class ImportMangaCommand extends Command
                         break;
 
                     default:
+                        if(in_array($explodeTag[1],explode(',',$_ENV['API_TAG_BLOCKED']))){
+                            $this->logger->info('End of import - tag blocked detected');
+                            exit;
+                        }
+
                         if(($tagObject = $repoTag->findOneBy(['name' => $explodeTag[1]])) == null){
                             $tagObject = new Tag();
                             $tagObject->setName($explodeTag[1]);

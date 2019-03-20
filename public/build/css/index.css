@@ -6,6 +6,10 @@ body{
     background-color: #2b2b2b;
 }
 
+.navbar-brand{
+    margin-left: 20px !important;
+}
+
 footer{
     background-color: #4c4c4c;
 }
@@ -30,6 +34,16 @@ h1,h2,h3,h4,p,a{
 .manga-container{
     display: flex;
     flex-wrap: wrap;
+}
+
+.manga{
+    width: -webkit-fill-available;
+}
+
+@media (min-width: 768px){
+    .manga{
+        width: 25%;
+    }
 }
 
 .img-thumbnail{
@@ -61,8 +75,128 @@ h1,h2,h3,h4,p,a{
 }
 
 ::selection {
-    background: #e84a5fd1; /* WebKit/Blink Browsers */
+    background: #e84a5fd1 !important; /* WebKit/Blink Browsers */
   }
   ::-moz-selection {
-    background: #e84a5fd1; /* Gecko Browsers */
+    background: #e84a5fd1 !important; /* Gecko Browsers */
   }
+
+.svg-container svg{
+width:246px; 
+margin:20px auto;
+display:block;
+}
+.svg-container a{
+opacity:0;
+}
+
+.svg-container a + .facebox .mousedown{
+display:none;
+}
+
+.svg-container{
+    background-color:white;
+    width: fit-content;
+    border-radius: 4%;
+    margin:auto;
+}
+
+.text-danger{
+    color: #e84a5fd1;
+}
+
+.text-danger:hover{
+    color: #e84a5fd1;
+}
+
+.text-danger::selection{
+    color: #e84a5fd1;
+}
+
+.search-navbar{
+    padding: 0px;
+}
+
+
+@media (max-width: 767px){
+    .search-navbar{
+        width: 100%;
+        display: inline-flex;
+        padding: 10px;
+    }
+    .navbar-nav{
+        margin: 0px;
+    }
+    
+    .searchButton {
+        text-align: end;
+    }
+
+    .navbar-collapse{
+        box-shadow: none;
+    }
+}
+
+.form-group{
+    margin-bottom: 0px;
+}
+
+#search_field {
+	background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+	padding: 9px 10px 9px 32px;
+	height: inherit;
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+	position: relative;
+	-webkit-transition: all .5s;
+	-moz-transition: all .5s;
+    transition: all .5s;
+    -webkit-appearance: textfield;
+	-webkit-box-sizing: content-box;
+    z-index: 2;
+}
+
+#search_field::-webkit-search-decoration,
+#search_field::-webkit-search-cancel-button {
+	display: none; 
+}
+
+#search_field:focus {
+	background-color: #fff;
+	border-color: #E84A5F;
+	-webkit-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	-moz-box-shadow: 0 0 5px rgba(109,207,246,.5);
+	box-shadow: 0 0 5px rgba(109,207,246,.5);
+}
+
+
+#search_field:-moz-placeholder {
+	color: #999;
+}
+#search_field::-webkit-input-placeholder {
+	color: #999;
+}
+
+.searchButton {
+    background:#E84A5F;
+    padding:10px 20px;
+    -moz-border-radius:0 10px 10px 0;
+    -webkit-border-radius:0 10px 10px 0;
+    -o-border-radius:0 10px 10px 0;
+    border:0 none;
+    font-weight:bold;
+    left: -24px;
+    position: relative;
+    z-index: 1;
+    height: 43px;
+    width: 100px;
+}
+
+.searchButton:hover, .searchButton:active, .searchButton:focus, .searchButton:focus:active{
+    background:#E84A5F;
+}
+
+.manga-container .well{
+    margin: auto;
+}

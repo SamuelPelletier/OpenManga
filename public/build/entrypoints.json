@@ -32,6 +32,11 @@
         "/build/css/show.css"
       ]
     },
+    "css/disclaimer": {
+      "css": [
+        "/build/css/disclaimer.css"
+      ]
+    },
     "css/app": {
       "js": [
         "/build/0.830d5dde.js",

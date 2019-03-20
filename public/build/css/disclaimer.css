@@ -1,0 +1,46 @@
+body{
+    margin: 0px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.background-disclaimer{
+    background-image: url("../images/wallapaper.jpg");
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    filter: blur(2px);
+}
+
+.disclaimer{
+    position: relative;
+    z-index: 1;
+}
+
+.header{
+    display: none;
+}
+
+.outer {
+    display: table;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .middle {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  
+  .disclaimer {
+    margin-left: auto;
+    margin-right: auto;
+    width: 400px;
+    /*whatever width you want*/
+  }
+
+  

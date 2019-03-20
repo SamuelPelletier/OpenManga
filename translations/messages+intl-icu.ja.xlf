@@ -84,6 +84,15 @@
                 <source>manga.no_mangas_found</source>
                 <target>Aucun manga trouvé</target>
             </trans-unit>
+
+            <trans-unit id="disclaimer.text">
+                <source>disclaimer.text</source>
+                <target>This website is an adult community that contains age-restricted content. You must be 18 years old or over to enter.</target>
+            </trans-unit>
+            <trans-unit id="disclaimer.button">
+                <source>disclaimer.button</source>
+                <target>I am 18 or older</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

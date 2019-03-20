@@ -2,22 +2,12 @@
 
 {% block javascripts %}
     {{ parent() }}
+    {{ encore_entry_link_tags('css/disclaimer') }}
 {% endblock %}
 
 {% block body_id 'search' %}
 
 {% block main %}
-    <form action="{{ path('search') }}" method="get">
-        <div class="form-group">
-            <input name="q"
-                   class="form-control search-field"
-                   placeholder="{{ 'post.search_for'|trans }}"
-                   autocomplete="off"
-                   autofocus
-                   value="{{ app.request.query.get('q') }}"
-            >
-        </div>
-    </form>
     {% if app.request.query.get('q') is not empty %}
         <div class='manga-container'>
             {% for manga in mangas %}
@@ -41,6 +31,5 @@
 
 {% block sidebar %}
     {{ parent() }}
-
-    {{ show_source_code(_self) }}
+    {{ encore_entry_script_tags('js/disclaimer') }}
 {% endblock %}

@@ -74,11 +74,6 @@
     </div>
     {% block javascripts %}
         {{ parent() }}
-        <script
-        src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
         {{ encore_entry_script_tags('js/show') }}
     {% endblock %}
 {% endblock %}
