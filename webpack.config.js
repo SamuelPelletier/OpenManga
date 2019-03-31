@@ -14,8 +14,11 @@ Encore
     .addEntry('js/app', './assets/js/app.js')
     .addEntry('js/login', './assets/js/login.js')
     .addEntry('js/search', './assets/js/search.js')
-    .addStyleEntry('css/app', ['./assets/scss/app.scss'])
+    .addEntry('js/show', './assets/js/show.js')
+    .addStyleEntry('css/app', ['./assets/scss/app.scss','./assets/css/index.css'])
     .addStyleEntry('css/admin', ['./assets/scss/admin.scss'])
+    .addStyleEntry('css/show', './assets/css/show.css')
+    .addStyleEntry('css/disclaimer', './assets/css/disclaimer.css')
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
 ;

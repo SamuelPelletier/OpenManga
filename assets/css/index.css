@@ -2,6 +2,14 @@ body{
     background-color: #4c4c4c;
 }
 
+.navbar-header a:hover{
+    color: #e84a5fd1 !important;
+}
+
+.navbar-nav > li > a:hover{
+    color: #e84a5fd1 !important;
+}
+
 .navbar{
     background-color: #2b2b2b;
 }
