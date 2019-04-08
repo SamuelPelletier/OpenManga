@@ -74,53 +74,54 @@ class MangaRepository extends ServiceEntityRepository
 
         foreach ($searchTerms as $key => $term) {
             $tags = $repoTag->getEntityManager()->createQueryBuilder()
-            ->select('a')
-            ->from($repoTag->_entityName, 'a')->where('a.name like :name')
-            ->setParameter('name', '%'.$term.'%')->getQuery()->getResult();
+                ->select('a')
+                ->from($repoTag->_entityName, 'a')->where('a.name like :name')
+                ->setParameter('name', '%' . $term . '%')->getQuery()->getResult();
 
-            foreach ($tags as $tag) {
+            foreach ($tags as $keyTag => $tag) {
                 $queryBuilder
-                    ->orWhere(':tag MEMBER OF p.tags')
-                    ->setParameter('tag', $tag);
+                    ->orWhere(':t_' . $keyTag . ' MEMBER OF p.tags')
+                    ->setParameter('t_' . $keyTag, $tag);
             }
+            dump($tags, $queryBuilder);
 
             $languages = $repoLanguage->getEntityManager()->createQueryBuilder()
-            ->select('a')
-            ->from($repoLanguage->_entityName, 'a')->where('a.name like :name')
-            ->setParameter('name', '%'.$term.'%')->getQuery()->getResult();
+                ->select('a')
+                ->from($repoLanguage->_entityName, 'a')->where('a.name like :name')
+                ->setParameter('name', '%' . $term . '%')->getQuery()->getResult();
 
-            foreach ($languages as $language) {
+            foreach ($languages as $keyLanguage => $language) {
                 $queryBuilder
-                    ->orWhere(':language MEMBER OF p.languages')
-                    ->setParameter('language', $language);
+                    ->orWhere(':l_' . $keyLanguage . ' MEMBER OF p.languages')
+                    ->setParameter(':l_' . $keyLanguage, $language);
             }
 
             $parodies = $repoParody->getEntityManager()->createQueryBuilder()
-            ->select('a')
-            ->from($repoParody->_entityName, 'a')->where('a.name like :name')
-            ->setParameter('name', '%'.$term.'%')->getQuery()->getResult();
+                ->select('a')
+                ->from($repoParody->_entityName, 'a')->where('a.name like :name')
+                ->setParameter('name', '%' . $term . '%')->getQuery()->getResult();
 
-            foreach ($parodies as $parody) {
+            foreach ($parodies as $keyParody => $parody) {
                 $queryBuilder
-                    ->orWhere(':parody MEMBER OF p.parodies')
-                    ->setParameter('parody', $parody);
+                    ->orWhere(':p_' . $keyParody . ' MEMBER OF p.parodies')
+                    ->setParameter(':p_' . $keyParody, $parody);
             }
 
             $authors = $repoAuthor->getEntityManager()->createQueryBuilder()
-            ->select('a')
-            ->from($repoAuthor->_entityName, 'a')->where('a.name like :name')
-            ->setParameter('name', '%'.$term.'%')->getQuery()->getResult();
+                ->select('a')
+                ->from($repoAuthor->_entityName, 'a')->where('a.name like :name')
+                ->setParameter('name', '%' . $term . '%')->getQuery()->getResult();
 
 
-            foreach ($authors as $author) {
+            foreach ($authors as $keyAuthor => $author) {
                 $queryBuilder
-                    ->orWhere(':author MEMBER OF p.authors')
-                    ->setParameter('author', $author);
+                    ->orWhere(':a_' . $keyAuthor . ' MEMBER OF p.authors')
+                    ->setParameter(':a_' . $keyAuthor, $author);
             }
 
             $queryBuilder
-                ->orWhere('p.title LIKE :t_'.$key)
-                ->setParameter('t_'.$key, '%'.$term.'%')
+                ->orWhere('p.title LIKE :t_' . $key)
+                ->setParameter('t_' . $key, '%' . $term . '%')
                 ->orderBy('p.publishedAt', 'DESC');
         }
 

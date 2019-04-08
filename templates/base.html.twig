@@ -5,111 +5,110 @@
 #}
 <!DOCTYPE html>
 <html lang="{{ app.request.locale }}">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>{% block title %}{{ app.request.server.get('APP_NAME') }}{% endblock %}</title>
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('css/app') }}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{% block title %}{{ app.request.server.get('APP_NAME') }}{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('css/app') }}
+    {% endblock %}
 
-        <link rel="icon" type="image/x-icon" href="{{ asset('build/images/logo.ico') }}" />
-    </head>
+    <link rel="icon" type="image/x-icon" href="{{ asset('logo.ico') }}"/>
+</head>
 
-    <body id="{% block body_id %}{% endblock %}">
+<body id="{% block body_id %}{% endblock %}">
 
-        {% block header %}
-            <header>
-                <nav class="navbar navbar-default">
-                    <div class="container-fluid">
-                        <!-- Brand and toggle get grouped for better mobile display -->
-                        <div class="navbar-header">
-                            <a class="navbar-brand" href="{{ path('index') }}">
-                                {{ app.request.server.get('APP_NAME') }}
-                            </a>
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                                <span class="sr-only">Toggle navigation</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                        </div>
-
-                        
-
-                        <!-- Collect the nav links, forms, and other content for toggling -->
-                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                            <ul class="nav navbar-nav">
-                                <form action="{{ path('search') }}" method="get" class="navbar-form navbar-left">
-                                    <div class="form-group search-navbar">
-                                        <input name="q"
-                                            class="form-control search-field"
-                                            id="search_field"
-                                            placeholder="{{ 'post.search_for'|trans }}"
-                                            autocomplete="off"
-                                            autofocus
-                                            value="{{ app.request.query.get('q') }}"
-                                        >
-                                        <button type="submit" class="btn btn-default searchButton">GO !</button>
-                                    </div>
-                                </form>
-                            </ul>
-                            <ul class="nav navbar-nav navbar-right">
-
-                                {% block header_navigation_links %}
-                                    <li>
-                                        <a href="{{ path('index') }}">
-                                            <i class="fa fa-home" aria-hidden="true"></i> {{ 'menu.homepage'|trans }}
-                                        </a>
-                                    </li>
-
-                                {% endblock %}
-
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="locales">
-                                        <i class="fa fa-globe" aria-hidden="true"></i>
-                                        <span class="caret"></span>
-                                        <span class="sr-only">{{ 'menu.choose_language'|trans }}</span>
-                                    </a>
-                                    
-                                    <ul class="dropdown-menu locales" role="menu" aria-labelledby="locales">
-                                        {% for locale in locales() %}
-                                            <li {% if app.request.locale == locale.code %}aria-checked="true" class="active"{% else %}aria-checked="false"{% endif %} role="menuitem"><a href="{{ path(app.request.get('_route', 'index'), app.request.get('_route_params', [])|merge({_locale: locale.code})) }}">{{ locale.name|capitalize }}</a></li>
-                                        {% endfor %}
-                                    </ul>
-                                </li>
-                            </ul>
-                        </div><!-- /.navbar-collapse -->
-                    </div><!-- /.container-fluid -->
-                </nav>
-            </header>
-        {% endblock %}
-
-        <div class="container body-container">
-            {% block body %}
-                <div id="main" class="col-sm-12">
-                    {% block main %}{% endblock %}
+{% block header %}
+    <header>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="{{ path('index') }}">
+                        {{ app.request.server.get('APP_NAME') }}
+                    </a>
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                            data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
                 </div>
-            {% endblock %}
+
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <form action="{{ path('search') }}" method="get" class="navbar-form navbar-left">
+                            <div class="form-group search-navbar">
+                                <input name="q"
+                                       class="form-control search-field"
+                                       id="search_field"
+                                       placeholder="{{ 'post.search_for'|trans }}"
+                                       autocomplete="off"
+                                       autofocus
+                                       value="{{ app.request.query.get('q') }}"
+                                >
+                                <button type="submit" class="btn btn-default searchButton">GO !</button>
+                            </div>
+                        </form>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+
+                        {% block header_navigation_links %}
+                            <li>
+                                <a href="{{ path('index') }}">
+                                    <i class="fa fa-home" aria-hidden="true"></i> {{ 'menu.homepage'|trans }}
+                                </a>
+                            </li>
+
+                        {% endblock %}
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+                               aria-expanded="false" id="locales">
+                                <i class="fa fa-globe" aria-hidden="true"></i>
+                                <span class="caret"></span>
+                                <span class="sr-only">{{ 'menu.choose_language'|trans }}</span>
+                            </a>
+
+                            <ul class="dropdown-menu locales" role="menu" aria-labelledby="locales">
+                                {% for locale in locales() %}
+                                    <li {% if app.request.locale == locale.code %}aria-checked="true" class="active"
+                                        {% else %}aria-checked="false"{% endif %} role="menuitem"><a
+                                                href="{{ path(app.request.get('_route', 'index'), app.request.get('_route_params', [])|merge({_locale: locale.code})) }}">{{ locale.name|capitalize }}</a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </div><!-- /.container-fluid -->
+        </nav>
+    </header>
+{% endblock %}
+
+<div class="container body-container">
+    {% block body %}
+        <div id="main" class="col-sm-12">
+            {% block main %}{% endblock %}
         </div>
+    {% endblock %}
+</div>
 
-        {% block footer %}
-            <footer>
-            </footer>
-        {% endblock %}
+{% block footer %}
+    <footer>
+    </footer>
+{% endblock %}
 
-        {% block javascripts %}
-            <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.touchswipe/1.6.19/jquery.touchSwipe.min.js"></script>
-            {{ encore_entry_script_tags('js/app') }}
-        {% endblock %}
+{% block javascripts %}
+    {{ encore_entry_script_tags('js/app') }}
+{% endblock %}
 
-        {# it's not mandatory to set the timezone in localizeddate(). This is done to
-           avoid errors when the 'intl' PHP extension is not available and the application
-           is forced to use the limited "intl polyfill", which only supports UTC and GMT #}
-        <!-- Page rendered on {{ 'now'|localizeddate('long', 'long', null, 'UTC') }} -->
-    </body>
+{# it's not mandatory to set the timezone in localizeddate(). This is done to
+   avoid errors when the 'intl' PHP extension is not available and the application
+   is forced to use the limited "intl polyfill", which only supports UTC and GMT #}
+<!-- Page rendered on {{ 'now'|localizeddate('long', 'long', null, 'UTC') }} -->
+</body>
 </html>

@@ -34,8 +34,6 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
  *
  * @Route("/")
  *
- * @author Ryan Weaver <weaverryan@gmail.com>
- * @author Javier Eguiluz <javier.eguiluz@gmail.com>
  */
 class BlogController extends AbstractController
 {
@@ -44,59 +42,38 @@ class BlogController extends AbstractController
      * @Route("/page/{page<[1-9]\d*>}", methods={"GET"}, name="index_paginated")
      * @Cache(smaxage="10")
      *
-     * NOTE: For standard formats, Symfony will also automatically choose the best
-     * Content-Type header for the response.
-     * See https://symfony.com/doc/current/quick_tour/the_controller.html#using-formats
      */
-    public function index(SessionInterface $session, Request $request, int $page,  MangaRepository $mangas, TagRepository $tags): Response
-    {
-        //$session->clear();
+    public function index(
+        Request $request,
+        int $page,
+        MangaRepository $mangas,
+        TagRepository $tags
+    ): Response {
         $tag = null;
         if ($request->query->has('tag')) {
             $tag = $tags->findOneBy(['name' => $request->query->get('tag')]);
         }
         $latestMangas = $mangas->findLatest($page, $tag);
-        // Every template name also has two extensions that specify the format and
-        // engine for that template.
-        // See https://symfony.com/doc/current/templating.html#template-suffix
 
-        // Check disclaimer
-
-        if($request->query->get('disclaimer') == 1){
-            $session->set('disclaimer', true);
-        }else if($session->get('disclaimer') != true && $_ENV['USE_DISCLAIMER'] == 1){
-            return $this->render('disclaimer.html.twig');
-        }
-        
         return $this->render('index.html.twig', ['mangas' => $latestMangas]);
     }
 
     /**
      * @Route("/mangas/{id}", methods={"GET"}, name="manga")
      *
-     * NOTE: The $manga controller argument is automatically injected by Symfony
-     * after performing a database query looking for a Manga with the 'id'
-     * value given in the route.
-     * See https://symfony.com/doc/current/bundles/SensioFrameworkExtraBundle/annotations/converters.html
      */
     public function mangaShow(Manga $manga): Response
     {
-        // Symfony's 'dump()' function is an improved version of PHP's 'var_dump()' but
-        // it's not available in the 'prod' environment to prevent leaking sensitive information.
-        // It can be used both in PHP files and Twig templates, but it requires to
-        // have enabled the DebugBundle. Uncomment the following line to see it in action:
-        //
-        // dump($manga, $this->getUser(), new \DateTime());
         $images = array();
-        if (is_dir ('media/'.$manga->getId().'/')){
+        if (is_dir('media/' . $manga->getId() . '/')) {
             $finder = new Finder();
-            $finder->files()->in('media/'.$manga->getId().'/');
+            $finder->files()->in('media/' . $manga->getId() . '/');
             foreach ($finder as $file) {
                 // dumps the relative path to the file
-                array_push($images,$file->getRelativePathname());
+                array_push($images, $file->getRelativePathname());
             }
         }
-        return $this->render('manga_show.html.twig', ['manga' => $manga, 'images'=> $images]);
+        return $this->render('manga_show.html.twig', ['manga' => $manga, 'images' => $images]);
     }
 
     /**
@@ -107,14 +84,16 @@ class BlogController extends AbstractController
     {
         // No query parameter
         $foundMangas = null;
-        if($request->query->get('q') !== null && $request->query->get('q') == ''){
+        if ($request->query->get('q') !== null && $request->query->get('q') == '') {
             return $this->redirectToRoute('index');
-        }else if ($request->query->get('q') != '') {
-            $query = $request->query->get('q', '');
-            $foundMangas = $mangas->findBySearchQuery($query, $page);
+        } else {
+            if ($request->query->get('q') != '') {
+                $query = $request->query->get('q', '');
+                $foundMangas = $mangas->findBySearchQuery($query, $page);
+            }
         }
 
-        return $this->render('search.html.twig',['mangas' => $foundMangas]);
+        return $this->render('search.html.twig', ['mangas' => $foundMangas]);
     }
 
     /**
@@ -122,21 +101,21 @@ class BlogController extends AbstractController
      */
     public function mangaDownload(Manga $manga): Response
     {
-        if (is_dir ('media/'.$manga->getId().'/')){
-            $zipName = htmlspecialchars_decode($manga->getTitle(),ENT_QUOTES) . ".zip";
-            $zipName = str_replace(['|','/','\\'],'',$zipName);
+        if (is_dir('media/' . $manga->getId() . '/')) {
+            $zipName = htmlspecialchars_decode($manga->getTitle(), ENT_QUOTES) . ".zip";
+            $zipName = str_replace(['|', '/', '\\'], '', $zipName);
             $images = array();
             $files = array();
             $finder = new Finder();
-            $finder->files()->in('media/'.$manga->getId().'/');
+            $finder->files()->in('media/' . $manga->getId() . '/');
             foreach ($finder as $file) {
                 array_push($files, $file);
             }
 
             $zip = new \ZipArchive();
-            $zip->open($zipName,  \ZipArchive::CREATE);
+            $zip->open($zipName, \ZipArchive::CREATE);
             foreach ($files as $f) {
-                $zip->addFromString(basename($f),  file_get_contents($f));
+                $zip->addFromString(basename($f), file_get_contents($f));
             }
             $zip->close();
             $response = new Response(file_get_contents($zipName));
@@ -144,9 +123,17 @@ class BlogController extends AbstractController
             $response->headers->set('Content-Disposition', 'attachment;filename="' . $zipName . '"');
             $response->headers->set('Content-length', filesize($zipName));
             return $response;
-        }else{
+        } else {
             throw $this->createNotFoundException('Sorry this file doesn\'t exist');
         }
 
+    }
+
+    /**
+     * @Route("/disclaimer", name="disclaimer")
+     */
+    public function disclaimer(): Response
+    {
+        return $this->render('disclaimer.html.twig');
     }
 }

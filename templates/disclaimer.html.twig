@@ -1,27 +1,53 @@
 <!DOCTYPE html>
 <html lang="{{ app.request.locale }}">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1"/>
-        <title>{% block title %}{{ app.request.server.get('APP_NAME') }}{% endblock %}</title>
-        {% block stylesheets %}
-            {{ encore_entry_link_tags('css/disclaimer') }}
-        {% endblock %}
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>{% block title %}{{ app.request.server.get('APP_NAME') }}{% endblock %}</title>
+    {% block stylesheets %}
+        {{ encore_entry_link_tags('css/app') }}
+        {{ encore_entry_link_tags('css/disclaimer') }}
+    {% endblock %}
 
-        <link rel="icon" type="image/x-icon" href="{{ asset('build/images/logo.ico') }}" />
-    </head>
-    <body>
-        <div class="outer">
-            <div class="middle">
-                <div class="disclaimer">
-                    {{ 'disclaimer.text'|trans }}
-                        <a href="{{ path('index',{'disclaimer':1}) }}">
-                            {{ 'disclaimer.button'|trans }}
-                        </a>
-                </div>
+    <link rel="icon" type="image/x-icon" href="{{ asset('logo.ico') }}"/>
+</head>
+<body>
+<div class="outer">
+    <div class="middle">
+        <div class="disclaimer col-md-12">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="disclaimer-text col-md-6">{{ 'disclaimer.text'|trans }}</div>
+                <div class="col-md-3"></div>
             </div>
-        </div> 
-        <div class="background-disclaimer">
+            <div class="row">
+                <div class="col-md-5"></div>
+                <a class="bubbly-button col-md-2" href="{{ path('index',{'disclaimer':1}) }}">
+                    {{ 'disclaimer.button'|trans }}
+                </a>
+                <div class="col-md-5"></div>
+            </div>
         </div>
-    </body>
+    </div>
+</div>
+<div class="background-disclaimer">
+</div>
+</body>
+<script>
+    var animateButton = function (e) {
+        //reset animation
+        e.target.classList.remove('animate');
+
+        e.target.classList.add('animate');
+        setTimeout(function () {
+            e.target.classList.remove('animate');
+        }, 700);
+    };
+
+    var bubblyButtons = document.getElementsByClassName("bubbly-button");
+
+    for (var i = 0; i < bubblyButtons.length; i++) {
+        bubblyButtons[i].addEventListener('mouseenter', animateButton, false);
+    }
+</script>
 </html>
