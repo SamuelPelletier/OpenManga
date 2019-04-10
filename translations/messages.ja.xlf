@@ -41,19 +41,19 @@
 
             <trans-unit id="menu.choose_language">
                 <source>menu.choose_language</source>
-                <target>Choisir la langue</target>
+                <target>言語を選択</target>
             </trans-unit>
             <trans-unit id="menu.homepage">
                 <source>menu.homepage</source>
-                <target>Accueil</target>
+                <target>歓迎</target>
             </trans-unit>
             <trans-unit id="menu.search">
                 <source>menu.search</source>
-                <target>Recherche</target>
+                <target>検索</target>
             </trans-unit>
             <trans-unit id="post.search_for">
                 <source>post.search_for</source>
-                <target>Rechercher...</target>
+                <target>検索...</target>
             </trans-unit>
 
             <trans-unit id="manga.language">
@@ -82,16 +82,16 @@
             </trans-unit>
             <trans-unit id="manga.no_mangas_found">
                 <source>manga.no_mangas_found</source>
-                <target>Aucun manga trouvé</target>
+                <target>マンガが見つかりません</target>
             </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>
-                <target>This website is an adult community that contains age-restricted content. You must be 18 years old or over to enter.</target>
+                <target>このウェブサイトは、年齢制限のあるコンテンツを含むアダルトコミュニティです。応募するには18歳以上でなければなりません。</target>
             </trans-unit>
             <trans-unit id="disclaimer.button">
                 <source>disclaimer.button</source>
-                <target>I am 18 or older</target>
+                <target>私は18歳以上です</target>
             </trans-unit>
         </body>
     </file>

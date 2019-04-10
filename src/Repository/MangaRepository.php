@@ -70,6 +70,7 @@ class MangaRepository extends ServiceEntityRepository
         $repoTag = $em->getRepository(Tag::class);
         $repoAuthor = $em->getRepository(Author::class);
         $repoParody = $em->getRepository(Parody::class);
+
         $queryBuilder = $this->createQueryBuilder('p');
 
         foreach ($searchTerms as $key => $term) {
@@ -80,10 +81,9 @@ class MangaRepository extends ServiceEntityRepository
 
             foreach ($tags as $keyTag => $tag) {
                 $queryBuilder
-                    ->orWhere(':t_' . $keyTag . ' MEMBER OF p.tags')
-                    ->setParameter('t_' . $keyTag, $tag);
+                    ->orWhere(':ta_' . $keyTag . ' MEMBER OF p.tags')
+                    ->setParameter('ta_' . $keyTag, $tag);
             }
-            dump($tags, $queryBuilder);
 
             $languages = $repoLanguage->getEntityManager()->createQueryBuilder()
                 ->select('a')
@@ -120,8 +120,8 @@ class MangaRepository extends ServiceEntityRepository
             }
 
             $queryBuilder
-                ->orWhere('p.title LIKE :t_' . $key)
-                ->setParameter('t_' . $key, '%' . $term . '%')
+                ->orWhere('p.title LIKE :ti_' . $key)
+                ->setParameter('ti_' . $key, '%' . $term . '%')
                 ->orderBy('p.publishedAt', 'DESC');
         }
 

@@ -39,6 +39,23 @@
                 <target><![CDATA[Попробуйте загрузить эту страницу снова через несколько минут или <a href="{url}">вернитесь на главную страницу</a>.]]></target>
             </trans-unit>
 
+            <trans-unit id="menu.choose_language">
+                <source>menu.choose_language</source>
+                <target>Выбрать язык</target>
+            </trans-unit>
+            <trans-unit id="menu.homepage">
+                <source>menu.homepage</source>
+                <target>добро пожаловать</target>
+            </trans-unit>
+            <trans-unit id="menu.search">
+                <source>menu.search</source>
+                <target>поиск</target>
+            </trans-unit>
+            <trans-unit id="post.search_for">
+                <source>post.search_for</source>
+                <target>поиск...</target>
+            </trans-unit>
+
             <trans-unit id="manga.language">
                 <source>manga.language</source>
                 <target>язык писателя</target>
@@ -65,16 +82,16 @@
             </trans-unit>
             <trans-unit id="manga.no_mangas_found">
                 <source>manga.no_mangas_found</source>
-                <target>Aucun manga trouvé</target>
+                <target>Манга не найдена</target>
             </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>
-                <target>This website is an adult community that contains age-restricted content. You must be 18 years old or over to enter.</target>
+                <target>Этот веб-сайт представляет собой сообщество для взрослых, которое содержит материалы, ограниченные по возрасту. Вы должны быть 18 лет или старше, чтобы войти.</target>
             </trans-unit>
             <trans-unit id="disclaimer.button">
                 <source>disclaimer.button</source>
-                <target>I am 18 or older</target>
+                <target>Мне 18 или больше</target>
             </trans-unit>
         </body>
     </file>

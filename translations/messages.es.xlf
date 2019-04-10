@@ -41,19 +41,19 @@
 
             <trans-unit id="menu.choose_language">
                 <source>menu.choose_language</source>
-                <target>Choisir la langue</target>
+                <target>Elegir idioma</target>
             </trans-unit>
             <trans-unit id="menu.homepage">
                 <source>menu.homepage</source>
-                <target>Accueil</target>
+                <target>Acogida</target>
             </trans-unit>
             <trans-unit id="menu.search">
                 <source>menu.search</source>
-                <target>Recherche</target>
+                <target>Búsqueda</target>
             </trans-unit>
             <trans-unit id="post.search_for">
                 <source>post.search_for</source>
-                <target>Rechercher...</target>
+                <target>Buscar...</target>
             </trans-unit>
 
             <trans-unit id="manga.language">
@@ -62,7 +62,7 @@
             </trans-unit>
             <trans-unit id="manga.parody">
                 <source>manga.parody</source>
-                <target>Parodia</target>
+                <target>Tema</target>
             </trans-unit>
             <trans-unit id="manga.author">
                 <source>manga.author</source>
@@ -82,16 +82,16 @@
             </trans-unit>
             <trans-unit id="manga.no_mangas_found">
                 <source>manga.no_mangas_found</source>
-                <target>Aucun manga trouvé</target>
+                <target>No se encontró manga</target>
             </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>
-                <target>This website is an adult community that contains age-restricted content. You must be 18 years old or over to enter.</target>
+                <target>Este sitio web es una comunidad de adultos que contiene contenido restringido por edad. Debes tener 18 años o más para entrar.</target>
             </trans-unit>
             <trans-unit id="disclaimer.button">
                 <source>disclaimer.button</source>
-                <target>I am 18 or older</target>
+                <target>Tengo 18 años o más</target>
             </trans-unit>
         </body>
     </file>

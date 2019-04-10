@@ -35,7 +35,7 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
  * @Route("/")
  *
  */
-class BlogController extends AbstractController
+class MangaController extends AbstractController
 {
     /**
      * @Route("/", defaults={"page": "1"}, methods={"GET"}, name="index")
@@ -44,16 +44,10 @@ class BlogController extends AbstractController
      *
      */
     public function index(
-        Request $request,
         int $page,
-        MangaRepository $mangas,
-        TagRepository $tags
+        MangaRepository $mangas
     ): Response {
-        $tag = null;
-        if ($request->query->has('tag')) {
-            $tag = $tags->findOneBy(['name' => $request->query->get('tag')]);
-        }
-        $latestMangas = $mangas->findLatest($page, $tag);
+        $latestMangas = $mangas->findLatest($page);
 
         return $this->render('index.html.twig', ['mangas' => $latestMangas]);
     }
@@ -80,7 +74,7 @@ class BlogController extends AbstractController
      * @Route("/search", methods={"GET"}, name="search")
      * @Route("/search/page/{page<[1-9]\d*>}", methods={"GET"}, name="search_paginated")
      */
-    public function search(Request $request, int $page = 1, MangaRepository $mangas): Response
+    public function search(Request $request, MangaRepository $mangas, int $page = 1): Response
     {
         // No query parameter
         $foundMangas = null;

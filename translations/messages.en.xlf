@@ -41,19 +41,19 @@
 
             <trans-unit id="menu.choose_language">
                 <source>menu.choose_language</source>
-                <target>Choisir la langue</target>
+                <target>Choose a language</target>
             </trans-unit>
             <trans-unit id="menu.homepage">
                 <source>menu.homepage</source>
-                <target>Accueil</target>
+                <target>Home</target>
             </trans-unit>
             <trans-unit id="menu.search">
                 <source>menu.search</source>
-                <target>Recherche</target>
+                <target>Search</target>
             </trans-unit>
             <trans-unit id="post.search_for">
                 <source>post.search_for</source>
-                <target>Rechercher...</target>
+                <target>Search...</target>
             </trans-unit>
 
             <trans-unit id="manga.language">
@@ -62,7 +62,7 @@
             </trans-unit>
             <trans-unit id="manga.parody">
                 <source>manga.parody</source>
-                <target>Parody</target>
+                <target>Theme</target>
             </trans-unit>
             <trans-unit id="manga.author">
                 <source>manga.author</source>
@@ -82,7 +82,7 @@
             </trans-unit>            
             <trans-unit id="manga.no_mangas_found">
                 <source>manga.no_mangas_found</source>
-                <target>Aucun manga trouvé</target>
+                <target>No manga found</target>
             </trans-unit>
 
             <trans-unit id="disclaimer.text">

@@ -62,7 +62,7 @@
             </trans-unit>
             <trans-unit id="manga.parody">
                 <source>manga.parody</source>
-                <target>Parodie</target>
+                <target>Thème</target>
             </trans-unit>
             <trans-unit id="manga.author">
                 <source>manga.author</source>
@@ -87,11 +87,11 @@
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>
-                <target>This website is an adult community that contains age-restricted content. You must be 18 years old or over to enter.</target>
+                <target>Ce site contient du contenu pour adultes. Vous devez avoir 18 ans ou plus pour rentrer.</target>
             </trans-unit>
             <trans-unit id="disclaimer.button">
                 <source>disclaimer.button</source>
-                <target>I am 18 or older</target>
+                <target>J'ai plus de 18 ans</target>
             </trans-unit>
         </body>
     </file>
