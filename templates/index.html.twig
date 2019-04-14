@@ -1,13 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block body_id 'index' %}
-
 {% block main %}
     <div class='manga-container'>
         {% for manga in mangas %}
             <article class="manga col-sm-3">
                 <a href="{{ path('manga', {id: manga.id}) }}">
-                    <img class='img-thumbnail' src='{{ asset( 'media/' ~ manga.id ~ '/001.jpg' ) }}'>
+                    <img alt="{{ manga.title |raw }}" title="{{ manga.title |raw }}" class='img-thumbnail'
+                         src='{{ asset( 'media/' ~ manga.id ~ '/thumb.webp' ) }}'>
                     <h2 class='img-name'>{{ manga.title |raw }}</h2>
                 </a>
             </article>

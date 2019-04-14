@@ -90,6 +90,11 @@ body {
     box-shadow: 0 2px 25px rgba(255, 0, 130, 0.2);
 }
 
+.bubbly-button:hover, .bubbly-button:focus {
+    color: white !important;
+}
+
+
 .bubbly-button.animate:before {
     display: block;
     animation: topBubbles ease-in-out 0.75s forwards;

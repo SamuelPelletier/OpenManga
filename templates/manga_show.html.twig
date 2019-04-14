@@ -3,17 +3,15 @@
     {{ parent() }}
     {{ encore_entry_link_tags('css/show') }}
 {% endblock %}
-{% block body_id 'manga_show' %}
 
 {% block main %}
     <h1>{{ manga.title | raw }}</h1>
 
     <p class="manga-metadata">
-    <span class="metadata"><i
-                class="fa fa-calendar"></i> {{ manga.publishedAt|localizeddate('long', 'none', null, 'UTC') }}</span>
-    {% if manga.author.name is defined %}
-        <span class="metadata"><i class="fa fa-user"></i> {{ manga.author.name }}</span>
-    {% endif %}
+        <span class="metadata"><i
+                    class="fa fa-calendar"></i> {{ manga.publishedAt|localizeddate('long', 'none', null, 'UTC') }}</span>
+
+    </p>
     {% if not manga.languages.empty %}
         <p>
             <a>{{ 'manga.language'|trans }} : </a>
@@ -62,13 +60,14 @@
             {% endfor %}
         </p>
     {% endif %}
-    </p>
     <a class="btn download" target="_blank"
        href="{{ path('download', {'id':manga.id}) }}">{{ 'manga.download'|trans }}</a>
     <div class="row">
-        {% for image in images %}
+        {% for image in images if image matches '{\.jpg$}' %}
             <article class="image col-sm-3">
-                <img class='img-view' src='{{ asset( 'media/' ~ manga.id ~ '/' ~ image ) }}'>
+                <img alt="{{ manga.title | raw }} {{ 'manga.image_alt'|transchoice(loop.index) }}"
+                     title="{{ manga.title | raw }} {{ 'manga.image_alt'|transchoice(loop.index) }}" class='img-view'
+                     src='{{ asset( 'media/' ~ manga.id ~ '/' ~ image ) }}'>
             </article>
         {% else %}
             <div class="well">{{ 'manga.no_images_found'|trans }}</div>
@@ -78,4 +77,16 @@
         {{ parent() }}
         {{ encore_entry_script_tags('js/show') }}
     {% endblock %}
+{% endblock %}
+
+{% block title %}
+    {{ manga.title | raw }}
+{% endblock %}
+
+{% block meta_description %}
+    {{ manga.title | raw }}{{ manga.tags | join(',',' and ') }}
+{% endblock %}
+
+{% block meta_keyword %}
+    {{ manga.tags | join(',') }}
 {% endblock %}

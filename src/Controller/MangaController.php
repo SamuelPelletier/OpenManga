@@ -23,6 +23,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\EventDispatcher\GenericEvent;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -98,12 +99,13 @@ class MangaController extends AbstractController
         if (is_dir('media/' . $manga->getId() . '/')) {
             $zipName = htmlspecialchars_decode($manga->getTitle(), ENT_QUOTES) . ".zip";
             $zipName = str_replace(['|', '/', '\\'], '', $zipName);
-            $images = array();
             $files = array();
             $finder = new Finder();
             $finder->files()->in('media/' . $manga->getId() . '/');
             foreach ($finder as $file) {
-                array_push($files, $file);
+                if (preg_match("/\.jpg$/", $file->getFilename())) {
+                    array_push($files, $file);
+                }
             }
 
             $zip = new \ZipArchive();
@@ -112,10 +114,11 @@ class MangaController extends AbstractController
                 $zip->addFromString(basename($f), file_get_contents($f));
             }
             $zip->close();
-            $response = new Response(file_get_contents($zipName));
+            $response = new BinaryFileResponse($zipName);
             $response->headers->set('Content-Type', 'application/zip');
             $response->headers->set('Content-Disposition', 'attachment;filename="' . $zipName . '"');
             $response->headers->set('Content-length', filesize($zipName));
+            $response->deleteFileAfterSend(true);
             return $response;
         } else {
             throw $this->createNotFoundException('Sorry this file doesn\'t exist');

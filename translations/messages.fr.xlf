@@ -84,6 +84,14 @@
                 <source>manga.no_mangas_found</source>
                 <target>Aucun manga trouvé</target>
             </trans-unit>
+            <trans-unit id="manga.image_alt">
+                <source>manga.image_alt</source>
+                <target>{1} première image |[2,Inf[ %count%eme image</target>
+            </trans-unit>
+            <trans-unit id="manga.no_images_found">
+                <source>manga.no_images_found</source>
+                <target>Aucune image trouvée</target>
+            </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>

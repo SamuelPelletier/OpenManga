@@ -84,6 +84,14 @@
                 <source>manga.no_mangas_found</source>
                 <target>Nessun manga trovato</target>
             </trans-unit>
+            <trans-unit id="manga.image_alt">
+                <source>manga.image_alt</source>
+                <target>numero di immagine  %count%</target>
+            </trans-unit>
+            <trans-unit id="manga.no_images_found">
+                <source>manga.no_images_found</source>
+                <target>Nessun manga trovato</target>
+            </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>

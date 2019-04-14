@@ -146,6 +146,9 @@
     "psr/simple-cache": {
         "version": "1.0.x-dev"
     },
+    "rosell-dk/webp-convert": {
+        "version": "1.3.9"
+    },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
         "recipe": {

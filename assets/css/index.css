@@ -2,6 +2,10 @@ body {
     background-color: #4c4c4c;
 }
 
+a:hover, a:focus, a:active {
+    color: #ff306ad1 !important;
+}
+
 .navbar-header a:hover, .navbar-header a:focus, .navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
     color: #ff306ad1 !important;
 }
@@ -12,6 +16,7 @@ body {
 
 .navbar-brand {
     margin-left: 20px !important;
+    color: #ff306ad1 !important;
 }
 
 footer {

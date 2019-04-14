@@ -27,6 +27,8 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Finder\Finder;
+use WebPConvert\WebPConvert;
 
 /**
  * A console command that lists all the existing users.
@@ -40,6 +42,7 @@ use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
  * For more advanced uses, commands can be defined as services too. See
  * https://symfony.com/doc/current/console/commands_as_services.html
  *
+ * @property EntityManagerInterface entityManager
  */
 class ImportMangaCommand extends Command
 {
@@ -71,51 +74,54 @@ class ImportMangaCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $url=$_ENV['API_SEARCH'];
-        $data=file_get_contents($url);
-        $data = strip_tags($data,"<a>");
-        $d = preg_split("/<\/a>/",$data);
+
+        $url = $_ENV['API_SEARCH'];
+        $data = file_get_contents($url);
+        $data = strip_tags($data, "<a>");
+        $d = preg_split("/<\/a>/", $data);
         $mangasLink = array();
-        foreach ( $d as $k=>$u ){
-            if( strpos($u, "<a href=") !== FALSE ){
-                $u = preg_replace("/.*<a\s+href=\"/sm","",$u);
-                $u = preg_replace("/\".*/","",$u);
-                if(strstr($u,$_ENV['API_MANGA_URL']) != false){
-                    array_push($mangasLink,$u);
+        foreach ($d as $k => $u) {
+            if (strpos($u, "<a href=") !== false) {
+                $u = preg_replace("/.*<a\s+href=\"/sm", "", $u);
+                $u = preg_replace("/\".*/", "", $u);
+                if (strstr($u, $_ENV['API_MANGA_URL']) != false) {
+                    array_push($mangasLink, $u);
                 }
             }
         }
-    
-        for($i=count($mangasLink); $i > 0; $i--){
-            $this->downloadManga($mangasLink[$i-1]);
-            if($i == count($mangasLink)-6){
+
+        for ($i = count($mangasLink); $i > 0; $i--) {
+            $this->downloadManga($mangasLink[$i - 1]);
+            // Download by batch of last 5
+            if ($i == count($mangasLink) - 6) {
                 break;
             }
         }
     }
 
-    private function downloadManga($link){
+    private function downloadManga($link)
+    {
         $em = $this->entityManager;
         $repoManga = $em->getRepository(Manga::class);
         $repoLanguage = $em->getRepository(Language::class);
         $repoTag = $em->getRepository(Tag::class);
         $repoAuthor = $em->getRepository(Author::class);
         $repoParody = $em->getRepository(Parody::class);
-        $explode = explode("/",$link);
+        $explode = explode("/", $link);
         $mangaId = $explode[4];
-        $this->logger->info('Try to import - manga id : '.$mangaId);
+        $this->logger->info('Try to import - manga id : ' . $mangaId);
         $token = $explode[5];
-        $json = json_decode($this->CallAPI("POST",$_ENV['API_URL'],'{
+        $json = json_decode($this->CallAPI("POST", $_ENV['API_URL'], '{
             "method": "gdata",
             "gidlist": [
-                ['.$mangaId.',"'.$token.'"]
+                [' . $mangaId . ',"' . $token . '"]
             ],
             "namespace": 1
-          }'),true)['gmetadata'][0];
+          }'), true)['gmetadata'][0];
 
-        if($repoManga->findOneBy(['title' => $json['title']])){
-            $this->logger->warning('Manga already exist - id : '.$mangaId);
-        }else{
+        if ($repoManga->findOneBy(['title' => $json['title']])) {
+            $this->logger->warning('Manga already exist - id : ' . $mangaId);
+        } else {
             $manga = new Manga();
             $manga->setTitle($json['title']);
             $manga->setCountPages($json['filecount']);
@@ -123,14 +129,14 @@ class ImportMangaCommand extends Command
 
             $tags = $json['tags'];
             foreach ($tags as $tagName) {
-                $explodeTag = explode(':',$tagName);
-                if(!isset($explodeTag[1])){
-                    array_unshift($explodeTag,'empty');
+                $explodeTag = explode(':', $tagName);
+                if (!isset($explodeTag[1])) {
+                    array_unshift($explodeTag, 'empty');
                 }
                 switch ($explodeTag[0]) {
                     case 'artist':
                     case 'group':
-                        if(($author = $repoAuthor->findOneBy(['name' => $explodeTag[1]])) == null){
+                        if (($author = $repoAuthor->findOneBy(['name' => $explodeTag[1]])) == null) {
                             $author = new Author();
                             $author->setName($explodeTag[1]);
                             $em->persist($author);
@@ -140,7 +146,7 @@ class ImportMangaCommand extends Command
                         break;
 
                     case 'parody':
-                        if(($parody = $repoParody->findOneBy(['name' => $explodeTag[1]])) == null){
+                        if (($parody = $repoParody->findOneBy(['name' => $explodeTag[1]])) == null) {
                             $parody = new Parody();
                             $parody->setName($explodeTag[1]);
                             $em->persist($parody);
@@ -150,7 +156,7 @@ class ImportMangaCommand extends Command
                         break;
 
                     case 'language':
-                        if(($language = $repoLanguage->findOneBy(['name' => $explodeTag[1]])) == null){
+                        if (($language = $repoLanguage->findOneBy(['name' => $explodeTag[1]])) == null) {
                             $language = new Language();
                             $language->setName($explodeTag[1]);
                             $em->persist($language);
@@ -160,12 +166,12 @@ class ImportMangaCommand extends Command
                         break;
 
                     default:
-                        if(in_array($explodeTag[1],explode(',',$_ENV['API_TAG_BLOCKED']))){
+                        if (in_array($explodeTag[1], explode(',', $_ENV['API_TAG_BLOCKED']))) {
                             $this->logger->info('End of import - tag blocked detected');
                             exit;
                         }
 
-                        if(($tagObject = $repoTag->findOneBy(['name' => $explodeTag[1]])) == null){
+                        if (($tagObject = $repoTag->findOneBy(['name' => $explodeTag[1]])) == null) {
                             $tagObject = new Tag();
                             $tagObject->setName($explodeTag[1]);
                             $em->persist($tagObject);
@@ -179,27 +185,48 @@ class ImportMangaCommand extends Command
             $em->persist($manga);
             $em->flush();
             $fileSystem = new Filesystem();
-            $fileSystem->mkdir(dirname(__DIR__).'/../public/media/'.$manga->getId(), 0700);
-            $data=file_get_contents($_ENV['API_MANGA_URL'].$mangaId.'/'.$token);
-            $data = strip_tags($data,"<a>");
-            $d = preg_split("/<\/a>/",$data);
-            $mangasLink = array();
+            $fileSystem->mkdir(dirname(__DIR__) . '/../public/media/' . $manga->getId(), 0700);
+            $data = file_get_contents($_ENV['API_MANGA_URL'] . $mangaId . '/' . $token);
+            $data = strip_tags($data, "<a>");
+            $d = preg_split("/<\/a>/", $data);
             $i = 1;
-            foreach ( $d as $k=>$u ){
-                if( strpos($u, "<a href=") !== FALSE ){
-                    $u = preg_replace("/.*<a\s+href=\"/sm","",$u);
-                    $u = preg_replace("/\".*/","",$u);
-                    if(strstr($u,$_ENV['API_IMAGE_URL']) != false){
+            foreach ($d as $k => $u) {
+                if (strpos($u, "<a href=") !== false) {
+                    $u = preg_replace("/.*<a\s+href=\"/sm", "", $u);
+                    $u = preg_replace("/\".*/", "", $u);
+                    if (strstr($u, $_ENV['API_IMAGE_URL']) != false) {
                         $datau = file_get_contents($u);
-                        preg_match_all( '@src="([^"]+)"@' , $datau, $match );
+                        preg_match_all('@src="([^"]+)"@', $datau, $match);
                         $src = array_pop($match);
                         $i = str_pad($i, 3, "0", STR_PAD_LEFT);
-                        $fileSystem->copy($src[5], dirname(__DIR__).'/../public/media/'.$manga->getId().'/'.$i.'.jpg',true);
+                        $fileSystem->copy($src[5],
+                            dirname(__DIR__) . '/../public/media/' . $manga->getId() . '/' . $i . '.jpg', true);
+                        // Create thumbnail
+                        if ($i == 1) {
+                            $source = dirname(__DIR__) . '/../public/media/' . $manga->getId() . '/' . $i . '.jpg';
+                            $destination = dirname(__DIR__) . '/../public/media/' . $manga->getId() . '/thumb.webp';
+
+                            $success = WebPConvert::convert($source, $destination, [
+                                // It is not required that you set any options - all have sensible defaults.
+                                // We set some, for the sake of the example.
+                                'quality' => 'auto',
+                                'max-quality' => 80,
+                                'converters' => ['imagick', 'gmagick', 'gd', 'imagickbinary']
+                            ]);
+                        }
                         $i++;
                     }
                 }
             }
-            $this->logger->info('End of import - manga id : '.$mangaId);
+            $finder = new Finder();
+            $finder->files()->in(dirname(__DIR__) . '/../public/media/' . $manga->getId());
+            if (count($finder) != $i || count($finder) <= 2) {
+                $em->remove($manga);
+                $em->flush();
+                $this->logger->error('End of import - manga id : ' . $mangaId . ' -> fail because all image are not download' . $i . ' ' . count($finder));
+            } else {
+                $this->logger->info('End of import - manga id : ' . $mangaId);
+            }
         }
     }
 
@@ -207,27 +234,29 @@ class ImportMangaCommand extends Command
     {
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        switch ($method)
-        {
+        switch ($method) {
             case "POST":
                 curl_setopt($curl, CURLOPT_POST, 1);
 
-                if ($data)
+                if ($data) {
                     curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                }
                 break;
             case "PUT":
                 curl_setopt($curl, CURLOPT_PUT, 1);
                 break;
             default:
-                if ($data)
+                if ($data) {
                     $url = sprintf("%s?%s", $url, http_build_query($data));
+                }
         }
 
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array(                                                                          
-            'Content-Type: application/json',                                                                                
-            'Content-Length: ' . strlen($data))                                                                       
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($data)
+            )
         );
 
         $result = curl_exec($curl);
