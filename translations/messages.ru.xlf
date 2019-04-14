@@ -4,11 +4,11 @@
         <body>
             <trans-unit id="http_error.name">
                 <source>http_error.name</source>
-                <target>Ошибка {status_code, number}</target>
+                <target>Ошибка %status_code%</target>
             </trans-unit>
             <trans-unit id="http_error.description">
                 <source>http_error.description</source>
-                <target>Произошла неизвестная ошибка (HTTP {status_code, number}), которая помешала выполнить ваш запрос.</target>
+                <target>Произошла неизвестная ошибка, которая помешала выполнить ваш запрос.</target>
             </trans-unit>
             <trans-unit id="http_error.suggestion">
                 <source>http_error.suggestion</source>

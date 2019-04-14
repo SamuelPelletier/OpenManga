@@ -4,11 +4,11 @@
         <body>
             <trans-unit id="http_error.name">
                 <source>http_error.name</source>
-                <target>Errore {status_code, number}</target>
+                <target>Errore %status_code%</target>
             </trans-unit>
             <trans-unit id="http_error.description">
                 <source>http_error.description</source>
-                <target>Un errore sconosciuto (HTTP {status_code, number}) ha impedito di completare la richiesta.</target>
+                <target>Un errore sconosciuto ha impedito di completare la richiesta.</target>
             </trans-unit>
             <trans-unit id="http_error.suggestion">
                 <source>http_error.suggestion</source>
