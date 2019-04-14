@@ -29,7 +29,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Parody implements \JsonSerializable
 {
-        /**
+    /**
      * @var int
      *
      * @ORM\Id
@@ -41,7 +41,7 @@ class Parody implements \JsonSerializable
     /**
      * @var string
      *
-     * @ORM\Column(type="string", unique=true)
+     * @ORM\Column(type="string", unique=true, length=190)
      */
     private $name;
 

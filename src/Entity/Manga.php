@@ -92,7 +92,7 @@ class Manga
      */
     private $tags;
 
-        /**
+    /**
      * @var Language[]|ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Language")
@@ -103,7 +103,7 @@ class Manga
      */
     private $languages;
 
-            /**
+    /**
      * @var Parody[]|ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="Parody")
@@ -166,7 +166,7 @@ class Manga
             }
         }
     }
-    
+
     public function getAuthors(): Collection
     {
         return $this->authors;
@@ -189,7 +189,7 @@ class Manga
             }
         }
     }
-    
+
     public function getTags(): Collection
     {
         return $this->tags;
@@ -212,7 +212,7 @@ class Manga
             }
         }
     }
-    
+
     public function getLanguages(): Collection
     {
         return $this->languages;
@@ -235,7 +235,7 @@ class Manga
             }
         }
     }
-    
+
     public function getParodies(): Collection
     {
         return $this->parodies;
