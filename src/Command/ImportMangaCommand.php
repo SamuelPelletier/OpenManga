@@ -119,8 +119,8 @@ class ImportMangaCommand extends Command
             "namespace": 1
           }'), true)['gmetadata'][0];
 
-        if ($repoManga->findOneBy(['title' => $json['title']])) {
-            $this->logger->warning('Manga already exist - id : ' . $mangaId);
+        if ($mangaFind = $repoManga->findOneBy(['title' => $json['title']])) {
+            $this->logger->warning('Manga already exist - id : ' . $mangaFind->getId());
         } else {
             $manga = new Manga();
             $manga->setTitle($json['title']);
@@ -209,8 +209,8 @@ class ImportMangaCommand extends Command
                             $success = WebPConvert::convert($source, $destination, [
                                 // It is not required that you set any options - all have sensible defaults.
                                 // We set some, for the sake of the example.
-                                'quality' => 'auto',
-                                'max-quality' => 80,
+                                'quality' => 10,
+                                'max-quality' => 20,
                                 'converters' => ['imagick', 'gmagick', 'gd', 'imagickbinary']
                             ]);
                         }
@@ -223,7 +223,7 @@ class ImportMangaCommand extends Command
             if (count($finder) != $i || count($finder) <= 2) {
                 $em->remove($manga);
                 $em->flush();
-                $this->logger->error('End of import - manga id : ' . $mangaId . ' -> fail because all image are not download' . $i . ' ' . count($finder));
+                $this->logger->error('End of import - manga id : ' . $mangaId . ' -> fail because all image are not download');
             } else {
                 $this->logger->info('End of import - manga id : ' . $mangaId);
             }

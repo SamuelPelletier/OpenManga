@@ -81,8 +81,8 @@ class MangaRepository extends ServiceEntityRepository
 
             foreach ($tags as $keyTag => $tag) {
                 $queryBuilder
-                    ->orWhere(':ta_' . $keyTag . ' MEMBER OF p.tags')
-                    ->setParameter('ta_' . $keyTag, $tag);
+                    ->orWhere(':ta_' . $keyTag . '_' . $key . ' MEMBER OF p.tags')
+                    ->setParameter('ta_' . $keyTag . '_' . $key, $tag);
             }
 
             $languages = $repoLanguage->getEntityManager()->createQueryBuilder()
@@ -92,8 +92,8 @@ class MangaRepository extends ServiceEntityRepository
 
             foreach ($languages as $keyLanguage => $language) {
                 $queryBuilder
-                    ->orWhere(':l_' . $keyLanguage . ' MEMBER OF p.languages')
-                    ->setParameter(':l_' . $keyLanguage, $language);
+                    ->orWhere(':l_' . $keyLanguage . '_' . $key . ' MEMBER OF p.languages')
+                    ->setParameter(':l_' . $keyLanguage . '_' . $key, $language);
             }
 
             $parodies = $repoParody->getEntityManager()->createQueryBuilder()
@@ -103,8 +103,8 @@ class MangaRepository extends ServiceEntityRepository
 
             foreach ($parodies as $keyParody => $parody) {
                 $queryBuilder
-                    ->orWhere(':p_' . $keyParody . ' MEMBER OF p.parodies')
-                    ->setParameter(':p_' . $keyParody, $parody);
+                    ->orWhere(':p_' . $keyParody . '_' . $key . ' MEMBER OF p.parodies')
+                    ->setParameter(':p_' . $keyParody . '_' . $key, $parody);
             }
 
             $authors = $repoAuthor->getEntityManager()->createQueryBuilder()
@@ -112,11 +112,10 @@ class MangaRepository extends ServiceEntityRepository
                 ->from($repoAuthor->_entityName, 'a')->where('a.name like :name')
                 ->setParameter('name', '%' . $term . '%')->getQuery()->getResult();
 
-
             foreach ($authors as $keyAuthor => $author) {
                 $queryBuilder
-                    ->orWhere(':a_' . $keyAuthor . ' MEMBER OF p.authors')
-                    ->setParameter(':a_' . $keyAuthor, $author);
+                    ->orWhere(':a_' . $keyAuthor . '_' . $key . ' MEMBER OF p.authors')
+                    ->setParameter(':a_' . $keyAuthor . '_' . $key, $author);
             }
 
             $queryBuilder
