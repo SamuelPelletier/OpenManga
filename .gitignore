@@ -31,3 +31,4 @@ yarn-error.log
 
 /public/media/
 /public/build/
+/.idea/
