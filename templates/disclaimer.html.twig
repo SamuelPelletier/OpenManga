@@ -1,3 +1,4 @@
+{% import "macro/encore.html.twig" as encore %}
 <!DOCTYPE html>
 <html lang="{{ app.request.locale }}">
 <head>
@@ -5,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>{% block title %}{{ app.request.server.get('APP_NAME') }}{% endblock %}</title>
     {% block stylesheets %}
-        {{ encore_entry_link_tags('css/app') }}
-        {{ encore_entry_link_tags('css/disclaimer') }}
+        {{ encore.encore_absolute_link_tags('css/app') }}
+        {{ encore.encore_absolute_link_tags('css/disclaimer') }}
     {% endblock %}
 
     <link rel="icon" type="image/x-icon" href="{{ asset('logo.ico') }}"/>
@@ -22,7 +23,7 @@
             </div>
             <div class="row">
                 <div class="col-md-5"></div>
-                <a class="bubbly-button col-md-2" href="{{ path('index',{'disclaimer':1}) }}">
+                <a class="bubbly-button col-md-2" href="{{ url('index',{'disclaimer':1}) }}">
                     {{ 'disclaimer.button'|trans }}
                 </a>
                 <div class="col-md-5"></div>

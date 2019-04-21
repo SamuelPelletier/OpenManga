@@ -1,7 +1,8 @@
+{% import "macro/encore.html.twig" as encore %}
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore_entry_link_tags('css/show') }}
+    {{ encore.encore_absolute_link_tags('css/show') }}
 {% endblock %}
 
 {% block main %}
@@ -16,7 +17,7 @@
         <p>
             <a>{{ 'manga.language'|trans }} : </a>
             {% for language in manga.languages %}
-                <a href="{{ path('search', {'q': language.name == app.request.query.get('language') ? null : language.name}) }}"
+                <a href="{{ url('search', {'q': language.name == app.request.query.get('language') ? null : language.name}) }}"
                    class="label label-{{ language.name == app.request.query.get('language') ? 'success' : 'default' }}"
                 >
                     <i class="fa fa-commenting"></i> {{ language.name }}
@@ -28,7 +29,7 @@
         <p>
             <a>{{ 'manga.parody'|trans }} : </a>
             {% for parody in manga.parodies %}
-                <a href="{{ path('search', {'q': parody.name == app.request.query.get('parody') ? null : parody.name}) }}"
+                <a href="{{ url('search', {'q': parody.name == app.request.query.get('parody') ? null : parody.name}) }}"
                    class="label label-{{ parody.name == app.request.query.get('parody') ? 'success' : 'default' }}"
                 >
                     <i class="fa fa-folder"></i> {{ parody.name }}
@@ -40,7 +41,7 @@
         <p>
             <a>{{ 'manga.tag'|trans }} : </a>
             {% for tag in manga.tags %}
-                <a href="{{ path('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name}) }}"
+                <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name}) }}"
                    class="label label-{{ tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
                 >
                     <i class="fa fa-hashtag"></i> {{ tag.name }}
@@ -52,7 +53,7 @@
         <p>
             <a>{{ 'manga.author'|trans }} : </a>
             {% for author in manga.authors %}
-                <a href="{{ path('search', {'q': author.name == app.request.query.get('author') ? null : author.name}) }}"
+                <a href="{{ url('search', {'q': author.name == app.request.query.get('author') ? null : author.name}) }}"
                    class="label label-{{ author.name == app.request.query.get('author') ? 'success' : 'default' }}"
                 >
                     <i class="fa fa-user"></i> {{ author.name }}
@@ -61,13 +62,13 @@
         </p>
     {% endif %}
     <a class="btn download" target="_blank"
-       href="{{ path('download', {'id':manga.id}) }}">{{ 'manga.download'|trans }}</a>
+       href="{{ url('download', {'id':manga.id}) }}">{{ 'manga.download'|trans }}</a>
     <div class="row">
         {% for image in images if image matches '{\.jpg$}' %}
             <article class="image col-sm-3">
                 <img alt="{{ manga.title | raw }} {{ 'manga.image_alt'|transchoice(loop.index) }}"
                      title="{{ manga.title | raw }} {{ 'manga.image_alt'|transchoice(loop.index) }}" class='img-view'
-                     src='{{ asset( 'media/' ~ manga.id ~ '/' ~ image ) }}'>
+                     src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/' ~ image ) }}'>
             </article>
         {% else %}
             <div class="well">{{ 'manga.no_images_found'|trans }}</div>
@@ -75,7 +76,7 @@
     </div>
     {% block javascripts %}
         {{ parent() }}
-        {{ encore_entry_script_tags('js/show') }}
+        {{ encore.encore_absolute_script_tags('js/show') }}
     {% endblock %}
 {% endblock %}
 

@@ -4,9 +4,9 @@
     <div class='manga-container'>
         {% for manga in mangas %}
             <article class="manga col-sm-3">
-                <a href="{{ path('manga', {id: manga.id}) }}">
+                <a href="{{ url('manga', {id: manga.id}) }}">
                     <img alt="{{ manga.title |raw }}" title="{{ manga.title |raw }}" class='img-thumbnail'
-                         src='{{ asset( 'media/' ~ manga.id ~ '/thumb.webp' ) }}'>
+                         src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/thumb.webp' ) }}'>
                     <h2 class='img-name'>{{ manga.title |raw }}</h2>
                 </a>
             </article>

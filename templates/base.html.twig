@@ -1,3 +1,4 @@
+{% import "macro/encore.html.twig" as encore %}
 {#
    This is the base template used as the application layout which contains the
    common elements and decorates all the other templates.
@@ -12,10 +13,10 @@
     <meta name="description" content="{% block meta_description %}{% endblock %}"/>
     <meta name="keywords" content="{% block meta_keyword %}{{ app.request.server.get('APP_NAME') }}{% endblock %}"/>
     {% block stylesheets %}
-        {{ encore_entry_link_tags('css/app') }}
+        {{ encore.encore_absolute_link_tags('css/app') }}
     {% endblock %}
 
-    <link rel="icon" type="image/x-icon" href="{{ asset('logo.ico') }}"/>
+    <link rel="icon" type="image/x-icon" href="{{ app.request.getSchemeAndHttpHost() ~ asset('logo.ico') }}"/>
 </head>
 
 <body id="{% block body_id %}{% endblock %}">
@@ -26,7 +27,7 @@
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <a class="navbar-brand" href="{{ path('index') }}">
+                    <a class="navbar-brand" href="{{ url('index') }}">
                         {{ app.request.server.get('APP_NAME') }}
                     </a>
                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
@@ -42,7 +43,7 @@
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <form action="{{ path('search') }}" method="get" class="navbar-form navbar-left">
+                        <form action="{{ url('search') }}" method="get" class="navbar-form navbar-left">
                             <div class="form-group search-navbar">
                                 <input name="q"
                                        class="form-control search-field"
@@ -60,7 +61,7 @@
 
                         {% block header_navigation_links %}
                             <li>
-                                <a href="{{ path('index') }}">
+                                <a href="{{ url('index') }}">
                                     <i class="fa fa-home" aria-hidden="true"></i> {{ 'menu.homepage'|trans }}
                                 </a>
                             </li>
@@ -79,7 +80,7 @@
                                 {% for locale in locales() %}
                                     <li {% if app.request.locale == locale.code %}aria-checked="true" class="active"
                                         {% else %}aria-checked="false"{% endif %} role="menuitem"><a
-                                                href="{{ path(app.request.get('_route', 'index'), app.request.get('_route_params', [])|merge({_locale: locale.code})) }}">{{ locale.name|capitalize }}</a>
+                                                href="{{ url(app.request.get('_route', 'index'), app.request.get('_route_params', [])|merge({_locale: locale.code})) }}">{{ locale.name|capitalize }}</a>
                                     </li>
                                 {% endfor %}
                             </ul>
@@ -105,7 +106,7 @@
 {% endblock %}
 
 {% block javascripts %}
-    {{ encore_entry_script_tags('js/app') }}
+    {{ encore.encore_absolute_script_tags('js/app') }}
 {% endblock %}
 
 {# it's not mandatory to set the timezone in localizeddate(). This is done to

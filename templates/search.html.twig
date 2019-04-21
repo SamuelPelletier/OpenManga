@@ -1,8 +1,9 @@
+{% import "macro/encore.html.twig" as encore %}
 {% extends 'base.html.twig' %}
 
 {% block javascripts %}
     {{ parent() }}
-    {{ encore_entry_link_tags('css/disclaimer') }}
+    {{ encore.encore_absolute_link_tags('css/disclaimer') }}
 {% endblock %}
 
 {% block body_id 'search' %}
@@ -12,8 +13,9 @@
         <div class='manga-container'>
             {% for manga in mangas %}
                 <article class="manga col-sm-3">
-                    <a href="{{ path('manga', {id: manga.id}) }}">
-                        <img class='img-thumbnail' src='{{ asset( 'media/' ~ manga.id ~ '/001.jpg' ) }}'>
+                    <a href="{{ url('manga', {id: manga.id}) }}">
+                        <img class='img-thumbnail'
+                             src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/001.jpg' ) }}'>
                         <h2 class='img-name'>{{ manga.title |raw }}</h2>
                     </a>
                 </article>
@@ -31,5 +33,5 @@
 
 {% block sidebar %}
     {{ parent() }}
-    {{ encore_entry_script_tags('js/disclaimer') }}
+    {{ encore.encore_absolute_script_tags('js/disclaimer') }}
 {% endblock %}
