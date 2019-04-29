@@ -206,13 +206,17 @@ class ImportMangaCommand extends Command
                             $source = dirname(__DIR__) . '/../public/media/' . $manga->getId() . '/' . $i . '.jpg';
                             $destination = dirname(__DIR__) . '/../public/media/' . $manga->getId() . '/thumb.webp';
 
-                            $success = WebPConvert::convert($source, $destination, [
-                                // It is not required that you set any options - all have sensible defaults.
-                                // We set some, for the sake of the example.
-                                'quality' => 10,
-                                'max-quality' => 20,
-                                'converters' => ['imagick', 'gmagick', 'gd', 'imagickbinary']
-                            ]);
+                            try {
+                                $success = WebPConvert::convert($source, $destination, [
+                                    // It is not required that you set any options - all have sensible defaults.
+                                    // We set some, for the sake of the example.
+                                    'quality' => 10,
+                                    'max-quality' => 20,
+                                    'converters' => ['imagick', 'gmagick', 'gd', 'imagickbinary']
+                                ]);
+                            } catch (\Exception $e) {
+                                $fileSystem->copy($source, $destination);
+                            }
                         }
                         $i++;
                     }
