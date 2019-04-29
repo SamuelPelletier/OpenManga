@@ -101,6 +101,11 @@
                 <source>disclaimer.button</source>
                 <target>Мне 18 или больше</target>
             </trans-unit>
+
+            <trans-unit id="meta.description">
+                <source>meta.description</source>
+                <target> содержит тысячи %tags% для просмотра и загрузки бесплатно.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

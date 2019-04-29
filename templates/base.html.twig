@@ -10,8 +10,9 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <title>{% block title %}{{ app.request.server.get('APP_NAME') }}{% endblock %}</title>
-    <meta name="description" content="{% block meta_description %}{% endblock %}"/>
-    <meta name="keywords" content="{% block meta_keyword %}{{ app.request.server.get('APP_NAME') }}{% endblock %}"/>
+    <meta name="description"
+          content="{% block meta_description %}{{ app.request.server.get('APP_NAME') ~ 'meta.description'|trans({"%tags%":app.request.server.get('APP_KEYWORD') }) }}{% endblock %}"/>
+    <meta name="keywords" content="{% block meta_keyword %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}"/>
     {% block stylesheets %}
         {{ encore.encore_absolute_link_tags('css/app') }}
     {% endblock %}

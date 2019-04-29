@@ -202,7 +202,6 @@ h1, h2, h3, h4, p, a {
     left: -24px;
     position: relative;
     z-index: 1;
-    height: 43px;
     width: 100px;
 }
 

@@ -101,6 +101,11 @@
                 <source>disclaimer.button</source>
                 <target>私は18歳以上です</target>
             </trans-unit>
+
+            <trans-unit id="meta.description">
+                <source>meta.description</source>
+                <target> は何千もの %tags% を無料で閲覧、ダウンロード可能です。</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

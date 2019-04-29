@@ -4,6 +4,9 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="description"
+          content="{{ app.request.server.get('APP_NAME') ~ 'meta.description'|trans({'%tags%': app.request.server.get('APP_KEYWORD')}) }}"/>
+    <meta name="keywords" content="{% block meta_keyword %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}"/>
     <title>{% block title %}{{ app.request.server.get('APP_NAME') }}{% endblock %}</title>
     {% block stylesheets %}
         {{ encore.encore_absolute_link_tags('css/app') }}
@@ -14,6 +17,15 @@
 </head>
 <body>
 <div class="outer">
+    <div class="top">
+        <div class="disclaimer col-md-12">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <h1 class="col-md-6 disclaimer-title">{{ app.request.server.get('APP_NAME') }}</h1>
+                <div class="col-md-3"></div>
+            </div>
+        </div>
+    </div>
     <div class="middle">
         <div class="disclaimer col-md-12">
             <div class="row">

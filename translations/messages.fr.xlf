@@ -101,6 +101,11 @@
                 <source>disclaimer.button</source>
                 <target>J'ai plus de 18 ans</target>
             </trans-unit>
+
+            <trans-unit id="meta.description">
+                <source>meta.description</source>
+                <target> contient des milliers de %tags% visionnables et téléchargeables gratuitement.</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
