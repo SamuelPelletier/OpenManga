@@ -675,3 +675,12 @@ li:last-child .page {
 .download:active, .download:focus {
     color: white !important;
 }
+
+.counter {
+    font-style: normal;
+    font-variant: oldstyle-nums;
+    background-color: white;
+    left: -7px;
+    position: relative;
+    color: black;
+}

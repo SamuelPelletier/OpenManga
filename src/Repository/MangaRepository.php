@@ -127,6 +127,38 @@ class MangaRepository extends ServiceEntityRepository
         return $this->createPaginator($queryBuilder->getQuery(), $page);
     }
 
+    public function countByTag(Tag $tag): int
+    {
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->orWhere(':tag MEMBER OF p.tags')
+            ->setParameter('tag', $tag);
+        return count($queryBuilder->getQuery()->execute());
+    }
+
+    public function countByLanguage(Language $language): int
+    {
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->orWhere(':language MEMBER OF p.languages')
+            ->setParameter('language', $language);
+        return count($queryBuilder->getQuery()->execute());
+    }
+
+    public function countByParody(Parody $parody): int
+    {
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->orWhere(':parody MEMBER OF p.parodies')
+            ->setParameter('parody', $parody);
+        return count($queryBuilder->getQuery()->execute());
+    }
+
+    public function countByAuthor(Author $author): int
+    {
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->orWhere(':author MEMBER OF p.authors')
+            ->setParameter('author', $author);
+        return count($queryBuilder->getQuery()->execute());
+    }
+
     /**
      * Removes all non-alphanumeric characters except whitespaces.
      */

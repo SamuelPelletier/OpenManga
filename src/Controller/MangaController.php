@@ -11,24 +11,15 @@
 
 namespace App\Controller;
 
-use App\Entity\Comment;
 use App\Entity\Manga;
-use App\Events;
-use App\Form\CommentType;
 use App\Repository\MangaRepository;
-use App\Repository\TagRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Finder\Finder;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 /**
  * Controller used to manage blog contents in the public part of the site.
@@ -57,8 +48,10 @@ class MangaController extends AbstractController
      * @Route("/mangas/{id}", methods={"GET"}, name="manga")
      *
      */
-    public function mangaShow(Manga $manga): Response
-    {
+    public function mangaShow(
+        Manga $manga,
+        MangaRepository $mangaRepository
+    ): Response {
         $images = array();
         if (is_dir('media/' . $manga->getId() . '/')) {
             $finder = new Finder();
@@ -68,7 +61,8 @@ class MangaController extends AbstractController
                 array_push($images, $file->getRelativePathname());
             }
         }
-        return $this->render('manga_show.html.twig', ['manga' => $manga, 'images' => $images]);
+        return $this->render('manga_show.html.twig',
+            ['manga' => $manga, 'images' => $images, 'mangaRepository' => $mangaRepository]);
     }
 
     /**
