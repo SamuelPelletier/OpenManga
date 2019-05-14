@@ -17,12 +17,14 @@
         <p>
             <a>{{ 'manga.language'|trans }} : </a>
             {% for language in manga.languages %}
-                <a href="{{ url('search', {'q': language.name == app.request.query.get('language') ? null : language.name}) }}"
-                   class="label label-{{ language.name == app.request.query.get('language') ? 'success' : 'default' }}"
-                >
-                    <i class="fa fa-commenting"></i> {{ language.name }}
-                </a>
-                <i class="counter label"> {{ mangaRepository.countByLanguage(language) }}</i>
+                <span class="label-container">
+                    <a href="{{ url('search', {'q': language.name == app.request.query.get('language') ? null : language.name}) }}"
+                       class="label label-{{ language.name == app.request.query.get('language') ? 'success' : 'default' }}"
+                    >
+                        <i class="fa fa-commenting"></i> {{ language.name }}
+                    </a>
+                    <i class="counter label"> {{ mangaRepository.countByLanguage(language) }}</i>
+                </span>
             {% endfor %}
         </p>
     {% endif %}
@@ -30,12 +32,14 @@
         <p>
             <a>{{ 'manga.parody'|trans }} : </a>
             {% for parody in manga.parodies %}
-                <a href="{{ url('search', {'q': parody.name == app.request.query.get('parody') ? null : parody.name}) }}"
-                   class="label label-{{ parody.name == app.request.query.get('parody') ? 'success' : 'default' }}"
-                >
-                    <i class="fa fa-folder"></i> {{ parody.name }}
-                </a>
-                <i class="counter label"> {{ mangaRepository.countByParody(parody) }}</i>
+                <span class="label-container">
+                    <a href="{{ url('search', {'q': parody.name == app.request.query.get('parody') ? null : parody.name}) }}"
+                       class="label label-{{ parody.name == app.request.query.get('parody') ? 'success' : 'default' }}"
+                    >
+                        <i class="fa fa-folder"></i> {{ parody.name }}
+                    </a>
+                    <i class="counter label"> {{ mangaRepository.countByParody(parody) }}</i>
+                </span>
             {% endfor %}
         </p>
     {% endif %}
@@ -43,13 +47,15 @@
         <p>
             <a>{{ 'manga.tag'|trans }} : </a>
             {% for tag in manga.tags %}
-                <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name}) }}"
-                   class="label label-{{ tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
-                >
-                    <i class="fa fa-hashtag"></i> {{ tag.name }}
+                <span class="label-container">
+                    <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name}) }}"
+                       class="label label-{{ tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
+                    >
+                        <i class="fa fa-hashtag"></i> {{ tag.name }}
 
-                </a>
-                <i class="counter label">{{ mangaRepository.countByTag(tag) }}</i>
+                    </a>
+                    <i class="counter label">{{ mangaRepository.countByTag(tag) }}</i>
+                </span>
             {% endfor %}
         </p>
     {% endif %}
@@ -57,23 +63,27 @@
         <p>
             <a>{{ 'manga.author'|trans }} : </a>
             {% for author in manga.authors %}
-                <a href="{{ url('search', {'q': author.name == app.request.query.get('author') ? null : author.name}) }}"
-                   class="label label-{{ author.name == app.request.query.get('author') ? 'success' : 'default' }}"
-                >
-                    <i class="fa fa-user"></i> {{ author.name }}
+                <span class="label-container">
+                    <a href="{{ url('search', {'q': author.name == app.request.query.get('author') ? null : author.name}) }}"
+                       class="label label-{{ author.name == app.request.query.get('author') ? 'success' : 'default' }}"
+                    >
+                        <i class="fa fa-user"></i> {{ author.name }}
 
-                </a>
-                <i class="counter label">{{ mangaRepository.countByAuthor(author) }}</i>
+                    </a>
+                    <i class="counter label">{{ mangaRepository.countByAuthor(author) }}</i>
+                </span>
             {% endfor %}
         </p>
     {% endif %}
+    <p class="count-views">{{ 'manga.count_views'|trans }} : {{ manga.countViews }}</p>
     <a class="btn download" target="_blank"
        href="{{ url('download', {'id':manga.id}) }}">{{ 'manga.download'|trans }}</a>
     <div class="row">
         {% for image in images if image matches '{\.jpg$}' %}
             <article class="image col-sm-3">
-                <img alt="{{ manga.title | raw }} {{ 'manga.image_alt'|transchoice(loop.index) }}"
-                     title="{{ manga.title | raw }} {{ 'manga.image_alt'|transchoice(loop.index) }}" class='img-view'
+                <img alt="{{ manga.title | raw }} {{ 'manga.image_alt'|trans({'%count%':loop.index}) }}"
+                     title="{{ manga.title | raw }} {{ 'manga.image_alt'|trans({'%count%':loop.index}) }}"
+                     class='img-view'
                      src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/' ~ image ) }}'>
             </article>
         {% else %}

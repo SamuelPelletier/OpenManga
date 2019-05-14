@@ -72,6 +72,10 @@
                 <source>manga.tag</source>
                 <target>Tag</target>
             </trans-unit>
+            <trans-unit id="manga.count_views">
+                <source>manga.count_views</source>
+                <target>Nombre de vues</target>
+            </trans-unit>
             <trans-unit id="manga.download">
                 <source>manga.download</source>
                 <target>Télécharger</target>

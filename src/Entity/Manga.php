@@ -114,6 +114,11 @@ class Manga
      */
     private $parodies;
 
+    /**
+     * @ORM\Column(type="integer")
+     */
+    private $countViews = 0;
+
     public function __construct()
     {
         $this->publishedAt = new \DateTime();
@@ -246,6 +251,18 @@ class Manga
         if ($this->parodies->contains($parody)) {
             $this->parodies->removeElement($parody);
         }
+
+        return $this;
+    }
+
+    public function getCountViews(): ?int
+    {
+        return $this->countViews;
+    }
+
+    public function setCountViews(int $countViews): self
+    {
+        $this->countViews = $countViews;
 
         return $this;
     }

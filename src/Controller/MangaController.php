@@ -50,7 +50,8 @@ class MangaController extends AbstractController
      */
     public function mangaShow(
         Manga $manga,
-        MangaRepository $mangaRepository
+        MangaRepository $mangaRepository,
+        Request $request
     ): Response {
         $images = array();
         if (is_dir('media/' . $manga->getId() . '/')) {
@@ -61,6 +62,17 @@ class MangaController extends AbstractController
                 array_push($images, $file->getRelativePathname());
             }
         }
+
+        $mangaView = explode(',', $request->getSession()->get('manga_view'));
+        if (!in_array($manga->getId(), $mangaView)) {
+            $request->getSession()->set('manga_view',
+                $request->getSession()->get('manga_view') . ',' . $manga->getId());
+            $manga->setCountViews($manga->getCountViews() + 1);
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($manga);
+            $entityManager->flush();
+        }
+
         return $this->render('manga_show.html.twig',
             ['manga' => $manga, 'images' => $images, 'mangaRepository' => $mangaRepository]);
     }

@@ -684,3 +684,7 @@ li:last-child .page {
     position: relative;
     color: black;
 }
+
+.label-container {
+    display: inline-block;
+}
