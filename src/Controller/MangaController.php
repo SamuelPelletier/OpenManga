@@ -40,7 +40,11 @@ class MangaController extends AbstractController
         Request $request,
         MangaRepository $mangas
     ): Response {
-        $latestMangas = $mangas->findLatest($page, $request->getSession()->get('sort'));
+        $isSortByViews = false;
+        if ($request->getSession()->get('sort') != null) {
+            $isSortByViews = $request->getSession()->get('sort');
+        }
+        $latestMangas = $mangas->findLatest($page, $isSortByViews);
 
         return $this->render('index.html.twig', ['mangas' => $latestMangas]);
     }
