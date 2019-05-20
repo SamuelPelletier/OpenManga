@@ -18,6 +18,7 @@ use App\Entity\Tag;
 use App\Entity\Parody;
 use App\Repository\MangaRepository;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -51,12 +52,14 @@ class ListErrorMangaCommand extends Command
     protected static $defaultName = 'app:check-manga';
 
     private $mangaRepository;
+    private $em;
     private $logger;
 
-    public function __construct(LoggerInterface $logger, MangaRepository $mangaRepository)
+    public function __construct(LoggerInterface $logger, MangaRepository $mangaRepository, EntityManagerInterface $em)
     {
         parent::__construct();
         $this->mangaRepository = $mangaRepository;
+        $this->em = $em;
         $this->logger = $logger;
     }
 
@@ -80,6 +83,16 @@ class ListErrorMangaCommand extends Command
             $finder->files()->in(dirname(__DIR__) . '/../public/media/' . $manga->getId());
             if ($manga->getCountPages() != count($finder) - 1) {
                 $output->writeln($manga->getId());
+                $fileSystem = new Filesystem();
+                if ($manga->getId() > 1) {
+                    $path = dirname(__DIR__) . '/../public/media/' . $manga->getId();
+                    if ($path == dirname(__DIR__) . '/../public/media/') {
+                        die;
+                    }
+                    $fileSystem->remove($path);
+                    $this->em->remove($manga);
+                    $this->em->flush();
+                }
             }
         }
 
