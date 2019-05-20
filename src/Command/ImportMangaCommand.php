@@ -56,7 +56,7 @@ class ImportMangaCommand extends Command
     {
         parent::__construct();
 
-        $this->entityManager = $em;
+        $this->em = $em;
         $this->logger = $logger;
     }
 
@@ -101,12 +101,11 @@ class ImportMangaCommand extends Command
 
     private function downloadManga($link)
     {
-        $em = $this->entityManager;
-        $repoManga = $em->getRepository(Manga::class);
-        $repoLanguage = $em->getRepository(Language::class);
-        $repoTag = $em->getRepository(Tag::class);
-        $repoAuthor = $em->getRepository(Author::class);
-        $repoParody = $em->getRepository(Parody::class);
+        $repoManga = $this->em->getRepository(Manga::class);
+        $repoLanguage = $this->em->getRepository(Language::class);
+        $repoTag = $this->em->getRepository(Tag::class);
+        $repoAuthor = $this->em->getRepository(Author::class);
+        $repoParody = $this->em->getRepository(Parody::class);
         $explode = explode("/", $link);
         $mangaId = $explode[4];
         $this->logger->info('Try to import - manga id : ' . $mangaId);
@@ -139,8 +138,8 @@ class ImportMangaCommand extends Command
                         if (($author = $repoAuthor->findOneBy(['name' => $explodeTag[1]])) == null) {
                             $author = new Author();
                             $author->setName($explodeTag[1]);
-                            $em->persist($author);
-                            $em->flush();
+                            $this->em->persist($author);
+                            $this->em->flush();
                         }
                         $manga->addAuthor($author);
                         break;
@@ -149,8 +148,8 @@ class ImportMangaCommand extends Command
                         if (($parody = $repoParody->findOneBy(['name' => $explodeTag[1]])) == null) {
                             $parody = new Parody();
                             $parody->setName($explodeTag[1]);
-                            $em->persist($parody);
-                            $em->flush();
+                            $this->em->persist($parody);
+                            $this->em->flush();
                         }
                         $manga->addParody($parody);
                         break;
@@ -159,8 +158,8 @@ class ImportMangaCommand extends Command
                         if (($language = $repoLanguage->findOneBy(['name' => $explodeTag[1]])) == null) {
                             $language = new Language();
                             $language->setName($explodeTag[1]);
-                            $em->persist($language);
-                            $em->flush();
+                            $this->em->persist($language);
+                            $this->em->flush();
                         }
                         $manga->addLanguage($language);
                         break;
@@ -174,16 +173,16 @@ class ImportMangaCommand extends Command
                         if (($tagObject = $repoTag->findOneBy(['name' => $explodeTag[1]])) == null) {
                             $tagObject = new Tag();
                             $tagObject->setName($explodeTag[1]);
-                            $em->persist($tagObject);
-                            $em->flush();
+                            $this->em->persist($tagObject);
+                            $this->em->flush();
                         }
                         $manga->addTag($tagObject);
                         break;
                 }
             }
 
-            $em->persist($manga);
-            $em->flush();
+            $this->em->persist($manga);
+            $this->em->flush();
             $fileSystem = new Filesystem();
             $fileSystem->mkdir(dirname(__DIR__) . '/../public/media/' . $manga->getId(), 0700);
             $data = file_get_contents($_ENV['API_MANGA_URL'] . $mangaId . '/' . $token);
@@ -225,11 +224,11 @@ class ImportMangaCommand extends Command
             $finder = new Finder();
             $finder->files()->in(dirname(__DIR__) . '/../public/media/' . $manga->getId());
             if (count($finder) != $i || count($finder) <= 2) {
-                $em->remove($manga);
-                $em->flush();
-                $this->logger->error('End of import - manga id : ' . $mangaId . ' -> fail because all image are not download');
+                $this->em->remove($manga);
+                $this->em->flush();
+                $this->logger->error('End of import - manga : ' . $manga->getTitle() . ' -> fail because all image are not download (find :' . (count($finder) - 1) . ', expected : ' . $i . ')');
             } else {
-                $this->logger->info('End of import - manga id : ' . $mangaId);
+                $this->logger->info('End of import - manga : ' . $manga->getTitle() . ' ## New ID : ' . $manga->getId());
             }
         }
     }
