@@ -198,8 +198,12 @@ class ImportMangaCommand extends Command
                         preg_match_all('@src="([^"]+)"@', $datau, $match);
                         $src = array_pop($match);
                         $i = str_pad($i, 3, "0", STR_PAD_LEFT);
-                        $fileSystem->copy($src[5],
-                            dirname(__DIR__) . '/../public/media/' . $manga->getId() . '/' . $i . '.jpg', true);
+                        try {
+                            $fileSystem->copy($src[5],
+                                dirname(__DIR__) . '/../public/media/' . $manga->getId() . '/' . $i . '.jpg', true);
+                        } catch (\Exception $e) {
+                            break;
+                        }
                         // Create thumbnail
                         if ($i == 1) {
                             $source = dirname(__DIR__) . '/../public/media/' . $manga->getId() . '/' . $i . '.jpg';
