@@ -36,10 +36,15 @@ class MangaRepository extends ServiceEntityRepository
         parent::__construct($registry, Manga::class);
     }
 
-    public function findLatest(int $page = 1): Pagerfanta
+    public function findLatest(int $page = 1, bool $isSortByViews = false): Pagerfanta
     {
-        $queryBuilder = $this->createQueryBuilder('p')
-            ->orderBy('p.publishedAt', 'DESC');
+        $queryBuilder = $this->createQueryBuilder('p');
+
+        if ($isSortByViews) {
+            $queryBuilder->orderBy('p.countViews', 'DESC');
+        } else {
+            $queryBuilder->orderBy('p.publishedAt', 'DESC');
+        }
 
         return $this->createPaginator($queryBuilder->getQuery(), $page);
     }

@@ -37,9 +37,10 @@ class MangaController extends AbstractController
      */
     public function index(
         int $page,
+        Request $request,
         MangaRepository $mangas
     ): Response {
-        $latestMangas = $mangas->findLatest($page);
+        $latestMangas = $mangas->findLatest($page, $request->getSession()->get('sort'));
 
         return $this->render('index.html.twig', ['mangas' => $latestMangas]);
     }
