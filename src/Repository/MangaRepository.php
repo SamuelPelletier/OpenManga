@@ -56,7 +56,7 @@ class MangaRepository extends ServiceEntityRepository
     /**
      * @return Manga[]
      */
-    public function findBySearchQuery(string $rawQuery, int $page = 1): Pagerfanta
+    public function findBySearchQuery(string $rawQuery, int $page = 1, bool $isSortByViews = false): Pagerfanta
     {
         $query = $this->sanitizeSearchQuery($rawQuery);
         $searchTerms = $this->extractSearchTerms($query);
@@ -120,8 +120,14 @@ class MangaRepository extends ServiceEntityRepository
 
             $queryBuilder
                 ->orWhere('p.title LIKE :ti_' . $key)
-                ->setParameter('ti_' . $key, '%' . $term . '%')
-                ->orderBy('p.publishedAt', 'DESC');
+                ->setParameter('ti_' . $key, '%' . $term . '%');
+
+            if ($isSortByViews) {
+                $queryBuilder->orderBy('p.countViews', 'DESC');
+            } else {
+                $queryBuilder->orderBy('p.publishedAt', 'DESC');
+            }
+
         }
 
         return $this->createPaginator($queryBuilder->getQuery(), $page);

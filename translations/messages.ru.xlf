@@ -55,6 +55,10 @@
                 <source>post.search_for</source>
                 <target>поиск...</target>
             </trans-unit>
+            <trans-unit id="search.sort">
+                <source>search.sort</source>
+                <target>Сортировать по просмотрам</target>
+            </trans-unit>
 
             <trans-unit id="manga.language">
                 <source>manga.language</source>

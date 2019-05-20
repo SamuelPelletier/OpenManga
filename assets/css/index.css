@@ -17,6 +17,7 @@ a:hover, a:focus, a:active {
 .navbar-brand {
     margin-left: 20px !important;
     color: #ff306ad1 !important;
+    font-weight: 700;
 }
 
 footer {
@@ -220,3 +221,160 @@ h1, h2, h3, h4, p, a {
 .pagination > .active > span, .pagination > li > a:hover {
     background-color: #fd0056 !important;
 }
+
+.switch-div {
+    display: inline-block;
+}
+
+:root {
+    --primaryColor: #ff306a;
+    --textColor: #666b69;
+    --backgroundColor: #333130;
+}
+
+/* Switch component */
+
+.Switch > span {
+    position: relative;
+    padding-left: 3.2em;
+    user-select: none; /* just for the demo */
+}
+
+.Switch > input[type='checkbox'] {
+    height: 1.2em;
+    width: 2.55em;
+    opacity: 0; /* thanks sara https://vimeo.com/331530115 */
+    position: absolute;
+    z-index: 1;
+}
+
+.Switch > span:before {
+    background-color: var(--textColor);
+    border-radius: 1.2em;
+    border: .1em solid transparent;
+    content: '';
+    height: 1.2em;
+    left: 0;
+    position: absolute;
+    transition: border-color .2s, background-color .2s;
+    width: 2.55em;
+}
+
+.Switch > span:after {
+    background-color: #e6f2ee;
+    border-radius: 50%;
+    border: .1em solid var(--textColor);
+    content: '';
+    height: 1.2em;
+    left: 0;
+    position: absolute;
+    transition: transform .2s, border-color .2s;
+    width: 1.2em;
+}
+
+.Switch > input:checked + span:before {
+    background-color: var(--primaryColor);
+}
+
+.Switch > input:checked + span:after {
+    border-color: var(--primaryColor);
+    transform: translateX(100%);
+}
+
+.a-neonText {
+    color: rgba(255, 255, 255, 0.5);
+    text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    text-align: center;
+}
+
+@media screen and (min-width: 800px) {
+    .a-neonText {
+        font-size: 20px;
+    }
+}
+
+.a-neonToggle:checked ~ .a-neonText.-main {
+    -webkit-animation-name: flickering-red;
+    animation-name: flickering-red;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-duration: 7.5s;
+    animation-duration: 7.5s;
+}
+
+.a-neonToggle:checked ~ .a-neonText.-frame {
+    -webkit-animation-name: flickering-lime;
+    animation-name: flickering-lime;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-duration: 5s;
+    animation-duration: 5s;
+}
+
+.a-neonToggle:checked ~ .a-neonText.-frame:first-of-type {
+    -webkit-animation-duration: 7s;
+    animation-duration: 7s;
+}
+
+.a-neonToggle {
+    display: none;
+}
+
+.a-overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.65) 100%);
+    mix-blend-mode: screen;
+}
+
+@-webkit-keyframes flickering-red {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #ff306a, 0 0 0.25rem #ff306a, 0 0 5rem #ff306a, 0 0 0.5rem #ff306a, 0 0 50rem #ff306a;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+@keyframes flickering-red {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #ff306a, 0 0 0.25rem #ff306a, 0 0 5rem #ff306a, 0 0 0.5rem #ff306a, 0 0 50rem #ff306a;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+@media (max-width: 767px) {
+    .searchButton {
+        left: -18px;
+    }
+}
+
+

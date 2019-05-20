@@ -85,12 +85,15 @@ class MangaController extends AbstractController
     {
         // No query parameter
         $foundMangas = null;
+        $isSortByViews = $request->query->get('sort') != null ? true : false;
+        $request->getSession()->set('sort', $isSortByViews);
+
         if ($request->query->get('q') !== null && $request->query->get('q') == '') {
             return $this->redirectToRoute('index');
         } else {
             if ($request->query->get('q') != '') {
                 $query = $request->query->get('q', '');
-                $foundMangas = $mangas->findBySearchQuery($query, $page);
+                $foundMangas = $mangas->findBySearchQuery($query, $page, $isSortByViews);
             }
         }
 

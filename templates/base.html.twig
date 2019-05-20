@@ -56,6 +56,16 @@
                                 >
                                 <button type="submit" class="btn btn-default searchButton">GO !</button>
                             </div>
+                            <div class="switch-div">
+                                <label class="Switch o-pen">
+                                    <input type="checkbox" name="sort" class="switch-input a-neonToggle" id="toggle"
+                                           {% if app.session.get('sort') %}checked{% endif %}>
+                                    <span class=" a-neonText -main">
+                                    {{ 'search.sort'|trans }}
+                                    </span>
+                                </label>
+
+                            </div>
                         </form>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
