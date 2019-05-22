@@ -47,6 +47,10 @@
                 <source>menu.homepage</source>
                 <target>Home</target>
             </trans-unit>
+            <trans-unit id="menu.about">
+                <source>menu.about</source>
+                <target>About</target>
+            </trans-unit>
             <trans-unit id="menu.search">
                 <source>menu.search</source>
                 <target>Search</target>
@@ -113,6 +117,124 @@
             <trans-unit id="meta.description">
                 <source>meta.description</source>
                 <target> contains thousands of %tags% viewable and downloadable for free.</target>
+            </trans-unit>
+
+            <trans-unit id="about.roadmap">
+                <source>about.roadmap</source>
+                <target>Roadmap</target>
+            </trans-unit>
+            <trans-unit id="about.completed">
+                <source>about.completed</source>
+                <target>Completed</target>
+            </trans-unit>
+            <trans-unit id="about.progress">
+                <source>about.progress</source>
+                <target>In progress</target>
+            </trans-unit>
+            <trans-unit id="about.search_system">
+                <source>about.search_system</source>
+                <target>Search system</target>
+            </trans-unit>
+            <trans-unit id="about.download_manga">
+                <source>about.download_manga</source>
+                <target>Download manga</target>
+            </trans-unit>
+            <trans-unit id="about.i18n">
+                <source>about.i18n</source>
+                <target>Internationalization</target>
+            </trans-unit>
+            <trans-unit id="about.viewers_system">
+                <source>about.viewers_system</source>
+                <target>Viewers system</target>
+            </trans-unit>
+            <trans-unit id="about.mobile_ergonomics">
+                <source>about.mobile_ergonomics</source>
+                <target>Mobile ergonomics</target>
+            </trans-unit>
+            <trans-unit id="about.create_thumb_manga">
+                <source>about.create_thumb_manga</source>
+                <target>Create thumb manga</target>
+            </trans-unit>
+            <trans-unit id="about.create_disclaimer">
+                <source>about.create_disclaimer</source>
+                <target>Create disclaimer</target>
+            </trans-unit>
+            <trans-unit id="about.count_manga_views">
+                <source>about.count_manga_views</source>
+                <target>Count manga views</target>
+            </trans-unit>
+            <trans-unit id="about.about_page">
+                <source>about.about_page</source>
+                <target>About page</target>
+            </trans-unit>
+            <trans-unit id="about.fix_import_break_manga">
+                <source>about.fix_import_break_manga</source>
+                <target>Fix import break manga</target>
+            </trans-unit>
+            <trans-unit id="about.upgrade_search_system">
+                <source>about.upgrade_search_system</source>
+                <target>Upgrade search system</target>
+            </trans-unit>
+            <trans-unit id="about.remake_interface">
+                <source>about.remake_interface</source>
+                <target>Remake interface</target>
+            </trans-unit>
+            <trans-unit id="about.create_readme">
+                <source>about.create_readme</source>
+                <target>Create readme</target>
+            </trans-unit>
+            <trans-unit id="about.help">
+                <source>about.help</source>
+                <target>Some help</target>
+            </trans-unit>
+            <trans-unit id="about.hello">
+                <source>about.hello</source>
+                <target>Hi everybody !</target>
+            </trans-unit>
+            <trans-unit id="about.thanks">
+                <source>about.thanks</source>
+                <target>Thanks everybody and enjoy our mangas.</target>
+            </trans-unit>
+            <trans-unit id="about.donate">
+                <source>about.donate</source>
+                <target>Donate</target>
+            </trans-unit>
+            <trans-unit id="about.github_help">
+                <source>about.github_help</source>
+                <target>Help</target>
+            </trans-unit>
+            <trans-unit id="about.on">
+                <source>about.on</source>
+                <target>on</target>
+            </trans-unit>
+            <trans-unit id="about.project">
+                <source>about.project</source>
+                <target>This project is a great success and I would like to improve it.
+                I need some help to do this and you can help me.</target>
+            </trans-unit>
+            <trans-unit id="about.issue1">
+                <source>about.issue1</source>
+                <target>- You can create issue on </target>
+            </trans-unit>
+            <trans-unit id="about.issue2">
+                <source>about.issue2</source>
+                <target>to propose some new features or report some bugs.</target>
+            </trans-unit>
+            <trans-unit id="about.developper">
+                <source>about.developper</source>
+                <target>- If you are a IT scientist, you can help me to create new features and fix some bugs.</target>
+            </trans-unit>
+            <trans-unit id="about.donate_text1">
+                <source>about.donate_text1</source>
+                <target>- You can help me by giving me a </target>
+            </trans-unit>
+            <trans-unit id="about.donate_text2">
+                <source>about.donate_text2</source>
+                <target>Donation</target>
+            </trans-unit>
+            <trans-unit id="about.donate_text3">
+                <source>about.donate_text3</source>
+                <target> so I can buy a super server !</target>
             </trans-unit>
         </body>
     </file>

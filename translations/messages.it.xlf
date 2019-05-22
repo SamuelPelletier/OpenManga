@@ -47,6 +47,10 @@
                 <source>menu.homepage</source>
                 <target>Casa</target>
             </trans-unit>
+            <trans-unit id="menu.about">
+                <source>menu.about</source>
+                <target>Circa</target>
+            </trans-unit>
             <trans-unit id="menu.search">
                 <source>menu.search</source>
                 <target>Ricerca</target>
@@ -114,6 +118,124 @@
             <trans-unit id="meta.description">
                 <source>meta.description</source>
                 <target> contiene migliaia di %tags% visualizzabile e scaricabile gratuitamente.</target>
+            </trans-unit>
+
+            <trans-unit id="about.roadmap">
+                <source>about.roadmap</source>
+                <target>Roadmap</target>
+            </trans-unit>
+            <trans-unit id="about.completed">
+                <source>about.completed</source>
+                <target>Completato</target>
+            </trans-unit>
+            <trans-unit id="about.progress">
+                <source>about.progress</source>
+                <target>In corso</target>
+            </trans-unit>
+            <trans-unit id="about.search_system">
+                <source>about.search_system</source>
+                <target>Sistema di ricerca</target>
+            </trans-unit>
+            <trans-unit id="about.download_manga">
+                <source>about.download_manga</source>
+                <target>Scarica manga</target>
+            </trans-unit>
+            <trans-unit id="about.i18n">
+                <source>about.i18n</source>
+                <target>Internazionalizzazione</target>
+            </trans-unit>
+            <trans-unit id="about.viewers_system">
+                <source>about.viewers_system</source>
+                <target>Sistema di visione</target>
+            </trans-unit>
+            <trans-unit id="about.mobile_ergonomics">
+                <source>about.mobile_ergonomics</source>
+                <target>Ergonomia mobile</target>
+            </trans-unit>
+            <trans-unit id="about.create_thumb_manga">
+                <source>about.create_thumb_manga</source>
+                <target>Crea manga pollice</target>
+            </trans-unit>
+            <trans-unit id="about.create_disclaimer">
+                <source>about.create_disclaimer</source>
+                <target>Crea una dichiarazione di non responsabilità</target>
+            </trans-unit>
+            <trans-unit id="about.count_manga_views">
+                <source>about.count_manga_views</source>
+                <target>Conta le visualizzazioni manga</target>
+            </trans-unit>
+            <trans-unit id="about.about_page">
+                <source>about.about_page</source>
+                <target>A proposito di pagina</target>
+            </trans-unit>
+            <trans-unit id="about.fix_import_break_manga">
+                <source>about.fix_import_break_manga</source>
+                <target>Correggere i manga di importazione</target>
+            </trans-unit>
+            <trans-unit id="about.upgrade_search_system">
+                <source>about.upgrade_search_system</source>
+                <target>Aggiorna il sistema di ricerca</target>
+            </trans-unit>
+            <trans-unit id="about.remake_interface">
+                <source>about.remake_interface</source>
+                <target>Interfaccia remake</target>
+            </trans-unit>
+            <trans-unit id="about.create_readme">
+                <source>about.create_readme</source>
+                <target>Crea un readme</target>
+            </trans-unit>
+            <trans-unit id="about.help">
+                <source>about.help</source>
+                <target>Qualche aiuto</target>
+            </trans-unit>
+            <trans-unit id="about.hello">
+                <source>about.hello</source>
+                <target>Ciao a tutti !</target>
+            </trans-unit>
+            <trans-unit id="about.thanks">
+                <source>about.thanks</source>
+                <target>Grazie a tutti e godetevi i nostri manga.</target>
+            </trans-unit>
+            <trans-unit id="about.donate">
+                <source>about.donate</source>
+                <target>Donare</target>
+            </trans-unit>
+            <trans-unit id="about.github_help">
+                <source>about.github_help</source>
+                <target>Aiuto</target>
+            </trans-unit>
+            <trans-unit id="about.on">
+                <source>about.on</source>
+                <target>in</target>
+            </trans-unit>
+            <trans-unit id="about.project">
+                <source>about.project</source>
+                <target>Questo progetto è un grande successo e mi piacerebbe migliorarlo.
+                Ho bisogno di aiuto per farlo e tu puoi aiutarmi.</target>
+            </trans-unit>
+            <trans-unit id="about.issue1">
+                <source>about.issue1</source>
+                <target>- Puoi creare un problema su </target>
+            </trans-unit>
+            <trans-unit id="about.issue2">
+                <source>about.issue2</source>
+                <target>proporre alcune nuove funzionalità o segnalare alcuni bug.</target>
+            </trans-unit>
+            <trans-unit id="about.developper">
+                <source>about.developper</source>
+                <target>- Se sei un informatico, puoi aiutarmi a creare nuove funzionalità e correggere alcuni bug.</target>
+            </trans-unit>
+            <trans-unit id="about.donate_text1">
+                <source>about.donate_text1</source>
+                <target>- Puoi aiutarmi dandomi</target>
+            </trans-unit>
+            <trans-unit id="about.donate_text2">
+                <source>about.donate_text2</source>
+                <target>Donazione</target>
+            </trans-unit>
+            <trans-unit id="about.donate_text3">
+                <source>about.donate_text3</source>
+                <target> quindi posso comprare un super server !</target>
             </trans-unit>
         </body>
     </file>

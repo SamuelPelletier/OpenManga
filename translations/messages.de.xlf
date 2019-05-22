@@ -47,6 +47,10 @@
                 <source>menu.homepage</source>
                 <target>Zuhause</target>
             </trans-unit>
+            <trans-unit id="menu.about">
+                <source>menu.about</source>
+                <target>Über</target>
+            </trans-unit>
             <trans-unit id="menu.search">
                 <source>menu.search</source>
                 <target>Suche</target>
@@ -113,6 +117,124 @@
             <trans-unit id="meta.description">
                 <source>meta.description</source>
                 <target> enthält Tausende von %tags% die angezeigt und kostenlos heruntergeladen werden können.</target>
+            </trans-unit>
+
+            <trans-unit id="about.roadmap">
+                <source>about.roadmap</source>
+                <target>Roadmap</target>
+            </trans-unit>
+            <trans-unit id="about.completed">
+                <source>about.completed</source>
+                <target>Abgeschlossen</target>
+            </trans-unit>
+            <trans-unit id="about.progress">
+                <source>about.progress</source>
+                <target>In Bearbeitung</target>
+            </trans-unit>
+            <trans-unit id="about.search_system">
+                <source>about.search_system</source>
+                <target>Suchsystem</target>
+            </trans-unit>
+            <trans-unit id="about.download_manga">
+                <source>about.download_manga</source>
+                <target>Manga herunterladen</target>
+            </trans-unit>
+            <trans-unit id="about.i18n">
+                <source>about.i18n</source>
+                <target>Internationalisierung</target>
+            </trans-unit>
+            <trans-unit id="about.viewers_system">
+                <source>about.viewers_system</source>
+                <target>Zuschauer-System</target>
+            </trans-unit>
+            <trans-unit id="about.mobile_ergonomics">
+                <source>about.mobile_ergonomics</source>
+                <target>Mobile Ergonomie</target>
+            </trans-unit>
+            <trans-unit id="about.create_thumb_manga">
+                <source>about.create_thumb_manga</source>
+                <target>Erstelle einen Daumen-Manga</target>
+            </trans-unit>
+            <trans-unit id="about.create_disclaimer">
+                <source>about.create_disclaimer</source>
+                <target>Haftungsausschluss erstellen</target>
+            </trans-unit>
+            <trans-unit id="about.count_manga_views">
+                <source>about.count_manga_views</source>
+                <target>Zähle Manga Views</target>
+            </trans-unit>
+            <trans-unit id="about.about_page">
+                <source>about.about_page</source>
+                <target>Über Seite</target>
+            </trans-unit>
+            <trans-unit id="about.fix_import_break_manga">
+                <source>about.fix_import_break_manga</source>
+                <target>Fix für Import Break Manga</target>
+            </trans-unit>
+            <trans-unit id="about.upgrade_search_system">
+                <source>about.upgrade_search_system</source>
+                <target>Aktualisieren Sie das Suchsystem</target>
+            </trans-unit>
+            <trans-unit id="about.remake_interface">
+                <source>about.remake_interface</source>
+                <target>Schnittstelle neu erstellen</target>
+            </trans-unit>
+            <trans-unit id="about.create_readme">
+                <source>about.create_readme</source>
+                <target>Erstellen Sie eine Readme-Datei</target>
+            </trans-unit>
+            <trans-unit id="about.help">
+                <source>about.help</source>
+                <target>Etwas Hilfe</target>
+            </trans-unit>
+            <trans-unit id="about.hello">
+                <source>about.hello</source>
+                <target>Hallo allerseits !</target>
+            </trans-unit>
+            <trans-unit id="about.thanks">
+                <source>about.thanks</source>
+                <target>Vielen Dank an alle und viel Spaß mit unseren Mangas.</target>
+            </trans-unit>
+            <trans-unit id="about.donate">
+                <source>about.donate</source>
+                <target>Spenden</target>
+            </trans-unit>
+            <trans-unit id="about.github_help">
+                <source>about.github_help</source>
+                <target>Hilfe</target>
+            </trans-unit>
+            <trans-unit id="about.on">
+                <source>about.on</source>
+                <target>auf</target>
+            </trans-unit>
+            <trans-unit id="about.project">
+                <source>about.project</source>
+                <target>Dieses Projekt ist ein großer Erfolg und ich möchte es verbessern.
+                 Ich brauche etwas Hilfe, und Sie können mir helfen.</target>
+            </trans-unit>
+            <trans-unit id="about.issue1">
+                <source>about.issue1</source>
+                <target>- Sie können das Problem am erstellen </target>
+            </trans-unit>
+            <trans-unit id="about.issue2">
+                <source>about.issue2</source>
+                <target>um neue Funktionen vorzuschlagen oder Fehler zu melden.</target>
+            </trans-unit>
+            <trans-unit id="about.developper">
+                <source>about.developper</source>
+                <target>- Wenn Sie ein Informatiker sind, können Sie mir helfen, neue Funktionen zu erstellen und einige Fehler zu beheben.</target>
+            </trans-unit>
+            <trans-unit id="about.donate_text1">
+                <source>about.donate_text1</source>
+                <target>- Sie können mir helfen, indem Sie mir eine geben </target>
+            </trans-unit>
+            <trans-unit id="about.donate_text2">
+                <source>about.donate_text2</source>
+                <target>Spende</target>
+            </trans-unit>
+            <trans-unit id="about.donate_text3">
+                <source>about.donate_text3</source>
+                <target> damit ich einen super server kaufen kann !</target>
             </trans-unit>
         </body>
     </file>

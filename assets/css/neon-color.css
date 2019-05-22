@@ -1,0 +1,456 @@
+@font-face {
+    font-family: "neontubes";
+    src: url("https://bitbucket.org/kennethjensen/webfonts/raw/fc13c1cb430a0e9462da56fe3f421ff7af72db71/neontubes/neontubes-webfont.eot");
+    src: url("https://bitbucket.org/kennethjensen/webfonts/raw/fc13c1cb430a0e9462da56fe3f421ff7af72db71/neontubes/neontubes-webfont.eot?#iefix") format("embedded-opentype"),
+    url("https://bitbucket.org/kennethjensen/webfonts/raw/fc13c1cb430a0e9462da56fe3f421ff7af72db71/neontubes/neontubes-webfont.woff2") format("woff2"),
+    url("https://bitbucket.org/kennethjensen/webfonts/raw/fc13c1cb430a0e9462da56fe3f421ff7af72db71/neontubes/neontubes-webfont.woff") format("woff"),
+    url("https://bitbucket.org/kennethjensen/webfonts/raw/fc13c1cb430a0e9462da56fe3f421ff7af72db71/neontubes/neontubes-webfont.ttf") format("truetype");
+}
+
+.neon-tube {
+    font-family: "neontubes";
+    text-decoration: none;
+    font-weight: 100;
+}
+
+.neon-text-pink {
+
+    -webkit-animation-name: flickering-pink;
+    animation-name: flickering-pink;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-duration: 7.5s;
+    animation-duration: 7.5s;
+}
+
+@-webkit-keyframes flickering-pink {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #ff306a, 0 0 0.25rem #ff306a, 0 0 3rem #ff306a, 0 0 0.5rem #ff306a, 0 0 5rem #ff306a;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+@keyframes flickering-pink {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #ff306a, 0 0 0.25rem #ff306a, 0 0 3rem #ff306a, 0 0 0.5rem #ff306a, 0 0 5rem #ff306a;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+.neon-text-red {
+    -webkit-animation-name: flickering-red;
+    animation-name: flickering-red;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-duration: 7.5s;
+    animation-duration: 7.5s;
+}
+
+@-webkit-keyframes flickering-red {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #ff0017, 0 0 0.25rem #ff0017, 0 0 3rem #ff0017, 0 0 0.5rem #ff0017, 0 0 5rem #ff0017;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+@keyframes flickering-red {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #ff0017, 0 0 0.25rem #ff0017, 0 0 3rem #ff0017, 0 0 0.5rem #ff0017, 0 0 5rem #ff0017;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+.neon-text-green {
+    -webkit-animation-name: flickering-green;
+    animation-name: flickering-green;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-duration: 7.5s;
+    animation-duration: 7.5s;
+}
+
+@-webkit-keyframes flickering-green {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #1cff00, 0 0 0.25rem #1cff00, 0 0 3rem #1cff00, 0 0 0.5rem #1cff00, 0 0 5rem #1cff00;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+@keyframes flickering-green {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #1cff00, 0 0 0.25rem #1cff00, 0 0 3rem #1cff00, 0 0 0.5rem #1cff00, 0 0 5rem #1cff00;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+.neon-text-blue {
+    -webkit-animation-name: flickering-blue;
+    animation-name: flickering-blue;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-duration: 7.5s;
+    animation-duration: 7.5s;
+}
+
+@-webkit-keyframes flickering-blue {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #0025ff, 0 0 0.25rem #0025ff, 0 0 3rem #0025ff, 0 0 0.5rem #0025ff, 0 0 5rem #0025ff;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+@keyframes flickering-blue {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #0025ff, 0 0 0.25rem #0025ff, 0 0 3rem #0025ff, 0 0 0.5rem #0025ff, 0 0 5rem #0025ff;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+.neon-text-orange {
+    -webkit-animation-name: flickering-orange;
+    animation-name: flickering-orange;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-duration: 7.5s;
+    animation-duration: 7.5s;
+}
+
+@-webkit-keyframes flickering-orange {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #ff7e00, 0 0 0.25rem #ff7e00, 0 0 3rem #ff7e00, 0 0 0.5rem #ff7e00, 0 0 5rem #ff7e00;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+@keyframes flickering-orange {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #ff7e00, 0 0 0.25rem #ff7e00, 0 0 3rem #ff7e00, 0 0 0.5rem #ff7e00, 0 0 5rem #ff7e00;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+.neon-text-purple {
+    -webkit-animation-name: flickering-purple;
+    animation-name: flickering-purple;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-duration: 7.5s;
+    animation-duration: 7.5s;
+}
+
+@-webkit-keyframes flickering-purple {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #ae00ff, 0 0 0.25rem #ae00ff, 0 0 3rem #ae00ff, 0 0 0.5rem #ae00ff, 0 0 5rem #ae00ff;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+@keyframes flickering-purple {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #ae00ff, 0 0 0.25rem #ae00ff, 0 0 3rem #ae00ff, 0 0 0.5rem #ae00ff, 0 0 5rem #ae00ff;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+.neon-text-white {
+    -webkit-animation-name: flickering-white;
+    animation-name: flickering-white;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-duration: 7.5s;
+    animation-duration: 7.5s;
+}
+
+@-webkit-keyframes flickering-white {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #ffffff, 0 0 0.25rem #ffffff, 0 0 3rem #ffffff, 0 0 0.5rem #ffffff, 0 0 5rem #ffffff;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+@keyframes flickering-white {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #ffffff, 0 0 0.25rem #ffffff, 0 0 3rem #ffffff, 0 0 0.5rem #ffffff, 0 0 5rem #ffffff;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+.neon-text-yellow {
+    -webkit-animation-name: flickering-yellow;
+    animation-name: flickering-yellow;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-duration: 7.5s;
+    animation-duration: 7.5s;
+}
+
+@-webkit-keyframes flickering-yellow {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #fff000, 0 0 0.25rem #fff000, 0 0 3rem #fff000, 0 0 0.5rem #fff000, 0 0 5rem #fff000;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+@keyframes flickering-yellow {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #fff000, 0 0 0.25rem #fff000, 0 0 3rem #fff000, 0 0 0.5rem #fff000, 0 0 5rem #fff000;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+.neon-text-cyan {
+    -webkit-animation-name: flickering-cyan;
+    animation-name: flickering-cyan;
+    -webkit-animation-iteration-count: infinite;
+    animation-iteration-count: infinite;
+    -webkit-animation-duration: 7.5s;
+    animation-duration: 7.5s;
+}
+
+@-webkit-keyframes flickering-cyan {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #00fff5, 0 0 0.25rem #00fff5, 0 0 3rem #00fff5, 0 0 0.5rem #00fff5, 0 0 5rem #00fff5;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
+
+@keyframes flickering-cyan {
+    0%,
+    14%,
+    14.2%,
+    49.6%,
+    51%,
+    52%,
+    52.2%,
+    100% {
+        color: rgba(255, 255, 255, 0.8);
+        text-shadow: 0 0 0.25rem #00fff5, 0 0 0.25rem #00fff5, 0 0 3rem #00fff5, 0 0 0.5rem #00fff5, 0 0 5rem #00fff5;
+    }
+    14.1%,
+    49.7%,
+    52.1% {
+        color: rgba(255, 255, 255, 0.5);
+        text-shadow: 0 0 0.5rem #000, 0 0.7rem 0.5rem #000;
+    }
+}
