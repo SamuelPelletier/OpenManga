@@ -114,6 +114,7 @@
         <div>
             <br>
             <h4>{{ 'about.hello'|trans }}</h4>
+            <br>
             <p>{{ 'about.project'|trans|nl2br }}
                 <br>
                 {{ 'about.issue1'|trans }}<a class="important-link"
@@ -123,7 +124,7 @@
                 {{ 'about.developper'|trans }}
                 <br>
                 {{ 'about.donate_text1'|trans }}
-                <a class="important-link"
+                <a class="important-link dbox-donation-button"
                    href="{{ app.request.server.get('DONATION_URL') }}">
                     {{ 'about.donate_text2'|trans }}
                 </a>
