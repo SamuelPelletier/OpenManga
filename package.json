@@ -11,8 +11,6 @@
     "imports-loader": "^0.8.0",
     "jquery": "^3.3.1",
     "lato-font": "^3.0.0",
-    "node-sass": "^4.9.3",
-    "sass-loader": "^7.1.0",
     "typeahead.js": "^0.11.1"
   },
   "license": "UNLICENSED",
@@ -24,6 +22,7 @@
     "build": "encore production --progress"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.8.2",
     "jquery-touchswipe": "^1.6.19",
     "jquery-ui": "^1.12.1"
   }

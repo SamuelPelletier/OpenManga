@@ -13,6 +13,11 @@ import './highlight.js';
 // Creates links to the Symfony documentation
 import './doclinks.js';
 
+require('@fortawesome/fontawesome-free/css/all.min.css');
+require('@fortawesome/fontawesome-free/js/all.js');
+
+// pick the Lato fonts individually to avoid importing the entire font family
+
 $(function () {
     $.ajax({
         url: "/en/json",
