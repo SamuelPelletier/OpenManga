@@ -11,11 +11,18 @@
 
 namespace App\Controller;
 
+use App\Entity\Language;
 use App\Entity\Manga;
+use App\Repository\AuthorRepository;
+use App\Repository\LanguageRepository;
 use App\Repository\MangaRepository;
+use App\Repository\ParodyRepository;
+use App\Repository\ParodyRepositoryRepository;
+use App\Repository\TagRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -50,10 +57,27 @@ class MangaController extends AbstractController
     }
 
     /**
+     * @Route("/json", methods={"GET"}, name="index_json")
+     */
+    public function indexJSON(
+        TagRepository $tagRepository,
+        AuthorRepository $authorRepository,
+        LanguageRepository $languageRepository,
+        ParodyRepository $parodyRepository
+    ): Response {
+        $tags = $tagRepository->findAll();
+        $authors = $authorRepository->findAll();
+        $languages = $languageRepository->findAll();
+        $parodies = $parodyRepository->findAll();
+        return new JsonResponse(array_merge($tags, $authors, $languages, $parodies));
+    }
+
+    /**
      * @Route("/about", name="about")
      *
      */
-    public function about(): Response
+    public
+    function about(): Response
     {
         return $this->render('about.html.twig');
     }
@@ -62,7 +86,8 @@ class MangaController extends AbstractController
      * @Route("/mangas/{id}", methods={"GET"}, name="manga")
      *
      */
-    public function mangaShow(
+    public
+    function mangaShow(
         Manga $manga,
         MangaRepository $mangaRepository,
         Request $request
@@ -95,8 +120,12 @@ class MangaController extends AbstractController
      * @Route("/search", methods={"GET"}, name="search")
      * @Route("/search/page/{page<[1-9]\d*>}", methods={"GET"}, name="search_paginated")
      */
-    public function search(Request $request, MangaRepository $mangas, int $page = 1): Response
-    {
+    public
+    function search(
+        Request $request,
+        MangaRepository $mangas,
+        int $page = 1
+    ): Response {
         // No query parameter
         $foundMangas = null;
         $isSortByViews = $request->query->get('sort') != null ? true : false;
@@ -117,8 +146,10 @@ class MangaController extends AbstractController
     /**
      * @Route("/download/{id}", methods={"GET"}, name="download")
      */
-    public function mangaDownload(Manga $manga): Response
-    {
+    public
+    function mangaDownload(
+        Manga $manga
+    ): Response {
         if (is_dir('media/' . $manga->getId() . '/')) {
             $zipName = htmlspecialchars_decode($manga->getTitle(), ENT_QUOTES) . ".zip";
             $zipName = str_replace(['|', '/', '\\'], '', $zipName);
@@ -152,7 +183,8 @@ class MangaController extends AbstractController
     /**
      * @Route("/disclaimer", name="disclaimer")
      */
-    public function disclaimer(): Response
+    public
+    function disclaimer(): Response
     {
         return $this->render('disclaimer.html.twig');
     }

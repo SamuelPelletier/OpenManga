@@ -169,7 +169,7 @@
             </trans-unit>
             <trans-unit id="about.fix_import_break_manga">
                 <source>about.fix_import_break_manga</source>
-                <target>Fix import break manga</target>
+                <target>Fix import broken manga</target>
             </trans-unit>
             <trans-unit id="about.upgrade_search_system">
                 <source>about.upgrade_search_system</source>

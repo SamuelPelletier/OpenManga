@@ -2,6 +2,8 @@
  * Created by Samuel on 17/11/2017.
  */
 
+import 'jquery-touchswipe'
+
 var imageList = getImageList()
 var flagLoad = false;
 /*
@@ -19,7 +21,7 @@ $( window ).on( "load", function() {
 });*/
 
 
-$('.img-view').on('click',function(){
+$('.img-view').on('click', function () {
     viewer($(this).attr('src'))
 })
 
@@ -49,11 +51,9 @@ function viewer(path) {
         var docElm = document.documentElement;
         if (docElm.requestFullscreen) {
             docElm.requestFullscreen();
-        }
-        else if (docElm.mozRequestFullScreen) {
+        } else if (docElm.mozRequestFullScreen) {
             docElm.mozRequestFullScreen();
-        }
-        else if (docElm.webkitRequestFullScreen) {
+        } else if (docElm.webkitRequestFullScreen) {
             docElm.webkitRequestFullScreen();
         }
     })
@@ -76,17 +76,17 @@ function viewer(path) {
             $(".pause").show()
             intervalID = setInterval(function () {
                 var predName = imageList[getNext(name)]
-                $(".imgViewer").fadeTo(1000,0.1);
+                $(".imgViewer").fadeTo(1000, 0.1);
                 setTimeout(function () {
-                    $(".imgViewer").attr("src", onlyPath.concat(predName)).fadeTo(1000,1)
+                    $(".imgViewer").attr("src", onlyPath.concat(predName)).fadeTo(1000, 1)
                 }, 1000);
                 name = predName
-            },  $(".input-time").val()*1000);
+            }, $(".input-time").val() * 1000);
         }
     })
 
     $(".start").hover(function () {
-        if($(".time").length == 0){
+        if ($(".time").length == 0) {
             $(".start").after("<div class='time'></div>")
             $(".time").hide()
             $(".time").append("<input class='input-time' min='2' max='99' value='5'></input>")
@@ -97,25 +97,24 @@ function viewer(path) {
         $(".time").hover(function () {
             $(".time-second").remove()
             $(".input-time").prop('type', 'number');
-            $(".input-time").css('text-align','right')
-            $(".input-time").css('width','36px')
-        }, function(){
-            if($(".time-second").length == 0){
+            $(".input-time").css('text-align', 'right')
+            $(".input-time").css('width', '36px')
+        }, function () {
+            if ($(".time-second").length == 0) {
                 $(".time").append("<label class='time-second'>s</label>")
             }
-            if($(".input-time").val() == ''){
+            if ($(".input-time").val() == '') {
                 $(".input-time").val(5)
             }
-            $(".input-time").css('width','28px')
-            $(".input-time").css('text-align','center')
+            $(".input-time").css('width', '28px')
+            $(".input-time").css('text-align', 'center')
             $(".input-time").prop('type', 'text');
-            $(".input-time").css('text-align','center')
+            $(".input-time").css('text-align', 'center')
             $(".time").fadeOut("slow")
         })
-        
+
     })
 
-    
 
     $(".pause").click(function () {
         $(".pause").hide()
@@ -157,7 +156,7 @@ function viewer(path) {
     })
 
     $("img").mouseout(function (e) {
-        if (e.relatedTarget && !["control", "start", "pause", "back", "next", "full-back", "full-next","time","input-time","time-second"].includes(e.relatedTarget.className)) {
+        if (e.relatedTarget && !["control", "start", "pause", "back", "next", "full-back", "full-next", "time", "input-time", "time-second"].includes(e.relatedTarget.className)) {
             if (ready == true) {
                 ready = false
                 $(".control").fadeOut("slow", function () {
@@ -167,18 +166,18 @@ function viewer(path) {
         }
     })
 
-    $( document ).swipe({
-        swipeLeft:function(event, direction, distance, duration, fingerCount) {
+    $(document).swipe({
+        swipeLeft: function (event, direction, distance, duration, fingerCount) {
             var predName = imageList[getPred(name)]
             $(".imgViewer").attr("src", onlyPath.concat(predName))
             name = predName
         },
-        swipeRight:function(event, direction, distance, duration, fingerCount) {
+        swipeRight: function (event, direction, distance, duration, fingerCount) {
             var nextName = imageList[getNext(name)]
             $(".imgViewer").attr("src", onlyPath.concat(nextName))
             name = nextName
         }
-      });
+    });
 
 
     $(document).keydown(function (e) {
@@ -215,7 +214,7 @@ function viewer(path) {
 
 function getImageList() {
     imageList = []
-    $.each($('img'),function(index,value){
+    $.each($('img'), function (index, value) {
         imageList.push($(value).attr('src').split('/').pop())
     })
     return imageList

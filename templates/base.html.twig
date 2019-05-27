@@ -9,7 +9,8 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>{% block title %}{{ app.request.server.get('APP_NAME') }}{% endblock %}</title>
+    <title>{{ app.request.server.get('APP_NAME') }}
+        - {% block title %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}</title>
     <meta name="description"
           content="{% block meta_description %}{{ app.request.server.get('APP_NAME') ~ 'meta.description'|trans({"%tags%":app.request.server.get('APP_KEYWORD') }) }}{% endblock %}"/>
     <meta name="keywords" content="{% block meta_keyword %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}"/>
@@ -47,7 +48,7 @@
                         <form action="{{ url('search') }}" method="get" class="navbar-form navbar-left">
                             <div class="form-group search-navbar">
                                 <input name="q"
-                                       class="form-control search-field"
+                                       class="form-control search-field search-field-load"
                                        id="search_field"
                                        placeholder="{{ 'post.search_for'|trans }}"
                                        autocomplete="off"
@@ -72,12 +73,8 @@
 
                         {% block header_navigation_links %}
                             <li>
-                                <a href="{{ url('index') }}">
-                                    <i class="fa fa-home" aria-hidden="true"></i> {{ 'menu.homepage'|trans }}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ url('about') }}">
+                                <a class="{% if app.request.uri != url('about') %}blink{% endif %} about"
+                                   href="{{ url('about') }}">
                                     <i class="fa fa-address-card" aria-hidden="true"></i> {{ 'menu.about'|trans }}
                                 </a>
                             </li>

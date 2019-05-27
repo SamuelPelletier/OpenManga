@@ -154,8 +154,15 @@ h1, h2, h3, h4, p, a {
     margin-bottom: 0px;
 }
 
+.search-field-load {
+    background: #ededed url(../images/waiting.png) no-repeat 9px center;
+}
+
+.search-field-completed {
+    background: #ededed url(../images/search.png) no-repeat 9px center;
+}
+
 #search_field {
-    background: #ededed url(https://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
     padding: 9px 10px 9px 32px;
     height: inherit;
     -webkit-border-radius: 10em;
@@ -315,6 +322,54 @@ h1, h2, h3, h4, p, a {
     .searchButton {
         left: -18px;
     }
+}
+
+.about {
+    color: #ff306a !important;
+}
+
+.blink {
+    animation: blinker 3s linear infinite;
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
+    }
+}
+
+.ui-autocomplete {
+    position: absolute;
+    padding: 4px;
+    margin: 2px 0 0 0;
+    list-style: none;
+    background-color: #fff;
+    border-color: #ccc;
+    border-color: rgba(0, 0, 0, 0.2);
+    border-style: solid;
+    border-width: 1px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+    border-right-width: 2px;
+    border-bottom-width: 2px;
+    overflow-y: scroll;
+    max-height: 30%;
+}
+
+.ui-menu-item {
+    cursor: pointer;
+    padding-left: 4px;
+}
+
+.ui-menu-item:hover {
+    color: #ff306a;
 }
 
 

@@ -24,6 +24,7 @@
     "build": "encore production --progress"
   },
   "dependencies": {
-    "jquery-touchswipe": "^1.6.19"
+    "jquery-touchswipe": "^1.6.19",
+    "jquery-ui": "^1.12.1"
   }
 }

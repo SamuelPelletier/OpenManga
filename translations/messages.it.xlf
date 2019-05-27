@@ -166,7 +166,7 @@
             </trans-unit>
             <trans-unit id="about.about_page">
                 <source>about.about_page</source>
-                <target>A proposito di pagina</target>
+                <target>A proposito pagina</target>
             </trans-unit>
             <trans-unit id="about.fix_import_break_manga">
                 <source>about.fix_import_break_manga</source>
