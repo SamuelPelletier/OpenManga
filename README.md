@@ -1,5 +1,5 @@
-<p align="center"
-    <img src="openmanga.jpg" style="height:100px"><a style="vertical-align:center">
+<p align="center">
+    <img src="openmanga.jpg" style="height:100px">
 </p>
 
 OpenManga is a **PHP Symfony 4** project for store and download mangas.
