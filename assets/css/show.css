@@ -642,16 +642,6 @@ li:last-child .page {
     top: 35px;
 }
 
-.label-default {
-    margin: 0px 2px;
-    background-color: #ff306a;
-}
-
-.label-default[href]:hover {
-    background-color: #f17384;
-    color: white !important;
-}
-
 .download {
     border-radius: 5px;
     font-size: 22px;
@@ -674,17 +664,4 @@ li:last-child .page {
 
 .download:active, .download:focus {
     color: white !important;
-}
-
-.counter {
-    font-style: normal;
-    font-variant: oldstyle-nums;
-    background-color: white;
-    left: -7px;
-    position: relative;
-    color: black;
-}
-
-.label-container {
-    display: inline-block;
 }

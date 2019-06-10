@@ -14,10 +14,12 @@ Encore
     .addEntry('js/app', './assets/js/app.js')
     .addEntry('js/login', './assets/js/login.js')
     .addEntry('js/show', './assets/js/show.js')
+    .addEntry('js/tag', './assets/js/tag.js')
     .addStyleEntry('css/app', ['./assets/scss/app.scss', './assets/css/index.css', './assets/css/neon-color.css'])
     .addStyleEntry('css/show', './assets/css/show.css')
     .addStyleEntry('css/disclaimer', './assets/css/disclaimer.css')
     .addStyleEntry('css/about', './assets/css/about.css')
+    .addStyleEntry('css/tag', './assets/css/tag.css')
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
     .addAliases({

@@ -1,0 +1,39 @@
+{% import "macro/encore.html.twig" as encore %}
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore.encore_absolute_link_tags('css/tag') }}
+{% endblock %}
+
+{% block main %}
+    <div class="row">
+        <ul class="letter-list col-md-12 text-center">
+            <li>All</li>
+            {% for letter in 'a'|upper..'z'|upper %}
+                <li> {{ letter }}</li>
+            {% endfor %}
+            <li>Other</li>
+        </ul>
+    </div>
+    <div class="row">
+        <ul class="tag-list">
+            {% for tag in tags %}
+                <span class="label-container">
+                    <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name}) }}"
+                       class="label label-{{ tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
+                    >{{ tag.name }}
+                    </a>
+                    <i class="counter label">{{ mangaRepository.countByTag(tag) }}</i>
+                </span>
+            {% endfor %}
+        </ul>
+    </div>
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore.encore_absolute_script_tags('js/tag') }}
+    {% endblock %}
+{% endblock %}
+
+
+

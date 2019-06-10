@@ -3,11 +3,11 @@ body {
 }
 
 a:hover, a:focus, a:active {
-    color: #ff306ad1 !important;
+    color: #ff306a !important;
 }
 
 .navbar-header a:hover, .navbar-header a:focus, .navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
-    color: #ff306ad1 !important;
+    color: #ff306a !important;
 }
 
 .navbar {
@@ -16,7 +16,7 @@ a:hover, a:focus, a:active {
 
 .navbar-brand {
     margin-left: 20px !important;
-    color: #ff306ad1 !important;
+    color: #ff306a !important;
     font-weight: 700;
 }
 
@@ -63,6 +63,10 @@ h1, h2, h3, h4, p, a {
     z-index: 2;
     text-decoration: none;
     padding: 0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
 }
 
 .img-name {
@@ -71,25 +75,17 @@ h1, h2, h3, h4, p, a {
     overflow: hidden;
     white-space: nowrap;
     background-color: #2b2b2b;
-    border-radius: 1%;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
     font-size: 1.6em;
 }
 
-
-.img-name:hover {
-    white-space: inherit;
-    position: absolute;
-    z-index: 1;
-    margin-right: 15px;
-
-}
-
 ::selection {
-    background: #ff306ad1 !important; /* WebKit/Blink Browsers */
+    background: #ff306a !important; /* WebKit/Blink Browsers */
 }
 
 ::-moz-selection {
-    background: #ff306ad1 !important; /* Gecko Browsers */
+    background: #ff306a !important; /* Gecko Browsers */
 }
 
 .svg-container svg {
@@ -114,15 +110,15 @@ h1, h2, h3, h4, p, a {
 }
 
 .text-danger {
-    color: #ff306ad1;
+    color: #ff306a;
 }
 
 .text-danger:hover {
-    color: #ff306ad1;
+    color: #ff306a;
 }
 
 .text-danger::selection {
-    color: #ff306ad1;
+    color: #ff306a;
 }
 
 .search-navbar {
@@ -325,16 +321,16 @@ h1, h2, h3, h4, p, a {
 }
 
 .about {
-    color: #ff306a !important;
+    color: #ff771c !important;
 }
 
 .blink {
-    animation: blinker 3s linear infinite;
+    animation: blinker 2s linear infinite;
 }
 
 @keyframes blinker {
     50% {
-        opacity: 0;
+        opacity: 0.3;
     }
 }
 
@@ -372,4 +368,33 @@ h1, h2, h3, h4, p, a {
     color: #ff306a;
 }
 
+.label-default {
+    margin: 0px 2px;
+    background-color: #ff306a;
+}
 
+.label-default[href]:hover {
+    background-color: #f17384;
+    color: white !important;
+}
+
+.counter {
+    font-style: normal;
+    font-variant: oldstyle-nums;
+    background-color: white;
+    left: -7px;
+    position: relative;
+    color: black;
+}
+
+.label-container {
+    display: inline-block;
+}
+
+.d-none {
+    display: none;
+}
+
+.active {
+    color: #ff306a !important;
+}

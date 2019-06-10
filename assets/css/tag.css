@@ -1,0 +1,17 @@
+
+.letter-list li {
+    position: relative;
+    display: inline-block;
+    color: #ff306a;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.tag-list {
+    color: #ff306a;
+    list-style: none;
+}
+
+.tag-list span {
+    padding-bottom: 10px;
+}

@@ -17,7 +17,6 @@ use App\Repository\AuthorRepository;
 use App\Repository\LanguageRepository;
 use App\Repository\MangaRepository;
 use App\Repository\ParodyRepository;
-use App\Repository\ParodyRepositoryRepository;
 use App\Repository\TagRepository;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

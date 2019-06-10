@@ -73,7 +73,13 @@
 
                         {% block header_navigation_links %}
                             <li>
-                                <a class="{% if app.request.uri != url('about') %}blink{% endif %} about"
+                                <a class="tags {% if app.request.uri == url('tags') %}active{% endif %}"
+                                   href="{{ url('tags') }}">
+                                    <i class="fa fa-hashtag" aria-hidden="true"></i> {{ 'manga.tag'|trans ~ 's' }}
+                                </a>
+                            </li>
+                            <li>
+                                <a class="{% if app.request.uri != url('about') %}blink{% else %}active{% endif %} about"
                                    href="{{ url('about') }}">
                                     <i class="fa fa-address-card" aria-hidden="true"></i> {{ 'menu.about'|trans }}
                                 </a>
