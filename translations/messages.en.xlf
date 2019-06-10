@@ -64,6 +64,16 @@
                 <target>Sort by views</target>
             </trans-unit>
 
+            <trans-unit id="tag.all">
+                <source>tag.all</source>
+                <target>All</target>
+            </trans-unit>
+            <trans-unit id="tag.other">
+                <source>tag.other</source>
+                <target>Other</target>
+            </trans-unit>
+
+
             <trans-unit id="manga.language">
                 <source>manga.language</source>
                 <target>Language</target>

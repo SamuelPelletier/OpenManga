@@ -64,6 +64,15 @@
                 <target>Сортировать по просмотрам</target>
             </trans-unit>
 
+            <trans-unit id="tag.all">
+                <source>tag.all</source>
+                <target>Все</target>
+            </trans-unit>
+            <trans-unit id="tag.other">
+                <source>tag.other</source>
+                <target>Другой</target>
+            </trans-unit>
+
             <trans-unit id="manga.language">
                 <source>manga.language</source>
                 <target>язык писателя</target>

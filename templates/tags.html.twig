@@ -9,11 +9,11 @@
 {% block main %}
     <div class="row">
         <ul class="letter-list col-md-12 text-center">
-            <li>All</li>
+            <li>{{ 'tag.all'|trans }}</li>
             {% for letter in 'a'|upper..'z'|upper %}
                 <li> {{ letter }}</li>
             {% endfor %}
-            <li>Other</li>
+            <li>{{ 'tag.other'|trans }}</li>
         </ul>
     </div>
     <div class="row">

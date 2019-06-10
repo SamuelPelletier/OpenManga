@@ -64,6 +64,15 @@
                 <target>Trier par vues</target>
             </trans-unit>
 
+            <trans-unit id="tag.all">
+                <source>tag.all</source>
+                <target>Tout</target>
+            </trans-unit>
+            <trans-unit id="tag.other">
+                <source>tag.other</source>
+                <target>Autre</target>
+            </trans-unit>
+
             <trans-unit id="manga.language">
                 <source>manga.language</source>
                 <target>Langue</target>

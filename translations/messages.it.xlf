@@ -64,6 +64,14 @@
                 <target>Ordina per visualizzazioni</target>
             </trans-unit>
 
+            <trans-unit id="tag.all">
+                <source>tag.all</source>
+                <target>Tutti</target>
+            </trans-unit>
+            <trans-unit id="tag.other">
+                <source>tag.other</source>
+                <target>Altro</target>
+            </trans-unit>
 
             <trans-unit id="manga.language">
                 <source>manga.language</source>
