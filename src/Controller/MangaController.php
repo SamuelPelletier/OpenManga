@@ -72,15 +72,6 @@ class MangaController extends AbstractController
     }
 
     /**
-     * @Route("/about", name="about")
-     *
-     */
-    public function about(): Response
-    {
-        return $this->render('about.html.twig');
-    }
-
-    /**
      * @Route("/mangas/{id}", methods={"GET"}, name="manga")
      *
      */

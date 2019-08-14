@@ -79,13 +79,15 @@
     <a class="btn download" target="_blank"
        href="{{ url('download', {'id':manga.id}) }}">{{ 'manga.download'|trans }}</a>
     <div class="row">
-        {% for image in images if image matches '{\.jpg$}' %}
-            <article class="image col-sm-3">
-                <img alt="{{ manga.title | raw }} {{ 'manga.image_alt'|trans({'%count%':loop.index}) }}"
-                     title="{{ manga.title | raw }} {{ 'manga.image_alt'|trans({'%count%':loop.index}) }}"
-                     class='img-view'
-                     src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/' ~ image ) }}'>
-            </article>
+        {% for image in images %}
+            {% if image matches '{\.jpg$}' %}
+                <article class="image col-sm-3">
+                    <img alt="{{ manga.title | raw }} {{ 'manga.image_alt'|trans({'%count%':loop.index}) }}"
+                         title="{{ manga.title | raw }} {{ 'manga.image_alt'|trans({'%count%':loop.index}) }}"
+                         class='img-view'
+                         src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/' ~ image ) }}'>
+                </article>
+            {% endif %}
         {% else %}
             <div class="well">{{ 'manga.no_images_found'|trans }}</div>
         {% endfor %}

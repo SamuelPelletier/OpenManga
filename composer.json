@@ -15,24 +15,24 @@
     "sensio/framework-extra-bundle": "^5.1",
     "sensiolabs/security-checker": "^5.0",
     "symfony/apache-pack": "^1.0",
-    "symfony/asset": "4.2.*",
-    "symfony/console": "4.2.*",
-    "symfony/expression-language": "4.2.*",
+    "symfony/asset": "*",
+    "symfony/console": "*",
+    "symfony/expression-language": "*",
     "symfony/flex": "^1.1",
-    "symfony/form": "4.2.*",
-    "symfony/framework-bundle": "4.2.*",
-    "symfony/intl": "4.2.*",
+    "symfony/form": "*",
+    "symfony/framework-bundle": "*",
+    "symfony/intl": "4.3.*",
     "symfony/maker-bundle": "^1.11",
     "symfony/monolog-bundle": "^3.1",
     "symfony/orm-pack": "^1.0",
     "symfony/polyfill-php72": "^1.8",
-    "symfony/security-bundle": "4.2.*",
+    "symfony/security-bundle": "*",
     "symfony/swiftmailer-bundle": "^3.2",
-    "symfony/translation": "4.2.*",
-    "symfony/twig-bundle": "4.2.*",
-    "symfony/validator": "4.2.*",
+    "symfony/translation": "*",
+    "symfony/twig-bundle": "*",
+    "symfony/validator": "*",
     "symfony/webpack-encore-bundle": "dev-master",
-    "symfony/yaml": "4.2.*",
+    "symfony/yaml": "*",
     "twig/extensions": "^1.5",
     "twig/twig": "^2.6",
     "white-october/pagerfanta-bundle": "^1.1"
@@ -41,14 +41,14 @@
     "dama/doctrine-test-bundle": "^5.0",
     "doctrine/doctrine-fixtures-bundle": "^3.0",
     "friendsofphp/php-cs-fixer": "^2.12",
-    "symfony/browser-kit": "4.2.*",
-    "symfony/css-selector": "4.2.*",
-    "symfony/debug-bundle": "4.2.*",
-    "symfony/dotenv": "4.2.*",
-    "symfony/phpunit-bridge": "4.2.*",
-    "symfony/stopwatch": "4.2.*",
-    "symfony/web-profiler-bundle": "4.2.*",
-    "symfony/web-server-bundle": "4.2.*"
+    "symfony/browser-kit": "*",
+    "symfony/css-selector": "*",
+    "symfony/debug-bundle": "*",
+    "symfony/dotenv": "*",
+    "symfony/phpunit-bridge": "*",
+    "symfony/stopwatch": "*",
+    "symfony/web-profiler-bundle": "*",
+    "symfony/web-server-bundle": "*"
   },
   "config": {
     "platform": {
@@ -88,7 +88,7 @@
   "extra": {
     "symfony": {
       "allow-contrib": true,
-      "require": "4.2.*"
+      "require": "4.3.*"
     }
   }
 }

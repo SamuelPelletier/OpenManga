@@ -78,12 +78,6 @@
                                     <i class="fa fa-hashtag" aria-hidden="true"></i> {{ 'manga.tag'|trans }}
                                 </a>
                             </li>
-                            <li>
-                                <a class="{% if app.request.uri != url('about') %}blink{% else %}active{% endif %} about"
-                                   href="{{ url('about') }}">
-                                    <i class="fa fa-address-card" aria-hidden="true"></i> {{ 'menu.about'|trans }}
-                                </a>
-                            </li>
 
                         {% endblock %}
 

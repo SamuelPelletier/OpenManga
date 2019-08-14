@@ -12,10 +12,10 @@
 namespace App\Twig;
 
 use App\Utils\Markdown;
-use Symfony\Component\Intl\Intl;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
+use Symfony\Component\Intl\Languages;
 
 /**
  * This Twig extension adds a new 'md2html' filter to easily transform Markdown
@@ -80,7 +80,7 @@ class AppExtension extends AbstractExtension
 
         $this->locales = [];
         foreach ($this->localeCodes as $localeCode) {
-            $this->locales[] = ['code' => $localeCode, 'name' => Intl::getLocaleBundle()->getLocaleName($localeCode, $localeCode)];
+            $this->locales[] = ['code' => $localeCode, 'name' => Languages::getName($localeCode, $localeCode)];
         }
 
         return $this->locales;
