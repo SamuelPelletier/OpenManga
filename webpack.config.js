@@ -18,7 +18,6 @@ Encore
     .addStyleEntry('css/app', ['./assets/scss/app.scss', './assets/css/index.css', './assets/css/neon-color.css'])
     .addStyleEntry('css/show', './assets/css/show.css')
     .addStyleEntry('css/disclaimer', './assets/css/disclaimer.css')
-    .addStyleEntry('css/about', './assets/css/about.css')
     .addStyleEntry('css/tag', './assets/css/tag.css')
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
