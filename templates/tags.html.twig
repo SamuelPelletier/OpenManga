@@ -7,6 +7,30 @@
 {% endblock %}
 
 {% block main %}
+    <h3>{{ 'tag.popular_title'|trans }}</h3>
+    <div class="row">
+        <ul class="tag-list">
+            {% for tagDTO in tagsDTOsort|slice(0,9) %}
+                {% if loop.index in [1,4,7] %}
+                    <div class="col-md-4">
+                {% endif %}
+                <div class="row">
+                    <span class="label-container">
+                        <a href="{{ url('search', {'q': tagDTO.tag.name == app.request.query.get('tag') ? null : tagDTO.tag.name}) }}"
+                           class="label label-{{ tagDTO.tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
+                        >{{ tagDTO.tag.name }}
+                        </a>
+                        <i class="counter label">{{ tagDTO.countUse }}</i>
+                    </span>
+                </div>
+                {% if loop.index in [3,6,9] %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+    <hr>
+    <h3>{{ 'tag.all_title'|trans }}</h3>
     <div class="row">
         <ul class="letter-list col-md-12 text-center">
             <li>{{ 'tag.all'|trans }}</li>
@@ -18,13 +42,13 @@
     </div>
     <div class="row">
         <ul class="tag-list">
-            {% for tag in tags %}
+            {% for tagDTO in tagsDTO %}
                 <span class="label-container">
-                    <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name}) }}"
-                       class="label label-{{ tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
-                    >{{ tag.name }}
+                    <a href="{{ url('search', {'q': tagDTO.tag.name == app.request.query.get('tag') ? null : tagDTO.tag.name}) }}"
+                       class="label label-{{ tagDTO.tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
+                    >{{ tagDTO.tag.name }}
                     </a>
-                    <i class="counter label">{{ mangaRepository.countByTag(tag) }}</i>
+                    <i class="counter label">{{ tagDTO.countUse }}</i>
                 </span>
             {% endfor %}
         </ul>

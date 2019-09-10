@@ -64,6 +64,14 @@
                 <target>Ordenar por vistas</target>
             </trans-unit>
 
+            <trans-unit id="tag.popular_title">
+                <source>tag.popular_title</source>
+                <target>Etiquetas más populares</target>
+            </trans-unit>
+            <trans-unit id="tag.all_title">
+                <source>tag.all_title</source>
+                <target>Todas las etiquetas</target>
+            </trans-unit>
             <trans-unit id="tag.all">
                 <source>tag.all</source>
                 <target>Todos</target>

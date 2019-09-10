@@ -9,6 +9,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta name="trafficjunky-site-verification" content="tx5xu9z2t"/>
     <title>{{ app.request.server.get('APP_NAME') }}
         - {% block title %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}</title>
     <meta name="description"
@@ -112,6 +113,17 @@
         </div>
     {% endblock %}
 </div>
+<script type="text/javascript">
+   var ts_site      = '49631';
+   var ts_channel   = '2982';
+   var ts_dimension = '1';
+   var ts_width     = '728';
+   var ts_height    = '90';
+   var ts_palette   = '1';
+   var ts_user      = '30223';
+   var ts_adaptive  = '<%ADAPTIVE%>';
+</script>
+<script type="text/javascript" src="//1ts19.top/show.php" charset="UTF-8"></script>
 
 {% block footer %}
     <footer>
@@ -127,15 +139,4 @@
    is forced to use the limited "intl polyfill", which only supports UTC and GMT #}
 <!-- Page rendered on {{ 'now'|localizeddate('long', 'long', null, 'UTC') }} -->
 </body>
-<script type="text/javascript">
-    var ts_site = '49631';
-    var ts_channel = '2982';
-    var ts_dimension = '1';
-    var ts_width = '728';
-    var ts_height = '90';
-    var ts_palette = '1';
-    var ts_user = '30223';
-    var ts_adaptive = '<%ADAPTIVE%>';
-</script>
-<script type="text/javascript" src="//1ts19.top/show.php" charset="UTF-8"></script>
 </html>

@@ -64,6 +64,14 @@
                 <target>ビューで並べ替え</target>
             </trans-unit>
 
+            <trans-unit id="tag.popular_title">
+                <source>tag.popular_title</source>
+                <target>最も人気のあるタグ</target>
+            </trans-unit>
+            <trans-unit id="tag.all_title">
+                <source>tag.all_title</source>
+                <target>すべてのタグ</target>
+            </trans-unit>
             <trans-unit id="tag.all">
                 <source>tag.all</source>
                 <target>すべて</target>

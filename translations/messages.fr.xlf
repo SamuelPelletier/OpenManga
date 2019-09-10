@@ -64,6 +64,14 @@
                 <target>Trier par vues</target>
             </trans-unit>
 
+            <trans-unit id="tag.popular_title">
+                <source>tag.popular_title</source>
+                <target>Tags les plus populaires</target>
+            </trans-unit>
+            <trans-unit id="tag.all_title">
+                <source>tag.all_title</source>
+                <target>Tous les tags</target>
+            </trans-unit>
             <trans-unit id="tag.all">
                 <source>tag.all</source>
                 <target>Tout</target>

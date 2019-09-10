@@ -64,6 +64,14 @@
                 <target>Сортировать по просмотрам</target>
             </trans-unit>
 
+            <trans-unit id="tag.popular_title">
+                <source>tag.popular_title</source>
+                <target>Самые популярные теги</target>
+            </trans-unit>
+            <trans-unit id="tag.all_title">
+                <source>tag.all_title</source>
+                <target>Все теги</target>
+            </trans-unit>
             <trans-unit id="tag.all">
                 <source>tag.all</source>
                 <target>Все</target>
