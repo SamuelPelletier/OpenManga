@@ -74,17 +74,22 @@
                         {% block header_navigation_links %}
                             <li>
                                 <a class="tags {% if app.request.uri == url('tags') %}active{% endif %}"
+                                   href="{{ app.request.server.get('PATREON_URL') }}" target="_blank">
+                                    <i class=" fab fa-patreon" aria-hidden="true"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="tags {% if app.request.uri == url('tags') %}active{% endif %}"
                                    href="{{ url('tags') }}">
                                     <i class="fa fa-hashtag" aria-hidden="true"></i> {{ 'manga.tag'|trans }}
                                 </a>
                             </li>
-
                         {% endblock %}
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
                                aria-expanded="false" id="locales">
-                                <i class="fa fa-globe" aria-hidden="true"></i>
+                                <i class="fa fa-globe-americas" aria-hidden="true"></i>
                                 <span class="caret"></span>
                                 <span class="sr-only">{{ 'menu.choose_language'|trans }}</span>
                             </a>
@@ -113,29 +118,8 @@
     {% endblock %}
 </div>
 
-{% block footer %}
-    <footer>
-    </footer>
-{% endblock %}
-
 {% block javascripts %}
     {{ encore.encore_absolute_script_tags('js/app') }}
 {% endblock %}
-
-{# it's not mandatory to set the timezone in localizeddate(). This is done to
-   avoid errors when the 'intl' PHP extension is not available and the application
-   is forced to use the limited "intl polyfill", which only supports UTC and GMT #}
-<!-- Page rendered on {{ 'now'|localizeddate('long', 'long', null, 'UTC') }} -->
 </body>
-<script type="text/javascript">
-    var ts_site = '49631';
-    var ts_channel = '2982';
-    var ts_dimension = '1';
-    var ts_width = '728';
-    var ts_height = '90';
-    var ts_palette = '1';
-    var ts_user = '30223';
-    var ts_adaptive = '<%ADAPTIVE%>';
-</script>
-<script type="text/javascript" src="//1ts19.top/show.php" charset="UTF-8"></script>
 </html>

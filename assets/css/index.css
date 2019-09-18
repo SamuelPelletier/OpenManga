@@ -398,3 +398,11 @@ h1, h2, h3, h4, p, a {
 .active {
     color: #ff306a !important;
 }
+
+.ts-places-elements {
+    display: none;
+}
+
+.fa-patreon {
+    color: #F4634C;
+}

@@ -3,6 +3,15 @@
  */
 
 import 'jquery-touchswipe'
+import 'picturefill'
+import 'jquery-mousewheel'
+import 'lightgallery'
+import 'lg-autoplay'
+import 'lg-fullscreen'
+import 'lg-pager'
+import 'lg-thumbnail'
+import 'lg-zoom'
+
 
 var imageList = getImageList()
 var flagLoad = false;
@@ -21,9 +30,19 @@ $( window ).on( "load", function() {
 });*/
 
 
-$('.img-view').on('click', function () {
+/*$('.img-view').on('click', function () {
     viewer($(this).attr('src'))
-})
+})*/
+
+$(document).ready(function () {
+    $("#lightgallery").lightGallery({
+        mode: 'lg-fade',
+        preload: 2,
+        showThumbByDefault: false,
+        enableDrag: false,
+        hideBarsDelay: 1000,
+    });
+});
 
 function viewer(path) {
     toggleFullscreen()

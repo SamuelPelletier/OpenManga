@@ -665,3 +665,30 @@ li:last-child .page {
 .download:active, .download:focus {
     color: white !important;
 }
+
+.label > svg {
+    position: relative;
+    top: 1.5px;
+}
+
+.lg-sub-html {
+    display: none;
+}
+
+.lg-item {
+    height: 94% !important;
+    top: 3%;
+}
+
+.lg-image {
+    border-radius: 1%;
+    cursor: pointer;
+}
+
+.lg-on {
+    overflow: hidden;
+}
+
+.lg-toolbar > span:hover, .lg-toolbar > a:hover, .lg-icon:hover {
+    color: #ff306a !important;
+}

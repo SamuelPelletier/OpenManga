@@ -23,9 +23,18 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.8.2",
+    "jquery-mousewheel": "^3.1.13",
     "jquery-touchswipe": "^1.6.19",
     "jquery-ui": "^1.12.1",
+    "lg-autoplay": "^1.0.4",
+    "lg-fullscreen": "^1.1.0",
+    "lg-hash": "^1.0.4",
+    "lg-pager": "^1.0.2",
+    "lg-thumbnail": "^1.1.0",
+    "lg-zoom": "^1.1.0",
+    "lightgallery": "^1.6.12",
     "node-sass": "^4.12.0",
+    "picturefill": "^3.0.3",
     "sass-loader": "^7.1.0"
   }
 }

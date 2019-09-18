@@ -10,7 +10,7 @@
 
     <p class="manga-metadata">
         <span class="metadata"><i
-                    class="fa fa-calendar"></i> {{ manga.publishedAt|localizeddate('long', 'none', null, 'UTC') }}</span>
+                    class="fa fa-calendar-alt"></i> {{ manga.publishedAt|localizeddate('long', 'none', null, 'UTC') }}</span>
 
     </p>
     {% if not manga.languages.empty %}
@@ -21,7 +21,7 @@
                     <a href="{{ url('search', {'q': language.name == app.request.query.get('language') ? null : language.name}) }}"
                        class="label label-{{ language.name == app.request.query.get('language') ? 'success' : 'default' }}"
                     >
-                        <i class="fa fa-commenting"></i> {{ language.name }}
+                        <i class="fa fa-language"></i> {{ language.name }}
                     </a>
                     <i class="counter label"> {{ mangaRepository.countByLanguage(language) }}</i>
                 </span>
@@ -78,10 +78,11 @@
     <p class="count-views">{{ 'manga.count_views'|trans }} : {{ manga.countViews }}</p>
     <a class="btn download" target="_blank"
        href="{{ url('download', {'id':manga.id}) }}">{{ 'manga.download'|trans }}</a>
-    <div class="row">
+    <div class="row" id="lightgallery">
         {% for image in images %}
             {% if image matches '{\.jpg$}' %}
-                <article class="image col-sm-3">
+                <article class="image col-sm-3"
+                         data-src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/' ~ image ) }}'>
                     <img alt="{{ manga.title | raw }} {{ 'manga.image_alt'|trans({'%count%':loop.index}) }}"
                          title="{{ manga.title | raw }} {{ 'manga.image_alt'|trans({'%count%':loop.index}) }}"
                          class='img-view'
