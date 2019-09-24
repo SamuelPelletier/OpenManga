@@ -16,7 +16,7 @@
                 {% endif %}
                 <div class="row">
                     <span class="label-container">
-                        <a href="{{ url('search', {'q': tagDTO.tag.name == app.request.query.get('tag') ? null : tagDTO.tag.name}) }}"
+                        <a href="{{ url('search', {'q': tagDTO.tag.name == app.request.query.get('tag') ? null : tagDTO.tag.name, 's':true}) }}"
                            class="label label-{{ tagDTO.tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
                         >{{ tagDTO.tag.name }}
                         </a>
@@ -44,7 +44,7 @@
         <ul class="tag-list">
             {% for tagDTO in tagsDTO %}
                 <span class="label-container">
-                    <a href="{{ url('search', {'q': tagDTO.tag.name == app.request.query.get('tag') ? null : tagDTO.tag.name}) }}"
+                    <a href="{{ url('search', {'q': tagDTO.tag.name == app.request.query.get('tag') ? null : tagDTO.tag.name, 's':true}) }}"
                        class="label label-{{ tagDTO.tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
                     >{{ tagDTO.tag.name }}
                     </a>

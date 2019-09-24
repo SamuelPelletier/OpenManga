@@ -61,8 +61,12 @@ class MangaRepository extends ServiceEntityRepository
     /**
      * @return Manga[]
      */
-    public function findBySearchQuery(string $rawQuery, int $page = 1, bool $isSortByViews = false): Pagerfanta
-    {
+    public function findBySearchQuery(
+        string $rawQuery,
+        int $page = 1,
+        bool $isSortByViews = false,
+        bool $isStrict = false
+    ): Pagerfanta {
         $query = $this->sanitizeSearchQuery($rawQuery);
         $searchTerms = $this->extractSearchTerms($query);
 
@@ -78,11 +82,20 @@ class MangaRepository extends ServiceEntityRepository
 
         $queryBuilder = $this->createQueryBuilder('p');
 
+        // If it's strict we use the entire query
+        if ($isStrict) {
+            $searchTerms = [$query];
+        }
+
         foreach ($searchTerms as $key => $term) {
+            if (!$isStrict) {
+                $term = '%' . $term . '%';
+            }
+
             $tags = $repoTag->getEntityManager()->createQueryBuilder()
                 ->select('a')
                 ->from($repoTag->_entityName, 'a')->where('a.name like :name')
-                ->setParameter('name', '%' . $term . '%')->getQuery()->getResult();
+                ->setParameter('name', $term)->getQuery()->getResult();
 
             foreach ($tags as $keyTag => $tag) {
                 $queryBuilder
@@ -93,7 +106,7 @@ class MangaRepository extends ServiceEntityRepository
             $languages = $repoLanguage->getEntityManager()->createQueryBuilder()
                 ->select('a')
                 ->from($repoLanguage->_entityName, 'a')->where('a.name like :name')
-                ->setParameter('name', '%' . $term . '%')->getQuery()->getResult();
+                ->setParameter('name', $term)->getQuery()->getResult();
 
             foreach ($languages as $keyLanguage => $language) {
                 $queryBuilder
@@ -104,7 +117,7 @@ class MangaRepository extends ServiceEntityRepository
             $parodies = $repoParody->getEntityManager()->createQueryBuilder()
                 ->select('a')
                 ->from($repoParody->_entityName, 'a')->where('a.name like :name')
-                ->setParameter('name', '%' . $term . '%')->getQuery()->getResult();
+                ->setParameter('name', $term)->getQuery()->getResult();
 
             foreach ($parodies as $keyParody => $parody) {
                 $queryBuilder
@@ -115,7 +128,7 @@ class MangaRepository extends ServiceEntityRepository
             $authors = $repoAuthor->getEntityManager()->createQueryBuilder()
                 ->select('a')
                 ->from($repoAuthor->_entityName, 'a')->where('a.name like :name')
-                ->setParameter('name', '%' . $term . '%')->getQuery()->getResult();
+                ->setParameter('name', $term)->getQuery()->getResult();
 
             foreach ($authors as $keyAuthor => $author) {
                 $queryBuilder
@@ -125,7 +138,7 @@ class MangaRepository extends ServiceEntityRepository
 
             $queryBuilder
                 ->orWhere('p.title LIKE :ti_' . $key)
-                ->setParameter('ti_' . $key, '%' . $term . '%');
+                ->setParameter('ti_' . $key, $term);
 
             if ($isSortByViews) {
                 $queryBuilder->orderBy('p.countViews', 'DESC');

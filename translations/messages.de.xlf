@@ -63,6 +63,10 @@
                 <source>search.sort</source>
                 <target>Sortieren nach Ansichten</target>
             </trans-unit>
+            <trans-unit id="search.sort.info">
+                <source>search.sort.info</source>
+                <target>Sortieren Sie die Ergebnisse nach Anzahl der Aufrufe</target>
+            </trans-unit>
 
             <trans-unit id="tag.popular_title">
                 <source>tag.popular_title</source>

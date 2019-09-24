@@ -63,6 +63,10 @@
                 <source>search.sort</source>
                 <target>ビューで並べ替え</target>
             </trans-unit>
+            <trans-unit id="search.sort.info">
+                <source>search.sort.info</source>
+                <target>ビューの数で結果を並べ替える</target>
+            </trans-unit>
 
             <trans-unit id="tag.popular_title">
                 <source>tag.popular_title</source>
@@ -134,124 +138,6 @@
             <trans-unit id="meta.description">
                 <source>meta.description</source>
                 <target> は何千もの %tags% を無料で閲覧、ダウンロード可能です。</target>
-            </trans-unit>
-
-            <trans-unit id="about.roadmap">
-                <source>about.roadmap</source>
-                <target>Roadmap</target>
-            </trans-unit>
-            <trans-unit id="about.completed">
-                <source>about.completed</source>
-                <target>完了しました</target>
-            </trans-unit>
-            <trans-unit id="about.progress">
-                <source>about.progress</source>
-                <target>進行中</target>
-            </trans-unit>
-            <trans-unit id="about.search_system">
-                <source>about.search_system</source>
-                <target>検索システム</target>
-            </trans-unit>
-            <trans-unit id="about.download_manga">
-                <source>about.download_manga</source>
-                <target>マンガをダウンロードする</target>
-            </trans-unit>
-            <trans-unit id="about.i18n">
-                <source>about.i18n</source>
-                <target>国際化</target>
-            </trans-unit>
-            <trans-unit id="about.viewers_system">
-                <source>about.viewers_system</source>
-                <target>視聴者システム</target>
-            </trans-unit>
-            <trans-unit id="about.mobile_ergonomics">
-                <source>about.mobile_ergonomics</source>
-                <target>モバイル人間工学</target>
-            </trans-unit>
-            <trans-unit id="about.create_thumb_manga">
-                <source>about.create_thumb_manga</source>
-                <target>サム漫画を作成する</target>
-            </trans-unit>
-            <trans-unit id="about.create_disclaimer">
-                <source>about.create_disclaimer</source>
-                <target>免責事項を作成する</target>
-            </trans-unit>
-            <trans-unit id="about.count_manga_views">
-                <source>about.count_manga_views</source>
-                <target>漫画の再生回数を数える</target>
-            </trans-unit>
-            <trans-unit id="about.about_page">
-                <source>about.about_page</source>
-                <target>ページについて</target>
-            </trans-unit>
-            <trans-unit id="about.fix_import_break_manga">
-                <source>about.fix_import_break_manga</source>
-                <target>輸入ブレイクマンガを修正</target>
-            </trans-unit>
-            <trans-unit id="about.upgrade_search_system">
-                <source>about.upgrade_search_system</source>
-                <target>検索システムをアップグレードする</target>
-            </trans-unit>
-            <trans-unit id="about.remake_interface">
-                <source>about.remake_interface</source>
-                <target>インターフェースを作り直す</target>
-            </trans-unit>
-            <trans-unit id="about.create_readme">
-                <source>about.create_readme</source>
-                <target>Readmeを作成する</target>
-            </trans-unit>
-            <trans-unit id="about.help">
-                <source>about.help</source>
-                <target>手助け</target>
-            </trans-unit>
-            <trans-unit id="about.hello">
-                <source>about.hello</source>
-                <target>皆さん、こんにちは。</target>
-            </trans-unit>
-            <trans-unit id="about.thanks">
-                <source>about.thanks</source>
-                <target>みんなありがとう、そして私たちの漫画を楽しんでください。</target>
-            </trans-unit>
-            <trans-unit id="about.donate">
-                <source>about.donate</source>
-                <target>寄付する</target>
-            </trans-unit>
-            <trans-unit id="about.github_help">
-                <source>about.github_help</source>
-                <target>助けて</target>
-            </trans-unit>
-            <trans-unit id="about.on">
-                <source>about.on</source>
-                <target>に</target>
-            </trans-unit>
-            <trans-unit id="about.project">
-                <source>about.project</source>
-                <target>このプロジェクトは大成功であり、改善したいと思います。
-                私はこれを行うためにいくつかの助けが必要であり、あなたは私を助けることができます。</target>
-            </trans-unit>
-            <trans-unit id="about.issue1">
-                <source>about.issue1</source>
-                <target>- あなたはに問題を作成することができます </target>
-            </trans-unit>
-            <trans-unit id="about.issue2">
-                <source>about.issue2</source>
-                <target>いくつかの新機能を提案したり、いくつかのバグを報告します。</target>
-            </trans-unit>
-            <trans-unit id="about.developper">
-                <source>about.developper</source>
-                <target>- あなたが開発者であるならば、あなたは私が新機能を作成していくつかのバグを修正するのを手伝うことができます。</target>
-            </trans-unit>
-            <trans-unit id="about.donate_text1">
-                <source>about.donate_text1</source>
-                <target>- あなたは私に与えることによって私を助けることができます </target>
-            </trans-unit>
-            <trans-unit id="about.donate_text2">
-                <source>about.donate_text2</source>
-                <target>寄付</target>
-            </trans-unit>
-            <trans-unit id="about.donate_text3">
-                <source>about.donate_text3</source>
-                <target> だから私はスーパーサーバーを買うことができます！</target>
             </trans-unit>
         </body>
     </file>

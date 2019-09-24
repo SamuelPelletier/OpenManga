@@ -123,7 +123,8 @@ class MangaController extends AbstractController
         } else {
             if ($request->query->get('q') != '') {
                 $query = $request->query->get('q', '');
-                $foundMangas = $mangas->findBySearchQuery($query, $page, $isSortByViews);
+                $isStrict = $request->query->get('s', false);
+                $foundMangas = $mangas->findBySearchQuery($query, $page, $isSortByViews, $isStrict);
             }
         }
 

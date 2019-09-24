@@ -18,7 +18,7 @@
             <a>{{ 'manga.language'|trans }} : </a>
             {% for language in manga.languages %}
                 <span class="label-container">
-                    <a href="{{ url('search', {'q': language.name == app.request.query.get('language') ? null : language.name}) }}"
+                    <a href="{{ url('search', {'q': language.name == app.request.query.get('language') ? null : language.name, 's':true}) }}"
                        class="label label-{{ language.name == app.request.query.get('language') ? 'success' : 'default' }}"
                     >
                         <i class="fa fa-language"></i> {{ language.name }}
@@ -33,7 +33,7 @@
             <a>{{ 'manga.parody'|trans }} : </a>
             {% for parody in manga.parodies %}
                 <span class="label-container">
-                    <a href="{{ url('search', {'q': parody.name == app.request.query.get('parody') ? null : parody.name}) }}"
+                    <a href="{{ url('search', {'q': parody.name == app.request.query.get('parody') ? null : parody.name, 's':true}) }}"
                        class="label label-{{ parody.name == app.request.query.get('parody') ? 'success' : 'default' }}"
                     >
                         <i class="fa fa-folder"></i> {{ parody.name }}
@@ -48,7 +48,7 @@
             <a>{{ 'manga.tag'|trans }} : </a>
             {% for tag in manga.tags %}
                 <span class="label-container">
-                    <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name}) }}"
+                    <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name, 's':true}) }}"
                        class="label label-{{ tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
                     >
                         <i class="fa fa-hashtag"></i> {{ tag.name }}
@@ -64,7 +64,7 @@
             <a>{{ 'manga.author'|trans }} : </a>
             {% for author in manga.authors %}
                 <span class="label-container">
-                    <a href="{{ url('search', {'q': author.name == app.request.query.get('author') ? null : author.name}) }}"
+                    <a href="{{ url('search', {'q': author.name == app.request.query.get('author') ? null : author.name, 's':true}) }}"
                        class="label label-{{ author.name == app.request.query.get('author') ? 'success' : 'default' }}"
                     >
                         <i class="fa fa-user"></i> {{ author.name }}

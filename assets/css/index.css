@@ -137,7 +137,7 @@ h1, h2, h3, h4, p, a {
         margin: 0px;
     }
 
-    .searchButton {
+    .search-button {
         text-align: end;
     }
 
@@ -195,7 +195,7 @@ h1, h2, h3, h4, p, a {
     color: #999;
 }
 
-.searchButton {
+.search-button {
     background: #ff306a;
     padding: 10px 20px;
     -moz-border-radius: 0 10px 10px 0;
@@ -209,7 +209,7 @@ h1, h2, h3, h4, p, a {
     width: 100px;
 }
 
-.searchButton:hover, .searchButton:active, .searchButton:focus, .searchButton:focus:active {
+.search-button:hover, .search-button:active, .search-button:focus, .search-button:focus:active {
     background: #ff306a;
 }
 
@@ -290,6 +290,10 @@ h1, h2, h3, h4, p, a {
     text-align: center;
 }
 
+.a-neonText > i {
+    display: none;
+}
+
 @media screen and (min-width: 800px) {
     .a-neonText {
         font-size: 20px;
@@ -315,7 +319,7 @@ h1, h2, h3, h4, p, a {
 }
 
 @media (max-width: 767px) {
-    .searchButton {
+    .search-button {
         left: -18px;
     }
 }
@@ -405,4 +409,9 @@ h1, h2, h3, h4, p, a {
 
 .fa-patreon {
     color: #F4634C;
+}
+
+.fa-info-circle {
+    position: relative;
+    top: 2px;
 }

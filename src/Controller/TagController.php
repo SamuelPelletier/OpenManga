@@ -16,6 +16,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+/**
+ * Class TagController
+ * @package App\Controller
+ */
 class TagController extends AbstractController
 {
     /**
@@ -33,7 +37,7 @@ class TagController extends AbstractController
         usort($tagsDTOsort, function (TagDTO $tagDTO1, TagDTO $tagDTO2) {
             return $tagDTO1->getCountUse() < $tagDTO2->getCountUse();
         });
-        //dd($tagsDTOsort);
+
         return $this->render('tags.html.twig',
             ['tagsDTO' => $tagsDTO, 'tagsDTOsort' => $tagsDTOsort]);
     }
