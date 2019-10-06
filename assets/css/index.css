@@ -415,3 +415,9 @@ h1, h2, h3, h4, p, a {
     position: relative;
     top: 2px;
 }
+
+.manga-count-pages {
+    position: absolute;
+    right: 20px;
+    text-shadow: black 1.5px 2px 2px;
+}
