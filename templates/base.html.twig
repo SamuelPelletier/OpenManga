@@ -9,11 +9,11 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <title>{{ app.request.server.get('APP_NAME') }}
-        - {% block title %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}</title>
+    <title>{% spaceless %}{{ app.request.server.get('APP_NAME') }} - {% block title %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}{% endspaceless %}</title>
     <meta name="description"
-          content="{% block meta_description %}{{ app.request.server.get('APP_NAME') ~ 'meta.description'|trans({"%tags%":app.request.server.get('APP_KEYWORD') }) }}{% endblock %}"/>
-    <meta name="keywords" content="{% block meta_keyword %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}"/>
+          content="{% spaceless %}{% block meta_description %}{{ app.request.server.get('APP_NAME') ~ 'meta.description'|trans({"%tags%":app.request.server.get('APP_KEYWORD') }) }}{% endblock %}{% endspaceless %}"/>
+    <meta name="keywords"
+          content="{% spaceless %}{% block meta_keyword %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}{% endspaceless %}"/>
     {% block stylesheets %}
         {{ encore.encore_absolute_link_tags('css/app') }}
     {% endblock %}
@@ -71,10 +71,9 @@
                         </form>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-
                         {% block header_navigation_links %}
                             <li>
-                                <a href="{{ app.request.server.get('PATREON_URL') }}" target="_blank">
+                                <a href="{{ app.request.server.get('PATREON_URL') }}" rel="nofollow" target="_blank">
                                     <i class=" fab fa-patreon" aria-hidden="true"></i>
                                 </a>
                             </li>

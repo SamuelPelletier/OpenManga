@@ -139,6 +139,10 @@
                 <source>meta.description</source>
                 <target> contient des milliers de %tags% visionnables et téléchargeables gratuitement.</target>
             </trans-unit>
+            <trans-unit id="meta.description.manga">
+                <source>meta.description.manga</source>
+                <target>Vous trouverez ici un des meilleurs manga : </target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

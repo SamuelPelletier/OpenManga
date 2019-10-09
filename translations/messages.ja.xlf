@@ -139,6 +139,10 @@
                 <source>meta.description</source>
                 <target> は何千もの %tags% を無料で閲覧、ダウンロード可能です。</target>
             </trans-unit>
+            <trans-unit id="meta.description.manga">
+                <source>meta.description.manga</source>
+                <target>ここでは、最高の漫画の1つを見つけることができます : </target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

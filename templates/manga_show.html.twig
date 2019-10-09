@@ -5,6 +5,21 @@
     {{ encore.encore_absolute_link_tags('css/show') }}
 {% endblock %}
 
+{% block title %}{{ manga.title }}{% endblock %}
+
+{% block meta_description %}
+    {{ parent() }}
+    {{ 'meta.description.manga'|trans ~ manga.title | raw }}{{ manga.tags | join(',',' and ') }}
+{% endblock %}
+
+{% block meta_keyword %}
+    {% if manga.tags.count > 0 %}
+        {{ manga.tags | join(',') }}
+    {% else %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}
+
 {% block main %}
     <h1>{{ manga.title | raw }}</h1>
 
@@ -96,17 +111,27 @@
     {% block javascripts %}
         {{ parent() }}
         {{ encore.encore_absolute_script_tags('js/show') }}
+        <script type="application/ld+json">
+            {
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "breadcrumb": "Books > Manga",
+                "mainEntity": {
+                    "@type": "Book",
+                    "author": "{{ manga.authors|join(',') }}",
+                    "bookFormat": "http://schema.org/EBook",
+                    "datePublished": "{{ manga.publishedAt|localizeddate('long', 'none', null, 'UTC') }}",
+                    "image": "{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/thumb.webp' ) }}",
+                    "inLanguage": "{{ manga.languages|join(',') }}",
+                    "name": "{{ manga.title }}",
+                    "numberOfPages": "{{ manga.countPages }}",
+                    "publisher": "{{ app.request.server.get('APP_NAME') }}",
+                    "aggregateRating": {
+                        "@type": "AggregateRating",
+                        "reviewCount": "{{ manga.countViews }}"
+                    }
+                }
+            }
+        </script>
     {% endblock %}
-{% endblock %}
-
-{% block title %}
-    {{ manga.title | raw }}
-{% endblock %}
-
-{% block meta_description %}
-    {{ manga.title | raw }}{{ manga.tags | join(',',' and ') }}
-{% endblock %}
-
-{% block meta_keyword %}
-    {{ manga.tags | join(',') }}
 {% endblock %}
