@@ -73,7 +73,7 @@
                     <ul class="nav navbar-nav navbar-right">
                         {% block header_navigation_links %}
                             <li>
-                                <a href="{{ app.request.server.get('APP_NAME')|lower }}.apk"
+                                <a href="{{ '/'~ app.request.server.get('APP_NAME')|lower }}.apk"
                                    rel="nofollow" target="_blank">
                                     <i class=" fab fa-android" aria-hidden="true"></i> App
                                 </a>
