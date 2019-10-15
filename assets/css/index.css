@@ -416,6 +416,11 @@ h1, h2, h3, h4, p, a {
     top: 2px;
 }
 
+.fa-android {
+    color: #a5c639;
+    font-size: 20px;
+}
+
 .manga-count-pages {
     position: absolute;
     right: 20px;

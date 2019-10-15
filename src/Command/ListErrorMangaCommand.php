@@ -21,6 +21,7 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\BufferedOutput;
@@ -68,7 +69,14 @@ class ListErrorMangaCommand extends Command
      */
     protected function configure()
     {
-        $this->setDescription('Check every manga can be in error and list them');
+        $this->setDescription('Check every manga can be in error and list them')
+            ->addOption(
+                'iterations',
+                'i',
+                InputArgument::OPTIONAL,
+                'Number of items check ?',
+                0
+            );
     }
 
     /**
@@ -77,8 +85,11 @@ class ListErrorMangaCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $mangas = $this->mangaRepository->findAll();
+        $iterations = $input->getOption('iterations');
+        $mangas = $this->mangaRepository->findBy([], ['id' => 'desc']);
+        $i = 0;
         foreach ($mangas as $manga) {
+            $i++;
             $finder = new Finder();
             $finder->files()->in(dirname(__DIR__) . '/../public/media/' . $manga->getId());
             if ($manga->getCountPages() != count($finder) - 1) {
@@ -93,6 +104,9 @@ class ListErrorMangaCommand extends Command
                     $this->em->remove($manga);
                     $this->em->flush();
                 }
+            }
+            if ($iterations != 0 && $i > $iterations) {
+                break;
             }
         }
 
