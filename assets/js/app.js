@@ -71,5 +71,9 @@ $(function () {
         pages = undefined;
         newUrl = undefined;
     });
+
+    var paginatorActive = $('li[class=active]');
+    paginatorActive.prev().addClass('d-inline');
+    paginatorActive.next().addClass('d-inline');
 });
 

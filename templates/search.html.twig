@@ -10,24 +10,7 @@
 
 {% block main %}
     {% if app.request.query.get('q') is not empty %}
-        <div class='manga-container'>
-            {% for manga in mangas %}
-                <article class="manga col-sm-3">
-                    <a href="{{ url('manga', {id: manga.id}) }}">
-                        <img class='img-thumbnail'
-                             src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/001.jpg' ) }}'>
-                        <h2 class='img-name'>{{ manga.title |raw }}</h2>
-                    </a>
-                </article>
-            {% else %}
-                <div class="well">{{ 'manga.no_mangas_found'|trans }}</div>
-            {% endfor %}
-        </div>
-        {% if mangas.haveToPaginate %}
-            <div class="navigation text-center">
-                {{ pagerfanta(mangas, 'twitter_bootstrap3_translated', {routeName: 'search_paginated', routeParams: app.request.query.all}) }}
-            </div>
-        {% endif %}
+        {{ include('manga_index.html.twig') }}
     {% endif %}
 {% endblock %}
 

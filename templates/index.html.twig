@@ -1,23 +1,5 @@
 {% extends 'base.html.twig' %}
 
 {% block main %}
-    <div class='manga-container'>
-        {% for manga in mangas %}
-            <article class="manga col-sm-3">
-                <p class="manga-count-pages">{{ manga.countPages }}</p>
-                <a href="{{ url('manga', {id: manga.id}) }}">
-                    <img alt="{{ manga.title |raw }}" title="{{ manga.title |raw }}" class='img-thumbnail'
-                         src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/thumb.webp' ) }}'>
-                    <h2 class='img-name'>{{ manga.title |raw }}</h2>
-                </a>
-            </article>
-        {% else %}
-            <div class="well">{{ 'manga.no_mangas_found'|trans }}</div>
-        {% endfor %}
-    </div>
-    {% if mangas.haveToPaginate %}
-        <div class="navigation text-center">
-            {{ pagerfanta(mangas, 'twitter_bootstrap3_translated', {routeName: 'index_paginated', routeParams: app.request.query.all}) }}
-        </div>
-    {% endif %}
+    {{ include('manga_index.html.twig') }}
 {% endblock %}

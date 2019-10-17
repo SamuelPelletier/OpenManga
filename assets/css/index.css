@@ -78,6 +78,7 @@ h1, h2, h3, h4, p, a {
     border-bottom-right-radius: 5px;
     border-bottom-left-radius: 5px;
     font-size: 1.6em;
+    padding: 0 10px;
 }
 
 ::selection {
@@ -223,6 +224,12 @@ h1, h2, h3, h4, p, a {
 
 .pagination > .active > span, .pagination > li > a:hover {
     background-color: #fd0056 !important;
+}
+
+@media (max-width: 767px) {
+    .pagination li:not([class]), .pagination li[class=disabled] {
+        display: none;
+    }
 }
 
 .switch-div {
@@ -426,3 +433,4 @@ h1, h2, h3, h4, p, a {
     right: 20px;
     text-shadow: black 1.5px 2px 2px;
 }
+
