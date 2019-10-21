@@ -67,6 +67,7 @@ h1, h2, h3, h4, p, a {
     border-top-right-radius: 5px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
+    max-height: 482px;
 }
 
 .img-name {
