@@ -14,6 +14,10 @@
 </div>
 {% if mangas.haveToPaginate %}
     <div class="navigation text-center">
-        {{ pagerfanta(mangas, 'twitter_bootstrap3_translated', {routeName: 'index_paginated', routeParams: app.request.query.all}) }}
+        {% set route_name =  'index_paginated' %}
+        {% if app.request.query.get('q') != null %}
+            {% set route_name =  'search_paginated' %}
+        {% endif %}
+        {{ pagerfanta(mangas, 'twitter_bootstrap3_translated', {routeName: route_name, routeParams: app.request.query.all}) }}
     </div>
 {% endif %}

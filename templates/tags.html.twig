@@ -9,7 +9,7 @@
 {% block main %}
     <h3>{{ 'tag.popular_title'|trans }}</h3>
     <div class="row">
-        <ul class="tag-list">
+        <ul class="tag-popular">
             {% for tagDTO in tagsDTOsort|slice(0,9) %}
                 {% if loop.index in [1,4,7] %}
                     <div class="col-md-4">
@@ -33,11 +33,11 @@
     <h3>{{ 'tag.all_title'|trans }}</h3>
     <div class="row">
         <ul class="letter-list col-md-12 text-center">
-            <li>{{ 'tag.all'|trans }}</li>
+            <li class="all">{{ 'tag.all'|trans }}</li>
             {% for letter in 'a'|upper..'z'|upper %}
                 <li> {{ letter }}</li>
             {% endfor %}
-            <li>{{ 'tag.other'|trans }}</li>
+            <li class="other">{{ 'tag.other'|trans }}</li>
         </ul>
     </div>
     <div class="row">
