@@ -12,12 +12,6 @@
         <div class="well">{{ 'manga.no_mangas_found'|trans }}</div>
     {% endfor %}
 </div>
-{% if mangas.haveToPaginate %}
-    <div class="navigation text-center">
-        {% set route_name =  'index_paginated' %}
-        {% if app.request.query.get('q') != null %}
-            {% set route_name =  'search_paginated' %}
-        {% endif %}
-        {{ pagerfanta(mangas, 'twitter_bootstrap3_translated', {routeName: route_name, routeParams: app.request.query.all}) }}
-    </div>
-{% endif %}
+<div class="navigation text-center">
+    {% include 'paginator.html.twig' %}
+</div>
