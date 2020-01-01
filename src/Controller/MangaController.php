@@ -51,7 +51,6 @@ class MangaController extends AbstractController
             $isSortByViews = $request->getSession()->get('sort');
         }
         $latestMangas = $mangas->findLatest($page, $isSortByViews);
-
         return $this->render('index.html.twig', ['mangas' => $latestMangas]);
     }
 

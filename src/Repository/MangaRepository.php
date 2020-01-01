@@ -17,10 +17,9 @@ use App\Entity\Author;
 use App\Entity\Language;
 use App\Entity\Parody;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Common\Persistence\ManagerRegistry;
+use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
-use Pagerfanta\Adapter\DoctrineORMAdapter;
-use Pagerfanta\Pagerfanta;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 
 /**
  * This custom Doctrine repository contains some methods which are useful when
@@ -36,7 +35,7 @@ class MangaRepository extends ServiceEntityRepository
         parent::__construct($registry, Manga::class);
     }
 
-    public function findLatest(int $page = 1, bool $isSortByViews = false): Pagerfanta
+    public function findLatest(int $page = 1, bool $isSortByViews = false): Paginator
     {
         $queryBuilder = $this->createQueryBuilder('p');
 
@@ -49,11 +48,12 @@ class MangaRepository extends ServiceEntityRepository
         return $this->createPaginator($queryBuilder->getQuery(), $page);
     }
 
-    private function createPaginator(Query $query, int $page): Pagerfanta
+    private function createPaginator(Query $query, int $page): Paginator
     {
-        $paginator = new Pagerfanta(new DoctrineORMAdapter($query));
-        $paginator->setMaxPerPage(Manga::NUM_ITEMS);
-        $paginator->setCurrentPage($page);
+
+        $premierResultat = ($page - 1) * Manga::NUM_ITEMS;
+        $query->setFirstResult($premierResultat)->setMaxResults(Manga::NUM_ITEMS);
+        $paginator = new Paginator($query);
 
         return $paginator;
     }
@@ -66,7 +66,7 @@ class MangaRepository extends ServiceEntityRepository
         int $page = 1,
         bool $isSortByViews = false,
         bool $isStrict = false
-    ): Pagerfanta {
+    ): Paginator {
         $query = $this->sanitizeSearchQuery($rawQuery);
         $searchTerms = $this->extractSearchTerms($query);
 

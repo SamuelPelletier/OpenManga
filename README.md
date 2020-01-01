@@ -2,29 +2,29 @@
     <img src="openmanga.jpg" style="height:100px">
 </p>
 
-OpenManga is a **PHP Symfony 4** project for store and download mangas.
+OpenManga is a **PHP Symfony 5** project for store and download mangas.
 
 Installation
 ------------
 
 Pre-request : 
 - Composer
-- PHP 7.1.3 or more
+- PHP 7.3.1 or more
 - MySQL 
 - Node and Yarn
 
 Command : 
 * Modify .env or create .env.local with your environment informations
-* use ``php bin/console app:install``
+* use ``symfony console app:install``
 * Fill **/public/media/** with your mangas
-* use ``php bin/console app:import-manga-folder``
+* use ``symfony console app:import-manga-folder``
 
-Without Apache Server launch ``php bin/console server:run``
+Without Apache Server launch ``symfony server:run``
 
 Documentation
 -------------
 
-``php bin/console app:import-manga-folder``
+``symfony console app:import-manga-folder``
 
 Import all mangas in /public/media/ folder in OpenManga.  
 All mangas name will be rename and remove all incorrect files.  
@@ -32,17 +32,17 @@ All mangas name will be rename and remove all incorrect files.
 
 <br>
 
-``php bin/console app:import-manga``
+``symfony console app:import-manga``
 
 Import mangas from a secret source
 
 <br>
 
-``php bin/console app:install``
+``symfony console app:install``
 
 Launch every command necessary to install OpenManga.
 
 Contributing
 ------------
 
-OpenManga is an Open Source and you can help us !  
+OpenManga is an Open Source Project and you can help us !  
