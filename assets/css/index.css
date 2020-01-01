@@ -232,6 +232,11 @@ h1, h2, h3, h4, p, a {
     .pagination li:not([class]), .pagination li[class=disabled] {
         display: none;
     }
+
+    .pagination li:first-child, .pagination li:last-child, .pagination li:nth-child(2), .pagination li:nth-last-child(2) {
+        display: inline;
+    }
+
 }
 
 .switch-div {

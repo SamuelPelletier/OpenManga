@@ -100,6 +100,6 @@ class InstallCommand extends Command
         $section->clear(1);
         $section->writeln(' - Clear cache             <green>completed</>');
         $section->writeln('<green>Installation done !</>');
-
+        return 0;
     }
 }

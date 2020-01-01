@@ -47,20 +47,17 @@ use WebPConvert\WebPConvert;
  *
  * @property EntityManagerInterface entityManager
  */
-class ListErrorMangaCommand extends Command
+class RemoveUselessMangaZipped extends Command
 {
     // a good practice is to use the 'app:' prefix to group all your custom application commands
-    protected static $defaultName = 'app:check-manga';
+    protected static $defaultName = 'app:remove-zip';
 
-    private $mangaRepository;
-    private $em;
+
     private $logger;
 
-    public function __construct(LoggerInterface $logger, MangaRepository $mangaRepository, EntityManagerInterface $em)
+    public function __construct(LoggerInterface $logger)
     {
         parent::__construct();
-        $this->mangaRepository = $mangaRepository;
-        $this->em = $em;
         $this->logger = $logger;
     }
 
@@ -69,14 +66,7 @@ class ListErrorMangaCommand extends Command
      */
     protected function configure()
     {
-        $this->setDescription('Check every manga can be in error and list them')
-            ->addOption(
-                'iterations',
-                'i',
-                InputArgument::OPTIONAL,
-                'Number of items check ?',
-                0
-            );
+        $this->setDescription('Remove all useless manga zipped in public directory');
     }
 
     /**
@@ -85,30 +75,14 @@ class ListErrorMangaCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $iterations = $input->getOption('iterations');
-        $mangas = $this->mangaRepository->findBy([], ['id' => 'desc']);
-        $i = 0;
-        foreach ($mangas as $manga) {
-            $i++;
-            $finder = new Finder();
-            $finder->files()->in(dirname(__DIR__) . '/../public/media/' . $manga->getId());
-            if ($manga->getCountPages() != count($finder) - 1) {
-                $output->writeln($manga->getId());
-                $fileSystem = new Filesystem();
-                if ($manga->getId() > 1) {
-                    $path = dirname(__DIR__) . '/../public/media/' . $manga->getId();
-                    if ($path == dirname(__DIR__) . '/../public/media/') {
-                        die;
-                    }
-                    $fileSystem->remove($path);
-                    $this->em->remove($manga);
-                    $this->em->flush();
-                }
-            }
-            if ($iterations != 0 && $i > $iterations) {
-                break;
-            }
+
+        $finder = new Finder();
+        $finder->files()->name('*.zip')->date('< yesterday')->in(dirname(__DIR__) . '/../public/');
+        $filesystem = new Filesystem();
+        foreach ($finder as $zip) {
+            $filesystem->remove($zip->getRealPath());
         }
+
         return 0;
     }
 }
