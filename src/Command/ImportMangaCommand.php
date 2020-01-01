@@ -19,6 +19,7 @@ use App\Entity\Parody;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Input\ArrayInput;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\BufferedOutput;
@@ -74,29 +75,50 @@ class ImportMangaCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-
-        $url = $_ENV['API_SEARCH'];
-        $data = file_get_contents($url);
-        $data = strip_tags($data, "<a>");
-        $d = preg_split("/<\/a>/", $data);
-        $mangasLink = array();
-        foreach ($d as $k => $u) {
-            if (strpos($u, "<a href=") !== false) {
-                $u = preg_replace("/.*<a\s+href=\"/sm", "", $u);
-                $u = preg_replace("/\".*/", "", $u);
-                if (strstr($u, $_ENV['API_MANGA_URL']) != false) {
-                    array_push($mangasLink, $u);
+        if (false) {
+            $url = $_ENV['API_SEARCH'];
+            $data = file_get_contents($url);
+            $data = strip_tags($data, "<a>");
+            $d = preg_split("/<\/a>/", $data);
+            $mangasLink = array();
+            foreach ($d as $k => $u) {
+                if (strpos($u, "<a href=") !== false) {
+                    $u = preg_replace("/.*<a\s+href=\"/sm", "", $u);
+                    $u = preg_replace("/\".*/", "", $u);
+                    if (strstr($u, $_ENV['API_MANGA_URL']) != false) {
+                        array_push($mangasLink, $u);
+                    }
                 }
             }
+
+            for ($i = count($mangasLink); $i > 0; $i--) {
+                $this->downloadManga($mangasLink[$i - 1]);
+                // Download by batch of last 5
+                if ($i == count($mangasLink) - 6) {
+                    break;
+                }
+            }
+
         }
 
-        for ($i = count($mangasLink); $i > 0; $i--) {
-            $this->downloadManga($mangasLink[$i - 1]);
-            // Download by batch of last 5
-            if ($i == count($mangasLink) - 6) {
-                break;
-            }
-        }
+        $command = $this->getApplication()->find('app:check-manga');
+        $arguments = [
+            'command' => 'app:check-manga',
+            '--iterations' => '10'
+        ];
+        $greetInput = new ArrayInput($arguments);
+        $command->run($greetInput, $output);
+
+
+        $command = $this->getApplication()->find('app:remove-zip');
+        $arguments = [
+            'command' => 'app:remove-zip'
+        ];
+        $greetInput = new ArrayInput($arguments);
+        $command->run($greetInput, $output);
+
+
+        return 0;
     }
 
     private function downloadManga($link)

@@ -160,6 +160,7 @@ class ImportMangaFromFolderCommand extends Command
             $fileSystem->rename($folder->getRealPath(), $folder->getPath() . '/' . $manga->getId());
             $this->logger->info('End of import - manga : ' . $manga->getTitle() . ' ## New ID : ' . $manga->getId());
             $progressBar->advance();
+            return 0;
         }
 
         $progressBar->finish();
