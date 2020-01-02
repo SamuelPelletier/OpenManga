@@ -75,31 +75,29 @@ class ImportMangaCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        if (false) {
-            $url = $_ENV['API_SEARCH'];
-            $data = file_get_contents($url);
-            $data = strip_tags($data, "<a>");
-            $d = preg_split("/<\/a>/", $data);
-            $mangasLink = array();
-            foreach ($d as $k => $u) {
-                if (strpos($u, "<a href=") !== false) {
-                    $u = preg_replace("/.*<a\s+href=\"/sm", "", $u);
-                    $u = preg_replace("/\".*/", "", $u);
-                    if (strstr($u, $_ENV['API_MANGA_URL']) != false) {
-                        array_push($mangasLink, $u);
-                    }
+        $url = $_ENV['API_SEARCH'];
+        $data = file_get_contents($url);
+        $data = strip_tags($data, "<a>");
+        $d = preg_split("/<\/a>/", $data);
+        $mangasLink = array();
+        foreach ($d as $k => $u) {
+            if (strpos($u, "<a href=") !== false) {
+                $u = preg_replace("/.*<a\s+href=\"/sm", "", $u);
+                $u = preg_replace("/\".*/", "", $u);
+                if (strstr($u, $_ENV['API_MANGA_URL']) != false) {
+                    array_push($mangasLink, $u);
                 }
             }
-
-            for ($i = count($mangasLink); $i > 0; $i--) {
-                $this->downloadManga($mangasLink[$i - 1]);
-                // Download by batch of last 5
-                if ($i == count($mangasLink) - 6) {
-                    break;
-                }
-            }
-
         }
+
+        for ($i = count($mangasLink); $i > 0; $i--) {
+            $this->downloadManga($mangasLink[$i - 1]);
+            // Download by batch of last 5
+            if ($i == count($mangasLink) - 6) {
+                break;
+            }
+        }
+
 
         $command = $this->getApplication()->find('app:check-manga');
         $arguments = [
