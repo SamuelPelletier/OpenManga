@@ -217,6 +217,9 @@ class ImportMangaCommand extends Command
                         $datau = file_get_contents($u);
                         preg_match_all('@src="([^"]+)"@', $datau, $match);
                         $src = array_pop($match);
+                        if (strstr($src[5], '509.gif') != false) {
+                            break;
+                        }
                         $i = str_pad($i, 3, "0", STR_PAD_LEFT);
                         try {
                             $fileSystem->copy($src[5],
