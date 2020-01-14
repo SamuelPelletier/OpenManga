@@ -89,6 +89,12 @@
                                     <i class="fa fa-hashtag" aria-hidden="true"></i> {{ 'manga.tag'|trans }}
                                 </a>
                             </li>
+                            <li>
+                                <a class="contact {% if app.request.uri == url('contact') %}active{% endif %}"
+                                   href="{{ url('contact') }}">
+                                    <i class="fa fa-info-circle" aria-hidden="true"></i> {{ 'menu.about'|trans }}
+                                </a>
+                            </li>
                         {% endblock %}
 
                         <li class="dropdown">

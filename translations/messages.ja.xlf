@@ -143,6 +143,53 @@
                 <source>meta.description.manga</source>
                 <target>ここでは、最高の漫画の1つを見つけることができます : </target>
             </trans-unit>
+
+            <trans-unit id="about.title">
+                <source>about.title</source>
+                <target>約 </target>
+            </trans-unit>
+            <trans-unit id="about.contact.title">
+                <source>about.contact.title</source>
+                <target>お問い合わせ</target>
+            </trans-unit>
+            <trans-unit id="about.information.title">
+                <source>about.information.title</source>
+                <target>役立つ情報</target>
+            </trans-unit>
+            <trans-unit id="about.contact.text1">
+                <source>about.contact.text1</source>
+                <target>次のメールアドレスまでご連絡ください ：</target>
+            </trans-unit>
+            <trans-unit id="about.contact.text2.soft">
+                <source>about.contact.text2.soft</source>
+                <target>当社のサイトは完全に独立しており、お客様に関する情報を収集しません。
+                        マンガを無料で無制限に表示およびダウンロードできます。
+                        モバイルアプリケーションを使用すると、ウェブサイトへのモビリティとアクセスが容易になります。
+                        追加情報については、メールでお気軽にお問い合わせください。
+                </target>
+            </trans-unit>
+            <trans-unit id="about.contact.text2.hard">
+                <source>about.contact.text2.hard</source>
+                <target>当社のサイトは完全に独立しており、お客様に関する情報を収集しません。
+                        マンガを無料で無制限に表示およびダウンロードできます。
+                        モバイルアプリケーションを使用すると、ウェブサイトへの移動性とアクセスが容易になります。
+                        追加情報については、メールでお気軽にお問い合わせください。
+
+
+                        エロ漫画とは？
+
+                        ヘンタイはポルノを目的とした漫画であり、パイズリ、テイトク、ネトラレなど、当社のサイトで見つけることができるジャンルのセットをまとめています。
+                        それらは主に日本からのもので、これらの漫画のアニメ版もあります。
+                        2018年、hentaiはpornhubサイトで2番目に検索されたカテゴリでした。
+                        My Anime List には1,300以上のアニメエロアニメも掲載されています。
+
+
+                        同人漫画とは？
+
+                        同人や同人は、ワンピース、ナルト、フェアリーテイルなどの有名な漫画をよく取り上げるアマチュアによって作られた漫画です。
+                        しかし、それらは漫画だけではなく、音楽、小説、ビデオゲームもあります。
+                </target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

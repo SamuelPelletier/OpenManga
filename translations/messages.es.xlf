@@ -143,6 +143,53 @@
                 <source>meta.description.manga</source>
                 <target>Aquí encontrarás uno de los mejores manga : </target>
             </trans-unit>
+
+            <trans-unit id="about.title">
+                <source>about.title</source>
+                <target>Acerca de </target>
+            </trans-unit>
+            <trans-unit id="about.contact.title">
+                <source>about.contact.title</source>
+                <target>Para contactarnos</target>
+            </trans-unit>
+            <trans-unit id="about.information.title">
+                <source>about.information.title</source>
+                <target>Informaciones utiles</target>
+            </trans-unit>
+            <trans-unit id="about.contact.text1">
+                <source>about.contact.text1</source>
+                <target>Contáctenos en la siguiente dirección de correo electrónico : </target>
+            </trans-unit>
+            <trans-unit id="about.contact.text2.soft">
+                <source>about.contact.text2.soft</source>
+                <target>Nuestro sitio es 100% autónomo y no recopilamos ninguna información sobre nuestros clientes.
+                        Puedes ver y descargar manga gratis y sin límite.
+                        Una aplicación móvil le permite una mayor movilidad y facilidad de acceso a nuestro sitio web.
+                        Para cualquier información adicional, no dude en contactarnos por correo electrónico.
+                </target>
+            </trans-unit>
+            <trans-unit id="about.contact.text2.hard">
+                <source>about.contact.text2.hard</source>
+                <target>Nuestro sitio es 100% autónomo y no recopilamos ninguna información sobre nuestros clientes.
+                        Puedes ver y descargar manga gratis y sin límite.
+                        Una aplicación móvil le permite una mayor movilidad y facilidad de acceso a nuestro sitio web.
+                        Para cualquier información adicional, no dude en contactarnos por correo electrónico.
+
+
+                        ¿Qué son los hentai manga?
+
+                        Los hentai son manga para fines pornográficos, reúne un conjunto de géneros que puedes encontrar en nuestro sitio, como paizuri, teitoku o netorare.
+                        Son originarios de Japón principalmente, también hay versiones animadas de estos manga.
+                        En 2018, hentai fue la segunda categoría más buscada en el sitio pornhub.
+                        También hay más de 1.300 hentai de anime en la lista de My Anime List.
+
+
+                        ¿Qué es el manga doujin?
+
+                        Los dōjin o doujin son manga hecha por aficionados que a menudo toman manga famoso como One Piece, Naruto o Fairy Tail.
+                        Pero no son exclusivamente manga, también hay música, novelas o videojuegos.
+                </target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
