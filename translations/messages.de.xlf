@@ -143,6 +143,51 @@
                 <source>meta.description.manga</source>
                 <target>Hier finden Sie einen der besten Mangas : </target>
             </trans-unit>
+
+            <trans-unit id="about.title">
+                <source>about.title</source>
+                <target>Über </target>
+            </trans-unit>
+            <trans-unit id="about.contact.title">
+                <source>about.contact.title</source>
+                <target>Um uns zu kontaktieren</target>
+            </trans-unit>
+            <trans-unit id="about.information.title">
+                <source>about.information.title</source>
+                <target>Nützliche Informationen</target>
+            </trans-unit>
+            <trans-unit id="about.contact.text1">
+                <source>about.contact.text1</source>
+                <target>Kontaktieren Sie uns unter der folgenden E-Mail-Adresse : </target>
+            </trans-unit>
+            <trans-unit id="about.contact.text2.soft">
+                <source>about.contact.text2.soft</source>
+                <target>Unsere Website ist zu 100% autonom und wir sammeln keine Informationen über unsere Kunden.
+                        Sie können Manga kostenlos und unbegrenzt ansehen und herunterladen.
+                        Eine mobile Anwendung ermöglicht Ihnen eine größere Mobilität und einen einfachen Zugriff auf unsere Website.
+                        Für weitere Informationen zögern Sie nicht, uns per E-Mail zu kontaktieren.
+                </target>
+            </trans-unit>
+            <trans-unit id="about.contact.text2.hard">
+                <source>about.contact.text2.hard</source>
+                <target>Unsere Website ist zu 100% autonom und wir sammeln keine Informationen über unsere Kunden.
+                        Sie können Manga kostenlos und unbegrenzt ansehen und herunterladen.
+                        Eine mobile Anwendung ermöglicht Ihnen eine größere Mobilität und einen einfachen Zugriff auf unsere Website.
+                        Für weitere Informationen zögern Sie nicht, uns per E-Mail zu kontaktieren.
+
+
+                        Was sind Hentai Manga?
+
+                        Hentai sind Mangas für pornografische Zwecke. Sie vereinen eine Reihe von Genres, die Sie auf unserer Website finden können, z. B. Paizuri, Teitoku oder Netorare.
+                        Es gibt auch mehr als 1.300 Anime Hentai auf My Anime List.
+
+
+                        Was ist Doujin Manga?
+
+                        Das Dōjin oder Doujin sind Mangas von Amateuren, die oft berühmte Mangas wie One Piece, Naruto oder Fairy Tail aufnehmen.
+                        Es handelt sich aber nicht nur um Manga, sondern auch um Musik, Romane oder Videospiele.
+                        </target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

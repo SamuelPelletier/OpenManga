@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <h1 class="title">{{ 'about.title'|trans }} {{ app.request.server.get('APP_NAME') }}</h1>
+    <h2>{{ 'about.contact.title'|trans }}</h2>
+    <p>{{ 'about.contact.text1'|trans }}{{ app.request.server.get('CONTACT_MAIL') }}</p>
+    <h2>{{ 'about.information.title'|trans }}</h2>
+    <p>{{ ('about.contact.text2.'~app.request.server.get('ABOUT_TEXT'))|trans|nl2br }}</p>
+{% endblock %}

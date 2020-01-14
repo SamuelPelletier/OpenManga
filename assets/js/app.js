@@ -71,5 +71,13 @@ $(function () {
         pages = undefined;
         newUrl = undefined;
     });
+
+    $('.manga').on('click', function (e) {
+        $(".loader").remove();
+
+        if (!window.event.ctrlKey) {
+            $(this).append('<div class="loader"><div class="loader-inner"><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div></div></div>');
+        }
+    })
 });
 
