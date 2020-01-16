@@ -22,7 +22,7 @@ class RequestListener
         }
 
         // Check disclaimer and check googlebot agent
-        if ($event->getRequest()->query->get('disclaimer') == 1 || strpos(strtolower($event->getRequest()->headers->get('User-Agent')),
+        if ($event->getRequest()->query->get('disclaimer') == 1 || strstr(strtolower($event->getRequest()->headers->get('User-Agent')),
                 "google") != false) {
             $event->getRequest()->getSession()->set('disclaimer', true);
         } else {
