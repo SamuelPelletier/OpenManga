@@ -30,6 +30,7 @@ class RequestListener
             $event->getRequest()->getSession()->set('disclaimer', true);
         } else {
             if ($event->getRequest()->getSession()->get('disclaimer') != true && $_ENV['USE_DISCLAIMER'] == 1) {
+                $event->getRequest()->getSession()->set('finalUrl', $event->getRequest()->getUri());
                 $event->setResponse(new RedirectResponse($this->router->generate('disclaimer')));
             }
         }

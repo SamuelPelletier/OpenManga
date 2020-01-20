@@ -165,12 +165,4 @@ class MangaController extends AbstractController
         }
 
     }
-
-    /**
-     * @Route("/disclaimer", name="disclaimer")
-     */
-    public function disclaimer(): Response
-    {
-        return $this->render('disclaimer.html.twig');
-    }
 }
