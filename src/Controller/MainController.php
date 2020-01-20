@@ -40,7 +40,8 @@ class MainController extends AbstractController
     {
         $finalUrl = $request->getSession()->get('finalUrl');
 
-        if (strstr($finalUrl, "disclaimer") != false || $finalUrl == null) {
+        if (strstr($finalUrl, "disclaimer") != false || $finalUrl == null || preg_match("/\/[a-z]{2}\//",
+                $finalUrl) == false) {
             $finalUrl = $this->generateUrl('index');
         }
 
