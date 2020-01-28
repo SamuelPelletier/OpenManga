@@ -9,7 +9,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="trafficjunky-site-verification" content="tx5xu9z2t" />
+    <meta name="trafficjunky-site-verification" content="{{ app.request.server.get('TRAFFICJUNKY_TAG') }}"/>
     <title>{% spaceless %}{{ app.request.server.get('APP_NAME') }} - {% block title %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}{% endspaceless %}</title>
     <meta name="description"
           content="{% spaceless %}{% block meta_description %}{{ app.request.server.get('APP_NAME') ~ 'meta.description'|trans({"%tags%":app.request.server.get('APP_KEYWORD') }) }}{% endblock %}{% endspaceless %}"/>
