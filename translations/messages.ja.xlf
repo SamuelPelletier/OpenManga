@@ -55,6 +55,14 @@
                 <source>menu.search</source>
                 <target>検索</target>
             </trans-unit>
+            <trans-unit id="menu.login">
+                <source>menu.login</source>
+                <target>ログインする</target>
+            </trans-unit>
+            <trans-unit id="menu.user">
+                <source>menu.user</source>
+                <target>アカウント</target>
+            </trans-unit>
             <trans-unit id="post.search_for">
                 <source>post.search_for</source>
                 <target>検索...</target>
@@ -125,6 +133,14 @@
                 <source>manga.no_images_found</source>
                 <target>画像が見つかりません</target>
             </trans-unit>
+            <trans-unit id="manga.add_favorite">
+                <source>manga.add_favorite</source>
+                <target>お気に入りに追加</target>
+            </trans-unit>
+            <trans-unit id="manga.remove_favorite">
+                <source>manga.remove_favorites</source>
+                <target>お気に入りから削除</target>
+            </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>
@@ -142,6 +158,259 @@
             <trans-unit id="meta.description.manga">
                 <source>meta.description.manga</source>
                 <target>ここでは、最高の漫画の1つを見つけることができます : </target>
+            </trans-unit>
+            <trans-unit id="meta.description.with">
+                <source>meta.description.with</source>
+                <target> と</target>
+            </trans-unit>
+
+            <trans-unit id="login.title">
+                <source>login.title</source>
+                <target>ログインする ！</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.tab">
+                <source>login.form.login.tab</source>
+                <target>ログインする</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.tab">
+                <source>login.form.signup.tab</source>
+                <target>サインアップ</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.title">
+                <source>login.form.login.title</source>
+                <target>お帰りなさい ！</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.invalid_username">
+                <source>login.form.login.invalid_username</source>
+                <target>ユーザー名かパスワードが無効。正しく大文字にしてください。</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.username">
+                <source>login.form.login.username</source>
+                <target>ユーザー名</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.password">
+                <source>login.form.login.password</source>
+                <target>パスワード</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.forgot_password">
+                <source>login.form.login.forgot_password</source>
+                <target>パスワードをお忘れですか ？</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.button">
+                <source>login.form.login.button</source>
+                <target>ログインする</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.title">
+                <source>login.form.signup.title</source>
+                <target>無料で登録！</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.button">
+                <source>login.form.signup.button</source>
+                <target>サインアップ</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.username">
+                <source>login.form.signup.form_type.username</source>
+                <target>ユーザー名</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.captcha">
+                <source>login.form.signup.form_type.captcha</source>
+                <target>キャプチャ</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.first_password">
+                <source>login.form.signup.form_type.first_password</source>
+                <target>パスワード</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.second_password">
+                <source>login.form.signup.form_type.second_password</source>
+                <target>パスワードを再度入力してください</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.password.must_match">
+                <source>login.form.signup.form_type.password.must_match</source>
+                <target>パスワードフィールドは一致する必要があります</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.password.not_blank">
+                <source>login.form.signup.form_type.password.not_blank</source>
+                <target>パスワードを入力してください</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.password.length">
+                <source>login.form.signup.form_type.password.length</source>
+                <target>パスワードは6文字以上にしてください</target>
+            </trans-unit>
+
+            <trans-unit id="reset_password.title">
+                <source>reset_password.title</source>
+                <target>あなたのパスワードをリセット</target>
+            </trans-unit>
+            <trans-unit id="reset_password.text">
+                <source>reset_password.text</source>
+                <target>メールアドレスを入力してください。パスワードをリセットするためのリンクをお送りします</target>
+            </trans-unit>
+            <trans-unit id="reset_password.button">
+                <source>reset_password.button</source>
+                <target>パスワード再設定メールを送信する</target>
+            </trans-unit>
+            <trans-unit id="reset_password.form_type.email">
+                <source>reset_password.form_type.email</source>
+                <target>Eメール</target>
+            </trans-unit>
+            <trans-unit id="reset_password.form_type.email_empty">
+                <source>reset_password.form_type.email_empty</source>
+                <target>あなたのメールアドレスを入力してください</target>
+            </trans-unit>
+
+            <trans-unit id="check_email.title">
+                <source>check_email.title</source>
+                <target>パスワードリセットメールを送信しました</target>
+            </trans-unit>
+            <trans-unit id="check_email.text1">
+                <source>check_email.text1</source>
+                <target>パスワードをリセットするためにクリックできるリンクを含むメールが送信されました。このリンクは%hour%時間後に有効期限が切れます。</target>
+            </trans-unit>
+            <trans-unit id="check_email.text2">
+                <source>check_email.text2</source>
+                <target>メールが届かない場合は、迷惑メールフォルダを確認するか、もう一度お試しください。</target>
+            </trans-unit>
+
+            <trans-unit id="new_password.title">
+                <source>new_password.title</source>
+                <target>新しいパスワードをリセット</target>
+            </trans-unit>
+            <trans-unit id="new_password.button">
+                <source>new_password.button</source>
+                <target>検証</target>
+            </trans-unit>
+            <trans-unit id="new_password.form_type.first_password">
+                <source>new_password.form_type.first_password</source>
+                <target>新しいパスワード</target>
+            </trans-unit>
+
+            <trans-unit id="account.edit">
+                <source>account.edit</source>
+                <target>編集する</target>
+            </trans-unit>
+            <trans-unit id="account.logout">
+                <source>account.logout</source>
+                <target>ログアウト</target>
+            </trans-unit>
+            <trans-unit id="account.rank">
+                <source>account.rank</source>
+                <target>ランク</target>
+            </trans-unit>
+            <trans-unit id="account.points">
+                <source>account.points</source>
+                <target>ポイント</target>
+            </trans-unit>
+            <trans-unit id="account.time_spent">
+                <source>account.time_spent</source>
+                <target>使った時間</target>
+            </trans-unit>
+            <trans-unit id="account.manga_read">
+                <source>account.manga_read</source>
+                <target>マンガを読む</target>
+            </trans-unit>
+            <trans-unit id="account.manga_download">
+                <source>account.manga_download</source>
+                <target>マンガがダウンロードされました</target>
+            </trans-unit>
+            <trans-unit id="account.last_manga_read">
+                <source>account.last_manga_read</source>
+                <target>最後に読んだマンガ</target>
+            </trans-unit>
+            <trans-unit id="account.manga.discover_new_manga">
+                <source>account.manga.discover_new_manga</source>
+                <target>新しい漫画を見つけよう！</target>
+            </trans-unit>
+            <trans-unit id="account.favorite_manga">
+                <source>account.favorite_manga</source>
+                <target>あなたのお気に入りの漫画</target>
+            </trans-unit>
+            <trans-unit id="account.manga.add_manga_favorite">
+                <source>account.manga.add_manga_favorite</source>
+                <target>新しいマンガをお気に入りに追加する</target>
+            </trans-unit>
+            <trans-unit id="account.days">
+                <source>account.days</source>
+                <target>%count% 日</target>
+            </trans-unit>
+            <trans-unit id="account.hours">
+                <source>account.hours</source>
+                <target>%count% 時間</target>
+            </trans-unit>
+            <trans-unit id="account.minutes">
+                <source>account.minutes</source>
+                <target>%count% 分</target>
+            </trans-unit>
+
+            <trans-unit id="edit_profile.title">
+                <source>edit_profile.title</source>
+                <target>プロフィールを編集</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.link.back_account">
+                <source>edit_profile.link.back_account</source>
+                <target>アカウントに戻る</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.link.change_password">
+                <source>edit_profile.link.change_password</source>
+                <target>パスワードを変更する</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text">
+                <source>edit_profile.form.text</source>
+                <target>プロモーションメールが送信されますが、パスワードを忘れた場合はメールが必要です。</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.button">
+                <source>edit_profile.form.button</source>
+                <target>検証</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.link.delete">
+                <source>edit_profile.link.delete</source>
+                <target>アカウントを削除する</target>
+            </trans-unit>
+
+            <trans-unit id="change_password.title">
+                <source>change_password.title</source>
+                <target>パスワードを変更してください</target>
+            </trans-unit>
+            <trans-unit id="change_password.link.back_account">
+                <source>change_password.link.back_account</source>
+                <target>アカウントに戻る</target>
+            </trans-unit>
+            <trans-unit id="change_password.link.back_edit">
+                <source>change_password.link.back_edit</source>
+                <target>編集に戻る</target>
+            </trans-unit>
+
+            <trans-unit id="delete_account.title">
+                <source>delete_account.title</source>
+                <target>アカウントを削除してください！</target>
+            </trans-unit>
+            <trans-unit id="delete_account.link.back_account">
+                <source>delete_account.link.back_account</source>
+                <target>アカウントに戻る</target>
+            </trans-unit>
+            <trans-unit id="delete_account.text">
+                <source>delete_account.text</source>
+                <target>このアクションは元に戻せません。選択を確認してください！</target>
+            </trans-unit>
+            <trans-unit id="delete_account.button">
+                <source>delete_account.button</source>
+                <target>アカウント抑制を検証する</target>
+            </trans-unit>
+
+            <trans-unit id="email.title">
+                <source>email.title</source>
+                <target>パスワードを失った</target>
+            </trans-unit>
+            <trans-unit id="email.text1">
+                <source>email.text1</source>
+                <target>パスワードを紛失しましたか？
+
+                パスワードをリセットしても問題ありません。下のボタンをクリックして、新しいパスワードを選択してください。
+
+                このリンクは1時間後に有効期限が切れます。</target>
+            </trans-unit>
+            <trans-unit id="email.button">
+                <source>email.button</source>
+                <target>パスワードを変更する</target>
             </trans-unit>
 
             <trans-unit id="about.title">

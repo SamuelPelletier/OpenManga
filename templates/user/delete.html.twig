@@ -1,0 +1,36 @@
+{% extends 'form/theme.html.twig' %}
+
+{% block title %}{{ 'delete_account.title'|trans }}{% endblock %}
+
+
+{% block body %}
+    <div class="form">
+        <div class="buttons row">
+            <div class="col"><a href="{{ path('user_index') }}">{{ 'delete_account.link.back_account'|trans }}</a></div>
+            <div class="col"></div>
+        </div>
+
+        <div class="tab-content">
+            <div id="delete">
+                <h1 class="c-red">{{ 'delete_account.title'|trans }}</h1>
+
+                <form action="{{ path('user_delete') }}" method="post">
+
+                    <p>{{ 'delete_account.text'|trans }}</p>
+
+                    {{ form_widget(deleteForm.check, { 'attr': {'class': 'd-none'} }) }}
+                    {{ form_row(deleteForm._token) }}
+
+
+                    <button type="submit"
+                            class="button button-block btn-register">{{ 'delete_account.button'|trans }}
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div><!-- tab-content -->
+
+    </div> <!-- /form -->
+{% endblock %}

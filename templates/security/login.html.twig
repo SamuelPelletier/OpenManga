@@ -1,0 +1,99 @@
+{% import "macro/encore.html.twig" as encore %}
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore.encore_absolute_link_tags('css/form') }}
+{% endblock %}
+
+{% block title %}{{ 'login.title'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="form">
+
+        <ul class="tab-group">
+            <li class="tab active"><a href="#login">{{ 'login.form.login.tab'|trans }}</a></li>
+            <li class="tab"><a href="#signup">{{ 'login.form.signup.tab'|trans }}</a></li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="login">
+                <h1>{{ 'login.form.login.title'|trans }}</h1>
+
+                <form action="{{ path('app_login') }}" method="post">
+
+                    {% if error != null %}
+                        <div class="form-error">
+                            <ul>
+                                <li>
+                                    {{ 'login.form.login.invalid_username'|trans }}
+                                </li>
+                            </ul>
+                        </div>
+                    {% endif %}
+
+                    <div class="field-wrap">
+                        <label for="inputUsername">
+                            {{ 'login.form.login.username'|trans }}<span class="req">*</span>
+                        </label>
+                        <input type="text" value="{{ last_username }}" name="username" id="inputUsername" required
+                               autofocus>
+                    </div>
+
+                    <div class="field-wrap">
+                        <label for="inputPassword">{{ 'login.form.login.password'|trans }}<span
+                                    class="req">*</span></label>
+                        <input type="password" name="password" id="inputPassword" required>
+                    </div>
+
+
+                    <input type="hidden" name="_csrf_token"
+                           value="{{ csrf_token('authenticate') }}"
+                    >
+
+                    <input type="checkbox" name="_remember_me" class="d-none" checked>
+
+                    <p class="forgot"><a
+                                href="{{ path('app_forgot_password_request') }}">{{ 'login.form.login.forgot_password'|trans }}</a>
+                    </p>
+
+
+                    <button class="button button-block" type="submit">
+                        {{ 'login.form.login.button'|trans }}
+                    </button>
+
+                </form>
+
+            </div>
+
+            <div id="signup">
+                <h1>{{ 'login.form.signup.title'|trans }}</h1>
+
+                <form action="{{ path('app_register') }}" method="post">
+
+                    {% include 'form/field.html.twig' with {'formField':registrationForm.username} %}
+
+                    {% include 'form/field.html.twig' with {'formField':registrationForm.plainPassword.first} %}
+
+                    {% include 'form/field.html.twig' with {'formField':registrationForm.plainPassword.second} %}
+
+                    {% include 'form/field.html.twig' with {'formField':registrationForm.captcha} %}
+
+                    {{ form_row(registrationForm._token) }}
+
+                    <button type="submit"
+                            class="button button-block btn-register">{{ 'login.form.signup.button'|trans }}</button>
+
+                </form>
+
+            </div>
+
+        </div><!-- tab-content -->
+
+    </div> <!-- /form -->
+{% endblock %}
+
+ {% block javascripts %}
+     {{ parent() }}
+     {{ encore.encore_absolute_script_tags('js/form') }}
+ {% endblock %}

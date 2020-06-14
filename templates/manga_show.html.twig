@@ -9,7 +9,7 @@
 
 {% block meta_description %}
     {{ parent() }}
-    {{ 'meta.description.manga'|trans ~ manga.title | raw }}{{ manga.tags | join(',',' and ') }}
+    {{ 'meta.description.manga'|trans ~ manga.title | raw  ~ 'meta.description.with'|trans }} {{ manga.tags | join(',',' and ') }}
 {% endblock %}
 
 {% block meta_keyword %}
@@ -91,8 +91,23 @@
         </p>
     {% endif %}
     <p class="count-views">{{ 'manga.count_views'|trans }} : {{ manga.countViews }}</p>
-    <a class="btn download" target="_blank"
+    <a class="btn-effect raise download" target="_blank"
        href="{{ url('download', {'id':manga.id}) }}">{{ 'manga.download'|trans }}</a>
+
+    {% if app.user is not null %}
+        {% if manga in app.user.getFavoriteMangas %}
+            {% set buttonText = 'manga.remove_favorite'|trans %}
+            {% set url = url('remove_favorite',{"id":manga.id}) %}
+        {% else %}
+            {% set buttonText = 'manga.add_favorite'|trans %}
+            {% set url = url('add_favorite',{"id":manga.id}) %}
+        {% endif %}
+
+        <a class="btn-effect offset add-favorite"
+           data-url="{{ url }}">{{ buttonText }}</a>
+
+    {% endif %}
+
     <div class="row" id="lightgallery">
         {% for image in images %}
             {% if image matches '{\.jpg$}' %}

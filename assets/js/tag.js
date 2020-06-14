@@ -1,24 +1,23 @@
 $(document).ready(function () {
-    $('.letter-list li').on('click', function () {
-        var text = $(this).text().trim();
-        if ($(this).hasClass("all")) {
-            $('.d-none').removeClass('d-none');
-        } else if ($(this).hasClass("other")) {
-            $('.tag-list span a').each(function (index, value) {
-                if ($.inArray($(value).text().trim().toUpperCase()[0], ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']) != -1) {
-                    $(value).parent().addClass('d-none');
-                } else {
-                    $(value).parent().removeClass('d-none');
-                }
-            });
-        } else {
-            $('.tag-list span a').each(function (index, value) {
-                if ($(value).text().trim().toUpperCase()[0] != text) {
-                    $(value).parent().addClass('d-none');
-                } else {
-                    $(value).parent().removeClass('d-none');
-                }
-            });
-        }
-    });
+
+    if (getParameterByName('qt') === null || getParameterByName('qt') === '') {
+        $('.letter-list li:first-child a').css('color', '#ff306a');
+    } else {
+        $('.letter-list li a').each(function (index, node) {
+            if ($(node).text().trim().toLowerCase() === getParameterByName('qt').toLowerCase()) {
+                $(node).css('color', '#ff306a');
+                return false;
+            }
+        })
+    }
 });
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}

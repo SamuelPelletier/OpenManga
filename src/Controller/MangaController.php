@@ -13,6 +13,7 @@ namespace App\Controller;
 
 use App\Entity\Language;
 use App\Entity\Manga;
+use App\Entity\User;
 use App\Repository\AuthorRepository;
 use App\Repository\LanguageRepository;
 use App\Repository\MangaRepository;
@@ -79,6 +80,13 @@ class MangaController extends AbstractController
         MangaRepository $mangaRepository,
         Request $request
     ): Response {
+
+        $entityManager = $this->getDoctrine()->getManager();
+        /**
+         * @var User $user
+         */
+        $user = $this->getUser();
+
         $images = array();
         if (is_dir('media/' . $manga->getId() . '/')) {
             $finder = new Finder();
@@ -90,12 +98,22 @@ class MangaController extends AbstractController
         }
 
         $mangaView = explode(',', $request->getSession()->get('manga_view'));
+        // Check in the session if this manga is already view
         if (!in_array($manga->getId(), $mangaView)) {
             $request->getSession()->set('manga_view',
                 $request->getSession()->get('manga_view') . ',' . $manga->getId());
             $manga->setCountViews($manga->getCountViews() + 1);
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($manga);
+            $entityManager->flush();
+        }
+
+        // User is logged in
+        if ($this->isGranted('ROLE_USER')) {
+            $user->addLastMangasRead($manga);
+            if (!in_array($manga->getId(), $mangaView)) {
+                $user->incrementCountMangasRead();
+            }
+            $entityManager->persist($user);
             $entityManager->flush();
         }
 
@@ -136,6 +154,13 @@ class MangaController extends AbstractController
     public function mangaDownload(
         Manga $manga
     ): Response {
+
+        $entityManager = $this->getDoctrine()->getManager();
+        /**
+         * @var User $user
+         */
+        $user = $this->getUser();
+
         if (is_dir('media/' . $manga->getId() . '/')) {
             $zipName = htmlspecialchars_decode($manga->getTitle(), ENT_QUOTES) . ".zip";
             $zipName = str_replace(['|', '/', '\\'], '', $zipName);
@@ -159,10 +184,51 @@ class MangaController extends AbstractController
             $response->headers->set('Content-Disposition', 'attachment;filename="' . $zipName . '"');
             $response->headers->set('Content-length', filesize($zipName));
             $response->deleteFileAfterSend(true);
+
+            $user->incrementCountMangasDownload();
+            $entityManager->persist($user);
+            $entityManager->flush();
+
             return $response;
         } else {
             throw $this->createNotFoundException('Sorry this file doesn\'t exist');
         }
 
+    }
+
+    /**
+     * @Route("/favorite/{id}/add", methods={"POST"}, name="add_favorite")
+     */
+    public function addFavorite(Manga $manga)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        /**
+         * @var User $user
+         */
+        $user = $this->getUser();
+
+        $user->addFavoriteManga($manga);
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->json(['response' => true]);
+    }
+
+    /**
+     * @Route("/favorite/{id}/remove", methods={"POST"}, name="remove_favorite")
+     */
+    public function removeFavorite(Manga $manga)
+    {
+        $entityManager = $this->getDoctrine()->getManager();
+        /**
+         * @var User $user
+         */
+        $user = $this->getUser();
+
+        $user->removeFavoriteManga($manga);
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->json(['response' => true]);
     }
 }

@@ -100,12 +100,17 @@ class ImportMangaFromFolderCommand extends Command
 
         if (!$helper->ask($input, $output, $question)) {
             $output->writeln('<red>Abort</>');
-            return;
+            return 0;
         }
 
         $finderFolder = new Finder();
         $finderFolder->directories()->in(dirname(__DIR__) . '/../public/media/');
         $repoManga = $this->em->getRepository(Manga::class);
+
+        if (count($finderFolder) === 0) {
+            $output->writeln('<red>ERROR : Any file in /public/media !</>');
+            return 0;
+        }
 
         foreach ($finderFolder as $folder) {
             $folders[] = $folder;
@@ -157,7 +162,7 @@ class ImportMangaFromFolderCommand extends Command
             $manga->setPublishedAt(new \DateTime('NOW'));
             $this->em->persist($manga);
             $this->em->flush();
-            $fileSystem->rename($folder->getRealPath(), $folder->getPath() . '/' . $manga->getId());
+            $fileSystem->rename($folder->getRealPath(), $folder->getPath() . '/' . $manga->getId(), true);
             $this->logger->info('End of import - manga : ' . $manga->getTitle() . ' ## New ID : ' . $manga->getId());
             $progressBar->advance();
             return 0;

@@ -1,0 +1,43 @@
+{% extends 'form/theme.html.twig' %}
+
+{% block title %}{{ 'edit_profile.title'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="form">
+        <div class="buttons row">
+            <div class="col"><a href="{{ path('user_index') }}">{{ 'edit_profile.link.back_account'|trans }}</a></div>
+            <div class="col"><a href="{{ path('change_password') }}">{{ 'edit_profile.link.change_password'|trans }}</a>
+            </div>
+        </div>
+
+        <div class="tab-content">
+            <div id="edit">
+                <h1>{{ 'edit_profile.title'|trans }}</h1>
+
+                <form action="{{ path('user_edit') }}" method="post">
+
+                    <p>{{ 'edit_profile.form.text'|trans }}</p>
+
+                    {% include 'form/field.html.twig' with {'formField':editForm.email,'required':false} %}
+
+                    {{ form_row(editForm._token) }}
+
+                    <button type="submit"
+                            class="button button-block btn-register">{{ 'edit_profile.form.button'|trans }}</button>
+
+                </form>
+
+            </div>
+
+        </div><!-- tab-content -->
+
+
+        <div class="buttons delete-link row">
+            <div class="col"></div>
+            <div class="col"><a href="{{ path('user_delete') }}"
+                                class="c-red">{{ 'edit_profile.link.delete'|trans }}</a></div>
+        </div>
+
+
+    </div> <!-- /form -->
+{% endblock %}

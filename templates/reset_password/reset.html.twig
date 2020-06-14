@@ -1,0 +1,26 @@
+{% extends 'form/theme.html.twig' %}
+
+{% block title %}{{ 'new_password.title'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="form">
+        <div class="tab-content">
+            <div id="reset-password">
+                <h1>{{ 'new_password.title'|trans }}</h1>
+
+                {{ form_start(resetForm) }}
+
+                {% include 'form/field.html.twig' with {'formField':resetForm.plainPassword.first} %}
+
+                {% include 'form/field.html.twig' with {'formField':resetForm.plainPassword.second} %}
+
+                <button type="submit" class="button button-block btn-register">{{ 'new_password.button'|trans }}
+                </button>
+
+                {{ form_end(resetForm) }}
+
+            </div>
+
+        </div><!-- tab-content -->
+    </div> <!-- /form -->
+{% endblock %}

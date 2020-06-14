@@ -1,0 +1,13 @@
+{% import "macro/encore.html.twig" as encore %}
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore.encore_absolute_link_tags('css/form') }}
+    {{ encore.encore_absolute_link_tags('css/bootstrap-grid') }}
+{% endblock %}
+
+ {% block javascripts %}
+     {{ parent() }}
+     {{ encore.encore_absolute_script_tags('js/form') }}
+ {% endblock %}

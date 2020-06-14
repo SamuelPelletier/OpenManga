@@ -25,6 +25,10 @@ a {
     text-decoration: none !important;
 }
 
+#main {
+    margin-top: 2em;
+}
+
 #menu-toggle {
     margin-bottom: 10px;
 }
@@ -540,30 +544,6 @@ li:last-child .page {
     margin-top: 15px;
 }
 
-.download {
-    border-radius: 5px;
-    font-size: 22px;
-    text-decoration: none;
-    color: #fff;
-    background-color: #55acee;
-    box-shadow: 0px 5px 0px 0px #3C93D5;
-}
-
-.download:active {
-    transform: translate(0px, 5px);
-    -webkit-transform: translate(0px, 5px);
-    box-shadow: 0px 1px 0px 0px;
-}
-
-.download:hover {
-    background-color: #6FC6FF;
-    color: white !important
-}
-
-.download:active, .download:focus {
-    color: white !important;
-}
-
 .label > svg {
     position: relative;
     top: 1.5px;
@@ -589,4 +569,55 @@ li:last-child .page {
 
 .lg-toolbar > span:hover, .lg-toolbar > a:hover, .lg-icon:hover {
     color: #ff306a !important;
+}
+
+.small-loader {
+    width: 20%;
+    display: inline-block;
+    position: absolute;
+}
+
+.small-loader svg {
+    top: 10px;
+    left: 30px;
+    position: relative;
+}
+
+/*
+  Set the color of the icon
+*/
+.small-loader svg path,
+.small-loader svg rect {
+    fill: #FF6700;
+}
+
+.animate-box {
+    display: inline-block;
+    position: absolute;
+}
+
+.animate-loader {
+    height: 40px;
+    position: relative;
+    top: 10px;
+    left: 30px;
+
+}
+
+
+.animate-loader path {
+    animation: dash 0.75s linear both;
+    animation-delay: 0.5s;
+}
+
+@keyframes dash {
+    0% {
+        stroke-dashoffset: 210;
+    }
+    75% {
+        stroke-dashoffset: -220;
+    }
+    100% {
+        stroke-dashoffset: -205;
+    }
 }

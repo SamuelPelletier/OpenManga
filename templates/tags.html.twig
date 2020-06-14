@@ -33,11 +33,10 @@
     <h3>{{ 'tag.all_title'|trans }}</h3>
     <div class="row">
         <ul class="letter-list col-md-12 text-center">
-            <li class="all">{{ 'tag.all'|trans }}</li>
             {% for letter in 'a'|upper..'z'|upper %}
-                <li> {{ letter }}</li>
+                <li><a href="{{ url('tags',{'qt':letter}) }}"> {{ letter }}</a></li>
             {% endfor %}
-            <li class="other">{{ 'tag.other'|trans }}</li>
+            <li class="other"><a href="{{ url('tags',{'qt':'other'}) }}"> {{ 'tag.other'|trans }}</a></li>
         </ul>
     </div>
     <div class="row">

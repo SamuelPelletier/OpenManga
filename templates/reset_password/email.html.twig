@@ -1,0 +1,27 @@
+{% import "macro/encore.html.twig" as encore %}
+{% extends 'form/theme.html.twig' %}
+
+{% block header %}
+{% endblock %}
+
+{% block title %}{{ 'email.title'|trans }}{% endblock %}
+
+{% block body %}
+    {% apply inline_css(encore.encore_absolute_link_tags('css/app'), encore.encore_absolute_link_tags('css/form')) %}
+        <div class="form">
+            <div class="tab-content">
+                <div id="edit">
+                    <h1>{{ 'email.title'|trans }}</h1>
+
+                    <p>{{ 'email.text1'|trans({'%hour%':  tokenLifetime|date('g') })|nl2br }}</p>
+                    <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">
+                        <button type="submit"
+                                class="button button-block btn-register">{{ 'email.button'|trans }}</button>
+                    </a>
+
+                </div>
+
+            </div><!-- tab-content -->
+        </div> <!-- /form -->
+    {% endapply %}
+{% endblock %}

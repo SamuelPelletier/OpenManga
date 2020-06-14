@@ -55,6 +55,14 @@
                 <source>menu.search</source>
                 <target>Búsqueda</target>
             </trans-unit>
+            <trans-unit id="menu.login">
+                <source>menu.login</source>
+                <target>Identifícate</target>
+            </trans-unit>
+            <trans-unit id="menu.user">
+                <source>menu.user</source>
+                <target>Cuenta</target>
+            </trans-unit>
             <trans-unit id="post.search_for">
                 <source>post.search_for</source>
                 <target>Buscar...</target>
@@ -125,6 +133,14 @@
                 <source>manga.no_images_found</source>
                 <target>Ninguna imagen encontradae</target>
             </trans-unit>
+            <trans-unit id="manga.add_favorite">
+                <source>manga.add_favorite</source>
+                <target>Agregar a tus favoritos</target>
+            </trans-unit>
+            <trans-unit id="manga.remove_favorite">
+                <source>manga.remove_favorite</source>
+                <target>Eliminar a tus favoritos</target>
+            </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>
@@ -142,6 +158,259 @@
             <trans-unit id="meta.description.manga">
                 <source>meta.description.manga</source>
                 <target>Aquí encontrarás uno de los mejores manga : </target>
+            </trans-unit>
+            <trans-unit id="meta.description.with">
+                <source>meta.description.with</source>
+                <target> con</target>
+            </trans-unit>
+
+            <trans-unit id="login.title">
+                <source>login.title</source>
+                <target>Iniciar sesión !</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.tab">
+                <source>login.form.login.tab</source>
+                <target>Iniciar sesión</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.tab">
+                <source>login.form.signup.tab</source>
+                <target>Regístrate</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.title">
+                <source>login.form.login.title</source>
+                <target>Bienvenido de nuevo!</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.invalid_username">
+                <source>login.form.login.invalid_username</source>
+                <target>Usuario o contraseña invalido. Asegúrese de capitalizarlo correctamente.</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.username">
+                <source>login.form.login.username</source>
+                <target>Nombre de usuario</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.password">
+                <source>login.form.login.password</source>
+                <target>Contraseña</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.forgot_password">
+                <source>login.form.login.forgot_password</source>
+                <target>Se te olvidó tu contraseña ?</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.button">
+                <source>login.form.login.button</source>
+                <target>Iniciar sesión</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.title">
+                <source>login.form.signup.title</source>
+                <target>Registrate gratis !</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.button">
+                <source>login.form.signup.button</source>
+                <target>Regístrate</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.username">
+                <source>login.form.signup.form_type.username</source>
+                <target>Nombre de usuario</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.captcha">
+                <source>login.form.signup.form_type.captcha</source>
+                <target>Captcha</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.first_password">
+                <source>login.form.signup.form_type.first_password</source>
+                <target>Contraseña</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.second_password">
+                <source>login.form.signup.form_type.second_password</source>
+                <target>Repite la contraseña</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.password.must_match">
+                <source>login.form.signup.form_type.password.must_match</source>
+                <target>Los campos de contraseña deben coincidir</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.password.not_blank">
+                <source>login.form.signup.form_type.password.not_blank</source>
+                <target>Porfavor ingrese una contraseña</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.password.length">
+                <source>login.form.signup.form_type.password.length</source>
+                <target>Su contraseña debe tener al menos 6 caracteres.</target>
+            </trans-unit>
+
+            <trans-unit id="reset_password.title">
+                <source>reset_password.title</source>
+                <target>Restablecer su contraseña</target>
+            </trans-unit>
+            <trans-unit id="reset_password.text">
+                <source>reset_password.text</source>
+                <target>Ingrese su dirección de correo electrónico y le enviaremos un enlace para restablecer su contraseña.</target>
+            </trans-unit>
+            <trans-unit id="reset_password.button">
+                <source>reset_password.button</source>
+                <target>Enviar contraseña restablecer correo electrónico</target>
+            </trans-unit>
+            <trans-unit id="reset_password.form_type.email">
+                <source>reset_password.form_type.email</source>
+                <target>Correo electrónico</target>
+            </trans-unit>
+            <trans-unit id="reset_password.form_type.email_empty">
+                <source>reset_password.form_type.email_empty</source>
+                <target>Por favor introduzca su correo electrónico</target>
+            </trans-unit>
+
+            <trans-unit id="check_email.title">
+                <source>check_email.title</source>
+                <target>Correo electrónico de restablecimiento de contraseña enviado</target>
+            </trans-unit>
+            <trans-unit id="check_email.text1">
+                <source>check_email.text1</source>
+                <target>Se ha enviado un correo electrónico que contiene un enlace en el que puede hacer clic para restablecer su contraseña. Este enlace caducará en %hour% hora.</target>
+            </trans-unit>
+            <trans-unit id="check_email.text2">
+                <source>check_email.text2</source>
+                <target>Si no recibe un correo electrónico, verifique su carpeta de correo no deseado o vuelva a intentarlo.</target>
+            </trans-unit>
+
+            <trans-unit id="new_password.title">
+                <source>new_password.title</source>
+                <target>Restablecer nueva contraseña</target>
+            </trans-unit>
+            <trans-unit id="new_password.button">
+                <source>new_password.button</source>
+                <target>Validar</target>
+            </trans-unit>
+            <trans-unit id="new_password.form_type.first_password">
+                <source>new_password.form_type.first_password</source>
+                <target>Nueva contraseña</target>
+            </trans-unit>
+
+            <trans-unit id="account.edit">
+                <source>account.edit</source>
+                <target>Editar</target>
+            </trans-unit>
+            <trans-unit id="account.logout">
+                <source>account.logout</source>
+                <target>Cerrar sesión</target>
+            </trans-unit>
+            <trans-unit id="account.rank">
+                <source>account.rank</source>
+                <target>Rango</target>
+            </trans-unit>
+            <trans-unit id="account.points">
+                <source>account.points</source>
+                <target>Puntos</target>
+            </trans-unit>
+            <trans-unit id="account.time_spent">
+                <source>account.time_spent</source>
+                <target>Tiempo usado</target>
+            </trans-unit>
+            <trans-unit id="account.manga_read">
+                <source>account.manga_read</source>
+                <target>Mangas leyó</target>
+            </trans-unit>
+            <trans-unit id="account.manga_download">
+                <source>account.manga_download</source>
+                <target>Mangas Descargado</target>
+            </trans-unit>
+            <trans-unit id="account.last_manga_read">
+                <source>account.last_manga_read</source>
+                <target>Tu última lectura de mangas</target>
+            </trans-unit>
+            <trans-unit id="account.manga.discover_new_manga">
+                <source>account.manga.discover_new_manga</source>
+                <target>¡Descubramos un nuevo manga!</target>
+            </trans-unit>
+            <trans-unit id="account.favorite_manga">
+                <source>account.favorite_manga</source>
+                <target>Tus mangas favoritos</target>
+            </trans-unit>
+            <trans-unit id="account.manga.add_manga_favorite">
+                <source>account.manga.add_manga_favorite</source>
+                <target>Añadir nuevo manga a tus favoritos</target>
+            </trans-unit>
+            <trans-unit id="account.days">
+                <source>account.days</source>
+                <target>{0,1} %count% día | [2,Inf[ %count% dias</target>
+            </trans-unit>
+            <trans-unit id="account.hours">
+                <source>account.hours</source>
+                <target>{0,1} %count% hora | [2,Inf[ %count% horas</target>
+            </trans-unit>
+            <trans-unit id="account.minutes">
+                <source>account.minutes</source>
+                <target>{0,1} %count% minuto | [2,Inf[ %count% minutos</target>
+            </trans-unit>
+
+            <trans-unit id="edit_profile.title">
+                <source>edit_profile.title</source>
+                <target>Edite su perfil</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.link.back_account">
+                <source>edit_profile.link.back_account</source>
+                <target>Regresar a su cuenta</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.link.change_password">
+                <source>edit_profile.link.change_password</source>
+                <target>Cambia la contraseña</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text">
+                <source>edit_profile.form.text</source>
+                <target>Se le enviará cualquier correo de promoción, pero necesitamos su correo electrónico si olvidó su contraseña.</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.button">
+                <source>edit_profile.form.button</source>
+                <target>Validar</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.link.delete">
+                <source>edit_profile.link.delete</source>
+                <target>Eliminar tu cuenta</target>
+            </trans-unit>
+
+            <trans-unit id="change_password.title">
+                <source>change_password.title</source>
+                <target>Cambia tu contraseña</target>
+            </trans-unit>
+            <trans-unit id="change_password.link.back_account">
+                <source>change_password.link.back_account</source>
+                <target>Regresar a su cuenta</target>
+            </trans-unit>
+            <trans-unit id="change_password.link.back_edit">
+                <source>change_password.link.back_edit</source>
+                <target>Volver a editar</target>
+            </trans-unit>
+
+            <trans-unit id="delete_account.title">
+                <source>delete_account.title</source>
+                <target>¡Elimina tu cuenta!</target>
+            </trans-unit>
+            <trans-unit id="delete_account.link.back_account">
+                <source>delete_account.link.back_account</source>
+                <target>Regresar a su cuenta</target>
+            </trans-unit>
+            <trans-unit id="delete_account.text">
+                <source>delete_account.text</source>
+                <target>Esta acción es irreversible, ¡asegúrese de elegir!</target>
+            </trans-unit>
+            <trans-unit id="delete_account.button">
+                <source>delete_account.button</source>
+                <target>Validar mi supresión de cuenta</target>
+            </trans-unit>
+
+            <trans-unit id="email.title">
+                <source>email.title</source>
+                <target>Contraseña perdida</target>
+            </trans-unit>
+            <trans-unit id="email.text1">
+                <source>email.text1</source>
+                <target>Has perdido tu contraseña ?
+
+                No hay problema para restablecer su contraseña, haga clic en el botón a continuación y elija una nueva.
+
+                Este enlace caducará en 1 hora (s).</target>
+            </trans-unit>
+            <trans-unit id="email.button">
+                <source>email.button</source>
+                <target>Cambiar mi contraseña</target>
             </trans-unit>
 
             <trans-unit id="about.title">

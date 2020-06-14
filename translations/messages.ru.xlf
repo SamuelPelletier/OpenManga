@@ -55,6 +55,14 @@
                 <source>menu.search</source>
                 <target>поиск</target>
             </trans-unit>
+            <trans-unit id="menu.login">
+                <source>menu.login</source>
+                <target>Авторизоваться</target>
+            </trans-unit>
+            <trans-unit id="menu.user">
+                <source>menu.user</source>
+                <target>учетная запись</target>
+            </trans-unit>
             <trans-unit id="post.search_for">
                 <source>post.search_for</source>
                 <target>поиск...</target>
@@ -125,6 +133,14 @@
                 <source>manga.no_images_found</source>
                 <target>изображение не найдено</target>
             </trans-unit>
+            <trans-unit id="manga.add_favorite">
+                <source>manga.add_favorite</source>
+                <target>Добавить в избранное</target>
+            </trans-unit>
+            <trans-unit id="manga.remove_favorite">
+                <source>manga.remove_favorite</source>
+                <target>Удалить в избранное</target>
+            </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>
@@ -142,6 +158,259 @@
             <trans-unit id="meta.description.manga">
                 <source>meta.description.manga</source>
                 <target>Здесь вы найдете одну из лучших манг : </target>
+            </trans-unit>
+            <trans-unit id="meta.description.with">
+                <source>meta.description.with</source>
+                <target> с</target>
+            </trans-unit>
+
+            <trans-unit id="login.title">
+                <source>login.title</source>
+                <target>Авторизоваться !</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.tab">
+                <source>login.form.login.tab</source>
+                <target>Авторизоваться</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.tab">
+                <source>login.form.signup.tab</source>
+                <target>зарегистрироваться</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.title">
+                <source>login.form.login.title</source>
+                <target>Добро пожаловать !</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.invalid_username">
+                <source>login.form.login.invalid_username</source>
+                <target>Неправильное имя пользователя или пароль. Убедитесь, что вы правильно его написали.</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.username">
+                <source>login.form.login.username</source>
+                <target>имя пользователя</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.password">
+                <source>login.form.login.password</source>
+                <target>пароль</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.forgot_password">
+                <source>login.form.login.forgot_password</source>
+                <target>Забыл пароль ?</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.button">
+                <source>login.form.login.button</source>
+                <target>Авторизоваться</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.title">
+                <source>login.form.signup.title</source>
+                <target>Бесплатная регистрация !</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.button">
+                <source>login.form.signup.button</source>
+                <target>зарегистрироваться</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.username">
+                <source>login.form.signup.form_type.username</source>
+                <target>имя пользователя</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.captcha">
+                <source>login.form.signup.form_type.captcha</source>
+                <target>Защитный код</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.first_password">
+                <source>login.form.signup.form_type.first_password</source>
+                <target>пароль</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.second_password">
+                <source>login.form.signup.form_type.second_password</source>
+                <target>Повторите пароль</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.password.must_match">
+                <source>login.form.signup.form_type.password.must_match</source>
+                <target>Поля пароля должны совпадать</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.password.not_blank">
+                <source>login.form.signup.form_type.password.not_blank</source>
+                <target>Пожалуйста, введите пароль</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.password.length">
+                <source>login.form.signup.form_type.password.length</source>
+                <target>Ваш пароль должен быть не менее 6 символов</target>
+            </trans-unit>
+
+            <trans-unit id="reset_password.title">
+                <source>reset_password.title</source>
+                <target>Сбросить пароль</target>
+            </trans-unit>
+            <trans-unit id="reset_password.text">
+                <source>reset_password.text</source>
+                <target>Введите адрес электронной почты, и мы вышлем вам ссылку для сброса пароля.</target>
+            </trans-unit>
+            <trans-unit id="reset_password.button">
+                <source>reset_password.button</source>
+                <target>Отправить письмо для сброса пароля</target>
+            </trans-unit>
+            <trans-unit id="reset_password.form_type.email">
+                <source>reset_password.form_type.email</source>
+                <target>Электронное письмо</target>
+            </trans-unit>
+            <trans-unit id="reset_password.form_type.email_empty">
+                <source>reset_password.form_type.email_empty</source>
+                <target>Пожалуйста, введите ваш адрес электронной почты</target>
+            </trans-unit>
+
+            <trans-unit id="check_email.title">
+                <source>check_email.title</source>
+                <target>Сброс пароля Отправлено письмо</target>
+            </trans-unit>
+            <trans-unit id="check_email.text1">
+                <source>check_email.text1</source>
+                <target>Было отправлено электронное письмо со ссылкой, по которой вы можете сбросить пароль. Срок действия этой ссылки истекает через %hour% час.</target>
+            </trans-unit>
+            <trans-unit id="check_email.text2">
+                <source>check_email.text2</source>
+                <target>Если вы не получили письмо, проверьте папку со спамом или повторите попытку.</target>
+            </trans-unit>
+
+            <trans-unit id="new_password.title">
+                <source>new_password.title</source>
+                <target>Сбросить новый пароль</target>
+            </trans-unit>
+            <trans-unit id="new_password.button">
+                <source>new_password.button</source>
+                <target>Validate</target>
+            </trans-unit>
+            <trans-unit id="new_password.form_type.first_password">
+                <source>new_password.form_type.first_password</source>
+                <target>Новый пароль</target>
+            </trans-unit>
+
+            <trans-unit id="account.edit">
+                <source>account.edit</source>
+                <target>редактировать</target>
+            </trans-unit>
+            <trans-unit id="account.logout">
+                <source>account.logout</source>
+                <target>Выйти</target>
+            </trans-unit>
+            <trans-unit id="account.rank">
+                <source>account.rank</source>
+                <target>Ранг</target>
+            </trans-unit>
+            <trans-unit id="account.points">
+                <source>account.points</source>
+                <target>Точки</target>
+            </trans-unit>
+            <trans-unit id="account.time_spent">
+                <source>account.time_spent</source>
+                <target>Проведенное время</target>
+            </trans-unit>
+            <trans-unit id="account.manga_read">
+                <source>account.manga_read</source>
+                <target>Манга читать</target>
+            </trans-unit>
+            <trans-unit id="account.manga_download">
+                <source>account.manga_download</source>
+                <target>Mangas скачать</target>
+            </trans-unit>
+            <trans-unit id="account.last_manga_read">
+                <source>account.last_manga_read</source>
+                <target>Ваше последнее чтение манги</target>
+            </trans-unit>
+            <trans-unit id="account.manga.discover_new_manga">
+                <source>account.manga.discover_new_manga</source>
+                <target>Давайте откроем новую мангу !</target>
+            </trans-unit>
+            <trans-unit id="account.favorite_manga">
+                <source>account.favorite_manga</source>
+                <target>Ваши любимые манги</target>
+            </trans-unit>
+            <trans-unit id="account.manga.add_manga_favorite">
+                <source>account.manga.add_manga_favorite</source>
+                <target>Добавить новую мангу в избранное</target>
+            </trans-unit>
+            <trans-unit id="account.days">
+                <source>account.days</source>
+                <target>{0,1} %count% день | [2,Inf[ %count% дней</target>
+            </trans-unit>
+            <trans-unit id="account.hours">
+                <source>account.hours</source>
+                <target>{0,1} %count% час | [2,Inf[ %count% часов</target>
+            </trans-unit>
+            <trans-unit id="account.minutes">
+                <source>account.minutes</source>
+                <target>{0,1} %count% минут | [2,Inf[ %count% минут</target>
+            </trans-unit>
+
+            <trans-unit id="edit_profile.title">
+                <source>edit_profile.title</source>
+                <target>Редактировать профиль</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.link.back_account">
+                <source>edit_profile.link.back_account</source>
+                <target>Вернуться к вашей учетной записи</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.link.change_password">
+                <source>edit_profile.link.change_password</source>
+                <target>Изменить пароль</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text">
+                <source>edit_profile.form.text</source>
+                <target>Любое рекламное письмо будет отправлено вам, но нам нужен ваш адрес электронной почты, если вы забыли пароль.</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.button">
+                <source>edit_profile.form.button</source>
+                <target>Validate</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.link.delete">
+                <source>edit_profile.link.delete</source>
+                <target>Удалить учетную запись</target>
+            </trans-unit>
+
+            <trans-unit id="change_password.title">
+                <source>change_password.title</source>
+                <target>Измените свой пароль</target>
+            </trans-unit>
+            <trans-unit id="change_password.link.back_account">
+                <source>change_password.link.back_account</source>
+                <target>Вернуться к вашему аккаунту</target>
+            </trans-unit>
+            <trans-unit id="change_password.link.back_edit">
+                <source>change_password.link.back_edit</source>
+                <target>Назад к редактированию</target>
+            </trans-unit>
+
+            <trans-unit id="delete_account.title">
+                <source>delete_account.title</source>
+                <target>Удалить учетную запись !</target>
+            </trans-unit>
+            <trans-unit id="delete_account.link.back_account">
+                <source>delete_account.link.back_account</source>
+                <target>Вернуться к вашему аккаунту</target>
+            </trans-unit>
+            <trans-unit id="delete_account.text">
+                <source>delete_account.text</source>
+                <target>Это действие необратимо, убедитесь в своем выборе!</target>
+            </trans-unit>
+            <trans-unit id="delete_account.button">
+                <source>delete_account.button</source>
+                <target>Подтвердить подавление моего аккаунта</target>
+            </trans-unit>
+
+            <trans-unit id="email.title">
+                <source>email.title</source>
+                <target>Пароль потерян</target>
+            </trans-unit>
+            <trans-unit id="email.text1">
+                <source>email.text1</source>
+                <target>Вы потеряли свой пароль?
+
+                Нет проблем, чтобы сбросить пароль, пожалуйста, нажмите на кнопку ниже и выберите новый.
+
+                Срок действия этой ссылки истекает через 1 час.</target>
+            </trans-unit>
+            <trans-unit id="email.button">
+                <source>email.button</source>
+                <target>Изменить пароль</target>
             </trans-unit>
 
             <trans-unit id="about.title">

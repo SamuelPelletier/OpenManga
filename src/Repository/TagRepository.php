@@ -30,4 +30,33 @@ class TagRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Tag::class);
     }
+
+    public function findByFirstLetter(string $letter)
+    {
+        $queryBuilder = $this->createQueryBuilder('p');
+
+        if (strtolower($letter) === 'other') {
+            foreach (range('a', 'z') as $letter) {
+                $queryBuilder->andWhere("p.name NOT LIKE '" . $letter . "%'");
+            }
+        } else {
+            $queryBuilder->where('p.name LIKE :word')->setParameter('word', $letter . '%');
+        }
+        $queryBuilder->leftJoin('p.mangas', 'mangas')
+            ->addSelect('COUNT(mangas) as total')
+            ->orderBy('p.name')
+            ->groupBy('p');
+        return $queryBuilder->getQuery()->getResult();
+    }
+
+    public function findWithMangaCounter()
+    {
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->leftJoin('p.mangas', 'mangas')
+            ->addSelect('COUNT(mangas) as total')
+            ->orderBy('p.name')
+            ->groupBy('p');
+
+        return $queryBuilder->getQuery()->getResult();
+    }
 }

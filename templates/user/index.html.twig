@@ -1,0 +1,87 @@
+{% import "macro/encore.html.twig" as encore %}
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore.encore_absolute_link_tags('css/account') }}
+{% endblock %}
+
+{% block title %}User{% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-1"><a class="btn-effect pulse-orange"
+                                 href="{{ path('user_edit') }}">{{ 'account.edit'|trans }}</a></div>
+        <div class="col-sm-10"></div>
+        <div class="col-sm-1"><a class="btn-effect pulse-violet"
+                                 href="{{ path('app_logout') }}">{{ 'account.logout'|trans }}</a></div>
+    </div>
+
+    <div class="row stats">
+        <div class="col-md card card-1">
+            <div class="card-text"><i class="fa fa-crown"></i> {{ 'account.rank'|trans }} : {{ user.rank }}</i></div>
+        </div>
+        <div class="col-md card card-1">
+            <div class="card-text"><i class="fa fa-star"></i> {{ 'account.points'|trans }} : {{ user.points }}</div>
+        </div>
+    </div>
+
+    <div class="row stats">
+        <div class="col-md card card-1">
+            {% set days = (user.timeSpent/86400)|round(0,'floor') %}
+            {% set hours = ((user.timeSpent-days*86400)/3600)|round(0,'floor') %}
+            {% set minutes = ((user.timeSpent-(hours*3600+days*86400))/60)|round(0,'floor') %}
+            <div class="card-text"><i class="fa fa-clock"></i> {{ 'account.time_spent'|trans }} :
+                {{ 'account.days'|trans({"%count%":days}) }}  {{ 'account.hours'|trans({"%count%":hours}) }} {{ 'account.minutes'|trans({"%count%":minutes}) }}
+            </div>
+        </div>
+        <div class="col-md card card-1">
+            <div class="card-text"><i class="fa fa-eye"></i> {{ 'account.manga_read'|trans }}
+                : {{ user.countMangasRead }}</div>
+        </div>
+        <div class="col-md card card-1">
+            <div class="card-text"><i class="fa fa-download"></i> {{ 'account.manga_download'|trans }}
+                : {{ user.countMangasDownload }}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <h2>{{ 'account.last_manga_read'|trans }}</h2>
+        <div>
+            {% for mangaRead in user.lastMangasRead|slice(0,5)|reverse %}
+                <article class="manga col-sm-3">
+                    <p class="manga-count-pages">{{ mangaRead.countPages }}</p>
+                    <a href="{{ url('manga', {id: mangaRead.id}) }}">
+                        <img alt="{{ mangaRead.title |raw }}" title="{{ mangaRead.title |raw }}" class='img-thumbnail'
+                             src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ mangaRead.id ~ '/thumb.webp' ) }}'>
+                        <h2 class='img-name'>{{ mangaRead.title |raw }}</h2>
+                    </a>
+                </article>
+            {% else %}
+                <div class="gradient-border"><a
+                            href="{{ path('index') }}"> {{ 'account.manga.discover_new_manga'|trans }}</a>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="row">
+        <h2>{{ 'account.favorite_manga'|trans }}</h2>
+        <div>
+            {% for favoriteManga in user.favoriteMangas|slice(0,5)|reverse %}
+                <article class="manga col-sm-3">
+                    <p class="manga-count-pages">{{ favoriteManga.countPages }}</p>
+                    <a href="{{ url('manga', {id: favoriteManga.id}) }}">
+                        <img alt="{{ favoriteManga.title |raw }}" title="{{ favoriteManga.title |raw }}"
+                             class='img-thumbnail'
+                             src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ favoriteManga.id ~ '/thumb.webp' ) }}'>
+                        <h2 class='img-name'>{{ favoriteManga.title |raw }}</h2>
+                    </a>
+                </article>
+            {% else %}
+                <div class="gradient-border">{{ 'account.manga.add_manga_favorite'|trans }}</div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

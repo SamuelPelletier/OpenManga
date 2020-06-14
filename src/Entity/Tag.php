@@ -42,6 +42,18 @@ class Tag implements \JsonSerializable
      */
     private $name;
 
+    /**
+     * @var Manga[]|ArrayCollection
+     *
+     * @ORM\ManyToMany(targetEntity="Manga", mappedBy="tags")
+     */
+    private $mangas;
+
+    public function __construct()
+    {
+        $this->mangas = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -55,6 +67,29 @@ class Tag implements \JsonSerializable
     public function getName(): ?string
     {
         return $this->name;
+    }
+
+    public function addManga(Manga ...$mangas): void
+    {
+        foreach ($mangas as $manga) {
+            if (!$this->mangas->contains($manga)) {
+                $this->mangas->add($mangas);
+            }
+        }
+    }
+
+    public function getMangas(): Collection
+    {
+        return $this->mangas;
+    }
+
+    public function removeManga(Manga $manga): self
+    {
+        if ($this->mangas->contains($manga)) {
+            $this->mangas->removeElement($manga);
+        }
+
+        return $this;
     }
 
     /**

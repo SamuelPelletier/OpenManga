@@ -2,6 +2,14 @@ body {
     background-color: #4c4c4c;
 }
 
+header {
+    margin-bottom: 0;
+}
+
+a {
+    text-decoration: none !important;
+}
+
 a:hover, a:focus, a:active {
     color: #ff306a !important;
 }
@@ -41,6 +49,10 @@ h1, h2, h3, h4, p, a {
     color: white;
 }
 
+.row {
+    margin: 0;
+}
+
 .manga-container {
     display: flex;
     flex-wrap: wrap;
@@ -54,6 +66,10 @@ h1, h2, h3, h4, p, a {
     .manga {
         width: 25%;
     }
+}
+
+.manga a {
+    display: block;
 }
 
 .img-thumbnail {
@@ -202,7 +218,8 @@ h1, h2, h3, h4, p, a {
     padding: 10px 20px;
     -moz-border-radius: 0 10px 10px 0;
     -webkit-border-radius: 0 10px 10px 0;
-    -o-border-radius: 0 10px 10px 0;
+    -o-border-radius: 0 20px 20px 0;
+    border-radius: 0 20px 20px 0;
     border: 0 none;
     font-weight: bold;
     left: -24px;
@@ -542,4 +559,9 @@ h1, h2, h3, h4, p, a {
     100% {
         transform: rotate(360deg);
     }
+}
+
+.c-red {
+    color: red;
+    text-decoration: none !important;
 }

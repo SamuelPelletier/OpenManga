@@ -1,0 +1,21 @@
+{% if required is not defined %}
+    {% set required = true %}
+{% endif %}
+
+<div class="field-wrap">
+    {% spaceless %}
+        {% if formField.vars.errors|length > 0 %}
+            <div class="form-error">
+                <ul>
+                    {% for error in formField.vars.errors %}
+                        <li>{{ error.message|trans }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    {% endspaceless %}
+    <label for="{{ formField.vars.id }}">
+        {{ formField.vars.label|trans }}{% if required is same as(true) %}<span class='req'>*</span>{% endif %}
+    </label>
+    {{ form_widget(formField) }}
+</div>

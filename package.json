@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.8.2",
+    "bootstrap": "^4.4.1",
     "jquery-mousewheel": "^3.1.13",
     "jquery-touchswipe": "^1.6.19",
     "jquery-ui": "^1.12.1",

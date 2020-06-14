@@ -24,12 +24,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class MainController extends AbstractController
 {
     /**
-     * @Route("/contact", name="contact")
+     * @Route("/about", name="about")
      *
      */
-    public function contact(): Response
+    public function about(): Response
     {
-        return $this->render('contact.html.twig');
+        return $this->render('about.html.twig');
     }
 
     /**
@@ -38,7 +38,7 @@ class MainController extends AbstractController
      */
     public function disclaimer(Request $request): Response
     {
-        $finalUrl = $request->getSession()->get('finalUrl');
+        $finalUrl = $request->getSession()->get('final_url');
 
         if (strstr($finalUrl, "disclaimer") != false || $finalUrl == null || preg_match("/\/[a-z]{2}\//",
                 $finalUrl) == false) {
@@ -52,7 +52,8 @@ class MainController extends AbstractController
         } else {
             $finalUrl .= '?disclaimer=1';
         }
-        $request->getSession()->remove('finalUrl');
+        $request->getSession()->remove('final_url');
+
         return $this->render('disclaimer.html.twig', ['finalUrl' => $finalUrl]);
     }
 }

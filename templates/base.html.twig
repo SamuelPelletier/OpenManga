@@ -80,22 +80,32 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ app.request.server.get('PATREON_URL') }}" rel="nofollow" target="_blank">
-                                    <i class=" fab fa-patreon" aria-hidden="true"></i>
-                                </a>
-                            </li>
-                            <li>
                                 <a class="tags {% if app.request.uri == url('tags') %}active{% endif %}"
                                    href="{{ url('tags') }}">
                                     <i class="fa fa-hashtag" aria-hidden="true"></i> {{ 'manga.tag'|trans }}
                                 </a>
                             </li>
                             <li>
-                                <a class="contact {% if app.request.uri == url('contact') %}active{% endif %}"
-                                   href="{{ url('contact') }}">
+                                <a class="contact {% if app.request.uri == url('about') %}active{% endif %}"
+                                   href="{{ url('about') }}">
                                     <i class="fa fa-info-circle" aria-hidden="true"></i> {{ 'menu.about'|trans }}
                                 </a>
                             </li>
+                            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                <li>
+                                    <a class="login {% if app.request.uri == url('user_index') %}active{% endif %}"
+                                       href="{{ url('user_index') }}">
+                                        <i class="fa fa-user" aria-hidden="true"></i> {{ 'menu.user'|trans }}
+                                    </a>
+                                </li>
+                            {% else %}
+                                <li>
+                                    <a class="login {% if app.request.uri == url('app_login') %}active{% endif %}"
+                                       href="{{ url('app_login') }}">
+                                        <i class="fa fa-user" aria-hidden="true"></i> {{ 'menu.login'|trans }}
+                                    </a>
+                                </li>
+                            {% endif %}
                         {% endblock %}
 
                         <li class="dropdown">

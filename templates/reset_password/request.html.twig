@@ -1,0 +1,31 @@
+{% extends 'form/theme.html.twig' %}
+
+{% block title %}{{ 'reset_password.title'|trans }}{% endblock %}
+
+{% block body %}
+    <div class="form">
+        <div class="tab-content">
+            <div id="reset-password">
+                {{ form_start(requestForm) }}
+                {% for flashError in app.flashes('reset_password_error') %}
+                    <div class="alert alert-danger" role="alert">{{ flashError }}</div>
+                {% endfor %}
+                <h1>{{ 'reset_password.title'|trans }}</h1>
+
+                <p>
+                    {{ 'reset_password.text'|trans }}
+                </p>
+                {% include 'form/field.html.twig' with {'formField':requestForm.email} %}
+
+                <button type="submit" class="button button-block btn-register">
+                    {{ 'reset_password.button'|trans }}
+                </button>
+                {{ form_end(requestForm) }}
+            </div>
+
+        </div><!-- tab-content -->
+
+
+    </div> <!-- /form -->
+
+{% endblock %}
