@@ -178,7 +178,7 @@
             </trans-unit>
             <trans-unit id="login.form.login.title">
                 <source>login.form.login.title</source>
-                <target>Ben tornato !</target>
+                <target>Unisciti a noi !</target>
             </trans-unit>
             <trans-unit id="login.form.login.invalid_username">
                 <source>login.form.login.invalid_username</source>
@@ -284,6 +284,10 @@
                 <target>Nuova password</target>
             </trans-unit>
 
+            <trans-unit id="account.title">
+                <source>account.title</source>
+                <target>Il mio account</target>
+            </trans-unit>
             <trans-unit id="account.edit">
                 <source>account.edit</source>
                 <target>Modificare</target>

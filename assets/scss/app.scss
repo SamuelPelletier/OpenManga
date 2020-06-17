@@ -6,10 +6,6 @@ $web-font-path: 'data:text/css;base64,';
 @import "../../node_modules/font-awesome/scss/font-awesome.scss";
 @import "../../node_modules/highlight.js/styles/solarized-light.css";
 
-@import '~lato-font/scss/public-api';
-@include lato-include-font('normal');
-@include lato-include-font('bold');
-
 /* Basic styles
    ------------------------------------------------------------------------- */
 p, ul, ol {

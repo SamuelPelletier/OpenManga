@@ -178,7 +178,7 @@
             </trans-unit>
             <trans-unit id="login.form.login.title">
                 <source>login.form.login.title</source>
-                <target>お帰りなさい ！</target>
+                <target>参加しませんか ！</target>
             </trans-unit>
             <trans-unit id="login.form.login.invalid_username">
                 <source>login.form.login.invalid_username</source>
@@ -284,6 +284,10 @@
                 <target>新しいパスワード</target>
             </trans-unit>
 
+            <trans-unit id="account.title">
+                <source>account.title</source>
+                <target>マイアカウント</target>
+            </trans-unit>
             <trans-unit id="account.edit">
                 <source>account.edit</source>
                 <target>編集する</target>

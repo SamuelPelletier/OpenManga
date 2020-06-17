@@ -84,7 +84,7 @@ class Manga
     /**
      * @var Tag[]|ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="Tag")
+     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="mangas")
      * @ORM\JoinTable(name="mangas_tags",
      *      joinColumns={@ORM\JoinColumn(name="manga_id", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}

@@ -202,7 +202,7 @@
             </trans-unit>
             <trans-unit id="login.form.signup.title">
                 <source>login.form.signup.title</source>
-                <target>Kostenlos registrieren !</target>
+                <target>Begleiten Sie uns !</target>
             </trans-unit>
             <trans-unit id="login.form.signup.button">
                 <source>login.form.signup.button</source>
@@ -284,6 +284,10 @@
                 <target>Neues Kennwort</target>
             </trans-unit>
 
+            <trans-unit id="account.title">
+                <source>account.title</source>
+                <target>Mein Konto</target>
+            </trans-unit>
             <trans-unit id="account.edit">
                 <source>account.edit</source>
                 <target>Bearbeiten</target>

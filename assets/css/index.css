@@ -70,6 +70,8 @@ h1, h2, h3, h4, p, a {
 
 .manga a {
     display: block;
+    background-color: #2b2b2b;
+    border-radius: 10px;
 }
 
 .img-thumbnail {
@@ -84,6 +86,8 @@ h1, h2, h3, h4, p, a {
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
     max-height: 482px;
+    margin: auto;
+    display: block;
 }
 
 .img-name {
