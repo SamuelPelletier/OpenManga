@@ -100,6 +100,7 @@ h1, h2, h3, h4, p, a {
     border-bottom-left-radius: 5px;
     font-size: 1.6em;
     padding: 0 10px;
+    margin: 5px 0;
 }
 
 ::selection {
@@ -455,6 +456,15 @@ h1, h2, h3, h4, p, a {
     position: absolute;
     right: 20px;
     text-shadow: black 1.5px 2px 2px;
+}
+
+.manga-remove-favorite {
+    position: absolute;
+    left: 20px;
+    text-shadow: black 1.5px 2px 2px;
+    cursor: pointer;
+    color: red;
+    size: 10px;
 }
 
 

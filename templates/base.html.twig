@@ -10,11 +10,11 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="trafficjunky-site-verification" content="{{ app.request.server.get('TRAFFICJUNKY_TAG') }}"/>
-    <title>{% spaceless %}{{ app.request.server.get('APP_NAME') }} - {% block title %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}{% endspaceless %}</title>
+    <title>{% apply spaceless %}{{ app.request.server.get('APP_NAME') }} - {% block title %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}{% endapply %}</title>
     <meta name="description"
-          content="{% spaceless %}{% block meta_description %}{{ app.request.server.get('APP_NAME') ~ 'meta.description'|trans({"%tags%":app.request.server.get('APP_KEYWORD') }) }}{% endblock %}{% endspaceless %}"/>
+          content="{% apply spaceless %}{% block meta_description %}{{ app.request.server.get('APP_NAME') ~ 'meta.description'|trans({"%tags%":app.request.server.get('APP_KEYWORD') }) }}{% endblock %}{% endapply %}"/>
     <meta name="keywords"
-          content="{% spaceless %}{% block meta_keyword %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}{% endspaceless %}"/>
+          content="{% apply spaceless %}{% block meta_keyword %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}{% endapply %}"/>
     {% block stylesheets %}
         {{ encore.encore_absolute_link_tags('css/app') }}
     {% endblock %}
@@ -76,7 +76,7 @@
                             <li>
                                 <a href="{{ '/'~ app.request.server.get('APP_NAME')|lower }}.apk"
                                    rel="nofollow" target="_blank">
-                                    <i class=" fab fa-android" aria-hidden="true"></i> App
+                                    <i class="fas fa-mobile-alt" aria-hidden="true"></i> App
                                 </a>
                             </li>
                             <li>

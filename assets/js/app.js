@@ -51,7 +51,7 @@ $(function () {
     $('.manga img').on('mouseover', function () {
         var img = $(this);
         if (pages === undefined) {
-            pages = img.closest("article").find("p");
+            pages = img.closest("article").find(".manga-count-pages");
         }
         numberPages = pages.text();
         thumbnailUrl = img.prop("src");
@@ -72,11 +72,29 @@ $(function () {
         newUrl = undefined;
     });
 
-    $('.manga').on('click', function (e) {
+    $('.manga a').on('click', function (e) {
         $(".loader").remove();
 
         if (!window.event.ctrlKey) {
-            $(this).append('<div class="loader"><div class="loader-inner"><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div></div></div>');
+            $(this).parent().append('<div class="loader"><div class="loader-inner"><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div></div></div>');
+        }
+    });
+
+    $('.manga-remove-favorite').on('click', function (e) {
+        var confirmBox = confirm("Do you want to remove this manga from your favorites ?");
+        var manga = $(this).parent();
+        if (confirmBox) {
+            $.ajax({
+                url: "/en/favorite/" + manga.data("id") + "/remove",
+                method: "POST",
+                success: function (data) {
+                    if ($('.manga-remove-favorite').length > 1) {
+                        manga.remove();
+                    } else {
+                        document.location.reload();
+                    }
+                }
+            });
         }
     })
 });

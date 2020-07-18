@@ -14,6 +14,12 @@
             <div id="edit">
                 <h1>{{ 'edit_profile.title'|trans }}</h1>
 
+                {% if editionSave == true %}
+                    <div id="edition-save">
+                        {{ 'edit_profile.save'|trans }}
+                    </div>
+                {% endif %}
+
                 <form action="{{ path('user_edit') }}" method="post">
 
                     <p>{{ 'edit_profile.form.text'|trans }}</p>

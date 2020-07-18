@@ -70,7 +70,8 @@
         <h2>{{ 'account.favorite_manga'|trans }}</h2>
         <div>
             {% for favoriteManga in user.favoriteMangas|slice(0,5)|reverse %}
-                <article class="manga col-sm-3">
+                <article class="manga col-sm-3" data-id="{{ favoriteManga.id }}">
+                    <p class="manga-remove-favorite"><span class="far fa-times-circle fa-lg"></span></p>
                     <p class="manga-count-pages">{{ favoriteManga.countPages }}</p>
                     <a href="{{ url('manga', {id: favoriteManga.id}) }}">
                         <img alt="{{ favoriteManga.title |raw }}" title="{{ favoriteManga.title |raw }}"

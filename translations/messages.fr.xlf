@@ -369,6 +369,10 @@
                 <source>edit_profile.link.delete</source>
                 <target>Supprimer votre compte</target>
             </trans-unit>
+            <trans-unit id="edit_profile.save">
+                <source>edit_profile.save</source>
+                <target>Vos informations ont été sauvegardé avec succés</target>
+            </trans-unit>
 
             <trans-unit id="change_password.title">
                 <source>change_password.title</source>

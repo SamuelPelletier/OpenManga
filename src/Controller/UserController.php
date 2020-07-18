@@ -44,14 +44,18 @@ class UserController extends AbstractController
         $form = $this->createForm(EditUserFormType::class, $user);
         $form->handleRequest($request);
 
+        $editionSave = false;
+
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+            $editionSave = true;
         }
 
         return $this->render('user/edit.html.twig', [
-            'editForm' => $form->createView()
+            'editForm' => $form->createView(),
+            'editionSave' => $editionSave
         ]);
     }
 

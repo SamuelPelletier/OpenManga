@@ -369,6 +369,10 @@
                 <source>edit_profile.link.delete</source>
                 <target>アカウントを削除する</target>
             </trans-unit>
+            <trans-unit id="edit_profile.save">
+                <source>edit_profile.save</source>
+                <target>あなたの情報は正常に保存されました</target>
+            </trans-unit>
 
             <trans-unit id="change_password.title">
                 <source>change_password.title</source>
