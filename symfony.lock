@@ -89,6 +89,9 @@
     "doctrine/reflection": {
         "version": "1.0.x-dev"
     },
+    "doctrine/sql-formatter": {
+        "version": "1.1.0"
+    },
     "egulias/email-validator": {
         "version": "2.1.6"
     },
@@ -113,14 +116,14 @@
     "gregwar/captcha-bundle": {
         "version": "v2.1.2"
     },
-    "jdorn/sql-formatter": {
-        "version": "1.3.x-dev"
-    },
     "monolog/monolog": {
         "version": "1.x-dev"
     },
     "nikic/php-parser": {
         "version": "v4.2.0"
+    },
+    "ocramius/package-versions": {
+        "version": "1.5.1"
     },
     "ocramius/proxy-manager": {
         "version": "2.1.x-dev"
@@ -359,6 +362,9 @@
     "symfony/polyfill-intl-idn": {
         "version": "v1.11.0"
     },
+    "symfony/polyfill-intl-normalizer": {
+        "version": "v1.18.0"
+    },
     "symfony/polyfill-mbstring": {
         "version": "1.9-dev"
     },
@@ -370,6 +376,9 @@
     },
     "symfony/polyfill-php73": {
         "version": "v1.12.0"
+    },
+    "symfony/polyfill-php80": {
+        "version": "v1.18.0"
     },
     "symfony/process": {
         "version": "4.2-dev"
