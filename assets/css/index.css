@@ -579,3 +579,21 @@ h1, h2, h3, h4, p, a {
     color: red;
     text-decoration: none !important;
 }
+
+@media screen and (max-width: 767px) {
+    .navigation {
+        display: none;
+    }
+}
+
+#loader-scroll {
+    margin: auto;
+    width: 100px;
+    display: block;
+    text-align: center;
+}
+
+#loader-scroll path,
+#loader-scroll rect {
+    fill: #ff306a;
+}

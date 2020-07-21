@@ -1,470 +1,474 @@
 <?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="es" datatype="plaintext" original="file.ext">
+    <file source-language="en" target-language="ru" datatype="plaintext" original="file.ext">
         <body>
             <trans-unit id="http_error.name">
                 <source>http_error.name</source>
-                <target>Error %status_code%</target>
+                <target>Ошибка %status_code%</target>
             </trans-unit>
             <trans-unit id="http_error.description">
                 <source>http_error.description</source>
-                <target>Se ha producido un error desconocido que ha impedido completar tu petición.</target>
+                <target>Произошла неизвестная ошибка, которая помешала выполнить ваш запрос.</target>
             </trans-unit>
             <trans-unit id="http_error.suggestion">
                 <source>http_error.suggestion</source>
-                <target><![CDATA[Intentar recargar esta página dentro de unos minutos o <a href="{url}">vuelve a la portada del sitio</a>.]]></target>
+                <target><![CDATA[Попробуйте загрузить эту страницу снова через несколько минут или <a href="{url}">вернитесь на главную страницу</a>.]]></target>
             </trans-unit>
             <trans-unit id="http_error_403.description">
                 <source>http_error_403.description</source>
-                <target>No tienes permiso para acceder a este recurso.</target>
+                <target>У вас нет разрешения на доступ к этому ресурсу.</target>
             </trans-unit>
             <trans-unit id="http_error_403.suggestion">
                 <source>http_error_403.suggestion</source>
-                <target>Solicita a los administradores de este sitio que te concedan permiso para acceder al recurso solicitado.</target>
+                <target>Запросите доступ к этому ресурсу у вашего менеджера или системного администратора.</target>
             </trans-unit>
             <trans-unit id="http_error_404.description">
                 <source>http_error_404.description</source>
-                <target>No hemos podido encontrar la página solicitada.</target>
+                <target>Мы не смогли найти запрашиваемую вами страницу.</target>
             </trans-unit>
             <trans-unit id="http_error_404.suggestion">
                 <source>http_error_404.suggestion</source>
-                <target><![CDATA[Comprueba que la dirección de la página está bien escrita o <a href="{url}">vuelve a la portada del sitio</a>.]]></target>
+                <target><![CDATA[Проверьте корректность введенного URL или <a href="{url}">вернитесь на главную страницу</a>.]]></target>
             </trans-unit>
             <trans-unit id="http_error_500.description">
                 <source>http_error_500.description</source>
-                <target>Se ha producido un error grave en el servidor.</target>
+                <target>Произошла внутренняя ошибка сервера.</target>
             </trans-unit>
             <trans-unit id="http_error_500.suggestion">
                 <source>http_error_500.suggestion</source>
-                <target><![CDATA[Intentar recargar esta página dentro de unos minutos o <a href="{url}">vuelve a la portada del sitio</a>.]]></target>
+                <target><![CDATA[Попробуйте загрузить эту страницу снова через несколько минут или <a href="{url}">вернитесь на главную страницу</a>.]]></target>
             </trans-unit>
 
             <trans-unit id="menu.choose_language">
                 <source>menu.choose_language</source>
-                <target>Elegir idioma</target>
+                <target>Выбрать язык</target>
             </trans-unit>
             <trans-unit id="menu.homepage">
                 <source>menu.homepage</source>
-                <target>Acogida</target>
+                <target>добро пожаловать</target>
             </trans-unit>
             <trans-unit id="menu.about">
                 <source>menu.about</source>
-                <target>Acerca</target>
+                <target>Около</target>
             </trans-unit>
             <trans-unit id="menu.search">
                 <source>menu.search</source>
-                <target>Búsqueda</target>
+                <target>поиск</target>
             </trans-unit>
             <trans-unit id="menu.login">
                 <source>menu.login</source>
-                <target>Identifícate</target>
+                <target>Авторизоваться</target>
             </trans-unit>
             <trans-unit id="menu.user">
                 <source>menu.user</source>
-                <target>Cuenta</target>
+                <target>учетная запись</target>
             </trans-unit>
             <trans-unit id="post.search_for">
                 <source>post.search_for</source>
-                <target>Buscar...</target>
+                <target>поиск...</target>
             </trans-unit>
             <trans-unit id="search.sort">
                 <source>search.sort</source>
-                <target>Ordenar por vistas</target>
+                <target>Сортировать по просмотрам</target>
             </trans-unit>
             <trans-unit id="search.sort.info">
                 <source>search.sort.info</source>
-                <target>Ordenar los resultados por número de vistas</target>
+                <target>Сортировать результаты по количеству просмотров</target>
             </trans-unit>
 
             <trans-unit id="tag.popular_title">
                 <source>tag.popular_title</source>
-                <target>Etiquetas más populares</target>
+                <target>Самые популярные теги</target>
             </trans-unit>
             <trans-unit id="tag.all_title">
                 <source>tag.all_title</source>
-                <target>Todas las etiquetas</target>
+                <target>Все теги</target>
             </trans-unit>
             <trans-unit id="tag.all">
                 <source>tag.all</source>
-                <target>Todos</target>
+                <target>Все</target>
             </trans-unit>
             <trans-unit id="tag.other">
                 <source>tag.other</source>
-                <target>Otro</target>
+                <target>Другой</target>
             </trans-unit>
 
             <trans-unit id="manga.language">
                 <source>manga.language</source>
-                <target>Languaje</target>
+                <target>язык писателя</target>
             </trans-unit>
             <trans-unit id="manga.parody">
                 <source>manga.parody</source>
-                <target>Tema</target>
+                <target>пародия</target>
             </trans-unit>
             <trans-unit id="manga.author">
                 <source>manga.author</source>
-                <target>Autor</target>
+                <target>создатель</target>
             </trans-unit>
             <trans-unit id="manga.tag">
                 <source>manga.tag</source>
-                <target>Tag</target>
+                <target>бирка</target>
             </trans-unit>
             <trans-unit id="manga.count_views">
                 <source>manga.count_views</source>
-                <target>Número de vistas</target>
+                <target>количество просмотров</target>
             </trans-unit>
             <trans-unit id="manga.download">
                 <source>manga.download</source>
-                <target>Descargar</target>
+                <target>скачать</target>
             </trans-unit>
             <trans-unit id="manga.page">
                 <source>manga.page</source>
-                <target>Página</target>
+                <target>страница</target>
             </trans-unit>
             <trans-unit id="manga.no_mangas_found">
                 <source>manga.no_mangas_found</source>
-                <target>No se encontró manga</target>
+                <target>Манга не найдена</target>
             </trans-unit>
             <trans-unit id="manga.image_alt">
                 <source>manga.image_alt</source>
-                <target>imagen número %count%</target>
+                <target>изображение № %count%</target>
             </trans-unit>
             <trans-unit id="manga.no_images_found">
                 <source>manga.no_images_found</source>
-                <target>Ninguna imagen encontradae</target>
+                <target>изображение не найдено</target>
             </trans-unit>
             <trans-unit id="manga.add_favorite">
                 <source>manga.add_favorite</source>
-                <target>Agregar a tus favoritos</target>
+                <target>Добавить в избранное</target>
             </trans-unit>
             <trans-unit id="manga.remove_favorite">
                 <source>manga.remove_favorite</source>
-                <target>Eliminar a tus favoritos</target>
+                <target>Удалить в избранное</target>
+            </trans-unit>
+            <trans-unit id="manga.end">
+                <source>manga.end</source>
+                <target>Нет больше манги</target>
             </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>
-                <target>Este sitio web es una comunidad de adultos que contiene contenido restringido por edad. Debes tener 18 años o más para entrar.</target>
+                <target>Этот веб-сайт представляет собой сообщество для взрослых, которое содержит материалы, ограниченные по возрасту. Вы должны быть 18 лет или старше, чтобы войти.</target>
             </trans-unit>
             <trans-unit id="disclaimer.button">
                 <source>disclaimer.button</source>
-                <target>Tengo 18 años o más</target>
+                <target>Мне 18 или больше</target>
             </trans-unit>
 
             <trans-unit id="meta.description">
                 <source>meta.description</source>
-                <target> contiene miles de %tags% que se pueden ver y descargar de forma gratuita.</target>
+                <target> содержит тысячи %tags% для просмотра и загрузки бесплатно.</target>
             </trans-unit>
             <trans-unit id="meta.description.manga">
                 <source>meta.description.manga</source>
-                <target>Aquí encontrarás uno de los mejores manga : </target>
+                <target>Здесь вы найдете одну из лучших манг : </target>
             </trans-unit>
             <trans-unit id="meta.description.with">
                 <source>meta.description.with</source>
-                <target> con</target>
+                <target> с</target>
             </trans-unit>
 
             <trans-unit id="login.title">
                 <source>login.title</source>
-                <target>Iniciar sesión !</target>
+                <target>Авторизоваться !</target>
             </trans-unit>
             <trans-unit id="login.form.login.tab">
                 <source>login.form.login.tab</source>
-                <target>Iniciar sesión</target>
+                <target>Авторизоваться</target>
             </trans-unit>
             <trans-unit id="login.form.signup.tab">
                 <source>login.form.signup.tab</source>
-                <target>Regístrate</target>
+                <target>зарегистрироваться</target>
             </trans-unit>
             <trans-unit id="login.form.login.title">
                 <source>login.form.login.title</source>
-                <target>Bienvenido de nuevo!</target>
+                <target>Добро пожаловать !</target>
             </trans-unit>
             <trans-unit id="login.form.login.invalid_username">
                 <source>login.form.login.invalid_username</source>
-                <target>Usuario o contraseña invalido. Asegúrese de capitalizarlo correctamente.</target>
+                <target>Неправильное имя пользователя или пароль. Убедитесь, что вы правильно его написали.</target>
             </trans-unit>
             <trans-unit id="login.form.login.username">
                 <source>login.form.login.username</source>
-                <target>Nombre de usuario</target>
+                <target>имя пользователя</target>
             </trans-unit>
             <trans-unit id="login.form.login.password">
                 <source>login.form.login.password</source>
-                <target>Contraseña</target>
+                <target>пароль</target>
             </trans-unit>
             <trans-unit id="login.form.login.forgot_password">
                 <source>login.form.login.forgot_password</source>
-                <target>Se te olvidó tu contraseña ?</target>
+                <target>Забыл пароль ?</target>
             </trans-unit>
             <trans-unit id="login.form.login.button">
                 <source>login.form.login.button</source>
-                <target>Iniciar sesión</target>
+                <target>Авторизоваться</target>
             </trans-unit>
             <trans-unit id="login.form.signup.title">
                 <source>login.form.signup.title</source>
-                <target>Únete a nosotros!</target>
+                <target>Присоединяйтесь к нам !</target>
             </trans-unit>
             <trans-unit id="login.form.signup.button">
                 <source>login.form.signup.button</source>
-                <target>Regístrate</target>
+                <target>зарегистрироваться</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.username">
                 <source>login.form.signup.form_type.username</source>
-                <target>Nombre de usuario</target>
+                <target>имя пользователя</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.captcha">
                 <source>login.form.signup.form_type.captcha</source>
-                <target>Captcha</target>
+                <target>Защитный код</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.first_password">
                 <source>login.form.signup.form_type.first_password</source>
-                <target>Contraseña</target>
+                <target>пароль</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.second_password">
                 <source>login.form.signup.form_type.second_password</source>
-                <target>Repite la contraseña</target>
+                <target>Повторите пароль</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.password.must_match">
                 <source>login.form.signup.form_type.password.must_match</source>
-                <target>Los campos de contraseña deben coincidir</target>
+                <target>Поля пароля должны совпадать</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.password.not_blank">
                 <source>login.form.signup.form_type.password.not_blank</source>
-                <target>Porfavor ingrese una contraseña</target>
+                <target>Пожалуйста, введите пароль</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.password.length">
                 <source>login.form.signup.form_type.password.length</source>
-                <target>Su contraseña debe tener al menos 6 caracteres.</target>
+                <target>Ваш пароль должен быть не менее 6 символов</target>
             </trans-unit>
 
             <trans-unit id="reset_password.title">
                 <source>reset_password.title</source>
-                <target>Restablecer su contraseña</target>
+                <target>Сбросить пароль</target>
             </trans-unit>
             <trans-unit id="reset_password.text">
                 <source>reset_password.text</source>
-                <target>Ingrese su dirección de correo electrónico y le enviaremos un enlace para restablecer su contraseña.</target>
+                <target>Введите адрес электронной почты, и мы вышлем вам ссылку для сброса пароля.</target>
             </trans-unit>
             <trans-unit id="reset_password.button">
                 <source>reset_password.button</source>
-                <target>Enviar contraseña restablecer correo electrónico</target>
+                <target>Отправить письмо для сброса пароля</target>
             </trans-unit>
             <trans-unit id="reset_password.form_type.email">
                 <source>reset_password.form_type.email</source>
-                <target>Correo electrónico</target>
+                <target>Электронное письмо</target>
             </trans-unit>
             <trans-unit id="reset_password.form_type.email_empty">
                 <source>reset_password.form_type.email_empty</source>
-                <target>Por favor introduzca su correo electrónico</target>
+                <target>Пожалуйста, введите ваш адрес электронной почты</target>
             </trans-unit>
 
             <trans-unit id="check_email.title">
                 <source>check_email.title</source>
-                <target>Correo electrónico de restablecimiento de contraseña enviado</target>
+                <target>Сброс пароля Отправлено письмо</target>
             </trans-unit>
             <trans-unit id="check_email.text1">
                 <source>check_email.text1</source>
-                <target>Se ha enviado un correo electrónico que contiene un enlace en el que puede hacer clic para restablecer su contraseña. Este enlace caducará en %hour% hora.</target>
+                <target>Было отправлено электронное письмо со ссылкой, по которой вы можете сбросить пароль. Срок действия этой ссылки истекает через %hour% час.</target>
             </trans-unit>
             <trans-unit id="check_email.text2">
                 <source>check_email.text2</source>
-                <target>Si no recibe un correo electrónico, verifique su carpeta de correo no deseado o vuelva a intentarlo.</target>
+                <target>Если вы не получили письмо, проверьте папку со спамом или повторите попытку.</target>
             </trans-unit>
 
             <trans-unit id="new_password.title">
                 <source>new_password.title</source>
-                <target>Restablecer nueva contraseña</target>
+                <target>Сбросить новый пароль</target>
             </trans-unit>
             <trans-unit id="new_password.button">
                 <source>new_password.button</source>
-                <target>Validar</target>
+                <target>Validate</target>
             </trans-unit>
             <trans-unit id="new_password.form_type.first_password">
                 <source>new_password.form_type.first_password</source>
-                <target>Nueva contraseña</target>
+                <target>Новый пароль</target>
             </trans-unit>
 
             <trans-unit id="account.title">
                 <source>account.title</source>
-                <target>Mi cuenta</target>
+                <target>Мой счет</target>
             </trans-unit>
             <trans-unit id="account.edit">
                 <source>account.edit</source>
-                <target>Editar</target>
+                <target>редактировать</target>
             </trans-unit>
             <trans-unit id="account.logout">
                 <source>account.logout</source>
-                <target>Cerrar sesión</target>
+                <target>Выйти</target>
             </trans-unit>
             <trans-unit id="account.rank">
                 <source>account.rank</source>
-                <target>Rango</target>
+                <target>Ранг</target>
             </trans-unit>
             <trans-unit id="account.points">
                 <source>account.points</source>
-                <target>Puntos</target>
+                <target>Точки</target>
             </trans-unit>
             <trans-unit id="account.time_spent">
                 <source>account.time_spent</source>
-                <target>Tiempo usado</target>
+                <target>Проведенное время</target>
             </trans-unit>
             <trans-unit id="account.manga_read">
                 <source>account.manga_read</source>
-                <target>Mangas leyó</target>
+                <target>Манга читать</target>
             </trans-unit>
             <trans-unit id="account.manga_download">
                 <source>account.manga_download</source>
-                <target>Mangas Descargado</target>
+                <target>Mangas скачать</target>
             </trans-unit>
             <trans-unit id="account.last_manga_read">
                 <source>account.last_manga_read</source>
-                <target>Tu última lectura de mangas</target>
+                <target>Ваше последнее чтение манги</target>
             </trans-unit>
             <trans-unit id="account.manga.discover_new_manga">
                 <source>account.manga.discover_new_manga</source>
-                <target>¡Descubramos un nuevo manga!</target>
+                <target>Давайте откроем новую мангу !</target>
             </trans-unit>
             <trans-unit id="account.favorite_manga">
                 <source>account.favorite_manga</source>
-                <target>Tus mangas favoritos</target>
+                <target>Ваши любимые манги</target>
             </trans-unit>
             <trans-unit id="account.manga.add_manga_favorite">
                 <source>account.manga.add_manga_favorite</source>
-                <target>Añadir nuevo manga a tus favoritos</target>
+                <target>Добавить новую мангу в избранное</target>
             </trans-unit>
             <trans-unit id="account.days">
                 <source>account.days</source>
-                <target>{0,1} %count% día | [2,Inf[ %count% dias</target>
+                <target>{0,1} %count% день | [2,Inf[ %count% дней</target>
             </trans-unit>
             <trans-unit id="account.hours">
                 <source>account.hours</source>
-                <target>{0,1} %count% hora | [2,Inf[ %count% horas</target>
+                <target>{0,1} %count% час | [2,Inf[ %count% часов</target>
             </trans-unit>
             <trans-unit id="account.minutes">
                 <source>account.minutes</source>
-                <target>{0,1} %count% minuto | [2,Inf[ %count% minutos</target>
+                <target>{0,1} %count% минут | [2,Inf[ %count% минут</target>
             </trans-unit>
 
             <trans-unit id="edit_profile.title">
                 <source>edit_profile.title</source>
-                <target>Edite su perfil</target>
+                <target>Редактировать профиль</target>
             </trans-unit>
             <trans-unit id="edit_profile.link.back_account">
                 <source>edit_profile.link.back_account</source>
-                <target>Regresar a su cuenta</target>
+                <target>Вернуться к вашей учетной записи</target>
             </trans-unit>
             <trans-unit id="edit_profile.link.change_password">
                 <source>edit_profile.link.change_password</source>
-                <target>Cambia la contraseña</target>
+                <target>Изменить пароль</target>
             </trans-unit>
             <trans-unit id="edit_profile.form.text">
                 <source>edit_profile.form.text</source>
-                <target>Se le enviará cualquier correo de promoción, pero necesitamos su correo electrónico si olvidó su contraseña.</target>
+                <target>Любое рекламное письмо будет отправлено вам, но нам нужен ваш адрес электронной почты, если вы забыли пароль.</target>
             </trans-unit>
             <trans-unit id="edit_profile.form.button">
                 <source>edit_profile.form.button</source>
-                <target>Validar</target>
+                <target>Validate</target>
             </trans-unit>
             <trans-unit id="edit_profile.link.delete">
                 <source>edit_profile.link.delete</source>
-                <target>Eliminar tu cuenta</target>
+                <target>Удалить учетную запись</target>
             </trans-unit>
             <trans-unit id="edit_profile.save">
                 <source>edit_profile.save</source>
-                <target>Su información ha sido guardada exitosamente</target>
+                <target>Ваша информация была успешно сохранена</target>
             </trans-unit>
 
             <trans-unit id="change_password.title">
                 <source>change_password.title</source>
-                <target>Cambia tu contraseña</target>
+                <target>Измените свой пароль</target>
             </trans-unit>
             <trans-unit id="change_password.link.back_account">
                 <source>change_password.link.back_account</source>
-                <target>Regresar a su cuenta</target>
+                <target>Вернуться к вашему аккаунту</target>
             </trans-unit>
             <trans-unit id="change_password.link.back_edit">
                 <source>change_password.link.back_edit</source>
-                <target>Volver a editar</target>
+                <target>Назад к редактированию</target>
             </trans-unit>
 
             <trans-unit id="delete_account.title">
                 <source>delete_account.title</source>
-                <target>¡Elimina tu cuenta!</target>
+                <target>Удалить учетную запись !</target>
             </trans-unit>
             <trans-unit id="delete_account.link.back_account">
                 <source>delete_account.link.back_account</source>
-                <target>Regresar a su cuenta</target>
+                <target>Вернуться к вашему аккаунту</target>
             </trans-unit>
             <trans-unit id="delete_account.text">
                 <source>delete_account.text</source>
-                <target>Esta acción es irreversible, ¡asegúrese de elegir!</target>
+                <target>Это действие необратимо, убедитесь в своем выборе!</target>
             </trans-unit>
             <trans-unit id="delete_account.button">
                 <source>delete_account.button</source>
-                <target>Validar mi supresión de cuenta</target>
+                <target>Подтвердить подавление моего аккаунта</target>
             </trans-unit>
 
             <trans-unit id="email.title">
                 <source>email.title</source>
-                <target>Contraseña perdida</target>
+                <target>Пароль потерян</target>
             </trans-unit>
             <trans-unit id="email.text1">
                 <source>email.text1</source>
-                <target>Has perdido tu contraseña ?
+                <target>Вы потеряли свой пароль?
 
-                No hay problema para restablecer su contraseña, haga clic en el botón a continuación y elija una nueva.
+                Нет проблем, чтобы сбросить пароль, пожалуйста, нажмите на кнопку ниже и выберите новый.
 
-                Este enlace caducará en 1 hora (s).</target>
+                Срок действия этой ссылки истекает через 1 час.</target>
             </trans-unit>
             <trans-unit id="email.button">
                 <source>email.button</source>
-                <target>Cambiar mi contraseña</target>
+                <target>Изменить пароль</target>
             </trans-unit>
 
             <trans-unit id="about.title">
                 <source>about.title</source>
-                <target>Acerca de </target>
+                <target>Около </target>
             </trans-unit>
             <trans-unit id="about.contact.title">
                 <source>about.contact.title</source>
-                <target>Para contactarnos</target>
+                <target>Связаться с нами</target>
             </trans-unit>
             <trans-unit id="about.information.title">
                 <source>about.information.title</source>
-                <target>Informaciones utiles</target>
+                <target>Полезная информация</target>
             </trans-unit>
             <trans-unit id="about.contact.text1">
                 <source>about.contact.text1</source>
-                <target>Contáctenos en la siguiente dirección de correo electrónico : </target>
+                <target>Свяжитесь с нами по следующему адресу электронной почты : </target>
             </trans-unit>
             <trans-unit id="about.contact.text2.soft">
                 <source>about.contact.text2.soft</source>
-                <target>Nuestro sitio es 100% autónomo y no recopilamos ninguna información sobre nuestros clientes.
-                        Puedes ver y descargar manga gratis y sin límite.
-                        Una aplicación móvil le permite una mayor movilidad y facilidad de acceso a nuestro sitio web.
-                        Para cualquier información adicional, no dude en contactarnos por correo electrónico.
+                <target>Наш сайт на 100% автономен, и мы не собираем никакой информации о наших клиентах.
+                        Вы можете просмотреть и скачать мангу бесплатно и без ограничений.
+                        Мобильное приложение обеспечивает большую мобильность и простоту доступа к нашему веб-сайту.
+                        Для получения дополнительной информации, не стесняйтесь обращаться к нам по электронной почте.
                 </target>
             </trans-unit>
             <trans-unit id="about.contact.text2.hard">
                 <source>about.contact.text2.hard</source>
-                <target>Nuestro sitio es 100% autónomo y no recopilamos ninguna información sobre nuestros clientes.
-                        Puedes ver y descargar manga gratis y sin límite.
-                        Una aplicación móvil le permite una mayor movilidad y facilidad de acceso a nuestro sitio web.
-                        Para cualquier información adicional, no dude en contactarnos por correo electrónico.
+                <target>Наш сайт на 100% автономен, и мы не собираем никакой информации о наших клиентах.
+                        Вы можете просмотреть и скачать мангу бесплатно и без ограничений.
+                        Мобильное приложение обеспечивает большую мобильность и простоту доступа к нашему веб-сайту.
+                        Для получения дополнительной информации, не стесняйтесь обращаться к нам по электронной почте.
 
 
-                        ¿Qué son los hentai manga?
+                        Что такое хентай манга?
 
-                        Los hentai son manga para fines pornográficos, reúne un conjunto de géneros que puedes encontrar en nuestro sitio, como paizuri, teitoku o netorare.
-                        Son originarios de Japón principalmente, también hay versiones animadas de estos manga.
-                        En 2018, hentai fue la segunda categoría más buscada en el sitio pornhub.
-                        También hay más de 1.300 hentai de anime en la lista de My Anime List.
+                        Хентай являются манга для порнографических целей, она объединяет множество жанров, которые вы можете найти на нашем сайте, таких как paizuri, teitoku или netorare.
+                        Они в основном из Японии, есть также анимированные версии этой манги.
+                        В 2018 году хентай был второй по популярности категорией на сайте pornhub.
+                        Есть также более 1300 аниме хентай, перечисленных в My Anime List.
 
 
-                        ¿Qué es el manga doujin?
+                        Что такое додзин манга?
 
-                        Los dōjin o doujin son manga hecha por aficionados que a menudo toman manga famoso como One Piece, Naruto o Fairy Tail.
-                        Pero no son exclusivamente manga, también hay música, novelas o videojuegos.
+                        Додзин или додзин - это манга, созданная любителями, которые часто берут знаменитую мангу, такую ​​как One Piece, Naruto или Fairy Tail.
+                        Но они не исключительно манга, есть также музыка, романы или видеоигры.
                 </target>
             </trans-unit>
         </body>

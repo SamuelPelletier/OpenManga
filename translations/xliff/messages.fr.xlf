@@ -1,109 +1,109 @@
 <?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+    <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
         <body>
             <trans-unit id="http_error.name">
                 <source>http_error.name</source>
-                <target>Error %status_code%</target>
+                <target>Erreur %status_code%</target>
             </trans-unit>
             <trans-unit id="http_error.description">
                 <source>http_error.description</source>
-                <target>There was an unknown error that prevented to complete your request.</target>
+                <target>Il y a eu une erreur inconnue qui a empêché l'aboutissement de votre requête.</target>
             </trans-unit>
             <trans-unit id="http_error.suggestion">
                 <source>http_error.suggestion</source>
-                <target><![CDATA[Try loading this page again in some minutes or <a href="{url}">go back to the homepage</a>.]]></target>
+                <target><![CDATA[Essayez de recharger cette page dans quelques minutes ou <a href="{url}">retournez sur la page principale</a>.]]></target>
             </trans-unit>
             <trans-unit id="http_error_403.description">
                 <source>http_error_403.description</source>
-                <target>You don't have permission to access to this resource.</target>
+                <target>Vous n'avez pas les droits pour accéder à cette ressource.</target>
             </trans-unit>
             <trans-unit id="http_error_403.suggestion">
                 <source>http_error_403.suggestion</source>
-                <target>Ask your manager or system administrator to grant you access to this resource.</target>
+                <target>Demandez à votre manager ou à votre administrateur système de vous donner les droits pour accéder à cette ressource.</target>
             </trans-unit>
             <trans-unit id="http_error_404.description">
                 <source>http_error_404.description</source>
-                <target>We couldn't find the page you requested.</target>
+                <target>Nous n'avons pas pu trouver la page demandée.</target>
             </trans-unit>
             <trans-unit id="http_error_404.suggestion">
                 <source>http_error_404.suggestion</source>
-                <target><![CDATA[Check out any misspelling in the URL or <a href="{url}">go back to the homepage</a>.]]></target>
+                <target><![CDATA[Vérifiez si l'URL ne comporte pas d'erreurs ou <a href="{url}">retournez sur la page principale</a>.]]></target>
             </trans-unit>
             <trans-unit id="http_error_500.description">
                 <source>http_error_500.description</source>
-                <target>There was an internal server error.</target>
+                <target>Il y a eu une erreur interne du serveur.</target>
             </trans-unit>
             <trans-unit id="http_error_500.suggestion">
                 <source>http_error_500.suggestion</source>
-                <target><![CDATA[Try loading this page again in some minutes or <a href="{url}">go back to the homepage</a>.]]></target>
+                <target><![CDATA[Essayez de recharger cette page dans quelques minutes ou <a href="{url}">retournez sur la page principale</a>.]]></target>
             </trans-unit>
 
             <trans-unit id="menu.choose_language">
                 <source>menu.choose_language</source>
-                <target>Choose a language</target>
+                <target>Choisir la langue</target>
             </trans-unit>
             <trans-unit id="menu.homepage">
                 <source>menu.homepage</source>
-                <target>Home</target>
+                <target>Accueil</target>
             </trans-unit>
             <trans-unit id="menu.about">
                 <source>menu.about</source>
-                <target>About</target>
+                <target>A propos</target>
             </trans-unit>
             <trans-unit id="menu.search">
                 <source>menu.search</source>
-                <target>Search</target>
+                <target>Recherche</target>
             </trans-unit>
             <trans-unit id="menu.login">
                 <source>menu.login</source>
-                <target>Login</target>
+                <target>Connexion</target>
             </trans-unit>
             <trans-unit id="menu.user">
                 <source>menu.user</source>
-                <target>Account</target>
+                <target>Compte</target>
             </trans-unit>
             <trans-unit id="post.search_for">
                 <source>post.search_for</source>
-                <target>Search...</target>
+                <target>Rechercher...</target>
             </trans-unit>
             <trans-unit id="search.sort">
                 <source>search.sort</source>
-                <target>Sort by views</target>
+                <target>Trier par vues</target>
             </trans-unit>
             <trans-unit id="search.sort.info">
                 <source>search.sort.info</source>
-                <target>Sort the results by number of views</target>
+                <target>Permets de trier les résultats par nombre de vues</target>
             </trans-unit>
 
             <trans-unit id="tag.popular_title">
                 <source>tag.popular_title</source>
-                <target>Most popular tags</target>
+                <target>Tags les plus populaires</target>
             </trans-unit>
             <trans-unit id="tag.all_title">
                 <source>tag.all_title</source>
-                <target>All tags</target>
+                <target>Tous les tags</target>
             </trans-unit>
             <trans-unit id="tag.all">
                 <source>tag.all</source>
-                <target>All</target>
+                <target>Tout</target>
             </trans-unit>
             <trans-unit id="tag.other">
                 <source>tag.other</source>
-                <target>Other</target>
+                <target>Autre</target>
             </trans-unit>
 
             <trans-unit id="manga.language">
                 <source>manga.language</source>
-                <target>Language</target>
+                <target>Langue</target>
             </trans-unit>
             <trans-unit id="manga.parody">
                 <source>manga.parody</source>
-                <target>Theme</target>
+                <target>Thème</target>
             </trans-unit>
             <trans-unit id="manga.author">
                 <source>manga.author</source>
-                <target>Author</target>
+                <target>Autheur</target>
             </trans-unit>
             <trans-unit id="manga.tag">
                 <source>manga.tag</source>
@@ -111,106 +111,110 @@
             </trans-unit>
             <trans-unit id="manga.count_views">
                 <source>manga.count_views</source>
-                <target>Number of views</target>
+                <target>Nombre de vues</target>
             </trans-unit>
             <trans-unit id="manga.download">
                 <source>manga.download</source>
-                <target>Download</target>
+                <target>Télécharger</target>
             </trans-unit>
             <trans-unit id="manga.page">
                 <source>manga.page</source>
                 <target>Page</target>
-            </trans-unit>            
+            </trans-unit>
             <trans-unit id="manga.no_mangas_found">
                 <source>manga.no_mangas_found</source>
-                <target>No manga found</target>
+                <target>Aucun manga trouvé</target>
             </trans-unit>
             <trans-unit id="manga.image_alt">
                 <source>manga.image_alt</source>
-                <target>image number %count%</target>
+                <target>{1} première image |[2,Inf[ %count%eme image</target>
             </trans-unit>
             <trans-unit id="manga.no_images_found">
                 <source>manga.no_images_found</source>
-                <target>No image found</target>
+                <target>Aucune image trouvée</target>
             </trans-unit>
             <trans-unit id="manga.add_favorite">
                 <source>manga.add_favorite</source>
-                <target>Add to your favorites</target>
+                <target>Ajouter à vos favoris</target>
             </trans-unit>
             <trans-unit id="manga.remove_favorite">
                 <source>manga.remove_favorite</source>
-                <target>Remove to your favorites</target>
+                <target>Supprimer de vos favoris</target>
+            </trans-unit>
+            <trans-unit id="manga.end">
+                <source>manga.end</source>
+                <target>Il n'y a pas d'autre manga</target>
             </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>
-                <target>This website is an adult community that contains age-restricted content. You must be 18 years old or over to enter.</target>
+                <target>Ce site contient du contenu pour adultes. Vous devez avoir 18 ans ou plus pour rentrer.</target>
             </trans-unit>
             <trans-unit id="disclaimer.button">
                 <source>disclaimer.button</source>
-                <target>I am 18 or older</target>
+                <target>J'ai plus de 18 ans</target>
             </trans-unit>
 
             <trans-unit id="meta.description">
                 <source>meta.description</source>
-                <target> contains thousands of %tags% viewable and downloadable for free.</target>
+                <target> contient des milliers de %tags% visionnables et téléchargeables gratuitement.</target>
             </trans-unit>
             <trans-unit id="meta.description.manga">
                 <source>meta.description.manga</source>
-                <target>Here you will find one of the best manga : </target>
+                <target>Vous trouverez ici un des meilleurs manga : </target>
             </trans-unit>
             <trans-unit id="meta.description.with">
                 <source>meta.description.with</source>
-                <target> with</target>
+                <target> avec</target>
             </trans-unit>
 
             <trans-unit id="login.title">
                 <source>login.title</source>
-                <target>Log in !</target>
+                <target>Connexion !</target>
             </trans-unit>
             <trans-unit id="login.form.login.tab">
                 <source>login.form.login.tab</source>
-                <target>Log in</target>
+                <target>Connexion</target>
             </trans-unit>
             <trans-unit id="login.form.signup.tab">
                 <source>login.form.signup.tab</source>
-                <target>Sign up</target>
+                <target>Inscription</target>
             </trans-unit>
             <trans-unit id="login.form.login.title">
                 <source>login.form.login.title</source>
-                <target>Welcome back !</target>
+                <target>Bon retour parmi nous !</target>
             </trans-unit>
             <trans-unit id="login.form.login.invalid_username">
                 <source>login.form.login.invalid_username</source>
-                <target>Invalid username or password. Make sure you capitalize it correctly.</target>
+                <target>Nom d'utilisateur ou mot de passe invalide.</target>
             </trans-unit>
             <trans-unit id="login.form.login.username">
                 <source>login.form.login.username</source>
-                <target>Username</target>
+                <target>Nom d'utilisateur</target>
             </trans-unit>
             <trans-unit id="login.form.login.password">
                 <source>login.form.login.password</source>
-                <target>Password</target>
+                <target>Mot de passe</target>
             </trans-unit>
             <trans-unit id="login.form.login.forgot_password">
                 <source>login.form.login.forgot_password</source>
-                <target>Forgot Password ?</target>
+                <target>Mot de passe oublié ?</target>
             </trans-unit>
             <trans-unit id="login.form.login.button">
                 <source>login.form.login.button</source>
-                <target>Log in</target>
+                <target>Connexion</target>
             </trans-unit>
             <trans-unit id="login.form.signup.title">
                 <source>login.form.signup.title</source>
-                <target>Join us !</target>
+                <target>Rejoignez nous !</target>
             </trans-unit>
             <trans-unit id="login.form.signup.button">
                 <source>login.form.signup.button</source>
-                <target>Sign up</target>
+                <target>S'enregistrer</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.username">
                 <source>login.form.signup.form_type.username</source>
-                <target>Username</target>
+                <target>Nom d'utilisateur</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.captcha">
                 <source>login.form.signup.form_type.captcha</source>
@@ -218,36 +222,36 @@
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.first_password">
                 <source>login.form.signup.form_type.first_password</source>
-                <target>Password</target>
+                <target>Mot de passe</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.second_password">
                 <source>login.form.signup.form_type.second_password</source>
-                <target>Repeat Password</target>
+                <target>Répéter le mot de passe</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.password.must_match">
                 <source>login.form.signup.form_type.password.must_match</source>
-                <target>The password fields must match</target>
+                <target>Les champs de mot de passe doivent correspondre</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.password.not_blank">
                 <source>login.form.signup.form_type.password.not_blank</source>
-                <target>Please enter a password</target>
+                <target>Veuillez entrer un mot de passe</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.password.length">
                 <source>login.form.signup.form_type.password.length</source>
-                <target>Your password should be at least 6 characters</target>
+                <target>Votre mot de passe doit contenir au moins 6 caractéres</target>
             </trans-unit>
 
             <trans-unit id="reset_password.title">
                 <source>reset_password.title</source>
-                <target>Reset your password</target>
+                <target>Réinitialiser votre mot de passe</target>
             </trans-unit>
             <trans-unit id="reset_password.text">
                 <source>reset_password.text</source>
-                <target>Enter your email address and we we will send you a link to reset your password.</target>
+                <target>Entrer votre adresse mail et nous vous enverrons un lien pour réinitialiser votre mot de passe.</target>
             </trans-unit>
             <trans-unit id="reset_password.button">
                 <source>reset_password.button</source>
-                <target>Send password reset email</target>
+                <target>Envoyer le mail de reinitialisation</target>
             </trans-unit>
             <trans-unit id="reset_password.form_type.email">
                 <source>reset_password.form_type.email</source>
@@ -255,50 +259,50 @@
             </trans-unit>
             <trans-unit id="reset_password.form_type.email_empty">
                 <source>reset_password.form_type.email_empty</source>
-                <target>Please enter your email</target>
+                <target>Veuillez remplir ce champ</target>
             </trans-unit>
 
             <trans-unit id="check_email.title">
                 <source>check_email.title</source>
-                <target>Password Reset Email Sent</target>
+                <target>Email de reinitialisation de mot de passe envoyer</target>
             </trans-unit>
             <trans-unit id="check_email.text1">
                 <source>check_email.text1</source>
-                <target>An email has been sent that contains a link that you can click to reset your password. This link will expire in %hour% hour(s).</target>
+                <target>Un email contenant un lien vous permettant de réinitialiser votre mot de passe vous a été envoyé. Ce lien expire dans %hour% heure(s).</target>
             </trans-unit>
             <trans-unit id="check_email.text2">
                 <source>check_email.text2</source>
-                <target>If you don't receive an email please check your spam folder or try again.</target>
+                <target>Si vous ne recevez pas d'email, vérifiez vos spams ou réessayer.</target>
             </trans-unit>
 
             <trans-unit id="new_password.title">
                 <source>new_password.title</source>
-                <target>Reset new password</target>
+                <target>Création d'un nouveau mot de passe</target>
             </trans-unit>
             <trans-unit id="new_password.button">
                 <source>new_password.button</source>
-                <target>Validate</target>
+                <target>Valider</target>
             </trans-unit>
             <trans-unit id="new_password.form_type.first_password">
                 <source>new_password.form_type.first_password</source>
-                <target>New password</target>
+                <target>Nouveau mot de passe</target>
             </trans-unit>
 
             <trans-unit id="account.title">
                 <source>account.title</source>
-                <target>My account</target>
+                <target>Mon compte</target>
             </trans-unit>
             <trans-unit id="account.edit">
                 <source>account.edit</source>
-                <target>Edit</target>
+                <target>Editer</target>
             </trans-unit>
             <trans-unit id="account.logout">
                 <source>account.logout</source>
-                <target>Logout</target>
+                <target>Déconnexion</target>
             </trans-unit>
             <trans-unit id="account.rank">
                 <source>account.rank</source>
-                <target>Rank</target>
+                <target>Rang</target>
             </trans-unit>
             <trans-unit id="account.points">
                 <source>account.points</source>
@@ -306,39 +310,39 @@
             </trans-unit>
             <trans-unit id="account.time_spent">
                 <source>account.time_spent</source>
-                <target>Time spent</target>
+                <target>Temps passé</target>
             </trans-unit>
             <trans-unit id="account.manga_read">
                 <source>account.manga_read</source>
-                <target>Mangas read</target>
+                <target>Mangas lus</target>
             </trans-unit>
             <trans-unit id="account.manga_download">
                 <source>account.manga_download</source>
-                <target>Mangas Downloaded</target>
+                <target>Mangas téléchargés</target>
             </trans-unit>
             <trans-unit id="account.last_manga_read">
                 <source>account.last_manga_read</source>
-                <target>Your last mangas read</target>
+                <target>Vos derniers mangas lus</target>
             </trans-unit>
             <trans-unit id="account.manga.discover_new_manga">
                 <source>account.manga.discover_new_manga</source>
-                <target>Let's discover new manga !</target>
+                <target>Venez découvrir de nouveau manga !</target>
             </trans-unit>
             <trans-unit id="account.favorite_manga">
                 <source>account.favorite_manga</source>
-                <target>Your favorites mangas</target>
+                <target>Vos mangas favoris</target>
             </trans-unit>
             <trans-unit id="account.manga.add_manga_favorite">
                 <source>account.manga.add_manga_favorite</source>
-                <target>Add new manga to your favorites</target>
+                <target>Ajouter de nouveaux mangas à vos favoris</target>
             </trans-unit>
             <trans-unit id="account.days">
                 <source>account.days</source>
-                <target>{0,1} %count% day | [2,Inf[ %count% days</target>
+                <target>{0,1} %count% jour | [2,Inf[ %count% jours</target>
             </trans-unit>
             <trans-unit id="account.hours">
                 <source>account.hours</source>
-                <target>{0,1} %count% hour | [2,Inf[ %count% hours</target>
+                <target>{0,1} %count% heure | [2,Inf[ %count% heures</target>
             </trans-unit>
             <trans-unit id="account.minutes">
                 <source>account.minutes</source>
@@ -347,124 +351,124 @@
 
             <trans-unit id="edit_profile.title">
                 <source>edit_profile.title</source>
-                <target>Edit your profile</target>
+                <target>Edition du profile</target>
             </trans-unit>
             <trans-unit id="edit_profile.link.back_account">
                 <source>edit_profile.link.back_account</source>
-                <target>Back to your account</target>
+                <target>Retourner au compte</target>
             </trans-unit>
             <trans-unit id="edit_profile.link.change_password">
                 <source>edit_profile.link.change_password</source>
-                <target>Change password</target>
+                <target>Changer de mot de passe</target>
             </trans-unit>
             <trans-unit id="edit_profile.form.text">
                 <source>edit_profile.form.text</source>
-                <target>Any promotion mail will be send to you but we need your email if you forgot your password.</target>
+                <target>Aucun email commercial ne vous serra envoyé mais nous avons besoin de votre email si vous perdez votre mot de passe.</target>
             </trans-unit>
             <trans-unit id="edit_profile.form.button">
                 <source>edit_profile.form.button</source>
-                <target>Validate</target>
+                <target>Valider</target>
             </trans-unit>
             <trans-unit id="edit_profile.link.delete">
                 <source>edit_profile.link.delete</source>
-                <target>Delete your account</target>
+                <target>Supprimer votre compte</target>
             </trans-unit>
             <trans-unit id="edit_profile.save">
                 <source>edit_profile.save</source>
-                <target>Your information has been successfully saved</target>
+                <target>Vos informations ont été sauvegardé avec succés</target>
             </trans-unit>
 
             <trans-unit id="change_password.title">
                 <source>change_password.title</source>
-                <target>Change your password</target>
+                <target>Modification du mot de passe</target>
             </trans-unit>
             <trans-unit id="change_password.link.back_account">
                 <source>change_password.link.back_account</source>
-                <target>Back to your account</target>
+                <target>Retourner au compte</target>
             </trans-unit>
             <trans-unit id="change_password.link.back_edit">
                 <source>change_password.link.back_edit</source>
-                <target>Back to edit</target>
+                <target>Retourner à l'édition</target>
             </trans-unit>
 
             <trans-unit id="delete_account.title">
                 <source>delete_account.title</source>
-                <target>Delete your account !</target>
+                <target>Suppresion de votre compte !</target>
             </trans-unit>
             <trans-unit id="delete_account.link.back_account">
                 <source>delete_account.link.back_account</source>
-                <target>Back to your account</target>
+                <target>Retourner au compte</target>
             </trans-unit>
             <trans-unit id="delete_account.text">
                 <source>delete_account.text</source>
-                <target>This action is irreversible, make sure of your choice !</target>
+                <target>Cette action est irreversible, soyez sur de votre choix !</target>
             </trans-unit>
             <trans-unit id="delete_account.button">
                 <source>delete_account.button</source>
-                <target>Validate my account suppression</target>
+                <target>Valider la suppresion de mon compte</target>
             </trans-unit>
 
             <trans-unit id="email.title">
                 <source>email.title</source>
-                <target>Password lost</target>
+                <target>Mot de passe perdu</target>
             </trans-unit>
             <trans-unit id="email.text1">
                 <source>email.text1</source>
-                <target>You have lost your password ?
+                <target>Vous avez perdu votre mot de passe ?
 
-                No problem to reset your password, please click on the button below and choose a new one.
+                Pas de problème pour le réinitialiser, cliquez sur le bouton en dessous et choisissez en un nouveau.
 
-                This link will expire in %hour% hour(s).</target>
+                Ce lien expire dans %hour% heure(s).</target>
             </trans-unit>
             <trans-unit id="email.button">
                 <source>email.button</source>
-                <target>Change my password</target>
+                <target>Changer mon mot de passe</target>
             </trans-unit>
 
             <trans-unit id="about.title">
                 <source>about.title</source>
-                <target>About </target>
+                <target>A propos de </target>
             </trans-unit>
             <trans-unit id="about.contact.title">
                 <source>about.contact.title</source>
-                <target>To contact us </target>
+                <target>Pour nous contacter</target>
             </trans-unit>
             <trans-unit id="about.information.title">
                 <source>about.information.title</source>
-                <target>Useful informations</target>
+                <target>Informations utiles</target>
             </trans-unit>
             <trans-unit id="about.contact.text1">
                 <source>about.contact.text1</source>
-                <target>Contact us at the following email address : </target>
+                <target>Contactez-nous à l'adresse mail suivante : </target>
             </trans-unit>
             <trans-unit id="about.contact.text2.soft">
                 <source>about.contact.text2.soft</source>
-                <target>Our site is 100% autonomous and we do not collect any information about our customers.
-                        You can view and download manga for free and without limit.
-                        A mobile application allows you greater mobility and ease of access to our website.
-                        For any additional information, do not hesitate to contact us by email.
+                <target>Notre site est 100% autonome et nous ne récoltons aucune information sur nos clients.
+                        Vous pouvez visionner et télécharger des mangas gratuitement et sans limite.
+                        Une application mobile vous permet une plus grande mobilité et une facilité d'accès à notre site web.
+                        Pour toute information supplémentaire n'hésitez pas à nous contacter par mail.
                 </target>
             </trans-unit>
             <trans-unit id="about.contact.text2.hard">
                 <source>about.contact.text2.hard</source>
-                <target>Our site is 100% autonomous and we do not collect any information about our customers.
-                        You can view and download manga for free and without limit.
-                        A mobile application allows you greater mobility and ease of access to our website.
-                        For any additional information, do not hesitate to contact us by email.
+                <target>Notre site est 100% autonome et nous ne récoltons aucune information sur nos clients.
+                        Vous pouvez visionner et télécharger des mangas gratuitement et sans limite.
+                        Une application mobile vous permet une plus grande mobilité et une facilité d'accès à notre site web.
+                        Pour toute information supplémentaire n'hésitez pas à nous contacter par mail.
 
 
-                        What are hentai manga?
+                        Qu'est ce que les mangas hentai ?
 
-                        Hentai are manga for pornographic purposes, it brings together a set of genres that you can find on our site such as paizuri, teitoku or netorare.
-                        They are originally from Japan mainly, there are also animated versions of these manga.
-                        In 2018 hentai was the second most searched category on the pornhub site.
-                        There are also more than 1,300 anime hentai listed on My Anime List.
+                        Les hentai sont des mangas à titre pornographique, il rassemble un ensemble de genre que vous pouvez retrouver sur notre site tel que paizuri,teitoku ou encore netorare.
+                        Ils sont originaire du Japon principalement, il existe également des versions animées de ces mangas.
+                        En 2018 le hentai était la seconde catégorie la plus recherché sur le site pornhub.
+                        Il existe également plus de 1300 hentai anime répertorié sur My Anime List.
 
 
-                        What is doujin manga?
+                        Qu'est ce que les mangas doujin ?
 
-                        The dōjin or doujin are manga made by amateurs who often take up famous manga such as One Piece, Naruto or Fairy Tail.
-                        But they are not exclusively manga, there are also music, novels or video games.
+                        Les dōjin ou doujin sont des mangas fait par des amateurs qui reprenne souvent des mangas célébres tel que One Piece, Naruto ou Fairy Tail.
+                        Mais ils ne sont pas exlusivement des mangas, il existe aussi des musiques, des romans ou des jeux vidéos.
                 </target>
             </trans-unit>
         </body>

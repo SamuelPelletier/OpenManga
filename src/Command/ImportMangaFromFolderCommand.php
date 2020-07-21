@@ -94,6 +94,9 @@ class ImportMangaFromFolderCommand extends Command
         $outputStyle = new OutputFormatterStyle('red');
         $output->getFormatter()->setStyle('red', $outputStyle);
 
+        $outputStyle = new OutputFormatterStyle('yellow');
+        $output->getFormatter()->setStyle('yellow', $outputStyle);
+
         $output->writeln('<red>WARNING ! This command remove and rename files ! Becarefull to follow the right format : images in .jpg in lowercase with only number ! Any else name are removed !</>');
         $helper = $this->getHelper('question');
         $question = new ConfirmationQuestion('Are you sure to continue ? (yes/no)', false, '/^yes$|^y$/');
@@ -116,15 +119,20 @@ class ImportMangaFromFolderCommand extends Command
             $folders[] = $folder;
         }
 
-        $progressBar = new ProgressBar($output, count($folders));
+        $countFolders = $exampleOption ? 1 : count($folders);
+
+        $progressBar = new ProgressBar($output, $countFolders);
         $progressBar->start();
 
         foreach ($folders as $folder) {
             $manga = $repoManga->findByTitle($folder->getFilename());
-            if (count($manga) > 0 || preg_match("/^[0-9]+$/", $folder->getFilename()) == 1) {
-                // Already exist
+            if (preg_match("/^[0-9]+$/", $folder->getFilename()) == 1) {
+                continue;
+            } elseif (count($manga) > 0) {
+                $output->writeln(' <yellow>WARNING : ' . $folder->getFilename() . ' already exist !</>');
                 continue;
             }
+
             $finderFiles = new Finder();
             $finderFiles->files()->in(dirname(__DIR__) . '/../public/media/' . $folder->getFilename());
             $countPages = 0;
@@ -162,12 +170,13 @@ class ImportMangaFromFolderCommand extends Command
             $manga->setPublishedAt(new \DateTime('NOW'));
             $this->em->persist($manga);
             $this->em->flush();
+
             $fileSystem->rename($folder->getRealPath(), $folder->getPath() . '/' . $manga->getId(), true);
             $this->logger->info('End of import - manga : ' . $manga->getTitle() . ' ## New ID : ' . $manga->getId());
             $progressBar->advance();
-            return 0;
         }
 
         $progressBar->finish();
+        return 0;
     }
 }

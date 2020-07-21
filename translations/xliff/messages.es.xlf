@@ -1,105 +1,105 @@
 <?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
+    <file source-language="en" target-language="es" datatype="plaintext" original="file.ext">
         <body>
             <trans-unit id="http_error.name">
                 <source>http_error.name</source>
-                <target>Fehler %status_code%</target>
+                <target>Error %status_code%</target>
             </trans-unit>
             <trans-unit id="http_error.description">
                 <source>http_error.description</source>
-                <target>Ein unbekannter Fehler ist aufgetreten. Deine Anfrage konnte deswegen nicht ausgeführt werden.</target>
+                <target>Se ha producido un error desconocido que ha impedido completar tu petición.</target>
             </trans-unit>
             <trans-unit id="http_error.suggestion">
                 <source>http_error.suggestion</source>
-                <target><![CDATA[Versuche diese Seite in einigen Minuten erneut zu laden oder <a href="{url}">gehe zurück zur Homepage</a>.]]></target>
+                <target><![CDATA[Intentar recargar esta página dentro de unos minutos o <a href="{url}">vuelve a la portada del sitio</a>.]]></target>
             </trans-unit>
             <trans-unit id="http_error_403.description">
                 <source>http_error_403.description</source>
-                <target>Du hast keine Berechtigung, auf diese Ressource zuzugreifen.</target>
+                <target>No tienes permiso para acceder a este recurso.</target>
             </trans-unit>
             <trans-unit id="http_error_403.suggestion">
                 <source>http_error_403.suggestion</source>
-                <target>Frage deinen Manager oder Systemadministrator, um dir Zugriff auf diese Ressource zu gewähren.</target>
+                <target>Solicita a los administradores de este sitio que te concedan permiso para acceder al recurso solicitado.</target>
             </trans-unit>
             <trans-unit id="http_error_404.description">
                 <source>http_error_404.description</source>
-                <target>Wir konnten die von dir angeforderte Seite nicht finden.</target>
+                <target>No hemos podido encontrar la página solicitada.</target>
             </trans-unit>
             <trans-unit id="http_error_404.suggestion">
                 <source>http_error_404.suggestion</source>
-                <target><![CDATA[Überprüfe Rechtschreibfehler in der URL oder <a href="{url}">gehe zurück zur Homepage</a>.]]></target>
+                <target><![CDATA[Comprueba que la dirección de la página está bien escrita o <a href="{url}">vuelve a la portada del sitio</a>.]]></target>
             </trans-unit>
             <trans-unit id="http_error_500.description">
                 <source>http_error_500.description</source>
-                <target>Es gab einen internen Serverfehler.</target>
+                <target>Se ha producido un error grave en el servidor.</target>
             </trans-unit>
             <trans-unit id="http_error_500.suggestion">
                 <source>http_error_500.suggestion</source>
-                <target><![CDATA[Versuche diese Seite in einigen Minuten erneut zu laden oder <a href="{url}">gehe zurück zur Homepage</a>.]]></target>
+                <target><![CDATA[Intentar recargar esta página dentro de unos minutos o <a href="{url}">vuelve a la portada del sitio</a>.]]></target>
             </trans-unit>
 
             <trans-unit id="menu.choose_language">
                 <source>menu.choose_language</source>
-                <target>Sprache wählen</target>
+                <target>Elegir idioma</target>
             </trans-unit>
             <trans-unit id="menu.homepage">
                 <source>menu.homepage</source>
-                <target>Zuhause</target>
+                <target>Acogida</target>
             </trans-unit>
             <trans-unit id="menu.about">
                 <source>menu.about</source>
-                <target>Über</target>
+                <target>Acerca</target>
             </trans-unit>
             <trans-unit id="menu.search">
                 <source>menu.search</source>
-                <target>Suche</target>
+                <target>Búsqueda</target>
             </trans-unit>
             <trans-unit id="menu.login">
                 <source>menu.login</source>
-                <target>Einloggen</target>
+                <target>Identifícate</target>
             </trans-unit>
             <trans-unit id="menu.user">
                 <source>menu.user</source>
-                <target>Konto</target>
+                <target>Cuenta</target>
             </trans-unit>
             <trans-unit id="post.search_for">
                 <source>post.search_for</source>
-                <target>Suche...</target>
+                <target>Buscar...</target>
             </trans-unit>
             <trans-unit id="search.sort">
                 <source>search.sort</source>
-                <target>Sortieren nach Ansichten</target>
+                <target>Ordenar por vistas</target>
             </trans-unit>
             <trans-unit id="search.sort.info">
                 <source>search.sort.info</source>
-                <target>Sortieren Sie die Ergebnisse nach Anzahl der Aufrufe</target>
+                <target>Ordenar los resultados por número de vistas</target>
             </trans-unit>
 
             <trans-unit id="tag.popular_title">
                 <source>tag.popular_title</source>
-                <target>Die beliebtesten Tags</target>
+                <target>Etiquetas más populares</target>
             </trans-unit>
             <trans-unit id="tag.all_title">
                 <source>tag.all_title</source>
-                <target>Alle Tags</target>
+                <target>Todas las etiquetas</target>
             </trans-unit>
             <trans-unit id="tag.all">
                 <source>tag.all</source>
-                <target>Alles</target>
+                <target>Todos</target>
             </trans-unit>
             <trans-unit id="tag.other">
                 <source>tag.other</source>
-                <target>Anderes</target>
+                <target>Otro</target>
             </trans-unit>
 
             <trans-unit id="manga.language">
                 <source>manga.language</source>
-                <target>Sprache</target>
+                <target>Languaje</target>
             </trans-unit>
             <trans-unit id="manga.parody">
                 <source>manga.parody</source>
-                <target>Thema</target>
+                <target>Tema</target>
             </trans-unit>
             <trans-unit id="manga.author">
                 <source>manga.author</source>
@@ -111,106 +111,110 @@
             </trans-unit>
             <trans-unit id="manga.count_views">
                 <source>manga.count_views</source>
-                <target>Anzahl der Aufrufe</target>
+                <target>Número de vistas</target>
             </trans-unit>
             <trans-unit id="manga.download">
                 <source>manga.download</source>
-                <target>herunterladen</target>
+                <target>Descargar</target>
             </trans-unit>
             <trans-unit id="manga.page">
                 <source>manga.page</source>
-                <target>Seite</target>
+                <target>Página</target>
             </trans-unit>
             <trans-unit id="manga.no_mangas_found">
                 <source>manga.no_mangas_found</source>
-                <target>Kein Manga gefunden</target>
+                <target>No se encontró manga</target>
             </trans-unit>
             <trans-unit id="manga.image_alt">
                 <source>manga.image_alt</source>
-                <target>Bildnummer %count%</target>
+                <target>imagen número %count%</target>
             </trans-unit>
             <trans-unit id="manga.no_images_found">
                 <source>manga.no_images_found</source>
-                <target>kein Bild gefunden</target>
+                <target>Ninguna imagen encontradae</target>
             </trans-unit>
             <trans-unit id="manga.add_favorite">
                 <source>manga.add_favorite</source>
-                <target>Fügen Sie zu Ihren Favoriten hinzu</target>
+                <target>Agregar a tus favoritos</target>
             </trans-unit>
             <trans-unit id="manga.remove_favorite">
                 <source>manga.remove_favorite</source>
-                <target>Entfernen Sie zu Ihrem Favoriten</target>
+                <target>Eliminar a tus favoritos</target>
+            </trans-unit>
+            <trans-unit id="manga.end">
+                <source>manga.end</source>
+                <target>No mas manga</target>
             </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>
-                <target>Diese Website ist eine Community für Erwachsene, deren Inhalt Altersbeschränkungen enthält. Sie müssen mindestens 18 Jahre alt sein, um teilnehmen zu können.</target>
+                <target>Este sitio web es una comunidad de adultos que contiene contenido restringido por edad. Debes tener 18 años o más para entrar.</target>
             </trans-unit>
             <trans-unit id="disclaimer.button">
                 <source>disclaimer.button</source>
-                <target>Ich bin über 18</target>
+                <target>Tengo 18 años o más</target>
             </trans-unit>
 
             <trans-unit id="meta.description">
                 <source>meta.description</source>
-                <target> enthält Tausende von %tags% die angezeigt und kostenlos heruntergeladen werden können.</target>
+                <target> contiene miles de %tags% que se pueden ver y descargar de forma gratuita.</target>
             </trans-unit>
             <trans-unit id="meta.description.manga">
                 <source>meta.description.manga</source>
-                <target>Hier finden Sie einen der besten Mangas : </target>
+                <target>Aquí encontrarás uno de los mejores manga : </target>
             </trans-unit>
             <trans-unit id="meta.description.with">
                 <source>meta.description.with</source>
-                <target> mit</target>
+                <target> con</target>
             </trans-unit>
 
             <trans-unit id="login.title">
                 <source>login.title</source>
-                <target>Anmeldung !</target>
+                <target>Iniciar sesión !</target>
             </trans-unit>
             <trans-unit id="login.form.login.tab">
                 <source>login.form.login.tab</source>
-                <target>Anmeldung</target>
+                <target>Iniciar sesión</target>
             </trans-unit>
             <trans-unit id="login.form.signup.tab">
                 <source>login.form.signup.tab</source>
-                <target>Anmelden</target>
+                <target>Regístrate</target>
             </trans-unit>
             <trans-unit id="login.form.login.title">
                 <source>login.form.login.title</source>
-                <target>Willkommen zurück !</target>
+                <target>Bienvenido de nuevo!</target>
             </trans-unit>
             <trans-unit id="login.form.login.invalid_username">
                 <source>login.form.login.invalid_username</source>
-                <target>Ungültiger Benutzername oder Passwort. Stellen Sie sicher, dass Sie es richtig groß schreiben.</target>
+                <target>Usuario o contraseña invalido. Asegúrese de capitalizarlo correctamente.</target>
             </trans-unit>
             <trans-unit id="login.form.login.username">
                 <source>login.form.login.username</source>
-                <target>Nutzername</target>
+                <target>Nombre de usuario</target>
             </trans-unit>
             <trans-unit id="login.form.login.password">
                 <source>login.form.login.password</source>
-                <target>Passwort</target>
+                <target>Contraseña</target>
             </trans-unit>
             <trans-unit id="login.form.login.forgot_password">
                 <source>login.form.login.forgot_password</source>
-                <target>Passwort vergessen ?</target>
+                <target>Se te olvidó tu contraseña ?</target>
             </trans-unit>
             <trans-unit id="login.form.login.button">
                 <source>login.form.login.button</source>
-                <target>Anmeldung</target>
+                <target>Iniciar sesión</target>
             </trans-unit>
             <trans-unit id="login.form.signup.title">
                 <source>login.form.signup.title</source>
-                <target>Begleiten Sie uns !</target>
+                <target>Únete a nosotros!</target>
             </trans-unit>
             <trans-unit id="login.form.signup.button">
                 <source>login.form.signup.button</source>
-                <target>Anmelden</target>
+                <target>Regístrate</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.username">
                 <source>login.form.signup.form_type.username</source>
-                <target>Nutzername</target>
+                <target>Nombre de usuario</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.captcha">
                 <source>login.form.signup.form_type.captcha</source>
@@ -218,252 +222,254 @@
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.first_password">
                 <source>login.form.signup.form_type.first_password</source>
-                <target>Passwort</target>
+                <target>Contraseña</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.second_password">
                 <source>login.form.signup.form_type.second_password</source>
-                <target>Passwort wiederholen</target>
+                <target>Repite la contraseña</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.password.must_match">
                 <source>login.form.signup.form_type.password.must_match</source>
-                <target>Die Passwortfelder müssen übereinstimmen</target>
+                <target>Los campos de contraseña deben coincidir</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.password.not_blank">
                 <source>login.form.signup.form_type.password.not_blank</source>
-                <target>Bitte Passwort eingeben</target>
+                <target>Porfavor ingrese una contraseña</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.password.length">
                 <source>login.form.signup.form_type.password.length</source>
-                <target>Ihr Passwort sollte mindestens 6 Zeichen lang sein</target>
+                <target>Su contraseña debe tener al menos 6 caracteres.</target>
             </trans-unit>
 
             <trans-unit id="reset_password.title">
                 <source>reset_password.title</source>
-                <target>Setze dein Passwort zurück</target>
+                <target>Restablecer su contraseña</target>
             </trans-unit>
             <trans-unit id="reset_password.text">
                 <source>reset_password.text</source>
-                <target>Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen einen Link zum Zurücksetzen Ihres Passworts.</target>
+                <target>Ingrese su dirección de correo electrónico y le enviaremos un enlace para restablecer su contraseña.</target>
             </trans-unit>
             <trans-unit id="reset_password.button">
                 <source>reset_password.button</source>
-                <target>E-Mail zum Zurücksetzen des Passworts senden</target>
+                <target>Enviar contraseña restablecer correo electrónico</target>
             </trans-unit>
             <trans-unit id="reset_password.form_type.email">
                 <source>reset_password.form_type.email</source>
-                <target>Email</target>
+                <target>Correo electrónico</target>
             </trans-unit>
             <trans-unit id="reset_password.form_type.email_empty">
                 <source>reset_password.form_type.email_empty</source>
-                <target>Bitte geben Sie ihre E-Mail-Adresse ein</target>
+                <target>Por favor introduzca su correo electrónico</target>
             </trans-unit>
 
             <trans-unit id="check_email.title">
                 <source>check_email.title</source>
-                <target>Passwort zurückgesetzt E-Mail gesendet</target>
+                <target>Correo electrónico de restablecimiento de contraseña enviado</target>
             </trans-unit>
             <trans-unit id="check_email.text1">
                 <source>check_email.text1</source>
-                <target>Es wurde eine E-Mail gesendet, die einen Link enthält, auf den Sie klicken können, um Ihr Passwort zurückzusetzen. Dieser Link läuft in %hour% Stunde ab.</target>
+                <target>Se ha enviado un correo electrónico que contiene un enlace en el que puede hacer clic para restablecer su contraseña. Este enlace caducará en %hour% hora.</target>
             </trans-unit>
             <trans-unit id="check_email.text2">
                 <source>check_email.text2</source>
-                <target>Wenn Sie keine E-Mail erhalten, überprüfen Sie bitte Ihren Spam-Ordner oder versuchen Sie es erneut.</target>
+                <target>Si no recibe un correo electrónico, verifique su carpeta de correo no deseado o vuelva a intentarlo.</target>
             </trans-unit>
 
             <trans-unit id="new_password.title">
                 <source>new_password.title</source>
-                <target>Neues Passwort zurücksetzen</target>
+                <target>Restablecer nueva contraseña</target>
             </trans-unit>
             <trans-unit id="new_password.button">
                 <source>new_password.button</source>
-                <target>Bestätigen</target>
+                <target>Validar</target>
             </trans-unit>
             <trans-unit id="new_password.form_type.first_password">
                 <source>new_password.form_type.first_password</source>
-                <target>Neues Kennwort</target>
+                <target>Nueva contraseña</target>
             </trans-unit>
 
             <trans-unit id="account.title">
                 <source>account.title</source>
-                <target>Mein Konto</target>
+                <target>Mi cuenta</target>
             </trans-unit>
             <trans-unit id="account.edit">
                 <source>account.edit</source>
-                <target>Bearbeiten</target>
+                <target>Editar</target>
             </trans-unit>
             <trans-unit id="account.logout">
                 <source>account.logout</source>
-                <target>Ausloggen</target>
+                <target>Cerrar sesión</target>
             </trans-unit>
             <trans-unit id="account.rank">
                 <source>account.rank</source>
-                <target>Rang</target>
+                <target>Rango</target>
             </trans-unit>
             <trans-unit id="account.points">
                 <source>account.points</source>
-                <target>Punkte</target>
+                <target>Puntos</target>
             </trans-unit>
             <trans-unit id="account.time_spent">
                 <source>account.time_spent</source>
-                <target>Zeitaufwand</target>
+                <target>Tiempo usado</target>
             </trans-unit>
             <trans-unit id="account.manga_read">
                 <source>account.manga_read</source>
-                <target>Mangas lesen</target>
+                <target>Mangas leyó</target>
             </trans-unit>
             <trans-unit id="account.manga_download">
                 <source>account.manga_download</source>
-                <target>Mangas heruntergeladen</target>
+                <target>Mangas Descargado</target>
             </trans-unit>
             <trans-unit id="account.last_manga_read">
                 <source>account.last_manga_read</source>
-                <target>Deine letzten Mangas haben gelesen</target>
+                <target>Tu última lectura de mangas</target>
             </trans-unit>
             <trans-unit id="account.manga.discover_new_manga">
                 <source>account.manga.discover_new_manga</source>
-                <target>Lass uns neuen Manga entdecken !</target>
+                <target>¡Descubramos un nuevo manga!</target>
             </trans-unit>
             <trans-unit id="account.favorite_manga">
                 <source>account.favorite_manga</source>
-                <target>Deine Lieblingsmangas</target>
+                <target>Tus mangas favoritos</target>
             </trans-unit>
             <trans-unit id="account.manga.add_manga_favorite">
                 <source>account.manga.add_manga_favorite</source>
-                <target>Fügen Sie Ihren Favoriten neuen Manga hinzu</target>
+                <target>Añadir nuevo manga a tus favoritos</target>
             </trans-unit>
             <trans-unit id="account.days">
                 <source>account.days</source>
-                <target>{0,1} %count% Tag | [2,Inf[ %count% Tage</target>
+                <target>{0,1} %count% día | [2,Inf[ %count% dias</target>
             </trans-unit>
             <trans-unit id="account.hours">
                 <source>account.hours</source>
-                <target>{0,1} %count% Stunde | [2,Inf[ %count% Std</target>
+                <target>{0,1} %count% hora | [2,Inf[ %count% horas</target>
             </trans-unit>
             <trans-unit id="account.minutes">
                 <source>account.minutes</source>
-                <target>{0,1} %count% Minute | [2,Inf[ %count% Protokoll</target>
+                <target>{0,1} %count% minuto | [2,Inf[ %count% minutos</target>
             </trans-unit>
 
             <trans-unit id="edit_profile.title">
                 <source>edit_profile.title</source>
-                <target>Bearbeite dein Profil</target>
+                <target>Edite su perfil</target>
             </trans-unit>
             <trans-unit id="edit_profile.link.back_account">
                 <source>edit_profile.link.back_account</source>
-                <target>Zurück zu Ihrem Konto</target>
+                <target>Regresar a su cuenta</target>
             </trans-unit>
             <trans-unit id="edit_profile.link.change_password">
                 <source>edit_profile.link.change_password</source>
-                <target>Passwort ändern</target>
+                <target>Cambia la contraseña</target>
             </trans-unit>
             <trans-unit id="edit_profile.form.text">
                 <source>edit_profile.form.text</source>
-                <target>Jede Werbemail wird an Sie gesendet, aber wir benötigen Ihre E-Mail, wenn Sie Ihr Passwort vergessen haben.</target>
+                <target>Se le enviará cualquier correo de promoción, pero necesitamos su correo electrónico si olvidó su contraseña.</target>
             </trans-unit>
             <trans-unit id="edit_profile.form.button">
                 <source>edit_profile.form.button</source>
-                <target>Bestätigen</target>
+                <target>Validar</target>
             </trans-unit>
             <trans-unit id="edit_profile.link.delete">
                 <source>edit_profile.link.delete</source>
-                <target>Lösche deinen Account</target>
+                <target>Eliminar tu cuenta</target>
             </trans-unit>
             <trans-unit id="edit_profile.save">
                 <source>edit_profile.save</source>
-                <target>Ihre Daten wurden erfolgreich gespeichert</target>
+                <target>Su información ha sido guardada exitosamente</target>
             </trans-unit>
 
             <trans-unit id="change_password.title">
                 <source>change_password.title</source>
-                <target>Ändern Sie Ihr Passwort</target>
+                <target>Cambia tu contraseña</target>
             </trans-unit>
             <trans-unit id="change_password.link.back_account">
                 <source>change_password.link.back_account</source>
-                <target>Zurück zu Ihrem Konto</target>
+                <target>Regresar a su cuenta</target>
             </trans-unit>
             <trans-unit id="change_password.link.back_edit">
                 <source>change_password.link.back_edit</source>
-                <target>Zurück zum Bearbeiten</target>
+                <target>Volver a editar</target>
             </trans-unit>
 
             <trans-unit id="delete_account.title">
                 <source>delete_account.title</source>
-                <target>Lösche deinen Account !</target>
+                <target>¡Elimina tu cuenta!</target>
             </trans-unit>
             <trans-unit id="delete_account.link.back_account">
                 <source>delete_account.link.back_account</source>
-                <target>Zurück zu Ihrem Konto</target>
+                <target>Regresar a su cuenta</target>
             </trans-unit>
             <trans-unit id="delete_account.text">
                 <source>delete_account.text</source>
-                <target>Diese Aktion ist irreversibel, stellen Sie sicher, dass Sie Ihre Wahl treffen!</target>
+                <target>Esta acción es irreversible, ¡asegúrese de elegir!</target>
             </trans-unit>
             <trans-unit id="delete_account.button">
                 <source>delete_account.button</source>
-                <target>Überprüfen Sie die Unterdrückung meines Kontos</target>
+                <target>Validar mi supresión de cuenta</target>
             </trans-unit>
 
             <trans-unit id="email.title">
                 <source>email.title</source>
-                <target>Passwort verloren</target>
+                <target>Contraseña perdida</target>
             </trans-unit>
             <trans-unit id="email.text1">
                 <source>email.text1</source>
-                <target>Sie haben Ihr Passwort verloren?
+                <target>Has perdido tu contraseña ?
 
-                Kein Problem, um Ihr Passwort zurückzusetzen. Klicken Sie auf die Schaltfläche unten und wählen Sie ein neues aus.
+                No hay problema para restablecer su contraseña, haga clic en el botón a continuación y elija una nueva.
 
-                Dieser Link läuft in 1 Stunde ab.</target>
+                Este enlace caducará en 1 hora (s).</target>
             </trans-unit>
             <trans-unit id="email.button">
                 <source>email.button</source>
-                <target>Ändere mein Passwort</target>
+                <target>Cambiar mi contraseña</target>
             </trans-unit>
 
             <trans-unit id="about.title">
                 <source>about.title</source>
-                <target>Über </target>
+                <target>Acerca de </target>
             </trans-unit>
             <trans-unit id="about.contact.title">
                 <source>about.contact.title</source>
-                <target>Um uns zu kontaktieren</target>
+                <target>Para contactarnos</target>
             </trans-unit>
             <trans-unit id="about.information.title">
                 <source>about.information.title</source>
-                <target>Nützliche Informationen</target>
+                <target>Informaciones utiles</target>
             </trans-unit>
             <trans-unit id="about.contact.text1">
                 <source>about.contact.text1</source>
-                <target>Kontaktieren Sie uns unter der folgenden E-Mail-Adresse : </target>
+                <target>Contáctenos en la siguiente dirección de correo electrónico : </target>
             </trans-unit>
             <trans-unit id="about.contact.text2.soft">
                 <source>about.contact.text2.soft</source>
-                <target>Unsere Website ist zu 100% autonom und wir sammeln keine Informationen über unsere Kunden.
-                        Sie können Manga kostenlos und unbegrenzt ansehen und herunterladen.
-                        Eine mobile Anwendung ermöglicht Ihnen eine größere Mobilität und einen einfachen Zugriff auf unsere Website.
-                        Für weitere Informationen zögern Sie nicht, uns per E-Mail zu kontaktieren.
+                <target>Nuestro sitio es 100% autónomo y no recopilamos ninguna información sobre nuestros clientes.
+                        Puedes ver y descargar manga gratis y sin límite.
+                        Una aplicación móvil le permite una mayor movilidad y facilidad de acceso a nuestro sitio web.
+                        Para cualquier información adicional, no dude en contactarnos por correo electrónico.
                 </target>
             </trans-unit>
             <trans-unit id="about.contact.text2.hard">
                 <source>about.contact.text2.hard</source>
-                <target>Unsere Website ist zu 100% autonom und wir sammeln keine Informationen über unsere Kunden.
-                        Sie können Manga kostenlos und unbegrenzt ansehen und herunterladen.
-                        Eine mobile Anwendung ermöglicht Ihnen eine größere Mobilität und einen einfachen Zugriff auf unsere Website.
-                        Für weitere Informationen zögern Sie nicht, uns per E-Mail zu kontaktieren.
+                <target>Nuestro sitio es 100% autónomo y no recopilamos ninguna información sobre nuestros clientes.
+                        Puedes ver y descargar manga gratis y sin límite.
+                        Una aplicación móvil le permite una mayor movilidad y facilidad de acceso a nuestro sitio web.
+                        Para cualquier información adicional, no dude en contactarnos por correo electrónico.
 
 
-                        Was sind Hentai Manga?
+                        ¿Qué son los hentai manga?
 
-                        Hentai sind Mangas für pornografische Zwecke. Sie vereinen eine Reihe von Genres, die Sie auf unserer Website finden können, z. B. Paizuri, Teitoku oder Netorare.
-                        Es gibt auch mehr als 1.300 Anime Hentai auf My Anime List.
+                        Los hentai son manga para fines pornográficos, reúne un conjunto de géneros que puedes encontrar en nuestro sitio, como paizuri, teitoku o netorare.
+                        Son originarios de Japón principalmente, también hay versiones animadas de estos manga.
+                        En 2018, hentai fue la segunda categoría más buscada en el sitio pornhub.
+                        También hay más de 1.300 hentai de anime en la lista de My Anime List.
 
 
-                        Was ist Doujin Manga?
+                        ¿Qué es el manga doujin?
 
-                        Das Dōjin oder Doujin sind Mangas von Amateuren, die oft berühmte Mangas wie One Piece, Naruto oder Fairy Tail aufnehmen.
-                        Es handelt sich aber nicht nur um Manga, sondern auch um Musik, Romane oder Videospiele.
-                        </target>
+                        Los dōjin o doujin son manga hecha por aficionados que a menudo toman manga famoso como One Piece, Naruto o Fairy Tail.
+                        Pero no son exclusivamente manga, también hay música, novelas o videojuegos.
+                </target>
             </trans-unit>
         </body>
     </file>
