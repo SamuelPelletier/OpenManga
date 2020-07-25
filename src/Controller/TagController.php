@@ -26,7 +26,7 @@ class TagController extends AbstractController
     /**
      * @Route("/tags", name="tags")
      */
-    public function index(Request $request, TagRepository $tagRepository, MangaRepository $mangaRepository): Response
+    public function index(Request $request, TagRepository $tagRepository): Response
     {
 
         $queryLetter = 'a';

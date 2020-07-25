@@ -64,8 +64,8 @@ class User implements UserInterface
      *
      * @ORM\ManyToMany(targetEntity="Manga")
      * @ORM\JoinTable(name="user_manga_read",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="manga_id", referencedColumnName="id")}
+     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="cascade")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="manga_id", referencedColumnName="id", onDelete="cascade")}
      *      )
      */
     private $lastMangasRead;

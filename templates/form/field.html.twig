@@ -3,7 +3,7 @@
 {% endif %}
 
 <div class="field-wrap">
-    {% spaceless %}
+    {% apply spaceless %}
         {% if formField.vars.errors|length > 0 %}
             <div class="form-error">
                 <ul>
@@ -13,7 +13,7 @@
                 </ul>
             </div>
         {% endif %}
-    {% endspaceless %}
+    {% endapply %}
     <label for="{{ formField.vars.id }}">
         {{ formField.vars.label|trans }}{% if required is same as(true) %}<span class='req'>*</span>{% endif %}
     </label>
