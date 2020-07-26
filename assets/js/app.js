@@ -71,7 +71,7 @@ function addMangaBlock() {
 }
 
 $(function () {
-    if (window.innerWidth < 738) {
+    if (window.innerWidth < 738 && $('.manga-container').length > 0) {
         addMangaBlock();
 
         $(window).scroll(function () {
