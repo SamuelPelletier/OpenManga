@@ -145,6 +145,10 @@
                 <source>manga.end</source>
                 <target>Kein Manga mehr</target>
             </trans-unit>
+            <trans-unit id="manga.recommended">
+                <source>manga.recommended</source>
+                <target>Mangas empfohlen</target>
+            </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>

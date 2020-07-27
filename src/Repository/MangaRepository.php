@@ -180,7 +180,36 @@ class MangaRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('p')
             ->orWhere(':author MEMBER OF p.authors')
             ->setParameter('author', $author);
+
         return count($queryBuilder->getQuery()->execute());
+    }
+
+    public function findByAuthor(Author $author): array
+    {
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->Where(':author MEMBER OF p.authors')
+            ->setParameter('author', $author)
+            ->orderBy('p.id', 'DESC');
+
+        return $queryBuilder->getQuery()->execute();
+    }
+
+    public function findByTag(Tag $tag, int $max = null, $order = 'DESC'): array
+    {
+        if (strtoupper($order) === 'ASC') {
+            $order = 'ASC';
+        } else {
+            $order = 'DESC';
+        }
+
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->Where(':tag MEMBER OF p.tags')
+            ->setParameter('tag', $tag)
+            ->orderBy('p.id', $order)
+            ->setMaxResults($max);
+
+        return $queryBuilder->getQuery()->execute();
+
     }
 
     /**

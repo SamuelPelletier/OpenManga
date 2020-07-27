@@ -621,3 +621,13 @@ li:last-child .page {
         stroke-dashoffset: -205;
     }
 }
+
+
+#recommended {
+    margin: 75px 0;
+}
+
+.manga-recommended-container {
+    display: flex;
+    flex-wrap: wrap;
+}

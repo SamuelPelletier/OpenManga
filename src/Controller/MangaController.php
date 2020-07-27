@@ -19,6 +19,7 @@ use App\Repository\LanguageRepository;
 use App\Repository\MangaRepository;
 use App\Repository\ParodyRepository;
 use App\Repository\TagRepository;
+use App\Service\MangaService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -85,7 +86,8 @@ class MangaController extends AbstractController
     public function mangaShow(
         Manga $manga,
         MangaRepository $mangaRepository,
-        Request $request
+        Request $request,
+        MangaService $mangaService
     ): Response {
 
         $entityManager = $this->getDoctrine()->getManager();
@@ -124,8 +126,15 @@ class MangaController extends AbstractController
             $entityManager->flush();
         }
 
+        $mangasRecommended = $mangaService->getRecommendationByManga($manga);
+
         return $this->render('manga_show.html.twig',
-            ['manga' => $manga, 'images' => $images, 'mangaRepository' => $mangaRepository]);
+            [
+                'manga' => $manga,
+                'images' => $images,
+                'mangaRepository' => $mangaRepository,
+                'mangas_recommended' => $mangasRecommended
+            ]);
     }
 
     /**

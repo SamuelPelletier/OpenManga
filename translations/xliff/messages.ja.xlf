@@ -145,6 +145,10 @@
                 <source>manga.end</source>
                 <target>これ以上の漫画</target>
             </trans-unit>
+            <trans-unit id="manga.recommended">
+                <source>manga.recommended</source>
+                <target>マンガ推奨</target>
+            </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>
