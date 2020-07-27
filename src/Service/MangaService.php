@@ -64,7 +64,7 @@ class MangaService
         $countResults = count($results);
 
         // Need 4 recommended mangas
-        if ($countResults <= 4) {
+        if ($countResults <= 4 && $manga->getTags()->count() > 0) {
             // Get max 5 mangas if we find the initial manga
             $mangasRecommendedByTag = $this->mangaRepository->findByTag($manga->getTags()->first(), 5 - $countResults);
             foreach ($mangasRecommendedByTag as $key => $mangaRecommendedByTag) {
