@@ -20,6 +20,7 @@ a:hover, a:focus, a:active {
 
 .navbar {
     background-color: #2b2b2b;
+    border-radius: 0;
 }
 
 .navbar-brand {

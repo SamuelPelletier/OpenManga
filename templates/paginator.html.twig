@@ -16,7 +16,7 @@
     {% if page > 1 %}
         <li><a href="{{ url(route_name,{'page':page-1}|merge(app.request.query.all)) }}">Previous</a></li>
     {% else %}
-        <li class="disabled"><a href="#">Previous</a></li>
+        <li class="disabled"><a href="#">{{ 'manga.paginator.previous'|trans }}</a></li>
     {% endif %}
 
     {% if page > 4 %}
@@ -42,6 +42,6 @@
     {% if page < maxPage %}
         <li><a href="{{ url(route_name,{'page':page+1}|merge(app.request.query.all)) }}">Next</a></li>
     {% else %}
-        <li class="disabled"><a href="#">Next</a></li>
+        <li class="disabled"><a href="#">{{ 'manga.paginator.next'|trans }}</a></li>
     {% endif %}
 </ul>

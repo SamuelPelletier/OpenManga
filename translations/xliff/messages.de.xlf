@@ -149,6 +149,14 @@
                 <source>manga.recommended</source>
                 <target>Mangas empfohlen</target>
             </trans-unit>
+            <trans-unit id="manga.paginator.previous">
+                <source>manga.paginator.previous</source>
+                <target>Bisherige</target>
+            </trans-unit>
+            <trans-unit id="manga.paginator.next">
+                <source>manga.paginator.next</source>
+                <target>Nächster</target>
+            </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>
@@ -447,7 +455,7 @@
             </trans-unit>
             <trans-unit id="about.contact.text2.soft">
                 <source>about.contact.text2.soft</source>
-                <target>Unsere Website ist zu 100% autonom und wir sammeln keine Informationen über unsere Kunden.
+                <target>Wir sammeln keine Informationen über unsere Kunden und verwenden Google Analytics nicht.
                         Sie können Manga kostenlos und unbegrenzt ansehen und herunterladen.
                         Eine mobile Anwendung ermöglicht Ihnen eine größere Mobilität und einen einfachen Zugriff auf unsere Website.
                         Für weitere Informationen zögern Sie nicht, uns per E-Mail zu kontaktieren.
@@ -455,7 +463,7 @@
             </trans-unit>
             <trans-unit id="about.contact.text2.hard">
                 <source>about.contact.text2.hard</source>
-                <target>Unsere Website ist zu 100% autonom und wir sammeln keine Informationen über unsere Kunden.
+                <target>Wir sammeln keine Informationen über unsere Kunden und verwenden Google Analytics nicht.
                         Sie können Manga kostenlos und unbegrenzt ansehen und herunterladen.
                         Eine mobile Anwendung ermöglicht Ihnen eine größere Mobilität und einen einfachen Zugriff auf unsere Website.
                         Für weitere Informationen zögern Sie nicht, uns per E-Mail zu kontaktieren.

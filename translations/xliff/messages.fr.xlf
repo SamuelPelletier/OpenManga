@@ -149,6 +149,14 @@
                 <source>manga.recommended</source>
                 <target>Manga recommandés</target>
             </trans-unit>
+            <trans-unit id="manga.paginator.previous">
+                <source>manga.paginator.previous</source>
+                <target>Précédent</target>
+            </trans-unit>
+            <trans-unit id="manga.paginator.next">
+                <source>manga.paginator.next</source>
+                <target>Suivant</target>
+            </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>
@@ -447,7 +455,7 @@
             </trans-unit>
             <trans-unit id="about.contact.text2.soft">
                 <source>about.contact.text2.soft</source>
-                <target>Notre site est 100% autonome et nous ne récoltons aucune information sur nos clients.
+                <target>Nous ne collectons aucune information sur nos clients et nous n'utilisons pas Google Analytics.
                         Vous pouvez visionner et télécharger des mangas gratuitement et sans limite.
                         Une application mobile vous permet une plus grande mobilité et une facilité d'accès à notre site web.
                         Pour toute information supplémentaire n'hésitez pas à nous contacter par mail.
@@ -455,7 +463,7 @@
             </trans-unit>
             <trans-unit id="about.contact.text2.hard">
                 <source>about.contact.text2.hard</source>
-                <target>Notre site est 100% autonome et nous ne récoltons aucune information sur nos clients.
+                <target>Nous ne collectons aucune information sur nos clients et nous n'utilisons pas Google Analytics.
                         Vous pouvez visionner et télécharger des mangas gratuitement et sans limite.
                         Une application mobile vous permet une plus grande mobilité et une facilité d'accès à notre site web.
                         Pour toute information supplémentaire n'hésitez pas à nous contacter par mail.

@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file source-language="en" target-language="ja" datatype="plaintext" original="file.ext">
+    <file source-language="en" target-language="ko" datatype="plaintext" original="file.ext">
         <body>
             <trans-unit id="http_error.name">
                 <source>http_error.name</source>
@@ -41,446 +41,446 @@
 
             <trans-unit id="menu.choose_language">
                 <source>menu.choose_language</source>
-                <target>言語を選択</target>
+                <target>언어를 선택하십시오</target>
             </trans-unit>
             <trans-unit id="menu.homepage">
                 <source>menu.homepage</source>
-                <target>歓迎</target>
+                <target>집</target>
             </trans-unit>
             <trans-unit id="menu.about">
                 <source>menu.about</source>
-                <target>約</target>
+                <target>약</target>
             </trans-unit>
             <trans-unit id="menu.search">
                 <source>menu.search</source>
-                <target>検索</target>
+                <target>검색</target>
             </trans-unit>
             <trans-unit id="menu.login">
                 <source>menu.login</source>
-                <target>ログインする</target>
+                <target>로그인</target>
             </trans-unit>
             <trans-unit id="menu.user">
                 <source>menu.user</source>
-                <target>アカウント</target>
+                <target>계정</target>
             </trans-unit>
             <trans-unit id="post.search_for">
                 <source>post.search_for</source>
-                <target>検索...</target>
+                <target>검색...</target>
             </trans-unit>
             <trans-unit id="search.sort">
                 <source>search.sort</source>
-                <target>ビューで並べ替え</target>
+                <target>조회수로 정렬</target>
             </trans-unit>
             <trans-unit id="search.sort.info">
                 <source>search.sort.info</source>
-                <target>ビューの数で結果を並べ替える</target>
+                <target>조회수를 기준으로 결과 정렬</target>
             </trans-unit>
 
             <trans-unit id="tag.popular_title">
                 <source>tag.popular_title</source>
-                <target>最も人気のあるタグ</target>
+                <target>가장 인기있는 태그</target>
             </trans-unit>
             <trans-unit id="tag.all_title">
                 <source>tag.all_title</source>
-                <target>すべてのタグ</target>
+                <target>모든 태그</target>
             </trans-unit>
             <trans-unit id="tag.all">
                 <source>tag.all</source>
-                <target>すべて</target>
+                <target>모두</target>
             </trans-unit>
             <trans-unit id="tag.other">
                 <source>tag.other</source>
-                <target>その他の</target>
+                <target>다른</target>
             </trans-unit>
 
             <trans-unit id="manga.language">
                 <source>manga.language</source>
-                <target>言語</target>
+                <target>언어</target>
             </trans-unit>
             <trans-unit id="manga.parody">
                 <source>manga.parody</source>
-                <target>替歌</target>
+                <target>테마</target>
             </trans-unit>
             <trans-unit id="manga.author">
                 <source>manga.author</source>
-                <target>筆者</target>
+                <target>저자</target>
             </trans-unit>
             <trans-unit id="manga.tag">
                 <source>manga.tag</source>
-                <target>タグ</target>
+                <target>꼬리표</target>
             </trans-unit>
             <trans-unit id="manga.count_views">
                 <source>manga.count_views</source>
-                <target>ビュー数</target>
+                <target>조회수</target>
             </trans-unit>
             <trans-unit id="manga.download">
                 <source>manga.download</source>
-                <target>ダウンロード</target>
+                <target>다운로드</target>
             </trans-unit>
             <trans-unit id="manga.page">
                 <source>manga.page</source>
-                <target>頁</target>
-            </trans-unit>
+                <target>페이지</target>
+            </trans-unit>            
             <trans-unit id="manga.no_mangas_found">
                 <source>manga.no_mangas_found</source>
-                <target>マンガが見つかりません</target>
+                <target>만화를 찾을 수 없습니다</target>
             </trans-unit>
             <trans-unit id="manga.image_alt">
                 <source>manga.image_alt</source>
-                <target>画像番号 %count%</target>
+                <target>이미지 번호 %count%</target>
             </trans-unit>
             <trans-unit id="manga.no_images_found">
                 <source>manga.no_images_found</source>
-                <target>画像が見つかりません</target>
+                <target>이미지를 찾을 수 없습니다</target>
             </trans-unit>
             <trans-unit id="manga.add_favorite">
                 <source>manga.add_favorite</source>
-                <target>お気に入りに追加</target>
+                <target>즐겨 찾기에 추가</target>
             </trans-unit>
             <trans-unit id="manga.remove_favorite">
-                <source>manga.remove_favorites</source>
-                <target>お気に入りから削除</target>
+                <source>manga.remove_favorite</source>
+                <target>즐겨 찾기로 제거</target>
             </trans-unit>
             <trans-unit id="manga.end">
                 <source>manga.end</source>
-                <target>これ以上の漫画</target>
+                <target>더 이상 만화</target>
             </trans-unit>
             <trans-unit id="manga.recommended">
                 <source>manga.recommended</source>
-                <target>マンガ推奨</target>
+                <target>망가 추천</target>
             </trans-unit>
             <trans-unit id="manga.paginator.previous">
                 <source>manga.paginator.previous</source>
-                <target>前</target>
+                <target>이전</target>
             </trans-unit>
             <trans-unit id="manga.paginator.next">
                 <source>manga.paginator.next</source>
-                <target>次</target>
+                <target>다음</target>
             </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>
-                <target>このウェブサイトは、年齢制限のあるコンテンツを含むアダルトコミュニティです。応募するには18歳以上でなければなりません。</target>
+                <target>이 웹 사이트는 연령 제한 콘텐츠가 포함 된 성인 커뮤니티입니다. 입장하려면 18 세 이상이어야합니다.</target>
             </trans-unit>
             <trans-unit id="disclaimer.button">
                 <source>disclaimer.button</source>
-                <target>私は18歳以上です</target>
+                <target>나는 18 세 이상입니다</target>
             </trans-unit>
 
             <trans-unit id="meta.description">
                 <source>meta.description</source>
-                <target> は何千もの %tags% を無料で閲覧、ダウンロード可能です。</target>
+                <target> 무료로 볼 수 있고 다운로드 할 수있는 수천 개의 %tags% 가 포함되어 있습니다.</target>
             </trans-unit>
             <trans-unit id="meta.description.manga">
                 <source>meta.description.manga</source>
-                <target>ここでは、最高の漫画の1つを見つけることができます : </target>
+                <target>다음은 최고의 만화 중 하나입니다 : </target>
             </trans-unit>
             <trans-unit id="meta.description.with">
                 <source>meta.description.with</source>
-                <target> と</target>
+                <target> 와</target>
             </trans-unit>
 
             <trans-unit id="login.title">
                 <source>login.title</source>
-                <target>ログインする ！</target>
+                <target>로그인 !</target>
             </trans-unit>
             <trans-unit id="login.form.login.tab">
                 <source>login.form.login.tab</source>
-                <target>ログインする</target>
+                <target>로그인</target>
             </trans-unit>
             <trans-unit id="login.form.signup.tab">
                 <source>login.form.signup.tab</source>
-                <target>サインアップ</target>
+                <target>가입하기</target>
             </trans-unit>
             <trans-unit id="login.form.login.title">
                 <source>login.form.login.title</source>
-                <target>参加しませんか ！</target>
+                <target>다시 오신 것을 환영합니다 !</target>
             </trans-unit>
             <trans-unit id="login.form.login.invalid_username">
                 <source>login.form.login.invalid_username</source>
-                <target>ユーザー名かパスワードが無効。正しく大文字にしてください。</target>
+                <target>잘못된 사용자 이름 또는 비밀번호입니다. 올바르게 대문자로 입력하십시오.</target>
             </trans-unit>
             <trans-unit id="login.form.login.username">
                 <source>login.form.login.username</source>
-                <target>ユーザー名</target>
+                <target>사용자 이름</target>
             </trans-unit>
             <trans-unit id="login.form.login.password">
                 <source>login.form.login.password</source>
-                <target>パスワード</target>
+                <target>암호</target>
             </trans-unit>
             <trans-unit id="login.form.login.forgot_password">
                 <source>login.form.login.forgot_password</source>
-                <target>パスワードをお忘れですか ？</target>
+                <target>비밀번호를 잊으 셨나요 ?</target>
             </trans-unit>
             <trans-unit id="login.form.login.button">
                 <source>login.form.login.button</source>
-                <target>ログインする</target>
+                <target>로그인</target>
             </trans-unit>
             <trans-unit id="login.form.signup.title">
                 <source>login.form.signup.title</source>
-                <target>無料で登録！</target>
+                <target>우리와 함께 !</target>
             </trans-unit>
             <trans-unit id="login.form.signup.button">
                 <source>login.form.signup.button</source>
-                <target>サインアップ</target>
+                <target>가입하기</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.username">
                 <source>login.form.signup.form_type.username</source>
-                <target>ユーザー名</target>
+                <target>사용자 이름</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.captcha">
                 <source>login.form.signup.form_type.captcha</source>
-                <target>キャプチャ</target>
+                <target>Captcha</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.first_password">
                 <source>login.form.signup.form_type.first_password</source>
-                <target>パスワード</target>
+                <target>암호</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.second_password">
                 <source>login.form.signup.form_type.second_password</source>
-                <target>パスワードを再度入力してください</target>
+                <target>비밀번호 반복</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.password.must_match">
                 <source>login.form.signup.form_type.password.must_match</source>
-                <target>パスワードフィールドは一致する必要があります</target>
+                <target>비밀번호 필드는 일치해야합니다</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.password.not_blank">
                 <source>login.form.signup.form_type.password.not_blank</source>
-                <target>パスワードを入力してください</target>
+                <target>비밀번호를 입력하십시오</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.password.length">
                 <source>login.form.signup.form_type.password.length</source>
-                <target>パスワードは6文字以上にしてください</target>
+                <target>비밀번호는 6 자 이상이어야합니다</target>
             </trans-unit>
 
             <trans-unit id="reset_password.title">
                 <source>reset_password.title</source>
-                <target>あなたのパスワードをリセット</target>
+                <target>비밀번호를 재설정</target>
             </trans-unit>
             <trans-unit id="reset_password.text">
                 <source>reset_password.text</source>
-                <target>メールアドレスを入力してください。パスワードをリセットするためのリンクをお送りします</target>
+                <target>이메일 주소를 입력하면 비밀번호를 재설정 할 수있는 링크가 전송됩니다.</target>
             </trans-unit>
             <trans-unit id="reset_password.button">
                 <source>reset_password.button</source>
-                <target>パスワード再設定メールを送信する</target>
+                <target>비밀번호 재설정 이메일 보내기</target>
             </trans-unit>
             <trans-unit id="reset_password.form_type.email">
                 <source>reset_password.form_type.email</source>
-                <target>Eメール</target>
+                <target>이메일</target>
             </trans-unit>
             <trans-unit id="reset_password.form_type.email_empty">
                 <source>reset_password.form_type.email_empty</source>
-                <target>あなたのメールアドレスを入力してください</target>
+                <target>이메일을 입력 해주세요</target>
             </trans-unit>
 
             <trans-unit id="check_email.title">
                 <source>check_email.title</source>
-                <target>パスワードリセットメールを送信しました</target>
+                <target>비밀번호 재설정 이메일 전송</target>
             </trans-unit>
             <trans-unit id="check_email.text1">
                 <source>check_email.text1</source>
-                <target>パスワードをリセットするためにクリックできるリンクを含むメールが送信されました。このリンクは%hour%時間後に有効期限が切れます。</target>
+                <target>클릭하여 비밀번호를 재설정 할 수있는 링크가 포함 된 이메일이 전송되었습니다. 이 링크는 %hour% 시간 내에 만료됩니다.</target>
             </trans-unit>
             <trans-unit id="check_email.text2">
                 <source>check_email.text2</source>
-                <target>メールが届かない場合は、迷惑メールフォルダを確認するか、もう一度お試しください。</target>
+                <target>이메일을받지 못한 경우 스팸 폴더를 확인하거나 다시 시도하십시오.</target>
             </trans-unit>
 
             <trans-unit id="new_password.title">
                 <source>new_password.title</source>
-                <target>新しいパスワードをリセット</target>
+                <target>새 비밀번호 재설정</target>
             </trans-unit>
             <trans-unit id="new_password.button">
                 <source>new_password.button</source>
-                <target>検証</target>
+                <target>확인</target>
             </trans-unit>
             <trans-unit id="new_password.form_type.first_password">
                 <source>new_password.form_type.first_password</source>
-                <target>新しいパスワード</target>
+                <target>새 비밀번호</target>
             </trans-unit>
 
             <trans-unit id="account.title">
                 <source>account.title</source>
-                <target>マイアカウント</target>
+                <target>내 계정</target>
             </trans-unit>
             <trans-unit id="account.edit">
                 <source>account.edit</source>
-                <target>編集する</target>
+                <target>편집하다</target>
             </trans-unit>
             <trans-unit id="account.logout">
                 <source>account.logout</source>
-                <target>ログアウト</target>
+                <target>로그 아웃</target>
             </trans-unit>
             <trans-unit id="account.rank">
                 <source>account.rank</source>
-                <target>ランク</target>
+                <target>계급</target>
             </trans-unit>
             <trans-unit id="account.points">
                 <source>account.points</source>
-                <target>ポイント</target>
+                <target>포인트들</target>
             </trans-unit>
             <trans-unit id="account.time_spent">
                 <source>account.time_spent</source>
-                <target>使った時間</target>
+                <target>보낸 시간</target>
             </trans-unit>
             <trans-unit id="account.manga_read">
                 <source>account.manga_read</source>
-                <target>マンガを読む</target>
+                <target>망가 읽기</target>
             </trans-unit>
             <trans-unit id="account.manga_download">
                 <source>account.manga_download</source>
-                <target>マンガがダウンロードされました</target>
+                <target>망가 다운로드</target>
             </trans-unit>
             <trans-unit id="account.last_manga_read">
                 <source>account.last_manga_read</source>
-                <target>最後に読んだマンガ</target>
+                <target>마지막 망가 읽기</target>
             </trans-unit>
             <trans-unit id="account.manga.discover_new_manga">
                 <source>account.manga.discover_new_manga</source>
-                <target>新しい漫画を見つけよう！</target>
+                <target>새로운 만화를 발견합시다 !</target>
             </trans-unit>
             <trans-unit id="account.favorite_manga">
                 <source>account.favorite_manga</source>
-                <target>あなたのお気に入りの漫画</target>
+                <target>당신의 마음에 드는 망가</target>
             </trans-unit>
             <trans-unit id="account.manga.add_manga_favorite">
                 <source>account.manga.add_manga_favorite</source>
-                <target>新しいマンガをお気に入りに追加する</target>
+                <target>즐겨 찾기에 새로운 만화 추가</target>
             </trans-unit>
             <trans-unit id="account.days">
                 <source>account.days</source>
-                <target>%count% 日</target>
+                <target>{0,1} %count% 일 | [2,Inf[ %count% 일</target>
             </trans-unit>
             <trans-unit id="account.hours">
                 <source>account.hours</source>
-                <target>%count% 時間</target>
+                <target>{0,1} %count% 시 | [2,Inf[ %count% 시간</target>
             </trans-unit>
             <trans-unit id="account.minutes">
                 <source>account.minutes</source>
-                <target>%count% 分</target>
+                <target>{0,1} %count% 분 | [2,Inf[ %count% 의사록</target>
             </trans-unit>
 
             <trans-unit id="edit_profile.title">
                 <source>edit_profile.title</source>
-                <target>プロフィールを編集</target>
+                <target>프로필 수정</target>
             </trans-unit>
             <trans-unit id="edit_profile.link.back_account">
                 <source>edit_profile.link.back_account</source>
-                <target>アカウントに戻る</target>
+                <target>계정으로 돌아 가기</target>
             </trans-unit>
             <trans-unit id="edit_profile.link.change_password">
                 <source>edit_profile.link.change_password</source>
-                <target>パスワードを変更する</target>
+                <target>비밀번호 변경</target>
             </trans-unit>
             <trans-unit id="edit_profile.form.text">
                 <source>edit_profile.form.text</source>
-                <target>プロモーションメールが送信されますが、パスワードを忘れた場合はメールが必要です。</target>
+                <target>모든 프로모션 메일이 발송되지만 비밀번호를 잊어 버린 경우 이메일이 필요합니다.</target>
             </trans-unit>
             <trans-unit id="edit_profile.form.button">
                 <source>edit_profile.form.button</source>
-                <target>検証</target>
+                <target>확인</target>
             </trans-unit>
             <trans-unit id="edit_profile.link.delete">
                 <source>edit_profile.link.delete</source>
-                <target>アカウントを削除する</target>
+                <target>계정 삭제</target>
             </trans-unit>
             <trans-unit id="edit_profile.save">
                 <source>edit_profile.save</source>
-                <target>あなたの情報は正常に保存されました</target>
+                <target>귀하의 정보가 성공적으로 저장되었습니다</target>
             </trans-unit>
 
             <trans-unit id="change_password.title">
                 <source>change_password.title</source>
-                <target>パスワードを変更してください</target>
+                <target>비밀번호 변경</target>
             </trans-unit>
             <trans-unit id="change_password.link.back_account">
                 <source>change_password.link.back_account</source>
-                <target>アカウントに戻る</target>
+                <target>계정으로 돌아 가기</target>
             </trans-unit>
             <trans-unit id="change_password.link.back_edit">
                 <source>change_password.link.back_edit</source>
-                <target>編集に戻る</target>
+                <target>편집으로 돌아 가기</target>
             </trans-unit>
 
             <trans-unit id="delete_account.title">
                 <source>delete_account.title</source>
-                <target>アカウントを削除してください！</target>
+                <target>계정을 삭제하십시오 !</target>
             </trans-unit>
             <trans-unit id="delete_account.link.back_account">
                 <source>delete_account.link.back_account</source>
-                <target>アカウントに戻る</target>
+                <target>계정으로 돌아 가기</target>
             </trans-unit>
             <trans-unit id="delete_account.text">
                 <source>delete_account.text</source>
-                <target>このアクションは元に戻せません。選択を確認してください！</target>
+                <target>이 조치는 되돌릴 수 없습니다. 선택을 확인하십시오 !</target>
             </trans-unit>
             <trans-unit id="delete_account.button">
                 <source>delete_account.button</source>
-                <target>アカウント抑制を検証する</target>
+                <target>계정 억제 확인</target>
             </trans-unit>
 
             <trans-unit id="email.title">
                 <source>email.title</source>
-                <target>パスワードを失った</target>
+                <target>비밀번호 분실</target>
             </trans-unit>
             <trans-unit id="email.text1">
                 <source>email.text1</source>
-                <target>パスワードを紛失しましたか？
+                <target>비밀번호를 잊어 버렸습니까?
 
-                パスワードをリセットしても問題ありません。下のボタンをクリックして、新しいパスワードを選択してください。
+                비밀번호를 재설정하는 데 문제가 없습니다. 아래 버튼을 클릭하고 새 비밀번호를 선택하십시오.
 
-                このリンクは1時間後に有効期限が切れます。</target>
+                이 링크는 %hour% 시간 내에 만료됩니다.</target>
             </trans-unit>
             <trans-unit id="email.button">
                 <source>email.button</source>
-                <target>パスワードを変更する</target>
+                <target>비밀번호 변경</target>
             </trans-unit>
 
             <trans-unit id="about.title">
                 <source>about.title</source>
-                <target>約 </target>
+                <target>약 </target>
             </trans-unit>
             <trans-unit id="about.contact.title">
                 <source>about.contact.title</source>
-                <target>お問い合わせ</target>
+                <target>연락하기 </target>
             </trans-unit>
             <trans-unit id="about.information.title">
                 <source>about.information.title</source>
-                <target>役立つ情報</target>
+                <target>유용한 정보</target>
             </trans-unit>
             <trans-unit id="about.contact.text1">
                 <source>about.contact.text1</source>
-                <target>次のメールアドレスまでご連絡ください ：</target>
+                <target>다음 이메일 주소로 문의하십시오 : </target>
             </trans-unit>
             <trans-unit id="about.contact.text2.soft">
                 <source>about.contact.text2.soft</source>
-                <target>お客様に関する情報を収集したり、Google Analyticsを使用したりすることはありません。
-                        マンガを無料で無制限に表示およびダウンロードできます。
-                        モバイルアプリケーションを使用すると、ウェブサイトへのモビリティとアクセスが容易になります。
-                        追加情報については、メールでお気軽にお問い合わせください。
+                <target>우리는 고객에 대한 정보를 수집하지 않으며 Google 웹 로그 분석을 사용하지 않습니다.
+                무료로 만화를보고 다운로드 할 수 있습니다.
+                모바일 응용 프로그램을 사용하면 웹 사이트에 대한 이동성과 접근성이 향상됩니다.
+                 추가 정보가 필요하면 언제든지 이메일로 문의하십시오.
                 </target>
             </trans-unit>
             <trans-unit id="about.contact.text2.hard">
                 <source>about.contact.text2.hard</source>
-                <target>お客様に関する情報を収集したり、Google Analyticsを使用したりすることはありません。
-                        マンガを無料で無制限に表示およびダウンロードできます。
-                        モバイルアプリケーションを使用すると、ウェブサイトへの移動性とアクセスが容易になります。
-                        追加情報については、メールでお気軽にお問い合わせください。
+                <target>우리는 고객에 대한 정보를 수집하지 않으며 Google 웹 로그 분석을 사용하지 않습니다.
+                무료로 만화를보고 다운로드 할 수 있습니다.
+                모바일 응용 프로그램을 사용하면 웹 사이트에 대한 이동성과 접근성이 향상됩니다.
+                추가 정보가 필요하면 언제든지 이메일로 문의하십시오.
 
 
-                        エロ漫画とは？
+                헨타이 만화는 무엇입니까 ?
 
-                        ヘンタイはポルノを目的とした漫画であり、パイズリ、テイトク、ネトラレなど、当社のサイトで見つけることができるジャンルのセットをまとめています。
-                        それらは主に日本からのもので、これらの漫画のアニメ版もあります。
-                        2018年、hentaiはpornhubサイトで2番目に検索されたカテゴリでした。
-                        My Anime List には1,300以上のアニメエロアニメも掲載されています。
+                헨타이는 포르노 목적의 만화이며, 파이즈 리, 테이 토쿠 또는 네 토라 레와 같은 당사 사이트에서 찾을 수있는 장르 세트를 제공합니다.
+                그들은 주로 일본 출신이며,이 만화의 애니메이션 버전도 있습니다.
+                2018 년 hentai는 pornhub 사이트에서 두 번째로 많이 검색된 카테고리입니다.
+                My Anime List에 1,300 개가 넘는 애니메이션 헨타이가 있습니다.
 
 
-                        同人漫画とは？
+                 동인 만화 란 ?
 
-                        同人や同人は、ワンピース、ナルト、フェアリーテイルなどの有名な漫画をよく取り上げるアマチュアによって作られた漫画です。
-                        しかし、それらは漫画だけではなく、音楽、小説、ビデオゲームもあります。
+                 도진 또는 도진은 원피스, 나루토 또는 페어리 테일과 같은 유명한 만화를 자주 사용하는 아마추어가 만든 만화입니다.
+                 그러나 그들은 독점적으로 만화가 아니며 음악, 소설 또는 비디오 게임도 있습니다.
                 </target>
             </trans-unit>
         </body>

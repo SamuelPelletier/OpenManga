@@ -149,6 +149,14 @@
                 <source>manga.recommended</source>
                 <target>Mangas recommended</target>
             </trans-unit>
+            <trans-unit id="manga.paginator.previous">
+                <source>manga.paginator.previous</source>
+                <target>Previous</target>
+            </trans-unit>
+            <trans-unit id="manga.paginator.next">
+                <source>manga.paginator.next</source>
+                <target>Next</target>
+            </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>
@@ -447,7 +455,7 @@
             </trans-unit>
             <trans-unit id="about.contact.text2.soft">
                 <source>about.contact.text2.soft</source>
-                <target>Our site is 100% autonomous and we do not collect any information about our customers.
+                <target>We do not collect any information about our customers and we not use Google Analytics.
                         You can view and download manga for free and without limit.
                         A mobile application allows you greater mobility and ease of access to our website.
                         For any additional information, do not hesitate to contact us by email.
@@ -455,7 +463,7 @@
             </trans-unit>
             <trans-unit id="about.contact.text2.hard">
                 <source>about.contact.text2.hard</source>
-                <target>Our site is 100% autonomous and we do not collect any information about our customers.
+                <target>We do not collect any information about our customers and we not use Google Analytics.
                         You can view and download manga for free and without limit.
                         A mobile application allows you greater mobility and ease of access to our website.
                         For any additional information, do not hesitate to contact us by email.
