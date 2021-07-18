@@ -201,9 +201,11 @@ class MangaController extends AbstractController
             $response->headers->set('Content-length', filesize($zipName));
             $response->deleteFileAfterSend(true);
 
-            $user->incrementCountMangasDownload();
-            $entityManager->persist($user);
-            $entityManager->flush();
+            if ($user) {
+                $user->incrementCountMangasDownload();
+                $entityManager->persist($user);
+                $entityManager->flush();
+            }
 
             return $response;
         } else {
