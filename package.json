@@ -26,7 +26,7 @@
     "bootstrap": "^4.4.1",
     "jquery-mousewheel": "^3.1.13",
     "jquery-touchswipe": "^1.6.19",
-    "jquery-ui": "^1.12.1",
+    "jquery-ui": "^1.13.0",
     "lg-autoplay": "^1.0.4",
     "lg-fullscreen": "^1.1.0",
     "lg-hash": "^1.0.4",
