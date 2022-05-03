@@ -1,6 +1,6 @@
 {
   "devDependencies": {
-    "@symfony/webpack-encore": "^0.22.0",
+    "@symfony/webpack-encore": "^2.0",
     "bloodhound-js": "^1.2.3",
     "bootstrap-sass": "^3.3.7",
     "bootstrap-tagsinput": "^0.7.1",
@@ -11,6 +11,7 @@
     "imports-loader": "^0.8.0",
     "jquery": "^3.3.1",
     "lato-font": "^3.0.0",
+    "sass": "^1.51.0",
     "typeahead.js": "^0.11.1"
   },
   "license": "UNLICENSED",
@@ -34,7 +35,6 @@
     "lg-thumbnail": "^1.1.0",
     "lg-zoom": "^1.1.0",
     "lightgallery": "^1.6.12",
-    "node-sass": "^4.12.0",
     "picturefill": "^3.0.3",
     "sass-loader": "^7.1.0"
   }
