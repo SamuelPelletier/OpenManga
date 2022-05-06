@@ -18,9 +18,8 @@ use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Finder\Finder;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Process\Process;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * A console command that lists all the existing users.
@@ -44,12 +43,12 @@ class InstallCommand extends Command
     private $em;
     private $passwordEncoder;
 
-    public function __construct(EntityManagerInterface $em, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(EntityManagerInterface $em, UserPasswordHasherInterface $passwordHasher)
     {
         parent::__construct();
 
         $this->em = $em;
-        $this->passwordEncoder = $passwordEncoder;
+        $this->passwordEncoder = $passwordHasher;
     }
 
     /**
@@ -126,7 +125,7 @@ class InstallCommand extends Command
 
         $adminUsername = 'admin' . random_int(111, 999);
         $adminPassword = random_int(1111111, 9999999);
-        $adminPasswordEncoded = $this->passwordEncoder->encodePassword(
+        $adminPasswordEncoded = $this->passwordEncoder->hash(
             $admin,
             $adminPassword
         );

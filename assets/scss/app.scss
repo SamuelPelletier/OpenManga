@@ -1,10 +1,10 @@
 $web-font-path: 'data:text/css;base64,';
 
-@import "~bootswatch/flatly/variables";
-@import "../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "~bootswatch/flatly/bootswatch";
-@import "../../node_modules/font-awesome/scss/font-awesome.scss";
-@import "../../node_modules/highlight.js/styles/solarized-light.css";
+@import "bootswatch/dist/flatly/variables";
+@import "bootstrap";
+@import "bootswatch/dist/flatly/bootswatch";
+@import "font-awesome";
+@import "highlight.js/styles/base16/solarized-light.css";
 
 /* Basic styles
    ------------------------------------------------------------------------- */

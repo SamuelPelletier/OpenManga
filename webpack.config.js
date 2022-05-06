@@ -16,7 +16,7 @@ Encore
     .addEntry('js/tag', './assets/js/tag.js')
     .addEntry('js/form', './assets/js/form.js')
     .addStyleEntry('css/app', ['./assets/scss/app.scss', './assets/css/index.css', './assets/css/neon-color.css', './node_modules/@fortawesome/fontawesome-free/css/brands.css', './assets/css/button.css'])
-    .addStyleEntry('css/show', ['./assets/css/show.css', './node_modules/lightgallery/src/css/lightgallery.css'])
+    .addStyleEntry('css/show', ['./assets/css/show.css', './node_modules/lightgallery/css/lightgallery.css'])
     .addStyleEntry('css/disclaimer', './assets/css/disclaimer.css')
     .addStyleEntry('css/tag', './assets/css/tag.css')
     .addStyleEntry('css/form', './assets/css/form.css')

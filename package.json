@@ -1,15 +1,14 @@
 {
   "devDependencies": {
-    "@symfony/webpack-encore": "^2.0",
+    "@symfony/webpack-encore": "^1.8.2",
     "bloodhound-js": "^1.2.3",
-    "bootstrap-sass": "^3.3.7",
     "bootstrap-tagsinput": "^0.7.1",
-    "bootswatch": "^3.3.7",
-    "eonasdan-bootstrap-datetimepicker": "^4.17.47",
+    "bootswatch": "^5.1.3",
+    "eonasdan-bootstrap-datetimepicker": "^4.17.49",
     "font-awesome": "^4.7.0",
-    "highlight.js": "^9.12.0",
-    "imports-loader": "^0.8.0",
-    "jquery": "^3.3.1",
+    "highlight.js": "^11.5.1",
+    "imports-loader": "^3.1.1",
+    "jquery": "^3.6.0",
     "lato-font": "^3.0.0",
     "sass": "^1.51.0",
     "typeahead.js": "^0.11.1"
@@ -23,19 +22,20 @@
     "build": "encore production --progress"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.8.2",
-    "bootstrap": "^4.4.1",
+    "@fortawesome/fontawesome-free": "^6.1.1",
+    "@popperjs/core": "^2.11.5",
+    "bootstrap": "^5.1.3",
     "jquery-mousewheel": "^3.1.13",
     "jquery-touchswipe": "^1.6.19",
-    "jquery-ui": "^1.12.1",
+    "jquery-ui": "^1.13.1",
     "lg-autoplay": "^1.0.4",
     "lg-fullscreen": "^1.1.0",
     "lg-hash": "^1.0.4",
     "lg-pager": "^1.0.2",
     "lg-thumbnail": "^1.1.0",
     "lg-zoom": "^1.1.0",
-    "lightgallery": "^1.6.12",
+    "lightgallery": "^2.4.0",
     "picturefill": "^3.0.3",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^12.0"
   }
 }

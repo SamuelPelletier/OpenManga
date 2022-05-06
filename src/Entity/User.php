@@ -12,7 +12,7 @@ use Symfony\Component\Security\Core\User\UserInterface;
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
  * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
  */
-class User implements UserInterface
+class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     public const MAX_LAST_MANGAS_READ = 5;
 
@@ -312,5 +312,10 @@ class User implements UserInterface
         $this->bonusPoints = $bonusPoints;
 
         return $this;
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return (string) $this->username;
     }
 }
