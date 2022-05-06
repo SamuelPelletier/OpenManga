@@ -14,7 +14,7 @@
         <env name="APP_ENV" value="test"/>
 
         <!-- ###+ symfony/mailer ### -->
-        <!-- MAILER_DSN=smtp://localhost -->
+        <!-- MAILER_DSN=null://null -->
         <!-- ###- symfony/mailer ### -->
 
         <!-- ###+ symfony/google-mailer ### -->
