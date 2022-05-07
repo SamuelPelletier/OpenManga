@@ -1,14 +1,11 @@
 homepage:
-  path: /{_locale}
-  controller: Symfony\Bundle\FrameworkBundle\Controller\TemplateController::templateAction
+  path: /
 controllers:
+    prefix: /{_locale}
     resource: ../src/Controller/
     type: annotation
     requirements:
       _locale: '%app_locales%'
-      defaults:
-        template: default/index.html.twig
-        _locale: '%locale%'
 
 kernel:
     resource: ../src/Kernel.php

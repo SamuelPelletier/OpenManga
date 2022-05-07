@@ -16,7 +16,7 @@
     <meta name="keywords"
           content="{% apply spaceless %}{% block meta_keyword %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}{% endapply %}"/>
     {% block stylesheets %}
-        {{ encore.encore_absolute_link_tags('css/app') }}
+        {{ encore_entry_link_tags('css/app') }}
     {% endblock %}
 
     <link rel="icon" type="image/x-icon" href="{{ app.request.getSchemeAndHttpHost() ~ asset('logo.ico') }}"/>
@@ -147,7 +147,7 @@
 </div>
 
 {% block javascripts %}
-    {{ encore.encore_absolute_script_tags('js/app') }}
+    {{ encore_entry_script_tags('js/app') }}
 {% endblock %}
 </body>
 </html>

@@ -3,7 +3,7 @@
 
 {% block javascripts %}
     {{ parent() }}
-    {{ encore.encore_absolute_link_tags('css/disclaimer') }}
+    {{ encore_entry_link_tags('css/disclaimer') }}
 {% endblock %}
 
 {% block body_id 'search' %}
@@ -16,5 +16,5 @@
 
 {% block sidebar %}
     {{ parent() }}
-    {{ encore.encore_absolute_script_tags('js/disclaimer') }}
+    {{ encore_entry_script_tags('js/disclaimer') }}
 {% endblock %}

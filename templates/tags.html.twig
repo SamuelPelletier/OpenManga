@@ -3,7 +3,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore.encore_absolute_link_tags('css/tag') }}
+    {{ encore_entry_link_tags('css/tag') }}
 {% endblock %}
 
 {% block main %}
@@ -54,7 +54,7 @@
     </div>
     {% block javascripts %}
         {{ parent() }}
-        {{ encore.encore_absolute_script_tags('js/tag') }}
+        {{ encore_entry_script_tags('js/tag') }}
     {% endblock %}
 {% endblock %}
 

@@ -2,7 +2,7 @@
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore.encore_absolute_link_tags('css/show') }}
+    {{ encore_entry_link_tags('css/show') }}
 {% endblock %}
 
 {% block title %}{{ manga.title }}{% endblock %}
@@ -25,7 +25,7 @@
 
     <p class="manga-metadata">
         <span class="metadata"><i
-                    class="fa fa-calendar-alt"></i> {{ manga.publishedAt|localizeddate('long', 'none', null, 'UTC') }}</span>
+                    class="fa fa-calendar-alt"></i> {{ manga.publishedAt|format_datetime('long', 'none', 'UTC') }}</span>
 
     </p>
     {% if not manga.languages.empty %}
@@ -142,7 +142,7 @@
     {% endif %}
     {% block javascripts %}
         {{ parent() }}
-        {{ encore.encore_absolute_script_tags('js/show') }}
+        {{ encore_entry_script_tags('js/show') }}
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",
@@ -152,7 +152,7 @@
                     "@type": "Book",
                     "author": "{{ manga.authors|join(',') }}",
                     "bookFormat": "http://schema.org/EBook",
-                    "datePublished": "{{ manga.publishedAt|localizeddate('long', 'none', null, 'UTC') }}",
+                    "datePublished": "{{ manga.publishedAt|format_datetime('long', 'none', 'UTC') }}",
                     "image": "{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/thumb.webp' ) }}",
                     "inLanguage": "{{ manga.languages|join(',') }}",
                     "name": "{{ manga.title }}",

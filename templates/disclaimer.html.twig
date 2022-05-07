@@ -10,8 +10,8 @@
     <meta name="keywords" content="{% block meta_keyword %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}"/>
     <title>{% block title %}{{ app.request.server.get('APP_NAME') }}{% endblock %}</title>
     {% block stylesheets %}
-        {{ encore.encore_absolute_link_tags('css/app') }}
-        {{ encore.encore_absolute_link_tags('css/disclaimer') }}
+        {{ encore_entry_link_tags('css/app') }}
+        {{ encore_entry_link_tags('css/disclaimer') }}
     {% endblock %}
 
     <link rel="icon" type="image/x-icon" href="{{ asset('logo.ico') }}"/>

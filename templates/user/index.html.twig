@@ -3,7 +3,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore.encore_absolute_link_tags('css/account') }}
+    {{ encore_entry_link_tags('css/account') }}
 {% endblock %}
 
 {% block title %}{{ 'account.title'|trans }}{% endblock %}

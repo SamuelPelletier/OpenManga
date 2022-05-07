@@ -3,7 +3,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore.encore_absolute_link_tags('css/form') }}
+    {{ encore_entry_link_tags('css/form') }}
 {% endblock %}
 
 {% block title %}{{ 'login.title'|trans }}{% endblock %}
@@ -95,5 +95,5 @@
 
  {% block javascripts %}
      {{ parent() }}
-     {{ encore.encore_absolute_script_tags('js/form') }}
+     {{ encore_entry_script_tags('js/form') }}
  {% endblock %}

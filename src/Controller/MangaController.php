@@ -20,6 +20,8 @@ use App\Repository\MangaRepository;
 use App\Repository\ParodyRepository;
 use App\Repository\TagRepository;
 use App\Service\MangaService;
+use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -87,10 +89,9 @@ class MangaController extends AbstractController
         Manga $manga,
         MangaRepository $mangaRepository,
         Request $request,
-        MangaService $mangaService
+        MangaService $mangaService,
+        EntityManagerInterface $entityManager
     ): Response {
-
-        $entityManager = $this->getDoctrine()->getManager();
         /**
          * @var User $user
          */
