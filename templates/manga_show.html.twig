@@ -1,4 +1,3 @@
-{% import "macro/encore.html.twig" as encore %}
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
@@ -142,7 +141,7 @@
     {% endif %}
     {% block javascripts %}
         {{ parent() }}
-        {{ encore_entry_script_tags('js/show') }}
+        {{ encore_entry_script_tags('show') }}
         <script type="application/ld+json">
             {
                 "@context": "https://schema.org",

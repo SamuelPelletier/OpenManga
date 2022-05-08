@@ -5,20 +5,24 @@
 import 'jquery-touchswipe'
 import 'picturefill'
 import 'jquery-mousewheel'
-import 'lightgallery'
-import 'lg-autoplay'
-import 'lg-fullscreen'
-import 'lg-pager'
-import 'lg-thumbnail'
-import 'lg-zoom'
+
+import lightGallery from 'lightgallery';
+
+// Plugins
+import lgAutoplay from 'lightgallery/plugins/autoplay'
+import lgFullscreen from 'lightgallery/plugins/fullscreen'
+import lgPager from 'lightgallery/plugins/pager'
+import lgThumbnail from 'lightgallery/plugins/thumbnail'
+import lgZoom from 'lightgallery/plugins/zoom'
 
 $(document).ready(function () {
-    $("#lightgallery").lightGallery({
+    lightGallery(document.getElementById("lightgallery"),{
         mode: 'lg-fade',
         preload: 2,
         showThumbByDefault: false,
         enableDrag: false,
         hideBarsDelay: 1000,
+        licenseKey: ''
     });
 
     const circle = document.getElementsByClassName('success__circle');

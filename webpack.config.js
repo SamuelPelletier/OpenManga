@@ -50,7 +50,7 @@ Encore
     })
     .enableSassLoader()
     .addEntry('js/app', ['./assets/js/app.js'])
-    .addEntry('js/show', './assets/js/show.js')
+    .addEntry('show', './assets/js/show.js')
     .addEntry('js/tag', './assets/js/tag.js')
     .addEntry('js/form', './assets/js/form.js')
     .addStyleEntry('css/app', ['./assets/scss/app.scss', './assets/css/index.css', './assets/css/neon-color.css', './assets/css/button.css'])
