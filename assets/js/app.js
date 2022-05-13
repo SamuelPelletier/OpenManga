@@ -1,10 +1,11 @@
 // loads the Bootstrap jQuery plugins
-import 'bootstrap/js/dist/alert'
-import 'bootstrap/js/dist/collapse'
-import 'bootstrap/js/dist/dropdown'
-import 'bootstrap/js/dist/modal'
-import 'bootstrap/js/dist/tooltip'
-//import 'bootstrap/js/dist/popover'
+import 'bootstrap-sass/assets/javascripts/bootstrap/transition.js';
+import 'bootstrap-sass/assets/javascripts/bootstrap/alert.js';
+import 'bootstrap-sass/assets/javascripts/bootstrap/collapse.js';
+import 'bootstrap-sass/assets/javascripts/bootstrap/dropdown.js';
+import 'bootstrap-sass/assets/javascripts/bootstrap/modal.js';
+import 'bootstrap-sass/assets/javascripts/bootstrap/tooltip.js';
+import 'bootstrap-sass/assets/javascripts/bootstrap/popover.js';
 
 import '@fortawesome/fontawesome-free/js/all'
 import '@fortawesome/fontawesome-free/js/brands'
@@ -12,7 +13,7 @@ import '@fortawesome/fontawesome-free/js/brands'
 import 'jquery-ui-autocomplete'
 
 // loads the code syntax highlighting library
-import 'highlight.js';
+import './highlight.js';
 
 // Creates links to the Symfony documentation
 import './doclinks';
