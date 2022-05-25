@@ -146,13 +146,13 @@ $(function () {
 
     $('.manga-remove-favorite').on('click', function (e) {
         let translationKey = "account.remove.favorite";
-
+        var button = $(this);
         $.ajax({
             url: "/" + locale + "/translation?key=" + translationKey,
             method: "GET",
             success: function (data) {
                 var confirmBox = confirm(data.response);
-                var manga = $(this).parent();
+                var manga = button.parent();
                 if (confirmBox) {
                     $.ajax({
                         url: "/en/favorite/" + manga.data("id") + "/remove",

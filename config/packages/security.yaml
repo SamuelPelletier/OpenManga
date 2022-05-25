@@ -33,10 +33,10 @@ security:
       # Reference: https://symfony.com/doc/current/security/form_login_setup.html
       form_login:
         # The route name that the login form submits to
-        check_path: security_login
+        check_path: app_login
         # The name of the route where the login form lives
         # When the user tries to access a protected page, they are redirected here
-        login_path: security_login
+        login_path: app_login
         # Secure the login form against CSRF
         # Reference: https://symfony.com/doc/current/security/csrf.html
         enable_csrf: true
@@ -44,15 +44,14 @@ security:
         # session (for example when the users access directly to the login page).
         default_target_path: blog_index
 
+        username_parameter: "username"
+        password_parameter: "password"
+
       logout:
         # The route name the user can go to in order to logout
-        path: security_logout
+        path: app_logout
         # The name of the route to redirect to after logging out
-        target: homepage
-
-        # Secure the logout against CSRF
-        csrf_parameter: logout
-        csrf_token_generator: security.csrf.token_manager
+        target: index
 
       # needed because in tests we redefine the 'main' firewall to use
       # HTTP Basic instead of the login form, so this firewall has

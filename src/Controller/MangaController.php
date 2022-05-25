@@ -169,10 +169,9 @@ class MangaController extends AbstractController
      * @Route("/download/{id}", methods={"GET"}, name="download")
      */
     public function mangaDownload(
-        Manga $manga
+        Manga $manga,
+        EntityManagerInterface $entityManager
     ): Response {
-
-        $entityManager = $this->getDoctrine()->getManager();
         /**
          * @var User $user
          */
@@ -218,9 +217,8 @@ class MangaController extends AbstractController
     /**
      * @Route("/favorite/{id}/add", methods={"POST"}, name="add_favorite")
      */
-    public function addFavorite(Manga $manga)
+    public function addFavorite(Manga $manga,EntityManagerInterface $entityManager)
     {
-        $entityManager = $this->getDoctrine()->getManager();
         /**
          * @var User $user
          */
@@ -236,9 +234,8 @@ class MangaController extends AbstractController
     /**
      * @Route("/favorite/{id}/remove", methods={"POST"}, name="remove_favorite")
      */
-    public function removeFavorite(Manga $manga)
+    public function removeFavorite(Manga $manga,EntityManagerInterface $entityManager)
     {
-        $entityManager = $this->getDoctrine()->getManager();
         /**
          * @var User $user
          */

@@ -8,10 +8,12 @@ use App\Form\EditUserFormType;
 use App\Form\ResetPasswordRequestFormType;
 use App\Repository\UserRepository;
 use App\Service\UserService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -23,12 +25,11 @@ class UserController extends AbstractController
     /**
      * @Route("/", name="user_index")
      */
-    public function index(UserRepository $userRepository, UserService $userService)
+    public function index(UserRepository $userRepository, UserService $userService,EntityManagerInterface $entityManager)
     {
         $user = $this->getUser();
         $user->rank = $userRepository->getRank($user);
         $user->setPoints($userService->calculationUserPoints($user));
-        $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($user);
         $entityManager->flush();
 
@@ -38,7 +39,7 @@ class UserController extends AbstractController
     /**
      * @Route("/edit", name="user_edit")
      */
-    public function edit(Request $request)
+    public function edit(Request $request,EntityManagerInterface $entityManager)
     {
         $user = $this->getUser();
         $form = $this->createForm(EditUserFormType::class, $user);
@@ -47,7 +48,6 @@ class UserController extends AbstractController
         $editionSave = false;
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
             $editionSave = true;
@@ -62,7 +62,7 @@ class UserController extends AbstractController
     /**
      * @Route("/password", name="change_password")
      */
-    public function changePassword(Request $request, UserPasswordEncoderInterface $passwordEncoder)
+    public function changePassword(Request $request, UserPasswordHasherInterface $userPasswordHasher,EntityManagerInterface $entityManager)
     {
         $user = $this->getUser();
         $form = $this->createForm(ChangePasswordFormType::class, $user);
@@ -71,13 +71,12 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $user->setPassword(
-                $passwordEncoder->encodePassword(
+                $userPasswordHasher->hashPassword(
                     $user,
                     $form->get('plainPassword')->getData()
                 )
             );
 
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
         }
@@ -90,7 +89,7 @@ class UserController extends AbstractController
     /**
      * @Route("/delete", name="user_delete")
      */
-    public function delete(Request $request, SessionInterface $session)
+    public function delete(Request $request, SessionInterface $session,EntityManagerInterface $entityManager)
     {
         $user = $this->getUser();
 
@@ -104,7 +103,6 @@ class UserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $this->get('security.token_storage')->setToken(null);
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($user);
             $entityManager->flush();
             $session->invalidate(0);
