@@ -11,6 +11,7 @@ services:
     bind:               # defines the scalar arguments once and apply them to any service defined/created in this file
       string $locales: '%app_locales%'
       string $defaultLocale: '%locale%'
+      $authenticator: '@security.authenticator.form_login.main'
 
   # makes classes in src/ available to be used as services
   # this creates a service per class whose id is the fully-qualified class name
