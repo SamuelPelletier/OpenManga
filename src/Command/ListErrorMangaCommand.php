@@ -90,19 +90,24 @@ class ListErrorMangaCommand extends Command
         $i = 0;
         foreach ($mangas as $manga) {
             $i++;
-            $finder = new Finder();
-            $finder->files()->in(dirname(__DIR__) . '/../public/media/' . $manga->getId());
-            if ($manga->getCountPages() != count($finder) - 1) {
-                $output->writeln($manga->getId());
-                $fileSystem = new Filesystem();
-                if ($manga->getId() > 1) {
-                    $path = dirname(__DIR__) . '/../public/media/' . $manga->getId();
-                    if ($path == dirname(__DIR__) . '/../public/media/') {
-                        die;
+            $path = dirname(__DIR__) . '/../public/media/' . $manga->getId();
+            $fileSystem = new Filesystem();
+            if(!$fileSystem->exists($path)) {
+                $this->em->remove($manga);
+                $this->em->flush();
+            } else {
+                $finder = new Finder();
+                $finder->files()->in($path);
+                if ($manga->getCountPages() != count($finder) - 1) {
+                    $output->writeln($manga->getId());
+                    if ($manga->getId() > 1) {
+                        if ($path == dirname(__DIR__) . '/../public/media/') {
+                            die;
+                        }
+                        $fileSystem->remove($path);
+                        $this->em->remove($manga);
+                        $this->em->flush();
                     }
-                    $fileSystem->remove($path);
-                    $this->em->remove($manga);
-                    $this->em->flush();
                 }
             }
             if ($iterations != 0 && $i > $iterations) {
