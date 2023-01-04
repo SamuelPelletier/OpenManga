@@ -105,36 +105,38 @@ $(function () {
     $("#bubble-info").popover({trigger: 'hover', placement: 'bottom'}).on('click', function (e) {
         e.preventDefault();
     });
+    // Next image on mouseover
+    /*
 
-    var interval;
-    var thumbnailUrl;
-    var numberPages;
-    var pages;
-    var newUrl;
+     var interval;
+     var thumbnailUrl;
+     var numberPages;
+     var pages;
+     var newUrl;
 
     $('.manga img').on('mouseover', function () {
-        var img = $(this);
-        if (pages === undefined) {
-            pages = img.closest("article").find(".manga-count-pages");
-        }
-        numberPages = pages.text();
-        thumbnailUrl = img.prop("src");
-        if (newUrl === undefined) {
-            newUrl = thumbnailUrl.substring(0, thumbnailUrl.lastIndexOf("/"));
-        }
-        var i = 1;
-        interval = setInterval(function () {
-            i++;
-            img.prop("src", newUrl + "/" + pad(i, 3) + ".jpg");
-            pages.text(i + "/" + numberPages);
-        }, 1200);
-    }).on('mouseout', function () {
-        clearInterval(interval);
-        $(this).prop("src", thumbnailUrl);
-        pages.text(numberPages);
-        pages = undefined;
-        newUrl = undefined;
-    });
+         var img = $(this);
+         if (pages === undefined) {
+             pages = img.closest("article").find(".manga-count-pages");
+         }
+         numberPages = pages.text();
+         thumbnailUrl = img.prop("src");
+         if (newUrl === undefined) {
+             newUrl = thumbnailUrl.substring(0, thumbnailUrl.lastIndexOf("/"));
+         }
+         var i = 1;
+         interval = setInterval(function () {
+             i++;
+             img.prop("src", newUrl + "/" + pad(i, 3) + ".jpg");
+             pages.text(i + "/" + numberPages);
+         }, 1200);
+     }).on('mouseout', function () {
+         clearInterval(interval);
+         $(this).prop("src", thumbnailUrl);
+         pages.text(numberPages);
+         pages = undefined;
+         newUrl = undefined;
+     });*/
 
     $('.manga a').on('click', function (e) {
         $(".loader").remove();

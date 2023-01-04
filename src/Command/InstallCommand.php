@@ -125,7 +125,7 @@ class InstallCommand extends Command
 
         $adminUsername = 'admin' . random_int(111, 999);
         $adminPassword = random_int(1111111, 9999999);
-        $adminPasswordEncoded = $this->passwordEncoder->hash(
+        $adminPasswordEncoded = $this->passwordEncoder->hashPassword(
             $admin,
             $adminPassword
         );
