@@ -22,7 +22,7 @@ $(document).ready(function () {
         showThumbByDefault: false,
         enableDrag: false,
         hideBarsDelay: 1000,
-        licenseKey: ''
+        licenseKey:'B9A97260-D0214017-B0B4A219-3F39B144'
     });
 
     const circle = document.getElementsByClassName('success__circle');
