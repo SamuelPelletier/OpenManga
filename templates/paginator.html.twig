@@ -1,5 +1,5 @@
 {% set page = mangas.query.firstResult/mangas.query.maxResults+1 %}
-{% set maxPage = (mangas.count/constant('App\\Entity\\Manga::NUM_ITEMS'))|round(0,'ceil') %}
+{% set maxPage = ((mangas.count/constant('App\\Entity\\Manga::NUM_ITEMS'))|round(0,'ceil'))?:1 %}
 {% set route_name =  'index_paginated' %}
 {% if app.request.query.get('q') != null %}
     {% set route_name =  'search_paginated' %}

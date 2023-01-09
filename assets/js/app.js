@@ -87,17 +87,6 @@ $(function () {
         });
     }
 
-    $.ajax({
-        url: "/en/json",
-        method: "GET",
-        success: function (data) {
-            $("#search_field").autocomplete({
-                source: data
-            });
-            $("#search_field").removeClass("search-field-load").addClass("search-field-completed");
-        }
-    });
-
     $('#toggle').on('click', function () {
         $('.search-button').click();
     });
