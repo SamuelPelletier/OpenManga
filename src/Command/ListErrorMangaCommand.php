@@ -93,10 +93,9 @@ class ListErrorMangaCommand extends Command
             $path = dirname(__DIR__) . '/../public/media/' . $manga->getId();
             $fileSystem = new Filesystem();
             if(!$fileSystem->exists($path)) {
-                $output->writeln($manga->getId());
                 $this->em->remove($manga);
                 $this->em->flush();
-            }else {
+            } else {
                 $finder = new Finder();
                 $finder->files()->in($path);
                 if ($manga->getCountPages() != count($finder) - 1) {
