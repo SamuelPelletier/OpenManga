@@ -2,14 +2,14 @@
     <img src="openmanga.jpg" style="height:100px">
 </p>
 
-OpenManga is a **PHP Symfony 5** project for store and download mangas.
+OpenManga is a **PHP Symfony 6** project for store and download mangas.
 
 Installation
 ------------
 
 Pre-request : 
 - Composer
-- PHP 7.3.1 or more
+- PHP 8.1 or more
 - MySQL 
 - Node and Yarn
 

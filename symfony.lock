@@ -171,9 +171,6 @@
     "nikic/php-parser": {
         "version": "v4.2.0"
     },
-    "php-cs-fixer/diff": {
-        "version": "v1.3.0"
-    },
     "phpstan/phpstan": {
         "version": "1.6.7"
     },
