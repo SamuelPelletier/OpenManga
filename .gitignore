@@ -36,3 +36,4 @@ yarn-error.log
 /.idea/
 /public/logo.ico
 /public/wallpaper.webp
+.DS_Store

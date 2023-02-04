@@ -11,15 +11,14 @@ import lightGallery from 'lightgallery';
 // Plugins
 import lgAutoplay from 'lightgallery/plugins/autoplay'
 import lgFullscreen from 'lightgallery/plugins/fullscreen'
-import lgPager from 'lightgallery/plugins/pager'
-import lgThumbnail from 'lightgallery/plugins/thumbnail'
+//import lgThumbnail from 'lightgallery/plugins/thumbnail'
 import lgZoom from 'lightgallery/plugins/zoom'
 
 $(document).ready(function () {
     lightGallery(document.getElementById("lightgallery"),{
+        plugins: [lgAutoplay,lgFullscreen,lgZoom],
         mode: 'lg-fade',
         preload: 2,
-        showThumbByDefault: false,
         enableDrag: false,
         hideBarsDelay: 1000,
         licenseKey:'B9A97260-D0214017-B0B4A219-3F39B144'
