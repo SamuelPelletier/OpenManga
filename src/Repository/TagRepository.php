@@ -36,14 +36,14 @@ class TagRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('p');
 
         if (strtolower($letter) === 'other') {
-            foreach (range('a', 'z') as $letter) {
-                $queryBuilder->andWhere("p.name NOT LIKE '" . $letter . "%'");
-            }
+            $queryBuilder->andWhere('NOT REGEXP(p.name, :regexp) = true')
+                ->setParameter('regexp', '^[a-z]');
         } else {
             $queryBuilder->where('p.name LIKE :word')->setParameter('word', $letter . '%');
         }
-        $queryBuilder->leftJoin('p.mangas', 'mangas')
+        $queryBuilder->join('p.mangas', 'mangas')
             ->addSelect('COUNT(mangas) as total')
+            ->having('total > 9')
             ->orderBy('p.name')
             ->groupBy('p');
         return $queryBuilder->getQuery()->getResult();
