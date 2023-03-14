@@ -107,7 +107,7 @@ class MangaController extends AbstractController
             }
         }
 
-        $mangaView = explode(',', $request->getSession()->get('manga_view'));
+        $mangaView = explode(',', $request->getSession()->get('manga_view',''));
         // Check in the session if this manga is already view
         if (!in_array($manga->getId(), $mangaView)) {
             $request->getSession()->set('manga_view',
