@@ -87,21 +87,18 @@ class RemoveDuplicateMangaCommand extends Command
                 $path = dirname(__DIR__) . '/../public/media/' . $mangaDuplicate->getId();
                 $fileSystem = new Filesystem();
                 $output->writeln($mangaDuplicate->getId());
-                if (!$fileSystem->exists($path)) {
-                    $this->em->remove($mangaDuplicate);
-                    $this->em->flush();
-                } else {
+                if ($fileSystem->exists($path)) {
                     $finder = new Finder();
                     $finder->files()->in($path);
-                    if ($manga->getId() > 1) {
+                    if ($mangaDuplicate->getId() > 1) {
                         if ($path == dirname(__DIR__) . '/../public/media/') {
                             die;
                         }
                         $fileSystem->remove($path);
-                        $this->em->remove($manga);
-                        $this->em->flush();
                     }
                 }
+                $this->em->remove($mangaDuplicate);
+                $this->em->flush();
             }
             $firstManga->setCountViews($firstManga->getCountViews() + $countViews);
             $this->em->persist($firstManga);
