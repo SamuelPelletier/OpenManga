@@ -106,10 +106,12 @@ h1, h2, h3, h4, p, a {
 
 ::selection {
     background: #ff306a !important; /* WebKit/Blink Browsers */
+    color: #4c4c4c !important;
 }
 
 ::-moz-selection {
     background: #ff306a !important; /* Gecko Browsers */
+    color: #4c4c4c !important;
 }
 
 .svg-container svg {

@@ -63,10 +63,11 @@ class MangaRepository extends ServiceEntityRepository
      */
     public function findBySearchQuery(
         string $rawQuery,
-        int $page = 1,
-        bool $isSortByViews = false,
-        bool $isStrict = false
-    ): Paginator {
+        int    $page = 1,
+        bool   $isSortByViews = false,
+        bool   $isStrict = false
+    ): Paginator
+    {
         $query = $this->sanitizeSearchQuery($rawQuery);
         $searchTerms = $this->extractSearchTerms($query);
 
@@ -210,6 +211,24 @@ class MangaRepository extends ServiceEntityRepository
 
         return $queryBuilder->getQuery()->execute();
 
+    }
+
+    public function findDuplicate()
+    {
+        $expr = $this->getEntityManager()->getExpressionBuilder();
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->select('p.title')
+            ->where(
+                $expr->in(
+                    'p.title',
+                    $this->createQueryBuilder('t')
+                        ->select('t.title')
+                        ->where('t.id != p.id')
+                        ->getDQL()
+                )
+            )
+            ->groupBy('p.title');
+        return $queryBuilder->getQuery()->execute();
     }
 
     /**

@@ -11,7 +11,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Language;
 use App\Entity\Manga;
 use App\Entity\User;
 use App\Repository\AuthorRepository;
@@ -20,7 +19,6 @@ use App\Repository\MangaRepository;
 use App\Repository\ParodyRepository;
 use App\Repository\TagRepository;
 use App\Service\MangaService;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,7 +35,7 @@ use Symfony\Component\Finder\Finder;
  * @Route("/")
  *
  */
-class MangaController extends AbstractController
+class MangaController extends BaseController
 {
     /**
      * @Route("/", defaults={"page": "1"}, methods={"GET"}, name="index")
@@ -46,16 +44,16 @@ class MangaController extends AbstractController
      *
      */
     public function index(
-        int $page,
-        Request $request,
+        int             $page,
+        Request         $request,
         MangaRepository $mangas
-    ): Response {
+    ): Response
+    {
         $isSortByViews = false;
         if ($request->getSession()->get('sort') != null) {
             $isSortByViews = $request->getSession()->get('sort');
         }
         $latestMangas = $mangas->findLatest($page, $isSortByViews);
-
         if ($request->isXmlHttpRequest()) {
             if (count($latestMangas->getQuery()->getArrayResult()) === 0) {
                 return $this->render('manga_ending.html.twig');
@@ -66,32 +64,17 @@ class MangaController extends AbstractController
     }
 
     /**
-     * @Route("/json", methods={"GET"}, name="index_json")
-     */
-    public function indexJSON(
-        TagRepository $tagRepository,
-        AuthorRepository $authorRepository,
-        LanguageRepository $languageRepository,
-        ParodyRepository $parodyRepository
-    ): Response {
-        $tags = $tagRepository->findAll();
-        $authors = $authorRepository->findAll();
-        $languages = $languageRepository->findAll();
-        $parodies = $parodyRepository->findAll();
-        return new JsonResponse(array_merge($tags, $authors, $languages, $parodies));
-    }
-
-    /**
      * @Route("/mangas/{id}", methods={"GET"}, name="manga")
      *
      */
     public function mangaShow(
-        Manga $manga,
-        MangaRepository $mangaRepository,
-        Request $request,
-        MangaService $mangaService,
+        Manga                  $manga,
+        MangaRepository        $mangaRepository,
+        Request                $request,
+        MangaService           $mangaService,
         EntityManagerInterface $entityManager
-    ): Response {
+    ): Response
+    {
         /**
          * @var User $user
          */
@@ -107,7 +90,7 @@ class MangaController extends AbstractController
             }
         }
 
-        $mangaView = explode(',', $request->getSession()->get('manga_view',''));
+        $mangaView = explode(',', $request->getSession()->get('manga_view', ''));
         // Check in the session if this manga is already view
         if (!in_array($manga->getId(), $mangaView)) {
             $request->getSession()->set('manga_view',
@@ -143,10 +126,11 @@ class MangaController extends AbstractController
      * @Route("/search/page/{page<[1-9]\d*>}", methods={"GET"}, name="search_paginated")
      */
     public function search(
-        Request $request,
+        Request         $request,
         MangaRepository $mangas,
-        int $page = 1
-    ): Response {
+        int             $page = 1
+    ): Response
+    {
         // No query parameter
         $foundMangas = null;
         $isSortByViews = $request->query->get('sort') != null ? true : false;
@@ -169,9 +153,10 @@ class MangaController extends AbstractController
      * @Route("/download/{id}", methods={"GET"}, name="download")
      */
     public function mangaDownload(
-        Manga $manga,
+        Manga                  $manga,
         EntityManagerInterface $entityManager
-    ): Response {
+    ): Response
+    {
         /**
          * @var User $user
          */
@@ -217,7 +202,7 @@ class MangaController extends AbstractController
     /**
      * @Route("/favorite/{id}/add", methods={"POST"}, name="add_favorite")
      */
-    public function addFavorite(Manga $manga,EntityManagerInterface $entityManager)
+    public function addFavorite(Manga $manga, EntityManagerInterface $entityManager)
     {
         /**
          * @var User $user
@@ -234,7 +219,7 @@ class MangaController extends AbstractController
     /**
      * @Route("/favorite/{id}/remove", methods={"POST"}, name="remove_favorite")
      */
-    public function removeFavorite(Manga $manga,EntityManagerInterface $entityManager)
+    public function removeFavorite(Manga $manga, EntityManagerInterface $entityManager)
     {
         /**
          * @var User $user

@@ -18,6 +18,7 @@ use App\Entity\Tag;
 use App\Entity\Parody;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use Symfony\Component\Console\Helper\ProgressBar;
@@ -48,11 +49,9 @@ use WebPConvert\WebPConvert;
  *
  * @property EntityManagerInterface entityManager
  */
+#[AsCommand(name: 'app:import-manga-folder')]
 class ImportMangaFromFolderCommand extends Command
 {
-    // a good practice is to use the 'app:' prefix to group all your custom application commands
-    protected static $defaultName = 'app:import-manga-folder';
-
     private $em;
     private $logger;
 

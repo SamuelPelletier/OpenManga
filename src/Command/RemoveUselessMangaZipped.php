@@ -20,6 +20,7 @@ use App\Repository\MangaRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -47,12 +48,9 @@ use WebPConvert\WebPConvert;
  *
  * @property EntityManagerInterface entityManager
  */
+#[AsCommand(name: 'app:remove-zip')]
 class RemoveUselessMangaZipped extends Command
 {
-    // a good practice is to use the 'app:' prefix to group all your custom application commands
-    protected static $defaultName = 'app:remove-zip';
-
-
     private $logger;
 
     public function __construct(LoggerInterface $logger)

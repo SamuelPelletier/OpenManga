@@ -12,7 +12,7 @@
             </trans-unit>
             <trans-unit id="http_error.suggestion">
                 <source>http_error.suggestion</source>
-                <target><![CDATA[Intentar recargar esta página dentro de unos minutos o <a href="{url}">vuelve a la portada del sitio</a>.]]></target>
+                <target><![CDATA[Intentar recargar esta página dentro de unos minutos o <a href="%url%">vuelve a la portada del sitio</a>.]]></target>
             </trans-unit>
             <trans-unit id="http_error_403.description">
                 <source>http_error_403.description</source>
@@ -28,7 +28,7 @@
             </trans-unit>
             <trans-unit id="http_error_404.suggestion">
                 <source>http_error_404.suggestion</source>
-                <target><![CDATA[Comprueba que la dirección de la página está bien escrita o <a href="{url}">vuelve a la portada del sitio</a>.]]></target>
+                <target><![CDATA[Comprueba que la dirección de la página está bien escrita o <a href="%url%">vuelve a la portada del sitio</a>.]]></target>
             </trans-unit>
             <trans-unit id="http_error_500.description">
                 <source>http_error_500.description</source>
@@ -36,7 +36,7 @@
             </trans-unit>
             <trans-unit id="http_error_500.suggestion">
                 <source>http_error_500.suggestion</source>
-                <target><![CDATA[Intentar recargar esta página dentro de unos minutos o <a href="{url}">vuelve a la portada del sitio</a>.]]></target>
+                <target><![CDATA[Intentar recargar esta página dentro de unos minutos o <a href="%url%">vuelve a la portada del sitio</a>.]]></target>
             </trans-unit>
 
             <trans-unit id="menu.choose_language">

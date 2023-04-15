@@ -13,6 +13,7 @@ namespace App\Command;
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Formatter\OutputFormatterStyle;
 use Symfony\Component\Console\Input\InputInterface;
@@ -35,11 +36,9 @@ use Symfony\Component\Process\Process;
  *
  * @property EntityManagerInterface entityManager
  */
+#[AsCommand(name: 'app:install')]
 class InstallCommand extends Command
 {
-    // a good practice is to use the 'app:' prefix to group all your custom application commands
-    protected static $defaultName = 'app:install';
-
     private $em;
     private $passwordEncoder;
 

@@ -20,6 +20,7 @@ use App\Repository\MangaRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -32,7 +33,6 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Finder\Finder;
 use WebPConvert\WebPConvert;
-use Symfony\Component\Console\Attribute\AsCommand;
 
 /**
  * A console command that lists all the existing users.
@@ -48,8 +48,8 @@ use Symfony\Component\Console\Attribute\AsCommand;
  *
  * @property EntityManagerInterface entityManager
  */
-#[AsCommand(name: 'app:check-manga')]
-class ListErrorMangaCommand extends Command
+#[AsCommand(name: 'app:remove-duplicate-manga')]
+class RemoveDuplicateMangaCommand extends Command
 {
     private $mangaRepository;
     private $em;
@@ -68,14 +68,7 @@ class ListErrorMangaCommand extends Command
      */
     protected function configure()
     {
-        $this->setDescription('Check every manga can be in error and list them')
-            ->addOption(
-                'iterations',
-                'i',
-                InputArgument::OPTIONAL,
-                'Number of items check ?',
-                0
-            );
+        $this->setDescription('Remove duplicate manga');
     }
 
     /**
@@ -84,21 +77,22 @@ class ListErrorMangaCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $iterations = $input->getOption('iterations');
-        $mangas = $this->mangaRepository->findBy([], ['id' => 'desc']);
-        $i = 0;
+        $mangas = $this->mangaRepository->findDuplicate();
         foreach ($mangas as $manga) {
-            $i++;
-            $path = dirname(__DIR__) . '/../public/media/' . $manga->getId();
-            $fileSystem = new Filesystem();
-            if (!$fileSystem->exists($path)) {
-                $this->em->remove($manga);
-                $this->em->flush();
-            } else {
-                $finder = new Finder();
-                $finder->files()->in($path);
-                if ($manga->getCountPages() != count($finder) - 1) {
-                    $output->writeln($manga->getId());
+            $mangasDuplicate = $this->mangaRepository->findByTitle($manga['title']);
+            $firstManga = array_shift($mangasDuplicate);
+            $countViews = 0;
+            foreach ($mangasDuplicate as $mangaDuplicate) {
+                $countViews += $mangaDuplicate->getCountViews();
+                $path = dirname(__DIR__) . '/../public/media/' . $mangaDuplicate->getId();
+                $fileSystem = new Filesystem();
+                $output->writeln($mangaDuplicate->getId());
+                if (!$fileSystem->exists($path)) {
+                    $this->em->remove($mangaDuplicate);
+                    $this->em->flush();
+                } else {
+                    $finder = new Finder();
+                    $finder->files()->in($path);
                     if ($manga->getId() > 1) {
                         if ($path == dirname(__DIR__) . '/../public/media/') {
                             die;
@@ -109,9 +103,9 @@ class ListErrorMangaCommand extends Command
                     }
                 }
             }
-            if ($iterations != 0 && $i > $iterations) {
-                break;
-            }
+            $firstManga->setCountViews($firstManga->getCountViews() + $countViews);
+            $this->em->persist($firstManga);
+            $this->em->flush();
         }
         return 0;
     }
