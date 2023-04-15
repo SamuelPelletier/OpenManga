@@ -24,7 +24,7 @@ class ApiController extends BaseController
 {
     /**
      * @Route("/api/", defaults={"page": "1"}, methods={"GET"}, name="mangas")
-     * @Route("/page/{page<[1-9]\d*>}", methods={"GET"}, name="mangas_paginated")
+     * @Route("/api/page/{page<[1-9]\d*>}", methods={"GET"}, name="mangas_paginated")
      * @Cache(smaxage="10")
      *
      */
