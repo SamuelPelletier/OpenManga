@@ -125,6 +125,7 @@ class ImportMangaCommand extends Command
         $repoTag = $this->em->getRepository(Tag::class);
         $repoAuthor = $this->em->getRepository(Author::class);
         $repoParody = $this->em->getRepository(Parody::class);
+        $link = 'https://e-hentai.org/g/2566364/0fa9a13621';
         $explode = explode("/", $link);
         $mangaId = $explode[4];
         $this->logger->info('Try to import - manga id : ' . $mangaId);
@@ -206,44 +207,59 @@ class ImportMangaCommand extends Command
             $fileSystem->mkdir(dirname(__DIR__) . '/../public/media/' . $manga->getId(), 0700);
             $data = file_get_contents($_ENV['API_MANGA_URL'] . $mangaId . '/' . $token);
             $data = strip_tags($data, "<a>");
-            $d = preg_split("/<\/a>/", $data);
+            $aTags = preg_split("/<\/a>/", $data);
+            $maxPage = 0;
+            foreach ($aTags as $aTag) {
+                if (preg_match('/^<a href=.*\/\?p=(?<maxPage>[0-9]{1,2})".*[0-9]$/', $aTag, $matches)) {
+                    if ((int)$matches['maxPage'] > $maxPage) {
+                        $maxPage = (int)$matches['maxPage'];
+                    }
+                }
+            }
             $i = 1;
-            foreach ($d as $k => $u) {
-                if (strpos($u, "<a href=") !== false) {
-                    $u = preg_replace("/.*<a\s+href=\"/sm", "", $u);
-                    $u = preg_replace("/\".*/", "", $u);
-                    if (strstr($u, $_ENV['API_IMAGE_URL']) != false) {
-                        $datau = file_get_contents($u);
-                        preg_match_all('@src="([^"]+)"@', $datau, $match);
-                        $src = array_pop($match);
-                        if (strstr($src[5], '509.gif') != false) {
-                            break;
-                        }
-                        $i = str_pad($i, 3, "0", STR_PAD_LEFT);
-                        try {
-                            $fileSystem->copy($src[5],
-                                dirname(__DIR__) . '/../public/media/' . $manga->getId() . '/' . $i . '.jpg', true);
-                        } catch (\Exception $e) {
-                            break;
-                        }
-                        // Create thumbnail
-                        if ($i == 1) {
-                            $source = dirname(__DIR__) . '/../public/media/' . $manga->getId() . '/' . $i . '.jpg';
-                            $destination = dirname(__DIR__) . '/../public/media/' . $manga->getId() . '/thumb.webp';
-
-                            try {
-                                $success = WebPConvert::convert($source, $destination, [
-                                    // It is not required that you set any options - all have sensible defaults.
-                                    // We set some, for the sake of the example.
-                                    'quality' => 10,
-                                    'max-quality' => 20,
-                                    'converters' => ['imagick', 'gmagick', 'gd', 'imagickbinary']
-                                ]);
-                            } catch (\Exception $e) {
-                                $fileSystem->copy($source, $destination);
+            for ($page = 0; $page < ($maxPage + 1); $page++) {
+                if ($page !== 0) {
+                    $data = file_get_contents($_ENV['API_MANGA_URL'] . $mangaId . '/' . $token . '/?p=' . $page);
+                    $data = strip_tags($data, "<a>");
+                    $aTags = preg_split("/<\/a>/", $data);
+                }
+                foreach ($aTags as $aTag) {
+                    if (strpos($aTag, "<a href=") !== false) {
+                        $aTag = preg_replace("/.*<a\s+href=\"/sm", "", $aTag);
+                        $imageLink = preg_replace("/\".*/", "", $aTag);
+                        if (strstr($aTag, $_ENV['API_IMAGE_URL']) != false) {
+                            $imageLinkContent = file_get_contents($imageLink);
+                            preg_match_all('@src="([^"]+)"@', $imageLinkContent, $match);
+                            $src = array_pop($match);
+                            if (strstr($src[5], '509.gif') != false) {
+                                break;
                             }
+                            $i = str_pad($i, 3, "0", STR_PAD_LEFT);
+                            try {
+                                $fileSystem->copy($src[5],
+                                    dirname(__DIR__) . '/../public/media/' . $manga->getId() . '/' . $i . '.jpg', true);
+                            } catch (\Exception $e) {
+                                break;
+                            }
+                            // Create thumbnail
+                            if ($i == 1) {
+                                $source = dirname(__DIR__) . '/../public/media/' . $manga->getId() . '/' . $i . '.jpg';
+                                $destination = dirname(__DIR__) . '/../public/media/' . $manga->getId() . '/thumb.webp';
+
+                                try {
+                                    $success = WebPConvert::convert($source, $destination, [
+                                        // It is not required that you set any options - all have sensible defaults.
+                                        // We set some, for the sake of the example.
+                                        'quality' => 10,
+                                        'max-quality' => 20,
+                                        'converters' => ['imagick', 'gmagick', 'gd', 'imagickbinary']
+                                    ]);
+                                } catch (\Exception $e) {
+                                    $fileSystem->copy($source, $destination);
+                                }
+                            }
+                            $i++;
                         }
-                        $i++;
                     }
                 }
             }
