@@ -125,7 +125,6 @@ class ImportMangaCommand extends Command
         $repoTag = $this->em->getRepository(Tag::class);
         $repoAuthor = $this->em->getRepository(Author::class);
         $repoParody = $this->em->getRepository(Parody::class);
-        $link = 'https://e-hentai.org/g/2566364/0fa9a13621';
         $explode = explode("/", $link);
         $mangaId = $explode[4];
         $this->logger->info('Try to import - manga id : ' . $mangaId);
