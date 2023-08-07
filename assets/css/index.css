@@ -40,10 +40,20 @@ footer {
 article {
     padding: 1%;
     display: inline-block;
+
+    -webkit-transition: all 50ms ease;
+	-moz-transition: all 50ms ease;
+	transition: all 50ms ease;
 }
 
 article a:hover {
     text-decoration: none;
+}
+
+.img-thumbnail:hover{
+    -webkit-transform:scale(1.2);
+    -moz-transform:scale(1.2);
+    transform:scale(1.2);
 }
 
 h1, h2, h3, h4, p, a {
@@ -65,7 +75,7 @@ h1, h2, h3, h4, p, a {
 
 @media (min-width: 768px) {
     .manga {
-        width: 25%;
+        width: 20%;
     }
 }
 
