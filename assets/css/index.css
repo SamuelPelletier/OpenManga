@@ -51,9 +51,9 @@ article a:hover {
 }
 
 .img-thumbnail:hover{
-    -webkit-transform:scale(1.2);
-    -moz-transform:scale(1.2);
-    transform:scale(1.2);
+    -webkit-transform:scale(1.1);
+    -moz-transform:scale(1.1);
+    transform:scale(1.1);
 }
 
 h1, h2, h3, h4, p, a {
