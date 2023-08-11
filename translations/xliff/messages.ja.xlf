@@ -173,7 +173,7 @@
             </trans-unit>
             <trans-unit id="meta.description.manga">
                 <source>meta.description.manga</source>
-                <target>ここでは、最高の漫画の1つを見つけることができます : </target>
+                <target>読んでダウンロードする </target>
             </trans-unit>
             <trans-unit id="meta.description.with">
                 <source>meta.description.with</source>

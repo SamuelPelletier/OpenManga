@@ -7,7 +7,6 @@
 {% block title %}{{ manga.title }}{% endblock %}
 
 {% block meta_description %}
-    {{ parent() }}
     {{ 'meta.description.manga'|trans ~ manga.title | raw  ~ 'meta.description.with'|trans }} {{ manga.tags | join(',',' and ') }}
 {% endblock %}
 
@@ -164,6 +163,8 @@
                     }
                 }
             }
+
+
         </script>
     {% endblock %}
 {% endblock %}

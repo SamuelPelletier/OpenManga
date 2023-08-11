@@ -127,13 +127,13 @@ $(function () {
          newUrl = undefined;
      });*/
 
-    $('.manga a').on('click', function (e) {
+    /*$('.manga a').on('click', function (e) {
         $(".loader").remove();
 
         if (!window.event.ctrlKey) {
             $(this).parent().append('<div class="loader"><div class="loader-inner"><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div></div></div>');
         }
-    });
+    });*/
 
     $('.manga-remove-favorite').on('click', function (e) {
         let translationKey = "account.remove.favorite";
