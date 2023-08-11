@@ -69,11 +69,7 @@
             </trans-unit>
             <trans-unit id="search.sort">
                 <source>search.sort</source>
-                <target>조회수로 정렬</target>
-            </trans-unit>
-            <trans-unit id="search.sort.info">
-                <source>search.sort.info</source>
-                <target>조회수를 기준으로 결과 정렬</target>
+                <target>트렌드</target>
             </trans-unit>
 
             <trans-unit id="tag.popular_title">

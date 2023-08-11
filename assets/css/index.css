@@ -41,19 +41,32 @@ article {
     padding: 1%;
     display: inline-block;
 
-    -webkit-transition: all 50ms ease;
-	-moz-transition: all 50ms ease;
-	transition: all 50ms ease;
 }
+article a {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    
+    -webkit-transition: all 100ms ease;
+	-moz-transition: all 100ms ease;
+	transition: all 100ms ease;
+}
+
+article h2 {
+    font-size: 20px;
+}
+
+article:hover h2 {
+  transform: translateX(-100%); /* Fait défiler le titre vers le haut */
+  transition: transform 0.3s ease; /* Ajoute une transition fluide */
+}
+
 
 article a:hover {
     text-decoration: none;
-}
-
-.img-thumbnail:hover{
-    -webkit-transform:scale(1.1);
-    -moz-transform:scale(1.1);
-    transform:scale(1.1);
+    /*box-shadow: 0 0 40px rgb(251, 0, 110, 0.7);*/
+    box-shadow: 0 0 40px #facde0;
+    -webkit-transform:scale(0.97);
+    -moz-transform:scale(0.97);
+    transform:scale(0.97);
 }
 
 h1, h2, h3, h4, p, a {
@@ -99,6 +112,22 @@ h1, h2, h3, h4, p, a {
     max-height: 482px;
     margin: auto;
     display: block;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block; /* or block, depending on your layout */
+  overflow: hidden;
+}
+
+.image-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 32%;
+  background: linear-gradient(180deg,#2b2b2b,transparent, transparent);
 }
 
 .img-name {
@@ -222,7 +251,6 @@ h1, h2, h3, h4, p, a {
     box-shadow: 0 0 5px rgba(109, 207, 246, .5);
 }
 
-
 #search_field:-moz-placeholder {
     color: #999;
 }
@@ -232,7 +260,9 @@ h1, h2, h3, h4, p, a {
 }
 
 .search-button {
-    background: #ff306a;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
+    background-image: linear-gradient(#ff0068,#c10082);
+
     padding: 10px 20px;
     -moz-border-radius: 0 10px 10px 0;
     -webkit-border-radius: 0 10px 10px 0;
@@ -248,6 +278,10 @@ h1, h2, h3, h4, p, a {
 
 .search-button:hover, .search-button:active, .search-button:focus, .search-button:focus:active {
     background: #ff306a;
+
+    -webkit-box-shadow: 0 0 5px rgb(212 12 235 / 90%);
+    -moz-box-shadow: 0 0 5px rgb(212 12 235 / 90%);
+    box-shadow: 0 0 5px rgb(212 12 235 / 90%);
 }
 
 .manga-container .well {
@@ -300,6 +334,7 @@ h1, h2, h3, h4, p, a {
     z-index: 1;
 }
 
+/*
 .Switch > span:before {
     background-color: var(--textColor);
     border-radius: 1.2em;
@@ -324,6 +359,7 @@ h1, h2, h3, h4, p, a {
     width: 1.2em;
 }
 
+
 .Switch > input:checked + span:before {
     background-color: var(--primaryColor);
 }
@@ -332,6 +368,7 @@ h1, h2, h3, h4, p, a {
     border-color: var(--primaryColor);
     transform: translateX(100%);
 }
+*/
 
 .a-neonText {
     color: rgba(255, 255, 255, 0.5);
@@ -468,6 +505,7 @@ h1, h2, h3, h4, p, a {
 .manga-count-pages {
     position: absolute;
     right: 20px;
+    z-index: 1;
     text-shadow: black 1.5px 2px 2px;
 }
 
@@ -610,3 +648,31 @@ h1, h2, h3, h4, p, a {
 #loader-scroll rect {
     fill: #ff306a;
 }
+
+
+/* Styling the scrollbar track */
+::-webkit-scrollbar {
+width: 10px;
+}
+
+/* Styling the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+background-color: #4d4d4d; /* Darker color for the thumb */
+border-radius: 5px;
+}
+
+/* Styling the scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+background-color: #666666; /* Slightly lighter color on hover */
+}
+
+/* Styling the scrollbar track on hover */
+::-webkit-scrollbar-track {
+background-color: #1a1a1a; /* Dark background color for the track */
+}
+
+/* Styling the scrollbar track when dragged */
+::-webkit-scrollbar-thumb:active {
+background-color: #999999; /* Lighter color when dragging the thumb */
+}
+

@@ -54,57 +54,15 @@ class MangaController extends BaseController
             $isSortByViews = $request->getSession()->get('sort');
         }
         $latestMangas = $mangas->findLatest($page, $isSortByViews);
-        $languages = [
-            'english' => 'gb',
-            'french' => 'fr',
-            'spanish' => 'es',
-            'german' => 'de',
-            'chinese' => 'zh',
-            'japanese' => 'ja',
-            'arabic' => 'ar',
-            'russian' => 'ru',
-            'portuguese' => 'pt',
-            'italian' => 'it',
-            'dutch' => 'nl',
-            'korean' => 'ko',
-            'turkish' => 'tr',
-            'polish' => 'pl',
-            'swedish' => 'sv',
-            'norwegian' => 'no',
-            'danish' => 'da',
-            'finnish' => 'fi',
-            'greek' => 'el',
-            'hindi' => 'hi',
-            'indonesian' => 'id',
-            'malay' => 'ms',
-            'thai' => 'th',
-            'vietnamese' => 'vi',
-            'ukrainian' => 'uk',
-            'hungarian' => 'hu',
-            'czech' => 'cs',
-            'romanian' => 'ro',
-            'hebrew' => 'he',
-            'persian' => 'fa',
-            'bengali' => 'bn',
-            'urdu' => 'ur',
-            'tagalog' => 'tl',
-            'malayalam' => 'ml',
-            // Add other languages here.
-        ];
+        
         if ($request->isXmlHttpRequest()) {
             if (count($latestMangas->getQuery()->getArrayResult()) === 0) {
                 return $this->render('manga_ending.html.twig');
             }
             
-            return $this->render('manga_index.html.twig', [
-                'mangas' => $latestMangas,
-                'languages' => $languages,
-            ]);
+            return $this->render('manga_index.html.twig', ['mangas' => $latestMangas]);
         }
-        return $this->render('index.html.twig',  [
-            'mangas' => $latestMangas,
-            'languages' => $languages,
-        ]);
+        return $this->render('index.html.twig',  ['mangas' => $latestMangas]);
     }
 
     /**

@@ -29,6 +29,44 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Language implements \JsonSerializable
 {
+    const ISO_CODE = [
+        'english' => 'gb',
+        'french' => 'fr',
+        'spanish' => 'es',
+        'german' => 'de',
+        'chinese' => 'cn',
+        'japanese' => 'jp',
+        'arabic' => 'ae',
+        'russian' => 'ru',
+        'portuguese' => 'pt',
+        'italian' => 'it',
+        'dutch' => 'nl',
+        'korean' => 'kp',
+        'turkish' => 'tr',
+        'polish' => 'pl',
+        'swedish' => 'se',
+        'norwegian' => 'no',
+        'danish' => 'da',
+        'finnish' => 'fi',
+        'greek' => 'gr',
+        'hindi' => 'in',
+        'indonesian' => 'id',
+        'malay' => 'ms',
+        'thai' => 'th',
+        'vietnamese' => 'vi',
+        'ukrainian' => 'uk',
+        'hungarian' => 'hu',
+        'czech' => 'cs',
+        'romanian' => 'ro',
+        'hebrew' => 'he',
+        'persian' => 'fa',
+        'bengali' => 'bn',
+        'urdu' => 'ur',
+        'tagalog' => 'tl',
+        'malayalam' => 'ml',
+        // Add other languages here.
+    ];
+
     /**
      * @var int
      *
@@ -58,6 +96,11 @@ class Language implements \JsonSerializable
     public function getName(): ?string
     {
         return $this->name;
+    }
+
+    public function getCode(): ?string
+    {
+        return self::ISO_CODE[$this->name] ?? null;
     }
 
     /**

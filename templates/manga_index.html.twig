@@ -2,19 +2,20 @@
     {% for manga in mangas %}
         <article class="manga col-sm-3">
             <a href="{{ url('manga', {id: manga.id}) }}">
-                <img alt="{{ manga.title |raw }}" title="{{ manga.title |raw }}" class='img-thumbnail'
-                     src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/thumb.webp' ) }}'>
-                <div class="img-name">
+                <p class="manga-count-pages">
+                    {% for language in manga.languages %}
+                        {% if language.code %}
+                            <span class="fi fi-{{ language.code }}"></span>
+                        {% endif %}
+                    {% endfor %}
+                    {{ manga.countPages }} <i class="fa-regular fa-images"></i>
+                </p>
+                <div class="image-container">
+                    <img alt="{{ manga.title |raw }}" title="{{ manga.title |raw }}" class='img-thumbnail'
+                        src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/thumb.webp' ) }}'>
+                </div>
+                <div class="img-name" style="display:flex">
                     <h2>{{ manga.title |raw }}</h2>
-                    <p class="manga-count-pages">{{ manga.countPages }} <i class="fa-regular fa-images"></i></p>
-                    {% if not manga.languages.empty %}
-                        {% for language in manga.languages %}
-                            {% if language != 'translated' %}
-                                {% set isoCode = languages[language.name|lower] ?? language.name %}
-                                <span class="fi fi-{{ isoCode }}">
-                            {% endif %}
-                        {% endfor %}
-                    {% endif %}
                 </div>
             </a>
         </article>

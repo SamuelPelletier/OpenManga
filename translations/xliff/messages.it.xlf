@@ -69,11 +69,7 @@
             </trans-unit>
             <trans-unit id="search.sort">
                 <source>search.sort</source>
-                <target>Ordina per visualizzazioni</target>
-            </trans-unit>
-            <trans-unit id="search.sort.info">
-                <source>search.sort.info</source>
-                <target>Ordina i risultati per numero di visualizzazioni</target>
+                <target>Tendenza</target>
             </trans-unit>
 
             <trans-unit id="tag.popular_title">

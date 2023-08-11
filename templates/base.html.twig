@@ -66,9 +66,7 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                     <input type="checkbox" name="sort" class="switch-input a-neonToggle" id="toggle"
                                            {% if app.session.get('sort') %}checked{% endif %}>
                                     <span class="a-neonText -main">
-                                    {{ 'search.sort'|trans }} <i id="bubble-info" class="fa fa-info-circle"
-                                                                 data-toggle="popover"
-                                                                 data-content="{{ 'search.sort.info'|trans }}"></i>
+                                    {{ 'search.sort'|trans }}
                                     </span>
                                 </label>
                             </div>
@@ -94,12 +92,13 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                     <i class="fa fa-hashtag" aria-hidden="true"></i> {{ 'manga.tag'|trans }}
                                 </a>
                             </li>
+                            <!--
                             <li>
                                 <a class="contact {% if app.request.uri == url('about') %}active{% endif %}"
                                    href="{{ url('about') }}">
                                     <i class="fa fa-info-circle" aria-hidden="true"></i> {{ 'menu.about'|trans }}
                                 </a>
-                            </li>
+                            </li>-->
                             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                                 <li>
                                     <a class="login {% if app.request.uri == url('user_index') %}active{% endif %}"
