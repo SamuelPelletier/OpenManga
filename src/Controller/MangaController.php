@@ -89,6 +89,7 @@ class MangaController extends BaseController
                 array_push($images, $file->getRelativePathname());
             }
         }
+        sort($images);
 
         $mangaView = explode(',', $request->getSession()->get('manga_view', ''));
         // Check in the session if this manga is already view
