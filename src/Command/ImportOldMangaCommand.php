@@ -1,14 +1,5 @@
 <?php
 
-/*
- * This file is part of the Symfony package.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace App\Command;
 
 use App\Entity\Manga;
@@ -31,23 +22,13 @@ use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Finder\Finder;
 use WebPConvert\WebPConvert;
+use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 
-/**
- * A console command that import mangas from the provided url in .env .
- *
- * To use this command, open a terminal window, enter into your project directory
- * and execute the following:
- *
- *     $ php bin/console app:import-manga
- *
- * See https://symfony.com/doc/current/cookbook/console/console_command.html
- * For more advanced uses, commands can be defined as services too. See
- * https://symfony.com/doc/current/console/commands_as_services.html
- *
- * @property EntityManagerInterface entityManager
- */
-#[AsCommand(name: 'app:import-manga')]
-class ImportMangaCommand extends Command
+#[AsCommand(
+    name: 'app:import-old-manga',
+    description: 'Import old manga',
+)]
+class ImportOldMangaCommand extends Command
 {
     private $em;
     private $logger;
@@ -55,70 +36,78 @@ class ImportMangaCommand extends Command
     public function __construct(EntityManagerInterface $em, LoggerInterface $logger)
     {
         parent::__construct();
-
         $this->em = $em;
         $this->logger = $logger;
     }
 
-    /**
-     * {@inheritdoc}
-     */
-    protected function configure()
+    protected function configure(): void
     {
-        $this->setDescription('Import manga');
+        $this->setDescription('Importing old manga');
     }
 
-    /**
-     * This method is executed after initialize(). It usually contains the logic
-     * to execute to complete this command task.
-     */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $url = $_ENV['API_SEARCH'];
-        $data = file_get_contents($url);
-        $data = strip_tags($data, "<a>");
-        $d = preg_split("/<\/a>/", $data);
-        $mangasLink = array();
-        foreach ($d as $k => $u) {
-            if (strpos($u, "<a href=") !== false) {
-                $u = preg_replace("/.*<a\s+href=\"/sm", "", $u);
-                $u = preg_replace("/\".*/", "", $u);
-                if (strstr($u, $_ENV['API_MANGA_URL']) != false) {
-                    array_push($mangasLink, $u);
-                }
-            }
+        // Get the next page number
+        // Create a cache adapter
+        $cache = new FilesystemAdapter();
+        
+        // Try to retrieve the integer value from the cache
+        $cacheItem = $cache->getItem('next_page_to_scrap');
+        if ($cacheItem->isHit()) {
+            $nextPageNumber = $cacheItem->get();
+        } else {
+            $nextPageNumber = 1;
+            $cacheItem->set($nextPageNumber);
+            $cache->save($cacheItem);
         }
 
-        for ($i = count($mangasLink); $i > 0; $i--) {
-            $this->downloadManga($mangasLink[$i - 1]);
-            // Download by batch of last 5
-            if ($i == count($mangasLink) - 6) {
-                break;
-            }
+        $url = $_ENV['API_OLD_MANGA_SEARCH'] . $nextPageNumber ;
+        
+        // Fetch the webpage content
+        $html = file_get_contents($url);
+
+        if ($html === false) {
+            echo "Failed to fetch the webpage.";
+            exit;
         }
 
+        $pattern = $_ENV['API_PATERN'];
 
-        $command = $this->getApplication()->find('app:check-manga');
-        $arguments = [
-            'command' => 'app:check-manga',
-            '--iterations' => '10'
-        ];
-        $greetInput = new ArrayInput($arguments);
-        $command->run($greetInput, $output);
+        preg_match_all($pattern, $html, $matches, PREG_SET_ORDER);
+
+        if (!empty($matches)) {
+            $nextNmber = max(array_column($matches, 2));
+                
+            // Update the next page number in the config file
+            echo "next page : $nextNmber\n";
+            echo "links:\n";
+            foreach ($matches as $match) {
+                $links[] = $match[1];
+            }
+                        
+            // Now you can use the $links array to access the links
+            foreach ($links as $link) {
+                echo $link . "\n";
+            }
+        }
+        //user output command line
+        $io = new SymfonyStyle($input, $output);
 
 
-        $command = $this->getApplication()->find('app:remove-zip');
-        $arguments = [
-            'command' => 'app:remove-zip'
-        ];
-        $greetInput = new ArrayInput($arguments);
-        $command->run($greetInput, $output);
-
-
-        return 0;
+        for ($i = count($links); $i > 0; $i--) {
+            $io->note(sprintf('downloading :', $links[$i - 1]));
+            $this->downloadManga($links[$i - 1]);
+            $io->success($links[$i - 1], ' has been downloaded');
+            sleep(144);
+        }
+        return Command::SUCCESS;
     }
 
-    private function downloadManga($link)
+//duplicata de la fonction download 
+//#
+//#
+//#
+private function downloadManga($link)
     {
         $repoManga = $this->em->getRepository(Manga::class);
         $repoLanguage = $this->em->getRepository(Language::class);
@@ -129,14 +118,15 @@ class ImportMangaCommand extends Command
         $mangaId = $explode[4];
         $this->logger->info('Try to import - manga id : ' . $mangaId);
         $token = $explode[5];
-        $json = json_decode($this->CallAPI("POST", $_ENV['API_URL'], '{
+        $raw = $this->CallAPI("POST", $_ENV['API_URL'], '{
             "method": "gdata",
             "gidlist": [
                 [' . $mangaId . ',"' . $token . '"]
             ],
             "namespace": 1
-          }'), true)['gmetadata'][0];
-
+          }');
+        echo $raw;
+        $json = json_decode($raw, true)['gmetadata'][0];
         if ($mangaFind = $repoManga->findOneBy(['title' => $json['title']])) {
             $this->logger->warning('Manga already exist - id : ' . $mangaFind->getId());
         } else {
@@ -274,10 +264,56 @@ class ImportMangaCommand extends Command
         }
     }
 
+    private function GetIp($proxy = null) {
+        //url that output current ip
+        $url = 'http://dynupdate.no-ip.com/ip.php';
+        //$proxyauth = 'user:password';
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL,$url);
+        if($proxy) {
+            echo "proxyy";
+            curl_setopt($ch, CURLOPT_PROXY, $proxy);
+            //curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, 1);
+            //curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_HTTP);
+        }
+        //curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
+        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_HEADER, 1);
+
+        //DNS 
+        /*
+        curl_setopt($ch, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
+        curl_setopt($ch, CURLOPT_DNS_CACHE_TIMEOUT, 2);
+        curl_setopt($ch, CURLOPT_RESOLVE, [$url.':8.8.8.8']);
+        */
+
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
+
+        //curl_setopt($ch, CURLOPT_HEADER, 0);
+        $curl_scraped_page = curl_exec($ch);
+
+        
+        // Check for cURL errors
+        if(curl_errno($ch)) {
+            echo 'Curl error: ' . curl_error($ch);
+        }
+        
+        // Close cURL session
+        curl_close($ch);
+
+        return $curl_scraped_page;
+    }
+
+
     private function CallAPI($method, $url, $data = false)
     {
         $curl = curl_init();
+        
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
         switch ($method) {
             case "POST":
                 curl_setopt($curl, CURLOPT_POST, 1);
@@ -295,17 +331,53 @@ class ImportMangaCommand extends Command
                 }
         }
 
+        $proxyList = [
+            '173.212.195.139:80',
+            // Add more proxy URLs as needed
+        ];
+        
+        $randomProxy = $proxyList[array_rand($proxyList)];
+
+        /*
+        $oldIp = $this->GetIp(); //get ip without proxy
+        echo $oldIp;
+        echo "#";
+        $newIp = $this->GetIp($randomProxy); //get ip with proxy
+        echo $newIp;
+        */
+
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+
+        curl_setopt($curl, CURLOPT_HEADER, 1);
+
         curl_setopt($curl, CURLOPT_HTTPHEADER, array(
                 'Content-Type: application/json',
                 'Content-Length: ' . strlen($data)
             )
         );
+        
+        curl_setopt($curl, CURLOPT_PROXY, $randomProxy);
 
+        // Set a custom user agent string
+        $userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36';
+        curl_setopt($curl, CURLOPT_USERAGENT, $userAgent);
+        //curl_setopt($ch, CURLOPT_PROXYUSERPWD, "$proxyUser:$proxyPass");
+
+        // Execute cURL session and get the response
         $result = curl_exec($curl);
 
+        // Check for cURL errors
+        if(curl_errno($curl)) {
+            echo 'Curl error: ' . curl_error($curl);
+        }
+        
+        // Close cURL session
         curl_close($curl);
+        
+        // Output the response
+        echo $result;
 
         return $result;
     }

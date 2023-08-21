@@ -14,7 +14,7 @@
                     <img alt="{{ manga.title |raw }}" title="{{ manga.title |raw }}" class='img-thumbnail'
                         src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/thumb.webp' ) }}'>
                 </div>
-                <div class="img-name" style="display:flex">
+                <div class="img-name">
                     <h2>{{ manga.title |raw }}</h2>
                 </div>
             </a>
