@@ -23,6 +23,32 @@ a:hover, a:focus, a:active {
     border-radius: 0;
 }
 
+.navbar-nav li {
+    background-color: #181921;
+    border-left: inset;
+    transform: SkewX(-45deg);
+    padding-left: 8px;
+    padding-right: 8px;
+    z-index: 2;
+}
+
+.navbar-nav li a {
+    transform: SkewX(45deg);
+}
+
+
+.navbar-nav .dropdown {
+transform: skewX(0deg);
+background-color: #2b2b2b;
+border-left: none;
+z-index: 1;
+}
+
+.navbar-nav .dropdown a, .dropdown li {
+    transform: skewX(0deg);
+}
+
+
 .navbar-brand {
     margin-left: 20px !important;
     color: #ff306a !important;
@@ -62,8 +88,9 @@ article:hover h2 {
 
 article a:hover {
     text-decoration: none;
-    /*box-shadow: 0 0 40px rgb(251, 0, 110, 0.7);*/
-    box-shadow: 0 0 40px #facde0;
+    /*box-shadow: 0 0 40px rgb(251, 0, 110, 0.7);
+    box-shadow: 0 0 40px #facde0;*/
+    box-shadow: 0 0 20px #ff63a3;
     -webkit-transform:scale(0.97);
     -moz-transform:scale(0.97);
     transform:scale(0.97);
@@ -657,13 +684,13 @@ width: 10px;
 
 /* Styling the scrollbar thumb */
 ::-webkit-scrollbar-thumb {
-background-color: #4d4d4d; /* Darker color for the thumb */
+background-color: #ff306a; /* Darker color for the thumb */
 border-radius: 5px;
 }
 
 /* Styling the scrollbar thumb on hover */
 ::-webkit-scrollbar-thumb:hover {
-background-color: #666666; /* Slightly lighter color on hover */
+background-color: #ff5f8c; /* Slightly lighter color on hover */
 }
 
 /* Styling the scrollbar track on hover */

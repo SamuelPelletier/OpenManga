@@ -47,11 +47,15 @@ class ImportOldMangaCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        //user output command line
+        $io = new SymfonyStyle($input, $output);
+
         // Get the next page number
         // Create a cache adapter
         $cache = new FilesystemAdapter();
         
         // Try to retrieve the integer value from the cache
+        
         $cacheItem = $cache->getItem('next_page_to_scrap');
         if ($cacheItem->isHit()) {
             $nextPageNumber = $cacheItem->get();
@@ -60,6 +64,8 @@ class ImportOldMangaCommand extends Command
             $cacheItem->set($nextPageNumber);
             $cache->save($cacheItem);
         }
+        
+
 
         $url = $_ENV['API_OLD_MANGA_SEARCH'] . $nextPageNumber ;
         
@@ -76,11 +82,13 @@ class ImportOldMangaCommand extends Command
         preg_match_all($pattern, $html, $matches, PREG_SET_ORDER);
 
         if (!empty($matches)) {
-            $nextNmber = max(array_column($matches, 2));
+            //$nextNmber = max(array_column($matches, 2));
+            //DEBUG ! TO REMOVE
+            $nextNmber = $nextPageNumber +1;
                 
             // Update the next page number in the config file
             echo "next page : $nextNmber\n";
-            echo "links:\n";
+            echo "linsting the links of mangas to scrap :\n";
             foreach ($matches as $match) {
                 $links[] = $match[1];
             }
@@ -88,25 +96,117 @@ class ImportOldMangaCommand extends Command
             // Now you can use the $links array to access the links
             foreach ($links as $link) {
                 echo $link . "\n";
+
+                for ($i = count($links); $i > 0; $i--) {
+                    $io->note(sprintf('downloading :', $links[$i - 1]));
+                    //DEBUG ! TO REMOVE
+                    //$this->downloadManga($links[$i - 1]);
+
+                    $this->CallAPI("POST", $_ENV['API_URL'], '{
+                        "method": "gdata",
+                        "gidlist": [
+                            [' . 'debug' . ',"' . 'debug' . '"]
+                        ],
+                        "namespace": 1
+                      }');
+                    //END DEBUG
+                    $io->success($links[$i - 1], ' has been downloaded');
+                    sleep(144);
+                }
             }
+        } else {
+            $io->error('No links found.');
+            exit;
         }
-        //user output command line
-        $io = new SymfonyStyle($input, $output);
-
-
-        for ($i = count($links); $i > 0; $i--) {
-            $io->note(sprintf('downloading :', $links[$i - 1]));
-            $this->downloadManga($links[$i - 1]);
-            $io->success($links[$i - 1], ' has been downloaded');
-            sleep(144);
-        }
+        
         return Command::SUCCESS;
+    }    
+
+    private function CallAPI($method=null, $url, $data = false)
+    {
+        $curl = curl_init();
+        
+        if($method) {
+            switch ($method) {
+                case "POST":
+                    curl_setopt($curl, CURLOPT_POST, 1);
+    
+                    if ($data) {
+                        curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
+                    }
+                    break;
+                case "PUT":
+                    curl_setopt($curl, CURLOPT_PUT, 1);
+                    break;
+                default:
+                    if ($data) {
+                        $url = sprintf("%s?%s", $url, http_build_query($data));
+                    }
+            }
+            curl_setopt($curl, CURLOPT_HTTPHEADER, array(
+                'Content-Type: application/json',
+                'Content-Length: ' . strlen($data)
+            )
+        );
+        }
+        
+        $proxyList = [
+            //'173.212.195.139:80',
+            //'185.49.170.20:43626',
+            //'50.217.29.198:80',
+            '8.219.97.248:80',
+        ];
+        
+        $randomProxy = $proxyList[array_rand($proxyList)];
+        /*
+
+        $oldIp = $this->GetIp(); //get ip without proxy
+        echo $oldIp;
+        echo "#";
+        
+        $newIp = $this->GetIp($randomProxy); //get ip with proxy
+        echo $newIp;
+        */
+
+        curl_setopt($curl, CURLOPT_URL, $url);
+        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($curl, CURLOPT_HEADER, 1);
+
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
+        curl_setopt($curl, CURLOPT_PROXY, $randomProxy);
+
+        curl_setopt($curl, CURLOPT_HTTPPROXYTUNNEL, 1);
+        curl_setopt($curl, CURLOPT_PROXYTYPE, CURLPROXY_HTTP);
+        //DEBUG
+        curl_setopt($curl, CURLOPT_VERBOSE, true);
+
+        
+        // Set a custom user agent string
+        $userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36';
+        curl_setopt($curl, CURLOPT_USERAGENT, $userAgent);
+        //curl_setopt($ch, CURLOPT_PROXYUSERPWD, "$proxyUser:$proxyPass");
+
+        // Execute cURL session and get the response
+        $result = curl_exec($curl);
+
+        // Check for cURL errors
+        if(curl_errno($curl)) {
+            echo 'Curl error: ' . curl_error($curl);
+            exit;
+        }
+        
+        // Close cURL session
+        curl_close($curl);
+        
+        // Output the response
+        echo $result;
+
+        return $result;
     }
 
 //duplicata de la fonction download 
-//#
-//#
-//#
 private function downloadManga($link)
     {
         $repoManga = $this->em->getRepository(Manga::class);
@@ -126,7 +226,14 @@ private function downloadManga($link)
             "namespace": 1
           }');
         echo $raw;
-        $json = json_decode($raw, true)['gmetadata'][0];
+        
+        if (json_decode($raw, true)['gmetadata'][0] === null) {
+            $io->error("Empty page scraping or http error.");
+            exit;
+        } else {
+            $json = json_decode($raw, true)['gmetadata'][0];
+        }
+
         if ($mangaFind = $repoManga->findOneBy(['title' => $json['title']])) {
             $this->logger->warning('Manga already exist - id : ' . $mangaFind->getId());
         } else {
@@ -262,123 +369,5 @@ private function downloadManga($link)
                 $this->logger->info('End of import - manga : ' . $manga->getTitle() . ' ## New ID : ' . $manga->getId());
             }
         }
-    }
-
-    private function GetIp($proxy = null) {
-        //url that output current ip
-        $url = 'http://dynupdate.no-ip.com/ip.php';
-        //$proxyauth = 'user:password';
-
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_URL,$url);
-        if($proxy) {
-            echo "proxyy";
-            curl_setopt($ch, CURLOPT_PROXY, $proxy);
-            //curl_setopt($ch, CURLOPT_HTTPPROXYTUNNEL, 1);
-            //curl_setopt($ch, CURLOPT_PROXYTYPE, CURLPROXY_HTTP);
-        }
-        //curl_setopt($ch, CURLOPT_PROXYUSERPWD, $proxyauth);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_HEADER, 1);
-
-        //DNS 
-        /*
-        curl_setopt($ch, CURLOPT_DNS_USE_GLOBAL_CACHE, false);
-        curl_setopt($ch, CURLOPT_DNS_CACHE_TIMEOUT, 2);
-        curl_setopt($ch, CURLOPT_RESOLVE, [$url.':8.8.8.8']);
-        */
-
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 0);
-
-        //curl_setopt($ch, CURLOPT_HEADER, 0);
-        $curl_scraped_page = curl_exec($ch);
-
-        
-        // Check for cURL errors
-        if(curl_errno($ch)) {
-            echo 'Curl error: ' . curl_error($ch);
-        }
-        
-        // Close cURL session
-        curl_close($ch);
-
-        return $curl_scraped_page;
-    }
-
-
-    private function CallAPI($method, $url, $data = false)
-    {
-        $curl = curl_init();
-        
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
-        switch ($method) {
-            case "POST":
-                curl_setopt($curl, CURLOPT_POST, 1);
-
-                if ($data) {
-                    curl_setopt($curl, CURLOPT_POSTFIELDS, $data);
-                }
-                break;
-            case "PUT":
-                curl_setopt($curl, CURLOPT_PUT, 1);
-                break;
-            default:
-                if ($data) {
-                    $url = sprintf("%s?%s", $url, http_build_query($data));
-                }
-        }
-
-        $proxyList = [
-            '173.212.195.139:80',
-            // Add more proxy URLs as needed
-        ];
-        
-        $randomProxy = $proxyList[array_rand($proxyList)];
-
-        /*
-        $oldIp = $this->GetIp(); //get ip without proxy
-        echo $oldIp;
-        echo "#";
-        $newIp = $this->GetIp($randomProxy); //get ip with proxy
-        echo $newIp;
-        */
-
-        curl_setopt($curl, CURLOPT_URL, $url);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
-
-        curl_setopt($curl, CURLOPT_HEADER, 1);
-
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array(
-                'Content-Type: application/json',
-                'Content-Length: ' . strlen($data)
-            )
-        );
-        
-        curl_setopt($curl, CURLOPT_PROXY, $randomProxy);
-
-        // Set a custom user agent string
-        $userAgent = 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/94.0.4606.61 Safari/537.36';
-        curl_setopt($curl, CURLOPT_USERAGENT, $userAgent);
-        //curl_setopt($ch, CURLOPT_PROXYUSERPWD, "$proxyUser:$proxyPass");
-
-        // Execute cURL session and get the response
-        $result = curl_exec($curl);
-
-        // Check for cURL errors
-        if(curl_errno($curl)) {
-            echo 'Curl error: ' . curl_error($curl);
-        }
-        
-        // Close cURL session
-        curl_close($curl);
-        
-        // Output the response
-        echo $result;
-
-        return $result;
     }
 }

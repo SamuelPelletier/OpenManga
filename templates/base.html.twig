@@ -61,6 +61,7 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                 >
                                 <button type="submit" class="btn btn-default search-button">GO !</button>
                             </div>
+                            <!--
                             <div class="switch-div">
                                 <label class="Switch o-pen">
                                     <input type="checkbox" name="sort" class="switch-input a-neonToggle" id="toggle"
@@ -70,10 +71,19 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                     </span>
                                 </label>
                             </div>
+                            -->
                         </form>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         {% block header_navigation_links %}
+                            <li>
+                                <a href="{{ app.request.server.get('SHOP_LINK') }}"
+                                   rel="nofollow" target="_blank">
+                                    <i class="fas fa-fire" aria-hidden="true" {% if app.session.get('sort') %}style="background-color:grey"{% endif %}></i> {{ 'search.sort'|trans }}
+                                </a>
+                            </li>
+
+                            <!--
                             <li>
                                 <a href="{{ app.request.server.get('SHOP_LINK') }}"
                                    rel="nofollow" target="_blank">
@@ -86,6 +96,7 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                     <i class="fas fa-mobile-alt" aria-hidden="true"></i> App
                                 </a>
                             </li>
+                            -->
                             <li>
                                 <a class="tags {% if app.request.uri == url('tags') %}active{% endif %}"
                                    href="{{ url('tags') }}">
