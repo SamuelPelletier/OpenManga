@@ -87,7 +87,7 @@ class MainController extends AbstractController
         // On initialise un tableau pour lister les URLs
         $urls = [];
 
-        $c = $request->get('c');
+        $c = $request->get('c', 1);
         $c--;
         if ($c == 0) {
 // On ajoute les URLs "statiques"
