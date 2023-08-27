@@ -173,7 +173,7 @@
             </trans-unit>
             <trans-unit id="meta.description.manga">
                 <source>meta.description.manga</source>
-                <target>Читать и скачивать </target>
+                <target>Читать и скачивать : </target>
             </trans-unit>
             <trans-unit id="meta.description.with">
                 <source>meta.description.with</source>
