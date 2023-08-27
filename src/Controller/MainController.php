@@ -59,6 +59,24 @@ class MainController extends AbstractController
     }
 
     /**
+     * @Route("/sitemap-index.xml", name="sitemap-index", defaults={"_format"="xml"})
+     */
+    public function sitemapIndex(Request $request, MangaRepository $mangaRepository)
+    {
+        $urls = array();
+        for ($i = 1; $i <= ceil($mangaRepository->findOneBy([], ['id' => 'desc'])->getId() / 20000); $i++) {
+            $urls[] = $this->generateUrl('sitemap') . '?c=' . $i;
+        }
+
+        $response = new Response(
+            $this->renderView('sitemap_index.html.twig', ['urls' => $urls]),
+            200
+        );
+        $response->headers->set('Content-Type', 'text/xml');
+        return $response;
+    }
+
+    /**
      * @Route("/sitemap.xml", name="sitemap", defaults={"_format"="xml"})
      */
     public function sitemap(Request $request, MangaRepository $mangaRepository)
@@ -69,34 +87,30 @@ class MainController extends AbstractController
         // On initialise un tableau pour lister les URLs
         $urls = [];
 
+        $c = $request->get('c');
+        $c--;
+        if ($c == 0) {
 // On ajoute les URLs "statiques"
-        $urls[] = ['loc' => $this->generateUrl('index'), 'changefreq' => 'always'];
-        $urls[] = ['loc' => $this->generateUrl('app_register'), 'changefreq' => 'yearly'];
-        $urls[] = ['loc' => $this->generateUrl('app_login'), 'changefreq' => 'yearly'];
-        $urls[] = ['loc' => $this->generateUrl('about'), 'changefreq' => 'yearly'];
-        $urls[] = ['loc' => $this->generateUrl('tags'), 'changefreq' => 'yearly'];
+            $urls[] = ['loc' => $this->generateUrl('index'), 'changefreq' => 'always'];
+            $urls[] = ['loc' => $this->generateUrl('app_register'), 'changefreq' => 'yearly'];
+            $urls[] = ['loc' => $this->generateUrl('app_login'), 'changefreq' => 'yearly'];
+            $urls[] = ['loc' => $this->generateUrl('about'), 'changefreq' => 'yearly'];
+            $urls[] = ['loc' => $this->generateUrl('tags'), 'changefreq' => 'yearly'];
+        }
 
 // On ajoute les URLs dynamiques des articles dans le tableau
-        foreach ($mangaRepository->findAll() as $manga) {
-            $images = array();
-            if (is_dir('media/' . $manga->getId() . '/')) {
-                $finder = new Finder();
-                $finder->files()->in('media/' . $manga->getId() . '/');
-                foreach ($finder as $file) {
-                    // dumps the relative path to the file
-                    array_push($images, $file->getRelativePathname());
-                }
-            }
-            sort($images);
-
+        $mangas = $mangaRepository->createQueryBuilder('m')
+            ->where('m.id >= ' . $c * 20000)
+            ->andWhere('m.id < ' . ($c * 20000) + 20000)
+            ->getQuery()->getResult();
+        foreach ($mangas as $manga) {
             $urls[] = [
                 'loc' => $this->generateUrl('manga', [
                     'id' => $manga->getId()
                 ]),
                 'id' => $manga->getId(),
                 'lastmod' => $manga->getPublishedAt()->format('Y-m-d'),
-                'changefreq' => 'yearly',
-                'images' => $images
+                'changefreq' => 'yearly'
             ];
 
         }
@@ -109,4 +123,5 @@ class MainController extends AbstractController
         $response->headers->set('Content-Type', 'text/xml');
         return $response;
     }
+
 }
