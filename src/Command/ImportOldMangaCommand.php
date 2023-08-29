@@ -57,7 +57,13 @@ class ImportOldMangaCommand extends Command
         // Create a cache adapter
         $cache = new FilesystemAdapter();
 
-        $this->PopulateProxyList();
+        //$this->PopulateProxyList();
+
+        $cacheItem = $this->cache->getItem('proxy_list');
+
+        // Clear the cache item named 'proxy_list'
+        $this->cache->deleteItem('proxy_list');
+
 
         //Get the list of links to scrap
         $cacheItem = $this->cache->getItem('link_list');
@@ -89,7 +95,7 @@ class ImportOldMangaCommand extends Command
             //END DEBUG
             $io->success($links[$i - 1], ' has been downloaded');
             echo("waiting to avoid too much web request");
-            sleep(15);
+            sleep(4.20);
         }
         
         return Command::SUCCESS;
@@ -155,6 +161,8 @@ class ImportOldMangaCommand extends Command
         
         // Execute cURL
         $result = curl_exec($curl);
+        //DEBUG
+        //echo $result;
 
         // Check for cURL errors
         if(curl_errno($curl)) {
@@ -182,7 +190,8 @@ class ImportOldMangaCommand extends Command
                 $proxy = $ip . ':' . $ports[$index];
                 $proxies[] = $proxy;
             }
-        
+            $proxies = [];
+            
             // $proxies array now contains IP:port combinations
             print_r($proxies);
             return $proxies;
@@ -212,7 +221,27 @@ class ImportOldMangaCommand extends Command
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_SSL_VERIFYHOST, 0);
         //DEBUG
-        curl_setopt($curl, CURLOPT_VERBOSE, true);
+        //curl_setopt($curl, CURLOPT_VERBOSE, true);
+        //no capcha immitation 
+        /*
+        curl_setopt($curl, CURLOPT_REFERER, $url);
+        $headers = [
+            'User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3',
+            'Referer: '.$url,
+            'Accept-Language: en-US,en;q=0.9',
+            // Add more headers as needed
+        ];
+        
+        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+        $cookiesArray = [
+            '__stripe_sid' => 'af040cbb-a831-43eb-8c64-a57fe45467b63b88b1',
+            '__stripe_mid' => '3d787fc7-bbd6-49da-a683-81360e8c456867d8ee'
+        ];
+        
+        $cookiesString = http_build_query($cookiesArray, '', '; ');
+        curl_setopt($curl, CURLOPT_COOKIE, $cookiesString);
+        */
+
 
         // Fetch the proxy list from cache if available, or create a new one
         $cacheItem = $this->cache->getItem('proxy_list');
