@@ -19,3 +19,13 @@
 .tag-list span {
     padding-bottom: 10px;
 }
+
+a.label:hover, a.label:focus {
+    color: #fff !important;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.label-default[href]:hover, .label-default[href]:focus {
+    background-color: #ff5c8a;
+}
