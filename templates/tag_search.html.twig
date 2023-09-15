@@ -1,0 +1,49 @@
+{% block main %}
+
+<link rel="stylesheet" href="{{ asset('build/css/tag-search.css') }}">
+<script src="{{ asset('build/js/tag-search.js') }}"></script>
+
+<div class="search-recommendation">
+    <div class="GlobalSearch-TrendingTags">
+    <h4>{{ 'tag.popular_title'|trans }}</h4>
+
+        <div class="search-recommendation-tag">
+            <a href="#" totalx="158" draggable="false">
+                <span class="tag-rounded" totalx="158">big breasts</span>
+            </a>
+            <a href="#" totalx="158" draggable="false">
+                <span class="tag-rounded" totalx="158">defloration</span>
+            </a>
+            <a href="#" totalx="158" draggable="false">
+                <span class="tag-rounded" totalx="158">nakadashi</span>
+            </a>
+            <a href="#" totalx="158" draggable="false">
+                <span class="tag-rounded" totalx="158">schoolgirl</span>
+            </a>
+            <a href="#" totalx="158" draggable="false">
+                <span class="tag-rounded" totalx="158">uniform</span>
+            </a>
+            <a href="#" totalx="158" draggable="false">
+                <span class="tag-rounded" totalx="158">orgy</span>
+            </a>
+
+            <!--
+            {# 
+            {% for tagDTO in tagsDTOsort|slice(0,7) %}
+                <span class="label-container">
+                    <a href="{{ url('search', {'q': tagDTO.tag.name == app.request.query.get('tag') ? null : tagDTO.tag.name, 's':true}) }}"
+                    class="label label-{{ tagDTO.tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
+                    >{{ tagDTO.tag.name }}
+                        <i class="">{{ tagDTO.countUse }}</i>
+                    </a>
+                </span>
+            {% endfor %}
+            #}
+            -->
+        </div>
+<!--
+    <div class="GlobalSearch-RowItem GlobalSearch-RowItem_isTags">
+        <p class="GlobalSearch-ResultsState">no results for tags</p>
+    </div>-->
+</div>
+{% endblock %}

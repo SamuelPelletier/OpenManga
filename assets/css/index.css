@@ -71,9 +71,9 @@ article {
 article a {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     
-    -webkit-transition: all 100ms ease;
-	-moz-transition: all 100ms ease;
-	transition: all 100ms ease;
+    -webkit-transition: all .25s cubic-bezier(.4,0,.2,1) 0ms;
+	-moz-transition: all .25s cubic-bezier(.4,0,.2,1) 0ms;
+	transition: all .25s cubic-bezier(.4,0,.2,1) 0ms;
 }
 
 article h2 {
@@ -82,7 +82,7 @@ article h2 {
 
 article:hover h2 {
   transform: translateX(-100%); /* Fait défiler le titre vers le haut */
-  transition: transform 0.3s ease; /* Ajoute une transition fluide */
+  transition: transform .25s cubic-bezier(.4,0,.2,1) 0ms; /* Ajoute une transition fluide */
 }
 
 
@@ -124,6 +124,59 @@ h1, h2, h3, h4, p, a {
     background-color: #2b2b2b;
     border-radius: 10px;
 }
+
+article a:hover .thumbnail-tag{
+    opacity: 1; /* Make it fully visible when hovering */
+    visibility: visible; /* Make it visible */
+}
+
+.thumbnail-tag a {
+    display: contents;
+    background-color: transparent;
+}
+
+.thumbnail-tag {
+    opacity: 0; /* Initially, make it invisible */
+    visibility: hidden; /* Initially, hide it */
+    transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    height: 0px;
+    position: absolute;
+    bottom: 150px;
+    z-index: 1;
+
+    -webkit-user-select: none !important;
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;
+    -o-user-select: none !important;
+    user-select: none !important;
+    margin-right: 3px;
+    font-size: 15px;
+    text-decoration: none;
+}
+.thumbnail-tag .tag-rounded {
+    -webkit-user-select: none !important;
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;
+    -o-user-select: none !important;
+    user-select: none !important;
+    border: 1px solid #81758b;
+    background-color: #ff306aa6;
+    border-radius: 25px;
+    padding: 3px 12px;
+    font-size: 12px;
+    color: #d9d9d9;
+    transition: all 300ms ease-in-out;
+}
+
+.thumbnail-tag span {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+
+
 
 .img-thumbnail {
     background-color: transparent;
@@ -262,7 +315,7 @@ h1, h2, h3, h4, p, a {
     transition: all .5s;
     -webkit-appearance: textfield;
     -webkit-box-sizing: content-box;
-    z-index: 2;
+    z-index: 7;
 }
 
 #search_field::-webkit-search-decoration,
@@ -288,7 +341,7 @@ h1, h2, h3, h4, p, a {
 
 .search-button {
     box-shadow: rgba(0, 0, 0, 0.2) 0px 3px 1px -2px, rgba(0, 0, 0, 0.14) 0px 2px 2px 0px, rgba(0, 0, 0, 0.12) 0px 1px 5px 0px;
-    background-image: linear-gradient(#ff0068,#c10082);
+    background-image: linear-gradient(#ff5c8a,#ff0068);
 
     padding: 10px 20px;
     -moz-border-radius: 0 10px 10px 0;
@@ -299,7 +352,7 @@ h1, h2, h3, h4, p, a {
     font-weight: bold;
     left: -24px;
     position: relative;
-    z-index: 1;
+    z-index: 6;
     width: 100px;
 }
 
@@ -485,23 +538,28 @@ h1, h2, h3, h4, p, a {
     color: #ff306a;
 }
 
-.label-default {
-    margin: 0px 2px;
-    background-color: #ff306a;
+.label {
+    background-color: transparent;
+    border-color: #ff306a;
+    text-decoration-color: initial;
+    text-shadow: rgb(0, 0, 0) 1px 0px 5px;
 }
 
-.label-default[href]:hover {
-    background-color: #f17384;
-    color: white !important;
-}
-
-.counter {
-    font-style: normal;
-    font-variant: oldstyle-nums;
-    background-color: white;
-    left: -7px;
-    position: relative;
-    color: black;
+.label {
+    background-color: #ff0068;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block;
+    font-family: Poppins,sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    height: 35px;
+    line-height: 35px;
+    margin: 0;
+    padding: 0 12px;
+    text-decoration: none;
+    text-shadow: #000 1px 0 5px;
+    transition: background-color .25s cubic-bezier(.4,0,.2,1) 0ms,box-shadow .25s cubic-bezier(.4,0,.2,1) 0ms,border-color .25s cubic-bezier(.4,0,.2,1) 0ms,color .25s cubic-bezier(.4,0,.2,1) 0ms;
 }
 
 .label-container {

@@ -6,27 +6,20 @@
 {% endblock %}
 
 {% block main %}
-    <h3>{{ 'tag.popular_title'|trans }}</h3>
     <div class="row">
-        <ul class="tag-popular">
-            {% for tagDTO in tagsDTOsort|slice(0,9) %}
-                {% if loop.index in [1,4,7] %}
-                    <div class="col-md-4">
-                {% endif %}
-                <div class="row">
-                    <span class="label-container">
-                        <a href="{{ url('search', {'q': tagDTO.tag.name == app.request.query.get('tag') ? null : tagDTO.tag.name, 's':true}) }}"
-                           class="label label-{{ tagDTO.tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
-                        >{{ tagDTO.tag.name }}
-                        </a>
-                        <i class="counter label">{{ tagDTO.countUse }}</i>
-                    </span>
-                </div>
-                {% if loop.index in [3,6,9] %}
-                    </div>
-                {% endif %}
+
+        <h3>{{ 'tag.popular_title'|trans }}</h3>
+        <div class="tags">
+            {% for tagDTO in tagsDTOsort|slice(0,19) %}
+                <span class="label-container">
+                    <a href="{{ url('search', {'q': tagDTO.tag.name == app.request.query.get('tag') ? null : tagDTO.tag.name, 's':true}) }}"
+                    class="label label-{{ tagDTO.tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
+                    >{{ tagDTO.tag.name }}
+                        <i class="">{{ tagDTO.countUse }}</i>
+                    </a>
+                </span>
             {% endfor %}
-        </ul>
+        </div>
     </div>
     <hr>
     <h3>{{ 'tag.all_title'|trans }}</h3>
@@ -43,10 +36,10 @@
             {% for tagDTO in tagsDTO %}
                 <span class="label-container">
                     <a href="{{ url('search', {'q': tagDTO.tag.name == app.request.query.get('tag') ? null : tagDTO.tag.name, 's':true}) }}"
-                       class="label label-{{ tagDTO.tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
+                    class="label label-{{ tagDTO.tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
                     >{{ tagDTO.tag.name }}
+                        <i>{{ tagDTO.countUse }}</i>
                     </a>
-                    <i class="counter label">{{ tagDTO.countUse }}</i>
                 </span>
             {% endfor %}
         </ul>

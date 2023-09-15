@@ -74,7 +74,7 @@
 
             <trans-unit id="tag.popular_title">
                 <source>tag.popular_title</source>
-                <target>가장 인기있는 태그</target>
+                <target>🔥️ 가장 인기있는 태그</target>
             </trans-unit>
             <trans-unit id="tag.all_title">
                 <source>tag.all_title</source>
