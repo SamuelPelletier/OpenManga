@@ -30,12 +30,48 @@ a:hover, a:focus, a:active {
     padding-left: 8px;
     padding-right: 8px;
     z-index: 2;
+    overflow: hidden;
+}
+
+.navbar-nav > li:hover:nth-child(1)::before {
+    
+    background-image: url(http://127.0.0.1:8000/media/1/thumb.webp);
+}
+.navbar-nav > li:hover:nth-child(2)::before {
+    background-image: url(http://127.0.0.1:8000/media/2/thumb.webp);
+}
+.navbar-nav > li:hover:nth-child(3)::before {
+    background-image: url(http://127.0.0.1:8000/media/3/thumb.webp);
+}
+.navbar-nav > li:hover::before {
+    opacity: 1;
+    
+   
+}
+
+
+.navbar-nav > li::before {
+    opacity: 0;
+    content: ""; /* Create a pseudo-element to contain the background image */
+    background-size: cover; /* Adjust this as needed */
+    background-position: center; /* Adjust this as needed */
+    transform: skew(45deg); /* Apply the opposite skew transformation */
+    position: absolute;
+    top: 0;
+    left: -37px;
+    width: 180%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1; /* Place the pseudo-element behind the content */
+
+    -webkit-transition: all .25s cubic-bezier(.4,0,.2,1) 0ms;
+	-moz-transition: all .25s cubic-bezier(.4,0,.2,1) 0ms;
+	transition: all .25s cubic-bezier(.4,0,.2,1) 0ms;
 }
 
 .navbar-nav li a {
     transform: SkewX(45deg);
 }
-
 
 .navbar-nav .dropdown {
 transform: skewX(0deg);
@@ -158,6 +194,11 @@ article:hover .img-name {
 	-moz-transition: all .4s cubic-bezier(.4,0,.2,1) 0ms;
 	transition: all .4s cubic-bezier(.4,0,.2,1) 0ms;
 
+
+    top: 78px;
+    padding: 127px 21px 7px 0px;
+    overflow: hidden;
+
     opacity: 0; /* Initially, make it invisible */
     visibility: hidden; /* Initially, hide it */
     display: block;
@@ -165,7 +206,6 @@ article:hover .img-name {
     bottom: 150px;
     height: 212px;
     width: auto;
-    padding: 30px 5px;
     z-index: 1;
 
     -webkit-user-select: none !important;

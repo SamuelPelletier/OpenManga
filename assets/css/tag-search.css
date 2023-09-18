@@ -6,18 +6,17 @@
 .search-recommendation {
   border-radius: 10px;
   grid-template-columns: 1fr 1fr;
-  padding: 50px 0 0;
+  padding: 40px 10px 0;
   position: absolute;
-  top: 14px;
+  top: 9px;
+  border-top-left-radius: 25px;
   width: 100%;
+  border-top-right-radius: 25px;
   z-index: 5;
   display: none;
   background-color: #191820;
-  width: 300px;
-
+  width: 295px;
 }
-
-/* copy of tags css to allow future modifications*/
 
 .search-recommendation-tag {
   opacity: 0;
