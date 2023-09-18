@@ -1,6 +1,16 @@
 <div class='manga-container'>
     {% for manga in mangas %}
         <article class="manga col-sm-3">
+            <div class="thumbnail-tag">
+                {% if not manga.tags.empty %}
+                    {% for tag in manga.tags|slice(0,5) %}
+                        <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name, 's':true}) }}"
+                        totalx="158" draggable="false">
+                            <span class="tag-rounded" totalx="158">{{ tag.name }}</span>
+                        </a>
+                    {% endfor %}
+                {% endif %}
+            </div>
             <a href="{{ url('manga', {id: manga.id}) }}">
                 <p class="manga-count-pages">
                     {% for language in manga.languages %}
@@ -10,16 +20,6 @@
                     {% endfor %}
                     {{ manga.countPages }} <i class="fa-regular fa-images"></i>
                 </p>
-                <div class="thumbnail-tag">
-                    {% if not manga.tags.empty %}
-                        {% for tag in manga.tags|slice(0,5) %}
-                            <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name, 's':true}) }}"
-                            totalx="158" draggable="false">
-                                <span class="tag-rounded" totalx="158">{{ tag.name }}</span>
-                            </a>
-                        {% endfor %}
-                    {% endif %}
-                </div>
                 <div class="image-container">
                     <img alt="{{ manga.title |raw }}" title="{{ manga.title |raw }}" class='img-thumbnail'
                         src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/thumb.webp' ) }}'>
