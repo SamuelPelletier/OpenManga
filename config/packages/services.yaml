@@ -1,0 +1,5 @@
+parameters:
+    proxy_list: [] # Replace with your actual proxy list
+
+services:
+    # Define your services here if needed
