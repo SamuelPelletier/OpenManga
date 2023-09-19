@@ -15,7 +15,7 @@
                     <a href="{{ url('search', {'q': tagDTO.tag.name == app.request.query.get('tag') ? null : tagDTO.tag.name, 's':true}) }}"
                     class="label label-{{ tagDTO.tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
                     >{{ tagDTO.tag.name }}
-                        <i class="">{{ tagDTO.countUse }}</i>
+                        <i class="counter label">{{ tagDTO.countUse }}</i>
                     </a>
                 </span>
             {% endfor %}
