@@ -1,6 +1,6 @@
 <div class='manga-container'>
     {% for manga in mangas %}
-        <article class="manga col-sm-3" itemtype="https://schema.org/Book">
+        <article class="manga col-sm-3" itemscope itemtype="https://schema.org/Book">
             <p class="manga-count-pages" itemprop="numberOfPages">{{ manga.countPages }}</p>
             <a itemprop="url" href="{{ url('manga', {id: manga.id}) }}">
                 <img alt="{{ manga.title |raw }}" title="{{ manga.title |raw }}" class='img-thumbnail'
