@@ -151,7 +151,7 @@
                     "author": "{{ manga.authors|join(',') }}",
                     "bookFormat": "http://schema.org/EBook",
                     "datePublished": "{{ manga.publishedAt|format_datetime('long', 'none', 'UTC') }}",
-                    "image": "{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/thumb.webp' ) }}",
+                    "thumbnail": "{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/thumb.webp' ) }}",
                     "inLanguage": "{{ manga.languages|join(',') }}",
                     "name": "{{ manga.title }}",
                     "numberOfPages": "{{ manga.countPages }}",
@@ -163,6 +163,7 @@
                     }
                 }
             }
+
 
 
         </script>
