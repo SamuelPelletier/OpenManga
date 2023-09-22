@@ -104,18 +104,15 @@ article {
 article a {
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     
-    -webkit-transition: all .25s cubic-bezier(.4,0,.2,1) 0ms;
-	-moz-transition: all .25s cubic-bezier(.4,0,.2,1) 0ms;
-	transition: all .25s cubic-bezier(.4,0,.2,1) 0ms;
+    -webkit-transition: all .15 cubic-bezier(.4,0,.2,1) 0ms;
+	-moz-transition: all .1s cubic-bezier(.4,0,.2,1) 0ms;
+	transition: all .1s cubic-bezier(.4,0,.2,1) 0ms;
 }
 
 article h2 {
     font-size: 20px;
 }
 
-article:hover h2 {
-  transition: transform .25s cubic-bezier(.4,0,.2,1) 0ms; /* Ajoute une transition fluide */
-}
 
 
 article:hover a{
