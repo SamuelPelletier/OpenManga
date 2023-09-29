@@ -28,6 +28,11 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\HttpKernel\KernelInterface;
+use App\Message\ImageTranslation;
+use Symfony\Component\Messenger\MessageBusInterface;
+use Symfony\Component\Messenger\Stamp\HandledStamp;
+
 
 /**
  * Controller used to manage blog contents in the public part of the site.
@@ -102,6 +107,23 @@ class MangaController extends BaseController
             $entityManager->flush();
         }
 
+        $translationFilePath = 'media/' . $manga->getId() . '/translated/translations.json';
+        
+        // Initialize translations as an empty array
+        $translations = [];
+        // Check if the JSON file exists
+        if (file_exists($translationFilePath)) {
+            // Retrieve JSON translation data if the file exists
+            $translationData = file_get_contents($translationFilePath);
+            $translations = json_decode($translationData, true);
+            /*
+            if (json_last_error() !== JSON_ERROR_NONE) {
+                $translations = ['translation json error'];
+            }
+            */
+            $translations = is_array($translations) ? $translations : array();
+        }
+
         // User is logged in
         if ($this->isGranted('ROLE_USER')) {
             $user->addLastMangasRead($manga);
@@ -119,7 +141,8 @@ class MangaController extends BaseController
                 'manga' => $manga,
                 'images' => $images,
                 'mangaRepository' => $mangaRepository,
-                'mangas_recommended' => $mangasRecommended
+                'mangas_recommended' => $mangasRecommended,
+                'translations' => $translations,
             ]);
     }
 
@@ -199,6 +222,56 @@ class MangaController extends BaseController
             throw $this->createNotFoundException('Sorry this file doesn\'t exist');
         }
 
+    }
+
+    /**
+     * @Route("/translate/{id}", methods={"GET"}, name="translate")
+     */
+    public function mangaTranslate(
+        Manga $manga,
+        MessageBusInterface $bus,
+        EntityManagerInterface $entityManager,
+        Request $request,
+        KernelInterface $kernel
+    ): Response
+    {
+        // Get the root directory of your Symfony application
+        $rootDir = $kernel->getProjectDir();
+
+        // Construct the full input folder path
+        $inputFolderPath = $rootDir . '/public/media/' . $manga->getId() . '/';
+
+        // Get the values for the input and output languages and other optional 
+        $inputLanguage = $request->query->get('inputLanguage', 'jpn_vert');
+        $outputLanguage = $request->query->get('outputLanguage', 'fr');
+        $inputFolderPath = $request->query->get('inputFolderPath', $rootDir.'/public/media/' . $manga->getId() . '/');
+        $outputFolderPath = $request->query->get('outputFolderPath', $rootDir.'/public/media/' . $manga->getId() .'/'. 'translated/');
+        $transparency = $request->query->get('transparency', 200);
+        
+        $envelope = $bus->dispatch(new ImageTranslation( $inputLanguage, $outputLanguage, $inputFolderPath, $outputFolderPath, $transparency));
+
+        // Iterate through the images in the input folder
+        /*
+        $files = scandir($inputFolderPath);
+        foreach ($files as $file) {
+            if ($file !== '.' && $file !== '..') {
+                // Construct the full input file path for each image
+                $inputFilePath = $inputFolderPath . $file;
+
+                // Dispatch the translation job for the current image
+                $envelope = $bus->dispatch(new ImageTranslation( $inputLanguage, $outputLanguage, $inputFilePath, $outputFolderPath, $transparency));
+            }
+        }
+        */
+        // get the value that was returned by the last message handler
+        //$handledStamp = $envelope->last(HandledStamp::class);
+        //$result = $handledStamp->getResult();
+        
+        // or get info about all of handlers
+        //$handledStamps = $envelope->all(HandledStamp::class);
+
+        // Translation is complete, return a response indicating completion
+        return new Response(var_dump($envelope));
     }
 
     /**

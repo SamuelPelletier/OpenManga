@@ -1,0 +1,9 @@
+# config/packages/messenger.yaml
+framework:
+    messenger:
+        transports:
+            async: "%env(MESSENGER_TRANSPORT_DSN)%"
+
+        routing:
+            # async is whatever name you gave your transport above
+            'App\Message\ImageTranslation': async

@@ -421,7 +421,7 @@ article:hover .img-name {
 }
 
 .pagination > .active > a, .pagination > li > a:hover {
-    background-color: #fd0056 !important;
+    background-color: #ff5c8a !important;
     color: white !important;
 }
 
@@ -642,7 +642,7 @@ a.label:hover, a.label:focus {
     white-space: nowrap;
     
     background-color: #ff0068;
-    border-radius: 40px;
+    /*border-radius: 40px;*/
     cursor: pointer;
     display: inline-block;
     font-family: Poppins,sans-serif;

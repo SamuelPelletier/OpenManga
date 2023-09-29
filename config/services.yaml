@@ -23,6 +23,10 @@ services:
       - '../src/Kernel.php'
       - '../src/Tests/'
 
+  # Image translation service
+  App\MessageHandler\ImageTranslationHandler:
+    tags: [messenger.message_handler]
+
 when@test:
   services:
     test.user_password_hasher:

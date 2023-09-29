@@ -634,6 +634,21 @@ li:last-child .page {
     }
 }
 
+.translation-overlay {
+    position: absolute;
+    top: 20px; /* Adjust the top position as needed */
+    left: 20px; /* Adjust the left position as needed */
+    padding: 15px; /* Adjust the padding as needed */
+    border-radius: 10px;
+}
+
+
+.translation-overlay p{
+    font-size: 8px !important; /* Adjust the font size as needed */
+    color: rgb(0, 0, 0); /* Adjust the text color as needed */
+    background-color: rgba(255, 255, 255, 0.8); /* Adjust the background color and opacity as needed */
+}
+
 
 #recommended {
     margin: 75px 0;
