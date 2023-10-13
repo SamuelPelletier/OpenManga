@@ -9,7 +9,7 @@
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
 }
 
-.img-view:hover {
+article:hover .img-view {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
     -webkit-transform:scale(1.03);
     -moz-transform:scale(1.03);
@@ -561,10 +561,6 @@ li:last-child .page {
     top: 1.5px;
 }
 
-.lg-sub-html {
-    display: none;
-}
-
 .lg-item {
     height: 94% !important;
     top: 3%;
@@ -616,7 +612,6 @@ li:last-child .page {
 
 }
 
-
 .animate-loader path {
     animation: dash 0.75s linear both;
     animation-delay: 0.5s;
@@ -634,22 +629,6 @@ li:last-child .page {
     }
 }
 
-.translation-overlay {
-    position: absolute;
-    top: 20px; /* Adjust the top position as needed */
-    left: 20px; /* Adjust the left position as needed */
-    padding: 15px; /* Adjust the padding as needed */
-    border-radius: 10px;
-}
-
-
-.translation-overlay p{
-    font-size: 8px !important; /* Adjust the font size as needed */
-    color: rgb(0, 0, 0); /* Adjust the text color as needed */
-    background-color: rgba(255, 255, 255, 0.8); /* Adjust the background color and opacity as needed */
-}
-
-
 #recommended {
     margin: 75px 0;
 }
@@ -657,4 +636,221 @@ li:last-child .page {
 .manga-recommended-container {
     display: flex;
     flex-wrap: wrap;
+}
+
+.lg-next,
+.lg-prev {
+  font-size: 80px;
+}
+
+.lightGallery-captions h4 {
+transform: translate3d(60px, 0, 0px);
+}
+.lightGallery-captions p {
+transform: translate3d(-60px, 0, 0px);
+}
+.lightGallery-captions h4,
+.lightGallery-captions p {
+opacity: 0;
+}
+
+.lg-current .lightGallery-captions h4,
+.lg-current .lightGallery-captions p {
+transform: translate3d(0, 0, 0px);
+}
+.lg-current .lightGallery-captions h4,
+.lg-current .lightGallery-captions p {
+opacity: 1;
+}
+
+.lg-slide-progress .lightGallery-captions h4 {
+transform: translate3d(-60px, 0, 0px);
+}
+.lg-slide-progress .lightGallery-captions p {
+transform: translate3d(60px, 0, 0px);
+}
+.lg-slide-progress .lightGallery-captions h4,
+.lg-slide-progress .lightGallery-captions p {
+opacity: 0;
+}
+
+.lightGallery-captions h4,
+.lightGallery-captions p {
+transition: transform 0.4s ease-in-out, opacity 0.4s ease-in;
+}
+
+.lg-current .lightGallery-captions h4,
+.lg-current .lightGallery-captions p {
+transition-delay: 500ms;
+}
+.lg-current.lg-slide-progress .lightGallery-captions h4,
+.lg-current.lg-slide-progress .lightGallery-captions p {
+transition-delay: 0ms;
+}
+
+/** Below CSS is completely optional **/
+.gallery-item {
+width: 200px;
+padding: 5px;
+}
+/* Your existing CSS classes and styles */
+.manga-description {
+    display: none;
+    transition: opacity 0.3s ease; /* Add a smooth transition for opacity */
+}
+
+/* Add styles for the toggle button icon */
+#description-toggle::after {
+    content: "\25BC"; /* Unicode character for down arrow */
+}
+
+#description-toggle.active::after {
+    content: "\25B2"; /* Unicode character for up arrow */
+}
+
+#description-toggle {
+    width: 100%;
+    text-align: center;
+    background: #2b2b2b;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    padding: 2px;
+    cursor: pointer;
+    outline: none;
+}
+  
+#description-toggle {
+    margin-bottom: 10px;
+}
+/*
+.lg-sub-html .caption-fullscreen-style {
+    display: inline-block;
+    width: auto;
+    height: auto;
+    top: -100%;
+    position: absolute;
+}
+*/
+
+
+
+.translation-overlay {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    opacity: 1;
+    -webkit-transition: all .3s, -webkit-transform .3s .1s;
+    transition: all .3s, -webkit-transform .3s .1s;
+    transition: all .3s, transform .3s .1s;
+    transition: all .3s, transform .3s .1s, -webkit-transform .3s .1s;
+}
+/*
+
+.translation-overlay p{    
+    position: absolute;
+    white-space: normal;
+    border-radius: 10px;
+    width: fit-content;
+    font-weight: bold;
+    padding: 3px 3px 3px 3px;
+    font-size: 8px !important;
+    color: rgb(0 0 0);
+    background-color: rgb(255 255 255 / 80%);
+}
+*/
+
+/*only applied for lightgallery*/
+.lg-sub-html .translation-overlay  {
+    position: absolute;
+    white-space: normal;
+    width: fit-content;
+    cursor: grab;
+
+}
+
+.lg-sub-html .translation-overlay p  {
+    font-weight: bold;
+    padding: 3px 3px 3px 3px;
+    border-radius: 5px;
+    color: #2b2b2bcc;
+    padding: 3px 3px;
+    background-color: #ecececdc;
+    font-family: "manga-font";
+
+}
+.lg-sub-html {
+
+    display: block;
+    width: auto;
+    height: auto;
+    top: 0;
+    position: absolute;
+
+    z-index: 1060;
+    max-width: 50%;
+    margin: 0 auto;
+    padding: 0px 121px 0px 120px;
+    max-height: 100%;
+}
+
+
+
+/* end lightgallery cap css */
+
+
+@font-face {
+    font-family: 'manga-font';
+    src: url('../fonts/manga-font.ttf');
+}
+
+.caption .translation-overlay {
+    box-sizing: content-box;
+    min-width: min-content;
+    transition: all 300ms ease-in-out;
+    transition: all 0.1s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: "manga-font";
+}
+
+
+.translation-overlay:hover{
+    z-index: 2000;
+}
+
+.translation-overlay p:hover{
+    -webkit-transform:scale(1.5);
+    -moz-transform:scale(1.5);
+    transform:scale(1.5);
+
+}
+.caption .translation-overlay p{
+    
+    border-radius: 5px;
+    font-weight: bold;
+    font-weight: bold;
+    
+    color: #2b2b2bcc;
+    padding: 3px 3px;
+    font-size: 35% !important;
+    background-color: #ecececdc;
+}
+
+.caption span {
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.caption {
+    display: block;
+    position: absolute;
+    top: 13px;
+    height: 95%;
+    width: 90%;
+    -webkit-transition: all .4s cubic-bezier(.4,0,.2,1) 0ms;
+    -moz-transition: all .4s cubic-bezier(.4,0,.2,1) 0ms;
+    transition: all .4s cubic-bezier(.4,0,.2,1) 0ms;
+}
+
+article:hover .translation-overlay {
+    opacity: 1;
 }

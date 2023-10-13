@@ -35,13 +35,13 @@ a:hover, a:focus, a:active {
 
 .navbar-nav > li:hover:nth-child(1)::before {
     
-    background-image: url(http://127.0.0.1:8000/media/1/thumb.webp);
+    background-image: url(http://127.0.0.1:8000/media/116/thumb.webp);
 }
 .navbar-nav > li:hover:nth-child(2)::before {
-    background-image: url(http://127.0.0.1:8000/media/2/thumb.webp);
+    background-image: url(http://127.0.0.1:8000/media/116/thumb.webp);
 }
 .navbar-nav > li:hover:nth-child(3)::before {
-    background-image: url(http://127.0.0.1:8000/media/3/thumb.webp);
+    background-image: url(http://127.0.0.1:8000/media/116/thumb.webp);
 }
 .navbar-nav > li:hover::before {
     opacity: 1;

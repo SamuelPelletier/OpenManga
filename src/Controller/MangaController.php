@@ -225,7 +225,7 @@ class MangaController extends BaseController
     }
 
     /**
-     * @Route("/translate/{id}", methods={"GET"}, name="translate")
+     * @Route("/translate/{id}", methods={"POST"}, name="translate")
      */
     public function mangaTranslate(
         Manga $manga,
@@ -241,6 +241,22 @@ class MangaController extends BaseController
         // Construct the full input folder path
         $inputFolderPath = $rootDir . '/public/media/' . $manga->getId() . '/';
 
+        /*
+        $languages = $manga->getLanguages();
+                
+        if (empty($languages)) {
+            $language = 'japanese';
+        } else {
+            $language = 'japanese';
+            // Loop through the languages and find the first one that is not 'translated'
+            foreach ($languages as $lang) {
+                if ($lang !== 'translated') {
+                    $language = $lang;
+                    break;
+                }
+            }
+        }*/
+        
         // Get the values for the input and output languages and other optional 
         $inputLanguage = $request->query->get('inputLanguage', 'jpn_vert');
         $outputLanguage = $request->query->get('outputLanguage', 'fr');
@@ -248,10 +264,10 @@ class MangaController extends BaseController
         $outputFolderPath = $request->query->get('outputFolderPath', $rootDir.'/public/media/' . $manga->getId() .'/'. 'translated/');
         $transparency = $request->query->get('transparency', 200);
         
-        $envelope = $bus->dispatch(new ImageTranslation( $inputLanguage, $outputLanguage, $inputFolderPath, $outputFolderPath, $transparency));
+        //$envelope = $bus->dispatch(new ImageTranslation( $inputLanguage, $outputLanguage, $inputFolderPath, $outputFolderPath, $transparency));
 
         // Iterate through the images in the input folder
-        /*
+        
         $files = scandir($inputFolderPath);
         foreach ($files as $file) {
             if ($file !== '.' && $file !== '..') {
@@ -262,7 +278,7 @@ class MangaController extends BaseController
                 $envelope = $bus->dispatch(new ImageTranslation( $inputLanguage, $outputLanguage, $inputFilePath, $outputFolderPath, $transparency));
             }
         }
-        */
+        
         // get the value that was returned by the last message handler
         //$handledStamp = $envelope->last(HandledStamp::class);
         //$result = $handledStamp->getResult();

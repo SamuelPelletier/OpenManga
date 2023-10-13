@@ -15,9 +15,80 @@ import lgFullscreen from 'lightgallery/plugins/fullscreen'
 import lgZoom from 'lightgallery/plugins/zoom'
 
 $(document).ready(function () {
+    
+    const descriptionToggle = document.getElementById('description-toggle');
+    const mangaDescription = document.getElementById('manga-description');
+
+    descriptionToggle.addEventListener('click', function () {
+        mangaDescription.classList.toggle('active');
+        
+        if (mangaDescription.classList.contains('active')) {
+            mangaDescription.style.display = 'block';
+        } else {
+            mangaDescription.style.display = 'none';
+        }
+    });
+
+    $("#translation-button").click(function() {
+    // Disable the button to prevent multiple clicks
+    $(this).prop("disabled", true);
+    event.preventDefault();
+
+        // Send the request to the queue
+        $.ajax({
+            url: this.getAttribute("href"),
+            
+            type: 'POST',
+            data: {
+            // TODO feed user local as requeste output language 
+            //{{app.request.locale}}
+            },
+            success: function(response) {
+                $("#translation-button").text("...");
+                $("#translation-button").prop("disabled", false);
+
+            },
+            error: function() {
+                $("#translation-button").text("error");
+                $("#translation-button").prop("disabled", false);
+
+            },
+            complete: function() {
+            // Re-enable the button when the request is complete (whether successful or not)
+            $("#translation-button").prop("disabled", false);
+            }
+        });
+    });
+
+
+    const showTraductionBtn = document.getElementById("show-traduction");
+    const traductionCaptions = document.querySelectorAll(".translation-overlay");
+    
+    // Function to toggle the visibility of the toggle divs
+    function toggleTranslation() {
+        traductionCaptions.forEach((div) => {
+            div.classList.toggle("hidden");
+        });
+    }
+
+    if (showTraductionBtn !== null) {
+        showTraductionBtn.addEventListener("click", toggleTranslation);
+    }
+
+    // Add a keydown event listener to the document
+    document.addEventListener("keydown", function (event) {
+        // Check if the pressed key is 'T' (you can choose a different key)
+        if (event.ctrlKey && event.key === " ") {
+
+            toggleTranslation();
+        }
+    });
+
     lightGallery(document.getElementById("lightgallery"),{
         plugins: [lgAutoplay,lgFullscreen,lgZoom],
         mode: 'lg-fade',
+        appendSubHtmlTo: ".lg-item",
+        subHtmlSelectorRelative: true,
         preload: 2,
         enableDrag: false,
         hideBarsDelay: 1000,

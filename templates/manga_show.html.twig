@@ -21,123 +21,128 @@
 
 {% block main %}
     <h1>{{ manga.title | raw }}</h1>
-    <p class="manga-metadata">
-    <span class="metadata"><i class="fa fa-calendar-alt"></i> {{ manga.publishedAt|format_datetime('long', 'none') }}</span>
-    </p>
-    {% if not manga.languages.empty %}
-        <p>
-            <a>{{ 'manga.language'|trans }} : </a>
-            {% for language in manga.languages %}
-                <span class="label-container">
-                    <a href="{{ url('search', {'q': language.name == app.request.query.get('language') ? null : language.name, 's':true}) }}"
-                    class="label label-{{ language.name == app.request.query.get('language') ? 'success' : 'default' }}"
-                    >
-                        <span class="fi fi-{{ language.code }}"></span>
-                        <i class="fa fa-language"></i> {{ language.name }}
-                        <i> {{ mangaRepository.countByLanguage(language) }}</i>
-
-                    </a>
-                </span>
-            {% endfor %}
+    <button id="description-toggle">Toggle Description</button>
+    <div id="manga-description" class="manga-description">
+        <p class="manga-metadata">
+        <span class="metadata"><i class="fa fa-calendar-alt"></i> {{ manga.publishedAt|format_datetime('long', 'none') }}</span>
         </p>
-    {% endif %}
-    {% if not manga.parodies.empty %}
-        <p>
-            <a>{{ 'manga.parody'|trans }} : </a>
-            {% for parody in manga.parodies %}
-                <span class="label-container">
-                    <a href="{{ url('search', {'q': parody.name == app.request.query.get('parody') ? null : parody.name, 's':true}) }}"
-                    class="label label-{{ parody.name == app.request.query.get('parody') ? 'success' : 'default' }}"
-                    >
-                        <i class="fa fa-folder"></i> {{ parody.name }}
-                    <i> {{ mangaRepository.countByParody(parody) }}</i>
-
-                    </a>
-                </span>
-            {% endfor %}
-        </p>
-    {% endif %}
-    
-    {% if not manga.authors.empty %}
-        <p>
-            <a>{{ 'manga.author'|trans }} : </a>
-            {% for author in manga.authors %}
-                <span class="label-container">
-                    <a href="{{ url('search', {'q': author.name == app.request.query.get('author') ? null : author.name, 's':true}) }}"
-                    class="label label-{{ author.name == app.request.query.get('author') ? 'success' : 'default' }}"
-                    >
-                        <i class="fa fa-user"></i> {{ author.name }}
-                    <i>{{ mangaRepository.countByAuthor(author) }}</i>
-                    </a>
-                </span>
-            {% endfor %}
-        </p>
-    {% endif %}
-    <p class="count-views">{{ 'manga.count_views'|trans }} : {{ manga.countViews }}<i class="fa fa-eye"></i></p>
-    {% if not manga.tags.empty %}
-        <p>
-            <a>{{ 'manga.tag'|trans }} : </a>
-            <div class="tags">
-            <center>
-                {% for tag in manga.tags %}
+        {% if not manga.languages.empty %}
+            <p>
+                <a>{{ 'manga.language'|trans }} : </a>
+                {% for language in manga.languages %}
                     <span class="label-container">
-                        <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name, 's':true}) }}" class="label label-default">
-                            {{ tag.name }}
-                            <i class="counter label ">{{ mangaRepository.countByTag(tag) }}</i>
+                        <a href="{{ url('search', {'q': language.name == app.request.query.get('language') ? null : language.name, 's':true}) }}"
+                        class="label label-{{ language.name == app.request.query.get('language') ? 'success' : 'default' }}"
+                        >
+                            <span class="fi fi-{{ language.code }}"></span>
+                            <i class="fa fa-language"></i> {{ language.name }}
+                            <i> {{ mangaRepository.countByLanguage(language) }}</i>
+
                         </a>
                     </span>
                 {% endfor %}
-            </div>
-            </center>
-        </p>
-    {% endif %}
-    <a class="btn-effect raise download" target="_blank" href="{{ url('download', {'id':manga.id}) }}"><i class="fa fa-download "></i>{{'manga.download'|trans }}</a>
-    
-    <a class="btn-effect raise download translationButton" href="{{ url('translate', {'id':manga.id}) }}"><i class="fa fa-download "></i>(beta) download auto translation</a>
-    {% if translations is not empty %}
+            </p>
+        {% endif %}
+        {% if not manga.parodies.empty %}
+            <p>
+                <a>{{ 'manga.parody'|trans }} : </a>
+                {% for parody in manga.parodies %}
+                    <span class="label-container">
+                        <a href="{{ url('search', {'q': parody.name == app.request.query.get('parody') ? null : parody.name, 's':true}) }}"
+                        class="label label-{{ parody.name == app.request.query.get('parody') ? 'success' : 'default' }}"
+                        >
+                            <i class="fa fa-folder"></i> {{ parody.name }}
+                        <i> {{ mangaRepository.countByParody(parody) }}</i>
 
-        <a class="btn-effect raise download translationButton">
-        <span class="fi fi-fr"></span>shw auto translation</a>
-    {% endif %}
+                        </a>
+                    </span>
+                {% endfor %}
+            </p>
+        {% endif %}
+        
+        {% if not manga.authors.empty %}
+            <p>
+                <a>{{ 'manga.author'|trans }} : </a>
+                {% for author in manga.authors %}
+                    <span class="label-container">
+                        <a href="{{ url('search', {'q': author.name == app.request.query.get('author') ? null : author.name, 's':true}) }}"
+                        class="label label-{{ author.name == app.request.query.get('author') ? 'success' : 'default' }}">
+                            <i class="fa fa-user"></i> {{ author.name }}
+                        <i>{{ mangaRepository.countByAuthor(author) }}</i>
+                        </a>
+                    </span>
+                {% endfor %}
+            </p>
+        {% endif %}
+        <p class="count-views">{{ 'manga.count_views'|trans }} : {{ manga.countViews }}<i class="fa fa-eye"></i></p>
+        {% if not manga.tags.empty %}
+            <p>
+                <a>{{ 'manga.tag'|trans }} : 
+                    <div class="tags">
+                        {% for tag in manga.tags %}
+                            <span class="label-container">
+                                <a href="" class="label label-default">
+                                    {{ tag.name }}
+                                    <i class="counter label ">{{ mangaRepository.countByTag(tag) }}</i>
+                                </a>
+                            </span>
+                        {% endfor %}
+                    </div>
+                </a>
+            </p>
+        {% endif %}
+    </div>
+    <center>
+        <a class="btn-effect raise download" target="_blank" href="{{ url('download', {'id':manga.id}) }}"><i class="fa fa-download "></i>{{'manga.download'|trans }}</a>
 
-    {% if app.user is not null %}
-        {% if manga in app.user.getFavoriteMangas %}
-            {% set buttonText = 'manga.remove_favorite'|trans %}
-            {% set url = url('remove_favorite',{"id":manga.id}) %}
-        {% else %}
-            {% set buttonText = 'manga.add_favorite'|trans %}
-            {% set url = url('add_favorite',{"id":manga.id}) %}
+        {% if translations is not empty %}
+            <a class="btn-effect raise download" id="show-traduction">
+                <span class="fi fi-{{app.request.locale}}"></span> show translation (Ctrl+Space)
+            </a>
         {% endif %}
 
-        <a class="btn-effect offset add-favorite"
-        data-url="{{ url }}"><i class="fa fa-star"> </i>{{ buttonText }}</a>
+        {% if app.user is not null %}
 
-    {% endif %}
-    
+            <a class="btn-effect raise download add-favorite" id="translation-button" href="{{ url('translate', {'id':manga.id}) }}"><i class="fa fa-download "></i>(beta) Auto translate</a>
+            {% if manga in app.user.getFavoriteMangas %}
+                {% set buttonText = 'manga.remove_favorite'|trans %}
+                {% set url = url('remove_favorite',{"id":manga.id}) %}
+            {% else %}
+                {% set buttonText = 'manga.add_favorite'|trans %}
+                {% set url = url('add_favorite',{"id":manga.id}) %}
+            {% endif %}
 
+            <a class="btn-effect raise add-favorite"
+            data-url="{{ url }}"><i class="fa fa-star"> </i>{{ buttonText }}</a>
+
+        {% endif %}
+    </center>
     <div class="row" id="lightgallery">
         {% for image in images %}
             {% if image matches '{\.jpg$}' %}
                 <article class="image col-sm-3"
-                         data-src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/' ~ image ) }}'
-                         data-sub-html="<div class='lightGallery-captions'> <h4>Photo by - <a href='https://unsplash.com/@entrycube' >Diego Guzmán </a></h4> <p> Location - <a href='https://unsplash.com/s/photos/fushimi-inari-taisha-shrine-senbontorii%2C-68%E7%95%AA%E5%9C%B0-fukakusa-yabunouchicho%2C-fushimi-ward%2C-kyoto%2C-japan'>Fushimi Ward, Kyoto, Japan</a></p></div>">
-
+                        data-src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/' ~ image ) }}'
+                        data-sub-html=".caption">
                     <img alt="{{ manga.title | raw }} {{ 'manga.image_alt'|trans({'%count%':loop.index}) }}"
                          title="{{ manga.title | raw }} {{ 'manga.image_alt'|trans({'%count%':loop.index}) }}"
                          class='img-view'
                          src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/' ~ image ) }}'>
-                    {% if translations[image] is defined %}
-                        
-
-                        {% for translation in translations[image] %}
-                            {# set fontsize = (area ** 0.5) / 10 | round(0, 'floor') #} 
-                            {# Calculate the maximum font size that fits the text inside the box #}
-                            <div   class="translation-overlay" style="font-size: 10px !important; left: {{ translation.x * 100 }}%; top: {{ translation.y * 100 }}%; width: {{ translation.w * 100 }}%; height: {{ translation.h * 100 }}%; overflow: hidden;">
-                                <p>{{ translation.translated_text | raw }}</p>
-                            </div>
-
-                        {% endfor %}
-                    {% endif %}
+                    
+                    <div class="caption">
+                        <div class="full_screen_container">
+                            {% if translations[image] is defined %}
+                                {% for translation in translations[image] %}
+                                    {% if translation['text_' ~ app.request.locale] is defined %}
+                                        {% set fontSize = translation['font_size_' ~ app.request.locale] ?? 13 %}
+                                        {% if fontSize > 30 %}
+                                            {% set fontSize = 30 %}
+                                        {% endif %}
+                                        <span class="translation-overlay"  style="font-size: {{ fontSize }}px !important; left: {{ translation.x * 100 }}%; top: {{ translation.y * 100 }}%; width: {{ translation.w * 100 }}%; height: {{ translation.h * 100 }}%; "><p>{{ translation['text_' ~ app.request.locale] | raw }}</p></span>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                    </div>
                 </article>
             {% endif %}
         {% else %}

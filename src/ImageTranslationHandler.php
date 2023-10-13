@@ -6,6 +6,8 @@ use App\Message\ImageTranslation;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Process\Process;
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
 
 #[AsMessageHandler]
 class ImageTranslationHandler
@@ -19,24 +21,17 @@ class ImageTranslationHandler
 
     public function __invoke(ImageTranslation $message)
     {
+
+        // Create a Monolog logger
+        $log = new Logger('trad');
+        $log->pushHandler(new StreamHandler('C:\Users\Skull\Documents\github\OpenManga\trad.log', Logger::DEBUG));
+
         $inputFolderPath = $message->getInputFolderPath();
         $inputLanguage = $message->getInputLanguage();
         $outputLanguage = $message->getOutputLanguage();
         $outputFolderPath = $message->getOutputFolderPath();
         $transparency = $message->getTransparency();
 
-        // Get a list of image files in the input folder
-        //$imageFiles = scandir($inputFolderPath);
-
-        //$totalImages = count($imageFiles);
-        //$currentProgress = 0;
-
-        //foreach ($imageFiles as $imageFile) {
-            //if (pathinfo($imageFile, PATHINFO_EXTENSION) === 'jpg') {
-                // Construct the full image file path
-                //$imageFilePath = $inputFolderPath . $imageFile;
-
-                // Build the Python script command with the updated arguments
         $command = [
             'C:/Python310/python.exe',
             'C:\Users\Skull\Documents\github\Open-Translation\trad.py',
@@ -55,34 +50,21 @@ class ImageTranslationHandler
         // Create a new Process instance
         $process = new Process($command);
 
-        // Start the process
+        // Set up process event listeners to capture output and errors
         $process->start();
-
-        // Execute the Python script
-        $process->setTimeout(6800);
-        /*
-        $process->run(function ($type, $buffer) use ($totalImages) {
+        $process->wait(function ($type, $output) use ($log) {
             if (Process::ERR === $type) {
-                echo 'ERR > '.$buffer;
+                $log->error($output);
             } else {
-                echo 'OUT > '.$buffer;
+                $log->info($output);
             }
-            // Update progress before processing the image
-            //$currentProgress++;
-            //$progressPercentage = ($currentProgress / $totalImages) * 100;
-
-            // Send progress update as a message to the message bus
-            //$this->messageBus->dispatch(new ProgressUpdate($progressPercentage));
         });
-        */
-
-        // Wait for the process to finish
-        //$process->wait();
 
         // Check if the process was successful and handle accordingly
         if (!$process->isSuccessful()) {
             // Handle errors if needed
         }
+
         return $process->isSuccessful();
     }
 }
