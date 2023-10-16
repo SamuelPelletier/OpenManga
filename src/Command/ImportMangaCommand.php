@@ -33,7 +33,7 @@ use Symfony\Component\Finder\Finder;
 use WebPConvert\WebPConvert;
 
 /**
- * A console command that lists all the existing users.
+ * A console command that import mangas from the provided url in .env .
  *
  * To use this command, open a terminal window, enter into your project directory
  * and execute the following:

@@ -60,7 +60,7 @@ class MangaController extends BaseController
             }
             return $this->render('manga_index.html.twig', ['mangas' => $latestMangas]);
         }
-        return $this->render('index.html.twig', ['mangas' => $latestMangas]);
+        return $this->render('index.html.twig',  ['mangas' => $latestMangas]);
     }
 
     /**
@@ -118,7 +118,7 @@ class MangaController extends BaseController
                 'manga' => $manga,
                 'images' => $images,
                 'mangaRepository' => $mangaRepository,
-                'mangas_recommended' => $mangasRecommended
+                'mangas_recommended' => $mangasRecommended,
             ]);
     }
 

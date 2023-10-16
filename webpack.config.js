@@ -53,6 +53,7 @@ Encore
     .addEntry('show', './assets/js/show.js')
     .addEntry('js/tag', './assets/js/tag.js')
     .addEntry('js/form', './assets/js/form.js')
+    .addEntry('js/tag-search', './assets/js/tag-search.js')
     .addStyleEntry('css/app', ['./assets/scss/app.scss', './assets/css/index.css', './assets/css/neon-color.css', './assets/css/button.css'])
     .addStyleEntry('css/show', ['./assets/css/show.css', './node_modules/lightgallery/css/lightgallery.css'])
     .addStyleEntry('css/disclaimer', './assets/css/disclaimer.css')
@@ -60,6 +61,7 @@ Encore
     .addStyleEntry('css/form', './assets/css/form.css')
     .addStyleEntry('css/account', './assets/css/account.css')
     .addStyleEntry('css/bootstrap-grid', './node_modules/bootstrap/dist/css/bootstrap-grid.css')
+    .addStyleEntry('css/tag-search', './assets/css/tag-search.css')
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
     .addAliases({

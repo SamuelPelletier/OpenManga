@@ -5,6 +5,15 @@
     width: 100%;
     border-radius: 1%;
     cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
+}
+
+article:hover .img-view {
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
+    -webkit-transform:scale(1.03);
+    -moz-transform:scale(1.03);
+    transform:scale(1.03);
 }
 
 .row {
@@ -552,10 +561,6 @@ li:last-child .page {
     top: 1.5px;
 }
 
-.lg-sub-html {
-    display: none;
-}
-
 .lg-item {
     height: 94% !important;
     top: 3%;
@@ -607,7 +612,6 @@ li:last-child .page {
 
 }
 
-
 .animate-loader path {
     animation: dash 0.75s linear both;
     animation-delay: 0.5s;
@@ -625,7 +629,6 @@ li:last-child .page {
     }
 }
 
-
 #recommended {
     margin: 75px 0;
 }
@@ -633,4 +636,49 @@ li:last-child .page {
 .manga-recommended-container {
     display: flex;
     flex-wrap: wrap;
+}
+
+.lg-next,
+.lg-prev {
+  font-size: 80px;
+}
+
+.lg-sub-html {
+    display: none;
+}
+
+/** Below CSS is completely optional **/
+.gallery-item {
+width: 200px;
+padding: 5px;
+}
+/* Your existing CSS classes and styles */
+.manga-description {
+    display: none;
+    transition: opacity 0.3s ease; /* Add a smooth transition for opacity */
+}
+
+/* Add styles for the toggle button icon */
+#description-toggle::after {
+    content: "\25BC"; /* Unicode character for down arrow */
+}
+
+#description-toggle.active::after {
+    content: "\25B2"; /* Unicode character for up arrow */
+}
+
+#description-toggle {
+    width: 100%;
+    text-align: center;
+    background: #2b2b2b;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    padding: 2px;
+    cursor: pointer;
+    outline: none;
+}
+  
+#description-toggle {
+    margin-bottom: 10px;
 }

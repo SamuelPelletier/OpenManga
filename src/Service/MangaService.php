@@ -64,16 +64,16 @@ class MangaService
         $countResults = count($results);
 
         // Need 4 recommended mangas
-        if ($countResults <= 4 && $manga->getTags()->count() > 0) {
+        if ($countResults <= 10 && $manga->getTags()->count() > 0) {
             // Get max 5 mangas if we find the initial manga
-            $mangasRecommendedByTag = $this->mangaRepository->findByTag($manga->getTags()->first(), 5 - $countResults);
+            $mangasRecommendedByTag = $this->mangaRepository->findByTag($manga->getTags()->first(), 11 - $countResults);
             foreach ($mangasRecommendedByTag as $key => $mangaRecommendedByTag) {
                 if ($mangaRecommendedByTag->getId() === $manga->getId()) {
                     unset($mangasRecommendedByTag[$key]);
                 }
             }
             // Remove useless manga and keep up 4 mangas
-            if (count($mangasRecommendedByTag) + $countResults > 4) {
+            if (count($mangasRecommendedByTag) + $countResults > 10) {
                 unset($mangasRecommendedByTag[count($mangasRecommendedByTag) - 1]);
             }
             $results = array_merge($results, $mangasRecommendedByTag);

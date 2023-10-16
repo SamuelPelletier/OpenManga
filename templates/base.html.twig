@@ -18,6 +18,7 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
     {% endblock %}
 
     <link rel="icon" type="image/x-icon" href="{{ app.request.getSchemeAndHttpHost() ~ asset('logo.ico') }}"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/lipis/flag-icons@6.9.2/css/flag-icons.min.css"/>
 </head>
 
 <body id="{% block body_id %}{% endblock %}">
@@ -55,22 +56,33 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                        value="{{ app.request.query.get('q') }}"
                                 >
                                 <button type="submit" class="btn btn-default search-button">GO !</button>
+                                {% include 'tag_search.html.twig' %}
+
                             </div>
+                            <!--{# 
                             <div class="switch-div">
                                 <label class="Switch o-pen">
                                     <input type="checkbox" name="sort" class="switch-input a-neonToggle" id="toggle"
                                            {% if app.session.get('sort') %}checked{% endif %}>
                                     <span class="a-neonText -main">
-                                    {{ 'search.sort'|trans }} <i id="bubble-info" class="fa fa-info-circle"
-                                                                 data-toggle="popover"
-                                                                 data-content="{{ 'search.sort.info'|trans }}"></i>
+                                    {{ 'search.sort'|trans }}
                                     </span>
                                 </label>
                             </div>
+                            #}-->
                         </form>
+                        {# include 'tag_search.html.twig' #}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         {% block header_navigation_links %}
+                            <li>
+                                <a href="{{ app.request.server.get('SHOP_LINK') }}"
+                                   rel="nofollow" target="_blank">
+                                    <i class="fas fa-fire" aria-hidden="true" {% if app.session.get('sort') %}style="background-color:grey"{% endif %}></i> {{ 'search.sort'|trans }}
+                                </a>
+                            </li>
+
+                            <!--{#
                             <li>
                                 <a href="{{ app.request.server.get('SHOP_LINK') }}"
                                    rel="nofollow" target="_blank">
@@ -83,18 +95,20 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                     <i class="fas fa-mobile-alt" aria-hidden="true"></i> App
                                 </a>
                             </li>
+                            #}-->
                             <li>
                                 <a class="tags {% if app.request.uri == url('tags') %}active{% endif %}"
                                    href="{{ url('tags') }}">
                                     <i class="fa fa-hashtag" aria-hidden="true"></i> {{ 'manga.tag'|trans }}
                                 </a>
                             </li>
+                            <!--{#
                             <li>
                                 <a class="contact {% if app.request.uri == url('about') %}active{% endif %}"
                                    href="{{ url('about') }}">
                                     <i class="fa fa-info-circle" aria-hidden="true"></i> {{ 'menu.about'|trans }}
                                 </a>
-                            </li>
+                            </li>#}-->
                             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                                 <li>
                                     <a class="login {% if app.request.uri == url('user_index') %}active{% endif %}"
@@ -123,8 +137,12 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                             <ul class="dropdown-menu locales" role="menu" aria-labelledby="locales">
                                 {% for locale in locales() %}
                                     <li {% if app.request.locale == locale.code %}aria-checked="true" class="active"
-                                        {% else %}aria-checked="false"{% endif %} role="menuitem"><a
-                                                href="{{ url(app.request.get('_route', 'index'), app.request.get('_route_params', [])|merge({_locale: locale.code})) }}">{{ locale.name|capitalize }}</a>
+                                        {% else %}aria-checked="false"{% endif %} role="menuitem">
+                                        <a href="{{ url(app.request.get('_route', 'index'), app.request.get('_route_params', [])|merge({_locale: locale.code})) }}">
+                                            <span class="fi fi-{{ locale.code }}"></span>
+                                                
+                                            {{ locale.name|capitalize }}
+                                        </a>
                                     </li>
                                 {% endfor %}
                             </ul>

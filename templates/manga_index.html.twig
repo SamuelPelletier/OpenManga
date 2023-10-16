@@ -1,12 +1,32 @@
 <div class='manga-container'>
     {% for manga in mangas %}
         <article class="manga col-sm-3" itemscope itemtype="https://schema.org/Book">
-            <p class="manga-count-pages" itemprop="numberOfPages">{{ manga.countPages }}</p>
-            <a itemprop="url" href="{{ url('manga', {id: manga.id}) }}">
-                <img alt="{{ manga.title |raw }}" title="{{ manga.title |raw }}" class='img-thumbnail'
-                     itemprop="thumbnail"
-                     src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/thumb.webp' ) }}'>
-                <h2 class='img-name' itemprop="name">{{ manga.title |raw }}</h2>
+            <div class="thumbnail-tag">
+                {% if not manga.tags.empty %}
+                    {% for tag in manga.tags|slice(0,5) %}
+                        <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name, 's':true}) }}"
+                        totalx="158" draggable="false">
+                            <span class="tag-rounded" totalx="158">{{ tag.name }}</span>
+                        </a>
+                    {% endfor %}
+                {% endif %}
+            </div>
+            <a href="{{ url('manga', {id: manga.id}) }}">
+                <p class="manga-count-pages" itemprop="numberOfPages">
+                    {% for language in manga.languages %}
+                        {% if language.code %}
+                            <span class="fi fi-{{ language.code }}"></span>
+                        {% endif %}
+                    {% endfor %}
+                    {{ manga.countPages }} <i class="fa-regular fa-images"></i>
+                </p>
+                <div class="image-container" itemprop="thumbnail">
+                    <img alt="{{ manga.title |raw }}" title="{{ manga.title |raw }}" class='img-thumbnail'
+                        src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/thumb.webp' ) }}'>
+                </div>
+                <div class="img-name">
+                    <h2  itemprop="name">{{ manga.title |raw }}</h2>
+                </div>
             </a>
         </article>
     {% else %}
