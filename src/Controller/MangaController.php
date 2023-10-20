@@ -241,25 +241,27 @@ class MangaController extends BaseController
         // Construct the full input folder path
         $inputFolderPath = $rootDir . '/public/media/' . $manga->getId() . '/';
 
-        /*
+        #get input language
         $languages = $manga->getLanguages();
-                
         if (empty($languages)) {
             $language = 'japanese';
         } else {
             $language = 'japanese';
             // Loop through the languages and find the first one that is not 'translated'
             foreach ($languages as $lang) {
-                if ($lang !== 'translated') {
+                if ($lang != 'translated') {
                     $language = $lang;
                     break;
                 }
             }
-        }*/
+        }
         
+        #get output language
+        $locale = $request->getLocale();
+
         // Get the values for the input and output languages and other optional 
-        $inputLanguage = $request->query->get('inputLanguage', 'jpn_vert');
-        $outputLanguage = $request->query->get('outputLanguage', 'fr');
+        $inputLanguage = $request->query->get('inputLanguage', $language);
+        $outputLanguage = $request->query->get('outputLanguage', $locale);
         $inputFolderPath = $request->query->get('inputFolderPath', $rootDir.'/public/media/' . $manga->getId() . '/');
         $outputFolderPath = $request->query->get('outputFolderPath', $rootDir.'/public/media/' . $manga->getId() .'/'. 'translated/');
         $transparency = $request->query->get('transparency', 200);
@@ -288,6 +290,41 @@ class MangaController extends BaseController
 
         // Translation is complete, return a response indicating completion
         return new Response(var_dump($envelope));
+    }
+
+    /**
+     * @Route("/edit-translation/{id}", methods={"POST"}, name="edit_translation")
+     */
+    public function editTranslation(        
+        Manga $manga,
+        MessageBusInterface $bus,
+        EntityManagerInterface $entityManager,
+        Request $request,
+        KernelInterface $kernel
+    ): Response
+    {
+        // Get the root directory of your Symfony application
+        $rootDir = $kernel->getProjectDir();
+
+        // Get the content of translations.json
+        $filePath = $rootDir . '/public/media/' . $manga->getId() . '/translated/translations.json';
+        $translations = json_decode(file_get_contents($filePath), true);
+
+        if ($request->isMethod('POST')) {
+            // Update translations based on user input
+            $newTranslations = $request->request->get('translations');
+            $updatedTranslations = array_merge($translations, $newTranslations);
+
+            // Save the updated translations back to the file
+            file_put_contents($filePath, json_encode($updatedTranslations, JSON_PRETTY_PRINT));
+
+            // Optionally, redirect to a success page or return a response
+            return $this->redirectToRoute('success_page');
+        }
+
+        return $this->render('translation/edit.html.twig', [
+            'translations' => $translations,
+        ]);
     }
 
     /**

@@ -1,0 +1,79 @@
+2023-10-20 22:54:09 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/001.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 22:54:09 [INFO]: input path is a file
+[2023-10-20T20:54:44.323776+00:00] trad.INFO: Number of translated blurb:18 Number of translated pages:1  [] []
+2023-10-20 22:54:46 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/002.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 22:54:46 [INFO]: input path is a file
+[2023-10-20T20:55:07.194797+00:00] trad.INFO: Number of translated blurb:14 Number of translated pages:1  [] []
+2023-10-20 22:55:08 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/003.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 22:55:08 [INFO]: input path is a file
+[2023-10-20T20:55:33.568920+00:00] trad.INFO: Number of translated blurb:17 Number of translated pages:1  [] []
+2023-10-20 22:55:35 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/004.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 22:55:35 [INFO]: input path is a file
+[2023-10-20T20:55:54.768724+00:00] trad.INFO: Number of translated blurb:14 Number of translated pages:1  [] []
+2023-10-20 22:55:57 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/005.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 22:55:57 [INFO]: input path is a file
+[2023-10-20T20:56:34.611341+00:00] trad.INFO: Number of translated blurb:19 Number of translated pages:1  [] []
+2023-10-20 22:56:36 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/006.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 22:56:36 [INFO]: input path is a file
+[2023-10-20T20:57:06.816701+00:00] trad.INFO: Number of translated blurb:21 Number of translated pages:1  [] []
+2023-10-20 22:57:08 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/007.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 22:57:08 [INFO]: input path is a file
+[2023-10-20T20:57:36.318302+00:00] trad.INFO: Number of translated blurb:12 Number of translated pages:1  [] []
+2023-10-20 22:57:38 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/008.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 22:57:38 [INFO]: input path is a file
+[2023-10-20T20:58:03.922376+00:00] trad.INFO: Number of translated blurb:16 Number of translated pages:1  [] []
+2023-10-20 22:58:05 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/009.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 22:58:05 [INFO]: input path is a file
+[2023-10-20T20:58:26.378353+00:00] trad.INFO: Number of translated blurb:17 Number of translated pages:1  [] []
+2023-10-20 22:58:28 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/010.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 22:58:28 [INFO]: input path is a file
+[2023-10-20T20:58:49.418577+00:00] trad.INFO: Number of translated blurb:15 Number of translated pages:1  [] []
+2023-10-20 22:58:50 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/011.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 22:58:50 [INFO]: input path is a file
+[2023-10-20T20:59:18.436833+00:00] trad.INFO: Number of translated blurb:17 Number of translated pages:1  [] []
+2023-10-20 22:59:19 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/012.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 22:59:19 [INFO]: input path is a file
+[2023-10-20T20:59:44.935021+00:00] trad.INFO: Number of translated blurb:19 Number of translated pages:1  [] []
+2023-10-20 22:59:46 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/013.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 22:59:46 [INFO]: input path is a file
+[2023-10-20T21:00:03.274889+00:00] trad.INFO: Number of translated blurb:10 Number of translated pages:1  [] []
+2023-10-20 23:00:05 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/014.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 23:00:05 [INFO]: input path is a file
+[2023-10-20T21:00:16.432692+00:00] trad.INFO: Number of translated blurb:7 Number of translated pages:1  [] []
+2023-10-20 23:00:17 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/015.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 23:00:17 [INFO]: input path is a file
+[2023-10-20T21:00:36.249514+00:00] trad.INFO: Number of translated blurb:10 Number of translated pages:1  [] []
+2023-10-20 23:00:37 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/016.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 23:00:37 [INFO]: input path is a file
+[2023-10-20T21:00:59.070367+00:00] trad.INFO: Number of translated blurb:21 Number of translated pages:1  [] []
+2023-10-20 23:01:00 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/017.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 23:01:00 [INFO]: input path is a file
+[2023-10-20T21:01:14.764261+00:00] trad.INFO: Number of translated blurb:10 Number of translated pages:1  [] []
+2023-10-20 23:01:16 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/018.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 23:01:16 [INFO]: input path is a file
+[2023-10-20T21:01:32.044942+00:00] trad.INFO: Number of translated blurb:12 Number of translated pages:1  [] []
+2023-10-20 23:01:33 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/019.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 23:01:33 [INFO]: input path is a file
+[2023-10-20T21:01:56.248288+00:00] trad.INFO: Number of translated blurb:16 Number of translated pages:1  [] []
+2023-10-20 23:01:57 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/020.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 23:01:57 [INFO]: input path is a file
+[2023-10-20T21:02:18.253269+00:00] trad.INFO: Number of translated blurb:20 Number of translated pages:1  [] []
+2023-10-20 23:02:19 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/021.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 23:02:19 [INFO]: input path is a file
+[2023-10-20T21:02:38.046463+00:00] trad.INFO: Number of translated blurb:14 Number of translated pages:1  [] []
+2023-10-20 23:02:39 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/022.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 23:02:39 [INFO]: input path is a file
+[2023-10-20T21:02:59.674493+00:00] trad.INFO: Number of translated blurb:16 Number of translated pages:1  [] []
+2023-10-20 23:03:01 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/023.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 23:03:01 [INFO]: input path is a file
+[2023-10-20T21:03:14.919332+00:00] trad.INFO: Number of translated blurb:12 Number of translated pages:1  [] []
+2023-10-20 23:03:16 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/024.jpg -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 23:03:16 [INFO]: input path is a file
+[2023-10-20T21:03:33.677620+00:00] trad.INFO: Number of translated blurb:13 Number of translated pages:1  [] []
+2023-10-20 23:03:34 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/thumb.webp -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 23:03:34 [INFO]: input path is a file
+[2023-10-20T21:03:54.469608+00:00] trad.INFO: Number of translated blurb:17 Number of translated pages:1  [] []
+2023-10-20 23:03:56 [INFO]: arguments : -if: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated -of: C:\Users\Skull\Documents\github\OpenManga/public/media/219/translated/ -t: 200 i: spa o: fr json: True
+2023-10-20 23:03:56 [INFO]: input path is a folder
+2023-10-20 23:03:56 [INFO]: filenames: []
+[2023-10-20T21:03:56.180687+00:00] trad.INFO: Number of translated blurb:0 Number of translated pages:0  [] []

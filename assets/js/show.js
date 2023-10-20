@@ -44,7 +44,7 @@ $(document).ready(function () {
             //{{app.request.locale}}
             },
             success: function(response) {
-                $("#translation-button").text("...");
+                $("#translation-button").text("Request sent (up to 5 minutes)");
                 $("#translation-button").prop("disabled", false);
 
             },
