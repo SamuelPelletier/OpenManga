@@ -1,6 +1,7 @@
 @import "lightgallery/css/lg-autoplay.css";
 @import "lightgallery/css/lg-fullscreen.css";
 @import "lightgallery/css/lg-zoom.css";
+
 .img-view {
     width: 100%;
     border-radius: 1%;
@@ -11,9 +12,9 @@
 
 article:hover .img-view {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    -webkit-transform:scale(1.03);
-    -moz-transform:scale(1.03);
-    transform:scale(1.03);
+    -webkit-transform: scale(1.03);
+    -moz-transform: scale(1.03);
+    transform: scale(1.03);
 }
 
 .row {
@@ -640,7 +641,7 @@ li:last-child .page {
 
 .lg-next,
 .lg-prev {
-  font-size: 80px;
+    font-size: 80px;
 }
 
 .lg-sub-html {
@@ -649,9 +650,10 @@ li:last-child .page {
 
 /** Below CSS is completely optional **/
 .gallery-item {
-width: 200px;
-padding: 5px;
+    width: 200px;
+    padding: 5px;
 }
+
 /* Your existing CSS classes and styles */
 .manga-description {
     display: none;
@@ -668,17 +670,26 @@ padding: 5px;
 }
 
 #description-toggle {
-    width: 100%;
+    width: 10%;
+    margin: auto auto 1% auto;
     text-align: center;
-    background: #2b2b2b;
     border: none;
-    color: #fff;
     font-size: 20px;
     padding: 2px;
     cursor: pointer;
     outline: none;
 }
-  
+
 #description-toggle {
     margin-bottom: 10px;
 }
+
+.tags {
+    padding-bottom: 10px;
+}
+
+#download-container {
+    text-align: center;
+}
+
+
