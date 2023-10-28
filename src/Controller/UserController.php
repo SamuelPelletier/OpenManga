@@ -25,23 +25,29 @@ class UserController extends AbstractController
     /**
      * @Route("/", name="user_index")
      */
-    public function index(UserRepository $userRepository, UserService $userService,EntityManagerInterface $entityManager)
+    public function index(UserRepository $userRepository, UserService $userService, EntityManagerInterface $entityManager)
     {
         $user = $this->getUser();
-        $user->rank = $userRepository->getRank($user);
+        if (!$user) {
+            return $this->redirectToRoute('index');
+        }
+        $rank = $userRepository->getRank($user);
         $user->setPoints($userService->calculationUserPoints($user));
         $entityManager->persist($user);
         $entityManager->flush();
 
-        return $this->render('user/index.html.twig', ['user' => $user]);
+        return $this->render('user/index.html.twig', ['user' => $user, 'rank' => $rank]);
     }
 
     /**
      * @Route("/edit", name="user_edit")
      */
-    public function edit(Request $request,EntityManagerInterface $entityManager)
+    public function edit(Request $request, EntityManagerInterface $entityManager)
     {
         $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('index');
+        }
         $form = $this->createForm(EditUserFormType::class, $user);
         $form->handleRequest($request);
 
@@ -62,9 +68,12 @@ class UserController extends AbstractController
     /**
      * @Route("/password", name="change_password")
      */
-    public function changePassword(Request $request, UserPasswordHasherInterface $userPasswordHasher,EntityManagerInterface $entityManager)
+    public function changePassword(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager)
     {
         $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('index');
+        }
         $form = $this->createForm(ChangePasswordFormType::class, $user);
         $form->handleRequest($request);
 
@@ -89,10 +98,12 @@ class UserController extends AbstractController
     /**
      * @Route("/delete", name="user_delete")
      */
-    public function delete(Request $request, SessionInterface $session,EntityManagerInterface $entityManager)
+    public function delete(Request $request, SessionInterface $session, EntityManagerInterface $entityManager)
     {
         $user = $this->getUser();
-
+        if (!$user) {
+            return $this->redirectToRoute('index');
+        }
         $defaultData = ['message' => ''];
         $form = $this->createFormBuilder($defaultData)
             ->add('check', CheckboxType::class, ['data' => true, 'required' => false])

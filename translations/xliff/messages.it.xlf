@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="it" datatype="plaintext" original="file.ext">
         <body>
@@ -108,6 +108,10 @@
             <trans-unit id="manga.count_views">
                 <source>manga.count_views</source>
                 <target>Numero di visualizzazioni</target>
+            </trans-unit>
+            <trans-unit id="manga.see_more">
+                <source>manga.see_more</source>
+                <target>Vedi altro</target>
             </trans-unit>
             <trans-unit id="manga.download">
                 <source>manga.download</source>
@@ -424,9 +428,9 @@
                 <source>email.text1</source>
                 <target>Hai perso la password?
 
-                Nessun problema per reimpostare la password, fai clic sul pulsante in basso e scegline uno nuovo.
+Nessun problema per reimpostare la password, fai clic sul pulsante in basso e scegline uno nuovo.
 
-                Questo link scadrà tra 1 ora / e.</target>
+Questo link scadrà tra 1 ora / e.</target>
             </trans-unit>
             <trans-unit id="email.button">
                 <source>email.button</source>
@@ -452,31 +456,31 @@
             <trans-unit id="about.contact.text2.soft">
                 <source>about.contact.text2.soft</source>
                 <target>Non raccogliamo informazioni sui nostri clienti e non utilizziamo Google Analytics.
-                        Puoi visualizzare e scaricare manga gratuitamente e senza limiti.
-                        Un'applicazione mobile consente una maggiore mobilità e facilità di accesso al nostro sito Web.
-                        Per ulteriori informazioni, non esitate a contattarci via e-mail.
+Puoi visualizzare e scaricare manga gratuitamente e senza limiti.
+Un'applicazione mobile consente una maggiore mobilità e facilità di accesso al nostro sito Web.
+Per ulteriori informazioni, non esitate a contattarci via e-mail.
                 </target>
             </trans-unit>
             <trans-unit id="about.contact.text2.hard">
                 <source>about.contact.text2.hard</source>
                 <target>Non raccogliamo informazioni sui nostri clienti e non utilizziamo Google Analytics.
-                        Puoi visualizzare e scaricare manga gratuitamente e senza limiti.
-                        Un'applicazione mobile consente una maggiore mobilità e facilità di accesso al nostro sito Web.
-                        Per ulteriori informazioni, non esitate a contattarci via e-mail.
+Puoi visualizzare e scaricare manga gratuitamente e senza limiti.
+Un'applicazione mobile consente una maggiore mobilità e facilità di accesso al nostro sito Web.
+Per ulteriori informazioni, non esitate a contattarci via e-mail.
 
 
-                        Cosa sono i manga hentai?
+Cosa sono i manga hentai?
 
-                        Gli hentai sono manga per scopi pornografici, riuniscono una serie di generi che puoi trovare sul nostro sito come paizuri, teitoku o netorare.
-                        Sono originari principalmente del Giappone, ci sono anche versioni animate di questi manga.
-                        Nel 2018 hentai è stata la seconda categoria più cercata sul sito di pornhub.
-                        Ci sono anche più di 1.300 anime hentai presenti nell'elenco My Anime List.
+Gli hentai sono manga per scopi pornografici, riuniscono una serie di generi che puoi trovare sul nostro sito come paizuri, teitoku o netorare.
+Sono originari principalmente del Giappone, ci sono anche versioni animate di questi manga.
+Nel 2018 hentai è stata la seconda categoria più cercata sul sito di pornhub.
+Ci sono anche più di 1.300 anime hentai presenti nell'elenco My Anime List.
 
 
-                        Che cos'è il doujin manga?
+Che cos'è il doujin manga?
 
-                        Il dōjin o doujin sono manga creati da dilettanti che spesso raccolgono manga famosi come One Piece, Naruto o Fairy Tail.
-                        Ma non sono esclusivamente manga, ci sono anche musica, romanzi o videogiochi.
+Il dōjin o doujin sono manga creati da dilettanti che spesso raccolgono manga famosi come One Piece, Naruto o Fairy Tail.
+Ma non sono esclusivamente manga, ci sono anche musica, romanzi o videogiochi.
                 </target>
             </trans-unit>
         </body>

@@ -670,18 +670,13 @@ li:last-child .page {
 }
 
 #description-toggle {
-    width: 10%;
-    margin: auto auto 1% auto;
+    margin: 1% auto;
     text-align: center;
     border: none;
     font-size: 20px;
     padding: 2px;
     cursor: pointer;
     outline: none;
-}
-
-#description-toggle {
-    margin-bottom: 10px;
 }
 
 .tags {

@@ -33,7 +33,7 @@
             {% endfor %}
         </div>
     {% endif %}
-    <p id="description-toggle">See more</p>
+    <p id="description-toggle">{{ 'manga.see_more'|trans }}</p>
     <div id="manga-description" class="manga-description">
         <p class="manga-metadata">
             <span class="metadata"><i
@@ -90,7 +90,7 @@
                 {% endfor %}
             </p>
         {% endif %}
-        <p class="count-views">{{ 'manga.count_views'|trans }} : {{ manga.countViews }}<i class="fa fa-eye"></i></p>
+        <p class="count-views">{{ 'manga.count_views'|trans }} : {{ manga.countViews }} <i class="fa fa-eye"></i></p>
 
     </div>
     <div id="download-container">
@@ -189,6 +189,11 @@
                     }
                 }
             }
+
+
+
+
+
 
         </script>
     {% endblock %}

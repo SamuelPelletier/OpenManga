@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
         <body>
@@ -108,6 +108,10 @@
             <trans-unit id="manga.count_views">
                 <source>manga.count_views</source>
                 <target>Number of views</target>
+            </trans-unit>
+            <trans-unit id="manga.see_more">
+                <source>manga.see_more</source>
+                <target>See more</target>
             </trans-unit>
             <trans-unit id="manga.download">
                 <source>manga.download</source>
@@ -424,9 +428,9 @@
                 <source>email.text1</source>
                 <target>You have lost your password ?
 
-                No problem to reset your password, please click on the button below and choose a new one.
+No problem to reset your password, please click on the button below and choose a new one.
 
-                This link will expire in %hour% hour(s).</target>
+This link will expire in %hour% hour(s).</target>
             </trans-unit>
             <trans-unit id="email.button">
                 <source>email.button</source>
@@ -452,31 +456,31 @@
             <trans-unit id="about.contact.text2.soft">
                 <source>about.contact.text2.soft</source>
                 <target>We do not collect any information about our customers and we not use Google Analytics.
-                        You can view and download manga for free and without limit.
-                        A mobile application allows you greater mobility and ease of access to our website.
-                        For any additional information, do not hesitate to contact us by email.
+You can view and download manga for free and without limit.
+A mobile application allows you greater mobility and ease of access to our website.
+For any additional information, do not hesitate to contact us by email.
                 </target>
             </trans-unit>
             <trans-unit id="about.contact.text2.hard">
                 <source>about.contact.text2.hard</source>
                 <target>We do not collect any information about our customers and we not use Google Analytics.
-                        You can view and download manga for free and without limit.
-                        A mobile application allows you greater mobility and ease of access to our website.
-                        For any additional information, do not hesitate to contact us by email.
+You can view and download manga for free and without limit.
+A mobile application allows you greater mobility and ease of access to our website.
+For any additional information, do not hesitate to contact us by email.
 
 
-                        What are hentai manga?
+What are hentai manga?
 
-                        Hentai are manga for pornographic purposes, it brings together a set of genres that you can find on our site such as paizuri, teitoku or netorare.
-                        They are originally from Japan mainly, there are also animated versions of these manga.
-                        In 2018 hentai was the second most searched category on the pornhub site.
-                        There are also more than 1,300 anime hentai listed on My Anime List.
+Hentai are manga for pornographic purposes, it brings together a set of genres that you can find on our site such as paizuri, teitoku or netorare.
+They are originally from Japan mainly, there are also animated versions of these manga.
+In 2018 hentai was the second most searched category on the pornhub site.
+There are also more than 1,300 anime hentai listed on My Anime List.
 
 
-                        What is doujin manga?
+What is doujin manga?
 
-                        The dōjin or doujin are manga made by amateurs who often take up famous manga such as One Piece, Naruto or Fairy Tail.
-                        But they are not exclusively manga, there are also music, novels or video games.
+The dōjin or doujin are manga made by amateurs who often take up famous manga such as One Piece, Naruto or Fairy Tail.
+But they are not exclusively manga, there are also music, novels or video games.
                 </target>
             </trans-unit>
         </body>
