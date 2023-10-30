@@ -38,41 +38,69 @@ a:hover, a:focus, a:active {
     border-right: solid 5px #ff306a;
 }
 
-li:has(.trending)::before {
-    background-image: url("../images/trending.webp");
-}
+@media (min-width: 768px) {
+    .navbar-nav > li:nth-child(-n+3) {
+        width: 175px;
+        height: 60px;
+        text-align: center;
 
-li:has(.tags)::before {
-    background-image: url("../images/tags.webp");
-}
+    }
 
-li:has(.login)::before {
-    background-image: url("../images/login.webp");
-}
+    .navbar-nav > li:nth-child(-n+3) a {
+        color: #ff306a;
+        font-weight: bolder;
+    }
 
-.navbar-nav > li:hover::before {
-    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(0%);
-}
+    .navbar-nav > li:nth-child(-n+3):hover a {
+        color: black;
+        -webkit-transition: all .5s cubic-bezier(.4, 0, .2, 1) 0ms;
+        -moz-transition: all .5s cubic-bezier(.4, 0, .2, 1) 0ms;
+        transition: all .5s cubic-bezier(.4, 0, .2, 1) 0ms;
+    }
 
-.navbar-nav > li::before {
-    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
-    filter: grayscale(100%);
-    content: ""; /* Create a pseudo-element to contain the background image */
-    background-size: cover; /* Adjust this as needed */
-    background-position: center; /* Adjust this as needed */
-    transform: skew(45deg); /* Apply the opposite skew transformation */
-    position: absolute;
-    top: 0;
-    left: -37px;
-    width: 180%;
-    height: 100%;
-    overflow: hidden;
-    z-index: -1; /* Place the pseudo-element behind the content */
+    .navbar-nav > li:nth-child(-n+3) a:hover {
+        color: black !important;
+    }
 
-    -webkit-transition: all .5s cubic-bezier(.4, 0, .2, 1) 0ms;
-    -moz-transition: all .5s cubic-bezier(.4, 0, .2, 1) 0ms;
-    transition: all .5s cubic-bezier(.4, 0, .2, 1) 0ms;
+    li:has(.trending)::before {
+        background-image: url("../images/trending.png");
+        width: 240px !important;
+    }
+
+    li:has(.tags)::before {
+        background-image: url("../images/tags3.png");
+        width: 240px !important;
+    }
+
+    li:has(.login)::before {
+        background-image: url("../images/account2.png");
+        width: 240px !important;
+    }
+
+    .navbar-nav > li:hover::before {
+        -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(0%);
+    }
+
+    .navbar-nav > li::before {
+        -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+        filter: grayscale(100%);
+        content: ""; /* Create a pseudo-element to contain the background image */
+        background-size: cover; /* Adjust this as needed */
+        background-position: center; /* Adjust this as needed */
+        transform: skew(45deg); /* Apply the opposite skew transformation */
+        position: absolute;
+        top: 0;
+        left: -37px;
+        width: 180%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1; /* Place the pseudo-element behind the content */
+
+        -webkit-transition: all .5s cubic-bezier(.4, 0, .2, 1) 0ms;
+        -moz-transition: all .5s cubic-bezier(.4, 0, .2, 1) 0ms;
+        transition: all .5s cubic-bezier(.4, 0, .2, 1) 0ms;
+    }
 }
 
 .navbar-nav li a {
