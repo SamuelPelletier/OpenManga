@@ -63,17 +63,17 @@ a:hover, a:focus, a:active {
     }
 
     li:has(.trending)::before {
-        background-image: url("../images/trending.png");
+        background-image: url("../images/trending.webp");
         width: 240px !important;
     }
 
     li:has(.tags)::before {
-        background-image: url("../images/tags3.png");
+        background-image: url("../images/tags.webp");
         width: 240px !important;
     }
 
     li:has(.login)::before {
-        background-image: url("../images/account2.png");
+        background-image: url("../images/login.webp");
         width: 240px !important;
     }
 
