@@ -77,8 +77,7 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                     <ul class="nav navbar-nav navbar-right">
                         {% block header_navigation_links %}
                             <li>
-                                <a class="trending" href="{{ app.request.server.get('SHOP_LINK') }}"
-                                   rel="nofollow" target="_blank">
+                                <a class="trending" href="{{ url('index_trending') }}">
                                     <i class="fas fa-fire" aria-hidden="true"
                                        {% if app.session.get('sort') %}style="background-color:grey"{% endif %}></i> {{ 'search.sort'|trans }}
                                 </a>

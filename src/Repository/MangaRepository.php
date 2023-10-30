@@ -16,6 +16,7 @@ use App\Entity\Tag;
 use App\Entity\Author;
 use App\Entity\Language;
 use App\Entity\Parody;
+use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
@@ -44,6 +45,20 @@ class MangaRepository extends ServiceEntityRepository
         } else {
             $queryBuilder->orderBy('p.publishedAt', 'DESC');
         }
+
+        return $this->createPaginator($queryBuilder->getQuery(), $page);
+    }
+
+    public function findTrending(int $page = 1): Paginator
+    {
+        $queryBuilder = $this->createQueryBuilder('p');
+
+        $queryBuilder->addOrderBy('p.countViews', 'DESC');
+
+        $now = new DateTimeImmutable();
+        $thirtyDaysAgo = $now->sub(new \DateInterval("P30D"));
+        $queryBuilder->where('p.publishedAt > :thirty_days_ago')
+            ->setParameter('thirty_days_ago', $thirtyDaysAgo->format('Y-m-d'));
 
         return $this->createPaginator($queryBuilder->getQuery(), $page);
     }
