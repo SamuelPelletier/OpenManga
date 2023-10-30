@@ -40,10 +40,9 @@ a:hover, a:focus, a:active {
 
 @media (min-width: 768px) {
     .navbar-nav > li:nth-child(-n+3) {
-        width: 175px;
+        width: 176px;
         height: 60px;
         text-align: center;
-
     }
 
     .navbar-nav > li:nth-child(-n+3) a {

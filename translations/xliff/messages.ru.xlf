@@ -61,7 +61,7 @@
             </trans-unit>
             <trans-unit id="menu.user">
                 <source>menu.user</source>
-                <target>учетная запись</target>
+                <target>счет</target>
             </trans-unit>
             <trans-unit id="post.search_for">
                 <source>post.search_for</source>
