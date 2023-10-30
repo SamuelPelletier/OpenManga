@@ -57,7 +57,7 @@
             </trans-unit>
             <trans-unit id="menu.login">
                 <source>menu.login</source>
-                <target>Авторизоваться</target>
+                <target>логин</target>
             </trans-unit>
             <trans-unit id="menu.user">
                 <source>menu.user</source>

@@ -57,7 +57,7 @@
             </trans-unit>
             <trans-unit id="menu.login">
                 <source>menu.login</source>
-                <target>Identifícate</target>
+                <target>Registar</target>
             </trans-unit>
             <trans-unit id="menu.user">
                 <source>menu.user</source>
@@ -91,7 +91,7 @@
 
             <trans-unit id="manga.language">
                 <source>manga.language</source>
-                <target>Languaje</target>
+                <target>Idioma</target>
             </trans-unit>
             <trans-unit id="manga.parody">
                 <source>manga.parody</source>
@@ -190,7 +190,7 @@
             </trans-unit>
             <trans-unit id="login.form.signup.tab">
                 <source>login.form.signup.tab</source>
-                <target>Regístrate</target>
+                <target>Regístrarte</target>
             </trans-unit>
             <trans-unit id="login.form.login.title">
                 <source>login.form.login.title</source>
@@ -238,7 +238,7 @@
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.second_password">
                 <source>login.form.signup.form_type.second_password</source>
-                <target>Repite la contraseña</target>
+                <target>Repetir la contraseña</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.password.must_match">
                 <source>login.form.signup.form_type.password.must_match</source>
@@ -326,11 +326,11 @@
             </trans-unit>
             <trans-unit id="account.manga_read">
                 <source>account.manga_read</source>
-                <target>Mangas leyó</target>
+                <target>Mangas leídos</target>
             </trans-unit>
             <trans-unit id="account.manga_download">
                 <source>account.manga_download</source>
-                <target>Mangas Descargado</target>
+                <target>Mangas Descargados</target>
             </trans-unit>
             <trans-unit id="account.last_manga_read">
                 <source>account.last_manga_read</source>
@@ -363,11 +363,11 @@
 
             <trans-unit id="edit_profile.title">
                 <source>edit_profile.title</source>
-                <target>Edite su perfil</target>
+                <target>Editar perfil</target>
             </trans-unit>
             <trans-unit id="edit_profile.link.back_account">
                 <source>edit_profile.link.back_account</source>
-                <target>Regresar a su cuenta</target>
+                <target>Regresar a la cuenta</target>
             </trans-unit>
             <trans-unit id="edit_profile.link.change_password">
                 <source>edit_profile.link.change_password</source>
@@ -375,7 +375,7 @@
             </trans-unit>
             <trans-unit id="edit_profile.form.text">
                 <source>edit_profile.form.text</source>
-                <target>Se le enviará cualquier correo de promoción, pero necesitamos su correo electrónico si olvidó su contraseña.</target>
+                <target>Necesitaremos tu e-mail en caso de que olvides la contraseña. No se enviará ningún correo publicitario.</target>
             </trans-unit>
             <trans-unit id="edit_profile.form.button">
                 <source>edit_profile.form.button</source>
