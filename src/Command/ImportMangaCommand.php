@@ -106,15 +106,6 @@ class ImportMangaCommand extends Command
         $greetInput = new ArrayInput($arguments);
         $command->run($greetInput, $output);
 
-
-        $command = $this->getApplication()->find('app:remove-zip');
-        $arguments = [
-            'command' => 'app:remove-zip'
-        ];
-        $greetInput = new ArrayInput($arguments);
-        $command->run($greetInput, $output);
-
-
         return 0;
     }
 

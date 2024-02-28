@@ -186,28 +186,33 @@ class MangaController extends BaseController
         $user = $this->getUser();
 
         if (is_dir('media/' . $manga->getId() . '/')) {
+
+            $zipFolder = 'media/zip/';
+
             $zipName = htmlspecialchars_decode($manga->getTitle(), ENT_QUOTES) . ".zip";
             $zipName = str_replace(['|', '/', '\\'], '', $zipName);
-            $files = array();
-            $finder = new Finder();
-            $finder->files()->in('media/' . $manga->getId() . '/');
-            foreach ($finder as $file) {
-                if (preg_match("/\.jpg$/", $file->getFilename())) {
-                    array_push($files, $file);
+            if (!file_exists($zipFolder . $zipName)) {
+                $files = array();
+                $finder = new Finder();
+                $finder->files()->in('media/' . $manga->getId() . '/');
+                foreach ($finder as $file) {
+                    if (preg_match("/\.jpg$/", $file->getFilename())) {
+                        array_push($files, $file);
+                    }
                 }
+
+                $zip = new \ZipArchive();
+                $zip->open($zipFolder . $zipName, \ZipArchive::CREATE);
+                foreach ($files as $f) {
+                    $zip->addFromString(basename($f), file_get_contents($f));
+                }
+                $zip->close();
             }
 
-            $zip = new \ZipArchive();
-            $zip->open($zipName, \ZipArchive::CREATE);
-            foreach ($files as $f) {
-                $zip->addFromString(basename($f), file_get_contents($f));
-            }
-            $zip->close();
-            $response = new BinaryFileResponse($zipName);
+            $response = new BinaryFileResponse($zipFolder . $zipName);
             $response->headers->set('Content-Type', 'application/zip');
             $response->headers->set('Content-Disposition', 'attachment;filename="' . $zipName . '"');
-            $response->headers->set('Content-length', filesize($zipName));
-            $response->deleteFileAfterSend(true);
+            $response->headers->set('Content-length', filesize($zipFolder . $zipName));
 
             if ($user) {
                 $user->incrementCountMangasDownload();
