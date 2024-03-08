@@ -103,15 +103,9 @@ class MangaController extends BaseController
         $user = $this->getUser();
 
         $images = array();
-        if (is_dir('media/' . $manga->getId() . '/')) {
-            $finder = new Finder();
-            $finder->files()->in('media/' . $manga->getId() . '/');
-            foreach ($finder as $file) {
-                // dumps the relative path to the file
-                array_push($images, $file->getRelativePathname());
-            }
+        for ($i = 1; $i < $manga->getCountPages(); $i++) {
+            $images[] = str_pad($i, 3, 0, STR_PAD_LEFT) . '.jpg';
         }
-        sort($images);
 
         $mangaView = explode(',', $request->getSession()->get('manga_view', ''));
         // Check in the session if this manga is already view
