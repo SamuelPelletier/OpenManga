@@ -1,4 +1,16 @@
 {
+    "bugsnag/bugsnag-symfony": {
+        "version": "1.14",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.13",
+            "ref": "f571597c0e65ca904f2d853c2396017ab28da0df"
+        },
+        "files": [
+            "config/packages/bugsnag.yaml"
+        ]
+    },
     "composer/package-versions-deprecated": {
         "version": "1.11.99.5"
     },
