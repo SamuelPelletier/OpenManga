@@ -16,6 +16,7 @@ use App\Entity\Tag;
 use App\Entity\Author;
 use App\Entity\Language;
 use App\Entity\Parody;
+use DateTime;
 use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
@@ -38,7 +39,8 @@ class MangaRepository extends ServiceEntityRepository
 
     public function findLatest(int $page = 1, bool $isSortByViews = false): Paginator
     {
-        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder = $this->createQueryBuilder('p')->where('p.publishedAt < :five_minutes_ago')
+            ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"));
 
         if ($isSortByViews) {
             $queryBuilder->orderBy('p.countViews', 'DESC');
@@ -58,7 +60,9 @@ class MangaRepository extends ServiceEntityRepository
         $now = new DateTimeImmutable();
         $thirtyDaysAgo = $now->sub(new \DateInterval("P30D"));
         $queryBuilder->where('p.publishedAt > :thirty_days_ago')
-            ->setParameter('thirty_days_ago', $thirtyDaysAgo->format('Y-m-d'));
+            ->setParameter('thirty_days_ago', $thirtyDaysAgo->format('Y-m-d'))
+            ->andWhere('p.publishedAt < :five_minutes_ago')
+            ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"));
 
         return $this->createPaginator($queryBuilder->getQuery(), $page);
     }
@@ -161,6 +165,9 @@ class MangaRepository extends ServiceEntityRepository
             } else {
                 $queryBuilder->orderBy('p.publishedAt', 'DESC');
             }
+
+            $queryBuilder->andWhere('p.publishedAt < :five_minutes_ago')
+                ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"));
 
         }
 
