@@ -87,6 +87,7 @@ class MangaRepository extends ServiceEntityRepository
         bool   $isStrict = false
     ): Paginator
     {
+        set_time_limit(10);
         $query = $this->sanitizeSearchQuery($rawQuery);
         $searchTerms = $this->extractSearchTerms($query);
 
