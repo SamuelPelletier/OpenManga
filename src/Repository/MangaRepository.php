@@ -90,8 +90,8 @@ class MangaRepository extends ServiceEntityRepository
         $query = $this->sanitizeSearchQuery($rawQuery);
         $searchTerms = $this->extractSearchTerms($query);
 
-        if (0 === \count($searchTerms)) {
-            return [];
+        if (\count($searchTerms) <= 3) {
+            return $this->findLatest();
         }
 
         $em = $this->getEntityManager();

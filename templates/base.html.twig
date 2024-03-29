@@ -53,6 +53,7 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                        id="search_field"
                                        placeholder="{{ 'post.search_for'|trans }}"
                                        autocomplete="off"
+                                       minlength="3"
                                        autofocus
                                        value="{{ app.request.query.get('q') }}"
                                 >
