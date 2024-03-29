@@ -91,7 +91,7 @@ class MangaRepository extends ServiceEntityRepository
         $searchTerms = $this->extractSearchTerms($query);
 
         // Min 3 caracteres to search
-        if (\count($searchTerms) < 3) {
+        if (strlen($query) < 3) {
             return $this->findLatest();
         }
 
