@@ -87,7 +87,6 @@ class MangaRepository extends ServiceEntityRepository
         bool   $isStrict = false
     ): Paginator
     {
-        set_time_limit(10);
         $query = $this->sanitizeSearchQuery($rawQuery);
         $searchTerms = $this->extractSearchTerms($query);
 
@@ -114,48 +113,51 @@ class MangaRepository extends ServiceEntityRepository
                 $term = '%' . $term . '%';
             }
 
-            $tags = $repoTag->getEntityManager()->createQueryBuilder()
-                ->select('a')
-                ->from($repoTag->_entityName, 'a')->where('a.name like :name')
-                ->setParameter('name', $term)->getQuery()->getResult();
+            if ($isStrict) {
+                $tags = $repoTag->getEntityManager()->createQueryBuilder()
+                    ->select('a')
+                    ->from($repoTag->_entityName, 'a')->where('a.name like :name')
+                    ->setParameter('name', $term)->getQuery()->getResult();
 
-            foreach ($tags as $keyTag => $tag) {
-                $queryBuilder
-                    ->orWhere(':ta_' . $keyTag . '_' . $key . ' MEMBER OF p.tags')
-                    ->setParameter('ta_' . $keyTag . '_' . $key, $tag);
-            }
+                foreach ($tags as $keyTag => $tag) {
+                    $queryBuilder
+                        ->orWhere(':ta_' . $keyTag . '_' . $key . ' MEMBER OF p.tags')
+                        ->setParameter('ta_' . $keyTag . '_' . $key, $tag);
+                }
 
-            $languages = $repoLanguage->getEntityManager()->createQueryBuilder()
-                ->select('a')
-                ->from($repoLanguage->_entityName, 'a')->where('a.name like :name')
-                ->setParameter('name', $term)->getQuery()->getResult();
+                $languages = $repoLanguage->getEntityManager()->createQueryBuilder()
+                    ->select('a')
+                    ->from($repoLanguage->_entityName, 'a')->where('a.name like :name')
+                    ->setParameter('name', $term)->getQuery()->getResult();
 
-            foreach ($languages as $keyLanguage => $language) {
-                $queryBuilder
-                    ->orWhere(':l_' . $keyLanguage . '_' . $key . ' MEMBER OF p.languages')
-                    ->setParameter(':l_' . $keyLanguage . '_' . $key, $language);
-            }
+                foreach ($languages as $keyLanguage => $language) {
+                    $queryBuilder
+                        ->orWhere(':l_' . $keyLanguage . '_' . $key . ' MEMBER OF p.languages')
+                        ->setParameter(':l_' . $keyLanguage . '_' . $key, $language);
+                }
 
-            $parodies = $repoParody->getEntityManager()->createQueryBuilder()
-                ->select('a')
-                ->from($repoParody->_entityName, 'a')->where('a.name like :name')
-                ->setParameter('name', $term)->getQuery()->getResult();
 
-            foreach ($parodies as $keyParody => $parody) {
-                $queryBuilder
-                    ->orWhere(':p_' . $keyParody . '_' . $key . ' MEMBER OF p.parodies')
-                    ->setParameter(':p_' . $keyParody . '_' . $key, $parody);
-            }
+                $parodies = $repoParody->getEntityManager()->createQueryBuilder()
+                    ->select('a')
+                    ->from($repoParody->_entityName, 'a')->where('a.name like :name')
+                    ->setParameter('name', $term)->getQuery()->getResult();
 
-            $authors = $repoAuthor->getEntityManager()->createQueryBuilder()
-                ->select('a')
-                ->from($repoAuthor->_entityName, 'a')->where('a.name like :name')
-                ->setParameter('name', $term)->getQuery()->getResult();
+                foreach ($parodies as $keyParody => $parody) {
+                    $queryBuilder
+                        ->orWhere(':p_' . $keyParody . '_' . $key . ' MEMBER OF p.parodies')
+                        ->setParameter(':p_' . $keyParody . '_' . $key, $parody);
+                }
 
-            foreach ($authors as $keyAuthor => $author) {
-                $queryBuilder
-                    ->orWhere(':a_' . $keyAuthor . '_' . $key . ' MEMBER OF p.authors')
-                    ->setParameter(':a_' . $keyAuthor . '_' . $key, $author);
+                $authors = $repoAuthor->getEntityManager()->createQueryBuilder()
+                    ->select('a')
+                    ->from($repoAuthor->_entityName, 'a')->where('a.name like :name')
+                    ->setParameter('name', $term)->getQuery()->getResult();
+
+                foreach ($authors as $keyAuthor => $author) {
+                    $queryBuilder
+                        ->orWhere(':a_' . $keyAuthor . '_' . $key . ' MEMBER OF p.authors')
+                        ->setParameter(':a_' . $keyAuthor . '_' . $key, $author);
+                }
             }
 
             $queryBuilder
