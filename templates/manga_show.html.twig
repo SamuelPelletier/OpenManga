@@ -25,7 +25,7 @@
             {% for tag in manga.tags %}
                 <span class="label-container">
                                     <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name, 's':true}) }}"
-                                       class="label label-default">
+                                       class="label label-default" data-umami-event="tag">
                                         {{ tag.name }}
                                         <i class="counter label ">{{ mangaRepository.countByTag(tag) }}</i>
                                     </a>
@@ -33,7 +33,7 @@
             {% endfor %}
         </div>
     {% endif %}
-    <p id="description-toggle">{{ 'manga.see_more'|trans }}</p>
+    <p id="description-toggle" data-umami-event="see-more">{{ 'manga.see_more'|trans }}</p>
     <div id="manga-description" class="manga-description">
         <p class="manga-metadata">
             <span class="metadata"><i
@@ -94,7 +94,8 @@
 
     </div>
     <div id="download-container">
-        <a class="btn-effect raise download" target="_blank" href="{{ url('download', {'id':manga.id}) }}"><i
+        <a class="btn-effect raise download" data-umami-event="download" target="_blank"
+           href="{{ url('download', {'id':manga.id}) }}"><i
                     class="fa fa-download "></i> {{ 'manga.download'|trans }}</a>
 
         {% if app.user is not null %}
@@ -131,7 +132,7 @@
             <h2>{{ 'manga.recommended'|trans }}</h2>
             <div class="manga-recommended-container">
                 {% for manga in mangas_recommended %}
-                    <article class="manga col-sm-3">
+                    <article class="manga col-sm-3" data-umami-event="recommended">
                         <div class="thumbnail-tag">
                             {% if not manga.tags.empty %}
                                 {% for tag in manga.tags|slice(0,5) %}
@@ -193,6 +194,7 @@
                     }
                 }
             }
+
 
 
 
