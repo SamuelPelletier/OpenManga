@@ -59,8 +59,12 @@ function addMangaBlock() {
         '        begin="0.3s" dur="0.6s" repeatCount="indefinite" />\n' +
         '    </rect>\n' +
         '  </svg></div>');
+    let searchKeyWord = '';
+    if (window.location.pathname.includes('/search')) {
+        searchKeyWord = '/search';
+    }
     $.ajax({
-        url: "/" + locale + "/page/" + pageCounter,
+        url: "/" + locale + searchKeyWord + "/page/" + pageCounter + window.location.search,
         method: "GET",
         success: function (data) {
             $('#main').append(data);

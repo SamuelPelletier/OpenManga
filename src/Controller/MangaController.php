@@ -163,6 +163,13 @@ class MangaController extends BaseController
             }
         }
 
+        if ($request->isXmlHttpRequest()) {
+            if (count($foundMangas->getQuery()->getArrayResult()) === 0) {
+                return $this->render('manga_ending.html.twig');
+            }
+            return $this->render('manga_index.html.twig', ['mangas' => $foundMangas]);
+        }
+
         return $this->render('search.html.twig', ['mangas' => $foundMangas]);
     }
 

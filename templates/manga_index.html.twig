@@ -4,16 +4,18 @@
             <a href="{{ url('manga', {id: manga.id}) }}">
                 <div class="image-container" itemprop="thumbnail">
                     <p class="manga-information">
-                        {% for language in manga.languages %}
-                            {% if language.code %}
-                                <span class="fi fi-{{ language.code }}"></span>
-                            {% endif %}
-                        {% endfor %}
+                        {% if manga.languages is defined %}
+                            {% for language in manga.languages %}
+                                {% if language.code %}
+                                    <span class="fi fi-{{ language.code }}"></span>
+                                {% endif %}
+                            {% endfor %}
+                        {% endif %}
                     <p class="manga-count-pages" itemprop="numberOfPages">
                         {{ manga.countPages }} <i class="fa-regular fa-images"></i>
                     </p>
                     <div class="thumbnail-tag">
-                        {% if not manga.tags.empty %}
+                        {% if manga.tags is defined and not manga.tags.empty %}
                             {% for tag in manga.tags|slice(0,5) %}
                                 <object>
                                     <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name, 's':true}) }}"
