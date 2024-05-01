@@ -18,6 +18,7 @@ use App\Entity\Tag;
 use App\Entity\Parody;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -30,6 +31,8 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
 use Symfony\Component\Finder\Finder;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Address;
 use WebPConvert\WebPConvert;
 
 /**
@@ -51,13 +54,15 @@ class ImportMangaCommand extends Command
 {
     private $em;
     private $logger;
+    private $mailer;
 
-    public function __construct(EntityManagerInterface $em, LoggerInterface $logger)
+    public function __construct(EntityManagerInterface $em, LoggerInterface $logger, MailerInterface $mailer)
     {
         parent::__construct();
 
         $this->em = $em;
         $this->logger = $logger;
+        $this->mailer = $mailer;
     }
 
     /**
@@ -305,6 +310,16 @@ class ImportMangaCommand extends Command
         );
 
         $result = curl_exec($curl);
+
+        if (str_starts_with($result, 'Your IP address has been temporarily banned')) {
+            $email = (new TemplatedEmail())
+                ->from(new Address($_ENV['MAILER_EMAIL'], $_ENV['APP_NAME']))
+                ->to($_ENV['MAILER_EMAIL'])
+                ->subject('Failed to get manga')
+                ->html('The proxy ' . $proxies[0] . ' failed to get manga !');
+
+            $this->mailer->send($email);
+        }
 
         curl_close($curl);
 
