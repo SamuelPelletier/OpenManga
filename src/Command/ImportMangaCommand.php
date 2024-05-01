@@ -75,7 +75,7 @@ class ImportMangaCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $url = $_ENV['API_SEARCH'];
-        $data = file_get_contents($url);
+        $data = $this->CallAPI('GET', $url);
         $data = strip_tags($data, "<a>");
         $d = preg_split("/<\/a>/", $data);
         $mangasLink = array();
@@ -195,7 +195,7 @@ class ImportMangaCommand extends Command
             $this->em->flush();
             $fileSystem = new Filesystem();
             $fileSystem->mkdir(dirname(__DIR__) . '/../public/media/' . $manga->getId(), 0700);
-            $data = file_get_contents($_ENV['API_MANGA_URL'] . $mangaId . '/' . $token);
+            $data = $this->CallAPI('GET', $_ENV['API_MANGA_URL'] . $mangaId . '/' . $token);
             $data = strip_tags($data, "<a>");
             $aTags = preg_split("/<\/a>/", $data);
             $maxPage = 0;
@@ -209,7 +209,7 @@ class ImportMangaCommand extends Command
             $i = 1;
             for ($page = 0; $page < ($maxPage + 1); $page++) {
                 if ($page !== 0) {
-                    $data = file_get_contents($_ENV['API_MANGA_URL'] . $mangaId . '/' . $token . '/?p=' . $page);
+                    $data = $this->CallAPI('GET', $_ENV['API_MANGA_URL'] . $mangaId . '/' . $token . '/?p=' . $page);
                     $data = strip_tags($data, "<a>");
                     $aTags = preg_split("/<\/a>/", $data);
                 }
@@ -218,7 +218,7 @@ class ImportMangaCommand extends Command
                         $aTag = preg_replace("/.*<a\s+href=\"/sm", "", $aTag);
                         $imageLink = preg_replace("/\".*/", "", $aTag);
                         if (strstr($aTag, $_ENV['API_IMAGE_URL']) != false) {
-                            $imageLinkContent = file_get_contents($imageLink);
+                            $imageLinkContent = $this->CallAPI('GET', $imageLink);
                             preg_match_all('@src="([^"]+)"@', $imageLinkContent, $match);
                             $src = array_pop($match);
                             if (strstr($src[5], '509.gif') != false) {
@@ -286,8 +286,18 @@ class ImportMangaCommand extends Command
                 }
         }
 
+        // Proxy part
+        $proxies = explode(',', $_ENV['PROXY_URLS']);
+        shuffle($proxies);
+        curl_setopt($curl, CURLOPT_PROXY, $proxies[0]);
+        curl_setopt($curl, CURLOPT_PROXYPORT, 10001);
+        curl_setopt($curl, CURLOPT_PROXYUSERPWD, $_ENV['PROXY_AUTH']);
+        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
+        curl_setopt($curl, CURLOPT_HEADER, false);
+
         curl_setopt($curl, CURLOPT_URL, $url);
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
         curl_setopt($curl, CURLOPT_HTTPHEADER, array(
                 'Content-Type: application/json',
                 'Content-Length: ' . strlen($data)
