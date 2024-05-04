@@ -42,6 +42,16 @@ Import mangas from a secret source
 
 Launch every command necessary to install OpenManga.
 
+<br>
+
+``php bin/console messenger:consume``
+
+Start the translation worker. it will automaticaly add the UI to allow the user to translate (if he has an account). 
+
+``php bin/console messenger:stats``
+
+To see the amount of images in the queue waiting to be translated by a worker.
+
 Contributing
 ------------
 

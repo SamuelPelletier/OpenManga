@@ -32,6 +32,8 @@ use Symfony\Component\HttpKernel\KernelInterface;
 use App\Message\ImageTranslation;
 use Symfony\Component\Messenger\MessageBusInterface;
 use Symfony\Component\Messenger\Stamp\HandledStamp;
+use App\Service\WorkerService;
+use Symfony\Component\Dotenv\Dotenv;
 
 
 /**
@@ -102,8 +104,10 @@ class MangaController extends BaseController
         MangaRepository        $mangaRepository,
         Request                $request,
         MangaService           $mangaService,
-        EntityManagerInterface $entityManager
-    ): Response
+        EntityManagerInterface $entityManager,
+        WorkerService $workerService
+
+        ): Response
     {
         /**
          * @var User $user
@@ -142,6 +146,12 @@ class MangaController extends BaseController
             $translations = is_array($translations) ? $translations : array();
         }
 
+        $workerService->startWorkerIfNeeded();
+                
+        // Check if translations are enabled and worker is running
+        $translationsEnabled = $_ENV['TRANSLATION_ENABLED'] === 'true';
+        $workerIsRunning = $workerService->isWorkerRunning();
+
         // User is logged in
         if ($this->isGranted('ROLE_USER')) {
             $user->addLastMangasRead($manga);
@@ -161,6 +171,8 @@ class MangaController extends BaseController
                 'mangaRepository' => $mangaRepository,
                 'mangas_recommended' => $mangasRecommended,
                 'translations' => $translations,
+                'translationsEnabled' => $translationsEnabled,
+                'workerIsRunning' => $workerIsRunning,
             ]);
     }
 
@@ -255,7 +267,7 @@ class MangaController extends BaseController
     }
 
     /**
-     * @Route("/translate/{id}", methods={"POST"}, name="translate")
+     * @Route("/translate/{id}", methods={"GET"}, name="translate")
      */
     public function mangaTranslate(
         Manga $manga,
