@@ -1,5 +1,5 @@
 <p align="center">
-    <img src="banner_github.png" style="height:100px">
+    <img src="banner_github.png">
 </p>
 
 OpenManga is a **PHP Symfony 6** project for store and download mangas.
