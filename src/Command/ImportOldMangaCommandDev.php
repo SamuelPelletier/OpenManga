@@ -30,7 +30,7 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
     name: 'app:import-old-manga',
     description: 'Import old manga',
 )]
-class ImportOldMangaCommand extends Command
+class ImportOldMangaCommandDev extends Command
 {
     private $em;
     private $logger;
