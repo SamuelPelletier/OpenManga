@@ -639,15 +639,6 @@ li:last-child .page {
     flex-wrap: wrap;
 }
 
-.lg-next,
-.lg-prev {
-    font-size: 80px;
-}
-/*
-.lg-sub-html {
-    display: none;
-}
-*/
 
 /** Below CSS is completely optional **/
 .gallery-item {
@@ -776,6 +767,7 @@ padding: 5px;
 #description-toggle {
     margin-bottom: 10px;
 }
+
 /*
 .lg-sub-html .caption-fullscreen-style {
     display: inline-block;
@@ -833,7 +825,6 @@ padding: 5px;
 
 }
 .lg-sub-html {
-
     display: block;
     width: auto;
     height: auto;

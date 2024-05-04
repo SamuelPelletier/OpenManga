@@ -15,7 +15,7 @@ import lgFullscreen from 'lightgallery/plugins/fullscreen'
 import lgZoom from 'lightgallery/plugins/zoom'
 
 $(document).ready(function () {
-    
+    /*
     const descriptionToggle = document.getElementById('description-toggle');
     const mangaDescription = document.getElementById('manga-description');
 
@@ -28,7 +28,8 @@ $(document).ready(function () {
             mangaDescription.style.display = 'none';
         }
     });
-
+    */
+   
     $("#translation-button").click(function() {
     // Disable the button to prevent multiple clicks
     $(this).prop("disabled", true);
