@@ -2,7 +2,6 @@
 
 namespace App\Command;
 
-<<<<<<< HEAD
 use App\Entity\Manga;
 use App\Entity\Language;
 use App\Entity\Author;
@@ -26,23 +25,11 @@ use Symfony\Component\Finder\Finder;
 use WebPConvert\WebPConvert;
 use Symfony\Component\Cache\Adapter\FilesystemAdapter;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
-=======
-use Doctrine\ORM\EntityManagerInterface;
-use Psr\Log\LoggerInterface;
-use Symfony\Component\Console\Attribute\AsCommand;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Helper\ProgressBar;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\HttpKernel\KernelInterface;
-use Symfony\Component\Mailer\MailerInterface;
->>>>>>> master
 
 #[AsCommand(
     name: 'app:import-old-manga',
     description: 'Import old manga',
 )]
-<<<<<<< HEAD
 class ImportOldMangaCommand extends Command
 {
     private $em;
@@ -55,16 +42,6 @@ class ImportOldMangaCommand extends Command
         $this->em = $em;
         $this->logger = $logger;
         $this->cache = new FilesystemAdapter();
-=======
-class ImportOldMangaCommand extends AbstractImportMangaCommand
-{
-    private $projectDir;
-
-    public function __construct(EntityManagerInterface $em, LoggerInterface $logger, MailerInterface $mailer, KernelInterface $kernel)
-    {
-        parent::__construct($em, $logger, $mailer);
-        $this->projectDir = $kernel->getProjectDir();
->>>>>>> master
     }
 
     protected function configure(): void
@@ -74,7 +51,6 @@ class ImportOldMangaCommand extends AbstractImportMangaCommand
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-<<<<<<< HEAD
         //user output command line
         $io = new SymfonyStyle($input, $output);
 
@@ -188,41 +164,11 @@ class ImportOldMangaCommand extends AbstractImportMangaCommand
         }
 
         $pattern = $_ENV['API_PATERN'];
-=======
-        // Read the existing content of the file
-        $filename = 'next_page_to_scrap.txt';
-        $nextPageNumber = intval(file_get_contents($this->projectDir . '/var/' . $filename));
-        list($nextPage, $linkList) = $this->populateLinkList($nextPageNumber);
-        $progress = new ProgressBar($output, count($linkList));
-        for ($i = count($linkList); $i > 0; $i--) {
-            $this->downloadManga($linkList[$i - 1]);
-            $progress->advance();
-            break;
-        }
-        $progress->finish();
-
-        // Write the updated number back to the file
-        $file = fopen($this->projectDir . '/var/' . $filename, 'w');
-        fwrite($file, $nextPage);
-        fclose($file);
-        return Command::SUCCESS;
-    }
-
-    private function populateLinkList($nextPageNumber)
-    {
-
-        $url = $_ENV['API_OLD_MANGA_SEARCH'] . $nextPageNumber;
-
-        // Fetch the webpage content
-        $html = $this->callAPI('GET', $url);
-        $pattern = $_ENV['API_PATTERN'];
->>>>>>> master
 
         preg_match_all($pattern, $html, $matches, PREG_SET_ORDER);
 
         if (!empty($matches)) {
             //get next page number
-<<<<<<< HEAD
             $nextNmber = max(array_column($matches, 2));
             foreach ($matches as $match) {
                 $links[] = $match[1];
@@ -737,14 +683,3 @@ private function downloadManga($link)
         
     }
 }
-=======
-            $nextPage = max(array_column($matches, 2));
-            foreach ($matches as $match) {
-                $links[] = $match[1];
-            }
-
-        }
-        return array($nextPage, $links);
-    }
-}
->>>>>>> master
