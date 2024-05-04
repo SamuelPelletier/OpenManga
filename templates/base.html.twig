@@ -8,10 +8,6 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <meta name="8d4086d5a68cccff50b8627952e6e0a1a987e857" content="8d4086d5a68cccff50b8627952e6e0a1a987e857"/>
-    {#
-    <meta name="trafficjunky-site-verification" content="{{ app.request.server.get('TRAFFICJUNKY_TAG') }}"/>
-    #}
     <title>{% apply spaceless %}{{ app.request.server.get('APP_NAME') }} - {% block title %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}{% endapply %}</title>
     <meta name="description"
           content="{% apply spaceless %}{% block meta_description %}{{ app.request.server.get('APP_NAME') ~ 'meta.description'|trans({"%tags%":app.request.server.get('APP_KEYWORD') }) }}{% endblock %}{% endapply %}"/>
@@ -33,6 +29,7 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
             <div class="container-fluid">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
+                    <img class="navbar-brand-logo" src="{{ app.request.getSchemeAndHttpHost() ~ asset('logo.webp') }}">
                     <a class="navbar-brand" href="{{ url('index') }}">
                         {{ app.request.server.get('APP_NAME') }}
                     </a>
@@ -56,6 +53,7 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                        id="search_field"
                                        placeholder="{{ 'post.search_for'|trans }}"
                                        autocomplete="off"
+                                       minlength="3"
                                        autofocus
                                        value="{{ app.request.query.get('q') }}"
                                 >
@@ -63,7 +61,7 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                 {% include 'tag_search.html.twig' %}
 
                             </div>
-                            <!--{# 
+                            <!--{#
                             <div class="switch-div">
                                 <label class="Switch o-pen">
                                     <input type="checkbox" name="sort" class="switch-input a-neonToggle" id="toggle"
@@ -80,9 +78,9 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                     <ul class="nav navbar-nav navbar-right">
                         {% block header_navigation_links %}
                             <li>
-                                <a href="{{ app.request.server.get('SHOP_LINK') }}"
-                                   rel="nofollow" target="_blank">
-                                    <i class="fas fa-fire" aria-hidden="true" {% if app.session.get('sort') %}style="background-color:grey"{% endif %}></i> {{ 'search.sort'|trans }}
+                                <a class="trending" href="{{ url('index_trending') }}">
+                                    <i class="fas fa-fire" aria-hidden="true"
+                                       {% if app.session.get('sort') %}style="background-color:grey"{% endif %}></i> {{ 'search.sort'|trans }}
                                 </a>
                             </li>
 
@@ -112,7 +110,7 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                    href="{{ url('about') }}">
                                     <i class="fa fa-info-circle" aria-hidden="true"></i> {{ 'menu.about'|trans }}
                                 </a>
-                            </li>#}-->
+                            </li> #}-->
                             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                                 <li>
                                     <a class="login {% if app.request.uri == url('user_index') %}active{% endif %}"
@@ -144,7 +142,6 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                         {% else %}aria-checked="false"{% endif %} role="menuitem">
                                         <a href="{{ url(app.request.get('_route', 'index'), app.request.get('_route_params', [])|merge({_locale: locale.code})) }}">
                                             <span class="fi fi-{{ locale.code }}"></span>
-                                                
                                             {{ locale.name|capitalize }}
                                         </a>
                                     </li>
@@ -169,5 +166,7 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
 {% block javascripts %}
     {{ encore_entry_script_tags('js/app') }}
 {% endblock %}
+<script defer src="{{ app.request.server.get('UMAMI_LINK') }}"
+        data-website-id="{{ app.request.server.get('UMAMI_ID') }}"></script>
 </body>
 </html>

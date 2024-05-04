@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="es" datatype="plaintext" original="file.ext">
         <body>
@@ -57,7 +57,7 @@
             </trans-unit>
             <trans-unit id="menu.login">
                 <source>menu.login</source>
-                <target>Identifícate</target>
+                <target>Registar</target>
             </trans-unit>
             <trans-unit id="menu.user">
                 <source>menu.user</source>
@@ -91,7 +91,7 @@
 
             <trans-unit id="manga.language">
                 <source>manga.language</source>
-                <target>Languaje</target>
+                <target>Idioma</target>
             </trans-unit>
             <trans-unit id="manga.parody">
                 <source>manga.parody</source>
@@ -108,6 +108,10 @@
             <trans-unit id="manga.count_views">
                 <source>manga.count_views</source>
                 <target>Número de vistas</target>
+            </trans-unit>
+            <trans-unit id="manga.see_more">
+                <source>manga.see_more</source>
+                <target>Ver más</target>
             </trans-unit>
             <trans-unit id="manga.download">
                 <source>manga.download</source>
@@ -169,7 +173,7 @@
             </trans-unit>
             <trans-unit id="meta.description.manga">
                 <source>meta.description.manga</source>
-                <target>Aquí encontrarás uno de los mejores manga : </target>
+                <target>Leer y descargar </target>
             </trans-unit>
             <trans-unit id="meta.description.with">
                 <source>meta.description.with</source>
@@ -186,7 +190,7 @@
             </trans-unit>
             <trans-unit id="login.form.signup.tab">
                 <source>login.form.signup.tab</source>
-                <target>Regístrate</target>
+                <target>Regístrarte</target>
             </trans-unit>
             <trans-unit id="login.form.login.title">
                 <source>login.form.login.title</source>
@@ -234,7 +238,7 @@
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.second_password">
                 <source>login.form.signup.form_type.second_password</source>
-                <target>Repite la contraseña</target>
+                <target>Repetir la contraseña</target>
             </trans-unit>
             <trans-unit id="login.form.signup.form_type.password.must_match">
                 <source>login.form.signup.form_type.password.must_match</source>
@@ -322,11 +326,11 @@
             </trans-unit>
             <trans-unit id="account.manga_read">
                 <source>account.manga_read</source>
-                <target>Mangas leyó</target>
+                <target>Mangas leídos</target>
             </trans-unit>
             <trans-unit id="account.manga_download">
                 <source>account.manga_download</source>
-                <target>Mangas Descargado</target>
+                <target>Mangas Descargados</target>
             </trans-unit>
             <trans-unit id="account.last_manga_read">
                 <source>account.last_manga_read</source>
@@ -359,11 +363,11 @@
 
             <trans-unit id="edit_profile.title">
                 <source>edit_profile.title</source>
-                <target>Edite su perfil</target>
+                <target>Editar perfil</target>
             </trans-unit>
             <trans-unit id="edit_profile.link.back_account">
                 <source>edit_profile.link.back_account</source>
-                <target>Regresar a su cuenta</target>
+                <target>Regresar a la cuenta</target>
             </trans-unit>
             <trans-unit id="edit_profile.link.change_password">
                 <source>edit_profile.link.change_password</source>
@@ -371,7 +375,7 @@
             </trans-unit>
             <trans-unit id="edit_profile.form.text">
                 <source>edit_profile.form.text</source>
-                <target>Se le enviará cualquier correo de promoción, pero necesitamos su correo electrónico si olvidó su contraseña.</target>
+                <target>Necesitaremos tu e-mail en caso de que olvides la contraseña. No se enviará ningún correo publicitario.</target>
             </trans-unit>
             <trans-unit id="edit_profile.form.button">
                 <source>edit_profile.form.button</source>
@@ -424,9 +428,9 @@
                 <source>email.text1</source>
                 <target>Has perdido tu contraseña ?
 
-                No hay problema para restablecer su contraseña, haga clic en el botón a continuación y elija una nueva.
+No hay problema para restablecer su contraseña, haga clic en el botón a continuación y elija una nueva.
 
-                Este enlace caducará en 1 hora (s).</target>
+Este enlace caducará en 1 hora (s).</target>
             </trans-unit>
             <trans-unit id="email.button">
                 <source>email.button</source>
@@ -452,31 +456,31 @@
             <trans-unit id="about.contact.text2.soft">
                 <source>about.contact.text2.soft</source>
                 <target>No recopilamos ninguna información sobre nuestros clientes y no utilizamos Google Analytics.
-                        Puedes ver y descargar manga gratis y sin límite.
-                        Una aplicación móvil le permite una mayor movilidad y facilidad de acceso a nuestro sitio web.
-                        Para cualquier información adicional, no dude en contactarnos por correo electrónico.
+Puedes ver y descargar manga gratis y sin límite.
+Una aplicación móvil le permite una mayor movilidad y facilidad de acceso a nuestro sitio web.
+Para cualquier información adicional, no dude en contactarnos por correo electrónico.
                 </target>
             </trans-unit>
             <trans-unit id="about.contact.text2.hard">
                 <source>about.contact.text2.hard</source>
                 <target>No recopilamos ninguna información sobre nuestros clientes y no utilizamos Google Analytics.
-                        Puedes ver y descargar manga gratis y sin límite.
-                        Una aplicación móvil le permite una mayor movilidad y facilidad de acceso a nuestro sitio web.
-                        Para cualquier información adicional, no dude en contactarnos por correo electrónico.
+Puedes ver y descargar manga gratis y sin límite.
+Una aplicación móvil le permite una mayor movilidad y facilidad de acceso a nuestro sitio web.
+Para cualquier información adicional, no dude en contactarnos por correo electrónico.
 
 
-                        ¿Qué son los hentai manga?
+¿Qué son los hentai manga?
 
-                        Los hentai son manga para fines pornográficos, reúne un conjunto de géneros que puedes encontrar en nuestro sitio, como paizuri, teitoku o netorare.
-                        Son originarios de Japón principalmente, también hay versiones animadas de estos manga.
-                        En 2018, hentai fue la segunda categoría más buscada en el sitio pornhub.
-                        También hay más de 1.300 hentai de anime en la lista de My Anime List.
+Los hentai son manga para fines pornográficos, reúne un conjunto de géneros que puedes encontrar en nuestro sitio, como paizuri, teitoku o netorare.
+Son originarios de Japón principalmente, también hay versiones animadas de estos manga.
+En 2018, hentai fue la segunda categoría más buscada en el sitio pornhub.
+También hay más de 1.300 hentai de anime en la lista de My Anime List.
 
 
-                        ¿Qué es el manga doujin?
+¿Qué es el manga doujin?
 
-                        Los dōjin o doujin son manga hecha por aficionados que a menudo toman manga famoso como One Piece, Naruto o Fairy Tail.
-                        Pero no son exclusivamente manga, también hay música, novelas o videojuegos.
+Los dōjin o doujin son manga hecha por aficionados que a menudo toman manga famoso como One Piece, Naruto o Fairy Tail.
+Pero no son exclusivamente manga, también hay música, novelas o videojuegos.
                 </target>
             </trans-unit>
         </body>

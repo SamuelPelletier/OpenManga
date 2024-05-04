@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="fr" datatype="plaintext" original="file.ext">
         <body>
@@ -109,6 +109,10 @@
                 <source>manga.count_views</source>
                 <target>Nombre de vues</target>
             </trans-unit>
+            <trans-unit id="manga.see_more">
+                <source>manga.see_more</source>
+                <target>Voir plus</target>
+            </trans-unit>
             <trans-unit id="manga.download">
                 <source>manga.download</source>
                 <target>Télécharger</target>
@@ -169,7 +173,7 @@
             </trans-unit>
             <trans-unit id="meta.description.manga">
                 <source>meta.description.manga</source>
-                <target>Vous trouverez ici un des meilleurs manga : </target>
+                <target>Lisez et téléchargez </target>
             </trans-unit>
             <trans-unit id="meta.description.with">
                 <source>meta.description.with</source>
@@ -424,9 +428,9 @@
                 <source>email.text1</source>
                 <target>Vous avez perdu votre mot de passe ?
 
-                Pas de problème pour le réinitialiser, cliquez sur le bouton en dessous et choisissez en un nouveau.
+Pas de problème pour le réinitialiser, cliquez sur le bouton en dessous et choisissez en un nouveau.
 
-                Ce lien expire dans %hour% heure(s).</target>
+Ce lien expire dans %hour% heure(s).</target>
             </trans-unit>
             <trans-unit id="email.button">
                 <source>email.button</source>
@@ -452,31 +456,31 @@
             <trans-unit id="about.contact.text2.soft">
                 <source>about.contact.text2.soft</source>
                 <target>Nous ne collectons aucune information sur nos clients et nous n'utilisons pas Google Analytics.
-                        Vous pouvez visionner et télécharger des mangas gratuitement et sans limite.
-                        Une application mobile vous permet une plus grande mobilité et une facilité d'accès à notre site web.
-                        Pour toute information supplémentaire n'hésitez pas à nous contacter par mail.
+Vous pouvez visionner et télécharger des mangas gratuitement et sans limite.
+Une application mobile vous permet une plus grande mobilité et une facilité d'accès à notre site web.
+Pour toute information supplémentaire n'hésitez pas à nous contacter par mail.
                 </target>
             </trans-unit>
             <trans-unit id="about.contact.text2.hard">
                 <source>about.contact.text2.hard</source>
                 <target>Nous ne collectons aucune information sur nos clients et nous n'utilisons pas Google Analytics.
-                        Vous pouvez visionner et télécharger des mangas gratuitement et sans limite.
-                        Une application mobile vous permet une plus grande mobilité et une facilité d'accès à notre site web.
-                        Pour toute information supplémentaire n'hésitez pas à nous contacter par mail.
+Vous pouvez visionner et télécharger des mangas gratuitement et sans limite.
+Une application mobile vous permet une plus grande mobilité et une facilité d'accès à notre site web.
+Pour toute information supplémentaire n'hésitez pas à nous contacter par mail.
 
 
-                        Qu'est ce que les mangas hentai ?
+Qu'est ce que les mangas hentai ?
 
-                        Les hentai sont des mangas à titre pornographique, il rassemble un ensemble de genre que vous pouvez retrouver sur notre site tel que paizuri,teitoku ou encore netorare.
-                        Ils sont originaire du Japon principalement, il existe également des versions animées de ces mangas.
-                        En 2018 le hentai était la seconde catégorie la plus recherché sur le site pornhub.
-                        Il existe également plus de 1300 hentai anime répertorié sur My Anime List.
+Les hentai sont des mangas à titre pornographique, il rassemble un ensemble de genre que vous pouvez retrouver sur notre site tel que paizuri,teitoku ou encore netorare.
+Ils sont originaire du Japon principalement, il existe également des versions animées de ces mangas.
+En 2018 le hentai était la seconde catégorie la plus recherché sur le site pornhub.
+Il existe également plus de 1300 hentai anime répertorié sur My Anime List.
 
 
-                        Qu'est ce que les mangas doujin ?
+Qu'est ce que les mangas doujin ?
 
-                        Les dōjin ou doujin sont des mangas fait par des amateurs qui reprenne souvent des mangas célébres tel que One Piece, Naruto ou Fairy Tail.
-                        Mais ils ne sont pas exlusivement des mangas, il existe aussi des musiques, des romans ou des jeux vidéos.
+Les dōjin ou doujin sont des mangas fait par des amateurs qui reprenne souvent des mangas célébres tel que One Piece, Naruto ou Fairy Tail.
+Mais ils ne sont pas exlusivement des mangas, il existe aussi des musiques, des romans ou des jeux vidéos.
                 </target>
             </trans-unit>
         </body>

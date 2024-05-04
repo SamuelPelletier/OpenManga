@@ -28,23 +28,22 @@ class SecurityController extends AbstractController
      * @Route("/register", name="app_register")
      */
     public function login(
-        AuthenticationUtils $authenticationUtils,
-        Request $request,
+        AuthenticationUtils         $authenticationUtils,
+        Request                     $request,
         UserPasswordHasherInterface $userPasswordHasher,
-        EntityManagerInterface $entityManager,
-        UserAuthenticatorInterface $userAuthenticator,
-        AuthenticatorInterface $authenticator
-    ): Response {
-         if ($this->getUser()) {
-             return $this->redirectToRoute('user_index');
-         }
+        EntityManagerInterface      $entityManager,
+        UserAuthenticatorInterface  $userAuthenticator,
+        AuthenticatorInterface      $authenticator
+    ): Response
+    {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('user_index');
+        }
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
-
-        $this->saveTargetPath($request->getSession(), 'main', $this->generateUrl('user_index'));
 
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
@@ -63,7 +62,7 @@ class SecurityController extends AbstractController
             $entityManager->flush();
             // do anything else you need here, like send an email
 
-           $userAuthenticator->authenticateUser($user, $authenticator, $request);
+            $userAuthenticator->authenticateUser($user, $authenticator, $request);
 
             return $this->redirectToRoute('user_index');
         }

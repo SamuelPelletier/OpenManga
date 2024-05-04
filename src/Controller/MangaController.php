@@ -59,6 +59,7 @@ class MangaController extends BaseController
             $isSortByViews = $request->getSession()->get('sort');
         }
         $latestMangas = $mangas->findLatest($page, $isSortByViews);
+    
         
         if ($request->isXmlHttpRequest()) {
             if (count($latestMangas->getQuery()->getArrayResult()) === 0) {
@@ -68,6 +69,50 @@ class MangaController extends BaseController
             return $this->render('manga_index.html.twig', ['mangas' => $latestMangas]);
         }
         return $this->render('index.html.twig',  ['mangas' => $latestMangas]);
+    }
+
+    /**
+     * @Route("/trending", defaults={"page": "1"}, methods={"GET"}, name="index_trending")
+     * @Route("/page/{page<[1-9]\d*>}", methods={"GET"}, name="index_trending_paginated")
+     * @Cache(smaxage="10")
+     *
+     */
+    public function trending(
+        int             $page,
+        Request         $request,
+        MangaRepository $mangas
+    ): Response
+    {
+        $latestMangas = $mangas->findTrending($page);
+        if ($request->isXmlHttpRequest()) {
+            if (count($latestMangas->getQuery()->getArrayResult()) === 0) {
+                return $this->render('manga_ending.html.twig');
+            }
+            return $this->render('manga_index.html.twig', ['mangas' => $latestMangas]);
+        }
+        return $this->render('index.html.twig', ['mangas' => $latestMangas]);
+    }
+
+    /**
+     * @Route("/trending", defaults={"page": "1"}, methods={"GET"}, name="index_trending")
+     * @Route("/page/{page<[1-9]\d*>}", methods={"GET"}, name="index_trending_paginated")
+     * @Cache(smaxage="10")
+     *
+     */
+    public function trending(
+        int             $page,
+        Request         $request,
+        MangaRepository $mangas
+    ): Response
+    {
+        $latestMangas = $mangas->findTrending($page);
+        if ($request->isXmlHttpRequest()) {
+            if (count($latestMangas->getQuery()->getArrayResult()) === 0) {
+                return $this->render('manga_ending.html.twig');
+            }
+            return $this->render('manga_index.html.twig', ['mangas' => $latestMangas]);
+        }
+        return $this->render('index.html.twig', ['mangas' => $latestMangas]);
     }
 
     /**
@@ -88,13 +133,8 @@ class MangaController extends BaseController
         $user = $this->getUser();
 
         $images = array();
-        if (is_dir('media/' . $manga->getId() . '/')) {
-            $finder = new Finder();
-            $finder->files()->in('media/' . $manga->getId() . '/');
-            foreach ($finder as $file) {
-                // dumps the relative path to the file
-                array_push($images, $file->getRelativePathname());
-            }
+        for ($i = 1; $i < $manga->getCountPages(); $i++) {
+            $images[] = str_pad($i, 3, 0, STR_PAD_LEFT) . '.jpg';
         }
 
         $mangaView = explode(',', $request->getSession()->get('manga_view', ''));
@@ -142,7 +182,7 @@ class MangaController extends BaseController
                 'images' => $images,
                 'mangaRepository' => $mangaRepository,
                 'mangas_recommended' => $mangasRecommended,
-                'translations' => $translations,
+                'translations' => $translations,,
             ]);
     }
 
@@ -171,6 +211,13 @@ class MangaController extends BaseController
             }
         }
 
+        if ($request->isXmlHttpRequest()) {
+            if (count($foundMangas->getQuery()->getArrayResult()) === 0) {
+                return $this->render('manga_ending.html.twig');
+            }
+            return $this->render('manga_index.html.twig', ['mangas' => $foundMangas]);
+        }
+
         return $this->render('search.html.twig', ['mangas' => $foundMangas]);
     }
 
@@ -188,28 +235,33 @@ class MangaController extends BaseController
         $user = $this->getUser();
 
         if (is_dir('media/' . $manga->getId() . '/')) {
+
+            $zipFolder = 'media/zip/';
+
             $zipName = htmlspecialchars_decode($manga->getTitle(), ENT_QUOTES) . ".zip";
             $zipName = str_replace(['|', '/', '\\'], '', $zipName);
-            $files = array();
-            $finder = new Finder();
-            $finder->files()->in('media/' . $manga->getId() . '/');
-            foreach ($finder as $file) {
-                if (preg_match("/\.jpg$/", $file->getFilename())) {
-                    array_push($files, $file);
+            if (!file_exists($zipFolder . $zipName)) {
+                $files = array();
+                $finder = new Finder();
+                $finder->files()->in('media/' . $manga->getId() . '/');
+                foreach ($finder as $file) {
+                    if (preg_match("/\.jpg$/", $file->getFilename())) {
+                        array_push($files, $file);
+                    }
                 }
+
+                $zip = new \ZipArchive();
+                $zip->open($zipFolder . $zipName, \ZipArchive::CREATE);
+                foreach ($files as $f) {
+                    $zip->addFromString(basename($f), file_get_contents($f));
+                }
+                $zip->close();
             }
 
-            $zip = new \ZipArchive();
-            $zip->open($zipName, \ZipArchive::CREATE);
-            foreach ($files as $f) {
-                $zip->addFromString(basename($f), file_get_contents($f));
-            }
-            $zip->close();
-            $response = new BinaryFileResponse($zipName);
+            $response = new BinaryFileResponse($zipFolder . $zipName);
             $response->headers->set('Content-Type', 'application/zip');
             $response->headers->set('Content-Disposition', 'attachment;filename="' . $zipName . '"');
-            $response->headers->set('Content-length', filesize($zipName));
-            $response->deleteFileAfterSend(true);
+            $response->headers->set('Content-length', filesize($zipFolder . $zipName));
 
             if ($user) {
                 $user->incrementCountMangasDownload();

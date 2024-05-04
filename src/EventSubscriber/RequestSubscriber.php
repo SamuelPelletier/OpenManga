@@ -1,17 +1,18 @@
 <?php
 
-namespace App\EventListener;
+namespace App\EventSubscriber;
 
 use Doctrine\ORM\EntityManagerInterface;
+use JetBrains\PhpStorm\NoReturn;
 use Psr\Log\LoggerInterface;
-use Symfony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
-class RequestListener
+class RequestSubscriber implements EventSubscriberInterface
 {
     protected $router;
     protected $logger;
@@ -20,12 +21,13 @@ class RequestListener
     protected $authorizationChecker;
 
     public function __construct(
-        UrlGeneratorInterface $router,
-        LoggerInterface $logger,
-        EntityManagerInterface $entityManager,
-        TokenStorageInterface $tokenStorage,
+        UrlGeneratorInterface         $router,
+        LoggerInterface               $logger,
+        EntityManagerInterface        $entityManager,
+        TokenStorageInterface         $tokenStorage,
         AuthorizationCheckerInterface $authorizationChecker
-    ) {
+    )
+    {
         $this->router = $router;
         $this->logger = $logger;
         $this->entityManager = $entityManager;
@@ -33,7 +35,14 @@ class RequestListener
         $this->authorizationChecker = $authorizationChecker;
     }
 
-    public function onKernelRequest(RequestEvent $event)
+    public static function getSubscribedEvents()
+    {
+        return [
+            RequestEvent::class => 'onKernelRequest'
+        ];
+    }
+
+    #[NoReturn] public function onKernelRequest(RequestEvent $event): void
     {
         if (strstr($event->getRequest()->getPathInfo(), "disclaimer")) {
             return;

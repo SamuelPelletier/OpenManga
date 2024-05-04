@@ -1,4 +1,8 @@
-{% set page = mangas.query.firstResult/mangas.query.maxResults+1 %}
+{% if mangas.query.maxResults %}
+    {% set page = mangas.query.firstResult/mangas.query.maxResults+1 %}
+{% else %}
+    {% set page = 1 %}
+{% endif %}
 {% set maxPage = ((mangas.count/constant('App\\Entity\\Manga::NUM_ITEMS'))|round(0,'ceil'))?:1 %}
 {% set route_name =  'index_paginated' %}
 {% if app.request.query.get('q') != null %}
@@ -14,7 +18,9 @@
 {% endif %}
 <ul class="pagination">
     {% if page > 1 %}
-        <li><a href="{{ url(route_name,{'page':page-1}|merge(app.request.query.all)) }}">Previous</a></li>
+        <li>
+            <a href="{{ url(route_name,{'page':page-1}|merge(app.request.query.all)) }}">{{ 'manga.paginator.previous'|trans }}</a>
+        </li>
     {% else %}
         <li class="disabled"><a href="#">{{ 'manga.paginator.previous'|trans }}</a></li>
     {% endif %}
@@ -40,7 +46,9 @@
     {% endif %}
 
     {% if page < maxPage %}
-        <li><a href="{{ url(route_name,{'page':page+1}|merge(app.request.query.all)) }}">Next</a></li>
+        <li>
+            <a href="{{ url(route_name,{'page':page+1}|merge(app.request.query.all)) }}">{{ 'manga.paginator.next'|trans }}</a>
+        </li>
     {% else %}
         <li class="disabled"><a href="#">{{ 'manga.paginator.next'|trans }}</a></li>
     {% endif %}

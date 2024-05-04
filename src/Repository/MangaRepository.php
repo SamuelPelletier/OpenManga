@@ -16,6 +16,8 @@ use App\Entity\Tag;
 use App\Entity\Author;
 use App\Entity\Language;
 use App\Entity\Parody;
+use DateTime;
+use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
@@ -37,13 +39,30 @@ class MangaRepository extends ServiceEntityRepository
 
     public function findLatest(int $page = 1, bool $isSortByViews = false): Paginator
     {
-        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder = $this->createQueryBuilder('p')->where('p.publishedAt < :five_minutes_ago')
+            ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"));
 
         if ($isSortByViews) {
             $queryBuilder->orderBy('p.countViews', 'DESC');
         } else {
             $queryBuilder->orderBy('p.publishedAt', 'DESC');
         }
+
+        return $this->createPaginator($queryBuilder->getQuery(), $page);
+    }
+
+    public function findTrending(int $page = 1): Paginator
+    {
+        $queryBuilder = $this->createQueryBuilder('p');
+
+        $queryBuilder->addOrderBy('p.countViews', 'DESC');
+
+        $now = new DateTimeImmutable();
+        $thirtyDaysAgo = $now->sub(new \DateInterval("P30D"));
+        $queryBuilder->where('p.publishedAt > :thirty_days_ago')
+            ->setParameter('thirty_days_ago', $thirtyDaysAgo->format('Y-m-d'))
+            ->andWhere('p.publishedAt < :five_minutes_ago')
+            ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"));
 
         return $this->createPaginator($queryBuilder->getQuery(), $page);
     }
@@ -71,8 +90,9 @@ class MangaRepository extends ServiceEntityRepository
         $query = $this->sanitizeSearchQuery($rawQuery);
         $searchTerms = $this->extractSearchTerms($query);
 
-        if (0 === \count($searchTerms)) {
-            return [];
+        // Min 3 caracteres to search
+        if (strlen($query) < 3) {
+            return $this->findLatest();
         }
 
         $em = $this->getEntityManager();
@@ -93,48 +113,51 @@ class MangaRepository extends ServiceEntityRepository
                 $term = '%' . $term . '%';
             }
 
-            $tags = $repoTag->getEntityManager()->createQueryBuilder()
-                ->select('a')
-                ->from($repoTag->_entityName, 'a')->where('a.name like :name')
-                ->setParameter('name', $term)->getQuery()->getResult();
+            if ($isStrict) {
+                $tags = $repoTag->getEntityManager()->createQueryBuilder()
+                    ->select('a')
+                    ->from($repoTag->_entityName, 'a')->where('a.name like :name')
+                    ->setParameter('name', $term)->getQuery()->getResult();
 
-            foreach ($tags as $keyTag => $tag) {
-                $queryBuilder
-                    ->orWhere(':ta_' . $keyTag . '_' . $key . ' MEMBER OF p.tags')
-                    ->setParameter('ta_' . $keyTag . '_' . $key, $tag);
-            }
+                foreach ($tags as $keyTag => $tag) {
+                    $queryBuilder
+                        ->orWhere(':ta_' . $keyTag . '_' . $key . ' MEMBER OF p.tags')
+                        ->setParameter('ta_' . $keyTag . '_' . $key, $tag);
+                }
 
-            $languages = $repoLanguage->getEntityManager()->createQueryBuilder()
-                ->select('a')
-                ->from($repoLanguage->_entityName, 'a')->where('a.name like :name')
-                ->setParameter('name', $term)->getQuery()->getResult();
+                $languages = $repoLanguage->getEntityManager()->createQueryBuilder()
+                    ->select('a')
+                    ->from($repoLanguage->_entityName, 'a')->where('a.name like :name')
+                    ->setParameter('name', $term)->getQuery()->getResult();
 
-            foreach ($languages as $keyLanguage => $language) {
-                $queryBuilder
-                    ->orWhere(':l_' . $keyLanguage . '_' . $key . ' MEMBER OF p.languages')
-                    ->setParameter(':l_' . $keyLanguage . '_' . $key, $language);
-            }
+                foreach ($languages as $keyLanguage => $language) {
+                    $queryBuilder
+                        ->orWhere(':l_' . $keyLanguage . '_' . $key . ' MEMBER OF p.languages')
+                        ->setParameter(':l_' . $keyLanguage . '_' . $key, $language);
+                }
 
-            $parodies = $repoParody->getEntityManager()->createQueryBuilder()
-                ->select('a')
-                ->from($repoParody->_entityName, 'a')->where('a.name like :name')
-                ->setParameter('name', $term)->getQuery()->getResult();
 
-            foreach ($parodies as $keyParody => $parody) {
-                $queryBuilder
-                    ->orWhere(':p_' . $keyParody . '_' . $key . ' MEMBER OF p.parodies')
-                    ->setParameter(':p_' . $keyParody . '_' . $key, $parody);
-            }
+                $parodies = $repoParody->getEntityManager()->createQueryBuilder()
+                    ->select('a')
+                    ->from($repoParody->_entityName, 'a')->where('a.name like :name')
+                    ->setParameter('name', $term)->getQuery()->getResult();
 
-            $authors = $repoAuthor->getEntityManager()->createQueryBuilder()
-                ->select('a')
-                ->from($repoAuthor->_entityName, 'a')->where('a.name like :name')
-                ->setParameter('name', $term)->getQuery()->getResult();
+                foreach ($parodies as $keyParody => $parody) {
+                    $queryBuilder
+                        ->orWhere(':p_' . $keyParody . '_' . $key . ' MEMBER OF p.parodies')
+                        ->setParameter(':p_' . $keyParody . '_' . $key, $parody);
+                }
 
-            foreach ($authors as $keyAuthor => $author) {
-                $queryBuilder
-                    ->orWhere(':a_' . $keyAuthor . '_' . $key . ' MEMBER OF p.authors')
-                    ->setParameter(':a_' . $keyAuthor . '_' . $key, $author);
+                $authors = $repoAuthor->getEntityManager()->createQueryBuilder()
+                    ->select('a')
+                    ->from($repoAuthor->_entityName, 'a')->where('a.name like :name')
+                    ->setParameter('name', $term)->getQuery()->getResult();
+
+                foreach ($authors as $keyAuthor => $author) {
+                    $queryBuilder
+                        ->orWhere(':a_' . $keyAuthor . '_' . $key . ' MEMBER OF p.authors')
+                        ->setParameter(':a_' . $keyAuthor . '_' . $key, $author);
+                }
             }
 
             $queryBuilder
@@ -146,6 +169,9 @@ class MangaRepository extends ServiceEntityRepository
             } else {
                 $queryBuilder->orderBy('p.publishedAt', 'DESC');
             }
+
+            $queryBuilder->andWhere('p.publishedAt < :five_minutes_ago')
+                ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"));
 
         }
 

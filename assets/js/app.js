@@ -59,8 +59,12 @@ function addMangaBlock() {
         '        begin="0.3s" dur="0.6s" repeatCount="indefinite" />\n' +
         '    </rect>\n' +
         '  </svg></div>');
+    let searchKeyWord = '';
+    if (window.location.pathname.includes('/search')) {
+        searchKeyWord = '/search';
+    }
     $.ajax({
-        url: "/" + locale + "/page/" + pageCounter,
+        url: "/" + locale + searchKeyWord + "/page/" + pageCounter + window.location.search,
         method: "GET",
         success: function (data) {
             $('#main').append(data);
@@ -127,13 +131,13 @@ $(function () {
          newUrl = undefined;
      });*/
 
-    $('.manga a').on('click', function (e) {
+    /*$('.manga a').on('click', function (e) {
         $(".loader").remove();
 
         if (!window.event.ctrlKey) {
             $(this).parent().append('<div class="loader"><div class="loader-inner"><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div><div class="loader-line-wrap"><div class="loader-line"></div></div></div></div>');
         }
-    });
+    });*/
 
     $('.manga-remove-favorite').on('click', function (e) {
         let translationKey = "account.remove.favorite";
@@ -161,5 +165,10 @@ $(function () {
         });
 
     })
+
+    $('.fi-en').addClass('fi-gb');
+    $('.fi-ko').addClass('fi-kr');
+    $('.fi-kp').addClass('fi-kr');
+    $('.fi-ja').addClass('fi-jp');
 });
 

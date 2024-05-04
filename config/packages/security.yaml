@@ -37,7 +37,7 @@ security:
         enable_csrf: true
         # The page users are redirect to when there is no previous page stored in the
         # session (for example when the users access directly to the login page).
-        default_target_path: blog_index
+        default_target_path: user_index
 
         username_parameter: "username"
         password_parameter: "password"

@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="ja" datatype="plaintext" original="file.ext">
         <body>
@@ -109,6 +109,10 @@
                 <source>manga.count_views</source>
                 <target>ビュー数</target>
             </trans-unit>
+            <trans-unit id="manga.see_more">
+                <source>manga.see_more</source>
+                <target>続きを見る</target>
+            </trans-unit>
             <trans-unit id="manga.download">
                 <source>manga.download</source>
                 <target>ダウンロード</target>
@@ -169,7 +173,7 @@
             </trans-unit>
             <trans-unit id="meta.description.manga">
                 <source>meta.description.manga</source>
-                <target>ここでは、最高の漫画の1つを見つけることができます : </target>
+                <target>読んでダウンロードする </target>
             </trans-unit>
             <trans-unit id="meta.description.with">
                 <source>meta.description.with</source>
@@ -424,9 +428,9 @@
                 <source>email.text1</source>
                 <target>パスワードを紛失しましたか？
 
-                パスワードをリセットしても問題ありません。下のボタンをクリックして、新しいパスワードを選択してください。
+パスワードをリセットしても問題ありません。下のボタンをクリックして、新しいパスワードを選択してください。
 
-                このリンクは1時間後に有効期限が切れます。</target>
+このリンクは1時間後に有効期限が切れます。</target>
             </trans-unit>
             <trans-unit id="email.button">
                 <source>email.button</source>
@@ -452,31 +456,31 @@
             <trans-unit id="about.contact.text2.soft">
                 <source>about.contact.text2.soft</source>
                 <target>お客様に関する情報を収集したり、Google Analyticsを使用したりすることはありません。
-                        マンガを無料で無制限に表示およびダウンロードできます。
-                        モバイルアプリケーションを使用すると、ウェブサイトへのモビリティとアクセスが容易になります。
-                        追加情報については、メールでお気軽にお問い合わせください。
+マンガを無料で無制限に表示およびダウンロードできます。
+モバイルアプリケーションを使用すると、ウェブサイトへのモビリティとアクセスが容易になります。
+追加情報については、メールでお気軽にお問い合わせください。
                 </target>
             </trans-unit>
             <trans-unit id="about.contact.text2.hard">
                 <source>about.contact.text2.hard</source>
                 <target>お客様に関する情報を収集したり、Google Analyticsを使用したりすることはありません。
-                        マンガを無料で無制限に表示およびダウンロードできます。
-                        モバイルアプリケーションを使用すると、ウェブサイトへの移動性とアクセスが容易になります。
-                        追加情報については、メールでお気軽にお問い合わせください。
+マンガを無料で無制限に表示およびダウンロードできます。
+モバイルアプリケーションを使用すると、ウェブサイトへの移動性とアクセスが容易になります。
+追加情報については、メールでお気軽にお問い合わせください。
 
 
-                        エロ漫画とは？
+エロ漫画とは？
 
-                        ヘンタイはポルノを目的とした漫画であり、パイズリ、テイトク、ネトラレなど、当社のサイトで見つけることができるジャンルのセットをまとめています。
-                        それらは主に日本からのもので、これらの漫画のアニメ版もあります。
-                        2018年、hentaiはpornhubサイトで2番目に検索されたカテゴリでした。
-                        My Anime List には1,300以上のアニメエロアニメも掲載されています。
+ヘンタイはポルノを目的とした漫画であり、パイズリ、テイトク、ネトラレなど、当社のサイトで見つけることができるジャンルのセットをまとめています。
+それらは主に日本からのもので、これらの漫画のアニメ版もあります。
+2018年、hentaiはpornhubサイトで2番目に検索されたカテゴリでした。
+My Anime List には1,300以上のアニメエロアニメも掲載されています。
 
 
-                        同人漫画とは？
+同人漫画とは？
 
-                        同人や同人は、ワンピース、ナルト、フェアリーテイルなどの有名な漫画をよく取り上げるアマチュアによって作られた漫画です。
-                        しかし、それらは漫画だけではなく、音楽、小説、ビデオゲームもあります。
+同人や同人は、ワンピース、ナルト、フェアリーテイルなどの有名な漫画をよく取り上げるアマチュアによって作られた漫画です。
+しかし、それらは漫画だけではなく、音楽、小説、ビデオゲームもあります。
                 </target>
             </trans-unit>
         </body>

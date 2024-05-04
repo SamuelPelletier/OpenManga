@@ -13,6 +13,7 @@ use App\Repository\MangaRepository;
 use App\Repository\TagRepository;
 use App\Utils\TagDTO;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -56,4 +57,71 @@ class MainController extends AbstractController
 
         return $this->render('disclaimer.html.twig', ['finalUrl' => $finalUrl]);
     }
+
+    /**
+     * @Route("/sitemap-index.xml", name="sitemap-index", defaults={"_format"="xml"})
+     */
+    public function sitemapIndex(Request $request, MangaRepository $mangaRepository)
+    {
+        $urls = array();
+        for ($i = 1; $i <= ceil($mangaRepository->findOneBy([], ['id' => 'desc'])->getId() / 20000); $i++) {
+            $urls[] = $this->generateUrl('sitemap') . '?c=' . $i;
+        }
+
+        $response = new Response(
+            $this->renderView('sitemap_index.html.twig', ['urls' => $urls]),
+            200
+        );
+        $response->headers->set('Content-Type', 'text/xml');
+        return $response;
+    }
+
+    /**
+     * @Route("/sitemap.xml", name="sitemap", defaults={"_format"="xml"})
+     */
+    public function sitemap(Request $request, MangaRepository $mangaRepository)
+    {
+        // Nous récupérons le nom d'hôte depuis l'URL
+        $hostname = $request->getSchemeAndHttpHost();
+
+        // On initialise un tableau pour lister les URLs
+        $urls = [];
+
+        $c = $request->get('c', 1);
+        $c--;
+        if ($c == 0) {
+// On ajoute les URLs "statiques"
+            $urls[] = ['loc' => $this->generateUrl('index'), 'changefreq' => 'always'];
+            $urls[] = ['loc' => $this->generateUrl('app_register'), 'changefreq' => 'yearly'];
+            $urls[] = ['loc' => $this->generateUrl('app_login'), 'changefreq' => 'yearly'];
+            $urls[] = ['loc' => $this->generateUrl('about'), 'changefreq' => 'yearly'];
+            $urls[] = ['loc' => $this->generateUrl('tags'), 'changefreq' => 'yearly'];
+        }
+
+// On ajoute les URLs dynamiques des articles dans le tableau
+        $mangas = $mangaRepository->createQueryBuilder('m')
+            ->where('m.id >= ' . $c * 20000)
+            ->andWhere('m.id < ' . ($c * 20000) + 20000)
+            ->getQuery()->getResult();
+        foreach ($mangas as $manga) {
+            $urls[] = [
+                'loc' => $this->generateUrl('manga', [
+                    'id' => $manga->getId()
+                ]),
+                'id' => $manga->getId(),
+                'lastmod' => $manga->getPublishedAt()->format('Y-m-d'),
+                'changefreq' => 'yearly'
+            ];
+
+        }
+
+        $response = new Response(
+            $this->renderView('sitemap.html.twig', ['urls' => $urls,
+                'hostname' => $hostname]),
+            200
+        );
+        $response->headers->set('Content-Type', 'text/xml');
+        return $response;
+    }
+
 }

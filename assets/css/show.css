@@ -1,6 +1,7 @@
 @import "lightgallery/css/lg-autoplay.css";
 @import "lightgallery/css/lg-fullscreen.css";
 @import "lightgallery/css/lg-zoom.css";
+
 .img-view {
     width: 100%;
     border-radius: 1%;
@@ -11,9 +12,9 @@
 
 article:hover .img-view {
     box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);
-    -webkit-transform:scale(1.03);
-    -moz-transform:scale(1.03);
-    transform:scale(1.03);
+    -webkit-transform: scale(1.03);
+    -moz-transform: scale(1.03);
+    transform: scale(1.03);
 }
 
 .row {
@@ -637,6 +638,58 @@ li:last-child .page {
     display: flex;
     flex-wrap: wrap;
 }
+
+.lg-next,
+.lg-prev {
+    font-size: 80px;
+}
+/*
+.lg-sub-html {
+    display: none;
+}
+*/
+
+/** Below CSS is completely optional **/
+.gallery-item {
+    width: 200px;
+    padding: 5px;
+}
+
+/* Your existing CSS classes and styles */
+.manga-description {
+    display: none;
+    transition: opacity 0.3s ease; /* Add a smooth transition for opacity */
+}
+
+/* Add styles for the toggle button icon */
+#description-toggle::after {
+    content: "\25BC"; /* Unicode character for down arrow */
+}
+
+#description-toggle.active::after {
+    content: "\25B2"; /* Unicode character for up arrow */
+}
+
+#description-toggle {
+    margin: 1% auto;
+    text-align: center;
+    border: none;
+    font-size: 20px;
+    padding: 2px;
+    cursor: pointer;
+    outline: none;
+}
+
+.tags {
+    padding-bottom: 10px;
+}
+
+#download-container {
+    text-align: center;
+}
+
+
+
 
 .lg-next,
 .lg-prev {

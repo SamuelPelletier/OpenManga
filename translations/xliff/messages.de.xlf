@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" ?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" target-language="de" datatype="plaintext" original="file.ext">
         <body>
@@ -109,6 +109,10 @@
                 <source>manga.count_views</source>
                 <target>Anzahl der Aufrufe</target>
             </trans-unit>
+            <trans-unit id="manga.see_more">
+                <source>manga.see_more</source>
+                <target>Mehr sehen</target>
+            </trans-unit>
             <trans-unit id="manga.download">
                 <source>manga.download</source>
                 <target>herunterladen</target>
@@ -169,7 +173,7 @@
             </trans-unit>
             <trans-unit id="meta.description.manga">
                 <source>meta.description.manga</source>
-                <target>Hier finden Sie einen der besten Mangas : </target>
+                <target>Lesen und herunterladen </target>
             </trans-unit>
             <trans-unit id="meta.description.with">
                 <source>meta.description.with</source>
@@ -424,9 +428,9 @@
                 <source>email.text1</source>
                 <target>Sie haben Ihr Passwort verloren?
 
-                Kein Problem, um Ihr Passwort zurückzusetzen. Klicken Sie auf die Schaltfläche unten und wählen Sie ein neues aus.
+Kein Problem, um Ihr Passwort zurückzusetzen. Klicken Sie auf die Schaltfläche unten und wählen Sie ein neues aus.
 
-                Dieser Link läuft in 1 Stunde ab.</target>
+Dieser Link läuft in 1 Stunde ab.</target>
             </trans-unit>
             <trans-unit id="email.button">
                 <source>email.button</source>
@@ -452,30 +456,30 @@
             <trans-unit id="about.contact.text2.soft">
                 <source>about.contact.text2.soft</source>
                 <target>Wir sammeln keine Informationen über unsere Kunden und verwenden Google Analytics nicht.
-                        Sie können Manga kostenlos und unbegrenzt ansehen und herunterladen.
-                        Eine mobile Anwendung ermöglicht Ihnen eine größere Mobilität und einen einfachen Zugriff auf unsere Website.
-                        Für weitere Informationen zögern Sie nicht, uns per E-Mail zu kontaktieren.
+Sie können Manga kostenlos und unbegrenzt ansehen und herunterladen.
+Eine mobile Anwendung ermöglicht Ihnen eine größere Mobilität und einen einfachen Zugriff auf unsere Website.
+Für weitere Informationen zögern Sie nicht, uns per E-Mail zu kontaktieren.
                 </target>
             </trans-unit>
             <trans-unit id="about.contact.text2.hard">
                 <source>about.contact.text2.hard</source>
                 <target>Wir sammeln keine Informationen über unsere Kunden und verwenden Google Analytics nicht.
-                        Sie können Manga kostenlos und unbegrenzt ansehen und herunterladen.
-                        Eine mobile Anwendung ermöglicht Ihnen eine größere Mobilität und einen einfachen Zugriff auf unsere Website.
-                        Für weitere Informationen zögern Sie nicht, uns per E-Mail zu kontaktieren.
+Sie können Manga kostenlos und unbegrenzt ansehen und herunterladen.
+Eine mobile Anwendung ermöglicht Ihnen eine größere Mobilität und einen einfachen Zugriff auf unsere Website.
+Für weitere Informationen zögern Sie nicht, uns per E-Mail zu kontaktieren.
 
 
-                        Was sind Hentai Manga?
+Was sind Hentai Manga?
 
-                        Hentai sind Mangas für pornografische Zwecke. Sie vereinen eine Reihe von Genres, die Sie auf unserer Website finden können, z. B. Paizuri, Teitoku oder Netorare.
-                        Es gibt auch mehr als 1.300 Anime Hentai auf My Anime List.
+Hentai sind Mangas für pornografische Zwecke. Sie vereinen eine Reihe von Genres, die Sie auf unserer Website finden können, z. B. Paizuri, Teitoku oder Netorare.
+Es gibt auch mehr als 1.300 Anime Hentai auf My Anime List.
 
 
-                        Was ist Doujin Manga?
+Was ist Doujin Manga?
 
-                        Das Dōjin oder Doujin sind Mangas von Amateuren, die oft berühmte Mangas wie One Piece, Naruto oder Fairy Tail aufnehmen.
-                        Es handelt sich aber nicht nur um Manga, sondern auch um Musik, Romane oder Videospiele.
-                        </target>
+Das Dōjin oder Doujin sind Mangas von Amateuren, die oft berühmte Mangas wie One Piece, Naruto oder Fairy Tail aufnehmen.
+Es handelt sich aber nicht nur um Manga, sondern auch um Musik, Romane oder Videospiele.
+                </target>
             </trans-unit>
         </body>
     </file>

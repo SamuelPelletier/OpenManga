@@ -84,6 +84,20 @@ $(document).ready(function () {
         }
     });
 
+    
+    const descriptionToggle = document.getElementById('description-toggle');
+    const mangaDescription = document.getElementById('manga-description');
+
+    descriptionToggle.addEventListener('click', function () {
+        mangaDescription.classList.toggle('active');
+        
+        if (mangaDescription.classList.contains('active')) {
+            mangaDescription.style.display = 'block';
+        } else {
+            mangaDescription.style.display = 'none';
+        }
+    });
+    
     lightGallery(document.getElementById("lightgallery"),{
         plugins: [lgAutoplay,lgFullscreen,lgZoom],
         mode: 'lg-fade',
