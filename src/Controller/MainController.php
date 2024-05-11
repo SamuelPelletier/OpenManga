@@ -80,7 +80,9 @@ class MainController extends AbstractController
      */
     public function donateWebhook(Request $request, KernelInterface $kernel): Response
     {
-        var_dump($request);
+        $file = fopen($kernel->getProjectDir() . '/var/test.txt', 'w');
+        fwrite($file, $request->getContent());
+        fclose($file);
         return new Response();
     }
 
