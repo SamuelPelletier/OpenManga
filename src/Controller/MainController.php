@@ -34,6 +34,54 @@ class MainController extends AbstractController
     }
 
     /**
+     * @Route("/donate", name="donate")
+     *
+     */
+    public function donate(Request $request): Response
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://api.commerce.coinbase.com/charges',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => '{
+    "local_price": {
+        "amount": "1",
+        "currency": "USD"
+    },
+    "pricing_type": "no_price",
+    "name": "' . $_ENV['APP_NAME'] . '",
+    "description": "Support & Advantage",
+    "metadata": {
+        "id": 1
+    }
+}',
+            CURLOPT_HTTPHEADER => array(
+                'X-CC-Api-Key: ' . $_ENV['COINBASE_API_KEY'],
+                'Content-Type: application/json',
+            ),
+        ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        $response = json_decode($response);
+
+        return $this->render('donate.html.twig', ['url' => $response->data->hosted_url]);
+    }
+
+    /**
+     * @Route("/donate/webhook", name="donate-webhook")
+     *
+     */
+    public function donateWebhook(Request $request): Response
+    {
+        dd($request);
+    }
+
+    /**
      * @Route("/disclaimer", methods={"POST","GET"},name="disclaimer")
      *
      */
