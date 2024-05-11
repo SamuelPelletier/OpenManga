@@ -12,10 +12,12 @@ namespace App\Controller;
 use App\Repository\MangaRepository;
 use App\Repository\TagRepository;
 use App\Utils\TagDTO;
+use Monolog\Logger;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -76,9 +78,12 @@ class MainController extends AbstractController
      * @Route("/donate/webhook", name="donate-webhook")
      *
      */
-    public function donateWebhook(Request $request): Response
+    public function donateWebhook(Request $request, KernelInterface $kernel): Response
     {
-        dd($request);
+        $file = fopen($kernel->getProjectDir() . '/var/test.txt', 'w');
+        fwrite($file, json_encode($request));
+        fclose($file);
+        return new Response();
     }
 
     /**
