@@ -11,7 +11,14 @@
     <div class="row">
         <div class="col-sm-1"><a class="btn-effect pulse-orange"
                                  href="{{ path('user_edit') }}">{{ 'account.edit'|trans }}</a></div>
-        <div class="col-sm-10"></div>
+        <div class="col-sm-3">
+            {% if not user.patreonAccessToken %}
+                <a class="btn-effect pulse-orange" href="{{ patreonUrl }}">{{ 'account.bind.patreon'|trans }}</a>
+            {% else %}
+                <p id="patreon-binded">{{ 'account.binded.patreon'|trans }}</p>
+            {% endif %}
+        </div>
+        <div class="col-sm-6"></div>
         <div class="col-sm-1"><a id="logout" class="btn-effect pulse-violet"
                                  href="{{ path('app_logout') }}">{{ 'account.logout'|trans }}</a></div>
     </div>

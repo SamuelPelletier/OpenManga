@@ -120,6 +120,13 @@
     }
 }
 
+#patreon-binded {
+    color: green;
+    margin: revert;
+    font-weight: bold;
+
+}
+
 
 @media screen and (min-width: 768px) {
     #logout {

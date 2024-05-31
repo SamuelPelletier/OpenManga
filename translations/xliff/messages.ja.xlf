@@ -216,6 +216,10 @@
                 <source>login.form.login.button</source>
                 <target>ログインする</target>
             </trans-unit>
+            <trans-unit id="login.form.login.patreon">
+                <source>login.form.login.patreon</source>
+                <target>Patreonでログイン</target>
+            </trans-unit>
             <trans-unit id="login.form.signup.title">
                 <source>login.form.signup.title</source>
                 <target>無料で登録！</target>
@@ -307,6 +311,14 @@
             <trans-unit id="account.edit">
                 <source>account.edit</source>
                 <target>編集する</target>
+            </trans-unit>
+            <trans-unit id="account.bind.patreon">
+                <source>account.bind.patreon</source>
+                <target>Patreonアカウントを紐付ける</target>
+            </trans-unit>
+            <trans-unit id="account.binded.patreon">
+                <source>account.binded.patreon</source>
+                <target>Patreonアカウントを紐付けた</target>
             </trans-unit>
             <trans-unit id="account.logout">
                 <source>account.logout</source>

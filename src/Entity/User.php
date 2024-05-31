@@ -317,9 +317,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return mixed
+     * @return ?string
      */
-    public function getPatreonAccessToken(): string
+    public function getPatreonAccessToken(): ?string
     {
         return $this->patreonAccessToken;
     }
@@ -333,9 +333,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
     /**
-     * @return mixed
+     * @return ?string
      */
-    public function getPatreonRefreshToken(): string
+    public function getPatreonRefreshToken(): ?string
     {
         return $this->patreonRefreshToken;
     }

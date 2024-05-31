@@ -25,30 +25,30 @@ class PatreonController extends AbstractController
 
             $oauth_client = new OAuth($_ENV['PATREON_CLIENT_ID'], $_ENV['PATREON_CLIENT_SECRET']);
 
-            $tokens = $oauth_client->get_tokens($_GET['code'], $request->getBaseUrl() . "/en/patreon_login");
+            $tokens = $oauth_client->get_tokens($_GET['code'], $request->getSchemeAndHttpHost() . "/en/patreon_login");
             $access_token = $tokens['access_token'];
             $refresh_token = $tokens['refresh_token'];
-            dd($access_token, $refresh_token);
             if (isset($access_token)) {
                 if ($user = $this->getUser()) {
-                    $user->setAccessToken($access_token);
-                    $user->setRefreshToken($refresh_token);
+                    $user->setPatreonAccessToken($access_token);
+                    $user->setPatreonRefreshToken($refresh_token);
                     $entityManager->persist($user);
                     $entityManager->flush();
                 } else {
-                    if ($user = $userRepository->findOneBy('patreon_access_token = ' . $access_token)) {
+                    if ($user = $userRepository->findOneBy(['patreonAccessToken' => $access_token])) {
                         $userAuthenticator->authenticateUser($user, $authenticator, $request);
                     } else {
                         $api_client = new API($access_token);
                         $api_client->api_return_format = 'object';
                         $patron_response = $api_client->fetch_user();
                         $user = new User();
-                        $user->setAccessToken($access_token);
-                        $user->setRefreshToken($refresh_token);
-                        $user->setUsername($patron_response);
+                        $user->setPatreonAccessToken($access_token);
+                        $user->setPatreonRefreshToken($refresh_token);
+                        $user->setUsername($patron_response->data->attributes->full_name . '_' . $patron_response->data->id);
                         $user->setPassword(ByteString::fromRandom(32)->toString());
                         $entityManager->persist($user);
                         $entityManager->flush();
+                        $userAuthenticator->authenticateUser($user, $authenticator, $request);
                     }
                 }
                 return $this->redirectToRoute('user_index');

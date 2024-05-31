@@ -134,8 +134,15 @@
 }
 
 .btn-effect:hover, .btn-effect:focus {
-    background-color: #ff0067  !important; /*#ff5c8a !important;*/
+    background-color: #ff0067 !important; /*#ff5c8a !important;*/
     border-color: var(--hover);
     color: #fff !important;
     text-decoration: none;
+}
+
+#patreon {
+    background-color: white;
+    margin-top: 1.5em;
+    color: #ff424d;
+    text-align: center;
 }

@@ -216,6 +216,10 @@
                 <source>login.form.login.button</source>
                 <target>Connexion</target>
             </trans-unit>
+            <trans-unit id="login.form.login.patreon">
+                <source>login.form.login.patreon</source>
+                <target>Se connecter avec Patreon</target>
+            </trans-unit>
             <trans-unit id="login.form.signup.title">
                 <source>login.form.signup.title</source>
                 <target>Rejoignez nous !</target>
@@ -307,6 +311,14 @@
             <trans-unit id="account.edit">
                 <source>account.edit</source>
                 <target>Editer</target>
+            </trans-unit>
+            <trans-unit id="account.bind.patreon">
+                <source>account.bind.patreon</source>
+                <target>Associez votre compte Patreon</target>
+            </trans-unit>
+            <trans-unit id="account.binded.patreon">
+                <source>account.binded.patreon</source>
+                <target>Compte Patreon lié</target>
             </trans-unit>
             <trans-unit id="account.logout">
                 <source>account.logout</source>

@@ -25,7 +25,7 @@ class UserController extends AbstractController
     /**
      * @Route("/", name="user_index")
      */
-    public function index(UserRepository $userRepository, UserService $userService, EntityManagerInterface $entityManager)
+    public function index(UserRepository $userRepository, UserService $userService, EntityManagerInterface $entityManager, Request $request)
     {
         $user = $this->getUser();
         if (!$user) {
@@ -35,8 +35,8 @@ class UserController extends AbstractController
         $user->setPoints($userService->calculationUserPoints($user));
         $entityManager->persist($user);
         $entityManager->flush();
-
-        return $this->render('user/index.html.twig', ['user' => $user, 'rank' => $rank]);
+        $href = 'https://www.patreon.com/oauth2/authorize?response_type=code&client_id=' . $_ENV['PATREON_CLIENT_ID'] . '&redirect_uri=' . $request->getSchemeAndHttpHost() . "/en/patreon_login";
+        return $this->render('user/index.html.twig', ['user' => $user, 'rank' => $rank, 'patreonUrl' => $href]);
     }
 
     /**
