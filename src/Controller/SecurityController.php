@@ -66,9 +66,12 @@ class SecurityController extends AbstractController
 
             return $this->redirectToRoute('user_index');
         }
+        $href = 'https://www.patreon.com/oauth2/authorize?response_type=code&client_id=' . $_ENV['PATREON_CLIENT_ID'] . '&redirect_uri=' . $request->getSchemeAndHttpHost() . "/en/patreon_login";
+        $scope_parameters = '&scope=identity%20identity' . urlencode('[email]');
+        $href .= $scope_parameters;
 
         return $this->render('security/login.html.twig',
-            ['last_username' => $lastUsername, 'error' => $error, 'registrationForm' => $form->createView()]);
+            ['last_username' => $lastUsername, 'error' => $error, 'registrationForm' => $form->createView(), 'patreonUrl' => $href]);
     }
 
     /**

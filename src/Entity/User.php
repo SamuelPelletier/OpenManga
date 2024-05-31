@@ -79,15 +79,26 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="integer")
      */
     private $bonusPoints = 0;
+    /**
+     * @ORM\Column(type="string",length=255,nullable=true)
+     */
+    private $patreonAccessToken;
+    /**
+     * @ORM\Column(type="string",length=255,nullable=true)
+     */
+    private $patreonRefreshToken;
+
     public function __construct()
     {
         $this->lastMangasRead = new ArrayCollection();
         $this->favoriteMangas = new ArrayCollection();
     }
+
     public function getId(): ?int
     {
         return $this->id;
     }
+
     /**
      * A visual identifier that represents this user.
      *
@@ -97,12 +108,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return (string)$this->username;
     }
+
     public function setUsername(string $username): self
     {
         $this->username = $username;
 
         return $this;
     }
+
     /**
      * @see UserInterface
      */
@@ -114,12 +127,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return array_unique($roles);
     }
+
     public function setRoles(array $roles): self
     {
         $this->roles = $roles;
 
         return $this;
     }
+
     /**
      * @see UserInterface
      */
@@ -127,12 +142,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return (string)$this->password;
     }
+
     public function setPassword(string $password): self
     {
         $this->password = $password;
 
         return $this;
     }
+
     /**
      * @see UserInterface
      */
@@ -140,6 +157,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // not needed when using the "bcrypt" algorithm in security.yaml
     }
+
     /**
      * @see UserInterface
      */
@@ -148,58 +166,69 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
     }
+
     public function getEmail(): ?string
     {
         return $this->email;
     }
+
     public function setEmail(?string $email): self
     {
         $this->email = $email;
 
         return $this;
     }
+
     public function getTimeSpent(): ?int
     {
         return $this->timeSpent;
     }
+
     public function setTimeSpent(int $timeSpent): self
     {
         $this->timeSpent = $timeSpent;
 
         return $this;
     }
+
     public function getCountMangasRead(): ?int
     {
         return $this->countMangasRead;
     }
+
     public function setCountMangasRead(int $countMangasRead): self
     {
         $this->countMangasRead = $countMangasRead;
 
         return $this;
     }
+
     public function incrementCountMangasRead(): self
     {
         $this->countMangasRead++;
 
         return $this;
     }
+
     public function getCountMangasDownload(): ?int
     {
         return $this->countMangasDownload;
     }
+
     public function setCountMangasDownload(int $countMangasDownload): self
     {
         $this->countMangasDownload = $countMangasDownload;
 
         return $this;
     }
+
     public function incrementCountMangasDownload(): self
     {
         $this->countMangasDownload++;
 
         return $this;
     }
+
     /**
      * @return Collection|Manga[]
      */
@@ -207,6 +236,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->lastMangasRead;
     }
+
     public function addLastMangasRead(Manga $lastMangasRead): self
     {
         if (!$this->lastMangasRead->contains($lastMangasRead)) {
@@ -221,6 +251,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
     public function removeLastMangasRead(Manga $lastMangasRead): self
     {
         if ($this->lastMangasRead->contains($lastMangasRead)) {
@@ -229,16 +260,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
     public function getPoints(): ?int
     {
         return $this->points;
     }
+
     public function setPoints(int $points): self
     {
         $this->points = $points;
 
         return $this;
     }
+
     /**
      * @return Collection|Manga[]
      */
@@ -246,6 +280,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->favoriteMangas;
     }
+
     public function addFavoriteManga(Manga $favoriteManga): self
     {
         if (!$this->favoriteMangas->contains($favoriteManga)) {
@@ -254,6 +289,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
     public function removeFavoriteManga(Manga $favoriteManga): self
     {
         if ($this->favoriteMangas->contains($favoriteManga)) {
@@ -262,18 +298,53 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
+
     public function getBonusPoints(): ?int
     {
         return $this->bonusPoints;
     }
+
     public function setBonusPoints(int $bonusPoints): self
     {
         $this->bonusPoints = $bonusPoints;
 
         return $this;
     }
+
     public function getUserIdentifier(): string
     {
-        return (string) $this->username;
+        return (string)$this->username;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPatreonAccessToken(): string
+    {
+        return $this->patreonAccessToken;
+    }
+
+    /**
+     * @param string $patreonAccessToken
+     */
+    public function setPatreonAccessToken(string $patreonAccessToken): void
+    {
+        $this->patreonAccessToken = $patreonAccessToken;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getPatreonRefreshToken(): string
+    {
+        return $this->patreonRefreshToken;
+    }
+
+    /**
+     * @param string $patreonRefreshToken
+     */
+    public function setPatreonRefreshToken(string $patreonRefreshToken): void
+    {
+        $this->patreonRefreshToken = $patreonRefreshToken;
     }
 }
