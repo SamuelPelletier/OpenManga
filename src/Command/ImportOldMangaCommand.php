@@ -39,7 +39,7 @@ class ImportOldMangaCommand extends AbstractImportMangaCommand
         list($nextPage, $linkList) = $this->populateLinkList($nextPageNumber);
         $progress = new ProgressBar($output, count($linkList));
         for ($i = count($linkList); $i > 0; $i--) {
-            $this->downloadManga($linkList[$i - 1]);
+            $this->downloadManga($linkList[$i - 1],true);
             $progress->advance();
             break;
         }

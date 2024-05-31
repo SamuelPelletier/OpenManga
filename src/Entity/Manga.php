@@ -48,6 +48,20 @@ class Manga
     private $id;
 
     /**
+     * @var int
+     *
+     * @ORM\Column(type="integer",nullable=true, unique=true)
+     */
+    private $externalId;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(type="string",nullable=true)
+     */
+    private $externalToken;
+
+    /**
      * @var string
      *
      * @ORM\Column(type="string")
@@ -119,6 +133,21 @@ class Manga
      */
     private $countViews = 0;
 
+    /**
+     * @ORM\Column(type="boolean", options={"default" : 0})
+     */
+    private bool $isOld = false;
+
+    /**
+     * @ORM\Column(type="boolean", options={"default" : 0})
+     */
+    private bool $isBlocked = false;
+
+    /**
+     * @ORM\Column(type="boolean", options={"default" : 0})
+     */
+    private bool $isCorrupted = false;
+
     public function __construct()
     {
         $this->publishedAt = new \DateTime();
@@ -131,6 +160,38 @@ class Manga
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    /**
+     * @return ?int
+     */
+    public function getExternalId(): ?int
+    {
+        return $this->externalId;
+    }
+
+    /**
+     * @param int $externalId
+     */
+    public function setExternalId(int $externalId): void
+    {
+        $this->externalId = $externalId;
+    }
+
+    /**
+     * @return ?string
+     */
+    public function getExternalToken(): ?string
+    {
+        return $this->externalToken;
+    }
+
+    /**
+     * @param string $externalToken
+     */
+    public function setExternalToken(string $externalToken): void
+    {
+        $this->externalToken = $externalToken;
     }
 
     public function getTitle(): ?string
@@ -265,6 +326,54 @@ class Manga
         $this->countViews = $countViews;
 
         return $this;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isOld(): bool
+    {
+        return $this->isOld;
+    }
+
+    /**
+     * @param bool $isOld
+     */
+    public function setIsOld(bool $isOld): void
+    {
+        $this->isOld = $isOld;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isBlocked(): bool
+    {
+        return $this->isBlocked;
+    }
+
+    /**
+     * @param bool $isBlocked
+     */
+    public function setIsBlocked(bool $isBlocked): void
+    {
+        $this->isBlocked = $isBlocked;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isCorrupted(): bool
+    {
+        return $this->isCorrupted;
+    }
+
+    /**
+     * @param bool $isCorrupted
+     */
+    public function setIsCorrupted(bool $isCorrupted): void
+    {
+        $this->isCorrupted = $isCorrupted;
     }
 
 }

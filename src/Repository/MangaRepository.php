@@ -39,8 +39,12 @@ class MangaRepository extends ServiceEntityRepository
 
     public function findLatest(int $page = 1, bool $isSortByViews = false): Paginator
     {
-        $queryBuilder = $this->createQueryBuilder('p')->where('p.publishedAt < :five_minutes_ago')
-            ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"));
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->where('p.publishedAt < :five_minutes_ago')
+            ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"))
+            ->andWhere('p.isOld = false')
+            ->andWhere('p.isBlocked = false')
+            ->andWhere('p.isCorrupted = false');
 
         if ($isSortByViews) {
             $queryBuilder->orderBy('p.countViews', 'DESC');
@@ -62,7 +66,10 @@ class MangaRepository extends ServiceEntityRepository
         $queryBuilder->where('p.publishedAt > :thirty_days_ago')
             ->setParameter('thirty_days_ago', $thirtyDaysAgo->format('Y-m-d'))
             ->andWhere('p.publishedAt < :five_minutes_ago')
-            ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"));
+            ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"))
+            ->andWhere('p.isOld = false')
+            ->andWhere('p.isBlocked = false')
+            ->andWhere('p.isCorrupted = false');
 
         return $this->createPaginator($queryBuilder->getQuery(), $page);
     }
@@ -101,7 +108,10 @@ class MangaRepository extends ServiceEntityRepository
         $repoAuthor = $em->getRepository(Author::class);
         $repoParody = $em->getRepository(Parody::class);
 
-        $queryBuilder = $this->createQueryBuilder('p');
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->where('p.isOld = false')
+            ->andWhere('p.isBlocked = false')
+            ->andWhere('p.isCorrupted = false');
 
         // If it's strict we use the entire query
         if ($isStrict) {
@@ -214,7 +224,10 @@ class MangaRepository extends ServiceEntityRepository
     public function findByAuthor(Author $author): array
     {
         $queryBuilder = $this->createQueryBuilder('p')
-            ->Where(':author MEMBER OF p.authors')
+            ->where('p.isOld = false')
+            ->andWhere('p.isBlocked = false')
+            ->andWhere('p.isCorrupted = false')
+            ->andWhere(':author MEMBER OF p.authors')
             ->setParameter('author', $author)
             ->orderBy('p.id', 'DESC');
 
@@ -230,7 +243,10 @@ class MangaRepository extends ServiceEntityRepository
         }
 
         $queryBuilder = $this->createQueryBuilder('p')
-            ->Where(':tag MEMBER OF p.tags')
+            ->where('p.isOld = false')
+            ->andWhere('p.isBlocked = false')
+            ->andWhere('p.isCorrupted = false')
+            ->andWhere(':tag MEMBER OF p.tags')
             ->setParameter('tag', $tag)
             ->orderBy('p.id', $order)
             ->setMaxResults($max);

@@ -22,7 +22,7 @@ abstract class AbstractImportMangaCommand extends Command
     private $em;
     private $mailer;
 
-    public function __construct(EntityManagerInterface $em,LoggerInterface $logger,MailerInterface $mailer )
+    public function __construct(EntityManagerInterface $em, LoggerInterface $logger, MailerInterface $mailer)
     {
         parent::__construct();
         $this->em = $em;
@@ -30,7 +30,7 @@ abstract class AbstractImportMangaCommand extends Command
         $this->mailer = $mailer;
     }
 
-    protected function downloadManga($link)
+    protected function downloadManga($link, $isOld = false)
     {
         $repoManga = $this->em->getRepository(Manga::class);
         $repoLanguage = $this->em->getRepository(Language::class);
@@ -53,9 +53,12 @@ abstract class AbstractImportMangaCommand extends Command
             $this->logger->warning('Manga already exist - id : ' . $mangaFind->getId());
         } else {
             $manga = new Manga();
+            $manga->setExternalId($json['gid']);
+            $manga->setExternalToken($json['token']);
             $manga->setTitle($json['title']);
             $manga->setCountPages($json['filecount']);
-            $manga->setPublishedAt(new \DateTime('NOW'));
+            $manga->setPublishedAt((new \DateTime())->setTimestamp($json['posted']));
+            $manga->setIsOld($isOld);
 
             $tags = $json['tags'];
             foreach ($tags as $tagName) {
@@ -97,8 +100,7 @@ abstract class AbstractImportMangaCommand extends Command
 
                     default:
                         if (in_array($explodeTag[1], explode(',', $_ENV['API_TAG_BLOCKED']))) {
-                            $this->logger->info('End of import - tag blocked detected');
-                            exit;
+                            $manga->setIsBlocked(true);
                         }
 
                         if (($tagObject = $repoTag->findOneBy(['name' => $explodeTag[1]])) == null) {
@@ -177,7 +179,8 @@ abstract class AbstractImportMangaCommand extends Command
             $finder = new Finder();
             $finder->files()->in(dirname(__DIR__) . '/../public/media/' . $manga->getId());
             if (count($finder) != $i || count($finder) <= 2) {
-                $this->em->remove($manga);
+                $manga->setIsCorrupted(true);
+                $this->em->persist($manga);
                 $this->em->flush();
                 $this->logger->error('End of import - manga : ' . $manga->getTitle() . ' -> fail because all image are not download (find :' . (count($finder) - 1) . ', expected : ' . $i . ')');
             } else {

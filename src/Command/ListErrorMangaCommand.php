@@ -87,12 +87,14 @@ class ListErrorMangaCommand extends Command
         $iterations = $input->getOption('iterations');
         $mangas = $this->mangaRepository->findBy([], ['id' => 'desc']);
         $i = 0;
+        /** @var Manga $manga */
         foreach ($mangas as $manga) {
             $i++;
             $path = dirname(__DIR__) . '/../public/media/' . $manga->getId();
             $fileSystem = new Filesystem();
             if (!$fileSystem->exists($path)) {
-                $this->em->remove($manga);
+                $manga->setIsCorrupted(true);
+                $this->em->persist($manga);
                 $this->em->flush();
             } else {
                 $finder = new Finder();
@@ -104,7 +106,8 @@ class ListErrorMangaCommand extends Command
                             die;
                         }
                         $fileSystem->remove($path);
-                        $this->em->remove($manga);
+                        $manga->setIsCorrupted(true);
+                        $this->em->persist($manga);
                         $this->em->flush();
                     }
                 }
