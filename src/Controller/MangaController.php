@@ -102,6 +102,11 @@ class MangaController extends BaseController
          */
         $user = $this->getUser();
 
+        // Add user permission
+        if (($manga->isOld() || $manga->isBlocked()) && !$user?->isPatreonAllow(1)) {
+            return $this->render('bundles/TwigBundle/Exception/error_403.html.twig');
+        }
+
         $images = array();
         for ($i = 1; $i < $manga->getCountPages(); $i++) {
             $images[] = str_pad($i, 3, 0, STR_PAD_LEFT) . '.jpg';

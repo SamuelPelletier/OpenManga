@@ -7,6 +7,7 @@ use App\Form\DeleteUserFormType;
 use App\Form\EditUserFormType;
 use App\Form\ResetPasswordRequestFormType;
 use App\Repository\UserRepository;
+use App\Service\PatreonService;
 use App\Service\UserService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -124,5 +125,36 @@ class UserController extends AbstractController
         return $this->render('user/delete.html.twig', [
             'deleteForm' => $form->createView()
         ]);
+    }
+
+    /**
+     * @Route("/help", name="user_help")
+     */
+    public function help()
+    {
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('index');
+        }
+        return $this->render('user/help.html.twig', ['user' => $user]);
+    }
+
+    /**
+     * @Route("/sync_patreon", name="user_sync_patreon")
+     */
+    public function syncPatreon(EntityManagerInterface $entityManager, PatreonService $patreonService)
+    {
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('index');
+        }
+        if ([$nextChargeDate, $tier] = $patreonService->getPatreonMembership($user)) {
+            $user->setPatreonNextCharge($nextChargeDate);
+            // todo change when new tier coming
+            $user->setPatreonTier(1);
+            $entityManager->persist($user);
+            $entityManager->flush();
+        }
+        return $this->json(['response' => true]);
     }
 }

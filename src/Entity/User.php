@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -87,6 +88,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="string",length=255,nullable=true)
      */
     private $patreonRefreshToken;
+    /**
+     * @ORM\Column(type="integer",nullable=true)
+     */
+    private $patreonTier;
+    /**
+     * @ORM\Column(type="date",nullable=true)
+     */
+    private $patreonNextCharge;
 
     public function __construct()
     {
@@ -346,5 +355,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setPatreonRefreshToken(string $patreonRefreshToken): void
     {
         $this->patreonRefreshToken = $patreonRefreshToken;
+    }
+
+    /**
+     * @return ?int
+     */
+    public function getPatreonTier(): int
+    {
+        return $this->patreonTier ?? 0;
+    }
+
+    /**
+     * @param mixed $patreonTier
+     */
+    public function setPatreonTier(int $patreonTier): void
+    {
+        $this->patreonTier = $patreonTier;
+    }
+
+    /**
+     * @return ?DateTime
+     */
+    public function getPatreonNextCharge(): ?DateTime
+    {
+        return $this->patreonNextCharge;
+    }
+
+    /**
+     * @param ?DateTime $patreonNextCharge
+     */
+    public function setPatreonNextCharge(?DateTime $patreonNextCharge): void
+    {
+        $this->patreonNextCharge = $patreonNextCharge;
+    }
+
+    public function isPatreonAllow(int $tier): bool
+    {
+        return $this->patreonTier >= $tier && $this->patreonNextCharge >= (new DateTime());
     }
 }

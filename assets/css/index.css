@@ -149,6 +149,76 @@ a:hover, a:focus, a:active {
     border-radius: 40px;
 }
 
+.unlock {
+    background: linear-gradient(45deg, #ff6b6b, #f9ca24, #48dbfb, #1dd1a1);
+    background-size: 300% 300%;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 16px;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    animation: gradient 5s ease infinite;
+}
+
+.unlock a {
+    color: white;
+    background-color: #2d3436;
+    padding: 8px 15px;
+    text-decoration: none;
+    border-radius: 20px;
+    margin-left: 15px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.unlock a:hover {
+    color: white !important;
+}
+
+#tier {
+    margin: 0;
+    font-size: xxx-large;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: transparent;
+    background: linear-gradient(45deg, #ff0066, #ff66ff, #66ff66, #0066ff, #6600ff);
+    background-size: 300% 300%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    animation: gradient 5s ease infinite;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@media (max-width: 767px) {
+    .unlock a {
+        display: block;
+        color: white;
+        background-color: #2d3436;
+        padding: 8px 15px;
+        text-decoration: none;
+        border-radius: 20px;
+        margin: auto;
+        margin-top: 12px;
+        font-weight: bold;
+        transition: background-color 0.3s ease;
+        width: max-content;
+    }
+}
+
 footer {
     background-color: #4c4c4c;
 }
@@ -216,13 +286,12 @@ h1, h2, h3, h4, p, a {
 
 .manga a {
     display: block;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
     transition: all 0.3s cubic-bezier(.25, .8, .25, 1);
     background-color: #2b2b2b;
     border-radius: 10px;
 }
 
-article:hover .thumbnail-tag {
+article:hover .thumbnail-tag, article:hover .manga-unlock {
     opacity: 1; /* Make it fully visible when hovering */
     visibility: visible; /* Make it visible */
 }
@@ -289,6 +358,27 @@ article .img-name:hover {
 .thumbnail-tag span {
     display: inline-block;
     margin-bottom: 5px;
+}
+
+.manga-unlock {
+    display: block;
+    opacity: 0;
+    visibility: hidden;
+    position: absolute;
+    top: 8%;
+    width: 100%;
+    text-align: center;
+    padding: 0 3%;
+    z-index: 1;
+    -webkit-user-select: none !important;
+    -khtml-user-select: none !important;
+    -moz-user-select: none !important;
+    -o-user-select: none !important;
+    user-select: none !important;
+    text-decoration: none;
+    -webkit-transition: all .4s cubic-bezier(.4, 0, .2, 1) 0ms;
+    -moz-transition: all .4s cubic-bezier(.4, 0, .2, 1) 0ms;
+    transition: all .4s cubic-bezier(.4, 0, .2, 1) 0ms;
 }
 
 .img-thumbnail {

@@ -4,7 +4,7 @@
         <body>
             <trans-unit id="http_error.name">
                 <source>http_error.name</source>
-                <target>Error %status_code%</target>
+                <target>오류%status_code%</target>
             </trans-unit>
             <trans-unit id="http_error.description">
                 <source>http_error.description</source>
@@ -16,7 +16,7 @@
             </trans-unit>
             <trans-unit id="http_error_403.description">
                 <source>http_error_403.description</source>
-                <target>You don't have permission to access to this resource.</target>
+                <target>이 리소스에 접근할 권한이 없습니다.</target>
             </trans-unit>
             <trans-unit id="http_error_403.suggestion">
                 <source>http_error_403.suggestion</source>
@@ -70,6 +70,14 @@
             <trans-unit id="search.sort">
                 <source>search.sort</source>
                 <target>트렌드</target>
+            </trans-unit>
+            <trans-unit id="banner.unlock.text">
+                <source>banner.unlock.text</source>
+                <target>모든 서비스를 구독하여 잠금 해제하세요!</target>
+            </trans-unit>
+            <trans-unit id="banner.unlock.button">
+                <source>banner.unlock.button</source>
+                <target>지금 잠금 해제</target>
             </trans-unit>
 
             <trans-unit id="tag.popular_title">
@@ -156,6 +164,10 @@
             <trans-unit id="manga.paginator.next">
                 <source>manga.paginator.next</source>
                 <target>다음</target>
+            </trans-unit>
+            <trans-unit id="manga.unlock.patreon">
+                <source>manga.unlock.patreon</source>
+                <target>Patreon으로 잠금 해제"</target>
             </trans-unit>
 
             <trans-unit id="disclaimer.text">
@@ -312,6 +324,10 @@
                 <source>account.edit</source>
                 <target>편집하다</target>
             </trans-unit>
+            <trans-unit id="account.help">
+                <source>account.help</source>
+                <target>도움말</target>
+            </trans-unit>
             <trans-unit id="account.bind.patreon">
                 <source>account.bind.patreon</source>
                 <target>Patreon 계정 연동하기</target>
@@ -430,6 +446,19 @@
             <trans-unit id="delete_account.button">
                 <source>delete_account.button</source>
                 <target>계정 억제 확인</target>
+            </trans-unit>
+
+            <trans-unit id="help.contact">
+                <source>help.contact</source>
+                <target>문제가 발생하면 다음 이메일 주소로 문의하십시오 : %contact_email%</target>
+            </trans-unit>
+            <trans-unit id="help.patreon.check.text">
+                <source>help.patreon.check.text</source>
+                <target>Patreon과 계정이 동기화되지 않은 경우 아래 버튼을 사용하십시오 :</target>
+            </trans-unit>
+            <trans-unit id="help.patreon.check.button">
+                <source>help.patreon.check.button</source>
+                <target>Patreon 동기화</target>
             </trans-unit>
 
             <trans-unit id="email.title">

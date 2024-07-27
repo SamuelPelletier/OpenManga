@@ -18,9 +18,22 @@
                 <p id="patreon-binded">{{ 'account.binded.patreon'|trans }}</p>
             {% endif %}
         </div>
-        <div class="col-sm-6"></div>
+        <div class="col-sm-5"></div>
+        <div class="col-sm-1"><a id="help" class="btn-effect pulse-violet"
+                                 href="{{ path('user_help') }}">{{ 'account.help'|trans }}</a></div>
+        <div class="col-sm-1"></div>
         <div class="col-sm-1"><a id="logout" class="btn-effect pulse-violet"
                                  href="{{ path('app_logout') }}">{{ 'account.logout'|trans }}</a></div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            {% if user.isPatreonAllow(1) %}
+                <p id="tier">Tier {{ user.patreonTier }}</p>
+            {% endif %}
+        </div>
+        <div class="col-sm-4"></div>
+
     </div>
 
     <div class="row stats">
@@ -56,41 +69,9 @@
     <div class="row">
         <h2>{{ 'account.last_manga_read'|trans }}</h2>
         <div>
-            {% for mangaRead in user.lastMangasRead|slice(0,5)|reverse %}
+            {% for manga in user.lastMangasRead|slice(0,5)|reverse %}
                 <
-                <article class="manga col-sm-3" itemscope itemtype="https://schema.org/Book">
-                    <a href="{{ url('manga', {id: mangaRead.id}) }}">
-                        <div class="image-container" itemprop="thumbnail">
-                            <p class="manga-information">
-                                {% for language in mangaRead.languages %}
-                                    {% if language.code %}
-                                        <span class="fi fi-{{ language.code }}"></span>
-                                    {% endif %}
-                                {% endfor %}
-                            <p class="manga-count-pages" itemprop="numberOfPages">
-                                {{ mangaRead.countPages }} <i class="fa-regular fa-images"></i>
-                            </p>
-                            <div class="thumbnail-tag">
-                                {% if not mangaRead.tags.empty %}
-                                    {% for tag in mangaRead.tags|slice(0,5) %}
-                                        <object>
-                                            <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name, 's':true}) }}"
-                                               totalx="158" draggable="false">
-                                                <span class="tag-rounded" totalx="158">{{ tag.name }}</span>
-                                            </a>
-                                        </object>
-                                    {% endfor %}
-                                {% endif %}
-                            </div>
-                            <img alt="{{ mangaRead.title |raw }}" title="{{ mangaRead.title |raw }}"
-                                 class='img-thumbnail'
-                                 src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ mangaRead.id ~ '/thumb.webp' ) }}'>
-                        </div>
-                        <div class="img-name">
-                            <h2 itemprop="name">{{ mangaRead.title |raw }}</h2>
-                        </div>
-                    </a>
-                </article>
+                {% include 'manga.html.twig' %}
             {% else %}
                 <div class="gradient-border"><a
                             href="{{ path('index') }}"> {{ 'account.manga.discover_new_manga'|trans }}</a>
@@ -101,40 +82,8 @@
     <div class="row">
         <h2>{{ 'account.favorite_manga'|trans }}</h2>
         <div>
-            {% for favoriteManga in user.favoriteMangas|slice(0,5)|reverse %}
-                <article class="manga col-sm-3" itemscope itemtype="https://schema.org/Book">
-                    <a href="{{ url('manga', {id: favoriteManga.id}) }}">
-                        <div class="image-container" itemprop="thumbnail">
-                            <p class="manga-information">
-                                {% for language in favoriteManga.languages %}
-                                    {% if language.code %}
-                                        <span class="fi fi-{{ language.code }}"></span>
-                                    {% endif %}
-                                {% endfor %}
-                            <p class="manga-count-pages" itemprop="numberOfPages">
-                                {{ favoriteManga.countPages - 1 }} <i class="fa-regular fa-images"></i>
-                            </p>
-                            <div class="thumbnail-tag">
-                                {% if not favoriteManga.tags.empty %}
-                                    {% for tag in favoriteManga.tags|slice(0,5) %}
-                                        <object>
-                                            <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name, 's':true}) }}"
-                                               totalx="158" draggable="false">
-                                                <span class="tag-rounded" totalx="158">{{ tag.name }}</span>
-                                            </a>
-                                        </object>
-                                    {% endfor %}
-                                {% endif %}
-                            </div>
-                            <img alt="{{ favoriteManga.title |raw }}" title="{{ favoriteManga.title |raw }}"
-                                 class='img-thumbnail'
-                                 src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ favoriteManga.id ~ '/thumb.webp' ) }}'>
-                        </div>
-                        <div class="img-name">
-                            <h2 itemprop="name">{{ favoriteManga.title |raw }}</h2>
-                        </div>
-                    </a>
-                </article>
+            {% for manga in user.favoriteMangas|slice(0,5)|reverse %}
+                {% include 'manga.html.twig' %}
             {% else %}
                 <div class="gradient-border">{{ 'account.manga.add_manga_favorite'|trans }}</div>
             {% endfor %}

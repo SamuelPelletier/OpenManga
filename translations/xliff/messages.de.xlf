@@ -71,6 +71,14 @@
                 <source>search.sort</source>
                 <target>Trend</target>
             </trans-unit>
+            <trans-unit id="banner.unlock.text">
+                <source>banner.unlock.text</source>
+                <target>Schalte alle unsere Dienste frei, indem du dich anmeldest!</target>
+            </trans-unit>
+            <trans-unit id="banner.unlock.button">
+                <source>banner.unlock.button</source>
+                <target>Jetzt freischalten</target>
+            </trans-unit>
 
             <trans-unit id="tag.popular_title">
                 <source>tag.popular_title</source>
@@ -156,6 +164,10 @@
             <trans-unit id="manga.paginator.next">
                 <source>manga.paginator.next</source>
                 <target>Nächster</target>
+            </trans-unit>
+            <trans-unit id="manga.unlock.patreon">
+                <source>manga.unlock.patreon</source>
+                <target>Mit Patreon freischalten</target>
             </trans-unit>
 
             <trans-unit id="disclaimer.text">
@@ -430,6 +442,19 @@
             <trans-unit id="delete_account.button">
                 <source>delete_account.button</source>
                 <target>Überprüfen Sie die Unterdrückung meines Kontos</target>
+            </trans-unit>
+
+            <trans-unit id="help.contact">
+                <source>help.contact</source>
+                <target>Falls Sie auf ein Problem stoßen, kontaktieren Sie uns bitte unter der folgenden E-Mail-Adress : %contact_email%</target>
+            </trans-unit>
+            <trans-unit id="help.patreon.check.text">
+                <source>help.patreon.check.text</source>
+                <target>Falls Ihr Konto nicht mit Patreon synchronisiert ist, verwenden Sie bitte den untenstehenden Button :</target>
+            </trans-unit>
+            <trans-unit id="help.patreon.check.button">
+                <source>help.patreon.check.button</source>
+                <target>Patreon synchronisieren</target>
             </trans-unit>
 
             <trans-unit id="email.title">

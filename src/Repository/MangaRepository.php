@@ -42,8 +42,6 @@ class MangaRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('p')
             ->where('p.publishedAt < :five_minutes_ago')
             ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"))
-            ->andWhere('p.isOld = false')
-            ->andWhere('p.isBlocked = false')
             ->andWhere('p.isCorrupted = false');
 
         if ($isSortByViews) {
@@ -67,8 +65,6 @@ class MangaRepository extends ServiceEntityRepository
             ->setParameter('thirty_days_ago', $thirtyDaysAgo->format('Y-m-d'))
             ->andWhere('p.publishedAt < :five_minutes_ago')
             ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"))
-            ->andWhere('p.isOld = false')
-            ->andWhere('p.isBlocked = false')
             ->andWhere('p.isCorrupted = false');
 
         return $this->createPaginator($queryBuilder->getQuery(), $page);
@@ -109,9 +105,7 @@ class MangaRepository extends ServiceEntityRepository
         $repoParody = $em->getRepository(Parody::class);
 
         $queryBuilder = $this->createQueryBuilder('p')
-            ->where('p.isOld = false')
-            ->andWhere('p.isBlocked = false')
-            ->andWhere('p.isCorrupted = false');
+            ->where('p.isCorrupted = false');
 
         // If it's strict we use the entire query
         if ($isStrict) {
@@ -224,9 +218,7 @@ class MangaRepository extends ServiceEntityRepository
     public function findByAuthor(Author $author): array
     {
         $queryBuilder = $this->createQueryBuilder('p')
-            ->where('p.isOld = false')
-            ->andWhere('p.isBlocked = false')
-            ->andWhere('p.isCorrupted = false')
+            ->where('p.isCorrupted = false')
             ->andWhere(':author MEMBER OF p.authors')
             ->setParameter('author', $author)
             ->orderBy('p.id', 'DESC');
@@ -243,9 +235,7 @@ class MangaRepository extends ServiceEntityRepository
         }
 
         $queryBuilder = $this->createQueryBuilder('p')
-            ->where('p.isOld = false')
-            ->andWhere('p.isBlocked = false')
-            ->andWhere('p.isCorrupted = false')
+            ->where('p.isCorrupted = false')
             ->andWhere(':tag MEMBER OF p.tags')
             ->setParameter('tag', $tag)
             ->orderBy('p.id', $order)

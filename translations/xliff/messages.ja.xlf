@@ -4,7 +4,7 @@
         <body>
             <trans-unit id="http_error.name">
                 <source>http_error.name</source>
-                <target>Error %status_code%</target>
+                <target>エラー%status_code%</target>
             </trans-unit>
             <trans-unit id="http_error.description">
                 <source>http_error.description</source>
@@ -16,7 +16,7 @@
             </trans-unit>
             <trans-unit id="http_error_403.description">
                 <source>http_error_403.description</source>
-                <target>You don't have permission to access to this resource.</target>
+                <target>このリソースにアクセスする権限がありません。</target>
             </trans-unit>
             <trans-unit id="http_error_403.suggestion">
                 <source>http_error_403.suggestion</source>
@@ -70,6 +70,14 @@
             <trans-unit id="search.sort">
                 <source>search.sort</source>
                 <target>トレンド</target>
+            </trans-unit>
+            <trans-unit id="banner.unlock.text">
+                <source>banner.unlock.text</source>
+                <target>すべてのサービスをサブスクライブしてロック解除!</target>
+            </trans-unit>
+            <trans-unit id="banner.unlock.button">
+                <source>banner.unlock.button</source>
+                <target>今すぐロック解除</target>
             </trans-unit>
 
             <trans-unit id="tag.popular_title">
@@ -156,6 +164,10 @@
             <trans-unit id="manga.paginator.next">
                 <source>manga.paginator.next</source>
                 <target>次</target>
+            </trans-unit>
+            <trans-unit id="manga.unlock.patreon">
+                <source>manga.unlock.patreon</source>
+                <target>Patreonを使ってロック解除</target>
             </trans-unit>
 
             <trans-unit id="disclaimer.text">
@@ -312,6 +324,10 @@
                 <source>account.edit</source>
                 <target>編集する</target>
             </trans-unit>
+            <trans-unit id="account.help">
+                <source>account.help</source>
+                <target>ヘルプ</target>
+            </trans-unit>
             <trans-unit id="account.bind.patreon">
                 <source>account.bind.patreon</source>
                 <target>Patreonアカウントを紐付ける</target>
@@ -430,6 +446,19 @@
             <trans-unit id="delete_account.button">
                 <source>delete_account.button</source>
                 <target>アカウント抑制を検証する</target>
+            </trans-unit>
+
+            <trans-unit id="help.contact">
+                <source>help.contact</source>
+                <target>問題が発生した場合は、以下のメールアドレスにお問い合わせください : %contact_email%</target>
+            </trans-unit>
+            <trans-unit id="help.patreon.check.text">
+                <source>help.patreon.check.text</source>
+                <target>Patreonとアカウントが同期されていない場合は、以下のボタンを使用してください :</target>
+            </trans-unit>
+            <trans-unit id="help.patreon.check.button">
+                <source>help.patreon.check.button</source>
+                <target>Patreonを同期する</target>
             </trans-unit>
 
             <trans-unit id="email.title">

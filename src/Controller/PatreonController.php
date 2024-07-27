@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Repository\UserRepository;
+use App\Service\PatreonService;
 use Doctrine\ORM\EntityManagerInterface;
 use Patreon\API;
 use Patreon\OAuth;
@@ -19,7 +20,7 @@ class PatreonController extends AbstractController
     /**
      * @Route("/patreon_login", name="patreon_login")
      */
-    public function login(Request $request, UserRepository $userRepository, EntityManagerInterface $entityManager, UserAuthenticatorInterface $userAuthenticator, AuthenticatorInterface $authenticator)
+    public function login(Request $request, UserRepository $userRepository, EntityManagerInterface $entityManager, UserAuthenticatorInterface $userAuthenticator, AuthenticatorInterface $authenticator, PatreonService $patreonService)
     {
         if (isset($_GET['code']) && !empty($_GET['code'])) {
 
@@ -50,6 +51,13 @@ class PatreonController extends AbstractController
                         $entityManager->flush();
                         $userAuthenticator->authenticateUser($user, $authenticator, $request);
                     }
+                }
+                if ([$nextChargeDate, $tier] = $patreonService->getPatreonMembership($user)) {
+                    $user->setPatreonNextCharge($nextChargeDate);
+                    // todo change when new tier coming
+                    $user->setPatreonTier(1);
+                    $entityManager->persist($user);
+                    $entityManager->flush();
                 }
                 return $this->redirectToRoute('user_index');
             }

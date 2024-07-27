@@ -71,6 +71,14 @@
                 <source>search.sort</source>
                 <target>Trending</target>
             </trans-unit>
+            <trans-unit id="banner.unlock.text">
+                <source>banner.unlock.text</source>
+                <target>Unlock all our services by subscribing !</target>
+            </trans-unit>
+            <trans-unit id="banner.unlock.button">
+                <source>banner.unlock.button</source>
+                <target>Unlock now</target>
+            </trans-unit>
 
             <trans-unit id="tag.popular_title">
                 <source>tag.popular_title</source>
@@ -156,6 +164,10 @@
             <trans-unit id="manga.paginator.next">
                 <source>manga.paginator.next</source>
                 <target>Next</target>
+            </trans-unit>
+            <trans-unit id="manga.unlock.patreon">
+                <source>manga.unlock.patreon</source>
+                <target>Unlock with Patreon</target>
             </trans-unit>
 
             <trans-unit id="disclaimer.text">
@@ -312,6 +324,10 @@
                 <source>account.edit</source>
                 <target>Edit</target>
             </trans-unit>
+            <trans-unit id="account.help">
+                <source>account.help</source>
+                <target>Help</target>
+            </trans-unit>
             <trans-unit id="account.bind.patreon">
                 <source>account.bind.patreon</source>
                 <target>Bind your Patreon account</target>
@@ -430,6 +446,19 @@
             <trans-unit id="delete_account.button">
                 <source>delete_account.button</source>
                 <target>Validate my account suppression</target>
+            </trans-unit>
+
+            <trans-unit id="help.contact">
+                <source>help.contact</source>
+                <target>If you encounter an issue please contact us at the following email address : %contact_email%</target>
+            </trans-unit>
+            <trans-unit id="help.patreon.check.text">
+                <source>help.patreon.check.text</source>
+                <target>If your account is not synced with Patreon please use the button below :</target>
+            </trans-unit>
+            <trans-unit id="help.patreon.check.button">
+                <source>help.patreon.check.button</source>
+                <target>Sync Patreon</target>
             </trans-unit>
 
             <trans-unit id="email.title">

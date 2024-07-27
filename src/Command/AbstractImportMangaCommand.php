@@ -51,6 +51,7 @@ abstract class AbstractImportMangaCommand extends Command
 
         if ($mangaFind = $repoManga->findOneBy(['title' => $json['title']])) {
             $this->logger->warning('Manga already exist - id : ' . $mangaFind->getId());
+            return;
         } else {
             $manga = new Manga();
             $manga->setExternalId($json['gid']);
@@ -144,7 +145,7 @@ abstract class AbstractImportMangaCommand extends Command
                             $imageLinkContent = $this->callAPI('GET', $imageLink);
                             preg_match_all('@src="([^"]+)"@', $imageLinkContent, $match);
                             $src = array_pop($match);
-                            if (strstr($src[5], '509.gif') != false) {
+                            if (!isset($src[5]) || strstr($src[5], '509.gif') != false) {
                                 break;
                             }
                             $i = str_pad($i, 3, "0", STR_PAD_LEFT);
@@ -176,12 +177,23 @@ abstract class AbstractImportMangaCommand extends Command
                     }
                 }
             }
+            $fileSystem = new Filesystem();
             $finder = new Finder();
-            $finder->files()->in(dirname(__DIR__) . '/../public/media/' . $manga->getId());
-            if (count($finder) != $i || count($finder) <= 2) {
+            $path = dirname(__DIR__) . '/../public/media/' . $manga->getId();
+            $countPageInFinder = 0;
+            if ($fileSystem->exists($path)) {
+                // Plus one for thumbnail
+                $countPageInFinder = count($finder) + 1;
+            }
+            if ($countPageInFinder != $manga->getCountPages() || $countPageInFinder <= 2) {
                 $manga->setIsCorrupted(true);
                 $this->em->persist($manga);
                 $this->em->flush();
+
+                if ($path == dirname(__DIR__) . '/../public/media/') {
+                    die;
+                }
+                $fileSystem->remove($path);
                 $this->logger->error('End of import - manga : ' . $manga->getTitle() . ' -> fail because all image are not download (find :' . (count($finder) - 1) . ', expected : ' . $i . ')');
             } else {
                 $this->logger->info('End of import - manga : ' . $manga->getTitle() . ' ## New ID : ' . $manga->getId());

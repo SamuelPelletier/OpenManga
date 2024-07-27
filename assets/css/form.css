@@ -227,3 +227,8 @@ textarea {
     padding: 10px;
     font-size: 19px;
 }
+
+.patreon-sync .animate-box svg {
+    height: 40px;
+    margin-left: 10%;
+}

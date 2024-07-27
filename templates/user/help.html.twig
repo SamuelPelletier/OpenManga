@@ -1,0 +1,27 @@
+{% extends 'form/theme.html.twig' %}
+
+{% block title %}{{ 'account.help'|trans }}{% endblock %}
+
+{% block body %}
+<div class="form">
+    <div class="buttons row">
+        <div class="col"><a href="{{ path('user_index') }}">{{ 'edit_profile.link.back_account'|trans }}</a></div>
+    </div>
+
+    <div>
+        <h1>{{ 'account.help'|trans }}</h1>
+        <div>
+            <p>{{ 'help.contact'|trans({ '%contact_email%': app.request.server.get('CONTACT_MAIL') }) }}</p>
+        </div>
+        {% if user.patreonAccessToken and user.isPatreonAllow(1) == false %}
+            {% set url = url('user_sync_patreon') %}
+            <hr>
+            <div class="patreon-sync">
+                <p>{{ 'help.patreon.check.text'|trans }}</p>
+                <button class="patreon-button btn-effect pulse-violet"
+                        data-url="{{ url }}">{{ 'help.patreon.check.button'|trans }}
+                </button>
+            </div
+        {% endif %}
+    </div>
+    {% endblock %}

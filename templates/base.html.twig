@@ -151,6 +151,12 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                     </ul>
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') == false or app.user.isPatreonAllow(1) == false %}
+                <div class="unlock">
+                    {{ 'banner.unlock.text'|trans() }}
+                    <a href="{{ app.request.server.get('PATREON_LINK') }}">{{ 'banner.unlock.button'|trans() }}</a>
+                </div>
+            {% endif %}
         </nav>
     </header>
 {% endblock %}
