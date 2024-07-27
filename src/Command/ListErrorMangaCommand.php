@@ -84,6 +84,7 @@ class ListErrorMangaCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
+        $this->logger->info('Start check manga');
         $iterations = $input->getOption('iterations');
         $mangas = $this->mangaRepository->findBy([], ['id' => 'desc']);
         $i = 0;
