@@ -101,7 +101,7 @@ class ListErrorMangaCommand extends Command
                 $finder = new Finder();
                 $finder->files()->in($path);
                 if ($manga->getCountPages() != count($finder) - 1) {
-                    $output->writeln($manga->getId());
+                    $output->writeln($manga->getId() . ' : <fg=red>NOK</>');
                     if ($manga->getId() > 1) {
                         if ($path == dirname(__DIR__) . '/../public/media/') {
                             die;
@@ -111,6 +111,8 @@ class ListErrorMangaCommand extends Command
                         $this->em->persist($manga);
                         $this->em->flush();
                     }
+                } else {
+                    $output->writeln($manga->getId() . ' : <fg=green>OK</>');
                 }
             }
             if ($iterations != 0 && $i > $iterations) {
