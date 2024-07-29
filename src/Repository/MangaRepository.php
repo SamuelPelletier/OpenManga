@@ -105,19 +105,23 @@ class MangaRepository extends ServiceEntityRepository
         $repoParody = $em->getRepository(Parody::class);
 
         $queryBuilder = $this->createQueryBuilder('p')
-            ->where('p.isCorrupted = false');
+            ->where('p.isCorrupted = false')->andWhere('p.publishedAt < :five_minutes_ago')
+            ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"));
+
+        $orStatements = $queryBuilder->expr()->orX();
 
         // If it's strict we use the entire query
-        if ($isStrict) {
-            $searchTerms = [$query];
-        }
+        /* if ($isStrict) {
+             $searchTerms = [$query];
+         }*/
 
         foreach ($searchTerms as $key => $term) {
             if (!$isStrict) {
                 $term = '%' . $term . '%';
             }
 
-            if ($isStrict) {
+            // @todo fix that
+            /*if ($isStrict) {
                 $tags = $repoTag->getEntityManager()->createQueryBuilder()
                     ->select('a')
                     ->from($repoTag->_entityName, 'a')->where('a.name like :name')
@@ -162,26 +166,19 @@ class MangaRepository extends ServiceEntityRepository
                         ->orWhere(':a_' . $keyAuthor . '_' . $key . ' MEMBER OF p.authors')
                         ->setParameter(':a_' . $keyAuthor . '_' . $key, $author);
                 }
-                $queryBuilder
-                    ->orWhere('p.title LIKE :ti_' . $key)
-                    ->setParameter('ti_' . $key, $term);
-            } else {
-                $queryBuilder
-                    ->where('p.title LIKE :ti_' . $key)
-                    ->setParameter('ti_' . $key, $term);
-            }
+            }*/
 
-
-            if ($isSortByViews) {
-                $queryBuilder->orderBy('p.countViews', 'DESC');
-            } else {
-                $queryBuilder->orderBy('p.publishedAt', 'DESC');
-            }
-
-            $queryBuilder->andWhere('p.publishedAt < :five_minutes_ago')
-                ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"));
-
+            $orStatements->add(
+                $queryBuilder->expr()->like('p.title', ':title')
+            );
+            $queryBuilder->setParameter(':title', $term);
         }
+        if ($isSortByViews) {
+            $queryBuilder->orderBy('p.countViews', 'DESC');
+        } else {
+            $queryBuilder->orderBy('p.publishedAt', 'DESC');
+        }
+        $queryBuilder->andWhere($orStatements);
 
         return $this->createPaginator($queryBuilder->getQuery(), $page);
     }
