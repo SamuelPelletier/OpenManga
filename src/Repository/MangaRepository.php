@@ -162,11 +162,15 @@ class MangaRepository extends ServiceEntityRepository
                         ->orWhere(':a_' . $keyAuthor . '_' . $key . ' MEMBER OF p.authors')
                         ->setParameter(':a_' . $keyAuthor . '_' . $key, $author);
                 }
+                $queryBuilder
+                    ->orWhere('p.title LIKE :ti_' . $key)
+                    ->setParameter('ti_' . $key, $term);
+            } else {
+                $queryBuilder
+                    ->where('p.title LIKE :ti_' . $key)
+                    ->setParameter('ti_' . $key, $term);
             }
 
-            $queryBuilder
-                ->orWhere('p.title LIKE :ti_' . $key)
-                ->setParameter('ti_' . $key, $term);
 
             if ($isSortByViews) {
                 $queryBuilder->orderBy('p.countViews', 'DESC');
