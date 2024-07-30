@@ -108,7 +108,7 @@ class MangaController extends BaseController
         }
 
         if ($manga->isCorrupted()) {
-            return $this->render('bundles/TwigBundle/Exception/error.html.twig', ['status_code' => 404]);
+            return $this->render('bundles/TwigBundle/Exception/error_404.html.twig');
         }
 
         $images = array();
