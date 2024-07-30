@@ -107,6 +107,10 @@ class MangaController extends BaseController
             return $this->render('bundles/TwigBundle/Exception/error_403.html.twig');
         }
 
+        if ($manga->isCorrupted()) {
+            return $this->render('bundles/TwigBundle/Exception/error.html.twig', ['status_code' => 404]);
+        }
+
         $images = array();
         for ($i = 1; $i < $manga->getCountPages(); $i++) {
             $images[] = str_pad($i, 3, 0, STR_PAD_LEFT) . '.jpg';
