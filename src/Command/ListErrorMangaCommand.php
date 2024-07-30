@@ -86,7 +86,7 @@ class ListErrorMangaCommand extends Command
     {
         $this->logger->info('Start check manga');
         $iterations = $input->getOption('iterations');
-        $mangas = $this->mangaRepository->findBy([], ['id' => 'desc']);
+        $mangas = $this->mangaRepository->findLatestByIdDesc();
         $i = 0;
         /** @var Manga $manga */
         foreach ($mangas as $manga) {

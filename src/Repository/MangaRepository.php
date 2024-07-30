@@ -70,16 +70,6 @@ class MangaRepository extends ServiceEntityRepository
         return $this->createPaginator($queryBuilder->getQuery(), $page);
     }
 
-    private function createPaginator(Query $query, int $page): Paginator
-    {
-
-        $premierResultat = ($page - 1) * Manga::NUM_ITEMS;
-        $query->setFirstResult($premierResultat)->setMaxResults(Manga::NUM_ITEMS);
-        $paginator = new Paginator($query);
-
-        return $paginator;
-    }
-
     /**
      * @return Manga[]
      */
@@ -261,6 +251,16 @@ class MangaRepository extends ServiceEntityRepository
         return $queryBuilder->getQuery()->execute();
     }
 
+    public function findLatestByIdDesc()
+    {
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->where('p.publishedAt < :five_minutes_ago')
+            ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"))
+            ->andWhere('p.isCorrupted = false')
+            ->orderBy('p.id', 'DESC');
+        return $queryBuilder->getQuery()->execute();
+    }
+
     /**
      * Removes all non-alphanumeric characters except whitespaces.
      */
@@ -279,5 +279,15 @@ class MangaRepository extends ServiceEntityRepository
         return array_filter($terms, function ($term) {
             return 1 <= mb_strlen($term);
         });
+    }
+
+    private function createPaginator(Query $query, int $page): Paginator
+    {
+
+        $premierResultat = ($page - 1) * Manga::NUM_ITEMS;
+        $query->setFirstResult($premierResultat)->setMaxResults(Manga::NUM_ITEMS);
+        $paginator = new Paginator($query);
+
+        return $paginator;
     }
 }
