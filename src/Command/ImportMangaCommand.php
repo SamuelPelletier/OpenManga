@@ -71,16 +71,6 @@ class ImportMangaCommand extends AbstractImportMangaCommand
                 break;
             }
         }
-
-
-        $command = $this->getApplication()->find('app:check-manga');
-        $arguments = [
-            'command' => 'app:check-manga',
-            '--iterations' => '10'
-        ];
-        $greetInput = new ArrayInput($arguments);
-        $command->run($greetInput, $output);
-
         return 0;
     }
 }
