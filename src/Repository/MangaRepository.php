@@ -91,7 +91,6 @@ class MangaRepository extends ServiceEntityRepository
     ): Paginator
     {
         $query = $this->sanitizeSearchQuery($rawQuery);
-        $searchTerms = $this->extractSearchTerms($query);
 
         // Min 3 caracteres to search
         if (strlen($query) < 3) {
@@ -111,26 +110,27 @@ class MangaRepository extends ServiceEntityRepository
         $orStatements = $queryBuilder->expr()->orX();
 
         // If it's strict we use the entire query
-        /* if ($isStrict) {
-             $searchTerms = [$query];
-         }*/
+        if ($isStrict) {
+            $searchTerms = [$query];
+        } else {
+            $searchTerms = $this->extractSearchTerms($query);
+        }
 
         foreach ($searchTerms as $key => $term) {
             if (!$isStrict) {
                 $term = '%' . $term . '%';
             }
 
-            // @todo fix that
-            /*if ($isStrict) {
+            if ($isStrict) {
                 $tags = $repoTag->getEntityManager()->createQueryBuilder()
                     ->select('a')
                     ->from($repoTag->_entityName, 'a')->where('a.name like :name')
                     ->setParameter('name', $term)->getQuery()->getResult();
 
                 foreach ($tags as $keyTag => $tag) {
-                    $queryBuilder
-                        ->orWhere(':ta_' . $keyTag . '_' . $key . ' MEMBER OF p.tags')
-                        ->setParameter('ta_' . $keyTag . '_' . $key, $tag);
+                    $paramName = 'ta_' . $keyTag;
+                    $orStatements->add($queryBuilder->expr()->isMemberOf(':' . $paramName, 'p.tags'));
+                    $queryBuilder->setParameter($paramName, $tag);
                 }
 
                 $languages = $repoLanguage->getEntityManager()->createQueryBuilder()
@@ -139,11 +139,10 @@ class MangaRepository extends ServiceEntityRepository
                     ->setParameter('name', $term)->getQuery()->getResult();
 
                 foreach ($languages as $keyLanguage => $language) {
-                    $queryBuilder
-                        ->orWhere(':l_' . $keyLanguage . '_' . $key . ' MEMBER OF p.languages')
-                        ->setParameter(':l_' . $keyLanguage . '_' . $key, $language);
+                    $paramName = 'l_' . $keyLanguage;
+                    $orStatements->add($queryBuilder->expr()->isMemberOf(':' . $paramName, 'p.languages'));
+                    $queryBuilder->setParameter($paramName, $language);
                 }
-
 
                 $parodies = $repoParody->getEntityManager()->createQueryBuilder()
                     ->select('a')
@@ -151,9 +150,9 @@ class MangaRepository extends ServiceEntityRepository
                     ->setParameter('name', $term)->getQuery()->getResult();
 
                 foreach ($parodies as $keyParody => $parody) {
-                    $queryBuilder
-                        ->orWhere(':p_' . $keyParody . '_' . $key . ' MEMBER OF p.parodies')
-                        ->setParameter(':p_' . $keyParody . '_' . $key, $parody);
+                    $paramName = 'p_' . $keyParody;
+                    $orStatements->add($queryBuilder->expr()->isMemberOf(':' . $paramName, 'p.parodies'));
+                    $queryBuilder->setParameter($paramName, $parody);
                 }
 
                 $authors = $repoAuthor->getEntityManager()->createQueryBuilder()
@@ -162,15 +161,13 @@ class MangaRepository extends ServiceEntityRepository
                     ->setParameter('name', $term)->getQuery()->getResult();
 
                 foreach ($authors as $keyAuthor => $author) {
-                    $queryBuilder
-                        ->orWhere(':a_' . $keyAuthor . '_' . $key . ' MEMBER OF p.authors')
-                        ->setParameter(':a_' . $keyAuthor . '_' . $key, $author);
+                    $paramName = 'a_' . $keyAuthor;
+                    $orStatements->add($queryBuilder->expr()->isMemberOf(':' . $paramName, 'p.parodies'));
+                    $queryBuilder->setParameter($paramName, $author);
                 }
-            }*/
+            }
 
-            $orStatements->add(
-                $queryBuilder->expr()->like('p.title', ':title')
-            );
+            $orStatements->add($queryBuilder->expr()->like('p.title', ':title'));
             $queryBuilder->setParameter(':title', $term);
         }
         if ($isSortByViews) {
