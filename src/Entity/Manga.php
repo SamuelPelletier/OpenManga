@@ -171,9 +171,9 @@ class Manga
     }
 
     /**
-     * @param int $externalId
+     * @param ?int $externalId
      */
-    public function setExternalId(int $externalId): void
+    public function setExternalId(?int $externalId): void
     {
         $this->externalId = $externalId;
     }
