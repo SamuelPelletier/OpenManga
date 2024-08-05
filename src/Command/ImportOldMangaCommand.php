@@ -39,9 +39,8 @@ class ImportOldMangaCommand extends AbstractImportMangaCommand
         list($nextPage, $linkList) = $this->populateLinkList($nextPageNumber);
         $progress = new ProgressBar($output, count($linkList));
         for ($i = count($linkList); $i > 0; $i--) {
-            $this->downloadManga($linkList[$i - 1],true);
+            $this->downloadManga($linkList[$i - 1], true);
             $progress->advance();
-            break;
         }
         $progress->finish();
 
@@ -58,7 +57,7 @@ class ImportOldMangaCommand extends AbstractImportMangaCommand
         $url = $_ENV['API_OLD_MANGA_SEARCH'] . $nextPageNumber;
 
         // Fetch the webpage content
-        $html = $this->callAPI('GET', $url);
+        $html = $this->callAPI('GET', $url, false, true);
         $pattern = $_ENV['API_PATTERN'];
 
         preg_match_all($pattern, $html, $matches, PREG_SET_ORDER);

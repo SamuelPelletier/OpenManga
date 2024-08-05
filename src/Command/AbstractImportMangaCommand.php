@@ -47,10 +47,10 @@ abstract class AbstractImportMangaCommand extends Command
                 [' . $mangaId . ',"' . $token . '"]
             ],
             "namespace": 1
-          }'), true)['gmetadata'][0];
+          }', $isOld), true)['gmetadata'][0];
 
-        if ($mangaFind = $repoManga->findOneBy(['title' => $json['title']])) {
-            $this->logger->warning('Manga already exist - id : ' . $mangaFind->getId());
+        if ($repoManga->findOneBy(['externalId' => $json['gid']]) || $repoManga->findOneBy(['title' => $json['title']])) {
+            $this->logger->warning('Manga already exist');
             return;
         } else {
             $manga = new Manga();
@@ -119,7 +119,7 @@ abstract class AbstractImportMangaCommand extends Command
             $this->em->flush();
             $fileSystem = new Filesystem();
             $fileSystem->mkdir(dirname(__DIR__) . '/../public/media/' . $manga->getId(), 0700);
-            $data = $this->callAPI('GET', $_ENV['API_MANGA_URL'] . $mangaId . '/' . $token);
+            $data = $this->callAPI('GET', $_ENV['API_MANGA_URL'] . $mangaId . '/' . $token, false, $isOld);
             $data = strip_tags($data, "<a>");
             $aTags = preg_split("/<\/a>/", $data);
             $maxPage = 0;
@@ -133,7 +133,7 @@ abstract class AbstractImportMangaCommand extends Command
             $i = 1;
             for ($page = 0; $page < ($maxPage + 1); $page++) {
                 if ($page !== 0) {
-                    $data = $this->callAPI('GET', $_ENV['API_MANGA_URL'] . $mangaId . '/' . $token . '/?p=' . $page);
+                    $data = $this->callAPI('GET', $_ENV['API_MANGA_URL'] . $mangaId . '/' . $token . '/?p=' . $page, false, $isOld);
                     $data = strip_tags($data, "<a>");
                     $aTags = preg_split("/<\/a>/", $data);
                 }
@@ -142,7 +142,7 @@ abstract class AbstractImportMangaCommand extends Command
                         $aTag = preg_replace("/.*<a\s+href=\"/sm", "", $aTag);
                         $imageLink = preg_replace("/\".*/", "", $aTag);
                         if (strstr($aTag, $_ENV['API_IMAGE_URL']) != false) {
-                            $imageLinkContent = $this->callAPI('GET', $imageLink);
+                            $imageLinkContent = $this->callAPI('GET', $imageLink, false, $isOld);
                             preg_match_all('@src="([^"]+)"@', $imageLinkContent, $match);
                             $src = array_pop($match);
                             if (!isset($src[5]) || strstr($src[5], '509.gif') != false) {
@@ -180,10 +180,11 @@ abstract class AbstractImportMangaCommand extends Command
             $fileSystem = new Filesystem();
             $finder = new Finder();
             $path = dirname(__DIR__) . '/../public/media/' . $manga->getId();
+            $finder->in($path);
             $countPageInFinder = 0;
             if ($fileSystem->exists($path)) {
-                // Plus one for thumbnail
-                $countPageInFinder = count($finder) + 1;
+                // Menus one for thumbnail
+                $countPageInFinder = count($finder) - 1;
             }
             if ($countPageInFinder != $manga->getCountPages() || $countPageInFinder <= 2) {
                 $manga->setIsCorrupted(true);
@@ -194,14 +195,14 @@ abstract class AbstractImportMangaCommand extends Command
                     die;
                 }
                 $fileSystem->remove($path);
-                $this->logger->error('End of import - manga : ' . $manga->getTitle() . ' -> fail because all image are not download (find :' . (count($finder) - 1) . ', expected : ' . $i . ')');
+                $this->logger->error('End of import - manga : ' . $manga->getTitle() . ' -> fail because all image are not download (find :' . $countPageInFinder . ', expected : ' . $i . ')');
             } else {
                 $this->logger->info('End of import - manga : ' . $manga->getTitle() . ' ## New ID : ' . $manga->getId());
             }
         }
     }
 
-    protected function callAPI($method, $url, $data = false)
+    protected function callAPI($method, $url, $data = false, $forOldManga = false)
     {
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
@@ -223,11 +224,11 @@ abstract class AbstractImportMangaCommand extends Command
         }
 
         // Proxy part
-        $proxies = explode(',', $_ENV['PROXY_URLS']);
+        $proxies = explode(',', $forOldManga ? $_ENV['PROXY_URLS2'] : $_ENV['PROXY_URLS']);
         shuffle($proxies);
         curl_setopt($curl, CURLOPT_PROXY, $proxies[0]);
         curl_setopt($curl, CURLOPT_PROXYPORT, 10001);
-        curl_setopt($curl, CURLOPT_PROXYUSERPWD, $_ENV['PROXY_AUTH']);
+        curl_setopt($curl, CURLOPT_PROXYUSERPWD, $forOldManga ? $_ENV['PROXY_AUTH2'] : $_ENV['PROXY_AUTH']);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($curl, CURLOPT_HEADER, false);
 
