@@ -82,16 +82,18 @@ class RemoveDuplicateMangaCommand extends Command
             $mangasDuplicate = $this->mangaRepository->findByTitle($manga['title']);
             $firstManga = array_shift($mangasDuplicate);
             $countViews = 0;
+            /** @var Manga $mangaDuplicate */
             foreach ($mangasDuplicate as $mangaDuplicate) {
                 $countViews += $mangaDuplicate->getCountViews();
-                $path = dirname(__DIR__) . '/../public/media/' . $mangaDuplicate->getId();
+                $folder = $mangaDuplicate->isOld() ? 'media_old' : 'media';
+                $path = dirname(__DIR__) . '/../public/' . $folder . '/' . $mangaDuplicate->getId();
                 $fileSystem = new Filesystem();
                 $output->writeln($mangaDuplicate->getId());
                 if ($fileSystem->exists($path)) {
                     $finder = new Finder();
                     $finder->files()->in($path);
                     if ($mangaDuplicate->getId() > 1) {
-                        if ($path == dirname(__DIR__) . '/../public/media/') {
+                        if ($path == dirname(__DIR__) . '/../public/' . $folder . '/') {
                             die;
                         }
                         $fileSystem->remove($path);

@@ -102,13 +102,13 @@ class MangaController extends BaseController
          */
         $user = $this->getUser();
 
+        if ($manga->isCorrupted()) {
+            return $this->render('bundles/TwigBundle/Exception/error_404.html.twig');
+        }
+
         // Add user permission
         if (($manga->isOld() || $manga->isBlocked()) && !$user?->isPatreonAllow(1)) {
             return $this->render('bundles/TwigBundle/Exception/error_403.html.twig');
-        }
-
-        if ($manga->isCorrupted()) {
-            return $this->render('bundles/TwigBundle/Exception/error_404.html.twig');
         }
 
         $images = array();
@@ -195,7 +195,8 @@ class MangaController extends BaseController
          */
         $user = $this->getUser();
 
-        if (is_dir('media/' . $manga->getId() . '/')) {
+        $folder = $manga->isOld() ? 'media_old' : 'media';
+        if (is_dir($folder . '/' . $manga->getId() . '/')) {
 
             $zipFolder = 'media/zip/';
 
@@ -204,7 +205,7 @@ class MangaController extends BaseController
             if (!file_exists($zipFolder . $zipName)) {
                 $files = array();
                 $finder = new Finder();
-                $finder->files()->in('media/' . $manga->getId() . '/');
+                $finder->files()->in($folder . '/' . $manga->getId() . '/');
                 foreach ($finder as $file) {
                     if (preg_match("/\.jpg$/", $file->getFilename())) {
                         array_push($files, $file);

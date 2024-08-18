@@ -32,6 +32,8 @@ abstract class AbstractImportMangaCommand extends Command
 
     protected function downloadManga($link, $isOld = false)
     {
+        $folder = $isOld ? 'media_old' : 'media';
+        $path = dirname(__DIR__) . '/../public/' . $folder . '/';
         $repoManga = $this->em->getRepository(Manga::class);
         $repoLanguage = $this->em->getRepository(Language::class);
         $repoTag = $this->em->getRepository(Tag::class);
@@ -118,7 +120,7 @@ abstract class AbstractImportMangaCommand extends Command
             $this->em->persist($manga);
             $this->em->flush();
             $fileSystem = new Filesystem();
-            $fileSystem->mkdir(dirname(__DIR__) . '/../public/media/' . $manga->getId(), 0700);
+            $fileSystem->mkdir($path . $manga->getId(), 0700);
             $data = $this->callAPI('GET', $_ENV['API_MANGA_URL'] . $mangaId . '/' . $token, false, $isOld);
             $data = strip_tags($data, "<a>");
             $aTags = preg_split("/<\/a>/", $data);
@@ -151,14 +153,14 @@ abstract class AbstractImportMangaCommand extends Command
                             $i = str_pad($i, 3, "0", STR_PAD_LEFT);
                             try {
                                 $fileSystem->copy($src[5],
-                                    dirname(__DIR__) . '/../public/media/' . $manga->getId() . '/' . $i . '.jpg', true);
+                                    $path . $manga->getId() . '/' . $i . '.jpg', true);
                             } catch (\Exception $e) {
                                 break;
                             }
                             // Create thumbnail
                             if ($i == 1) {
-                                $source = dirname(__DIR__) . '/../public/media/' . $manga->getId() . '/' . $i . '.jpg';
-                                $destination = dirname(__DIR__) . '/../public/media/' . $manga->getId() . '/thumb.webp';
+                                $source = $path . $manga->getId() . '/' . $i . '.jpg';
+                                $destination = $path . $manga->getId() . '/thumb.webp';
 
                                 try {
                                     $success = WebPConvert::convert($source, $destination, [
@@ -179,10 +181,10 @@ abstract class AbstractImportMangaCommand extends Command
             }
             $fileSystem = new Filesystem();
             $finder = new Finder();
-            $path = dirname(__DIR__) . '/../public/media/' . $manga->getId();
-            $finder->in($path);
+            $mangaPath = $path . $manga->getId();
+            $finder->in($mangaPath);
             $countPageInFinder = 0;
-            if ($fileSystem->exists($path)) {
+            if ($fileSystem->exists($mangaPath)) {
                 // Menus one for thumbnail
                 $countPageInFinder = count($finder) - 1;
             }
@@ -191,10 +193,10 @@ abstract class AbstractImportMangaCommand extends Command
                 $this->em->persist($manga);
                 $this->em->flush();
 
-                if ($path == dirname(__DIR__) . '/../public/media/') {
+                if ($mangaPath == $path) {
                     die;
                 }
-                $fileSystem->remove($path);
+                $fileSystem->remove($mangaPath);
                 $this->logger->error('End of import - manga : ' . $manga->getTitle() . ' -> fail because all image are not download (find :' . $countPageInFinder . ', expected : ' . $i . ')');
             } else {
                 $this->logger->info('End of import - manga : ' . $manga->getTitle() . ' ## New ID : ' . $manga->getId());

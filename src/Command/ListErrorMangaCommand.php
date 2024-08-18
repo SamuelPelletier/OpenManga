@@ -91,7 +91,8 @@ class ListErrorMangaCommand extends Command
         /** @var Manga $manga */
         foreach ($mangas as $manga) {
             $i++;
-            $path = dirname(__DIR__) . '/../public/media/' . $manga->getId();
+            $folder = $manga->isOld() ? 'media_old' : 'media';
+            $path = dirname(__DIR__) . '/../public/' . $folder . '/' . $manga->getId();
             $fileSystem = new Filesystem();
             if (!$fileSystem->exists($path)) {
                 $manga->setIsCorrupted(true);
@@ -103,7 +104,7 @@ class ListErrorMangaCommand extends Command
                 if ($manga->getCountPages() != count($finder) - 1) {
                     $output->writeln($manga->getId() . ' : <fg=red>NOK</>');
                     if ($manga->getId() > 1) {
-                        if ($path == dirname(__DIR__) . '/../public/media/') {
+                        if ($path == dirname(__DIR__) . '/../public/' . $folder . '/') {
                             die;
                         }
                         $fileSystem->remove($path);

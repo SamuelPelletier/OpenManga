@@ -36,7 +36,7 @@
                     {% if isLocked %}
                         src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'lock.webp' ) }}'
                     {% else %}
-                        src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/thumb.webp' ) }}'
+                        src='{{ app.request.getSchemeAndHttpHost() ~ asset( (manga.isOld ? 'media_old':'media') ~ '/' ~ manga.id ~ '/thumb.webp' ) }}'
                     {% endif %}
             >
         </div>

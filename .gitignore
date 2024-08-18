@@ -32,6 +32,7 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
 /public/media/
+/public/media_old/
 /public/build/
 /.idea/
 /public/logo.ico

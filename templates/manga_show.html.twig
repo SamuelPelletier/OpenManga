@@ -1,3 +1,4 @@
+{% set folder = manga.isOld ? 'media_old' : 'media' %}
 {% extends 'base.html.twig' %}
 {% block stylesheets %}
     {{ parent() }}
@@ -116,11 +117,11 @@
         {% for image in images %}
             {% if image matches '{\.jpg$}' %}
                 <article class="image col-sm-3"
-                         data-src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/' ~ image ) }}'>
+                         data-src='{{ app.request.getSchemeAndHttpHost() ~ asset( folder ~ '/' ~ manga.id ~ '/' ~ image ) }}'>
                     <img alt="{{ manga.title | raw }} {{ 'manga.image_alt'|trans({'%count%':loop.index}) }}"
                          title="{{ manga.title | raw }} {{ 'manga.image_alt'|trans({'%count%':loop.index}) }}"
                          class='img-view'
-                         src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/' ~ image ) }}'>
+                         src='{{ app.request.getSchemeAndHttpHost() ~ asset( folder ~ '/' ~ manga.id ~ '/' ~ image ) }}'>
                 </article>
             {% endif %}
         {% else %}
@@ -150,7 +151,7 @@
                     "author": "{{ manga.authors|join(',') }}",
                     "bookFormat": "http://schema.org/EBook",
                     "datePublished": "{{ manga.publishedAt|format_datetime('long', 'none', 'UTC') }}",
-                    "thumbnail": "{{ app.request.getSchemeAndHttpHost() ~ asset( 'media/' ~ manga.id ~ '/thumb.webp' ) }}",
+                    "thumbnail": "{{ app.request.getSchemeAndHttpHost() ~ asset( folder ~ '/' ~ manga.id ~ '/thumb.webp' ) }}",
                     "inLanguage": "{{ manga.languages|join(',') }}",
                     "name": "{{ manga.title }}",
                     "numberOfPages": "{{ manga.countPages - 1 }}",
@@ -162,6 +163,8 @@
                     }
                 }
             }
+
+
 
 
 
