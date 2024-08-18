@@ -75,6 +75,13 @@ class ListErrorMangaCommand extends Command
                 InputArgument::OPTIONAL,
                 'Number of items check ?',
                 0
+            )
+            ->addOption(
+                'only-old',
+                'o',
+                InputArgument::OPTIONAL,
+                'Check only old manga',
+                0
             );
     }
 
@@ -86,7 +93,8 @@ class ListErrorMangaCommand extends Command
     {
         $this->logger->info('Start check manga');
         $iterations = $input->getOption('iterations');
-        $mangas = $this->mangaRepository->findLatestByIdDesc();
+        $onlyOld = (bool)$input->getOption('only-old');
+        $mangas = $this->mangaRepository->findLatestByIdDesc($onlyOld);
         $i = 0;
         /** @var Manga $manga */
         foreach ($mangas as $manga) {

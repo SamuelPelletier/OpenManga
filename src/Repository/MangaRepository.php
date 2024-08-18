@@ -251,12 +251,13 @@ class MangaRepository extends ServiceEntityRepository
         return $queryBuilder->getQuery()->execute();
     }
 
-    public function findLatestByIdDesc()
+    public function findLatestByIdDesc(bool $onlyOld = false)
     {
         $queryBuilder = $this->createQueryBuilder('p')
             ->where('p.publishedAt < :five_minutes_ago')
             ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"))
             ->andWhere('p.isCorrupted = false')
+            ->andWhere('p.isOld = ' . (int)$onlyOld)
             ->orderBy('p.id', 'DESC');
         return $queryBuilder->getQuery()->execute();
     }
