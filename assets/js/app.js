@@ -77,7 +77,7 @@ function addMangaBlock() {
 }
 
 $(function () {
-    if (window.innerWidth < 738 && $('.manga-container').length > 0) {
+    /*if (window.innerWidth < 738 && $('.manga-container').length > 0) {
         addMangaBlock();
 
         $(window).scroll(function () {
@@ -89,7 +89,7 @@ $(function () {
                 }
             }
         });
-    }
+    }*/
 
     $('#toggle').on('click', function () {
         $('.search-button').click();

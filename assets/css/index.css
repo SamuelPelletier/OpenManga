@@ -204,6 +204,12 @@ a:hover, a:focus, a:active {
 }
 
 @media (max-width: 767px) {
+    .dl-app {
+        text-align: left;
+    }
+}
+
+@media (max-width: 767px) {
     .unlock a {
         display: block;
         color: white;
@@ -587,17 +593,6 @@ article .img-name:hover {
 .pagination > .active > a, .pagination > li > a:hover {
     background-color: #ff5c8a !important;
     color: white !important;
-}
-
-@media (max-width: 767px) {
-    .pagination li:not([class]), .pagination li[class=disabled] {
-        display: none;
-    }
-
-    .pagination li:first-child, .pagination li:last-child, .pagination li:nth-child(2), .pagination li:nth-last-child(2) {
-        display: inline;
-    }
-
 }
 
 .switch-div {
@@ -991,12 +986,6 @@ a.label:hover, a.label:focus {
 .c-red {
     color: red;
     text-decoration: none !important;
-}
-
-@media screen and (max-width: 767px) {
-    .navigation {
-        display: none;
-    }
 }
 
 #loader-scroll {
