@@ -18,14 +18,14 @@
                 <p id="patreon-binded">{{ 'account.binded.patreon'|trans }}</p>
             {% endif %}
         </div>
-        <div class="col-sm-4"></div>
-        <div class="col-sm-1"><a id="help" class="btn-effect pulse-violet" rel="nofollow" target="_blank"
-                                 href="{{ '/'~ app.request.server.get('APP_NAME')|lower }}.apk">{{ 'account.app'|trans }}</a>
+        <div class="col-sm-3"></div>
+        <div class="col-sm-2 text-right"><a id="help" class="btn-effect pulse-violet" rel="nofollow" target="_blank"
+                                            href="{{ '/'~ app.request.server.get('APP_NAME')|lower }}.apk">{{ 'account.app'|trans }}
+                <span class="fa fa-download"></span></a>
         </div>
         <div class="col-sm-1"><a id="help" class="btn-effect pulse-violet"
                                  href="{{ path('user_help') }}">{{ 'account.help'|trans }}</a></div>
-        <div class="col-sm-1"></div>
-        <div class="col-sm-1"><a id="logout" class="btn-effect pulse-violet"
+        <div class="col-sm-2"><a id="logout" class="btn-effect pulse-violet"
                                  href="{{ path('app_logout') }}">{{ 'account.logout'|trans }}</a></div>
     </div>
     <div class="row">
