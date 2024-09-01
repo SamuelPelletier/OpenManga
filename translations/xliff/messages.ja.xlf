@@ -324,6 +324,10 @@
                 <source>account.edit</source>
                 <target>編集する</target>
             </trans-unit>
+            <trans-unit id="account.app">
+                <source>account.app</source>
+                <target>App</target>
+            </trans-unit>
             <trans-unit id="account.help">
                 <source>account.help</source>
                 <target>ヘルプ</target>

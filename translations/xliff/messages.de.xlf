@@ -324,6 +324,14 @@
                 <source>account.edit</source>
                 <target>Bearbeiten</target>
             </trans-unit>
+            <trans-unit id="account.app">
+                <source>account.app</source>
+                <target>App</target>
+            </trans-unit>
+            <trans-unit id="account.help">
+                <source>account.help</source>
+                <target>Hilfe</target>
+            </trans-unit>
             <trans-unit id="account.bind.patreon">
                 <source>account.bind.patreon</source>
                 <target>Verknüpfe dein Patreon-Konto</target>
