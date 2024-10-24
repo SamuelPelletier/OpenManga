@@ -1,0 +1,18 @@
+services:
+  Mixpanel:
+    class: \Mixpanel
+    factory: [ 'Mixpanel', 'getInstance' ]
+    arguments:
+      - '%env(MIXPANEL_PROJECT_TOKEN)%'
+      - { 'host': 'api-eu.mixpanel.com' }
+
+gordalina_mixpanel:
+  projects:
+    default:
+      token: '%env(MIXPANEL_PROJECT_TOKEN)%'
+  users:
+    App\Entity\User:
+      id: id
+      extra_data:
+        - { key: $username, value: username }
+

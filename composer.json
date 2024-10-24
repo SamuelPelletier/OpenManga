@@ -16,6 +16,7 @@
     "doctrine/orm": "^2.10",
     "erusev/parsedown": "^1.6",
     "ezyang/htmlpurifier": "^4.9",
+    "gordalina/mixpanel-bundle": "~5.0",
     "gregwar/captcha-bundle": "^2.2",
     "league/commonmark": "^2.1",
     "nesbot/carbon": "^2.72",

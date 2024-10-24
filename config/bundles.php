@@ -19,4 +19,5 @@ return [
     Gregwar\CaptchaBundle\GregwarCaptchaBundle::class => ['all' => true],
     SymfonyCasts\Bundle\ResetPassword\SymfonyCastsResetPasswordBundle::class => ['all' => true],
     Bugsnag\BugsnagBundle\BugsnagBundle::class => ['all' => true],
+    Gordalina\MixpanelBundle\GordalinaMixpanelBundle::class => ['all' => true],
 ];

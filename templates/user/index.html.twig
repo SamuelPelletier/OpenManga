@@ -73,7 +73,6 @@
         <h2>{{ 'account.last_manga_read'|trans }}</h2>
         <div>
             {% for manga in user.lastMangasRead|slice(0,5)|reverse %}
-                <
                 {% include 'manga.html.twig' %}
             {% else %}
                 <div class="gradient-border"><a
