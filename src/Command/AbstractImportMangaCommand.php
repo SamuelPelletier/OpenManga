@@ -49,7 +49,13 @@ abstract class AbstractImportMangaCommand extends Command
                 [' . $mangaId . ',"' . $token . '"]
             ],
             "namespace": 1
-          }', $isOld), true)['gmetadata'][0];
+          }', $isOld), true);
+
+        if (!isset($json['gmetadata']) || !isset($json['gmetadata'][0])) {
+            $this->logger->error('Fail to get manga information : json invalid');
+            return;
+        }
+        $json = $json['gmetadata'][0];
 
         if ($repoManga->findOneBy(['externalId' => $json['gid']]) || $repoManga->findOneBy(['title' => $json['title']])) {
             $this->logger->warning('Manga already exist');
@@ -149,6 +155,7 @@ abstract class AbstractImportMangaCommand extends Command
                             preg_match_all('@src="([^"]+)"@', $imageLinkContent, $match);
                             $src = array_pop($match);
                             if (!isset($src[5]) || strstr($src[5], '509.gif') != false) {
+                                $this->logger->error('Fail to get image - manga : ' . $manga->getTitle() . ' because src image not found ');
                                 break;
                             }
                             $i = str_pad($i, 3, "0", STR_PAD_LEFT);
@@ -156,6 +163,7 @@ abstract class AbstractImportMangaCommand extends Command
                                 $fileSystem->copy($src[5],
                                     $path . $manga->getId() . '/' . $i . '.jpg', true);
                             } catch (\Exception $e) {
+                                $this->logger->error('Fail to get image - manga : ' . $manga->getTitle() . ' because ' . $e->getMessage());
                                 break;
                             }
                             // Create thumbnail
@@ -191,7 +199,10 @@ abstract class AbstractImportMangaCommand extends Command
                 if ($countPageInFinder === -1) {
                     $output = '';
                     exec('ls -1 ' . $mangaPath . '| wc -l', $output);
-                    $countPageInFinder = (int)trim($output) -1;
+                    if (is_array($output)) {
+                        $output = $output[0];
+                    }
+                    $countPageInFinder = (int)trim($output) - 1;
                 }
             }
             if ($countPageInFinder != $manga->getCountPages() || $countPageInFinder <= 2) {
@@ -202,9 +213,11 @@ abstract class AbstractImportMangaCommand extends Command
                     die;
                 }
                 $fileSystem->remove($mangaPath);
-                $this->logger->error('End of import - manga : ' . $manga->getTitle() . ' -> fail because all image are not download (find :' . $countPageInFinder . ', expected : ' . $i . ')');
+                $this->logger->error('End of import - manga : ' . $manga->getTitle() . ' -> fail because all image are not download (find :' . $countPageInFinder . ', expected : ' . $manga->getCountPages() . ')');
             } else {
                 $manga->setIsCorrupted(false);
+                $this->em->persist($manga);
+                $this->em->flush();
                 $this->logger->info('End of import - manga : ' . $manga->getTitle() . ' ## New ID : ' . $manga->getId());
             }
         }
@@ -251,7 +264,7 @@ abstract class AbstractImportMangaCommand extends Command
 
         $result = curl_exec($curl);
 
-        if (str_starts_with($result, 'Your IP address has been temporarily banned')) {
+        if (str_starts_with($result, 'Your IP address has been temporarily banned') || str_starts_with(curl_error($curl), 'Failed to connect')) {
             $email = (new TemplatedEmail())
                 ->from(new Address($_ENV['MAILER_EMAIL'], $_ENV['APP_NAME']))
                 ->to($_ENV['MAILER_EMAIL'])

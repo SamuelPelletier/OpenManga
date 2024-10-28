@@ -64,6 +64,10 @@ class ImportMangaCommand extends AbstractImportMangaCommand
             }
         }
 
+        if (count($mangasLink) === 0) {
+            $this->logger->error('Fail to get mangas : link not found');
+        }
+
         for ($i = count($mangasLink); $i > 0; $i--) {
             $this->downloadManga($mangasLink[$i - 1]);
             // Download by batch of last 5
