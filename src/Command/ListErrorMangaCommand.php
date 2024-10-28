@@ -89,39 +89,32 @@ class ListErrorMangaCommand extends Command
      * This method is executed after initialize(). It usually contains the logic
      * to execute to complete this command task.
      */
-    protected function execute(InputInterface $input, OutputInterface $output):int
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->logger->info('Start check manga');
         $iterations = $input->getOption('iterations');
         $onlyOld = (bool)$input->getOption('only-old');
         $mangas = $this->mangaRepository->findLatestByIdDesc($onlyOld);
-        $i = 0;
+        // skip 10 first
+        $i = -10;
         /** @var Manga $manga */
         foreach ($mangas as $manga) {
             $i++;
+            if ($i < 0) {
+                continue;
+            }
             $folder = $manga->isOld() ? 'media_old' : 'media';
             $path = dirname(__DIR__) . '/../public/' . $folder . '/' . $manga->getId();
             $fileSystem = new Filesystem();
-            if (!$fileSystem->exists($path)) {
-                $manga->setIsCorrupted(true);
-                $this->em->persist($manga);
-                $this->em->flush();
-            } else {
+            if ($fileSystem->exists($path)) {
                 $finder = new Finder();
                 $finder->files()->in($path);
-                if ($manga->getCountPages() != count($finder) - 1) {
-                    $output->writeln($manga->getId() . ' : <fg=red>NOK</>');
-                    if ($manga->getId() > 1) {
-                        if ($path == dirname(__DIR__) . '/../public/' . $folder . '/') {
-                            die;
-                        }
-                        $fileSystem->remove($path);
-                        $manga->setIsCorrupted(true);
-                        $this->em->persist($manga);
-                        $this->em->flush();
+                $output->writeln($manga->getId() . ' : <fg=red>NOK</>');
+                if ($manga->getId() > 1) {
+                    if ($path == dirname(__DIR__) . '/../public/' . $folder . '/') {
+                        die;
                     }
-                } else {
-                    $output->writeln($manga->getId() . ' : <fg=green>OK</>');
+                    $fileSystem->remove($path);
                 }
             }
             if ($iterations != 0 && $i > $iterations) {

@@ -40,9 +40,7 @@ class MangaRepository extends ServiceEntityRepository
     public function findLatest(int $page = 1, bool $isSortByViews = false): Paginator
     {
         $queryBuilder = $this->createQueryBuilder('p')
-            ->where('p.publishedAt < :five_minutes_ago')
-            ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"))
-            ->andWhere('p.isCorrupted = false');
+           ->where('p.isCorrupted = false');
 
         if ($isSortByViews) {
             $queryBuilder->orderBy('p.countViews', 'DESC');
@@ -94,8 +92,7 @@ class MangaRepository extends ServiceEntityRepository
         $repoParody = $em->getRepository(Parody::class);
 
         $queryBuilder = $this->createQueryBuilder('p')
-            ->where('p.isCorrupted = false')->andWhere('p.publishedAt < :five_minutes_ago')
-            ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"));
+            ->where('p.isCorrupted = false');
 
         $orStatements = $queryBuilder->expr()->orX();
 
@@ -254,10 +251,8 @@ class MangaRepository extends ServiceEntityRepository
     public function findLatestByIdDesc(bool $onlyOld = false)
     {
         $queryBuilder = $this->createQueryBuilder('p')
-            ->where('p.publishedAt < :five_minutes_ago')
-            ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"))
-            ->andWhere('p.isCorrupted = false')
-            ->andWhere('p.isOld = ' . (int)$onlyOld)
+            ->where('p.isOld = ' . (int)$onlyOld)
+            ->andWhere('p.isCorrupted = true')
             ->orderBy('p.id', 'DESC');
         return $queryBuilder->getQuery()->execute();
     }

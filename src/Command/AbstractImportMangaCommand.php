@@ -62,6 +62,7 @@ abstract class AbstractImportMangaCommand extends Command
             $manga->setCountPages($json['filecount']);
             $manga->setPublishedAt((new \DateTime())->setTimestamp($json['posted']));
             $manga->setIsOld($isOld);
+            $manga->setIsCorrupted(true);
 
             $tags = $json['tags'];
             foreach ($tags as $tagName) {
@@ -194,7 +195,6 @@ abstract class AbstractImportMangaCommand extends Command
                 }
             }
             if ($countPageInFinder != $manga->getCountPages() || $countPageInFinder <= 2) {
-                $manga->setIsCorrupted(true);
                 $this->em->persist($manga);
                 $this->em->flush();
 
@@ -204,6 +204,7 @@ abstract class AbstractImportMangaCommand extends Command
                 $fileSystem->remove($mangaPath);
                 $this->logger->error('End of import - manga : ' . $manga->getTitle() . ' -> fail because all image are not download (find :' . $countPageInFinder . ', expected : ' . $i . ')');
             } else {
+                $manga->setIsCorrupted(false);
                 $this->logger->info('End of import - manga : ' . $manga->getTitle() . ' ## New ID : ' . $manga->getId());
             }
         }
