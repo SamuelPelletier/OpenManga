@@ -245,11 +245,14 @@ abstract class AbstractImportMangaCommand extends Command
         }
 
         // Proxy part
-        $proxies = explode(',', $forOldManga ? $_ENV['PROXY_URLS2'] : $_ENV['PROXY_URLS']);
-        shuffle($proxies);
-        curl_setopt($curl, CURLOPT_PROXY, $proxies[0]);
-        curl_setopt($curl, CURLOPT_PROXYPORT, 10001);
-        curl_setopt($curl, CURLOPT_PROXYUSERPWD, $forOldManga ? $_ENV['PROXY_AUTH2'] : $_ENV['PROXY_AUTH']);
+        $ports = [8001, 8002, 8003, 8004, 8005];
+        if ($forOldManga) {
+            $ports = [8006, 8007, 8008, 8009, 8010];
+        }
+        shuffle($ports);
+        curl_setopt($curl, CURLOPT_PROXY, $_ENV['PROXY_URL']);
+        curl_setopt($curl, CURLOPT_PROXYPORT, $ports[0]);
+        curl_setopt($curl, CURLOPT_PROXYUSERPWD, $_ENV['PROXY_AUTH']);
         curl_setopt($curl, CURLOPT_FOLLOWLOCATION, 1);
         curl_setopt($curl, CURLOPT_HEADER, false);
 
@@ -269,7 +272,7 @@ abstract class AbstractImportMangaCommand extends Command
                 ->from(new Address($_ENV['MAILER_EMAIL'], $_ENV['APP_NAME']))
                 ->to($_ENV['MAILER_EMAIL'])
                 ->subject('Failed to get manga')
-                ->html('The proxy ' . $proxies[0] . ' failed to get manga !');
+                ->html('The proxy ' . $ports[0] . ' failed to get manga !');
 
             $this->mailer->send($email);
         }
