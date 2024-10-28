@@ -187,6 +187,11 @@ abstract class AbstractImportMangaCommand extends Command
             if ($fileSystem->exists($mangaPath)) {
                 // Menus one for thumbnail
                 $countPageInFinder = count($finder) - 1;
+                if ($countPageInFinder === -1) {
+                    $output = '';
+                    exec('ls -1 ' . $mangaPath . '| wc -l', $output);
+                    $countPageInFinder = (int)trim($output) -1;
+                }
             }
             if ($countPageInFinder != $manga->getCountPages() || $countPageInFinder <= 2) {
                 $manga->setIsCorrupted(true);
