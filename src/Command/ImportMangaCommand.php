@@ -47,7 +47,7 @@ class ImportMangaCommand extends AbstractImportMangaCommand
      * This method is executed after initialize(). It usually contains the logic
      * to execute to complete this command task.
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $url = $_ENV['API_SEARCH'];
         $data = $this->callAPI('GET', $url);

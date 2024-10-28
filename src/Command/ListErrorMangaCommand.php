@@ -89,7 +89,7 @@ class ListErrorMangaCommand extends Command
      * This method is executed after initialize(). It usually contains the logic
      * to execute to complete this command task.
      */
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output):int
     {
         $this->logger->info('Start check manga');
         $iterations = $input->getOption('iterations');
