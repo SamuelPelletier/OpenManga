@@ -96,6 +96,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @ORM\Column(type="date",nullable=true)
      */
     private $patreonNextCharge;
+    /**
+     * @var Payment[]|ArrayCollection
+     *
+     * @ORM\OneToMany (targetEntity="Payment", mappedBy="user")
+     */
+    private $payments;
 
     public function __construct()
     {

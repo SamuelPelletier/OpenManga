@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <div id="payment-form-container">
+        <div id="card-container"></div>
+        <button id="card-button" type="button">Payer</button>
+        <p id="payment-status-container"></p>
+        <p id="payment-details-container"></p>
+    </div>
+    <link href="/app.css" rel="stylesheet"/>
+    <script
+            type="text/javascript"
+            src="https://sandbox.web.squarecdn.com/v1/square.js"
+    ></script>
+    {{ encore_entry_script_tags('js/square') }}
+{% endblock %}

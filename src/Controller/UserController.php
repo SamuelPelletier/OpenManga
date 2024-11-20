@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Payment;
 use App\Form\ChangePasswordFormType;
 use App\Form\DeleteUserFormType;
 use App\Form\EditUserFormType;
@@ -10,6 +11,12 @@ use App\Repository\UserRepository;
 use App\Service\PatreonService;
 use App\Service\UserService;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
+use Square\Authentication\BearerAuthCredentialsBuilder;
+use Square\Environment;
+use Square\Models\CreatePaymentRequest;
+use Square\Models\Money;
+use Square\SquareClientBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\HttpFoundation\Request;
@@ -18,6 +25,9 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Gordalina\MixpanelBundle\Annotation as Mixpanel;
+use Symfony\Component\Translation\TranslatableMessage;
+use Symfony\Contracts\Translation\TranslatableInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 /**
  * @Route("/user")
@@ -158,5 +168,76 @@ class UserController extends AbstractController
             $entityManager->flush();
         }
         return $this->json(['response' => true]);
+    }
+
+    /**
+     * @Route("/pay", name="pay")
+     */
+    public function pay(EntityManagerInterface $entityManager)
+    {
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('index');
+        }
+
+        return $this->render('pay.html.twig', ['user' => $user]);
+    }
+
+    /**
+     * @Route("/pay_proceed", name="pay_proceed")
+     */
+    public function payProceed(EntityManagerInterface $entityManager, Request $request, TranslatorInterface $translator, LoggerInterface $logger)
+    {
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('index');
+        }
+
+        $currency = 'EUR';
+        $amount = 10.50;
+
+        $amount_money = new Money();
+        $amount_money->setAmount($amount);
+        $amount_money->setCurrency($currency);
+
+        $body = new CreatePaymentRequest($request->toArray()['source_id'], uniqid());
+        $body->setAmountMoney($amount_money);
+
+        $client = SquareClientBuilder::init()
+            ->bearerAuthCredentials(BearerAuthCredentialsBuilder::init($_ENV['SQUARE_ACCESS_TOKEN']))
+            ->environment($_ENV['APP_ENV'] === 'dev' ? Environment::SANDBOX : Environment::PRODUCTION)
+            ->build();
+
+        $api_response = $client->getPaymentsApi()->createPayment($body);
+
+        $details = null;
+        if ($api_response->isSuccess()) {
+            try {
+                /** @var \Square\Models\Payment $squarePayment */
+                $squarePayment = $api_response->getResult()->getPayment();
+                $payment = new Payment();
+                $payment->setSquareId($squarePayment->getId());
+                $payment->setAmount($amount);
+                $payment->setCurrency($currency);
+                $payment->setCreatedAt(new \DateTime($squarePayment->getCreatedAt()));
+                $payment->setUser($user);
+                $entityManager->persist($payment);
+                $entityManager->flush();
+                $success = $squarePayment->getStatus() === "COMPLETED";
+            } catch (\Throwable $e) {
+                $this->logger->error('Payment failed because : ' . $e->getMessage());
+                $success = false;
+                $details = $translator->trans('square.error.internal');
+            }
+        } else {
+            $error = $api_response->getErrors();
+            $translationKey = 'square.error.' . strtolower($error[0]->getCode());
+            $details = $translator->trans($translationKey);
+            if ($details === $translationKey) {
+                $details = $translator->trans('square.error.unknown');
+            }
+        }
+
+        return $this->json(['success' => $success, 'message' => $success ? $translator->trans('square.result.success') : $translator->trans('square.result.error'), 'details' => $details]);
     }
 }
