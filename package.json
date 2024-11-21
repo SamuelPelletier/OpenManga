@@ -35,7 +35,7 @@
     "flag-icons": "^6.9.3",
     "jquery-mousewheel": "^3.1.13",
     "jquery-touchswipe": "^1.6.19",
-    "jquery-ui": "^1.13.1",
+    "jquery-ui": "^1.13.2",
     "lightgallery": "^2.7.1",
     "picturefill": "^3.0.3",
     "sass-loader": "^12.0"
