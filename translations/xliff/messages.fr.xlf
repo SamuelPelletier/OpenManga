@@ -555,7 +555,7 @@ Mais ils ne sont pas exlusivement des mangas, il existe aussi des musiques, des 
             </trans-unit>
             <trans-unit id="shop.price">
                 <source>shop.price</source>
-                <target>3.50€ pour un mois d'accès premium</target>
+                <target>3€ pour un mois d'accès premium</target>
             </trans-unit>
             <trans-unit id="shop.access">
                 <source>shop.access</source>

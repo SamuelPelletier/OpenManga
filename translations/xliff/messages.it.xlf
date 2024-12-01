@@ -555,7 +555,7 @@ Ma non sono esclusivamente manga, ci sono anche musica, romanzi o videogiochi.
             </trans-unit>
             <trans-unit id="shop.price">
                 <source>shop.price</source>
-                <target>3,50€ per un mese di accesso premium</target>
+                <target>3€ per un mese di accesso premium</target>
             </trans-unit>
             <trans-unit id="shop.access">
                 <source>shop.access</source>

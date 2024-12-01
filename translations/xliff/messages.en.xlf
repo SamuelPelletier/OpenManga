@@ -555,7 +555,7 @@ But they are not exclusively manga, there are also music, novels or video games.
             </trans-unit>
             <trans-unit id="shop.price">
                 <source>shop.price</source>
-                <target>3.50€ for a month of premium access</target>
+                <target>3€ for a month of premium access</target>
             </trans-unit>
             <trans-unit id="shop.access">
                 <source>shop.access</source>

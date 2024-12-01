@@ -553,7 +553,7 @@ Es handelt sich aber nicht nur um Manga, sondern auch um Musik, Romane oder Vide
             </trans-unit>
             <trans-unit id="shop.price">
                 <source>shop.price</source>
-                <target>3,50 € für einen Monat Premium-Zugang</target>
+                <target>3€ für einen Monat Premium-Zugang</target>
             </trans-unit>
             <trans-unit id="shop.access">
                 <source>shop.access</source>
