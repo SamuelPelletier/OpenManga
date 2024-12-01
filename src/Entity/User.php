@@ -399,4 +399,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->patreonTier >= $tier && $this->patreonNextCharge >= (new DateTime());
     }
+
+    /**
+     * @return Payment[]|Collection
+     */
+    public function getPayments(): Collection
+    {
+        return $this->payments;
+    }
 }

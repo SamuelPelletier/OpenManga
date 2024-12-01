@@ -528,6 +528,119 @@ Los dōjin o doujin son manga hecha por aficionados que a menudo toman manga fam
 Pero no son exclusivamente manga, también hay música, novelas o videojuegos.
                 </target>
             </trans-unit>
+
+            <trans-unit id="shop.title">
+                <source>shop.title</source>
+                <target>Tienda</target>
+            </trans-unit>
+            <trans-unit id="shop.description">
+                <source>shop.description</source>
+                <target>El acceso premium te da acceso ilimitado a todo el contenido bloqueado, así como a los mangas antiguos. Disfruta al máximo de los últimos mangas leyéndolos directamente o descargándolos. Este acceso premium está disponible de inmediato en todas las plataformas y sin renovación automática.</target>
+            </trans-unit>
+            <trans-unit id="shop.description_patreon">
+                <source>shop.description_patreon</source>
+                <target>Patreon también te ofrece la opción de desbloquear este acceso ilimitado con el siguiente enlace:</target>
+            </trans-unit>
+            <trans-unit id="shop.patreon_link">
+                <source>shop.patreon_link</source>
+                <target>Hazte Premium con Patreon</target>
+            </trans-unit>
+            <trans-unit id="shop.access_until">
+                <source>shop.access_until</source>
+                <target>Actualmente tienes acceso premium activo hasta el %date%</target>
+            </trans-unit>
+            <trans-unit id="shop.payment_card">
+                <source>shop.payment_card</source>
+                <target>Pago con tarjeta</target>
+            </trans-unit>
+            <trans-unit id="shop.price">
+                <source>shop.price</source>
+                <target>3,50€ por un mes de acceso premium</target>
+            </trans-unit>
+            <trans-unit id="shop.access">
+                <source>shop.access</source>
+                <target>Paga un mes de acceso premium</target>
+            </trans-unit>
+            <trans-unit id="shop.add_month">
+                <source>shop.add_month</source>
+                <target>Añadir un mes de acceso premium</target>
+            </trans-unit>
+            <trans-unit id="shop.success">
+                <source>shop.success</source>
+                <target>¡Pago exitoso!</target>
+            </trans-unit>
+            <trans-unit id="shop.thanks">
+                <source>shop.thanks</source>
+                <target>Gracias por tu compra.</target>
+            </trans-unit>
+            <trans-unit id="square.error.internal">
+                <source>square.error.internal</source>
+                <target>Error interno</target>
+            </trans-unit>
+            <trans-unit id="square.error.unknown">
+                <source>square.error.unknown</source>
+                <target>Error desconocido</target>
+            </trans-unit>
+            <trans-unit id="square.error.cvv_failure">
+                <source>square.error.cvv_failure</source>
+                <target>Criptograma visual incorrecto</target>
+            </trans-unit>
+            <trans-unit id="square.error.address_verification_failure">
+                <source>square.error.address_verification_failure</source>
+                <target>Código postal incorrecto</target>
+            </trans-unit>
+            <trans-unit id="square.error.invalid_expiration">
+                <source>square.error.invalid_expiration</source>
+                <target>Fecha de expiración incorrecta</target>
+            </trans-unit>
+            <trans-unit id="square.error.generic_decline">
+                <source>square.error.generic_decline</source>
+                <target>Pago rechazado</target>
+            </trans-unit>
+            <trans-unit id="square.error.card_token_used">
+                <source>square.error.card_token_used</source>
+                <target>Error interno (token)</target>
+            </trans-unit>
+            <trans-unit id="square.error.invalid_account">
+                <source>square.error.invalid_account</source>
+                <target>Fondos insuficientes o rechazo bancario</target>
+            </trans-unit>
+            <trans-unit id="square.result.error">
+                <source>square.result.error</source>
+                <target>Transacción fallida</target>
+            </trans-unit>
+            <trans-unit id="square.result.success">
+                <source>square.result.success</source>
+                <target>Transacción completada con éxito</target>
+            </trans-unit>
+            <trans-unit id="invoice.title">
+                <source>invoice.title</source>
+                <target>Facturas</target>
+            </trans-unit>
+            <trans-unit id="invoice.id">
+                <source>invoice.id</source>
+                <target>ID</target>
+            </trans-unit>
+            <trans-unit id="invoice.amount">
+                <source>invoice.amount</source>
+                <target>Precio</target>
+            </trans-unit>
+            <trans-unit id="invoice.currency">
+                <source>invoice.currency</source>
+                <target>Moneda</target>
+            </trans-unit>
+            <trans-unit id="invoice.date">
+                <source>invoice.date</source>
+                <target>Fecha</target>
+            </trans-unit>
+            <trans-unit id="invoice.link">
+                <source>invoice.link</source>
+                <target>Enlace</target>
+            </trans-unit>
+            <trans-unit id="invoice.no_invoices_found">
+                <source>invoice.no_invoices_found</source>
+                <target>No hay facturas</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

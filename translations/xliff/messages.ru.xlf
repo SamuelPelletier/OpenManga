@@ -528,6 +528,119 @@
 Но они не исключительно манга, есть также музыка, романы или видеоигры.
                 </target>
             </trans-unit>
+
+            <trans-unit id="shop.title">
+                <source>shop.title</source>
+                <target>Магазин</target>
+            </trans-unit>
+            <trans-unit id="shop.description">
+                <source>shop.description</source>
+                <target>Премиум-доступ дает вам неограниченный доступ ко всем заблокированным материалам, а также к старым манга. Наслаждайтесь последними манга, читая их онлайн или скачивая. Этот премиум-доступ доступен сразу на всех платформах и без автоматического продления.</target>
+            </trans-unit>
+            <trans-unit id="shop.description_patreon">
+                <source>shop.description_patreon</source>
+                <target>Patreon также предоставляет возможность разблокировать этот неограниченный доступ по следующей ссылке:</target>
+            </trans-unit>
+            <trans-unit id="shop.patreon_link">
+                <source>shop.patreon_link</source>
+                <target>Станьте Премиум через Patreon</target>
+            </trans-unit>
+            <trans-unit id="shop.access_until">
+                <source>shop.access_until</source>
+                <target>На данный момент у вас есть активный премиум-доступ до %date%</target>
+            </trans-unit>
+            <trans-unit id="shop.payment_card">
+                <source>shop.payment_card</source>
+                <target>Оплата картой</target>
+            </trans-unit>
+            <trans-unit id="shop.price">
+                <source>shop.price</source>
+                <target>3,50€ за месяц премиум-доступа</target>
+            </trans-unit>
+            <trans-unit id="shop.access">
+                <source>shop.access</source>
+                <target>Оплатить месяц премиум-доступа</target>
+            </trans-unit>
+            <trans-unit id="shop.add_month">
+                <source>shop.add_month</source>
+                <target>Добавить месяц премиум-доступа</target>
+            </trans-unit>
+            <trans-unit id="shop.success">
+                <source>shop.success</source>
+                <target>Платеж успешно выполнен!</target>
+            </trans-unit>
+            <trans-unit id="shop.thanks">
+                <source>shop.thanks</source>
+                <target>Спасибо за покупку.</target>
+            </trans-unit>
+            <trans-unit id="square.error.internal">
+                <source>square.error.internal</source>
+                <target>Внутренняя ошибка</target>
+            </trans-unit>
+            <trans-unit id="square.error.unknown">
+                <source>square.error.unknown</source>
+                <target>Неизвестная ошибка</target>
+            </trans-unit>
+            <trans-unit id="square.error.cvv_failure">
+                <source>square.error.cvv_failure</source>
+                <target>Неправильный код безопасности</target>
+            </trans-unit>
+            <trans-unit id="square.error.address_verification_failure">
+                <source>square.error.address_verification_failure</source>
+                <target>Неправильный почтовый индекс</target>
+            </trans-unit>
+            <trans-unit id="square.error.invalid_expiration">
+                <source>square.error.invalid_expiration</source>
+                <target>Неправильная дата истечения срока действия</target>
+            </trans-unit>
+            <trans-unit id="square.error.generic_decline">
+                <source>square.error.generic_decline</source>
+                <target>Платеж отклонен</target>
+            </trans-unit>
+            <trans-unit id="square.error.card_token_used">
+                <source>square.error.card_token_used</source>
+                <target>Внутренняя ошибка (токен)</target>
+            </trans-unit>
+            <trans-unit id="square.error.invalid_account">
+                <source>square.error.invalid_account</source>
+                <target>Недостаточно средств или отказ банка</target>
+            </trans-unit>
+            <trans-unit id="square.result.error">
+                <source>square.result.error</source>
+                <target>Транзакция не удалась</target>
+            </trans-unit>
+            <trans-unit id="square.result.success">
+                <source>square.result.success</source>
+                <target>Транзакция успешно завершена</target>
+            </trans-unit>
+            <trans-unit id="invoice.title">
+                <source>invoice.title</source>
+                <target>Счета</target>
+            </trans-unit>
+            <trans-unit id="invoice.id">
+                <source>invoice.id</source>
+                <target>ID</target>
+            </trans-unit>
+            <trans-unit id="invoice.amount">
+                <source>invoice.amount</source>
+                <target>Сумма</target>
+            </trans-unit>
+            <trans-unit id="invoice.currency">
+                <source>invoice.currency</source>
+                <target>Валюта</target>
+            </trans-unit>
+            <trans-unit id="invoice.date">
+                <source>invoice.date</source>
+                <target>Дата</target>
+            </trans-unit>
+            <trans-unit id="invoice.link">
+                <source>invoice.link</source>
+                <target>Ссылка</target>
+            </trans-unit>
+            <trans-unit id="invoice.no_invoices_found">
+                <source>invoice.no_invoices_found</source>
+                <target>Счета не найдены</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

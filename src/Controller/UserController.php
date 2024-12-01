@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Payment;
+use App\Entity\User;
 use App\Form\ChangePasswordFormType;
 use App\Form\DeleteUserFormType;
 use App\Form\EditUserFormType;
@@ -171,16 +172,16 @@ class UserController extends AbstractController
     }
 
     /**
-     * @Route("/pay", name="pay")
+     * @Route("/pay", name="user_pay")
      */
-    public function pay(EntityManagerInterface $entityManager)
+    public function pay()
     {
         $user = $this->getUser();
         if (!$user) {
             return $this->redirectToRoute('index');
         }
 
-        return $this->render('pay.html.twig', ['user' => $user]);
+        return $this->render('user/pay.html.twig', ['user' => $user, 'square_application_id' => $_ENV['SQUARE_APPLICATION_ID'], 'square_location_id' => $_ENV['SQUARE_LOCATION_ID']]);
     }
 
     /**
@@ -188,13 +189,14 @@ class UserController extends AbstractController
      */
     public function payProceed(EntityManagerInterface $entityManager, Request $request, TranslatorInterface $translator, LoggerInterface $logger)
     {
+        /** @var User $user */
         $user = $this->getUser();
         if (!$user) {
             return $this->redirectToRoute('index');
         }
 
         $currency = 'EUR';
-        $amount = 10.50;
+        $amount = 3.5;
 
         $amount_money = new Money();
         $amount_money->setAmount($amount);
@@ -224,12 +226,24 @@ class UserController extends AbstractController
                 $entityManager->persist($payment);
                 $entityManager->flush();
                 $success = $squarePayment->getStatus() === "COMPLETED";
+
+                $user->setPatreonTier(1);
+                $now = new \DateTime('now');
+                if ($user->getPatreonNextCharge()->getTimestamp() >= $now->getTimestamp()) {
+                    $date = (new \DateTime())->setTimestamp($user->getPatreonNextCharge()->getTimestamp())->modify('+1 month');
+                    $user->setPatreonNextCharge($date);
+                } else {
+                    $user->setPatreonNextCharge($now->modify('+1 month'));
+                }
+                $entityManager->persist($user);
+                $entityManager->flush();
             } catch (\Throwable $e) {
-                $this->logger->error('Payment failed because : ' . $e->getMessage());
+                $logger->error('Payment failed because : ' . $e->getMessage());
                 $success = false;
                 $details = $translator->trans('square.error.internal');
             }
         } else {
+            $success = false;
             $error = $api_response->getErrors();
             $translationKey = 'square.error.' . strtolower($error[0]->getCode());
             $details = $translator->trans($translationKey);
@@ -239,5 +253,18 @@ class UserController extends AbstractController
         }
 
         return $this->json(['success' => $success, 'message' => $success ? $translator->trans('square.result.success') : $translator->trans('square.result.error'), 'details' => $details]);
+    }
+
+    /**
+     * @Route("/invoice", name="user_invoice")
+     */
+    public function invoice()
+    {
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('index');
+        }
+
+        return $this->render('user/invoice.html.twig', ['user' => $user]);
     }
 }

@@ -528,6 +528,119 @@ My Anime List에 1,300 개가 넘는 애니메이션 헨타이가 있습니다.
 그러나 그들은 독점적으로 만화가 아니며 음악, 소설 또는 비디오 게임도 있습니다.
                 </target>
             </trans-unit>
+
+            <trans-unit id="shop.title">
+                <source>shop.title</source>
+                <target>상점</target>
+            </trans-unit>
+            <trans-unit id="shop.description">
+                <source>shop.description</source>
+                <target>프리미엄 액세스는 모든 잠긴 콘텐츠와 과거 만화에 무제한으로 액세스할 수 있습니다. 최신 만화를 직접 읽거나 다운로드하여 최대한 활용하세요. 이 프리미엄 액세스는 모든 플랫폼에서 즉시 사용할 수 있으며 자동 갱신이 없습니다.</target>
+            </trans-unit>
+            <trans-unit id="shop.description_patreon">
+                <source>shop.description_patreon</source>
+                <target>Patreon을 통해 다음 링크로 이 무제한 액세스를 해제할 수도 있습니다:</target>
+            </trans-unit>
+            <trans-unit id="shop.patreon_link">
+                <source>shop.patreon_link</source>
+                <target>Patreon으로 프리미엄 되기</target>
+            </trans-unit>
+            <trans-unit id="shop.access_until">
+                <source>shop.access_until</source>
+                <target>현재 %date%까지 프리미엄 액세스가 활성화되어 있습니다</target>
+            </trans-unit>
+            <trans-unit id="shop.payment_card">
+                <source>shop.payment_card</source>
+                <target>카드로 결제</target>
+            </trans-unit>
+            <trans-unit id="shop.price">
+                <source>shop.price</source>
+                <target>한 달 프리미엄 액세스: 3.50€</target>
+            </trans-unit>
+            <trans-unit id="shop.access">
+                <source>shop.access</source>
+                <target>한 달 프리미엄 액세스 결제</target>
+            </trans-unit>
+            <trans-unit id="shop.add_month">
+                <source>shop.add_month</source>
+                <target>한 달 프리미엄 액세스 추가</target>
+            </trans-unit>
+            <trans-unit id="shop.success">
+                <source>shop.success</source>
+                <target>결제가 성공적으로 완료되었습니다!</target>
+            </trans-unit>
+            <trans-unit id="shop.thanks">
+                <source>shop.thanks</source>
+                <target>구매해 주셔서 감사합니다.</target>
+            </trans-unit>
+            <trans-unit id="square.error.internal">
+                <source>square.error.internal</source>
+                <target>내부 오류</target>
+            </trans-unit>
+            <trans-unit id="square.error.unknown">
+                <source>square.error.unknown</source>
+                <target>알 수 없는 오류</target>
+            </trans-unit>
+            <trans-unit id="square.error.cvv_failure">
+                <source>square.error.cvv_failure</source>
+                <target>CVV 코드가 잘못되었습니다</target>
+            </trans-unit>
+            <trans-unit id="square.error.address_verification_failure">
+                <source>square.error.address_verification_failure</source>
+                <target>우편번호가 잘못되었습니다</target>
+            </trans-unit>
+            <trans-unit id="square.error.invalid_expiration">
+                <source>square.error.invalid_expiration</source>
+                <target>유효 기간이 잘못되었습니다</target>
+            </trans-unit>
+            <trans-unit id="square.error.generic_decline">
+                <source>square.error.generic_decline</source>
+                <target>결제가 거부되었습니다</target>
+            </trans-unit>
+            <trans-unit id="square.error.card_token_used">
+                <source>square.error.card_token_used</source>
+                <target>내부 오류(토큰)</target>
+            </trans-unit>
+            <trans-unit id="square.error.invalid_account">
+                <source>square.error.invalid_account</source>
+                <target>잔액 부족 또는 은행 거부</target>
+            </trans-unit>
+            <trans-unit id="square.result.error">
+                <source>square.result.error</source>
+                <target>거래 실패</target>
+            </trans-unit>
+            <trans-unit id="square.result.success">
+                <source>square.result.success</source>
+                <target>거래가 성공적으로 완료되었습니다</target>
+            </trans-unit>
+            <trans-unit id="invoice.title">
+                <source>invoice.title</source>
+                <target>송장</target>
+            </trans-unit>
+            <trans-unit id="invoice.id">
+                <source>invoice.id</source>
+                <target>ID</target>
+            </trans-unit>
+            <trans-unit id="invoice.amount">
+                <source>invoice.amount</source>
+                <target>금액</target>
+            </trans-unit>
+            <trans-unit id="invoice.currency">
+                <source>invoice.currency</source>
+                <target>통화</target>
+            </trans-unit>
+            <trans-unit id="invoice.date">
+                <source>invoice.date</source>
+                <target>날짜</target>
+            </trans-unit>
+            <trans-unit id="invoice.link">
+                <source>invoice.link</source>
+                <target>링크</target>
+            </trans-unit>
+            <trans-unit id="invoice.no_invoices_found">
+                <source>invoice.no_invoices_found</source>
+                <target>송장을 찾을 수 없습니다</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

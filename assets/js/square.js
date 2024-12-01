@@ -1,7 +1,3 @@
-const appId = 'sandbox-sq0idb-1_0lhWVrpugvQ2XCgE3gUw';  // Application ID
-const locationId = 'LJECM8RPP7J5P'; // Location ID
-const payments = Square.payments(appId, locationId);
-
 async function initializeCard(payments) {
     const card = await payments.card();
     await card.attach('#card-container');
@@ -22,6 +18,8 @@ document.addEventListener('DOMContentLoaded', async function () {
     const card = await initializeCard(payments);
 
     document.getElementById('card-button').addEventListener('click', async function () {
+        document.getElementById('card-button').style.display = "none";
+        document.getElementById('loader').style.display = "block";
         const token = await tokenize(card);
         if (token) {
             fetch('pay_proceed', {
@@ -35,13 +33,28 @@ document.addEventListener('DOMContentLoaded', async function () {
             })
                 .then(response => response.json())
                 .then(data => {
-                    document.getElementById('payment-status-container').innerText = data.message;
-                    document.getElementById('payment-details-container').innerText = data.details;
+                    if (data.success == false) {
+                        document.getElementById('card-button').style.display = "block";
+                        document.getElementById('loader').style.display = "none";
+                        document.getElementById('payment-status-container').innerText = data.message;
+                        document.getElementById('payment-details-container').innerText = data.details;
+                    } else {
+                        document.getElementById('loader').style.display = "none";
+                        document.getElementById('success').style.display = "block";
+                        document.getElementById('payment-status-container').innerText = "";
+                        document.getElementById('payment-details-container').innerText = "";
+                    }
                 })
                 .catch(error => {
                     document.getElementById('payment-status-container').innerText = "Failed";
                     document.getElementById('payment-details-container').innerText = "Unexpected error";
+                    document.getElementById('card-button').style.display = "block";
+                    document.getElementById('loader').style.display = "none";
                 });
         }
     });
+});
+
+$(function () {
+    document.body.innerHTML = document.body.innerHTML.replace(/(\b premium\b)/gi, '<span class="premium">$1</span>');
 });

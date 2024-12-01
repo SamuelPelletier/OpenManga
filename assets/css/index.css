@@ -177,11 +177,7 @@ a:hover, a:focus, a:active {
     color: white !important;
 }
 
-#tier {
-    margin: 0;
-    font-size: xxx-large;
-    text-align: center;
-    font-weight: bold;
+.premium {
     text-transform: uppercase;
     color: transparent;
     background: linear-gradient(45deg, #ff0066, #ff66ff, #66ff66, #0066ff, #6600ff);
@@ -189,6 +185,13 @@ a:hover, a:focus, a:active {
     background-clip: text;
     -webkit-background-clip: text;
     animation: gradient 5s ease infinite;
+}
+
+.premium-title {
+    margin: 0;
+    font-size: xxx-large;
+    text-align: center;
+    font-weight: bold;
 }
 
 @keyframes gradient {

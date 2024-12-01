@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('css/invoice') }}
+{% endblock %}
+
+{% block main %}
+    <div class="col"><a href="{{ path('user_index') }}">{{ 'edit_profile.link.back_account'|trans }}</a></div>
+    <h1 id="invoice">{{ 'invoice.title'|trans }}</h1>
+    {% if user.payments.count > 0 %}
+        <table class="table table-bordered table-dark">
+            <thead>
+            <tr>
+                <th scope="col">{{ 'invoice.id'|trans }}</th>
+                <th scope="col">{{ 'invoice.amount'|trans }}</th>
+                <th scope="col">{{ 'invoice.currency'|trans }}</th>
+                <th scope="col">{{ 'invoice.date'|trans }}</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for payment in user.payments %}
+                <tr>
+                    <th scope="row">{{ payment.squareId }}</th>
+                    <td>{{ payment.amount }}</td>
+                    <td>{{ payment.currency }}</td>
+                    <td>{{ payment.createdAt|format_datetime('long', 'none') }}</td>
+                    <td>
+                        <a href="https://squareupsandbox.com/receipt/preview/{{ payment.squareId }}"
+                           target="_blank">{{ 'invoice.link'|trans }}</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="well">{{ 'invoice.no_invoices_found'|trans }}</div>
+    {% endif %}
+{% endblock %}
