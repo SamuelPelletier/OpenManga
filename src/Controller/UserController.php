@@ -229,7 +229,7 @@ class UserController extends AbstractController
 
                 $user->setPatreonTier(1);
                 $now = new \DateTime('now');
-                if ($user->getPatreonNextCharge()->getTimestamp() >= $now->getTimestamp()) {
+                if ($user->getPatreonNextCharge()?->getTimestamp() >= $now->getTimestamp()) {
                     $date = (new \DateTime())->setTimestamp($user->getPatreonNextCharge()->getTimestamp())->modify('+1 month');
                     $user->setPatreonNextCharge($date);
                 } else {
