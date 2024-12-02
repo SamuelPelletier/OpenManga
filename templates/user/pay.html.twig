@@ -197,7 +197,7 @@
     </div>
     <script
             type="text/javascript"
-            src="https://web.squarecdn.com/v1/square.js"
+            src="https://{% if app.request.server.get('APP_ENV') == 'dev' %}sandbox.{% endif %}web.squarecdn.com/v1/square.js"
     ></script>
     <script>
         const appId = "{{ square_application_id }}";  // Application ID
