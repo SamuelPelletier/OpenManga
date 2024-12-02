@@ -43,6 +43,13 @@ h1 {
 #powered_by {
     text-align: right;
     font-size: small;
+    pointer-events: none
+}
+
+@media (max-width: 767px) {
+    #powered_by {
+        padding-top: 50px;
+    }
 }
 
 #powered_by svg {
