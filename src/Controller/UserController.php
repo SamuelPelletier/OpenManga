@@ -196,7 +196,7 @@ class UserController extends AbstractController
         }
 
         $currency = 'EUR';
-        $amount = 3;
+        $amount = 300;
 
         $amount_money = new Money();
         $amount_money->setAmount($amount);
