@@ -37,6 +37,7 @@
     "jquery-touchswipe": "^1.6.19",
     "jquery-ui": "^1.13.1",
     "lightgallery": "^2.7.1",
+    "mixpanel-browser": "^2.56.0",
     "picturefill": "^3.0.3",
     "sass-loader": "^12.0"
   }

@@ -28,7 +28,6 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Finder\Finder;
-use Gordalina\MixpanelBundle\Annotation as Mixpanel;
 
 /**
  * Controller used to manage blog contents in the public part of the site.
@@ -42,7 +41,6 @@ class MangaController extends BaseController
      * @Route("/", defaults={"page": "1"}, methods={"GET"}, name="index")
      * @Route("/page/{page<[1-9]\d*>}", methods={"GET"}, name="index_paginated")
      * @Cache(smaxage="10")
-     * @Mixpanel\Track("index")
      */
     public function index(
         int             $page,
@@ -64,7 +62,6 @@ class MangaController extends BaseController
      * @Route("/trending", defaults={"page": "1"}, methods={"GET"}, name="index_trending")
      * @Route("/page/{page<[1-9]\d*>}", methods={"GET"}, name="index_trending_paginated")
      * @Cache(smaxage="10")
-     * @Mixpanel\Track("trending")
      */
     public function trending(
         int             $page,
@@ -84,7 +81,6 @@ class MangaController extends BaseController
 
     /**
      * @Route("/mangas/{id}", methods={"GET"}, name="manga")
-     * @Mixpanel\Track("show")
      */
     public function mangaShow(
         Manga                  $manga,
@@ -147,7 +143,6 @@ class MangaController extends BaseController
     /**
      * @Route("/search", methods={"GET"}, name="search")
      * @Route("/search/page/{page<[1-9]\d*>}", methods={"GET"}, name="search_paginated")
-     * @Mixpanel\Track("search")
      */
     public function search(
         Request         $request,
@@ -180,7 +175,6 @@ class MangaController extends BaseController
 
     /**
      * @Route("/download/{id}", methods={"GET"}, name="download")
-     * @Mixpanel\Track("download")
      */
     public function mangaDownload(
         Manga                  $manga,

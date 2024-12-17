@@ -16,7 +16,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Gordalina\MixpanelBundle\Annotation as Mixpanel;
 
 /**
  * Class TagController
@@ -26,7 +25,6 @@ class TagController extends AbstractController
 {
     /**
      * @Route("/tags", name="tags")
-     * @Mixpanel\Track("tags")
      */
     public function index(Request $request, TagRepository $tagRepository): Response
     {

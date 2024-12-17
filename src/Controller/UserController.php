@@ -25,7 +25,6 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Gordalina\MixpanelBundle\Annotation as Mixpanel;
 use Symfony\Component\Translation\TranslatableMessage;
 use Symfony\Contracts\Translation\TranslatableInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
@@ -37,7 +36,6 @@ class UserController extends AbstractController
 {
     /**
      * @Route("/", name="user_index")
-     * @Mixpanel\Track("user_index")
      */
     public function index(UserRepository $userRepository, UserService $userService, EntityManagerInterface $entityManager, Request $request)
     {

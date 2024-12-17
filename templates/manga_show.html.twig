@@ -116,7 +116,7 @@
     <div class="row" id="lightgallery">
         {% for image in images %}
             {% if image matches '{\.jpg$}' %}
-                <article class="image col-sm-3"
+                <article class="image col-sm-2"
                          data-src='{{ app.request.getSchemeAndHttpHost() ~ asset( folder ~ '/' ~ manga.id ~ '/' ~ image ) }}'>
                     <img alt="{{ manga.title | raw }} {{ 'manga.image_alt'|trans({'%count%':loop.index}) }}"
                          title="{{ manga.title | raw }} {{ 'manga.image_alt'|trans({'%count%':loop.index}) }}"
@@ -163,6 +163,9 @@
                     }
                 }
             }
+
+
+
 
 
 

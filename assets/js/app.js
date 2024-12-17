@@ -18,6 +18,13 @@ import './highlight.js';
 // Creates links to the Symfony documentation
 import './doclinks';
 
+import mixpanel from "mixpanel-browser";
+
+mixpanel.init("c14b4b3993ce628cdf4d8d898de83b0f", {
+    debug: false,
+    track_pageview: true,
+    persistence: "localStorage",
+});
 
 function pad(str, max) {
     str = str.toString();
