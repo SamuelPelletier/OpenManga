@@ -169,6 +169,14 @@
                 <source>manga.unlock.patreon</source>
                 <target>Разблокировать с помощью Patreon</target>
             </trans-unit>
+            <trans-unit id="manga.old">
+                <source>manga.old</source>
+                <target>Старые манга</target>
+            </trans-unit>
+            <trans-unit id="manga.new">
+                <source>manga.new</source>
+                <target>Новые манга</target>
+            </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>

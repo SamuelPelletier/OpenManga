@@ -40,9 +40,15 @@
                     {% endif %}
             >
         </div>
-        <div class="img-name">
-            <h2 itemprop="name">{{ manga.title |raw }}</h2>
-        </div>
+        {% if isLocked %}
+            <div class="locked-text">
+                <h2 itemprop="name">{% if manga.isOld %}{{ 'manga.old'|trans }}{% else %}{{ 'manga.new'|trans }}{% endif %}</h2>
+            </div>
+        {% else %}
+            <div class="img-name">
+                <h2 itemprop="name">{{ manga.title |raw }}</h2>
+            </div>
+        {% endif %}
     </a>
 </article>
 

@@ -169,6 +169,14 @@
                 <source>manga.unlock.patreon</source>
                 <target>Patreon으로 잠금 해제"</target>
             </trans-unit>
+            <trans-unit id="manga.old">
+                <source>manga.old</source>
+                <target>오래된 만화</target>
+            </trans-unit>
+            <trans-unit id="manga.new">
+                <source>manga.new</source>
+                <target>새로운 만화</target>
+            </trans-unit>
 
             <trans-unit id="disclaimer.text">
                 <source>disclaimer.text</source>

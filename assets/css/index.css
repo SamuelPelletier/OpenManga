@@ -878,6 +878,22 @@ a.label:hover, a.label:focus {
     size: 10px;
 }
 
+.locked-text {
+    background: linear-gradient(45deg, #ff6b6b, #f9ca24, #48dbfb, #1dd1a1);
+    background-size: 300% 300%;
+    color: white;
+    text-align: center;
+    animation: gradient 5s ease infinite;
+    overflow: hidden;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    padding: 5px 0;
+}
+
+.locked-text h2 {
+    margin-bottom: 0;
+}
+
 
 .loader {
     z-index: 99999;
