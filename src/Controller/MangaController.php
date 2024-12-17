@@ -50,11 +50,7 @@ class MangaController extends BaseController
         MangaRepository $mangas
     ): Response
     {
-        $isSortByViews = false;
-        if ($request->getSession()->get('sort') != null) {
-            $isSortByViews = $request->getSession()->get('sort');
-        }
-        $latestMangas = $mangas->findLatest($page, $isSortByViews);
+        $latestMangas = $mangas->findLatest($page);
         if ($request->isXmlHttpRequest()) {
             if (count($latestMangas->getQuery()->getArrayResult()) === 0) {
                 return $this->render('manga_ending.html.twig');
@@ -161,8 +157,6 @@ class MangaController extends BaseController
     {
         // No query parameter
         $foundMangas = null;
-        $isSortByViews = $request->query->get('sort') != null ? true : false;
-        $request->getSession()->set('sort', $isSortByViews);
 
         if ($request->query->get('q') !== null && $request->query->get('q') == '') {
             return $this->redirectToRoute('index');
@@ -170,7 +164,7 @@ class MangaController extends BaseController
             if ($request->query->get('q') != '') {
                 $query = $request->query->get('q', '');
                 $isStrict = $request->query->get('s', false);
-                $foundMangas = $mangas->findBySearchQuery($query, $page, $isSortByViews, $isStrict);
+                $foundMangas = $mangas->findBySearchQuery($query, $page, $isStrict);
             }
         }
 
@@ -201,7 +195,7 @@ class MangaController extends BaseController
         $folder = $manga->isOld() ? 'media_old' : 'media';
         if (is_dir($folder . '/' . $manga->getId() . '/')) {
 
-            $zipFolder = 'media/zip/';
+            $zipFolder = 'media_zipped/';
 
             $zipName = htmlspecialchars_decode($manga->getTitle(), ENT_QUOTES) . ".zip";
             $zipName = str_replace(['|', '/', '\\'], '', $zipName);

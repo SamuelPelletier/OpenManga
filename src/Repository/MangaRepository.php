@@ -37,16 +37,10 @@ class MangaRepository extends ServiceEntityRepository
         parent::__construct($registry, Manga::class);
     }
 
-    public function findLatest(int $page = 1, bool $isSortByViews = false): Paginator
+    public function findLatest(int $page = 1): Paginator
     {
         $queryBuilder = $this->createQueryBuilder('p')
-           ->where('p.isCorrupted = false');
-
-        if ($isSortByViews) {
-            $queryBuilder->orderBy('p.countViews', 'DESC');
-        } else {
-            $queryBuilder->orderBy('p.publishedAt', 'DESC');
-        }
+            ->where('p.isCorrupted = false')->orderBy('p.id', 'DESC');
 
         return $this->createPaginator($queryBuilder->getQuery(), $page);
     }
@@ -74,7 +68,6 @@ class MangaRepository extends ServiceEntityRepository
     public function findBySearchQuery(
         string $rawQuery,
         int    $page = 1,
-        bool   $isSortByViews = false,
         bool   $isStrict = false
     ): Paginator
     {
@@ -157,12 +150,8 @@ class MangaRepository extends ServiceEntityRepository
             $orStatements->add($queryBuilder->expr()->like('p.title', ':title'));
             $queryBuilder->setParameter(':title', $term);
         }
-        if ($isSortByViews) {
-            $queryBuilder->orderBy('p.countViews', 'DESC');
-        } else {
-            $queryBuilder->orderBy('p.publishedAt', 'DESC');
-        }
-        $queryBuilder->andWhere($orStatements);
+
+        $queryBuilder->andWhere($orStatements)->orderBy('p.id', 'DESC');
 
         return $this->createPaginator($queryBuilder->getQuery(), $page);
     }

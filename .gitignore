@@ -33,6 +33,7 @@ yarn-error.log
 
 /public/media/
 /public/media_old/
+/public/media_zipped/
 /public/build/
 /.idea/
 /public/logo.ico
