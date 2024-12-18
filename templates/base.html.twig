@@ -140,7 +140,7 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                 {% for locale in locales() %}
                                     <li {% if app.request.locale == locale.code %}aria-checked="true" class="active"
                                         {% else %}aria-checked="false"{% endif %} role="menuitem">
-                                        <a href="{{ url(app.request.get('_route', 'index'),app.request.get('_route_params', [])|merge(app.request.query.all())|merge({_locale: locale.code})) }}">
+                                        <a href="{{ url(app.request.get('_route', 'index'), app.request.get('_route_params', [])|merge({_locale: locale.code})) }}">
                                             <span class="fi fi-{{ locale.code }}"></span>
                                             {{ locale.name|capitalize }}
                                         </a>
