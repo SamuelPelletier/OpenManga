@@ -142,35 +142,46 @@ class MangaRepository extends ServiceEntityRepository
 
     public function countByTag(Tag $tag): int
     {
-        $queryBuilder = $this->createQueryBuilder('p')
-            ->orWhere(':tag MEMBER OF p.tags')
-            ->setParameter('tag', $tag);
-        return count($queryBuilder->getQuery()->execute());
+        return $this->createQueryBuilder('p')
+            ->join('p.tags', 't')
+            ->andWhere('t.id = :tag_id')
+            ->setParameter('tag_id', $tag->getId())
+            ->select('count(t.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 
     public function countByLanguage(Language $language): int
     {
-        $queryBuilder = $this->createQueryBuilder('p')
-            ->orWhere(':language MEMBER OF p.languages')
-            ->setParameter('language', $language);
-        return count($queryBuilder->getQuery()->execute());
+        return $this->createQueryBuilder('p')
+            ->join('p.languages', 'l')
+            ->andWhere('l.id = :language_id')
+            ->setParameter('language_id', $language->getId())
+            ->select('count(l.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 
     public function countByParody(Parody $parody): int
     {
-        $queryBuilder = $this->createQueryBuilder('p')
-            ->orWhere(':parody MEMBER OF p.parodies')
-            ->setParameter('parody', $parody);
-        return count($queryBuilder->getQuery()->execute());
+        return $this->createQueryBuilder('p')
+            ->join('p.parodies', 'pp')
+            ->andWhere('pp.id = :parody_id')
+            ->setParameter('parody_id', $parody->getId())
+            ->select('count(pp.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 
     public function countByAuthor(Author $author): int
     {
-        $queryBuilder = $this->createQueryBuilder('p')
-            ->orWhere(':author MEMBER OF p.authors')
-            ->setParameter('author', $author);
-
-        return count($queryBuilder->getQuery()->execute());
+        return $this->createQueryBuilder('p')
+            ->join('p.authors', 'a')
+            ->andWhere('a.id = :author_id')
+            ->setParameter('author_id', $author->getId())
+            ->select('count(a.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
     }
 
     public function findByAuthor(Author $author): array
