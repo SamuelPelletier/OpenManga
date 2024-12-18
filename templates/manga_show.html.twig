@@ -21,26 +21,14 @@
 
 {% block main %}
     <h1>{{ manga.title | raw }}</h1>
-    {% if not manga.tags.empty %}
-        <div class="tags">
-            {% for tag in manga.tags %}
-                <span class="label-container">
-                                    <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name, 's':true}) }}"
-                                       class="label label-default" data-umami-event="tag">
-                                        {{ tag.name }}
-                                        <i class="counter label ">{{ mangaRepository.countByTag(tag) }}</i>
-                                    </a>
-                                </span>
-            {% endfor %}
-        </div>
-    {% endif %}
+    
     <p id="description-toggle" data-umami-event="see-more">{{ 'manga.see_more'|trans }}</p>
     <div id="manga-description" class="manga-description">
         <p class="manga-metadata">
             <span class="metadata"><i
                         class="fa fa-calendar-alt"></i> {{ manga.publishedAt|format_datetime('long', 'none') }}</span>
         </p>
-        
+
 
         <p class="count-views">{{ 'manga.count_views'|trans }} : {{ manga.countViews }} <i class="fa fa-eye"></i></p>
 
@@ -114,6 +102,7 @@
                     }
                 }
             }
+
 
 
 
