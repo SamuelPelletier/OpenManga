@@ -1,15 +1,7 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: samue
- * Date: 10/06/2019
- * Time: 19:54
- */
 
 namespace App\Controller;
 
-
-use App\Repository\MangaRepository;
 use App\Repository\TagRepository;
 use App\Utils\TagDTO;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,15 +9,9 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-/**
- * Class TagController
- * @package App\Controller
- */
 class TagController extends AbstractController
 {
-    /**
-     * @Route("/tags", name="tags")
-     */
+    #[Route("/tags", methods: ['GET'], name: 'tags')]
     public function index(Request $request, TagRepository $tagRepository): Response
     {
 

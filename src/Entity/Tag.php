@@ -1,52 +1,26 @@
 <?php
 
-/*
- * This file is part of the Symfony package.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace App\Entity;
 
+use App\Repository\TagRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity()
- * @ORM\Table(name="tag")
- *
- * Defines the properties of the Tag entity to represent the post tags.
- *
- * See https://symfony.com/doc/current/book/doctrine.html#creating-an-entity-class
- *
- */
+#[ORM\Entity(repositoryClass: TagRepository::class)]
+#[ORM\Table(name: "tag")]
 class Tag implements \JsonSerializable
 {
-    /**
-     * @var int
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private int $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", unique=true, length=190)
-     */
-    private $name;
+    #[ORM\Column(type: "string", unique: true, length: 190)]
+    private string $name;
 
-    /**
-     * @var Manga[]|ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="Manga", mappedBy="tags")
-     */
+    /** @var Manga[]|ArrayCollection */
+    #[ORM\ManyToMany(targetEntity: "Manga", mappedBy: "tags")]
     private $mangas;
 
     public function __construct()

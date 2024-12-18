@@ -8,9 +8,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class TranslationController extends AbstractController
 {
-    /**
-     * @Route("/translation/",  methods={"GET"},name="translation")
-     */
+    #[Route("/translation/", methods: ['GET'], name: 'translation')]
     public function index(Request $request)
     {
 

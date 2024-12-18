@@ -7,7 +7,6 @@ use App\Entity\User;
 use App\Form\ChangePasswordFormType;
 use App\Form\DeleteUserFormType;
 use App\Form\EditUserFormType;
-use App\Form\ResetPasswordRequestFormType;
 use App\Repository\UserRepository;
 use App\Service\PatreonService;
 use App\Service\UserService;
@@ -24,19 +23,14 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
-use Symfony\Component\Translation\TranslatableMessage;
-use Symfony\Contracts\Translation\TranslatableInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-/**
- * @Route("/user")
- */
+#[Route("/user")]
 class UserController extends AbstractController
 {
-    /**
-     * @Route("/", name="user_index")
-     */
+    #[Route("/", name: 'user_index')]
     public function index(UserRepository $userRepository, UserService $userService, EntityManagerInterface $entityManager, Request $request)
     {
         $user = $this->getUser();
@@ -51,9 +45,7 @@ class UserController extends AbstractController
         return $this->render('user/index.html.twig', ['user' => $user, 'rank' => $rank, 'patreonUrl' => $href]);
     }
 
-    /**
-     * @Route("/edit", name="user_edit")
-     */
+    #[Route("/edit", name: 'user_edit')]
     public function edit(Request $request, EntityManagerInterface $entityManager)
     {
         $user = $this->getUser();
@@ -77,9 +69,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/password", name="change_password")
-     */
+    #[Route("/password", name: 'change_password')]
     public function changePassword(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $entityManager)
     {
         $user = $this->getUser();
@@ -107,10 +97,8 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/delete", name="user_delete")
-     */
-    public function delete(Request $request, SessionInterface $session, EntityManagerInterface $entityManager)
+    #[Route("/delete", name: 'user_delete')]
+    public function delete(Request $request, SessionInterface $session, EntityManagerInterface $entityManager, TokenStorageInterface $tokenStorage,)
     {
         $user = $this->getUser();
         if (!$user) {
@@ -124,8 +112,7 @@ class UserController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
-            $this->get('security.token_storage')->setToken(null);
+            $tokenStorage->setToken(null);
             $entityManager->remove($user);
             $entityManager->flush();
             $session->invalidate(0);
@@ -138,9 +125,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/help", name="user_help")
-     */
+    #[Route("/help", name: 'user_help')]
     public function help()
     {
         $user = $this->getUser();
@@ -150,9 +135,7 @@ class UserController extends AbstractController
         return $this->render('user/help.html.twig', ['user' => $user]);
     }
 
-    /**
-     * @Route("/sync_patreon", name="user_sync_patreon")
-     */
+    #[Route("/sync_patreon", name: 'user_sync_patreon')]
     public function syncPatreon(EntityManagerInterface $entityManager, PatreonService $patreonService)
     {
         $user = $this->getUser();
@@ -169,9 +152,7 @@ class UserController extends AbstractController
         return $this->json(['response' => true]);
     }
 
-    /**
-     * @Route("/pay", name="user_pay")
-     */
+    #[Route("/pay", name: 'user_pay')]
     public function pay()
     {
         $user = $this->getUser();
@@ -182,9 +163,7 @@ class UserController extends AbstractController
         return $this->render('user/pay.html.twig', ['user' => $user, 'square_application_id' => $_ENV['SQUARE_APPLICATION_ID'], 'square_location_id' => $_ENV['SQUARE_LOCATION_ID']]);
     }
 
-    /**
-     * @Route("/pay_proceed", name="pay_proceed")
-     */
+    #[Route("/pay_proceed", name: 'pay_proceed')]
     public function payProceed(EntityManagerInterface $entityManager, Request $request, TranslatorInterface $translator, LoggerInterface $logger)
     {
         /** @var User $user */
@@ -253,9 +232,7 @@ class UserController extends AbstractController
         return $this->json(['success' => $success, 'message' => $success ? $translator->trans('square.result.success') : $translator->trans('square.result.error'), 'details' => $details]);
     }
 
-    /**
-     * @Route("/invoice", name="user_invoice")
-     */
+    #[Route("/invoice", name: 'user_invoice')]
     public function invoice()
     {
         $user = $this->getUser();

@@ -39,9 +39,6 @@
     "doctrine/collections": {
         "version": "1.6.x-dev"
     },
-    "doctrine/common": {
-        "version": "2.9.x-dev"
-    },
     "doctrine/data-fixtures": {
         "version": "1.3.x-dev"
     },

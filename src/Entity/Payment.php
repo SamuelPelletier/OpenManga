@@ -1,72 +1,32 @@
 <?php
 
-/*
- * This file is part of the Symfony package.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @ORM\Entity()
- * @ORM\Table(name="payment")
- *
- * Defines the properties of the Payment entity to represent the post tags.
- *
- * See https://symfony.com/doc/current/book/doctrine.html#creating-an-entity-class
- *
- */
+#[ORM\Entity]
+#[ORM\Table(name: "payment")]
 class Payment implements \JsonSerializable
 {
-    /**
-     * @var int
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
     private int $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     */
-    private $squareId;
+    #[ORM\Column(type: "string")]
+    private string $squareId;
 
-    /**
-     * @var float
-     *
-     * @ORM\Column(type="float")
-     */
+    #[ORM\Column(type: "float")]
     private float $amount;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     */
+    #[ORM\Column(type: "string")]
     private string $currency;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
+    #[ORM\Column(type: "datetime")]
     private \DateTime $createdAt;
 
-    /**
-     * @var User
-     *
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="payments")
-     */
-    private $user;
+    #[ORM\ManyToOne(targetEntity: "User", inversedBy: "payments")]
+    private User $user;
 
     public function getId(): ?int
     {

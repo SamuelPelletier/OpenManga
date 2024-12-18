@@ -892,6 +892,9 @@ a.label:hover, a.label:focus {
 
 .locked-text h2 {
     margin-bottom: 0;
+    text-transform: uppercase;
+    ont-family: sans-serif;
+    font-weight: bold;
 }
 
 

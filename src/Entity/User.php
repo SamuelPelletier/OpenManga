@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Repository\UserRepository;
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -10,97 +11,73 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
- */
 #[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
+#[ORM\Entity(repositoryClass: UserRepository::class)]
+#[ORM\Table(name: "user")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     public const MAX_LAST_MANGAS_READ = 5;
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private $id;
-    /**
-     * @ORM\Column(type="string", length=180, unique=true)
-     */
-    private $username;
-    /**
-     * @ORM\Column(type="json")
-     */
-    private $roles = [];
-    /**
-     * @var string The hashed password
-     * @ORM\Column(type="string")
-     */
-    private $password;
-    /**
-     * @ORM\Column(type="string", length=255, nullable=true)
-     */
-    private $email;
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $timeSpent = 0;
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $countMangasRead = 0;
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $countMangasDownload = 0;
-    /**
-     * @var Manga[]|ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="Manga")
-     * @ORM\JoinTable(name="user_manga_read",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id", onDelete="cascade")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="manga_id", referencedColumnName="id", onDelete="cascade")}
-     *      )
-     */
+
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private int $id;
+
+    #[ORM\Column(type: "string", unique: true, length: 180)]
+    private string $username;
+
+    #[ORM\Column(type: "json")]
+    private array $roles = [];
+
+    #[ORM\Column(type: "string")]
+    private string $password;
+
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $email;
+
+    #[ORM\Column(type: "integer")]
+    private int $timeSpent = 0;
+
+    #[ORM\Column(type: "integer")]
+    private int $countMangasRead = 0;
+
+    #[ORM\Column(type: "integer")]
+    private int $countMangasDownload = 0;
+
+    /** @var Manga[]|ArrayCollection */
+    #[ORM\ManyToMany(targetEntity: "Manga")]
+    #[ORM\JoinTable(name: "user_manga_read",
+        joinColumns: [new ORM\JoinColumn(name: "user_id", referencedColumnName: "id", onDelete: "cascade")],
+        inverseJoinColumns: [new ORM\JoinColumn(name: "manga_id", referencedColumnName: "id", onDelete: "cascade")])]
     private $lastMangasRead;
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $points = 0;
-    /**
-     * @var Manga[]|ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="Manga")
-     * @ORM\JoinTable(name="user_manga_favorite",
-     *      joinColumns={@ORM\JoinColumn(name="user_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="manga_id", referencedColumnName="id")}
-     *      )
-     */
+
+    #[ORM\Column(type: "integer")]
+    private int $points = 0;
+
+    /** @var Manga[]|ArrayCollection */
+    #[ORM\ManyToMany(targetEntity: "Manga")]
+    #[ORM\JoinTable(name: "user_manga_favorite",
+        joinColumns: [new ORM\JoinColumn(name: "user_id", referencedColumnName: "id")],
+        inverseJoinColumns: [new ORM\JoinColumn(name: "manga_id", referencedColumnName: "id")])]
     private $favoriteMangas;
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $bonusPoints = 0;
-    /**
-     * @ORM\Column(type="string",length=255,nullable=true)
-     */
-    private $patreonAccessToken;
-    /**
-     * @ORM\Column(type="string",length=255,nullable=true)
-     */
-    private $patreonRefreshToken;
-    /**
-     * @ORM\Column(type="integer",nullable=true)
-     */
-    private $patreonTier;
-    /**
-     * @ORM\Column(type="date",nullable=true)
-     */
-    private $patreonNextCharge;
-    /**
-     * @var Payment[]|ArrayCollection
-     *
-     * @ORM\OneToMany (targetEntity="Payment", mappedBy="user")
-     */
+
+    #[ORM\Column(type: "integer")]
+    private int $bonusPoints = 0;
+
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $patreonAccessToken;
+
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $patreonRefreshToken;
+
+    #[ORM\Column(type: "integer", nullable: true)]
+    private ?int $patreonTier;
+
+    #[ORM\Column(type: "date", nullable: true)]
+    private ?DateTime $patreonNextCharge;
+
+    /** @var Payment[]|ArrayCollection */
+    #[ORM\OneToMany(targetEntity: "Payment", mappedBy: "user")]
     private $payments;
 
     public function __construct()
@@ -176,7 +153,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see UserInterface
      */
-    public function eraseCredentials()
+    public function eraseCredentials(): void
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;

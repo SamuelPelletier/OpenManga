@@ -17,9 +17,8 @@ use Symfony\Component\String\ByteString;
 
 class PatreonController extends AbstractController
 {
-    /**
-     * @Route("/patreon_login", name="patreon_login")
-     */
+
+    #[Route("/patreon_login", name: 'patreon_login')]
     public function login(Request $request, UserRepository $userRepository, EntityManagerInterface $entityManager, UserAuthenticatorInterface $userAuthenticator, AuthenticatorInterface $authenticator, PatreonService $patreonService)
     {
         if (isset($_GET['code']) && !empty($_GET['code'])) {

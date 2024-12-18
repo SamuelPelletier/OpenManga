@@ -5,29 +5,23 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Security\LoginFormAuthenticator;
-use App\Service\PatreonService;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Bundle\SecurityBundle\Security\UserAuthenticator;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Component\Security\Http\Authenticator\AuthenticatorInterface;
-use Symfony\Component\Security\Http\Event\InteractiveLoginEvent;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 
 class SecurityController extends AbstractController
 {
     use TargetPathTrait;
 
-    /**
-     * @Route("/login", name="app_login")
-     * @Route("/register", name="app_register")
-     */
+    #[Route("/login", name: 'app_login')]
+    #[Route("/register", 'app_register')]
     public function login(
         AuthenticationUtils         $authenticationUtils,
         Request                     $request,
@@ -72,9 +66,7 @@ class SecurityController extends AbstractController
             ['last_username' => $lastUsername, 'error' => $error, 'registrationForm' => $form->createView(), 'patreonUrl' => $href]);
     }
 
-    /**
-     * @Route("/logout", name="app_logout")
-     */
+    #[Route("/logout", name: 'app_logout')]
     public function logout()
     {
         return;

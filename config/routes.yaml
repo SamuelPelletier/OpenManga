@@ -3,10 +3,10 @@ homepage:
 controllers:
     prefix: /{_locale}
     resource: ../src/Controller/
-    type: annotation
+    type: attribute
     requirements:
       _locale: '%app_locales%'
 
 kernel:
     resource: ../src/Kernel.php
-    type: annotation
+    type: attribute

@@ -1,151 +1,79 @@
 <?php
 
-/*
- * This file is part of the Symfony package.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace App\Entity;
 
+use App\Repository\MangaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\MangaRepository")
- * @ORM\Table(name="manga")
- *
- * Defines the properties of the Manga entity to represent the blog mangas.
- *
- * See https://symfony.com/doc/current/book/doctrine.html#creating-an-entity-class
- *
- * Tip: if you have an existing database, you can generate these entity class automatically.
- * See https://symfony.com/doc/current/cookbook/doctrine/reverse_engineering.html
- *
- */
+#[ORM\Entity(repositoryClass: MangaRepository::class)]
+#[ORM\Table(name: "manga")]
 class Manga
 {
-    /**
-     * Use constants to define configuration options that rarely change instead
-     * of specifying them under parameters section in config/services.yaml file.
-     *
-     * See https://symfony.com/doc/current/best_practices/configuration.html#constants-vs-configuration-options
-     */
     public const NUM_ITEMS = 20;
 
-    /**
-     * @var int
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private int $id;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="integer",nullable=true, unique=true)
-     */
-    private $externalId;
+    #[ORM\Column(type: "integer", nullable: true, unique: true)]
+    private ?int $externalId;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string",nullable=true)
-     */
-    private $externalToken;
+    #[ORM\Column(type: "string", nullable: true)]
+    private ?string $externalToken;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string")
-     * @Assert\NotBlank
-     */
-    private $title;
+    #[ORM\Column(type: "string")]
+    #[Assert\NotBlank]
+    private string $title;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(type="integer")
-     */
-    private $countPages;
+    #[ORM\Column(type: "integer")]
+    private int $countPages;
 
-    /**
-     * @var \DateTime
-     *
-     * @ORM\Column(type="datetime")
-     */
-    private $publishedAt;
+    #[ORM\Column(type: "datetime")]
+    private \DateTime $publishedAt;
 
-    /**
-     * @var Author[]|ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="Author")
-     * @ORM\JoinTable(name="mangas_authors",
-     *      joinColumns={@ORM\JoinColumn(name="manga_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="author_id", referencedColumnName="id")}
-     *      )
-     */
+    /** @var Author[]|ArrayCollection */
+    #[ORM\ManyToMany(targetEntity: "Author")]
+    #[ORM\JoinTable(name: "mangas_authors",
+        joinColumns: [new ORM\JoinColumn(name: "manga_id", referencedColumnName: "id")],
+        inverseJoinColumns: [new ORM\JoinColumn(name: "author_id", referencedColumnName: "id")])]
     private $authors;
 
 
-    /**
-     * @var Tag[]|ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="Tag", inversedBy="mangas")
-     * @ORM\JoinTable(name="mangas_tags",
-     *      joinColumns={@ORM\JoinColumn(name="manga_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="tag_id", referencedColumnName="id")}
-     *      )
-     */
+    /** @var Tag[]|ArrayCollection */
+    #[ORM\ManyToMany(targetEntity: "Tag", inversedBy: "mangas")]
+    #[ORM\JoinTable(name: "mangas_tags",
+        joinColumns: [new ORM\JoinColumn(name: "manga_id", referencedColumnName: "id")],
+        inverseJoinColumns: [new ORM\JoinColumn(name: "tag_id", referencedColumnName: "id")])]
     private $tags;
 
-    /**
-     * @var Language[]|ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="Language")
-     * @ORM\JoinTable(name="mangas_languages",
-     *      joinColumns={@ORM\JoinColumn(name="manga_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="language_id", referencedColumnName="id")}
-     *      )
-     */
+    /** @var Language[]|ArrayCollection */
+    #[ORM\ManyToMany(targetEntity: "Language")]
+    #[ORM\JoinTable(name: "mangas_languages",
+        joinColumns: [new ORM\JoinColumn(name: "manga_id", referencedColumnName: "id")],
+        inverseJoinColumns: [new ORM\JoinColumn(name: "language_id", referencedColumnName: "id")])]
     private $languages;
 
-    /**
-     * @var Parody[]|ArrayCollection
-     *
-     * @ORM\ManyToMany(targetEntity="Parody")
-     * @ORM\JoinTable(name="mangas_parodies",
-     *      joinColumns={@ORM\JoinColumn(name="manga_id", referencedColumnName="id")},
-     *      inverseJoinColumns={@ORM\JoinColumn(name="language_id", referencedColumnName="id")}
-     *      )
-     */
+    /** @var Parody[]|ArrayCollection */
+    #[ORM\ManyToMany(targetEntity: "Parody")]
+    #[ORM\JoinTable(name: "mangas_parodies",
+        joinColumns: [new ORM\JoinColumn(name: "manga_id", referencedColumnName: "id")],
+        inverseJoinColumns: [new ORM\JoinColumn(name: "parody_id", referencedColumnName: "id")])]
     private $parodies;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
-    private $countViews = 0;
+    #[ORM\Column(type: "integer")]
+    private int $countViews = 0;
 
-    /**
-     * @ORM\Column(type="boolean", options={"default" : 0})
-     */
+    #[ORM\Column(type: "boolean", options: ["default" => 0])]
     private bool $isOld = false;
 
-    /**
-     * @ORM\Column(type="boolean", options={"default" : 0})
-     */
+    #[ORM\Column(type: "boolean", options: ["default" => 0])]
     private bool $isBlocked = false;
 
-    /**
-     * @ORM\Column(type="boolean", options={"default" : 0})
-     */
+    #[ORM\Column(type: "boolean", options: ["default" => 0])]
     private bool $isCorrupted = false;
 
     public function __construct()

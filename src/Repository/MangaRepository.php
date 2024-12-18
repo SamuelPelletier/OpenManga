@@ -1,14 +1,5 @@
 <?php
 
-/*
- * This file is part of the Symfony package.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace App\Repository;
 
 use App\Entity\Manga;
@@ -23,13 +14,6 @@ use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 
-/**
- * This custom Doctrine repository contains some methods which are useful when
- * querying for blog manga information.
- *
- * See https://symfony.com/doc/current/doctrine/repository.html
- *
- */
 class MangaRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
@@ -104,7 +88,7 @@ class MangaRepository extends ServiceEntityRepository
             if ($isStrict) {
                 $tags = $repoTag->getEntityManager()->createQueryBuilder()
                     ->select('a')
-                    ->from($repoTag->_entityName, 'a')->where('a.name like :name')
+                    ->from($repoTag->getEntityName(), 'a')->where('a.name like :name')
                     ->setParameter('name', $term)->getQuery()->getResult();
 
                 foreach ($tags as $keyTag => $tag) {
@@ -115,7 +99,7 @@ class MangaRepository extends ServiceEntityRepository
 
                 $languages = $repoLanguage->getEntityManager()->createQueryBuilder()
                     ->select('a')
-                    ->from($repoLanguage->_entityName, 'a')->where('a.name like :name')
+                    ->from($repoLanguage->getEntityName(), 'a')->where('a.name like :name')
                     ->setParameter('name', $term)->getQuery()->getResult();
 
                 foreach ($languages as $keyLanguage => $language) {
@@ -126,7 +110,7 @@ class MangaRepository extends ServiceEntityRepository
 
                 $parodies = $repoParody->getEntityManager()->createQueryBuilder()
                     ->select('a')
-                    ->from($repoParody->_entityName, 'a')->where('a.name like :name')
+                    ->from($repoParody->getEntityName(), 'a')->where('a.name like :name')
                     ->setParameter('name', $term)->getQuery()->getResult();
 
                 foreach ($parodies as $keyParody => $parody) {
@@ -137,7 +121,7 @@ class MangaRepository extends ServiceEntityRepository
 
                 $authors = $repoAuthor->getEntityManager()->createQueryBuilder()
                     ->select('a')
-                    ->from($repoAuthor->_entityName, 'a')->where('a.name like :name')
+                    ->from($repoAuthor->getEntityName(), 'a')->where('a.name like :name')
                     ->setParameter('name', $term)->getQuery()->getResult();
 
                 foreach ($authors as $keyAuthor => $author) {

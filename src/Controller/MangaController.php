@@ -1,47 +1,25 @@
 <?php
 
-/*
- * This file is part of the Symfony package.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace App\Controller;
 
 use App\Entity\Manga;
 use App\Entity\User;
-use App\Repository\AuthorRepository;
-use App\Repository\LanguageRepository;
 use App\Repository\MangaRepository;
-use App\Repository\ParodyRepository;
-use App\Repository\TagRepository;
 use App\Service\MangaService;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Finder\Finder;
 
-/**
- * Controller used to manage blog contents in the public part of the site.
- *
- * @Route("/")
- *
- */
+#[Route("/")]
 class MangaController extends BaseController
 {
-    /**
-     * @Route("/", defaults={"page": "1"}, methods={"GET"}, name="index")
-     * @Route("/page/{page<[1-9]\d*>}", methods={"GET"}, name="index_paginated")
-     * @Cache(smaxage="10")
-     */
+    #[Route("/", defaults: ['page' => 1], methods: ['GET'], name: 'index')]
+    #[Route("/page/{page<[1-9]\d*>}", methods: ['GET'], name: 'index_paginated')]
+    #[Cache(maxage: 10)]
     public function index(
         int             $page,
         Request         $request,
@@ -58,11 +36,9 @@ class MangaController extends BaseController
         return $this->render('index.html.twig', ['mangas' => $latestMangas]);
     }
 
-    /**
-     * @Route("/trending", defaults={"page": "1"}, methods={"GET"}, name="index_trending")
-     * @Route("/page/{page<[1-9]\d*>}", methods={"GET"}, name="index_trending_paginated")
-     * @Cache(smaxage="10")
-     */
+    #[Route("/trending", defaults: ['page' => 1], methods: ['GET'], name: 'index_trending')]
+    #[Route("/page/{page<[1-9]\d*>}", methods: ['GET'], name: 'index_trending_paginated')]
+    #[Cache(maxage: 10)]
     public function trending(
         int             $page,
         Request         $request,
@@ -79,9 +55,7 @@ class MangaController extends BaseController
         return $this->render('index.html.twig', ['mangas' => $latestMangas]);
     }
 
-    /**
-     * @Route("/mangas/{id}", methods={"GET"}, name="manga")
-     */
+    #[Route("/mangas/{id}", methods: ['GET'], name: 'manga')]
     public function mangaShow(
         Manga                  $manga,
         MangaRepository        $mangaRepository,
@@ -140,10 +114,8 @@ class MangaController extends BaseController
             ]);
     }
 
-    /**
-     * @Route("/search", methods={"GET"}, name="search")
-     * @Route("/search/page/{page<[1-9]\d*>}", methods={"GET"}, name="search_paginated")
-     */
+    #[Route("/search", methods: ['GET'], name: 'search')]
+    #[Route("/search/page/{page<[1-9]\d*>}", methods: ['GET'], name: 'search_paginated')]
     public function search(
         Request         $request,
         MangaRepository $mangas,
@@ -173,9 +145,7 @@ class MangaController extends BaseController
         return $this->render('search.html.twig', ['mangas' => $foundMangas]);
     }
 
-    /**
-     * @Route("/download/{id}", methods={"GET"}, name="download")
-     */
+    #[Route("/download/{id}", methods: ['GET'], name: 'download')]
     public function mangaDownload(
         Manga                  $manga,
         EntityManagerInterface $entityManager
@@ -229,9 +199,7 @@ class MangaController extends BaseController
 
     }
 
-    /**
-     * @Route("/favorite/{id}/add", methods={"POST"}, name="add_favorite")
-     */
+    #[Route("/favorite/{id}/add", methods: ['POST'], name: 'add_favorite')]
     public function addFavorite(Manga $manga, EntityManagerInterface $entityManager)
     {
         /**
@@ -246,9 +214,7 @@ class MangaController extends BaseController
         return $this->json(['response' => true]);
     }
 
-    /**
-     * @Route("/favorite/{id}/remove", methods={"POST"}, name="remove_favorite")
-     */
+    #[Route("/favorite/{id}/remove", methods: ['POST'], name: 'remove_favorite')]
     public function removeFavorite(Manga $manga, EntityManagerInterface $entityManager)
     {
         /**

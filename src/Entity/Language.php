@@ -1,32 +1,12 @@
 <?php
 
-/*
- * This file is part of the Symfony package.
- *
- * (c) Fabien Potencier <fabien@symfony.com>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
-
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Repository\LanguageRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Validator\Constraints as Assert;
 
-/**
- * @ORM\Entity
- * @ORM\Table(name="language")
- *
- * Defines the properties of the Author entity to represent the blog authors.
- * See https://symfony.com/doc/current/book/doctrine.html#creating-an-entity-class
- *
- * Tip: if you have an existing database, you can generate these entity class automatically.
- * See https://symfony.com/doc/current/cookbook/doctrine/reverse_engineering.html
- *
- */
+#[ORM\Entity(repositoryClass: LanguageRepository::class)]
+#[ORM\Table(name: "language")]
 class Language implements \JsonSerializable
 {
     const ISO_CODE = [
@@ -67,21 +47,13 @@ class Language implements \JsonSerializable
         // Add other languages here.
     ];
 
-    /**
-     * @var int
-     *
-     * @ORM\Id
-     * @ORM\GeneratedValue
-     * @ORM\Column(type="integer")
-     */
-    private $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private int $id;
 
-    /**
-     * @var string
-     *
-     * @ORM\Column(type="string", unique=true, length=190)
-     */
-    private $name;
+    #[ORM\Column(type: "string", unique: true, length: 190)]
+    private string $name;
 
     public function getId(): ?int
     {

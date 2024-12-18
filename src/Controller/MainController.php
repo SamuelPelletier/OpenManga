@@ -1,23 +1,11 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: samue
- * Date: 10/06/2019
- * Time: 19:54
- */
 
 namespace App\Controller;
 
-
 use App\Repository\MangaRepository;
-use App\Repository\TagRepository;
-use App\Utils\TagDTO;
-use Monolog\Logger;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\Finder\Finder;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\KernelInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -26,19 +14,13 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class MainController extends AbstractController
 {
-    /**
-     * @Route("/about", name="about")
-     *
-     */
+    #[Route("/about", methods: ['GET'], name: 'about')]
     public function about(): Response
     {
         return $this->render('about.html.twig');
     }
 
-    /**
-     * @Route("/disclaimer", methods={"POST","GET"},name="disclaimer")
-     *
-     */
+    #[Route("/disclaimer", methods: ['POST', 'GET'], name: 'disclaimer')]
     public function disclaimer(Request $request): Response
     {
         $finalUrl = $request->getSession()->get('final_url');
@@ -60,9 +42,7 @@ class MainController extends AbstractController
         return $this->render('disclaimer.html.twig', ['finalUrl' => $finalUrl]);
     }
 
-    /**
-     * @Route("/sitemap-index.xml", name="sitemap-index", defaults={"_format"="xml"})
-     */
+    #[Route("/sitemap-index.xml", methods: ['GET'], defaults: ['_format' => "xml"], name: 'sitemap-index')]
     public function sitemapIndex(Request $request, MangaRepository $mangaRepository)
     {
         $urls = array();
@@ -78,9 +58,7 @@ class MainController extends AbstractController
         return $response;
     }
 
-    /**
-     * @Route("/sitemap.xml", name="sitemap", defaults={"_format"="xml"})
-     */
+    #[Route("/sitemap.xml", methods: ['GET'], defaults: ['_format' => "xml"], name: 'sitemap')]
     public function sitemap(Request $request, MangaRepository $mangaRepository)
     {
         // Nous récupérons le nom d'hôte depuis l'URL
