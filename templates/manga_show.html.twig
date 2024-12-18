@@ -40,7 +40,26 @@
             <span class="metadata"><i
                         class="fa fa-calendar-alt"></i> {{ manga.publishedAt|format_datetime('long', 'none') }}</span>
         </p>
-        
+        {% if not manga.languages.empty %}
+            <p>
+                <a>{{ 'manga.language'|trans }} : </a>
+                {% for language in manga.languages %}
+                    <span class="label-container">
+                        <a href="{{ url('search', {'q': language.name == app.request.query.get('language') ? null : language.name, 's':true}) }}"
+                           class="label label-{{ language.name == app.request.query.get('language') ? 'success' : 'default' }}"
+                        >
+                            {% if language.code %}
+                                <span class="fi fi-{{ language.code }}"></span> {{ language.name }}
+                            {% else %}
+                                <i class="fa fa-language"></i> {{ language.name }}
+                            {% endif %}
+                            <i> {{ mangaRepository.countByLanguage(language) }}</i>
+
+                        </a>
+                    </span>
+                {% endfor %}
+            </p>
+        {% endif %}
         {% if not manga.parodies.empty %}
             <p>
                 <a>{{ 'manga.parody'|trans }} : </a>
@@ -58,20 +77,7 @@
             </p>
         {% endif %}
 
-        {% if not manga.authors.empty %}
-            <p>
-                <a>{{ 'manga.author'|trans }} : </a>
-                {% for author in manga.authors %}
-                    <span class="label-container">
-                        <a href="{{ url('search', {'q': author.name == app.request.query.get('author') ? null : author.name, 's':true}) }}"
-                           class="label label-{{ author.name == app.request.query.get('author') ? 'success' : 'default' }}">
-                            <i class="fa fa-user"></i> {{ author.name }}
-                        <i>{{ mangaRepository.countByAuthor(author) }}</i>
-                        </a>
-                    </span>
-                {% endfor %}
-            </p>
-        {% endif %}
+       
         <p class="count-views">{{ 'manga.count_views'|trans }} : {{ manga.countViews }} <i class="fa fa-eye"></i></p>
 
     </div>
