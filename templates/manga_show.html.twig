@@ -21,8 +21,61 @@
 
 {% block main %}
     <h1>{{ manga.title | raw }}</h1>
-    
-    <p class="count-views">{{ 'manga.count_views'|trans }} : {{ manga.countViews }} <i class="fa fa-eye"></i></p>
+    {% if not manga.tags.empty %}
+        <div class="tags">
+            {% for tag in manga.tags %}
+                <span class="label-container">
+                                    <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name, 's':true}) }}"
+                                       class="label label-default" data-umami-event="tag">
+                                        {{ tag.name }}
+                                        <i class="counter label ">{{ mangaRepository.countByTag(tag) }}</i>
+                                    </a>
+                                </span>
+            {% endfor %}
+        </div>
+    {% endif %}
+    <p id="description-toggle" data-umami-event="see-more">{{ 'manga.see_more'|trans }}</p>
+    <div id="manga-description" class="manga-description">
+        <p class="manga-metadata">
+            <span class="metadata"><i
+                        class="fa fa-calendar-alt"></i> {{ manga.publishedAt|format_datetime('long', 'none') }}</span>
+        </p>
+        {% if not manga.languages.empty %}
+            <p>
+                <a>{{ 'manga.language'|trans }} : </a>
+                {% for language in manga.languages %}
+                    <span class="label-container">
+                        <a href="{{ url('search', {'q': language.name == app.request.query.get('language') ? null : language.name, 's':true}) }}"
+                           class="label label-{{ language.name == app.request.query.get('language') ? 'success' : 'default' }}"
+                        >
+                            {% if language.code %}
+                                <span class="fi fi-{{ language.code }}"></span> {{ language.name }}
+                            {% else %}
+                                <i class="fa fa-language"></i> {{ language.name }}
+                            {% endif %}
+                            <i> {{ mangaRepository.countByLanguage(language) }}</i>
+
+                        </a>
+                    </span>
+                {% endfor %}
+            </p>
+        {% endif %}
+
+        {% if not manga.authors.empty %}
+            <p>
+                <a>{{ 'manga.author'|trans }} : </a>
+                {% for author in manga.authors %}
+                    <span class="label-container">
+                        <a href="{{ url('search', {'q': author.name == app.request.query.get('author') ? null : author.name, 's':true}) }}"
+                           class="label label-{{ author.name == app.request.query.get('author') ? 'success' : 'default' }}">
+                            <i class="fa fa-user"></i> {{ author.name }}
+                        <i>{{ mangaRepository.countByAuthor(author) }}</i>
+                        </a>
+                    </span>
+                {% endfor %}
+            </p>
+        {% endif %}
+        <p class="count-views">{{ 'manga.count_views'|trans }} : {{ manga.countViews }} <i class="fa fa-eye"></i></p>
 
     </div>
     <div id="download-container">
