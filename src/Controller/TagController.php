@@ -45,7 +45,7 @@ class TagController extends AbstractController
     }
 
     #[Route("/bests", methods: ['GET'], name: 'tag_bests')]
-    #[Cache(maxage: 3600, public: true)]
+    #[Cache(maxage: 3600)]
     public function bests(TagRepository $tagRepository): Response
     {
         return $this->json(['response' => true, 'data' => array_column($tagRepository->findBests(), 'name')]);
