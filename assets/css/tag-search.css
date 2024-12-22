@@ -13,9 +13,11 @@
     width: 100%;
     border-top-right-radius: 25px;
     z-index: 5;
-    display: none;
+    opacity: 0;
     background-color: #191820;
     width: 295px;
+    display: block;
+    transition: all ease 0.5s;
 }
 
 .search-recommendation > div {
