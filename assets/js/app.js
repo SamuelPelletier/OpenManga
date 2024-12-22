@@ -84,6 +84,19 @@ function addMangaBlock() {
 }
 
 $(function () {
+    $.ajax({
+        url: "/" + locale + "/tags/bests",
+        method: "GET",
+        success: function (data) {
+            let tags = '';
+            data.data.forEach(function (tag) {
+                tags += "<a href=\"{{ url('search', {'q': '" + tag + "', 's':true}) }}\" totalx=\"158\" draggable=\"false\">\n" +
+                    "                    <span class=\"tag-rounded\" totalx=\"158\">" + tag + "</span>\n" +
+                    "                </a>"
+            })
+            $('.search-recommendation-tag').append(tags);
+        }
+    });
     /*if (window.innerWidth < 738 && $('.manga-container').length > 0) {
         addMangaBlock();
 

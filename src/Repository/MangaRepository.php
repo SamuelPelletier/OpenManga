@@ -187,9 +187,10 @@ class MangaRepository extends ServiceEntityRepository
     public function findByAuthor(Author $author): array
     {
         $queryBuilder = $this->createQueryBuilder('p')
-            ->where('p.isCorrupted = false')
-            ->andWhere(':author MEMBER OF p.authors')
-            ->setParameter('author', $author)
+            ->join('p.authors', 'a')
+            ->where('a.id = :author_id')
+            ->setParameter('author_id', $author->getId())
+            ->andWhere('p.isCorrupted = false')
             ->orderBy('p.id', 'DESC');
 
         return $queryBuilder->getQuery()->execute();
@@ -204,9 +205,10 @@ class MangaRepository extends ServiceEntityRepository
         }
 
         $queryBuilder = $this->createQueryBuilder('p')
-            ->where('p.isCorrupted = false')
-            ->andWhere(':tag MEMBER OF p.tags')
-            ->setParameter('tag', $tag)
+            ->join('p.tags', 't')
+            ->where('t.id = :tag_id')
+            ->setParameter('tag_id', $tag->getId())
+            ->andWhere('p.isCorrupted = false')
             ->orderBy('p.id', $order)
             ->setMaxResults($max);
 
@@ -263,7 +265,6 @@ class MangaRepository extends ServiceEntityRepository
 
     private function createPaginator(Query $query, int $page): Paginator
     {
-
         $premierResultat = ($page - 1) * Manga::NUM_ITEMS;
         $query->setFirstResult($premierResultat)->setMaxResults(Manga::NUM_ITEMS);
         $paginator = new Paginator($query);

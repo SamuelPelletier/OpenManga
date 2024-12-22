@@ -41,4 +41,16 @@ class TagRepository extends ServiceEntityRepository
 
         return $queryBuilder->getQuery()->getResult();
     }
+
+    public function findBests()
+    {
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->join('p.mangas', 'm')
+            ->select('p.name, COUNT(m.id) as counts')
+            ->groupBy('p.id')
+            ->orderBy('counts', 'DESC')
+            ->setMaxResults(6);
+
+        return $queryBuilder->getQuery()->getResult();
+    }
 }

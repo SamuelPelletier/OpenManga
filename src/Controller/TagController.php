@@ -9,9 +9,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+#[Route("/tags")]
 class TagController extends AbstractController
 {
-    #[Route("/tags", methods: ['GET'], name: 'tags')]
+    #[Route("/", methods: ['GET'], name: 'tags')]
     public function index(Request $request, TagRepository $tagRepository): Response
     {
 
@@ -40,5 +41,11 @@ class TagController extends AbstractController
 
         return $this->render('tags.html.twig',
             ['tagsDTO' => $tagsDTO, 'tagsDTOsort' => $tagsDTOsort]);
+    }
+
+    #[Route("/bests", methods: ['GET'], name: 'tag_bests')]
+    public function bests(TagRepository $tagRepository): Response
+    {
+        return $this->json(['response' => true, 'data' => array_column($tagRepository->findBests(), 'name')]);
     }
 }

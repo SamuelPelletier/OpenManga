@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Table(name: "manga")]
 class Manga
 {
-    public const NUM_ITEMS = 20;
+    public const NUM_ITEMS = 25;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]

@@ -60,6 +60,9 @@ abstract class AbstractImportMangaCommand extends Command
         if ($repoManga->findOneBy(['externalId' => $json['gid']]) || $repoManga->findOneBy(['title' => $json['title']])) {
             $this->logger->warning('Manga already exist');
             return;
+        } elseif (strlen($json['title']) > 255) {
+            $this->logger->warning('Manga has title too long');
+            return;
         } else {
             $manga = new Manga();
             $manga->setExternalId($json['gid']);
