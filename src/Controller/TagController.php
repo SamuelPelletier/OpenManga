@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Repository\TagRepository;
 use App\Utils\TagDTO;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Cache;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -44,6 +45,7 @@ class TagController extends AbstractController
     }
 
     #[Route("/bests", methods: ['GET'], name: 'tag_bests')]
+    #[Cache(maxage: 3600)]
     public function bests(TagRepository $tagRepository): Response
     {
         return $this->json(['response' => true, 'data' => array_column($tagRepository->findBests(), 'name')]);
