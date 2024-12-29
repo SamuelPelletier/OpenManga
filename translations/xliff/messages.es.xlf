@@ -571,7 +571,7 @@ Pero no son exclusivamente manga, también hay música, novelas o videojuegos.
             </trans-unit>
             <trans-unit id="subscribe.price">
                 <source>subscribe.price</source>
-                <target>3€ por un mes de acceso premium</target>
+                <target> por un mes de acceso premium</target>
             </trans-unit>
             <trans-unit id="subscribe.access">
                 <source>subscribe.access</source>
@@ -588,6 +588,10 @@ Pero no son exclusivamente manga, también hay música, novelas o videojuegos.
             <trans-unit id="subscribe.thanks">
                 <source>subscribe.thanks</source>
                 <target>Gracias por tu compra.</target>
+            </trans-unit>
+            <trans-unit id="square.error.currency">
+                <source>square.error.currency</source>
+                <target>Moneda no válida</target>
             </trans-unit>
             <trans-unit id="square.error.internal">
                 <source>square.error.internal</source>

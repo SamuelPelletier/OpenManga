@@ -28,7 +28,8 @@ document.addEventListener('DOMContentLoaded', async function () {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    source_id: token
+                    source_id: token,
+                    currency: document.getElementById('price-select').value
                 }),
             })
                 .then(response => response.json())

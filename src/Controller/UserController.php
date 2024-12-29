@@ -172,61 +172,90 @@ class UserController extends AbstractController
             return $this->redirectToRoute('index');
         }
 
-        $currency = 'EUR';
-        $amount = 300;
+        $currency = strtoupper($request->toArray()['currency'] ?? '');
+        switch ($currency) {
+            case 'EUR':
+                $amount = 300;
+                break;
+            case 'RUB':
+                $amount = 33000;
+                break;
+            case 'CNY':
+                $amount = 2300;
+                break;
+            case 'CHF':
+                $amount = 300;
+                break;
+            case 'USD':
+                $amount = 400;
+                break;
+            case 'JPY':
+                $amount = 500;
+                break;
+            case 'KRW':
+                $amount = 460000;
+                break;
+            default:
+                $amount = null;
+        }
 
-        $amount_money = new Money();
-        $amount_money->setAmount($amount);
-        $amount_money->setCurrency($currency);
+        if ($amount) {
+            $amount_money = new Money();
+            $amount_money->setAmount($amount);
+            $amount_money->setCurrency($currency);
 
-        $body = new CreatePaymentRequest($request->toArray()['source_id'], uniqid());
-        $body->setAmountMoney($amount_money);
+            $body = new CreatePaymentRequest($request->toArray()['source_id'], uniqid());
+            $body->setAmountMoney($amount_money);
 
-        $client = SquareClientBuilder::init()
-            ->bearerAuthCredentials(BearerAuthCredentialsBuilder::init($_ENV['SQUARE_ACCESS_TOKEN']))
-            ->environment($_ENV['APP_ENV'] === 'dev' ? Environment::SANDBOX : Environment::PRODUCTION)
-            ->build();
+            $client = SquareClientBuilder::init()
+                ->bearerAuthCredentials(BearerAuthCredentialsBuilder::init($_ENV['SQUARE_ACCESS_TOKEN']))
+                ->environment($_ENV['APP_ENV'] === 'dev' ? Environment::SANDBOX : Environment::PRODUCTION)
+                ->build();
 
-        $api_response = $client->getPaymentsApi()->createPayment($body);
+            $api_response = $client->getPaymentsApi()->createPayment($body);
 
-        $details = null;
-        if ($api_response->isSuccess()) {
-            try {
-                /** @var \Square\Models\Payment $squarePayment */
-                $squarePayment = $api_response->getResult()->getPayment();
-                $payment = new Payment();
-                $payment->setSquareId($squarePayment->getId());
-                $payment->setAmount($amount);
-                $payment->setCurrency($currency);
-                $payment->setCreatedAt(new \DateTime($squarePayment->getCreatedAt()));
-                $payment->setUser($user);
-                $entityManager->persist($payment);
-                $entityManager->flush();
-                $success = $squarePayment->getStatus() === "COMPLETED";
+            $details = null;
+            if ($api_response->isSuccess()) {
+                try {
+                    /** @var \Square\Models\Payment $squarePayment */
+                    $squarePayment = $api_response->getResult()->getPayment();
+                    $payment = new Payment();
+                    $payment->setSquareId($squarePayment->getId());
+                    $payment->setAmount($amount);
+                    $payment->setCurrency($currency);
+                    $payment->setCreatedAt(new \DateTime($squarePayment->getCreatedAt()));
+                    $payment->setUser($user);
+                    $entityManager->persist($payment);
+                    $entityManager->flush();
+                    $success = $squarePayment->getStatus() === "COMPLETED";
 
-                $user->setPatreonTier(1);
-                $now = new \DateTime('now');
-                if ($user->getPatreonNextCharge()?->getTimestamp() >= $now->getTimestamp()) {
-                    $date = (new \DateTime())->setTimestamp($user->getPatreonNextCharge()->getTimestamp())->modify('+1 month');
-                    $user->setPatreonNextCharge($date);
-                } else {
-                    $user->setPatreonNextCharge($now->modify('+1 month'));
+                    $user->setPatreonTier(1);
+                    $now = new \DateTime('now');
+                    if ($user->getPatreonNextCharge()?->getTimestamp() >= $now->getTimestamp()) {
+                        $date = (new \DateTime())->setTimestamp($user->getPatreonNextCharge()->getTimestamp())->modify('+1 month');
+                        $user->setPatreonNextCharge($date);
+                    } else {
+                        $user->setPatreonNextCharge($now->modify('+1 month'));
+                    }
+                    $entityManager->persist($user);
+                    $entityManager->flush();
+                } catch (\Throwable $e) {
+                    $logger->error('Payment failed because : ' . $e->getMessage());
+                    $success = false;
+                    $details = $translator->trans('square.error.internal');
                 }
-                $entityManager->persist($user);
-                $entityManager->flush();
-            } catch (\Throwable $e) {
-                $logger->error('Payment failed because : ' . $e->getMessage());
+            } else {
                 $success = false;
-                $details = $translator->trans('square.error.internal');
+                $error = $api_response->getErrors();
+                $translationKey = 'square.error.' . strtolower($error[0]->getCode());
+                $details = $translator->trans($translationKey);
+                if ($details === $translationKey) {
+                    $details = $translator->trans('square.error.unknown');
+                }
             }
         } else {
             $success = false;
-            $error = $api_response->getErrors();
-            $translationKey = 'square.error.' . strtolower($error[0]->getCode());
-            $details = $translator->trans($translationKey);
-            if ($details === $translationKey) {
-                $details = $translator->trans('square.error.unknown');
-            }
+            $details = $translator->trans('square.error.currency');
         }
 
         return $this->json(['success' => $success, 'message' => $success ? $translator->trans('square.result.success') : $translator->trans('square.result.error'), 'details' => $details]);

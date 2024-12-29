@@ -571,7 +571,7 @@ My Anime List には1,300以上のアニメエロアニメも掲載されてい�
             </trans-unit>
             <trans-unit id="subscribe.price">
                 <source>subscribe.price</source>
-                <target>1か月のプレミアムアクセス: 3€</target>
+                <target>1か月のプレミアムアクセス: </target>
             </trans-unit>
             <trans-unit id="subscribe.access">
                 <source>subscribe.access</source>
@@ -588,6 +588,10 @@ My Anime List には1,300以上のアニメエロアニメも掲載されてい�
             <trans-unit id="subscribe.thanks">
                 <source>subscribe.thanks</source>
                 <target>ご購入ありがとうございます。</target>
+            </trans-unit>
+            <trans-unit id="square.error.currency">
+                <source>square.error.currency</source>
+                <target>無効な通貨</target>
             </trans-unit>
             <trans-unit id="square.error.internal">
                 <source>square.error.internal</source>

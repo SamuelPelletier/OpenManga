@@ -20,7 +20,32 @@
     {% endif %}
     <div id="payment-form-container" class="form">
         <h2 id="payment_card">{{ 'subscribe.payment_card'|trans }}</h2>
-        <h2 id="price">{{ 'subscribe.price'|trans }}</h2>
+        {% if app.request.locale in ['ko','ja'] %}
+            <h2 id="price">{{ 'subscribe.price'|trans }}
+                <select name="price-select" id="price-select">
+                    <option value="eur">3€</option>
+                    <option value="rub">330₽</option>
+                    <option value="cny">23 CN¥</option>
+                    <option value="chf">3 CHF</option>
+                    <option value="usd">4$</option>
+                    <option value="jpy">500 JP¥</option>
+                    <option value="krw">4600₩</option>
+                </select>
+            </h2>
+        {% else %}
+            <h2 id="price">
+                <select name="price-select" id="price-select">
+                    <option value="eur">3€</option>
+                    <option value="rub">330₽</option>
+                    <option value="cny">23 CN¥</option>
+                    <option value="chf">3 CHF</option>
+                    <option value="usd">4$</option>
+                    <option value="jpy">500 JP¥</option>
+                    <option value="krw">4600₩</option>
+                </select>
+                {{ 'subscribe.price'|trans }}
+            </h2>
+        {% endif %}
         <div id="card-container"></div>
         <p id="powered_by">Powered By <a href="https://squareup.com">
                 <svg class="LogoLockup svelte-1qhoav6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"

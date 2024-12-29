@@ -571,7 +571,7 @@
             </trans-unit>
             <trans-unit id="subscribe.price">
                 <source>subscribe.price</source>
-                <target>3€ за месяц премиум-доступа</target>
+                <target> за месяц премиум-доступа</target>
             </trans-unit>
             <trans-unit id="subscribe.access">
                 <source>subscribe.access</source>
@@ -588,6 +588,10 @@
             <trans-unit id="subscribe.thanks">
                 <source>subscribe.thanks</source>
                 <target>Спасибо за покупку.</target>
+            </trans-unit>
+            <trans-unit id="square.error.currency">
+                <source>square.error.currency</source>
+                <target>Недействительная валюта</target>
             </trans-unit>
             <trans-unit id="square.error.internal">
                 <source>square.error.internal</source>

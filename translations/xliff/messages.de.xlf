@@ -569,7 +569,7 @@ Es handelt sich aber nicht nur um Manga, sondern auch um Musik, Romane oder Vide
             </trans-unit>
             <trans-unit id="subscribe.price">
                 <source>subscribe.price</source>
-                <target>3€ für einen Monat Premium-Zugang</target>
+                <target> für einen Monat Premium-Zugang</target>
             </trans-unit>
             <trans-unit id="subscribe.access">
                 <source>subscribe.access</source>
@@ -586,6 +586,10 @@ Es handelt sich aber nicht nur um Manga, sondern auch um Musik, Romane oder Vide
             <trans-unit id="subscribe.thanks">
                 <source>subscribe.thanks</source>
                 <target>Danke für Ihren Kauf.</target>
+            </trans-unit>
+            <trans-unit id="square.error.currency">
+                <source>square.error.currency</source>
+                <target>Währung ungültig</target>
             </trans-unit>
             <trans-unit id="square.error.internal">
                 <source>square.error.internal</source>

@@ -571,7 +571,7 @@ My Anime List에 1,300 개가 넘는 애니메이션 헨타이가 있습니다.
             </trans-unit>
             <trans-unit id="subscribe.price">
                 <source>subscribe.price</source>
-                <target>한 달 프리미엄 액세스: 3€</target>
+                <target>한 달 프리미엄 액세스: </target>
             </trans-unit>
             <trans-unit id="subscribe.access">
                 <source>subscribe.access</source>
@@ -588,6 +588,10 @@ My Anime List에 1,300 개가 넘는 애니메이션 헨타이가 있습니다.
             <trans-unit id="subscribe.thanks">
                 <source>subscribe.thanks</source>
                 <target>구매해 주셔서 감사합니다.</target>
+            </trans-unit>
+            <trans-unit id="square.error.currency">
+                <source>square.error.currency</source>
+                <target>유효하지 않은 통화</target>
             </trans-unit>
             <trans-unit id="square.error.internal">
                 <source>square.error.internal</source>
