@@ -39,6 +39,10 @@
                 <target><![CDATA[Try loading this page again in some minutes or <a href="%url%">go back to the homepage</a>.]]></target>
             </trans-unit>
 
+            <trans-unit id="menu.menu">
+                <source>menu.menu</source>
+                <target>メニュー</target>
+            </trans-unit>
             <trans-unit id="menu.choose_language">
                 <source>menu.choose_language</source>
                 <target>言語を選択</target>
@@ -324,6 +328,10 @@
                 <target>新しいパスワード</target>
             </trans-unit>
 
+            <trans-unit id="account.index">
+                <source>account.index</source>
+                <target>ダッシュボード</target>
+            </trans-unit>
             <trans-unit id="account.title">
                 <source>account.title</source>
                 <target>マイアカウント</target>
@@ -537,48 +545,48 @@ My Anime List には1,300以上のアニメエロアニメも掲載されてい�
                 </target>
             </trans-unit>
 
-            <trans-unit id="shop.title">
-                <source>shop.title</source>
-                <target>ショップ</target>
+            <trans-unit id="subscribe.title">
+                <source>subscribe.title</source>
+                <target>購読する</target>
             </trans-unit>
-            <trans-unit id="shop.description">
-                <source>shop.description</source>
+            <trans-unit id="subscribe.description">
+                <source>subscribe.description</source>
                 <target>プレミアムアクセスでは、すべてのロックされたコンテンツや過去の漫画に無制限にアクセスできます。最新の漫画を直接読むかダウンロードして最大限にお楽しみください。このプレミアムアクセスは、すべてのプラットフォームですぐに利用可能で、自動更新はありません。</target>
             </trans-unit>
-            <trans-unit id="shop.description_patreon">
-                <source>shop.description_patreon</source>
+            <trans-unit id="subscribe.description_patreon">
+                <source>subscribe.description_patreon</source>
                 <target>Patreonでは、次のリンクを使用してこの無制限アクセスをアンロックするオプションも提供しています：</target>
             </trans-unit>
-            <trans-unit id="shop.patreon_link">
-                <source>shop.patreon_link</source>
+            <trans-unit id="subscribe.patreon_link">
+                <source>subscribe.patreon_link</source>
                 <target>Patreonでプレミアムになる</target>
             </trans-unit>
-            <trans-unit id="shop.access_until">
-                <source>shop.access_until</source>
+            <trans-unit id="subscribe.access_until">
+                <source>subscribe.access_until</source>
                 <target>現在、%date% までプレミアムアクセスが有効です</target>
             </trans-unit>
-            <trans-unit id="shop.payment_card">
-                <source>shop.payment_card</source>
+            <trans-unit id="subscribe.payment_card">
+                <source>subscribe.payment_card</source>
                 <target>カードでのお支払い</target>
             </trans-unit>
-            <trans-unit id="shop.price">
-                <source>shop.price</source>
+            <trans-unit id="subscribe.price">
+                <source>subscribe.price</source>
                 <target>1か月のプレミアムアクセス: 3€</target>
             </trans-unit>
-            <trans-unit id="shop.access">
-                <source>shop.access</source>
+            <trans-unit id="subscribe.access">
+                <source>subscribe.access</source>
                 <target>1か月のプレミアムアクセスを購入する</target>
             </trans-unit>
-            <trans-unit id="shop.add_month">
-                <source>shop.add_month</source>
+            <trans-unit id="subscribe.add_month">
+                <source>subscribe.add_month</source>
                 <target>1か月のプレミアムアクセスを追加する</target>
             </trans-unit>
-            <trans-unit id="shop.success">
-                <source>shop.success</source>
+            <trans-unit id="subscribe.success">
+                <source>subscribe.success</source>
                 <target>支払いが成功しました！</target>
             </trans-unit>
-            <trans-unit id="shop.thanks">
-                <source>shop.thanks</source>
+            <trans-unit id="subscribe.thanks">
+                <source>subscribe.thanks</source>
                 <target>ご購入ありがとうございます。</target>
             </trans-unit>
             <trans-unit id="square.error.internal">
@@ -648,6 +656,23 @@ My Anime List には1,300以上のアニメエロアニメも掲載されてい�
             <trans-unit id="invoice.no_invoices_found">
                 <source>invoice.no_invoices_found</source>
                 <target>請求書が見つかりません</target>
+            </trans-unit>
+
+            <trans-unit id="shop.title">
+                <source>shop.title</source>
+                <target>ショップ</target>
+            </trans-unit>
+            <trans-unit id="shop.subscribe.user.content">
+                <source>shop.subscribe.user.content</source>
+                <target>すべての機能を利用するには、サブスクリプションが必要です</target>
+            </trans-unit>
+            <trans-unit id="shop.subscribe.access">
+                <source>shop.subscribe.access</source>
+                <target>サブスクリプション管理へのアクセス</target>
+            </trans-unit>
+            <trans-unit id="shop.subscribe.anonymous.content">
+                <source>shop.subscribe.anonymous.content</source>
+                <target>すべての機能を利用し、サブスクリプションを管理するには、アカウントが必要です</target>
             </trans-unit>
         </body>
     </file>

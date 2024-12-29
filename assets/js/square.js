@@ -9,12 +9,12 @@ async function tokenize(paymentMethod) {
     if (result.status === 'OK') {
         return result.token;
     } else {
-        console.error(result.errors);
         return null;
     }
 }
 
 document.addEventListener('DOMContentLoaded', async function () {
+    document.getElementById('main').innerHTML = document.getElementById('main').innerHTML.replace(/(\b premium\b)/gi, '<span class="premium">$1</span>');
     const card = await initializeCard(payments);
 
     document.getElementById('card-button').addEventListener('click', async function () {
@@ -53,8 +53,4 @@ document.addEventListener('DOMContentLoaded', async function () {
                 });
         }
     });
-});
-
-$(function () {
-    document.body.innerHTML = document.body.innerHTML.replace(/(\b premium\b)/gi, '<span class="premium">$1</span>');
 });

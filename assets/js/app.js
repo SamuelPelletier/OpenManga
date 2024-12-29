@@ -115,8 +115,30 @@ $(function () {
         $('.search-button').click();
     });
 
-    $("#bubble-info").popover({trigger: 'hover', placement: 'bottom'}).on('click', function (e) {
-        e.preventDefault();
+    $(window).click(function () {
+        $('.toggled').removeClass('toggled')
+    });
+
+    $("#menu-app-button").on('click', function () {
+        if (!$("#menu-app").hasClass('toggled')) {
+            $('.toggled').removeClass('toggled')
+            $("#menu-app").addClass('toggled')
+        } else {
+            $('.toggled').removeClass('toggled')
+        }
+    });
+
+    $("#menu-user-button").on('click', function () {
+        if (!$("#menu-user").hasClass('toggled')) {
+            $('.toggled').removeClass('toggled')
+            $("#menu-user").addClass('toggled')
+        } else {
+            $('.toggled').removeClass('toggled')
+        }
+    });
+
+    $(".dropdown").on('click', function () {
+        $('.toggled').removeClass('toggled')
     });
     // Next image on mouseover
     /*

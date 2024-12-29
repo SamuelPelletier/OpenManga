@@ -39,6 +39,10 @@
                 <target><![CDATA[Попробуйте загрузить эту страницу снова через несколько минут или <a href="%url%">вернитесь на главную страницу</a>.]]></target>
             </trans-unit>
 
+            <trans-unit id="menu.menu">
+                <source>menu.menu</source>
+                <target>Меню</target>
+            </trans-unit>
             <trans-unit id="menu.choose_language">
                 <source>menu.choose_language</source>
                 <target>Выбрать язык</target>
@@ -324,6 +328,10 @@
                 <target>Новый пароль</target>
             </trans-unit>
 
+            <trans-unit id="account.index">
+                <source>account.index</source>
+                <target>Панель управления</target>
+            </trans-unit>
             <trans-unit id="account.title">
                 <source>account.title</source>
                 <target>Мой счет</target>
@@ -537,48 +545,48 @@
                 </target>
             </trans-unit>
 
-            <trans-unit id="shop.title">
-                <source>shop.title</source>
-                <target>Магазин</target>
+            <trans-unit id="subscribe.title">
+                <source>subscribe.title</source>
+                <target>Подписаться</target>
             </trans-unit>
-            <trans-unit id="shop.description">
-                <source>shop.description</source>
+            <trans-unit id="subscribe.description">
+                <source>subscribe.description</source>
                 <target>Премиум-доступ дает вам неограниченный доступ ко всем заблокированным материалам, а также к старым манга. Наслаждайтесь последними манга, читая их онлайн или скачивая. Этот премиум-доступ доступен сразу на всех платформах и без автоматического продления.</target>
             </trans-unit>
-            <trans-unit id="shop.description_patreon">
-                <source>shop.description_patreon</source>
+            <trans-unit id="subscribe.description_patreon">
+                <source>subscribe.description_patreon</source>
                 <target>Patreon также предоставляет возможность разблокировать этот неограниченный доступ по следующей ссылке:</target>
             </trans-unit>
-            <trans-unit id="shop.patreon_link">
-                <source>shop.patreon_link</source>
+            <trans-unit id="subscribe.patreon_link">
+                <source>subscribe.patreon_link</source>
                 <target>Станьте Премиум через Patreon</target>
             </trans-unit>
-            <trans-unit id="shop.access_until">
-                <source>shop.access_until</source>
+            <trans-unit id="subscribe.access_until">
+                <source>subscribe.access_until</source>
                 <target>На данный момент у вас есть активный премиум-доступ до %date%</target>
             </trans-unit>
-            <trans-unit id="shop.payment_card">
-                <source>shop.payment_card</source>
+            <trans-unit id="subscribe.payment_card">
+                <source>subscribe.payment_card</source>
                 <target>Оплата картой</target>
             </trans-unit>
-            <trans-unit id="shop.price">
-                <source>shop.price</source>
+            <trans-unit id="subscribe.price">
+                <source>subscribe.price</source>
                 <target>3€ за месяц премиум-доступа</target>
             </trans-unit>
-            <trans-unit id="shop.access">
-                <source>shop.access</source>
+            <trans-unit id="subscribe.access">
+                <source>subscribe.access</source>
                 <target>Оплатить месяц премиум-доступа</target>
             </trans-unit>
-            <trans-unit id="shop.add_month">
-                <source>shop.add_month</source>
+            <trans-unit id="subscribe.add_month">
+                <source>subscribe.add_month</source>
                 <target>Добавить месяц премиум-доступа</target>
             </trans-unit>
-            <trans-unit id="shop.success">
-                <source>shop.success</source>
+            <trans-unit id="subscribe.success">
+                <source>subscribe.success</source>
                 <target>Платеж успешно выполнен!</target>
             </trans-unit>
-            <trans-unit id="shop.thanks">
-                <source>shop.thanks</source>
+            <trans-unit id="subscribe.thanks">
+                <source>subscribe.thanks</source>
                 <target>Спасибо за покупку.</target>
             </trans-unit>
             <trans-unit id="square.error.internal">
@@ -648,6 +656,23 @@
             <trans-unit id="invoice.no_invoices_found">
                 <source>invoice.no_invoices_found</source>
                 <target>Счета не найдены</target>
+            </trans-unit>
+
+            <trans-unit id="shop.title">
+                <source>shop.title</source>
+                <target>Магазин</target>
+            </trans-unit>
+            <trans-unit id="shop.subscribe.user.content">
+                <source>shop.subscribe.user.content</source>
+                <target>Чтобы воспользоваться всеми функциями, необходима подписка</target>
+            </trans-unit>
+            <trans-unit id="shop.subscribe.access">
+                <source>shop.subscribe.access</source>
+                <target>Доступ к управлению подпиской</target>
+            </trans-unit>
+            <trans-unit id="shop.subscribe.anonymous.content">
+                <source>shop.subscribe.anonymous.content</source>
+                <target>Чтобы воспользоваться всеми функциями и управлять подпиской, необходим аккаунт</target>
             </trans-unit>
         </body>
     </file>

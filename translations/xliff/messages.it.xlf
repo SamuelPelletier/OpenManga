@@ -39,6 +39,10 @@
                 <target><![CDATA[Provare a ricaricare la pagina tra poco o <a href="%url%">tornare alla homepage</a>.]]></target>
             </trans-unit>
 
+            <trans-unit id="menu.menu">
+                <source>menu.menu</source>
+                <target>Menu</target>
+            </trans-unit>
             <trans-unit id="menu.choose_language">
                 <source>menu.choose_language</source>
                 <target>Scegli la lingua</target>
@@ -61,7 +65,7 @@
             </trans-unit>
             <trans-unit id="menu.user">
                 <source>menu.user</source>
-                <target>Conto</target>
+                <target>Account</target>
             </trans-unit>
             <trans-unit id="post.search_for">
                 <source>post.search_for</source>
@@ -324,6 +328,10 @@
                 <target>Nuova password</target>
             </trans-unit>
 
+            <trans-unit id="account.index">
+                <source>account.index</source>
+                <target>Pannello di controllo</target>
+            </trans-unit>
             <trans-unit id="account.title">
                 <source>account.title</source>
                 <target>Il mio account</target>
@@ -537,48 +545,48 @@ Ma non sono esclusivamente manga, ci sono anche musica, romanzi o videogiochi.
                 </target>
             </trans-unit>
 
-            <trans-unit id="shop.title">
-                <source>shop.title</source>
-                <target>Negozio</target>
+            <trans-unit id="subscribe.title">
+                <source>subscribe.title</source>
+                <target>Iscriviti</target>
             </trans-unit>
-            <trans-unit id="shop.description">
-                <source>shop.description</source>
+            <trans-unit id="subscribe.description">
+                <source>subscribe.description</source>
                 <target>L'accesso premium ti offre accesso illimitato a tutti i contenuti bloccati, oltre ai vecchi manga. Approfitta al massimo degli ultimi manga leggendoli direttamente o scaricandoli. Questo accesso premium è disponibile immediatamente su tutte le piattaforme e senza rinnovo automatico.</target>
             </trans-unit>
-            <trans-unit id="shop.description_patreon">
-                <source>shop.description_patreon</source>
+            <trans-unit id="subscribe.description_patreon">
+                <source>subscribe.description_patreon</source>
                 <target>Patreon ti offre anche la possibilità di sbloccare questo accesso illimitato tramite il seguente link:</target>
             </trans-unit>
-            <trans-unit id="shop.patreon_link">
-                <source>shop.patreon_link</source>
+            <trans-unit id="subscribe.patreon_link">
+                <source>subscribe.patreon_link</source>
                 <target>Diventa Premium con Patreon</target>
             </trans-unit>
-            <trans-unit id="shop.access_until">
-                <source>shop.access_until</source>
+            <trans-unit id="subscribe.access_until">
+                <source>subscribe.access_until</source>
                 <target>Attualmente hai accesso premium attivo fino al %date%</target>
             </trans-unit>
-            <trans-unit id="shop.payment_card">
-                <source>shop.payment_card</source>
+            <trans-unit id="subscribe.payment_card">
+                <source>subscribe.payment_card</source>
                 <target>Pagamento con carta</target>
             </trans-unit>
-            <trans-unit id="shop.price">
-                <source>shop.price</source>
+            <trans-unit id="subscribe.price">
+                <source>subscribe.price</source>
                 <target>3€ per un mese di accesso premium</target>
             </trans-unit>
-            <trans-unit id="shop.access">
-                <source>shop.access</source>
+            <trans-unit id="subscribe.access">
+                <source>subscribe.access</source>
                 <target>Paga un mese di accesso premium</target>
             </trans-unit>
-            <trans-unit id="shop.add_month">
-                <source>shop.add_month</source>
+            <trans-unit id="subscribe.add_month">
+                <source>subscribe.add_month</source>
                 <target>Aggiungi un mese di accesso premium</target>
             </trans-unit>
-            <trans-unit id="shop.success">
-                <source>shop.success</source>
+            <trans-unit id="subscribe.success">
+                <source>subscribe.success</source>
                 <target>Pagamento riuscito!</target>
             </trans-unit>
-            <trans-unit id="shop.thanks">
-                <source>shop.thanks</source>
+            <trans-unit id="subscribe.thanks">
+                <source>subscribe.thanks</source>
                 <target>Grazie per il tuo acquisto.</target>
             </trans-unit>
             <trans-unit id="square.error.internal">
@@ -648,6 +656,23 @@ Ma non sono esclusivamente manga, ci sono anche musica, romanzi o videogiochi.
             <trans-unit id="invoice.no_invoices_found">
                 <source>invoice.no_invoices_found</source>
                 <target>Nessuna fattura trovata</target>
+            </trans-unit>
+
+            <trans-unit id="shop.title">
+                <source>shop.title</source>
+                <target>Negozio</target>
+            </trans-unit>
+            <trans-unit id="shop.subscribe.user.content">
+                <source>shop.subscribe.user.content</source>
+                <target>Per beneficiare di tutte le funzionalità, è necessario un abbonamento</target>
+            </trans-unit>
+            <trans-unit id="shop.subscribe.access">
+                <source>shop.subscribe.access</source>
+                <target>Accesso alla gestione degli abbonamenti</target>
+            </trans-unit>
+            <trans-unit id="shop.subscribe.anonymous.content">
+                <source>shop.subscribe.anonymous.content</source>
+                <target>Per beneficiare di tutte le funzionalità e gestire il tuo abbonamento, è necessario un account</target>
             </trans-unit>
         </body>
     </file>

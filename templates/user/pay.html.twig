@@ -2,25 +2,25 @@
 
 {% block stylesheets %}
     {{ parent() }}
-    {{ encore_entry_link_tags('css/shop') }}
+    {{ encore_entry_link_tags('css/subscribe') }}
 {% endblock %}
 
 
 {% block main %}
     <div class="col"><a href="{{ path('user_index') }}">{{ 'edit_profile.link.back_account'|trans }}</a></div>
-    <h1 id="shop">{{ 'shop.title'|trans }}</h1>
-    <div id="shop-container"></div>
-    <p id="description">{{ 'shop.description'|trans }}</p>
-    <p id="description_patreon">{{ 'shop.description_patreon'|trans }}
+    <h1 id="subscribe">{{ 'subscribe.title'|trans }}</h1>
+    <div id="subscribe-container"></div>
+    <p id="description">{{ 'subscribe.description'|trans }}</p>
+    <p id="description_patreon">{{ 'subscribe.description_patreon'|trans }}
         <a class="patreon_link"
-           href="{{ app.request.server.get('PATREON_LINK') }}">{{ 'shop.patreon_link'|trans() }}</a>
+           href="{{ app.request.server.get('PATREON_LINK') }}">{{ 'subscribe.patreon_link'|trans() }}</a>
     </p>
     {% if user.getPatreonNextCharge() and user.getPatreonNextCharge()|date('U') >= 'now'|date('U') %}
-        <p id="until">{{ 'shop.access_until'|trans({'%date%':user.getPatreonNextCharge()|format_datetime('long', 'none')}) }}</p>
+        <p id="until">{{ 'subscribe.access_until'|trans({'%date%':user.getPatreonNextCharge()|format_datetime('long', 'none')}) }}</p>
     {% endif %}
     <div id="payment-form-container" class="form">
-        <h2 id="payment_card">{{ 'shop.payment_card'|trans }}</h2>
-        <h2 id="price">{{ 'shop.price'|trans }}</h2>
+        <h2 id="payment_card">{{ 'subscribe.payment_card'|trans }}</h2>
+        <h2 id="price">{{ 'subscribe.price'|trans }}</h2>
         <div id="card-container"></div>
         <p id="powered_by">Powered By <a href="https://squareup.com">
                 <svg class="LogoLockup svelte-1qhoav6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
@@ -67,14 +67,14 @@
             </div>
         </span>
         <div id="success">
-            <p class="premium">{{ 'shop.success'|trans }}</p>
-            <p>{{ 'shop.thanks'|trans }}</p>
+            <p class="premium">{{ 'subscribe.success'|trans }}</p>
+            <p>{{ 'subscribe.thanks'|trans }}</p>
         </div>
         <button id="card-button" type="button">
             {% if user.getPatreonNextCharge()|date('U') < 'now'|date('U') %}
-                {{ 'shop.access'|trans }}
+                {{ 'subscribe.access'|trans }}
             {% else %}
-                {{ 'shop.add_month'|trans }}
+                {{ 'subscribe.add_month'|trans }}
             {% endif %}
             <div class="star-1">
                 <svg
@@ -200,9 +200,7 @@
             src="https://{% if app.request.server.get('APP_ENV') == 'dev' %}sandbox.{% endif %}web.squarecdn.com/v1/square.js"
     ></script>
     <script>
-        const appId = "{{ square_application_id }}";  // Application ID
-        const locationId = "{{ square_location_id }}"; // Location ID
-        const payments = Square.payments(appId, locationId);
+        const payments = Square.payments("{{ square_application_id }}", "{{ square_location_id }}");
     </script>
     {{ encore_entry_script_tags('js/square') }}
 {% endblock %}

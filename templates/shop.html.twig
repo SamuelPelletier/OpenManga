@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('css/shop') }}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block main %}
+    <div id="shop-container">
+        <h1 class="premium">{{ 'subscribe.title'|trans }}</h1>
+        <div id="subscribe">
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                <p>{{ 'shop.subscribe.user.content'|trans }}</p>
+                <div class="button-effect">
+                    <a class="effect" href="{{ url('user_pay') }}">{{ 'shop.subscribe.access'|trans }}</a>
+                </div>
+            {% else %}
+                <p>{{ 'shop.subscribe.anonymous.content'|trans }}</p>
+                <div class="button-effect">
+                    <a class="effect" href="{{ url('app_login') }}">{{ 'menu.login'|trans }}</a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    <hr>
+    <div id="shop-container">
+        <h1>{{ 'shop.title'|trans }}</h1>
+        <div id="shop-content">Coming soon</div>
+    </div>
+{% endblock %}

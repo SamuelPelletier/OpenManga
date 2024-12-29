@@ -39,6 +39,10 @@
                 <target><![CDATA[Intentar recargar esta página dentro de unos minutos o <a href="%url%">vuelve a la portada del sitio</a>.]]></target>
             </trans-unit>
 
+            <trans-unit id="menu.menu">
+                <source>menu.menu</source>
+                <target>Menú</target>
+            </trans-unit>
             <trans-unit id="menu.choose_language">
                 <source>menu.choose_language</source>
                 <target>Elegir idioma</target>
@@ -324,6 +328,10 @@
                 <target>Nueva contraseña</target>
             </trans-unit>
 
+            <trans-unit id="account.index">
+                <source>account.index</source>
+                <target>Panel de control</target>
+            </trans-unit>
             <trans-unit id="account.title">
                 <source>account.title</source>
                 <target>Mi cuenta</target>
@@ -537,48 +545,48 @@ Pero no son exclusivamente manga, también hay música, novelas o videojuegos.
                 </target>
             </trans-unit>
 
-            <trans-unit id="shop.title">
-                <source>shop.title</source>
-                <target>Tienda</target>
+            <trans-unit id="subscribe.title">
+                <source>subscribe.title</source>
+                <target>Suscribirse</target>
             </trans-unit>
-            <trans-unit id="shop.description">
-                <source>shop.description</source>
+            <trans-unit id="subscribe.description">
+                <source>subscribe.description</source>
                 <target>El acceso premium te da acceso ilimitado a todo el contenido bloqueado, así como a los mangas antiguos. Disfruta al máximo de los últimos mangas leyéndolos directamente o descargándolos. Este acceso premium está disponible de inmediato en todas las plataformas y sin renovación automática.</target>
             </trans-unit>
-            <trans-unit id="shop.description_patreon">
-                <source>shop.description_patreon</source>
+            <trans-unit id="subscribe.description_patreon">
+                <source>subscribe.description_patreon</source>
                 <target>Patreon también te ofrece la opción de desbloquear este acceso ilimitado con el siguiente enlace:</target>
             </trans-unit>
-            <trans-unit id="shop.patreon_link">
-                <source>shop.patreon_link</source>
+            <trans-unit id="subscribe.patreon_link">
+                <source>subscribe.patreon_link</source>
                 <target>Hazte Premium con Patreon</target>
             </trans-unit>
-            <trans-unit id="shop.access_until">
-                <source>shop.access_until</source>
+            <trans-unit id="subscribe.access_until">
+                <source>subscribe.access_until</source>
                 <target>Actualmente tienes acceso premium activo hasta el %date%</target>
             </trans-unit>
-            <trans-unit id="shop.payment_card">
-                <source>shop.payment_card</source>
+            <trans-unit id="subscribe.payment_card">
+                <source>subscribe.payment_card</source>
                 <target>Pago con tarjeta</target>
             </trans-unit>
-            <trans-unit id="shop.price">
-                <source>shop.price</source>
+            <trans-unit id="subscribe.price">
+                <source>subscribe.price</source>
                 <target>3€ por un mes de acceso premium</target>
             </trans-unit>
-            <trans-unit id="shop.access">
-                <source>shop.access</source>
+            <trans-unit id="subscribe.access">
+                <source>subscribe.access</source>
                 <target>Paga un mes de acceso premium</target>
             </trans-unit>
-            <trans-unit id="shop.add_month">
-                <source>shop.add_month</source>
+            <trans-unit id="subscribe.add_month">
+                <source>subscribe.add_month</source>
                 <target>Añadir un mes de acceso premium</target>
             </trans-unit>
-            <trans-unit id="shop.success">
-                <source>shop.success</source>
+            <trans-unit id="subscribe.success">
+                <source>subscribe.success</source>
                 <target>¡Pago exitoso!</target>
             </trans-unit>
-            <trans-unit id="shop.thanks">
-                <source>shop.thanks</source>
+            <trans-unit id="subscribe.thanks">
+                <source>subscribe.thanks</source>
                 <target>Gracias por tu compra.</target>
             </trans-unit>
             <trans-unit id="square.error.internal">
@@ -648,6 +656,23 @@ Pero no son exclusivamente manga, también hay música, novelas o videojuegos.
             <trans-unit id="invoice.no_invoices_found">
                 <source>invoice.no_invoices_found</source>
                 <target>No hay facturas</target>
+            </trans-unit>
+
+            <trans-unit id="shop.title">
+                <source>shop.title</source>
+                <target>Tienda</target>
+            </trans-unit>
+            <trans-unit id="shop.subscribe.user.content">
+                <source>shop.subscribe.user.content</source>
+                <target>Para beneficiarse de todas las funciones, es necesaria una suscripción</target>
+            </trans-unit>
+            <trans-unit id="shop.subscribe.access">
+                <source>shop.subscribe.access</source>
+                <target>Acceso a la gestión de suscripciones</target>
+            </trans-unit>
+            <trans-unit id="shop.subscribe.anonymous.content">
+                <source>shop.subscribe.anonymous.content</source>
+                <target>Para beneficiarse de todas las funcionalidades y gestionar su suscripción, es necesario tener una cuenta</target>
             </trans-unit>
         </body>
     </file>

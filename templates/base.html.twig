@@ -61,63 +61,73 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                 {% include 'tag_search.html.twig' %}
 
                             </div>
-                            <!--{#
-                            <div class="switch-div">
-                                <label class="Switch o-pen">
-                                    <input type="checkbox" name="sort" class="switch-input a-neonToggle" id="toggle"
-                                           {% if app.session.get('sort') %}checked{% endif %}>
-                                    <span class="a-neonText -main">
-                                    {{ 'search.sort'|trans }}
-                                    </span>
-                                </label>
-                            </div>
-                            #}-->
                         </form>
-                        {# include 'tag_search.html.twig' #}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                         {% block header_navigation_links %}
                             <li>
-                                <a class="trending" href="{{ url('index_trending') }}">
-                                    <i class="fas fa-fire" aria-hidden="true"
-                                       {% if app.session.get('sort') %}style="background-color:grey"{% endif %}></i> {{ 'search.sort'|trans }}
+                                <a class="trending" href="{{ path('shop') }}">
+                                    <i class="fas fa-cart-shopping" aria-hidden="true"></i> {{ 'shop.title'|trans }}
                                 </a>
                             </li>
-
-                            <!--{#
-                            <li>
-                                <a href="{{ app.request.server.get('SHOP_LINK') }}"
-                                   rel="nofollow" target="_blank">
-                                    <i class="fas fa-shopping-cart" aria-hidden="true"></i> Shop
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ '/'~ app.request.server.get('APP_NAME')|lower }}.apk"
-                                   rel="nofollow" target="_blank">
-                                    <i class="fas fa-mobile-alt" aria-hidden="true"></i> App
-                                </a>
-                            </li>
-                            #}-->
-                            <li>
-                                <a class="tags {% if app.request.uri == url('tags') %}active{% endif %}"
-                                   href="{{ url('tags') }}">
-                                    <i class="fa fa-hashtag" aria-hidden="true"></i> {{ 'manga.tag'|trans }}
-                                </a>
-                            </li>
-                            <!--{#
-                            <li>
-                                <a class="contact {% if app.request.uri == url('about') %}active{% endif %}"
-                                   href="{{ url('about') }}">
-                                    <i class="fa fa-info-circle" aria-hidden="true"></i> {{ 'menu.about'|trans }}
-                                </a>
-                            </li> #}-->
                             {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                                <li>
-                                    <a class="login {% if app.request.uri == url('user_index') %}active{% endif %}"
-                                       href="{{ url('user_index') }}">
-                                        <i class="fa fa-user" aria-hidden="true"></i> {{ 'menu.user'|trans }}
+                                <li id="menu-user-button">
+                                    <a class="dropdown-toggle login" data-toggle="dropdown" role="button"
+                                       aria-expanded="false" id="locales">
+                                        <i class="fa fa-user" aria-hidden="true"></i> {{ 'menu.user'|trans }}<span
+                                                class="caret"></span>
                                     </a>
                                 </li>
+                                <ul class="dropdown-menu" id="menu-user" role="menu" aria-labelledby="locales">
+                                    <li {% if app.request.uri == url('user_index') %}aria-checked="true"
+                                        class="active"
+                                        {% else %}aria-checked="false"{% endif %} role="menuitem">
+                                        <a href="{{ url('user_index') }}">
+                                            <span class="fa fa-house"></span>
+                                            {{ 'account.index'|trans }}
+                                        </a>
+                                    </li>
+                                    <li {% if app.request.uri == url('user_edit') %}aria-checked="true"
+                                        class="active"
+                                        {% else %}aria-checked="false"{% endif %} role="menuitem">
+                                        <a href="{{ url('user_edit') }}">
+                                            <span class="fa fa-pencil"></span>
+                                            {{ 'account.edit'|trans }}
+                                        </a>
+                                    </li>
+                                    <li {% if app.request.uri == url('user_pay') %}aria-checked="true"
+                                        class="active"
+                                        {% else %}aria-checked="false"{% endif %} role="menuitem">
+                                        <a href="{{ url('user_pay') }}">
+                                            <span class="fa fa-lock-open"></span>
+                                            {{ 'subscribe.title'|trans }}
+                                        </a>
+                                    </li>
+                                    <li {% if app.request.uri == url('user_invoice') %}aria-checked="true"
+                                        class="active"
+                                        {% else %}aria-checked="false"{% endif %} role="menuitem">
+                                        <a href="{{ url('user_invoice') }}">
+                                            <span class="fa fa-receipt"></span>
+                                            {{ 'invoice.title'|trans }}
+                                        </a>
+                                    </li>
+                                    <li {% if app.request.uri == url('user_help') %}aria-checked="true"
+                                        class="active"
+                                        {% else %}aria-checked="false"{% endif %} role="menuitem">
+                                        <a href="{{ url('user_help') }}">
+                                            <span class="fa fa-info-circle"></span>
+                                            {{ 'account.help'|trans }}
+                                        </a>
+                                    </li>
+                                    <li {% if app.request.uri == url('app_logout') %}aria-checked="true"
+                                        class="active"
+                                        {% else %}aria-checked="false"{% endif %} role="menuitem">
+                                        <a href="{{ url('app_logout') }}">
+                                            <span class="fa fa-right-to-bracket"></span>
+                                            {{ 'account.logout'|trans }}
+                                        </a>
+                                    </li>
+                                </ul>
                             {% else %}
                                 <li>
                                     <a class="login {% if app.request.uri == url('app_login') %}active{% endif %}"
@@ -126,6 +136,45 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                     </a>
                                 </li>
                             {% endif %}
+                            <li id="menu-app-button">
+                                <a class="dropdown-toggle tags" data-toggle="dropdown" role="button"
+                                   aria-expanded="false" id="locales">
+                                    <i class="fa fa-bars" aria-hidden="true"></i> {{ 'menu.menu'|trans }}<span
+                                            class="caret"></span>
+                                </a>
+                            </li>
+                            <ul class="dropdown-menu" id="menu-app" role="menu" aria-labelledby="locales">
+                                <li {% if app.request.uri == url('tags') %}aria-checked="true" class="active"
+                                    {% else %}aria-checked="false"{% endif %} role="menuitem">
+                                    <a href="{{ url('tags') }}">
+                                        <span class="fa fa-hashtag"></span>
+                                        {{ 'manga.tag'|trans }}
+                                    </a>
+                                </li>
+                                <li {% if app.request.uri == url('index_trending') %}aria-checked="true"
+                                    class="active"
+                                    {% else %}aria-checked="false"{% endif %} role="menuitem">
+                                    <a href="{{ url('index_trending') }}">
+                                        <span class="fa fa-fire"></span>
+                                        {{ 'search.sort'|trans }}
+                                    </a>
+                                </li>
+                                <li role="menuitem">
+                                    <a id="help" rel="nofollow"
+                                       target="_blank"
+                                       href="{{ '/'~ app.request.server.get('APP_NAME')|lower }}.apk">
+                                        <span class="fa fa-download"></span> {{ 'account.app'|trans }}
+                                    </a>
+                                </li>
+
+                                <li {% if app.request.uri == url('about') %}aria-checked="true" class="active"
+                                    {% else %}aria-checked="false"{% endif %} role="menuitem">
+                                    <a href="{{ url('about') }}">
+                                        <span class="fa fa-info-circle"></span>
+                                        {{ 'menu.about'|trans }}
+                                    </a>
+                                </li>
+                            </ul>
                         {% endblock %}
 
                         <li class="dropdown">
@@ -157,7 +206,7 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') == true and app.user.isPatreonAllow(1) == false %}
                         <a href="{{ path('user_pay') }}">{{ 'banner.unlock.button'|trans() }}</a>
                     {% else %}
-                        <a href="{{ app.request.server.get('PATREON_LINK') }}">{{ 'banner.unlock.button'|trans() }}</a>
+                        <a href="{{ path('shop') }}">{{ 'banner.unlock.button'|trans() }}</a>
                     {% endif %}
                 </div>
             {% endif %}

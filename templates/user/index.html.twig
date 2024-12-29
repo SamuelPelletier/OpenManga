@@ -9,8 +9,6 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-sm-1"><a class="btn-effect pulse-orange"
-                                 href="{{ path('user_edit') }}">{{ 'account.edit'|trans }}</a></div>
         <div class="col-sm-3">
             {% if not user.patreonAccessToken %}
                 <a class="btn-effect pulse-orange" href="{{ patreonUrl }}">{{ 'account.bind.patreon'|trans }}</a>
@@ -18,20 +16,6 @@
                 <p id="patreon-binded">{{ 'account.binded.patreon'|trans }}</p>
             {% endif %}
         </div>
-        <div class="col-sm-1"></div>
-        <div class="col-sm-1"><a id="shop" class="btn-effect pulse-violet"
-                                 href="{{ path('user_pay') }}">{{ 'shop.title'|trans }}</a></div>
-        <div class="col-sm-1"><a id="shop" class="btn-effect pulse-violet"
-                                 href="{{ path('user_invoice') }}">{{ 'invoice.title'|trans }}</a></div>
-        <div class="col-sm-2 text-right dl-app"><a id="help" class="btn-effect pulse-violet" rel="nofollow"
-                                                   target="_blank"
-                                                   href="{{ '/'~ app.request.server.get('APP_NAME')|lower }}.apk">{{ 'account.app'|trans }}
-                <span class="fa fa-download"></span></a>
-        </div>
-        <div class="col-sm-1"><a id="help" class="btn-effect pulse-violet"
-                                 href="{{ path('user_help') }}">{{ 'account.help'|trans }}</a></div>
-        <div class="col-sm-2"><a id="logout" class="btn-effect pulse-violet"
-                                 href="{{ path('app_logout') }}">{{ 'account.logout'|trans }}</a></div>
     </div>
     <div class="row">
         <div class="col-sm-4"></div>

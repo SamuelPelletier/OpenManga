@@ -33,31 +33,26 @@ a:hover, a:focus, a:active {
     overflow: hidden;
 }
 
-
-.navbar-nav > li:has(.login) {
-    border-right: solid 5px #ff306a;
-}
-
 @media (min-width: 768px) {
-    .navbar-nav > li:nth-child(-n+3) {
+    .navbar-nav > li:nth-child(-n+4) {
         width: 176px;
         height: 60px;
         text-align: center;
     }
 
-    .navbar-nav > li:nth-child(-n+3) a {
+    .navbar-nav > li:nth-child(-n+4) a {
         color: #ff306a;
         font-weight: bolder;
     }
 
-    .navbar-nav > li:nth-child(-n+3):hover a {
+    .navbar-nav > li:nth-child(-n+4):hover a {
         color: black;
         -webkit-transition: all .5s cubic-bezier(.4, 0, .2, 1) 0ms;
         -moz-transition: all .5s cubic-bezier(.4, 0, .2, 1) 0ms;
         transition: all .5s cubic-bezier(.4, 0, .2, 1) 0ms;
     }
 
-    .navbar-nav > li:nth-child(-n+3) a:hover {
+    .navbar-nav > li:nth-child(-n+4) a:hover {
         color: black !important;
     }
 
@@ -126,9 +121,39 @@ a:hover, a:focus, a:active {
     top: 3px;
 }
 
+.navbar-right > li:not(:last-child) {
+    width: 180px;
+    text-align: center;
+}
 
 .navbar-nav .dropdown-menu {
     z-index: 3;
+}
+
+#menu-app-button {
+    border-right: solid 5px #ff306a;
+}
+
+.locales {
+    min-width: 0px !important;
+    right: -15px !important;
+    border-radius: 4px !important;
+}
+
+#menu-app {
+    right: 112px;
+    width: 173px;
+    top: 57px;
+}
+
+#menu-user {
+    right: 288px;
+    width: 177px;
+    top: 57px;
+}
+
+#menu-app a, #menu-user a {
+    transform: skewX(0deg);
 }
 
 .navbar-default .navbar-nav > .open > .dropdown-toggle, .navbar-default .navbar-nav > .open > .dropdown-toggle:hover, .navbar-default .navbar-nav > .open > .dropdown-toggle:focus {
@@ -509,6 +534,37 @@ article .img-name:hover {
 
     header ul.nav li {
         width: 105vw;
+    }
+
+    /* MENU */
+    .navbar-collapse {
+        padding: 0;
+    }
+
+    .navbar-nav > li {
+        transform: initial;
+        text-align: initial !important;
+        width: 100% !important;
+    }
+
+    .navbar-nav > li > a {
+        transform: initial;
+    }
+
+    #menu-user {
+        width: 100% !important;
+        top: 244px !important;
+        z-index: 4;
+    }
+
+    #menu-app {
+        width: 100% !important;
+        top: 285px !important;
+    }
+
+    .dropdown-menu > li {
+        font-size: larger !important;
+        margin: 10px 0px !important;
     }
 }
 
@@ -1068,4 +1124,8 @@ a.label:hover, a.label:focus {
 
 html {
     overflow-x: hidden;
+}
+
+.toggled {
+    display: block;
 }
