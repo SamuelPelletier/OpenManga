@@ -10,6 +10,7 @@ use App\Entity\Parody;
 use DateTime;
 use DateTimeImmutable;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use Doctrine\ORM\Query;
 use Doctrine\ORM\Tools\Pagination\Paginator;
@@ -19,6 +20,12 @@ class MangaRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Manga::class);
+    }
+
+    public function createQueryBuilder(string $alias, ?string $indexBy = null): QueryBuilder
+    {
+        return parent::createQueryBuilder($alias, $indexBy)->innerJoin('p.tags', 'tags')
+            ->addSelect('tags');
     }
 
     public function findLatest(int $page = 1): Paginator

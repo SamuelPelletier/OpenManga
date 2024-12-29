@@ -20,16 +20,14 @@
                 </div>
             {% else %}
                 <div class="thumbnail-tag">
-                    {% if manga.tags is defined and not manga.tags.empty %}
-                        {% for tag in manga.tags|slice(0,5) %}
-                            <object>
-                                <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name, 's':true}) }}"
-                                   totalx="158" draggable="false">
-                                    <span class="tag-rounded" totalx="158">{{ tag.name }}</span>
-                                </a>
-                            </object>
-                        {% endfor %}
-                    {% endif %}
+                    {% for tag in manga.tags|slice(0,5) %}
+                        <object>
+                            <a href="{{ url('search', {'q': tag.name == app.request.query.get('tag') ? null : tag.name, 's':true}) }}"
+                               totalx="158" draggable="false">
+                                <span class="tag-rounded" totalx="158">{{ tag.name }}</span>
+                            </a>
+                        </object>
+                    {% endfor %}
                 </div>
             {% endif %}
             <img alt="{{ manga.title |raw }}" title="{{ manga.title |raw }}" class='img-thumbnail'
