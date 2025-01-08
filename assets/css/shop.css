@@ -1,5 +1,5 @@
-#shop-container h1 {
-    text-transform: initial;
+#shop-header-container h1 {
+    font-weight: 500;
 }
 
 #subscribe p {

@@ -103,6 +103,14 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                             {{ 'subscribe.title'|trans }}
                                         </a>
                                     </li>
+                                    <li {% if app.request.uri == url('user_credit') %}aria-checked="true"
+                                        class="active"
+                                        {% else %}aria-checked="false"{% endif %} role="menuitem">
+                                        <a href="{{ url('user_credit') }}">
+                                            <span class="fa fa-coins"></span>
+                                            {{ 'credit.title'|trans }}
+                                        </a>
+                                    </li>
                                     <li {% if app.request.uri == url('user_invoice') %}aria-checked="true"
                                         class="active"
                                         {% else %}aria-checked="false"{% endif %} role="menuitem">
@@ -209,6 +217,10 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                         <a href="{{ path('shop') }}">{{ 'banner.unlock.button'|trans() }}</a>
                     {% endif %}
                 </div>
+            {% endif %}
+            {% if user is defined %}
+                <div id="credit"><a href="{{ path('user_credit') }}" class="btn-flip"
+                                    data-front="{{ user.credits }} credits"></a></div>
             {% endif %}
         </nav>
     </header>

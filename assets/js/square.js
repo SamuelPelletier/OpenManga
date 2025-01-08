@@ -16,41 +16,55 @@ async function tokenize(paymentMethod) {
 document.addEventListener('DOMContentLoaded', async function () {
     document.getElementById('main').innerHTML = document.getElementById('main').innerHTML.replace(/(\b premium\b)/gi, '<span class="premium">$1</span>');
     const card = await initializeCard(payments);
+    let clickEvent = async function (event) {
+        let ref = event.target
+        let parentId = ref.parentElement.id
+        ref.style.display = "none";
+        document.querySelector("#" + parentId + ' .loader-payment').style.display = "block";
+        let amount = document.querySelector("#" + parentId + ' .price-select')?.value
+        let url = 'pay_proceed';
+        if (amount) {
+            url = 'credit_proceed';
+        }
 
-    document.getElementById('card-button').addEventListener('click', async function () {
-        document.getElementById('card-button').style.display = "none";
-        document.getElementById('loader').style.display = "block";
+        if (ref.id === "credit-button") {
+            url = 'subscribe_proceed';
+        }
         const token = await tokenize(card);
-        if (token) {
-            fetch('pay_proceed', {
+        if (token || ref.id === "credit-button") {
+            fetch(url, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({
-                    source_id: token
+                    source_id: token,
+                    amount: amount
                 }),
             })
                 .then(response => response.json())
                 .then(data => {
                     if (data.success == false) {
-                        document.getElementById('card-button').style.display = "block";
-                        document.getElementById('loader').style.display = "none";
-                        document.getElementById('payment-status-container').innerText = data.message;
-                        document.getElementById('payment-details-container').innerText = data.details;
+                        ref.style.display = "block";
+                        document.querySelector("#" + parentId + ' .loader-payment').style.display = "none";
+                        document.querySelector("#" + parentId + ' .payment-status-container').innerText = data.message;
+                        document.querySelector("#" + parentId + ' .payment-details-container').innerText = data.details;
                     } else {
-                        document.getElementById('loader').style.display = "none";
-                        document.getElementById('success').style.display = "block";
-                        document.getElementById('payment-status-container').innerText = "";
-                        document.getElementById('payment-details-container').innerText = "";
+                        document.querySelector("#" + parentId + ' .loader-payment').style.display = "none";
+                        document.querySelector("#" + parentId + ' .success').style.display = "block";
+                        document.querySelector("#" + parentId + ' .payment-status-container').innerText = "";
+                        document.querySelector("#" + parentId + ' .payment-details-container').innerText = "";
                     }
                 })
                 .catch(error => {
-                    document.getElementById('payment-status-container').innerText = "Failed";
-                    document.getElementById('payment-details-container').innerText = "Unexpected error";
-                    document.getElementById('card-button').style.display = "block";
-                    document.getElementById('loader').style.display = "none";
+                    document.querySelector("#" + parentId + ' .payment-status-container').innerText = "Failed";
+                    document.querySelector("#" + parentId + ' .payment-details-container').innerText = "Unexpected error";
+                    ref.style.display = "block";
+                    document.querySelector("#" + parentId + ' .loader').style.display = "none";
                 });
         }
-    });
+    }
+    document.getElementById('card-button').addEventListener('click', clickEvent);
+    document.getElementById('credit-button').addEventListener('click', clickEvent);
+
 });

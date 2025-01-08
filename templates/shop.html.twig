@@ -9,20 +9,38 @@
 {% endblock %}
 
 {% block main %}
-    <div id="shop-container">
-        <h1 class="premium">{{ 'subscribe.title'|trans }}</h1>
-        <div id="subscribe">
-            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-                <p>{{ 'shop.subscribe.user.content'|trans }}</p>
-                <div class="button-effect">
-                    <a class="effect" href="{{ url('user_pay') }}">{{ 'shop.subscribe.access'|trans }}</a>
-                </div>
-            {% else %}
-                <p>{{ 'shop.subscribe.anonymous.content'|trans }}</p>
-                <div class="button-effect">
-                    <a class="effect" href="{{ url('app_login') }}">{{ 'menu.login'|trans }}</a>
-                </div>
-            {% endif %}
+    <div id="shop-header-container" class="row">
+        <div class="col-sm-6">
+            <h1 class="premium">{{ 'subscribe.title'|trans }}</h1>
+            <div id="subscribe">
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <p>{{ 'shop.subscribe.user.content'|trans }}</p>
+                    <div class="button-effect">
+                        <a class="effect" href="{{ url('user_pay') }}">{{ 'shop.subscribe.access'|trans }}</a>
+                    </div>
+                {% else %}
+                    <p>{{ 'shop.subscribe.anonymous.content'|trans }}</p>
+                    <div class="button-effect">
+                        <a class="effect" href="{{ url('app_login') }}">{{ 'menu.login'|trans }}</a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <h1 class="gold">{{ 'credit.title'|trans }}</h1>
+            <div id="subscribe">
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <p>{{ 'shop.credit.user.content'|trans }}</p>
+                    <div class="button-effect">
+                        <a class="effect" href="{{ url('user_credit') }}">{{ 'shop.credit.access'|trans }}</a>
+                    </div>
+                {% else %}
+                    <p>{{ 'shop.credit.anonymous.content'|trans }}</p>
+                    <div class="button-effect">
+                        <a class="effect" href="{{ url('app_login') }}">{{ 'menu.login'|trans }}</a>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </div>
     <hr>

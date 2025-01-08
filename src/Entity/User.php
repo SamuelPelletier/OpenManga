@@ -80,6 +80,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: "Payment", mappedBy: "user")]
     private $payments;
 
+    #[ORM\Column(type: "integer")]
+    private int $credits = 0;
+
     public function __construct()
     {
         $this->lastMangasRead = new ArrayCollection();
@@ -383,5 +386,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getPayments(): Collection
     {
         return $this->payments;
+    }
+
+    /**
+     * @return int
+     */
+    public function getCredits(): int
+    {
+        return $this->credits;
+    }
+
+    /**
+     * @param int $credits
+     */
+    public function setCredits(int $credits): void
+    {
+        $this->credits = $credits;
     }
 }

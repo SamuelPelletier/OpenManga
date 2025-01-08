@@ -14,7 +14,7 @@ class Payment implements \JsonSerializable
     private int $id;
 
     #[ORM\Column(type: "string")]
-    private string $squareId;
+    private string $uuid;
 
     #[ORM\Column(type: "float")]
     private float $amount;
@@ -28,6 +28,9 @@ class Payment implements \JsonSerializable
     #[ORM\ManyToOne(targetEntity: "User", inversedBy: "payments")]
     private User $user;
 
+    #[ORM\Column(type: "string")]
+    private string $target = "subscribe";
+
     public function getId(): ?int
     {
         return $this->id;
@@ -36,17 +39,17 @@ class Payment implements \JsonSerializable
     /**
      * @return mixed
      */
-    public function getSquareId()
+    public function getUuid()
     {
-        return $this->squareId;
+        return $this->uuid;
     }
 
     /**
-     * @param mixed $squareId
+     * @param mixed $uuid
      */
-    public function setSquareId($squareId): void
+    public function setUuid($uuid): void
     {
-        $this->squareId = $squareId;
+        $this->uuid = $uuid;
     }
 
     /**
@@ -114,6 +117,22 @@ class Payment implements \JsonSerializable
     }
 
     /**
+     * @return string
+     */
+    public function getTarget(): string
+    {
+        return $this->target;
+    }
+
+    /**
+     * @param string $target
+     */
+    public function setTarget(string $target): void
+    {
+        $this->target = $target;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function jsonSerialize(): string
@@ -122,11 +141,11 @@ class Payment implements \JsonSerializable
         // so this method is used to customize its JSON representation when json_encode()
         // is called, for example in tags|json_encode (app/Resources/views/form/fields.html.twig)
 
-        return $this->squareId;
+        return $this->uuid;
     }
 
     public function __toString(): string
     {
-        return $this->squareId;
+        return $this->uuid;
     }
 }

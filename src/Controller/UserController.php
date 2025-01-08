@@ -25,6 +25,7 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Validator\Constraints\Uuid;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route("/user")]
@@ -35,7 +36,7 @@ class UserController extends AbstractController
     {
         $user = $this->getUser();
         if (!$user) {
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('app_login');
         }
         $rank = $userRepository->getRank($user);
         $user->setPoints($userService->calculationUserPoints($user));
@@ -50,7 +51,7 @@ class UserController extends AbstractController
     {
         $user = $this->getUser();
         if (!$user) {
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('app_login');
         }
         $form = $this->createForm(EditUserFormType::class, $user);
         $form->handleRequest($request);
@@ -74,7 +75,7 @@ class UserController extends AbstractController
     {
         $user = $this->getUser();
         if (!$user) {
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('app_login');
         }
         $form = $this->createForm(ChangePasswordFormType::class, $user);
         $form->handleRequest($request);
@@ -102,7 +103,7 @@ class UserController extends AbstractController
     {
         $user = $this->getUser();
         if (!$user) {
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('app_login');
         }
         $defaultData = ['message' => ''];
         $form = $this->createFormBuilder($defaultData)
@@ -130,7 +131,7 @@ class UserController extends AbstractController
     {
         $user = $this->getUser();
         if (!$user) {
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('app_login');
         }
         return $this->render('user/help.html.twig', ['user' => $user]);
     }
@@ -157,7 +158,7 @@ class UserController extends AbstractController
     {
         $user = $this->getUser();
         if (!$user) {
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('user/pay.html.twig', ['user' => $user, 'square_application_id' => $_ENV['SQUARE_APPLICATION_ID'], 'square_location_id' => $_ENV['SQUARE_LOCATION_ID']]);
@@ -169,7 +170,7 @@ class UserController extends AbstractController
         /** @var User $user */
         $user = $this->getUser();
         if (!$user) {
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('app_login');
         }
 
         $currency = 'EUR';
@@ -195,13 +196,13 @@ class UserController extends AbstractController
                 /** @var \Square\Models\Payment $squarePayment */
                 $squarePayment = $api_response->getResult()->getPayment();
                 $payment = new Payment();
-                $payment->setSquareId($squarePayment->getId());
+                $payment->setUuid($squarePayment->getId());
                 $payment->setAmount($amount);
                 $payment->setCurrency($currency);
                 $payment->setCreatedAt(new \DateTime($squarePayment->getCreatedAt()));
+                $payment->setTarget('subscribe');
                 $payment->setUser($user);
                 $entityManager->persist($payment);
-                $entityManager->flush();
                 $success = $squarePayment->getStatus() === "COMPLETED";
 
                 $user->setPatreonTier(1);
@@ -232,12 +233,131 @@ class UserController extends AbstractController
         return $this->json(['success' => $success, 'message' => $success ? $translator->trans('square.result.success') : $translator->trans('square.result.error'), 'details' => $details]);
     }
 
+    #[Route("/subscribe_proceed", name: 'subscribe_proceed')]
+    public function subscribeProceed(EntityManagerInterface $entityManager, TranslatorInterface $translator)
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        $details = null;
+        if ($user->getCredits() >= 300) {
+            $now = new \DateTime('now');
+
+            $payment = new Payment();
+            $payment->setUuid(uniqid());
+            $payment->setAmount(300);
+            $payment->setCurrency('credit');
+            $payment->setCreatedAt($now);
+            $payment->setTarget('subscribe');
+            $payment->setUser($user);
+            $entityManager->persist($payment);
+
+            $user->setPatreonTier(1);
+            if ($user->getPatreonNextCharge()?->getTimestamp() >= $now->getTimestamp()) {
+                $date = (new \DateTime())->setTimestamp($user->getPatreonNextCharge()->getTimestamp())->modify('+1 month');
+                $user->setPatreonNextCharge($date);
+            } else {
+                $user->setPatreonNextCharge($now->modify('+1 month'));
+            }
+            $user->setCredits($user->getCredits() - 300);
+            $entityManager->persist($user);
+            $entityManager->flush();
+            $success = true;
+        } else {
+            $success = false;
+            $details = $translator->trans('square.error.amount');
+        }
+
+        return $this->json(['success' => $success, 'message' => $success ? $translator->trans('square.result.success') : $translator->trans('square.result.error'), 'details' => $details]);
+    }
+
+    #[Route("/credit", name: 'user_credit')]
+    public function credit()
+    {
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        return $this->render('user/credit.html.twig', ['user' => $user, 'square_application_id' => $_ENV['SQUARE_APPLICATION_ID'], 'square_location_id' => $_ENV['SQUARE_LOCATION_ID']]);
+    }
+
+    #[Route("/credit_proceed", name: 'credit_proceed')]
+    public function creditProceed(EntityManagerInterface $entityManager, Request $request, TranslatorInterface $translator, LoggerInterface $logger)
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('index');
+        }
+
+        $amount = $request->toArray()['amount'];
+        if (in_array($amount, [500, 1000, 2000, 5000])) {
+            $currency = 'EUR';
+
+            $amount_money = new Money();
+            $amount_money->setAmount($amount);
+            $amount_money->setCurrency($currency);
+
+            $body = new CreatePaymentRequest($request->toArray()['source_id'], uniqid());
+            $body->setAmountMoney($amount_money);
+
+            $client = SquareClientBuilder::init()
+                ->bearerAuthCredentials(BearerAuthCredentialsBuilder::init($_ENV['SQUARE_ACCESS_TOKEN']))
+                ->environment($_ENV['APP_ENV'] === 'dev' ? Environment::SANDBOX : Environment::PRODUCTION)
+                ->build();
+
+            $api_response = $client->getPaymentsApi()->createPayment($body);
+
+            $details = null;
+            if ($api_response->isSuccess()) {
+                try {
+                    /** @var \Square\Models\Payment $squarePayment */
+                    $squarePayment = $api_response->getResult()->getPayment();
+                    $payment = new Payment();
+                    $payment->setUuid($squarePayment->getId());
+                    $payment->setAmount($amount);
+                    $payment->setCurrency($currency);
+                    $payment->setCreatedAt(new \DateTime($squarePayment->getCreatedAt()));
+                    $payment->setTarget('credit');
+                    $payment->setUser($user);
+                    $entityManager->persist($payment);
+                    $success = $squarePayment->getStatus() === "COMPLETED";
+
+                    $user->setCredits($user->getCredits() + $amount);
+                    $entityManager->persist($user);
+                    $entityManager->flush();
+                } catch (\Throwable $e) {
+                    $logger->error('Payment failed because : ' . $e->getMessage());
+                    $success = false;
+                    $details = $translator->trans('square.error.internal');
+                }
+            } else {
+                $success = false;
+                $error = $api_response->getErrors();
+                $translationKey = 'square.error.' . strtolower($error[0]->getCode());
+                $details = $translator->trans($translationKey);
+                if ($details === $translationKey) {
+                    $details = $translator->trans('square.error.unknown');
+                }
+            }
+        } else {
+            $success = false;
+            $details = $translator->trans('square.error.amount');
+        }
+
+        return $this->json(['success' => $success, 'message' => $success ? $translator->trans('square.result.success') : $translator->trans('square.result.error'), 'details' => $details]);
+    }
+
     #[Route("/invoice", name: 'user_invoice')]
     public function invoice()
     {
         $user = $this->getUser();
         if (!$user) {
-            return $this->redirectToRoute('index');
+            return $this->redirectToRoute('app_login');
         }
 
         return $this->render('user/invoice.html.twig', ['user' => $user]);

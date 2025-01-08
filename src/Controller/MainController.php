@@ -107,7 +107,8 @@ class MainController extends AbstractController
     #[Route("/shop", methods: ['GET'], name: 'shop')]
     public function shop(): Response
     {
-        return $this->render('shop.html.twig');
+        $user = $this->getUser();
+        return $this->render('shop.html.twig', ['user' => $user]);
     }
 
 }

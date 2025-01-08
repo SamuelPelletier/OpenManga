@@ -219,6 +219,19 @@ a:hover, a:focus, a:active {
     font-weight: bold;
 }
 
+.gold {
+    text-transform: uppercase;
+    background: linear-gradient(90deg, rgba(186, 148, 62, 1) 0%, rgba(236, 172, 32, 1) 20%, rgba(186, 148, 62, 1) 39%, rgba(249, 244, 180, 1) 50%, rgba(186, 148, 62, 1) 60%, rgba(236, 172, 32, 1) 80%, rgba(186, 148, 62, 1) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200%;
+    animation: gradient 7s ease infinite;
+}
+
+.gold::selection {
+    -webkit-text-fill-color: #4c4c4c;
+}
+
 @keyframes gradient {
     0% {
         background-position: 0% 50%;
@@ -1128,4 +1141,83 @@ html {
 
 .toggled {
     display: block;
+}
+
+#credit {
+    z-index: 1;
+    width: 200px;
+    right: 8px;
+    position: absolute;
+    text-align: center;
+    color: white;
+    border-radius: 0 0 6px 6px;
+    text-transform: uppercase;
+    background: linear-gradient(45deg, rgba(186, 148, 62, 1) 0%, rgba(236, 172, 32, 1) 20%, rgba(186, 148, 62, 1) 39%, rgba(249, 244, 180, 1) 50%, rgba(186, 148, 62, 1) 60%, rgba(236, 172, 32, 1) 80%, rgba(186, 148, 62, 1) 100%);
+    background-size: 500%;
+    animation: gradient 8s ease infinite;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: larger;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em, rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em, rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
+    padding: 4px 0;
+}
+
+#credit a:hover {
+    color: white !important;
+}
+
+.btn-flip {
+    position: relative;
+    text-align: center;
+    letter-spacing: 1px;
+    display: inline-block;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.btn-flip:hover:after {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+}
+
+.btn-flip:hover:before {
+    opacity: 0;
+    transform: translateY(50%) rotateX(90deg);
+}
+
+.btn-flip:after {
+    top: -2px;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    display: block;
+    transition: 0.5s;
+    position: absolute;
+    content: url("../images/add.svg");
+    transform: translateY(-50%) rotateX(90deg);
+}
+
+.btn-flip:before {
+    top: 0;
+    left: 0;
+    opacity: 1;
+    display: block;
+    transition: 0.5s;
+    position: relative;
+    content: attr(data-front);
+    transform: translateY(0) rotateX(0);
+}
+
+@media (max-width: 1000px) {
+    #credit {
+        padding: 0px;
+    }
+
+    .btn-flip:after {
+        transform: translateY(-50%) rotateX(90deg) scale(0.8);
+    }
+
+    .btn-flip:hover:after {
+        transform: translateY(0) rotateX(0) scale(0.8);
+    }
 }

@@ -15,6 +15,7 @@
                 <th scope="col">{{ 'invoice.id'|trans }}</th>
                 <th scope="col">{{ 'invoice.amount'|trans }}</th>
                 <th scope="col">{{ 'invoice.currency'|trans }}</th>
+                <th scope="col">{{ 'invoice.target'|trans }}</th>
                 <th scope="col">{{ 'invoice.date'|trans }}</th>
                 <th scope="col"></th>
             </tr>
@@ -22,14 +23,24 @@
             <tbody>
             {% for payment in user.payments %}
                 <tr>
-                    <th scope="row">{{ payment.squareId }}</th>
-                    <td>{{ payment.amount/100 }}</td>
-                    <td>{{ payment.currency }}</td>
-                    <td>{{ payment.createdAt|format_datetime('long', 'none') }}</td>
-                    <td>
-                        <a href="https://squareupsandbox.com/receipt/preview/{{ payment.squareId }}"
-                           target="_blank">{{ 'invoice.link'|trans }}</a>
-                    </td>
+                    <td scope="row">{{ payment.uuid }}</td>
+                    {% if payment.currency == 'credit' %}
+                        <td>{{ payment.amount }}</td>
+                        <td>{{ ('payment'~payment.currency)|trans }}</td>
+                        <td>{{ ('invoice.' ~ payment.target)|trans }}</td>
+                        <td>{{ payment.createdAt|format_datetime('long', 'none') }}</td>
+                        <td>
+                        </td>
+                    {% else %}
+                        <td>{{ payment.amount/100 }}</td>
+                        <td>{{ payment.currency }}</td>
+                        <td>{{ ('invoice.' ~ payment.target)|trans }}</td>
+                        <td>{{ payment.createdAt|format_datetime('long', 'none') }}</td>
+                        <td>
+                            <a href="https://squareupsandbox.com/receipt/preview/{{ payment.uuid }}"
+                               target="_blank">{{ 'invoice.link'|trans }}</a>
+                        </td>
+                    {% endif %}
                 </tr>
             {% endfor %}
             </tbody>

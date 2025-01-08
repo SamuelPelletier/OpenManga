@@ -21,7 +21,7 @@ class SecurityController extends AbstractController
     use TargetPathTrait;
 
     #[Route("/login", name: 'app_login')]
-    #[Route("/register", 'app_register')]
+    #[Route("/register", name: 'app_register')]
     public function login(
         AuthenticationUtils         $authenticationUtils,
         Request                     $request,

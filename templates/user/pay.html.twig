@@ -7,7 +7,7 @@
 
 
 {% block main %}
-    <div class="col"><a href="{{ path('user_index') }}">{{ 'edit_profile.link.back_account'|trans }}</a></div>
+    <div><a href="{{ path('user_index') }}">{{ 'edit_profile.link.back_account'|trans }}</a></div>
     <h1 id="subscribe">{{ 'subscribe.title'|trans }}</h1>
     <div id="subscribe-container"></div>
     <p id="description">{{ 'subscribe.description'|trans }}</p>
@@ -18,14 +18,16 @@
     {% if user.getPatreonNextCharge() and user.getPatreonNextCharge()|date('U') >= 'now'|date('U') %}
         <p id="until">{{ 'subscribe.access_until'|trans({'%date%':user.getPatreonNextCharge()|format_datetime('long', 'none')}) }}</p>
     {% endif %}
-    <div id="payment-form-container" class="form">
-        <h2 id="payment_card">{{ 'subscribe.payment_card'|trans }}</h2>
-        <h2 id="price">{{ 'subscribe.price'|trans }}</h2>
-        <div id="card-container"></div>
-        <p id="powered_by">Powered By <a href="https://squareup.com">
-                <svg class="LogoLockup svelte-1qhoav6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
-                     viewBox="0 0 3967.7 995.7">
-                    <path d="M828.4,0H166.2C74.4,0,0,74.4,0,166.2v662.2c0,91.8,74.4,166.2,166.2,166.2h662.2
+    <div class="row">
+        <div class="col-md-6">
+            <div id="card-payment-form-container" class="form">
+                <h2 class="payment_card">{{ 'subscribe.payment_card'|trans }}</h2>
+                <h2 class="price">{{ 'subscribe.price'|trans }}</h2>
+                <div id="card-container"></div>
+                <p id="powered_by">Powered By <a href="https://squareup.com">
+                        <svg class="LogoLockup svelte-1qhoav6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                             viewBox="0 0 3967.7 995.7">
+                            <path d="M828.4,0H166.2C74.4,0,0,74.4,0,166.2v662.2c0,91.8,74.4,166.2,166.2,166.2h662.2
     c91.8,0,166.2-74.4,166.2-166.2V166.2C994.6,74.4,920.2,0,828.4,0z M813.8,761.3c0,29-23.5,52.5-52.5,52.5h-528
     c-29,0-52.5-23.5-52.5-52.5v-528c0-29,23.5-52.5,52.5-52.5h528c29,0,52.5,23.5,52.5,52.5V761.3z M391.8,632.3
     c-16.7,0-30.1-13.5-30.1-30.2V391.3c0-16.7,13.4-30.3,30.1-30.3h211.1c16.6,0,30.1,13.5,30.1,30.3V602c0,16.7-13.5,30.2-30.1,30.2
@@ -45,155 +47,47 @@
     H3957c-27.5,92.3-108.3,146.4-210.4,146.4c-134,0-228.1-100.3-228.1-236.1c0-135.8,96.7-236.1,229-236.1
     c133.1,0,220.1,91.4,220.1,205C3967.7,578.4,3965.9,589.9,3964.1,605.9z M3867.4,535.8c-3.5-63-55.9-105.6-119.8-105.6
     c-60.4,0-110.9,38.2-123.4,105.6H3867.4z" fill="white" class="svelte-1qhoav6"></path>
-                </svg>
-            </a></p>
-        <span id="loader">
-            <div class="small-loader loader--style2" title="1">
-              <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg"
-                   xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                   width="40px" height="40px" viewBox="0 0 50 50" style="enable-background:new 0 0 50 50;"
-                   xml:space="preserve">
-              <path fill="#fff"
-                    d="M25.251,6.461c-10.318,0-18.683,8.365-18.683,18.683h4.068c0-8.071,6.543-14.615,14.615-14.615V6.461z">
-                <animateTransform attributeType="xml"
-                                  attributeName="transform"
-                                  type="rotate"
-                                  from="0 25 25"
-                                  to="360 25 25"
-                                  dur="0.6s"
-                                  repeatCount="indefinite"/>
-                </path>
-              </svg>
+                        </svg>
+                    </a></p>
+                {% include 'form/loader.html.twig' %}
+                <div class="success">
+                    <p class="premium">{{ 'subscribe.success'|trans }}</p>
+                    <p>{{ 'subscribe.thanks'|trans }}</p>
+                </div>
+                <button class="star-button" id="card-button" type="button">
+                    {% if user.getPatreonNextCharge()|date('U') < 'now'|date('U') %}
+                        {{ 'subscribe.access'|trans }}
+                    {% else %}
+                        {{ 'subscribe.add_month'|trans }}
+                    {% endif %}
+                    {% include 'form/star_button.html.twig' %}
+                </button>
+                <p class="payment-status-container"></p>
+                <p class="payment-details-container"></p>
             </div>
-        </span>
-        <div id="success">
-            <p class="premium">{{ 'subscribe.success'|trans }}</p>
-            <p>{{ 'subscribe.thanks'|trans }}</p>
         </div>
-        <button id="card-button" type="button">
-            {% if user.getPatreonNextCharge()|date('U') < 'now'|date('U') %}
-                {{ 'subscribe.access'|trans }}
-            {% else %}
-                {{ 'subscribe.add_month'|trans }}
-            {% endif %}
-            <div class="star-1">
-                <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        xml:space="preserve"
-                        version="1.1"
-                        style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-                        viewBox="0 0 784.11 815.53"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                >
-      <defs></defs>
-                    <g id="Layer_x0020_1">
-                        <metadata id="CorelCorpID_0Corel-Layer"></metadata>
-                        <path
-                                class="fil0"
-                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
-                        ></path>
-                    </g>
-    </svg>
+        <div class="col-md-6">
+            <div id="credit-payment-form-container" class="form">
+                <h2 class="payment_card">{{ 'subscribe.payment_credit'|trans }}</h2>
+                <h2 class="price">{{ 'subscribe.credit.price'|trans }}</h2>
+                {% include 'form/loader.html.twig' %}
+                <div class="success">
+                    <p class="premium">{{ 'subscribe.success'|trans }}</p>
+                    <p>{{ 'subscribe.thanks'|trans }}</p>
+                </div>
+                <button class="star-button" id="credit-button" type="button">
+                    {% if user.getPatreonNextCharge()|date('U') < 'now'|date('U') %}
+                        {{ 'subscribe.access'|trans }}
+                    {% else %}
+                        {{ 'subscribe.add_month'|trans }}
+                    {% endif %}
+                    {% include 'form/star_button.html.twig' %}
+                </button>
+                <p class="payment-status-container"></p>
+                <p class="payment-details-container"></p>
             </div>
-            <div class="star-2">
-                <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        xml:space="preserve"
-                        version="1.1"
-                        style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-                        viewBox="0 0 784.11 815.53"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                >
-      <defs></defs>
-                    <g id="Layer_x0020_1">
-                        <metadata id="CorelCorpID_0Corel-Layer"></metadata>
-                        <path
-                                class="fil0"
-                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
-                        ></path>
-                    </g>
-    </svg>
-            </div>
-            <div class="star-3">
-                <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        xml:space="preserve"
-                        version="1.1"
-                        style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-                        viewBox="0 0 784.11 815.53"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                >
-      <defs></defs>
-                    <g id="Layer_x0020_1">
-                        <metadata id="CorelCorpID_0Corel-Layer"></metadata>
-                        <path
-                                class="fil0"
-                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
-                        ></path>
-                    </g>
-    </svg>
-            </div>
-            <div class="star-4">
-                <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        xml:space="preserve"
-                        version="1.1"
-                        style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-                        viewBox="0 0 784.11 815.53"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                >
-      <defs></defs>
-                    <g id="Layer_x0020_1">
-                        <metadata id="CorelCorpID_0Corel-Layer"></metadata>
-                        <path
-                                class="fil0"
-                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
-                        ></path>
-                    </g>
-    </svg>
-            </div>
-            <div class="star-5">
-                <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        xml:space="preserve"
-                        version="1.1"
-                        style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-                        viewBox="0 0 784.11 815.53"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                >
-      <defs></defs>
-                    <g id="Layer_x0020_1">
-                        <metadata id="CorelCorpID_0Corel-Layer"></metadata>
-                        <path
-                                class="fil0"
-                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
-                        ></path>
-                    </g>
-    </svg>
-            </div>
-            <div class="star-6">
-                <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        xml:space="preserve"
-                        version="1.1"
-                        style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
-                        viewBox="0 0 784.11 815.53"
-                        xmlns:xlink="http://www.w3.org/1999/xlink"
-                >
-      <defs></defs>
-                    <g id="Layer_x0020_1">
-                        <metadata id="CorelCorpID_0Corel-Layer"></metadata>
-                        <path
-                                class="fil0"
-                                d="M392.05 0c-20.9,210.08 -184.06,378.41 -392.05,407.78 207.96,29.37 371.12,197.68 392.05,407.74 20.93,-210.06 184.09,-378.37 392.05,-407.74 -207.98,-29.38 -371.16,-197.69 -392.06,-407.78z"
-                        ></path>
-                    </g>
-    </svg>
-            </div>
-        </button>
-        <p id="payment-status-container"></p>
-        <p id="payment-details-container"></p>
-        <p id="contact">{{ 'help.contact'|trans({ '%contact_email%': app.request.server.get('CONTACT_MAIL') }) }}</p>
+            <p id="contact">{{ 'help.contact'|trans({ '%contact_email%': app.request.server.get('CONTACT_MAIL') }) }}</p>
+        </div>
     </div>
     <script
             type="text/javascript"
