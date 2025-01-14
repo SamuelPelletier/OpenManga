@@ -33,8 +33,8 @@ class ImageTranslationHandler
         $transparency = $message->getTransparency();
 
         $command = [
-            'C:/Python310/python.exe',
-            'C:\Users\Skull\Documents\github\Open-Translation\trad.py',
+            $_ENV['PYTHON_EXECUTABLE_PATH'],
+            $_ENV['OCR_TRANSLATION_PYTHON_FILE'],
             '-i',
             $inputLanguage,
             '-o',
@@ -46,6 +46,7 @@ class ImageTranslationHandler
             '-t',
             $transparency,
         ];
+        //log the command string
 
         // Create a new Process instance
         $process = new Process($command);

@@ -30,27 +30,34 @@ $(document).ready(function () {
     });
     */
    
-    $("#translation-button").click(function() {
-    // Disable the button to prevent multiple clicks
-    $(this).prop("disabled", true);
-    event.preventDefault();
+    $("#translation-button").click(function(event) {
+        event.preventDefault(); // Prevent the default action of the button click
+        
+        // Disable the button to prevent multiple clicks
+        $(this).prop("disabled", true);
+        event.preventDefault();
 
         // Send the request to the queue
         $.ajax({
             url: this.getAttribute("href"),
-            
             type: 'POST',
             data: {
-            // TODO feed user local as requeste output language 
+            // TODO feed user local as requested output language for the translation
+            //'language': "{{app.request.locale}}",
+            
             //{{app.request.locale}}
+            //if the request has been added to the worker queue, the button will be disabled
+            
             },
             success: function(response) {
+                //change the button translation btn text
                 $("#translation-button").text("Request sent (up to 5 minutes)");
                 $("#translation-button").prop("disabled", false);
 
             },
             error: function() {
-                $("#translation-button").text("error");
+                //change the button translation btn text to the error debug message
+                $("#translation-button").text("Request failed, please try again later");
                 $("#translation-button").prop("disabled", false);
 
             },
@@ -59,8 +66,7 @@ $(document).ready(function () {
             $("#translation-button").prop("disabled", false);
             }
         });
-    });
-
+    });    
 
     const showTraductionBtn = document.getElementById("show-traduction");
     const traductionCaptions = document.querySelectorAll(".translation-overlay");
@@ -85,7 +91,6 @@ $(document).ready(function () {
         }
     });
 
-    
     const descriptionToggle = document.getElementById('description-toggle');
     const mangaDescription = document.getElementById('manga-description');
 

@@ -105,8 +105,6 @@ class MangaController extends BaseController
         Request                $request,
         MangaService           $mangaService,
         EntityManagerInterface $entityManager,
-        WorkerService $workerService
-
         ): Response
     {
         /**
@@ -146,11 +144,8 @@ class MangaController extends BaseController
             $translations = is_array($translations) ? $translations : array();
         }
 
-        $workerService->startWorkerIfNeeded();
-                
-        // Check if translations are enabled and worker is running
+        // Check if translations are enabled
         $translationsEnabled = $_ENV['TRANSLATION_ENABLED'] === 'true';
-        $workerIsRunning = $workerService->isWorkerRunning();
 
         // User is logged in
         if ($this->isGranted('ROLE_USER')) {
@@ -172,7 +167,6 @@ class MangaController extends BaseController
                 'mangas_recommended' => $mangasRecommended,
                 'translations' => $translations,
                 'translationsEnabled' => $translationsEnabled,
-                'workerIsRunning' => $workerIsRunning,
             ]);
     }
 
@@ -267,7 +261,7 @@ class MangaController extends BaseController
     }
 
     /**
-     * @Route("/translate/{id}", methods={"GET"}, name="translate")
+     * @Route("/translate/{id}", methods={"POST"}, name="translate")
      */
     public function mangaTranslate(
         Manga $manga,
@@ -286,9 +280,9 @@ class MangaController extends BaseController
         #get input language
         $languages = $manga->getLanguages();
         if (empty($languages)) {
-            $language = 'japanese';
+            $language = 'japaanese';
         } else {
-            $language = 'japanese';
+            $language = 'jaapanese';
             // Loop through the languages and find the first one that is not 'translated'
             foreach ($languages as $lang) {
                 if ($lang != 'translated') {
@@ -311,7 +305,6 @@ class MangaController extends BaseController
         //$envelope = $bus->dispatch(new ImageTranslation( $inputLanguage, $outputLanguage, $inputFolderPath, $outputFolderPath, $transparency));
 
         // Iterate through the images in the input folder
-        
         $files = scandir($inputFolderPath);
         foreach ($files as $file) {
             if ($file !== '.' && $file !== '..') {

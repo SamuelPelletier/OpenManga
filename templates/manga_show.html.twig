@@ -103,11 +103,12 @@
                 <span class="fi fi-{{app.request.locale}}"></span> show translation (Ctrl+Space)
             </a>
         {% endif %}
-        {% if translationsEnabled and workerIsRunning %}
+        
+        {% if translationsEnabled %}
+            {% if app.user is not null %}
 
-            {% if app.user is not null and workerRunning %}
-
-                <a class="btn-effect raise download add-favorite" id="translation-button" href="{{ url('translate', {'id':manga.id}) }}"><i class="fa fa-download "></i>(beta) Auto translate</a>
+                <a class="btn-effect raise download " id="translation-button" href="{{ url('translate', {'id':manga.id}) }}"><i class="fa fa-download "></i>(beta) Auto translate</a>
+                    
                     {% if manga in app.user.getFavoriteMangas %}
                         {% set buttonText = 'manga.remove_favorite'|trans %}
                         {% set url = url('remove_favorite',{"id":manga.id}) %}
