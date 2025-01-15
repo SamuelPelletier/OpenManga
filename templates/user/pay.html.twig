@@ -8,10 +8,9 @@
 
 {% block main %}
     <div><a href="{{ path('user_index') }}">{{ 'edit_profile.link.back_account'|trans }}</a></div>
-    <h1 id="subscribe">{{ 'subscribe.title'|trans }}</h1>
-    <div id="subscribe-container"></div>
-    <p id="description">{{ 'subscribe.description'|trans }}</p>
-    <p id="description_patreon">{{ 'subscribe.description_patreon'|trans }}
+    <h1>{{ 'subscribe.title'|trans }}</h1>
+    <p>{{ 'subscribe.description'|trans }}</p>
+    <p>{{ 'subscribe.description_patreon'|trans }}
         <a class="patreon_link"
            href="{{ app.request.server.get('PATREON_LINK') }}">{{ 'subscribe.patreon_link'|trans() }}</a>
     </p>

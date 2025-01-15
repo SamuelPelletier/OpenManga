@@ -569,9 +569,17 @@ Mais ils ne sont pas exlusivement des mangas, il existe aussi des musiques, des 
                 <source>subscribe.payment_card</source>
                 <target>Payement par carte bancaire</target>
             </trans-unit>
+            <trans-unit id="subscribe.payment_credit">
+                <source>subscribe.payment_credit</source>
+                <target>Payement en credits</target>
+            </trans-unit>
             <trans-unit id="subscribe.price">
                 <source>subscribe.price</source>
                 <target>3€ pour un mois d'accès premium</target>
+            </trans-unit>
+            <trans-unit id="subscribe.credit.price">
+                <source>subscribe.credit.price</source>
+                <target>300 credits pour un mois d'accès premium</target>
             </trans-unit>
             <trans-unit id="subscribe.access">
                 <source>subscribe.access</source>
@@ -589,6 +597,28 @@ Mais ils ne sont pas exlusivement des mangas, il existe aussi des musiques, des 
                 <source>subscribe.thanks</source>
                 <target>Merci pour votre achat.</target>
             </trans-unit>
+
+            <trans-unit id="credit.title">
+                <source>credit.title</source>
+                <target>Credits</target>
+            </trans-unit>
+            <trans-unit id="credit.description">
+                <source>credit.description</source>
+                <target>Les credits vous permettent d'obtenir du contenu exclusif à travers l'abonnement premium et la boutique</target>
+            </trans-unit>
+            <trans-unit id="credit.sub_description">
+                <source>credit.sub_description</source>
+                <target>Attention les credits ne peuvent pas être remboursé</target>
+            </trans-unit>
+            <trans-unit id="credit.price">
+                <source>credit.price</source>
+                <target>pour #credits# credits</target>
+            </trans-unit>
+            <trans-unit id="credit.payment_button">
+                <source>credit.payment_button</source>
+                <target>Acheter #credits# credits</target>
+            </trans-unit>
+
             <trans-unit id="square.error.internal">
                 <source>square.error.internal</source>
                 <target>Erreur interne</target>
@@ -620,6 +650,10 @@ Mais ils ne sont pas exlusivement des mangas, il existe aussi des musiques, des 
             <trans-unit id="square.error.invalid_account">
                 <source>square.error.invalid_account</source>
                 <target>Fond insuffisant ou refus bancaire</target>
+            </trans-unit>
+            <trans-unit id="square.error.amount">
+                <source>square.error.amount</source>
+                <target>Montant incorrect</target>
             </trans-unit>
             <trans-unit id="square.result.error">
                 <source>square.result.error</source>
@@ -675,6 +709,22 @@ Mais ils ne sont pas exlusivement des mangas, il existe aussi des musiques, des 
                 <source>shop.subscribe.anonymous.content</source>
                 <target>Afin de profiter de toutes les fonctionnalités et de la gestion de votre abonnement un compte est
 nécessaire</target>
+            </trans-unit>
+            <trans-unit id="shop.credit.user.content">
+                <source>shop.credit.user.content</source>
+                <target>Utiliser vos credits pour obtenir plus de contenu exclusif</target>
+            </trans-unit>
+            <trans-unit id="shop.credit.access">
+                <source>shop.credit.access</source>
+                <target>Accéder à l'achat de credits</target>
+            </trans-unit>
+            <trans-unit id="shop.credit.anonymous.content">
+                <source>shop.credit.anonymous.content</source>
+                <target>Afin d'obtenir du contenu exclusif un compte est nécessaire</target>
+            </trans-unit>
+            <trans-unit id="shop.back_to_shop">
+                <source>shop.back_to_shop</source>
+                <target>Retourner à la boutique</target>
             </trans-unit>
         </body>
     </file>

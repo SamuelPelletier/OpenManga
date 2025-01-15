@@ -15,7 +15,7 @@ async function tokenize(paymentMethod) {
 
 document.addEventListener('DOMContentLoaded', async function () {
     document.getElementById('main').innerHTML = document.getElementById('main').innerHTML.replace(/(\b premium\b)/gi, '<span class="premium">$1</span>');
-    const card = await initializeCard(payments);
+    //const card = await initializeCard(payments);
     let clickEvent = async function (event) {
         let ref = event.target
         let parentId = ref.parentElement.id
@@ -65,6 +65,14 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
     document.getElementById('card-button').addEventListener('click', clickEvent);
-    document.getElementById('credit-button').addEventListener('click', clickEvent);
+    document.getElementById('credit-button')?.addEventListener('click', clickEvent);
+
+    let previousValue = document.querySelector('.price-select').value;
+    document.getElementById('card-payment-form-container').innerHTML = document.getElementById('card-payment-form-container').innerHTML.replace(/(#credits#)/gi, previousValue);
+    document.querySelector('.price-select').addEventListener('change', function (event) {
+        document.querySelector('#card-payment-form-container .price-text').innerHTML = document.querySelector('#card-payment-form-container .price-text').innerHTML.replace(" " + previousValue.toString() + " credits", " " + event.target.value + " credits");
+        document.querySelector('#card-payment-form-container .star-button').innerHTML = document.querySelector('#card-payment-form-container .star-button').innerHTML.replace(" " + previousValue.toString() + " credits", " " + event.target.value + " credits");
+        previousValue = event.target.value
+    });
 
 });

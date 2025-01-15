@@ -8,13 +8,14 @@
 
 {% block main %}
     <div><a href="{{ path('shop') }}">{{ 'shop.back_to_shop'|trans }}</a></div>
-    <h1 id="subscribe">{{ 'credit.title'|trans }}</h1>
-    <div id="subscribe-container"></div>
-    <p id="description">{{ 'credit.description'|trans }}</p>
+    <h1>{{ 'credit.title'|trans }}</h1>
+    <p>{{ 'credit.description'|trans }}</p>
+    <p>{{ 'credit.sub_description'|trans }}</p>
     <div id="card-payment-form-container" class="form-credit">
         <h2 class="payment_card">{{ 'subscribe.payment_card'|trans }}</h2>
         {% if app.request.locale in ['ko','ja'] %}
-            <h2 class="price">{{ 'credit.price'|trans }}
+            <h2 class="price">
+                <span class="price-text">{{ 'credit.price'|trans }}</span>
                 <select name="price-select" class="price-select">
                     <option value="500">5€</option>
                     <option value="1000">10€</option>
@@ -30,7 +31,7 @@
                     <option value="2000">20€</option>
                     <option value="5000">50€</option>
                 </select>
-                {{ 'credit.price'|trans }}
+                <span class="price-text">{{ 'credit.price'|trans }}</span>
             </h2>
         {% endif %}
         <div id="card-container"></div>
