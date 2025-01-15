@@ -1,0 +1,682 @@
+<?xml version="1.0" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" target-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="http_error.name">
+                <source>http_error.name</source>
+                <target>错误 %status_code%</target>
+            </trans-unit>
+            <trans-unit id="http_error.description">
+                <source>http_error.description</source>
+                <target>发生了一个未知错误，导致无法完成您的请求。</target>
+            </trans-unit>
+            <trans-unit id="http_error.suggestion">
+                <source>http_error.suggestion</source>
+                <target><![CDATA[稍后再试加载此页面，或者 <a href="%url%">返回主页</a>。]]></target>
+            </trans-unit>
+            <trans-unit id="http_error_403.description">
+                <source>http_error_403.description</source>
+                <target>您没有权限访问此资源。</target>
+            </trans-unit>
+            <trans-unit id="http_error_403.suggestion">
+                <source>http_error_403.suggestion</source>
+                <target>请向您的经理或系统管理员请求授予您访问此资源的权限。</target>
+            </trans-unit>
+            <trans-unit id="http_error_404.description">
+                <source>http_error_404.description</source>
+                <target>我们找不到您请求的页面。</target>
+            </trans-unit>
+            <trans-unit id="http_error_404.suggestion">
+                <source>http_error_404.suggestion</source>
+                <target><![CDATA[检查URL中的拼写错误，或者 <a href="%url%">返回主页</a>。]]></target>
+            </trans-unit>
+            <trans-unit id="http_error_500.description">
+                <source>http_error_500.description</source>
+                <target>发生了内部服务器错误。</target>
+            </trans-unit>
+            <trans-unit id="http_error_500.suggestion">
+                <source>http_error_500.suggestion</source>
+                <target><![CDATA[稍后再试加载此页面，或者 <a href="%url%">返回主页</a>。]]></target>
+            </trans-unit>
+
+            <trans-unit id="menu.menu">
+                <source>menu.menu</source>
+                <target>菜单</target>
+            </trans-unit>
+            <trans-unit id="menu.choose_language">
+                <source>menu.choose_language</source>
+                <target>选择语言</target>
+            </trans-unit>
+            <trans-unit id="menu.homepage">
+                <source>menu.homepage</source>
+                <target>主页</target>
+            </trans-unit>
+            <trans-unit id="menu.about">
+                <source>menu.about</source>
+                <target>关于</target>
+            </trans-unit>
+            <trans-unit id="menu.search">
+                <source>menu.search</source>
+                <target>搜索</target>
+            </trans-unit>
+            <trans-unit id="menu.login">
+                <source>menu.login</source>
+                <target>登录</target>
+            </trans-unit>
+            <trans-unit id="menu.user">
+                <source>menu.user</source>
+                <target>账户</target>
+            </trans-unit>
+            <trans-unit id="post.search_for">
+                <source>post.search_for</source>
+                <target>搜索...</target>
+            </trans-unit>
+            <trans-unit id="search.sort">
+                <source>search.sort</source>
+                <target>趋势</target>
+            </trans-unit>
+            <trans-unit id="banner.unlock.text">
+                <source>banner.unlock.text</source>
+                <target>通过订阅解锁我们所有的服务！</target>
+            </trans-unit>
+            <trans-unit id="banner.unlock.button">
+                <source>banner.unlock.button</source>
+                <target>立即解锁</target>
+            </trans-unit>
+
+            <trans-unit id="tag.popular_title">
+                <source>tag.popular_title</source>
+                <target>🔥️ 最受欢迎的标签</target>
+            </trans-unit>
+            <trans-unit id="tag.all_title">
+                <source>tag.all_title</source>
+                <target>所有标签</target>
+            </trans-unit>
+            <trans-unit id="tag.all">
+                <source>tag.all</source>
+                <target>所有</target>
+            </trans-unit>
+            <trans-unit id="tag.other">
+                <source>tag.other</source>
+                <target>其他</target>
+            </trans-unit>
+
+            <trans-unit id="manga.language">
+                <source>manga.language</source>
+                <target>语言</target>
+            </trans-unit>
+            <trans-unit id="manga.parody">
+                <source>manga.parody</source>
+                <target>主题</target>
+            </trans-unit>
+            <trans-unit id="manga.author">
+                <source>manga.author</source>
+                <target>作者</target>
+            </trans-unit>
+            <trans-unit id="manga.tag">
+                <source>manga.tag</source>
+                <target>标签</target>
+            </trans-unit>
+            <trans-unit id="manga.count_views">
+                <source>manga.count_views</source>
+                <target>观看次数</target>
+            </trans-unit>
+            <trans-unit id="manga.see_more">
+                <source>manga.see_more</source>
+                <target>查看更多</target>
+            </trans-unit>
+            <trans-unit id="manga.download">
+                <source>manga.download</source>
+                <target>下载</target>
+            </trans-unit>
+            <trans-unit id="manga.page">
+                <source>manga.page</source>
+                <target>页面</target>
+            </trans-unit>
+            <trans-unit id="manga.no_mangas_found">
+                <source>manga.no_mangas_found</source>
+                <target>没有找到漫画</target>
+            </trans-unit>
+            <trans-unit id="manga.image_alt">
+                <source>manga.image_alt</source>
+                <target>图片编号 %count%</target>
+            </trans-unit>
+            <trans-unit id="manga.no_images_found">
+                <source>manga.no_images_found</source>
+                <target>没有找到图片</target>
+            </trans-unit>
+            <trans-unit id="manga.add_favorite">
+                <source>manga.add_favorite</source>
+                <target>添加到收藏夹</target>
+            </trans-unit>
+            <trans-unit id="manga.remove_favorite">
+                <source>manga.remove_favorite</source>
+                <target>从收藏夹中移除</target>
+            </trans-unit>
+            <trans-unit id="manga.end">
+                <source>manga.end</source>
+                <target>没有更多漫画</target>
+            </trans-unit>
+            <trans-unit id="manga.recommended">
+                <source>manga.recommended</source>
+                <target>推荐漫画</target>
+            </trans-unit>
+            <trans-unit id="manga.paginator.previous">
+                <source>manga.paginator.previous</source>
+                <target>上一页</target>
+            </trans-unit>
+            <trans-unit id="manga.paginator.next">
+                <source>manga.paginator.next</source>
+                <target>下一页</target>
+            </trans-unit>
+            <trans-unit id="manga.unlock">
+                <source>manga.unlock</source>
+                <target>订阅解锁</target>
+            </trans-unit>
+            <trans-unit id="manga.old">
+                <source>manga.old</source>
+                <target>旧漫画</target>
+            </trans-unit>
+            <trans-unit id="manga.new">
+                <source>manga.new</source>
+                <target>新漫画</target>
+            </trans-unit>
+
+
+            <trans-unit id="disclaimer.text">
+                <source>disclaimer.text</source>
+                <target>本网站是一个成人社区，包含年龄限制的内容。您必须年满18岁或以上才能进入。</target>
+            </trans-unit>
+            <trans-unit id="disclaimer.button">
+                <source>disclaimer.button</source>
+                <target>我已年满18岁</target>
+            </trans-unit>
+
+            <trans-unit id="meta.description">
+                <source>meta.description</source>
+                <target> 包含成千上万的 %tags% 可供观看和免费下载。</target>
+            </trans-unit>
+            <trans-unit id="meta.description.manga">
+                <source>meta.description.manga</source>
+                <target>阅读和下载 </target>
+            </trans-unit>
+            <trans-unit id="meta.description.with">
+                <source>meta.description.with</source>
+                <target> 与</target>
+            </trans-unit>
+
+            <trans-unit id="login.title">
+                <source>login.title</source>
+                <target>登录！</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.tab">
+                <source>login.form.login.tab</source>
+                <target>登录</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.tab">
+                <source>login.form.signup.tab</source>
+                <target>注册</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.title">
+                <source>login.form.login.title</source>
+                <target>欢迎回来！</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.invalid_username">
+                <source>login.form.login.invalid_username</source>
+                <target>无效的用户名或密码。请确保正确输入大小写。</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.username">
+                <source>login.form.login.username</source>
+                <target>用户名</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.password">
+                <source>login.form.login.password</source>
+                <target>密码</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.forgot_password">
+                <source>login.form.login.forgot_password</source>
+                <target>忘记密码？</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.button">
+                <source>login.form.login.button</source>
+                <target>登录</target>
+            </trans-unit>
+            <trans-unit id="login.form.login.patreon">
+                <source>login.form.login.patreon</source>
+                <target>使用Patreon登录</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.title">
+                <source>login.form.signup.title</source>
+                <target>加入我们！</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.button">
+                <source>login.form.signup.button</source>
+                <target>注册</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.username">
+                <source>login.form.signup.form_type.username</source>
+                <target>用户名</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.captcha">
+                <source>login.form.signup.form_type.captcha</source>
+                <target>验证码</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.first_password">
+                <source>login.form.signup.form_type.first_password</source>
+                <target>密码</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.second_password">
+                <source>login.form.signup.form_type.second_password</source>
+                <target>重复密码</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.password.must_match">
+                <source>login.form.signup.form_type.password.must_match</source>
+                <target>密码字段必须匹配</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.password.not_blank">
+                <source>login.form.signup.form_type.password.not_blank</source>
+                <target>请输入密码</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.password.length">
+                <source>login.form.signup.form_type.password.length</source>
+                <target>您的密码应该至少包含6个字符</target>
+            </trans-unit>
+
+            <trans-unit id="reset_password.title">
+                <source>reset_password.title</source>
+                <target>重置您的密码</target>
+            </trans-unit>
+            <trans-unit id="reset_password.text">
+                <source>reset_password.text</source>
+                <target>请输入您的电子邮件地址，我们将向您发送一个链接来重置您的密码。</target>
+            </trans-unit>
+            <trans-unit id="reset_password.button">
+                <source>reset_password.button</source>
+                <target>发送密码重置邮件</target>
+            </trans-unit>
+            <trans-unit id="reset_password.form_type.email">
+                <source>reset_password.form_type.email</source>
+                <target>电子邮件</target>
+            </trans-unit>
+            <trans-unit id="reset_password.form_type.email_empty">
+                <source>reset_password.form_type.email_empty</source>
+                <target>请输入您的电子邮件</target>
+            </trans-unit>
+
+            <trans-unit id="check_email.title">
+                <source>check_email.title</source>
+                <target>密码重置邮件已发送</target>
+            </trans-unit>
+            <trans-unit id="check_email.text1">
+                <source>check_email.text1</source>
+                <target>我们已发送一封包含链接的邮件，您可以点击该链接来重置您的密码。该链接将在 %hour% 小时后过期。</target>
+            </trans-unit>
+            <trans-unit id="check_email.text2">
+                <source>check_email.text2</source>
+                <target>如果您没有收到邮件，请检查您的垃圾邮件文件夹或再试一次。</target>
+            </trans-unit>
+
+            <trans-unit id="new_password.title">
+                <source>new_password.title</source>
+                <target>重置新密码</target>
+            </trans-unit>
+            <trans-unit id="new_password.button">
+                <source>new_password.button</source>
+                <target>验证</target>
+            </trans-unit>
+            <trans-unit id="new_password.form_type.first_password">
+                <source>new_password.form_type.first_password</source>
+                <target>新密码</target>
+            </trans-unit>
+
+            <trans-unit id="account.index">
+                <source>account.index</source>
+                <target>仪表盘</target>
+            </trans-unit>
+            <trans-unit id="account.title">
+                <source>account.title</source>
+                <target>我的账户</target>
+            </trans-unit>
+            <trans-unit id="account.edit">
+                <source>account.edit</source>
+                <target>编辑</target>
+            </trans-unit>
+            <trans-unit id="account.app">
+                <source>account.app</source>
+                <target>安卓APK</target>
+            </trans-unit>
+            <trans-unit id="account.help">
+                <source>account.help</source>
+                <target>帮助</target>
+            </trans-unit>
+            <trans-unit id="account.bind.patreon">
+                <source>account.bind.patreon</source>
+                <target>绑定您的Patreon账户</target>
+            </trans-unit>
+            <trans-unit id="account.binded.patreon">
+                <source>account.binded.patreon</source>
+                <target>Patreon账户已绑定</target>
+            </trans-unit>
+            <trans-unit id="account.logout">
+                <source>account.logout</source>
+                <target>登出</target>
+            </trans-unit>
+            <trans-unit id="account.rank">
+                <source>account.rank</source>
+                <target>等级</target>
+            </trans-unit>
+            <trans-unit id="account.points">
+                <source>account.points</source>
+                <target>积分</target>
+            </trans-unit>
+            <trans-unit id="account.time_spent">
+                <source>account.time_spent</source>
+                <target>花费时间</target>
+            </trans-unit>
+            <trans-unit id="account.manga_read">
+                <source>account.manga_read</source>
+                <target>已阅读漫画</target>
+            </trans-unit>
+            <trans-unit id="account.manga_download">
+                <source>account.manga_download</source>
+                <target>已下载漫画</target>
+            </trans-unit>
+            <trans-unit id="account.last_manga_read">
+                <source>account.last_manga_read</source>
+                <target>您最近阅读的漫画</target>
+            </trans-unit>
+            <trans-unit id="account.manga.discover_new_manga">
+                <source>account.manga.discover_new_manga</source>
+                <target>让我们发现新的漫画！</target>
+            </trans-unit>
+            <trans-unit id="account.favorite_manga">
+                <source>account.favorite_manga</source>
+                <target>您最喜爱的漫画</target>
+            </trans-unit>
+            <trans-unit id="account.favorite_manga.link">
+                <source>account.favorite_manga.link</source>
+                <target>（查看所有）</target>
+            </trans-unit>
+            <trans-unit id="account.manga.add_manga_favorite">
+                <source>account.manga.add_manga_favorite</source>
+                <target>将新漫画添加到您的收藏夹</target>
+            </trans-unit>
+            <trans-unit id="account.days">
+                <source>account.days</source>
+                <target>{0,1} %count% 天 | [2,Inf[ %count% 天</target>
+            </trans-unit>
+            <trans-unit id="account.hours">
+                <source>account.hours</source>
+                <target>{0,1} %count% 小时 | [2,Inf[ %count% 小时</target>
+            </trans-unit>
+            <trans-unit id="account.minutes">
+                <source>account.minutes</source>
+                <target>{0,1} %count% 分钟 | [2,Inf[ %count% 分钟</target>
+            </trans-unit>
+
+            <trans-unit id="edit_profile.title">
+                <source>edit_profile.title</source>
+                <target>编辑您的个人资料</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.link.back_account">
+                <source>edit_profile.link.back_account</source>
+                <target>返回到您的账户</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.link.change_password">
+                <source>edit_profile.link.change_password</source>
+                <target>更改密码</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text">
+                <source>edit_profile.form.text</source>
+                <target>我们会向您发送任何促销邮件，但如果您忘记了密码，我们需要您的电子邮件地址。</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.button">
+                <source>edit_profile.form.button</source>
+                <target>验证</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.link.delete">
+                <source>edit_profile.link.delete</source>
+                <target>删除您的账户</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.save">
+                <source>edit_profile.save</source>
+                <target>您的信息已成功保存</target>
+            </trans-unit>
+
+            <trans-unit id="change_password.title">
+                <source>change_password.title</source>
+                <target>更改您的密码</target>
+            </trans-unit>
+            <trans-unit id="change_password.link.back_account">
+                <source>change_password.link.back_account</source>
+                <target>返回到您的账户</target>
+            </trans-unit>
+            <trans-unit id="change_password.link.back_edit">
+                <source>change_password.link.back_edit</source>
+                <target>返回编辑</target>
+            </trans-unit>
+
+            <trans-unit id="delete_account.title">
+                <source>delete_account.title</source>
+                <target>删除您的账户！</target>
+            </trans-unit>
+            <trans-unit id="delete_account.link.back_account">
+                <source>delete_account.link.back_account</source>
+                <target>返回到您的账户</target>
+            </trans-unit>
+            <trans-unit id="delete_account.text">
+                <source>delete_account.text</source>
+                <target>此操作不可逆，请确保您的选择！</target>
+            </trans-unit>
+            <trans-unit id="delete_account.button">
+                <source>delete_account.button</source>
+                <target>确认删除我的账户</target>
+            </trans-unit>
+
+            <trans-unit id="help.contact">
+                <source>help.contact</source>
+                <target>如果您遇到问题，请通过以下电子邮件地址与我们联系：%contact_email%</target>
+            </trans-unit>
+            <trans-unit id="help.patreon.check.text">
+                <source>help.patreon.check.text</source>
+                <target>如果您的账户尚未与Patreon同步，请使用下面的按钮：</target>
+            </trans-unit>
+            <trans-unit id="help.patreon.check.button">
+                <source>help.patreon.check.button</source>
+                <target>同步Patreon</target>
+            </trans-unit>
+
+            <trans-unit id="email.title">
+                <source>email.title</source>
+                <target>密码丢失</target>
+            </trans-unit>
+            <trans-unit id="email.text1">
+                <source>email.text1</source>
+                <target>您丢失了密码吗？
+
+没问题，您可以通过点击下面的按钮来重置密码，并选择一个新的密码。
+
+此链接将在 %hour% 小时后过期。</target>
+            </trans-unit>
+            <trans-unit id="email.button">
+                <source>email.button</source>
+                <target>更改我的密码</target>
+            </trans-unit>
+
+
+            <trans-unit id="about.title">
+                <source>about.title</source>
+                <target>关于</target>
+            </trans-unit>
+            <trans-unit id="about.contact.title">
+                <source>about.contact.title</source>
+                <target>联系我们</target>
+            </trans-unit>
+            <trans-unit id="about.information.title">
+                <source>about.information.title</source>
+                <target>有用的信息</target>
+            </trans-unit>
+            <trans-unit id="about.contact.text1">
+                <source>about.contact.text1</source>
+                <target>请通过以下电子邮件地址与我们联系：</target>
+            </trans-unit>
+            <trans-unit id="about.contact.text2.soft">
+                <source>about.contact.text2.soft</source>
+                <target>我们不会收集任何关于客户的信息，也不使用Google Analytics。
+您可以免费无限制地查看和下载漫画。
+移动应用程序使您能够更加便捷地访问我们的网站。
+如需更多信息，请随时通过电子邮件与我们联系。</target>
+            </trans-unit>
+            <trans-unit id="about.contact.text2.hard">
+                <source>about.contact.text2.hard</source>
+                <target>我们不会收集任何关于客户的信息，也不使用Google Analytics。
+您可以免费无限制地查看和下载漫画。
+移动应用程序使您能够更加便捷地访问我们的网站。
+如需更多信息，请随时通过电子邮件与我们联系。
+
+什么是 hentai 漫画？
+
+Hentai 是用于色情目的的漫画，涵盖了一些您可以在我们网站上找到的类型，如 paizuri、teitoku 或 netorare。
+它们主要源自日本，也有这些漫画的动画版本。
+2018年，hentai是Pornhub网站上搜索量第二的类别。
+My Anime List上也列出了超过1300部hentai动漫。
+
+什么是 doujin 漫画？
+
+Doujin 或 doujinshi 是由业余作者制作的漫画，通常是对像《海贼王》、《火影忍者》或《妖精的尾巴》等著名漫画的模仿。
+但它们不仅限于漫画，还有音乐、小说或视频游戏。</target>
+            </trans-unit>
+
+            <trans-unit id="subscribe.title">
+                <source>subscribe.title</source>
+                <target>订阅</target>
+            </trans-unit>
+            <trans-unit id="subscribe.description">
+                <source>subscribe.description</source>
+                <target>高级访问权限为您提供无限访问所有锁定内容以及旧漫画的权限。您可以直接阅读或下载所有最新漫画。此高级访问权限可以在所有平台上立即使用，并且没有自动续订。</target>
+            </trans-unit>
+            <trans-unit id="subscribe.description_patreon">
+                <source>subscribe.description_patreon</source>
+                <target>Patreon还为您提供了通过以下链接解锁此无限访问权限的选项：</target>
+            </trans-unit>
+            <trans-unit id="subscribe.patreon_link">
+                <source>subscribe.patreon_link</source>
+                <target>通过Patreon成为Premium会员</target>
+            </trans-unit>
+            <trans-unit id="subscribe.access_until">
+                <source>subscribe.access_until</source>
+                <target>您目前的高级访问权限有效期至 %date%</target>
+            </trans-unit>
+            <trans-unit id="subscribe.payment_card">
+                <source>subscribe.payment_card</source>
+                <target>卡支付</target>
+            </trans-unit>
+            <trans-unit id="subscribe.price">
+                <source>subscribe.price</source>
+                <target>每月3€的高级访问权限</target>
+            </trans-unit>
+            <trans-unit id="subscribe.access">
+                <source>subscribe.access</source>
+                <target>支付一个月的高级访问权限</target>
+            </trans-unit>
+            <trans-unit id="subscribe.add_month">
+                <source>subscribe.add_month</source>
+                <target>添加一个月的高级访问权限</target>
+            </trans-unit>
+            <trans-unit id="subscribe.success">
+                <source>subscribe.success</source>
+                <target>支付成功！</target>
+            </trans-unit>
+            <trans-unit id="subscribe.thanks">
+                <source>subscribe.thanks</source>
+                <target>感谢您的购买。</target>
+            </trans-unit>
+            <trans-unit id="square.error.internal">
+                <source>square.error.internal</source>
+                <target>内部错误</target>
+            </trans-unit>
+            <trans-unit id="square.error.unknown">
+                <source>square.error.unknown</source>
+                <target>未知错误</target>
+            </trans-unit>
+            <trans-unit id="square.error.cvv_failure">
+                <source>square.error.cvv_failure</source>
+                <target>视觉验证码错误</target>
+            </trans-unit>
+            <trans-unit id="square.error.address_verification_failure">
+                <source>square.error.address_verification_failure</source>
+                <target>邮政编码错误</target>
+            </trans-unit>
+            <trans-unit id="square.error.invalid_expiration">
+                <source>square.error.invalid_expiration</source>
+                <target>到期日期错误</target>
+            </trans-unit>
+            <trans-unit id="square.error.generic_decline">
+                <source>square.error.generic_decline</source>
+                <target>支付被拒绝</target>
+            </trans-unit>
+            <trans-unit id="square.error.card_token_used">
+                <source>square.error.card_token_used</source>
+                <target>内部错误（令牌）</target>
+            </trans-unit>
+            <trans-unit id="square.error.invalid_account">
+                <source>square.error.invalid_account</source>
+                <target>资金不足或银行拒绝</target>
+            </trans-unit>
+            <trans-unit id="square.result.error">
+                <source>square.result.error</source>
+                <target>交易失败</target>
+            </trans-unit>
+            <trans-unit id="square.result.success">
+                <source>square.result.success</source>
+                <target>交易成功完成</target>
+            </trans-unit>
+
+            <trans-unit id="invoice.title">
+                <source>invoice.title</source>
+                <target>发票</target>
+            </trans-unit>
+            <trans-unit id="invoice.id">
+                <source>invoice.id</source>
+                <target>编号</target>
+            </trans-unit>
+            <trans-unit id="invoice.amount">
+                <source>invoice.amount</source>
+                <target>金额</target>
+            </trans-unit>
+            <trans-unit id="invoice.currency">
+                <source>invoice.currency</source>
+                <target>货币</target>
+            </trans-unit>
+            <trans-unit id="invoice.date">
+                <source>invoice.date</source>
+                <target>日期</target>
+            </trans-unit>
+            <trans-unit id="invoice.link">
+                <source>invoice.link</source>
+                <target>链接</target>
+            </trans-unit>
+            <trans-unit id="invoice.no_invoices_found">
+                <source>invoice.no_invoices_found</source>
+                <target>没有发票</target>
+            </trans-unit>
+
+            <trans-unit id="shop.title">
+                <source>shop.title</source>
+                <target>商店</target>
+            </trans-unit>
+            <trans-unit id="shop.subscribe.user.content">
+                <source>shop.subscribe.user.content</source>
+                <target>要享受所有功能，您需要订阅</target>
+            </trans-unit>
+            <trans-unit id="shop.subscribe.access">
+                <source>shop.subscribe.access</source>
+                <target>访问订阅管理</target>
+            </trans-unit>
+            <trans-unit id="shop.subscribe.anonymous.content">
+                <source>shop.subscribe.anonymous.content</source>
+                <target>要享受所有功能并管理您的订阅，您需要一个账户</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
