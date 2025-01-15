@@ -28,9 +28,6 @@ class MangaController extends BaseController
     {
         $latestMangas = $mangas->findLatest($page);
         if ($request->isXmlHttpRequest()) {
-            if (count($latestMangas->getQuery()->getArrayResult()) === 0) {
-                return $this->render('manga_ending.html.twig');
-            }
             return $this->render('manga_index.html.twig', ['mangas' => $latestMangas]);
         }
         return $this->render('index.html.twig', ['mangas' => $latestMangas]);
@@ -47,12 +44,9 @@ class MangaController extends BaseController
     {
         $latestMangas = $mangas->findTrending($page);
         if ($request->isXmlHttpRequest()) {
-            if (count($latestMangas->getQuery()->getArrayResult()) === 0) {
-                return $this->render('manga_ending.html.twig');
-            }
             return $this->render('manga_index.html.twig', ['mangas' => $latestMangas]);
         }
-        return $this->render('index.html.twig', ['mangas' => $latestMangas]);
+        return $this->render('trending.html.twig', ['mangas' => $latestMangas]);
     }
 
     #[Route("/mangas/{id}", methods: ['GET'], name: 'manga')]
