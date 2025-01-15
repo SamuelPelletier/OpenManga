@@ -37,7 +37,7 @@ class MangaController extends BaseController
     }
 
     #[Route("/trending", defaults: ['page' => 1], methods: ['GET'], name: 'index_trending')]
-    #[Route("/page/{page<[1-9]\d*>}", methods: ['GET'], name: 'index_trending_paginated')]
+    #[Route("/trending/page/{page<[1-9]\d*>}", methods: ['GET'], name: 'index_trending_paginated')]
     #[Cache(maxage: 10)]
     public function trending(
         int             $page,

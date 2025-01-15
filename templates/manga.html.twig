@@ -1,6 +1,6 @@
 {% set isLocked = (manga.isOld or manga.isBlocked) and (is_granted('IS_AUTHENTICATED_REMEMBERED') == false or app.user.isPatreonAllow(1) == false) %}
 <article class="manga col-sm-3" itemscope itemtype="https://schema.org/Book">
-    <a href="{% if isLocked %}{{ app.request.server.get('PATREON_LINK') }}{% else %}{{ url('manga', {id: manga.id}) }}{% endif %}">
+    <a href="{% if isLocked %}{{ path('shop') }}{% else %}{{ url('manga', {id: manga.id}) }}{% endif %}">
         <div class="image-container {% if isLocked %} neon-frame {% endif %}"
              itemprop="thumbnail">
             <p class="manga-information">
@@ -16,7 +16,7 @@
             </p>
             {% if isLocked %}
                 <div class="manga-unlock">
-                    <span class="neon-button">{{ 'manga.unlock.patreon'|trans }}</span>
+                    <span class="neon-button">{{ 'manga.unlock'|trans }}</span>
                 </div>
             {% else %}
                 <div class="thumbnail-tag">
@@ -32,13 +32,14 @@
                     {% endif %}
                 </div>
             {% endif %}
-            <img alt="{{ manga.title |raw }}" title="{{ manga.title |raw }}" class='img-thumbnail'
-                    {% if isLocked %}
-                        src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'lock.webp' ) }}'
-                    {% else %}
-                        src='{{ app.request.getSchemeAndHttpHost() ~ asset( (manga.isOld ? 'media_old':'media') ~ '/' ~ manga.id ~ '/thumb.webp' ) }}'
-                    {% endif %}
+            <img alt="{{ manga.title |raw }}" title="{{ manga.title |raw }}"
+                 class='img-thumbnail {% if isLocked %}blur{% endif %}'
+                 src='{{ app.request.getSchemeAndHttpHost() ~ asset( (manga.isOld ? 'media_old':'media') ~ '/' ~ manga.id ~ '/thumb.webp' ) }}'
             >
+            {% if isLocked %}
+                <img alt="locked" title="locked" class='img-thumbnail locked'
+                     src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'lock.webp' ) }}'>
+            {% endif %}
         </div>
         {% if isLocked %}
             <div class="locked-text">

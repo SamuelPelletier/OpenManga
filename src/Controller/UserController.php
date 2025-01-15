@@ -2,11 +2,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Manga;
 use App\Entity\Payment;
 use App\Entity\User;
 use App\Form\ChangePasswordFormType;
 use App\Form\DeleteUserFormType;
 use App\Form\EditUserFormType;
+use App\Repository\MangaRepository;
 use App\Repository\UserRepository;
 use App\Service\PatreonService;
 use App\Service\UserService;
@@ -20,6 +22,7 @@ use Square\SquareClientBuilder;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -241,5 +244,23 @@ class UserController extends AbstractController
         }
 
         return $this->render('user/invoice.html.twig', ['user' => $user]);
+    }
+
+    #[Route("/manga/favorite", defaults: ['page' => 1], methods: ['GET'], name: 'index_favorite')]
+    #[Route("/manga/favorite/page/{page<[1-9]\d*>}", methods: ['GET'], name: 'index_favorite_paginated')]
+    #[Cache(maxage: 10)]
+    public function mangaFavorite(int $page): Response
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('index');
+        }
+
+        $filterFunction = function (Manga $manga) {
+            return !$manga->isCorrupted();
+        };
+
+        return $this->render('user/manga_favorite.html.twig', ['mangas' => $user->getFavoriteMangas()->filter($filterFunction)->slice(($page - 1) * Manga::NUM_ITEMS, Manga::NUM_ITEMS), 'total' => $user->getFavoriteMangas()->filter($filterFunction)->count()]);
     }
 }
