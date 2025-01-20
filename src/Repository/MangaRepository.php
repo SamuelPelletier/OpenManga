@@ -65,7 +65,7 @@ class MangaRepository extends ServiceEntityRepository
         $query = $this->sanitizeSearchQuery($rawQuery);
 
         // Min 3 caracteres to search
-        if (strlen($query) < 3) {
+        if (strlen($query) <= 3) {
             return $this->findLatest();
         }
 
@@ -87,7 +87,13 @@ class MangaRepository extends ServiceEntityRepository
             $searchTerms = $this->extractSearchTerms($query);
         }
 
+        $i = 0;
         foreach ($searchTerms as $key => $term) {
+            if (strlen($term) <= 3) {
+                continue;
+            }
+            $i++;
+
             if (!$isStrict) {
                 $term = '%' . $term . '%';
             }
@@ -140,6 +146,11 @@ class MangaRepository extends ServiceEntityRepository
 
             $orStatements->add($queryBuilder->expr()->like('p.title', ':title'));
             $queryBuilder->setParameter(':title', $term);
+        }
+
+        // Any term > 3
+        if ($i === 0) {
+            return $this->findLatest();
         }
 
         $queryBuilder->andWhere($orStatements)->orderBy('p.id', 'DESC');
