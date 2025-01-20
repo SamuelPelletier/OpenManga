@@ -15,5 +15,5 @@ framework:
       doctrine_query_cache:
         adapter: 'cache.adapter.redis'
         provider: 'redis://127.0.0.1:6379'
-        default_lifetime: 3000
+        default_lifetime: 3600
 

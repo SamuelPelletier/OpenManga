@@ -24,9 +24,12 @@ class MangaRepository extends ServiceEntityRepository
     public function findLatest(int $page = 1): Paginator
     {
         $queryBuilder = $this->createQueryBuilder('p')
-            ->where('p.isCorrupted = false')->orderBy('p.id', 'DESC');
+            ->where('p.isCorrupted = false')->orderBy('p.id', 'DESC')->getQuery();
 
-        return $this->createPaginator($queryBuilder->getQuery(), $page);
+        $queryBuilder->setResultCacheId('manga_latest_' . $page);
+        $queryBuilder->setResultCacheLifeTime(300);
+
+        return $this->createPaginator($queryBuilder, $page);
     }
 
     public function findTrending(int $page = 1): Paginator
@@ -41,9 +44,12 @@ class MangaRepository extends ServiceEntityRepository
             ->setParameter('thirty_days_ago', $thirtyDaysAgo->format('Y-m-d'))
             ->andWhere('p.publishedAt < :five_minutes_ago')
             ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"))
-            ->andWhere('p.isCorrupted = false');
+            ->andWhere('p.isCorrupted = false')->getQuery();
 
-        return $this->createPaginator($queryBuilder->getQuery(), $page);
+        $queryBuilder->setResultCacheId('manga_trending_' . $page);
+        $queryBuilder->setResultCacheLifeTime(300);
+
+        return $this->createPaginator($queryBuilder, $page);
     }
 
     /**
@@ -142,46 +148,62 @@ class MangaRepository extends ServiceEntityRepository
 
     public function countByTag(Tag $tag): int
     {
-        return $this->createQueryBuilder('p')
+        $queryBuilder = $this->createQueryBuilder('p')
             ->join('p.tags', 't')
             ->andWhere('t.id = :tag_id')
             ->setParameter('tag_id', $tag->getId())
             ->select('count(t.id)')
-            ->getQuery()
-            ->getSingleScalarResult();
+            ->getQuery();
+
+        $queryBuilder->setResultCacheId('mangas_tag_count_' . $tag->getId());
+        $queryBuilder->setResultCacheLifeTime(3600);
+
+        return $queryBuilder->getSingleScalarResult();
     }
 
     public function countByLanguage(Language $language): int
     {
-        return $this->createQueryBuilder('p')
+        $queryBuilder = $this->createQueryBuilder('p')
             ->join('p.languages', 'l')
             ->andWhere('l.id = :language_id')
             ->setParameter('language_id', $language->getId())
             ->select('count(l.id)')
-            ->getQuery()
-            ->getSingleScalarResult();
+            ->getQuery();
+
+        $queryBuilder->setResultCacheId('mangas_language_count_' . $language->getId());
+        $queryBuilder->setResultCacheLifeTime(3600);
+
+        return $queryBuilder->getSingleScalarResult();
     }
 
     public function countByParody(Parody $parody): int
     {
-        return $this->createQueryBuilder('p')
+        $queryBuilder = $this->createQueryBuilder('p')
             ->join('p.parodies', 'pp')
             ->andWhere('pp.id = :parody_id')
             ->setParameter('parody_id', $parody->getId())
             ->select('count(pp.id)')
-            ->getQuery()
-            ->getSingleScalarResult();
+            ->getQuery();
+
+        $queryBuilder->setResultCacheId('mangas_parody_count_' . $parody->getId());
+        $queryBuilder->setResultCacheLifeTime(3600);
+
+        return $queryBuilder->getSingleScalarResult();
     }
 
     public function countByAuthor(Author $author): int
     {
-        return $this->createQueryBuilder('p')
+        $queryBuilder = $this->createQueryBuilder('p')
             ->join('p.authors', 'a')
             ->andWhere('a.id = :author_id')
             ->setParameter('author_id', $author->getId())
             ->select('count(a.id)')
-            ->getQuery()
-            ->getSingleScalarResult();
+            ->getQuery();
+
+        $queryBuilder->setResultCacheId('mangas_author_count_' . $author->getId());
+        $queryBuilder->setResultCacheLifeTime(3600);
+
+        return $queryBuilder->getSingleScalarResult();
     }
 
     public function findByAuthor(Author $author): array
