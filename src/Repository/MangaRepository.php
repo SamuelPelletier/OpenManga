@@ -40,16 +40,17 @@ class MangaRepository extends ServiceEntityRepository
 
         $now = new DateTimeImmutable();
         $thirtyDaysAgo = $now->sub(new \DateInterval("P30D"));
-        $queryBuilder->where('p.publishedAt > :thirty_days_ago')
+        $query = $queryBuilder->where('p.publishedAt > :thirty_days_ago')
             ->setParameter('thirty_days_ago', $thirtyDaysAgo->format('Y-m-d'))
             ->andWhere('p.publishedAt < :five_minutes_ago')
             ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"))
-            ->andWhere('p.isCorrupted = false')->getQuery();
+            ->andWhere('p.isCorrupted = false')
+            ->getQuery();
 
-        $queryBuilder->setResultCacheId('manga_trending_' . $page);
-        $queryBuilder->setResultCacheLifeTime(300);
+        $query->setResultCacheId('manga_trending_' . $page);
+        $query->setResultCacheLifeTime(300);
 
-        return $this->createPaginator($queryBuilder, $page);
+        return $this->createPaginator($query, $page);
     }
 
     /**
