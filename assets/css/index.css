@@ -436,6 +436,7 @@ article .img-name:hover {
     position: relative;
     display: block; /* or block, depending on your layout */
     overflow: hidden;
+    background-color: black;
 }
 
 .image-container::before {

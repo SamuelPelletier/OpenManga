@@ -19,6 +19,7 @@
     "league/commonmark": "^2.6.0",
     "nesbot/carbon": "^3.8.2",
     "patreon/patreon": "^1.0.0",
+    "predis/predis": "^2.3",
     "rosell-dk/webp-convert": "^2.9.3",
     "sensio/framework-extra-bundle": "^v6.2.10",
     "square/square": "^39.0.0.20241120",
