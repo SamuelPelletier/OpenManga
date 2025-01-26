@@ -1147,4 +1147,6 @@ html {
     top: 0;
     position: absolute;
     pointer-events: none;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
 }
