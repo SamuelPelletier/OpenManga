@@ -1,6 +1,6 @@
 {% set isLocked = (manga.isOld or manga.isBlocked) and (is_granted('IS_AUTHENTICATED_REMEMBERED') == false or app.user.isPatreonAllow(1) == false) %}
 <article class="manga col-sm-3" itemscope itemtype="https://schema.org/Book">
-    <a href="{% if isLocked %}{{ path('shop') }}{% else %}{{ url('manga', {id: manga.id}) }}{% endif %}">
+    <a href="{% if isLocked %}{{ app.request.server.get('PATREON_LINK') }}{% else %}{{ url('manga', {id: manga.id}) }}{% endif %}">
         <div class="image-container {% if isLocked %} neon-frame {% endif %}"
              itemprop="thumbnail">
             <p class="manga-information">
