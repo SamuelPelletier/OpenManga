@@ -21,7 +21,7 @@ import './doclinks';
 import mixpanel from "mixpanel-browser";
 
 mixpanel.init("c14b4b3993ce628cdf4d8d898de83b0f", {
-    api_host: "http://"+window.location.hostname+":8001",
+    api_host: "https://"+window.location.hostname+":8001",
     debug: false,
     track_pageview: true,
     persistence: "localStorage",
