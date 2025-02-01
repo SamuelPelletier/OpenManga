@@ -77,12 +77,6 @@ h1 {
     pointer-events: none
 }
 
-@media (max-width: 767px) {
-    #powered_by {
-        padding-top: 50px;
-    }
-}
-
 #powered_by svg {
     height: 15px;
     top: 3px;
@@ -280,6 +274,24 @@ h1 {
     margin-top: 12px;
     border-radius: 4px;
     box-shadow: 0 4px 10px 4px rgba(19, 35, 47, 0.3);
+}
+
+@media (max-width: 991px) {
+    .col-md-6 > #credit-payment-form-container {
+        margin-top: 12px;
+    }
+}
+
+@media (min-width: 992px) and  (max-width: 1248px) {
+    .col-md-6 #card-container {
+        height: 104px;
+    }
+}
+
+@media (max-width: 655px) {
+    .col-md-6 #card-container {
+        height: 104px;
+    }
 }
 
 #contact-credit {

@@ -18,6 +18,7 @@
     width: 295px;
     display: block;
     transition: all ease 0.5s;
+    pointer-events: none;
 }
 
 .search-recommendation > div {
