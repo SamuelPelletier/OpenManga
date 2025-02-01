@@ -15,7 +15,7 @@ async function tokenize(paymentMethod) {
 
 document.addEventListener('DOMContentLoaded', async function () {
     document.getElementById('main').innerHTML = document.getElementById('main').innerHTML.replace(/(\b premium\b)/gi, '<span class="premium">$1</span>');
-    //const card = await initializeCard(payments);
+    const card = await initializeCard(payments);
     let clickEvent = async function (event) {
         let ref = event.target
         let parentId = ref.parentElement.id
