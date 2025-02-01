@@ -573,9 +573,17 @@ My Anime List には1,300以上のアニメエロアニメも掲載されてい�
                 <source>subscribe.payment_card</source>
                 <target>カードでのお支払い</target>
             </trans-unit>
+            <trans-unit id="subscribe.payment_credit">
+                <source>subscribe.payment_credit</source>
+                <target>Credits で支払い</target>
+            </trans-unit>
             <trans-unit id="subscribe.price">
                 <source>subscribe.price</source>
                 <target>1か月のプレミアムアクセス: 3€</target>
+            </trans-unit>
+            <trans-unit id="subscribe.credit.price">
+                <source>subscribe.credit.price</source>
+                <target>1か月のプレミアムアクセス: 300 credits</target>
             </trans-unit>
             <trans-unit id="subscribe.access">
                 <source>subscribe.access</source>
@@ -593,6 +601,28 @@ My Anime List には1,300以上のアニメエロアニメも掲載されてい�
                 <source>subscribe.thanks</source>
                 <target>ご購入ありがとうございます。</target>
             </trans-unit>
+
+            <trans-unit id="credit.title">
+                <source>credit.title</source>
+                <target>Credits</target>
+            </trans-unit>
+            <trans-unit id="credit.description">
+                <source>credit.description</source>
+                <target>Credits を利用すると、プレミアムサブスクリプションやストアを通じて限定コンテンツを入手できます</target>
+            </trans-unit>
+            <trans-unit id="credit.sub_description">
+                <source>credit.sub_description</source>
+                <target>ご注意ください、Credits は返金できません</target>
+            </trans-unit>
+            <trans-unit id="credit.price">
+                <source>credit.price</source>
+                <target>で #credits# credits</target>
+            </trans-unit>
+            <trans-unit id="credit.payment_button">
+                <source>credit.payment_button</source>
+                <target>#credits# credits を購入する</target>
+            </trans-unit>
+
             <trans-unit id="square.error.internal">
                 <source>square.error.internal</source>
                 <target>内部エラー</target>
@@ -649,6 +679,10 @@ My Anime List には1,300以上のアニメエロアニメも掲載されてい�
                 <source>invoice.currency</source>
                 <target>通貨</target>
             </trans-unit>
+            <trans-unit id="invoice.target">
+                <source>invoice.target</source>
+                <target>詳細</target>
+            </trans-unit>
             <trans-unit id="invoice.date">
                 <source>invoice.date</source>
                 <target>日付</target>
@@ -660,6 +694,14 @@ My Anime List には1,300以上のアニメエロアニメも掲載されてい�
             <trans-unit id="invoice.no_invoices_found">
                 <source>invoice.no_invoices_found</source>
                 <target>請求書が見つかりません</target>
+            </trans-unit>
+            <trans-unit id="invoice.subscribe">
+                <source>invoice.subscribe</source>
+                <target>登録する</target>
+            </trans-unit>
+            <trans-unit id="invoice.credit">
+                <source>invoice.credit</source>
+                <target>Credits を購入する</target>
             </trans-unit>
 
             <trans-unit id="shop.title">
@@ -677,6 +719,22 @@ My Anime List には1,300以上のアニメエロアニメも掲載されてい�
             <trans-unit id="shop.subscribe.anonymous.content">
                 <source>shop.subscribe.anonymous.content</source>
                 <target>すべての機能を利用し、サブスクリプションを管理するには、アカウントが必要です</target>
+            </trans-unit>
+            <trans-unit id="shop.credit.user.content">
+                <source>shop.credit.user.content</source>
+                <target>あなたの Credits を使って、さらに限定コンテンツを手に入れましょう</target>
+            </trans-unit>
+            <trans-unit id="shop.credit.access">
+                <source>shop.credit.access</source>
+                <target>Credits の購入にアクセスする</target>
+            </trans-unit>
+            <trans-unit id="shop.credit.anonymous.content">
+                <source>shop.credit.anonymous.content</source>
+                <target>限定コンテンツを入手するには、アカウントが必要です</target>
+            </trans-unit>
+            <trans-unit id="shop.back_to_shop">
+                <source>shop.back_to_shop</source>
+                <target>ストアに戻る</target>
             </trans-unit>
         </body>
     </file>

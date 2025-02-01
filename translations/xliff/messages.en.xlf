@@ -573,9 +573,17 @@ But they are not exclusively manga, there are also music, novels or video games.
                 <source>subscribe.payment_card</source>
                 <target>Payment by card</target>
             </trans-unit>
+            <trans-unit id="subscribe.payment_credit">
+                <source>subscribe.payment_credit</source>
+                <target>Payment by credits</target>
+            </trans-unit>
             <trans-unit id="subscribe.price">
                 <source>subscribe.price</source>
                 <target>3€ for a month of premium access</target>
+            </trans-unit>
+            <trans-unit id="subscribe.credit.price">
+                <source>subscribe.credit.price</source>
+                <target>300 credits for a month of premium access</target>
             </trans-unit>
             <trans-unit id="subscribe.access">
                 <source>subscribe.access</source>
@@ -593,6 +601,28 @@ But they are not exclusively manga, there are also music, novels or video games.
                 <source>subscribe.thanks</source>
                 <target>Thank you for your purchase.</target>
             </trans-unit>
+
+            <trans-unit id="credit.title">
+                <source>credit.title</source>
+                <target>Credits</target>
+            </trans-unit>
+            <trans-unit id="credit.description">
+                <source>credit.description</source>
+                <target>Credits allow you to obtain exclusive content through the premium subscription and the store</target>
+            </trans-unit>
+            <trans-unit id="credit.sub_description">
+                <source>credit.sub_description</source>
+                <target>Please note, credits cannot be refunded</target>
+            </trans-unit>
+            <trans-unit id="credit.price">
+                <source>credit.price</source>
+                <target>for #credits# credits</target>
+            </trans-unit>
+            <trans-unit id="credit.payment_button">
+                <source>credit.payment_button</source>
+                <target>Buy #credits# credits</target>
+            </trans-unit>
+
             <trans-unit id="square.error.internal">
                 <source>square.error.internal</source>
                 <target>Internal error</target>
@@ -650,6 +680,10 @@ But they are not exclusively manga, there are also music, novels or video games.
                 <source>invoice.currency</source>
                 <target>Currency</target>
             </trans-unit>
+            <trans-unit id="invoice.target">
+                <source>invoice.target</source>
+                <target>Details</target>
+            </trans-unit>
             <trans-unit id="invoice.date">
                 <source>invoice.date</source>
                 <target>Date</target>
@@ -661,6 +695,14 @@ But they are not exclusively manga, there are also music, novels or video games.
             <trans-unit id="invoice.no_invoices_found">
                 <source>invoice.no_invoices_found</source>
                 <target>No invoice</target>
+            </trans-unit>
+            <trans-unit id="invoice.subscribe">
+                <source>invoice.subscribe</source>
+                <target>Subscribe</target>
+            </trans-unit>
+            <trans-unit id="invoice.credit">
+                <source>invoice.credit</source>
+                <target>Buy credits</target>
             </trans-unit>
 
             <trans-unit id="shop.title">
@@ -678,6 +720,22 @@ But they are not exclusively manga, there are also music, novels or video games.
             <trans-unit id="shop.subscribe.anonymous.content">
                 <source>shop.subscribe.anonymous.content</source>
                 <target>To benefit from all the functionalities and the management of your subscription, an account is necessary</target>
+            </trans-unit>
+            <trans-unit id="shop.credit.user.content">
+                <source>shop.credit.user.content</source>
+                <target>Use your credits to get more exclusive content</target>
+            </trans-unit>
+            <trans-unit id="shop.credit.access">
+                <source>shop.credit.access</source>
+                <target>Access the purchase of credits</target>
+            </trans-unit>
+            <trans-unit id="shop.credit.anonymous.content">
+                <source>shop.credit.anonymous.content</source>
+                <target>To obtain exclusive content an account is required</target>
+            </trans-unit>
+            <trans-unit id="shop.back_to_shop">
+                <source>shop.back_to_shop</source>
+                <target>Back to store</target>
             </trans-unit>
         </body>
     </file>

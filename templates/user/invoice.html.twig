@@ -21,12 +21,12 @@
             </tr>
             </thead>
             <tbody>
-            {% for payment in user.payments %}
+            {% for payment in user.payments|reverse %}
                 <tr>
                     <td scope="row">{{ payment.uuid }}</td>
                     {% if payment.currency == 'credit' %}
                         <td>{{ payment.amount }}</td>
-                        <td>{{ ('payment'~payment.currency)|trans }}</td>
+                        <td>{{ 'credit' }}</td>
                         <td>{{ ('invoice.' ~ payment.target)|trans }}</td>
                         <td>{{ payment.createdAt|format_datetime('long', 'none') }}</td>
                         <td>

@@ -13,27 +13,15 @@
     <p>{{ 'credit.sub_description'|trans }}</p>
     <div id="card-payment-form-container" class="form-credit">
         <h2 class="payment_card">{{ 'subscribe.payment_card'|trans }}</h2>
-        {% if app.request.locale in ['ko','ja'] %}
-            <h2 class="price">
-                <span class="price-text">{{ 'credit.price'|trans }}</span>
-                <select name="price-select" class="price-select">
-                    <option value="500">5€</option>
-                    <option value="1000">10€</option>
-                    <option value="2000">20€</option>
-                    <option value="5000">50€</option>
-                </select>
-            </h2>
-        {% else %}
-            <h2 class="price">
-                <select name="price-select" class="price-select">
-                    <option value="500">5€</option>
-                    <option value="1000">10€</option>
-                    <option value="2000">20€</option>
-                    <option value="5000">50€</option>
-                </select>
-                <span class="price-text">{{ 'credit.price'|trans }}</span>
-            </h2>
-        {% endif %}
+        <h2 class="price">
+            <select name="price-select" class="price-select">
+                <option value="500">5€</option>
+                <option value="1000">10€</option>
+                <option value="2000">20€</option>
+                <option value="5000">50€</option>
+            </select>
+            <span class="price-text">{{ 'credit.price'|trans }}</span>
+        </h2>
         <div id="card-container"></div>
         <p id="powered_by">Powered By <a href="https://squareup.com">
                 <svg class="LogoLockup svelte-1qhoav6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"

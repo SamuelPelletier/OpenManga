@@ -218,7 +218,7 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                     {% endif %}
                 </div>
             {% endif %}
-            {% if user is defined %}
+            {% if is_granted('IS_AUTHENTICATED_REMEMBERED') == true and user is defined %}
                 <div id="credit"><a href="{{ path('user_credit') }}" class="btn-flip"
                                     data-front="{{ user.credits }} credits"></a></div>
             {% endif %}

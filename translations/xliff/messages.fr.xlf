@@ -684,6 +684,10 @@ Mais ils ne sont pas exlusivement des mangas, il existe aussi des musiques, des 
                 <source>invoice.currency</source>
                 <target>Devise</target>
             </trans-unit>
+            <trans-unit id="invoice.target">
+                <source>invoice.target</source>
+                <target>Détails</target>
+            </trans-unit>
             <trans-unit id="invoice.date">
                 <source>invoice.date</source>
                 <target>Date</target>
@@ -695,6 +699,14 @@ Mais ils ne sont pas exlusivement des mangas, il existe aussi des musiques, des 
             <trans-unit id="invoice.no_invoices_found">
                 <source>invoice.no_invoices_found</source>
                 <target>Aucune facture</target>
+            </trans-unit>
+            <trans-unit id="invoice.subscribe">
+                <source>invoice.subscribe</source>
+                <target>Abonnement</target>
+            </trans-unit>
+            <trans-unit id="invoice.credit">
+                <source>invoice.credit</source>
+                <target>Achat de credits</target>
             </trans-unit>
 
             <trans-unit id="shop.title">

@@ -571,9 +571,17 @@ Doujin 或 doujinshi 是由业余作者制作的漫画，通常是对像《海�
                 <source>subscribe.payment_card</source>
                 <target>卡支付</target>
             </trans-unit>
+            <trans-unit id="subscribe.payment_credit">
+                <source>subscribe.payment_credit</source>
+                <target>通过 Credits 支付</target>
+            </trans-unit>
             <trans-unit id="subscribe.price">
                 <source>subscribe.price</source>
                 <target>每月3€的高级访问权限</target>
+            </trans-unit>
+            <trans-unit id="subscribe.credit.price">
+                <source>subscribe.credit.price</source>
+                <target>每月300 credits 的高级访问权限</target>
             </trans-unit>
             <trans-unit id="subscribe.access">
                 <source>subscribe.access</source>
@@ -591,6 +599,28 @@ Doujin 或 doujinshi 是由业余作者制作的漫画，通常是对像《海�
                 <source>subscribe.thanks</source>
                 <target>感谢您的购买。</target>
             </trans-unit>
+
+            <trans-unit id="credit.title">
+                <source>credit.title</source>
+                <target>Credits</target>
+            </trans-unit>
+            <trans-unit id="credit.description">
+                <source>credit.description</source>
+                <target>Credits 允许你通过高级订阅和商店获取独家内容</target>
+            </trans-unit>
+            <trans-unit id="credit.sub_description">
+                <source>credit.sub_description</source>
+                <target>请注意，Credits 不可退款</target>
+            </trans-unit>
+            <trans-unit id="credit.price">
+                <source>credit.price</source>
+                <target>兑换 #credits# credits</target>
+            </trans-unit>
+            <trans-unit id="credit.payment_button">
+                <source>credit.payment_button</source>
+                <target>购买 #credits# credits</target>
+            </trans-unit>
+
             <trans-unit id="square.error.internal">
                 <source>square.error.internal</source>
                 <target>内部错误</target>
@@ -648,6 +678,10 @@ Doujin 或 doujinshi 是由业余作者制作的漫画，通常是对像《海�
                 <source>invoice.currency</source>
                 <target>货币</target>
             </trans-unit>
+            <trans-unit id="invoice.target">
+                <source>invoice.target</source>
+                <target>详情</target>
+            </trans-unit>
             <trans-unit id="invoice.date">
                 <source>invoice.date</source>
                 <target>日期</target>
@@ -659,6 +693,14 @@ Doujin 或 doujinshi 是由业余作者制作的漫画，通常是对像《海�
             <trans-unit id="invoice.no_invoices_found">
                 <source>invoice.no_invoices_found</source>
                 <target>没有发票</target>
+            </trans-unit>
+            <trans-unit id="invoice.subscribe">
+                <source>invoice.subscribe</source>
+                <target>订阅</target>
+            </trans-unit>
+            <trans-unit id="invoice.credit">
+                <source>invoice.credit</source>
+                <target>购买 credits</target>
             </trans-unit>
 
             <trans-unit id="shop.title">
@@ -676,6 +718,22 @@ Doujin 或 doujinshi 是由业余作者制作的漫画，通常是对像《海�
             <trans-unit id="shop.subscribe.anonymous.content">
                 <source>shop.subscribe.anonymous.content</source>
                 <target>要享受所有功能并管理您的订阅，您需要一个账户</target>
+            </trans-unit>
+            <trans-unit id="shop.credit.user.content">
+                <source>shop.credit.user.content</source>
+                <target>使用你的 Credits 获取更多独家内容</target>
+            </trans-unit>
+            <trans-unit id="shop.credit.access">
+                <source>shop.credit.access</source>
+                <target>访问 Credits 购买页面</target>
+            </trans-unit>
+            <trans-unit id="shop.credit.anonymous.content">
+                <source>shop.credit.anonymous.content</source>
+                <target>要获取独家内容，需要一个账户</target>
+            </trans-unit>
+            <trans-unit id="shop.back_to_shop">
+                <source>shop.back_to_shop</source>
+                <target>返回商店</target>
             </trans-unit>
         </body>
     </file>

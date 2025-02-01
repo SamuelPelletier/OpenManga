@@ -573,9 +573,17 @@
                 <source>subscribe.payment_card</source>
                 <target>Оплата картой</target>
             </trans-unit>
+            <trans-unit id="subscribe.payment_credit">
+                <source>subscribe.payment_credit</source>
+                <target>Оплата Credits</target>
+            </trans-unit>
             <trans-unit id="subscribe.price">
                 <source>subscribe.price</source>
                 <target>3€ за месяц премиум-доступа</target>
+            </trans-unit>
+            <trans-unit id="subscribe.credit.price">
+                <source>subscribe.credit.price</source>
+                <target>300 credits за месяц премиум-доступа</target>
             </trans-unit>
             <trans-unit id="subscribe.access">
                 <source>subscribe.access</source>
@@ -593,6 +601,28 @@
                 <source>subscribe.thanks</source>
                 <target>Спасибо за покупку.</target>
             </trans-unit>
+
+            <trans-unit id="credit.title">
+                <source>credit.title</source>
+                <target>Credits</target>
+            </trans-unit>
+            <trans-unit id="credit.description">
+                <source>credit.description</source>
+                <target>Credits позволяют вам получать эксклюзивный контент через премиум-подписку и магазин</target>
+            </trans-unit>
+            <trans-unit id="credit.sub_description">
+                <source>credit.sub_description</source>
+                <target>Пожалуйста, обратите внимание, что Credits не подлежат возврату</target>
+            </trans-unit>
+            <trans-unit id="credit.price">
+                <source>credit.price</source>
+                <target>за #credits# credits</target>
+            </trans-unit>
+            <trans-unit id="credit.payment_button">
+                <source>credit.payment_button</source>
+                <target>Купить #credits# credits</target>
+            </trans-unit>
+
             <trans-unit id="square.error.internal">
                 <source>square.error.internal</source>
                 <target>Внутренняя ошибка</target>
@@ -649,6 +679,10 @@
                 <source>invoice.currency</source>
                 <target>Валюта</target>
             </trans-unit>
+            <trans-unit id="invoice.target">
+                <source>invoice.target</source>
+                <target>Подробности</target>
+            </trans-unit>
             <trans-unit id="invoice.date">
                 <source>invoice.date</source>
                 <target>Дата</target>
@@ -660,6 +694,14 @@
             <trans-unit id="invoice.no_invoices_found">
                 <source>invoice.no_invoices_found</source>
                 <target>Счета не найдены</target>
+            </trans-unit>
+            <trans-unit id="invoice.subscribe">
+                <source>invoice.subscribe</source>
+                <target>Подписаться</target>
+            </trans-unit>
+            <trans-unit id="invoice.credit">
+                <source>invoice.credit</source>
+                <target>Купить credits</target>
             </trans-unit>
 
             <trans-unit id="shop.title">
@@ -677,6 +719,22 @@
             <trans-unit id="shop.subscribe.anonymous.content">
                 <source>shop.subscribe.anonymous.content</source>
                 <target>Чтобы воспользоваться всеми функциями и управлять подпиской, необходим аккаунт</target>
+            </trans-unit>
+            <trans-unit id="shop.credit.user.content">
+                <source>shop.credit.user.content</source>
+                <target>Используйте свои Credits, чтобы получить больше эксклюзивного контента</target>
+            </trans-unit>
+            <trans-unit id="shop.credit.access">
+                <source>shop.credit.access</source>
+                <target>Доступ к покупке Credits</target>
+            </trans-unit>
+            <trans-unit id="shop.credit.anonymous.content">
+                <source>shop.credit.anonymous.content</source>
+                <target>Для получения эксклюзивного контента необходим аккаунт</target>
+            </trans-unit>
+            <trans-unit id="shop.back_to_shop">
+                <source>shop.back_to_shop</source>
+                <target>Назад в магазин</target>
             </trans-unit>
         </body>
     </file>
