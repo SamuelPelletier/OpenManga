@@ -71,7 +71,8 @@
         </div>
     </div>
     <div class="row">
-        <h2>{{ 'account.favorite_manga'|trans }}</h2>
+        <h2>{{ 'account.favorite_manga'|trans }} <a
+                    href="{{ url('index_favorite') }}">{{ 'account.favorite_manga.link'|trans }}</a></h2>
         <div>
             {% for manga in user.favoriteMangas|slice(0,5)|reverse %}
                 {% include 'manga.html.twig' %}

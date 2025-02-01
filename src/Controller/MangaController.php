@@ -28,16 +28,13 @@ class MangaController extends BaseController
     {
         $latestMangas = $mangas->findLatest($page);
         if ($request->isXmlHttpRequest()) {
-            if (count($latestMangas->getQuery()->getArrayResult()) === 0) {
-                return $this->render('manga_ending.html.twig');
-            }
             return $this->render('manga_index.html.twig', ['mangas' => $latestMangas]);
         }
         return $this->render('index.html.twig', ['mangas' => $latestMangas]);
     }
 
     #[Route("/trending", defaults: ['page' => 1], methods: ['GET'], name: 'index_trending')]
-    #[Route("/page/{page<[1-9]\d*>}", methods: ['GET'], name: 'index_trending_paginated')]
+    #[Route("/trending/page/{page<[1-9]\d*>}", methods: ['GET'], name: 'index_trending_paginated')]
     #[Cache(maxage: 10)]
     public function trending(
         int             $page,
@@ -47,12 +44,9 @@ class MangaController extends BaseController
     {
         $latestMangas = $mangas->findTrending($page);
         if ($request->isXmlHttpRequest()) {
-            if (count($latestMangas->getQuery()->getArrayResult()) === 0) {
-                return $this->render('manga_ending.html.twig');
-            }
             return $this->render('manga_index.html.twig', ['mangas' => $latestMangas]);
         }
-        return $this->render('index.html.twig', ['mangas' => $latestMangas]);
+        return $this->render('trending.html.twig', ['mangas' => $latestMangas]);
     }
 
     #[Route("/mangas/{id}", methods: ['GET'], name: 'manga')]

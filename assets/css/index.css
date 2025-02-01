@@ -4,6 +4,7 @@ body {
 
 header {
     margin-bottom: 0;
+    z-index: 4;
 }
 
 a {
@@ -448,6 +449,7 @@ article .img-name:hover {
     position: relative;
     display: block; /* or block, depending on your layout */
     overflow: hidden;
+    background-color: black;
 }
 
 .image-container::before {
@@ -922,7 +924,7 @@ a.label:hover, a.label:focus {
 
 .manga-count-pages {
     position: absolute;
-    z-index: 1;
+    z-index: 3;
     width: 50%;
     text-shadow: black 1.5px 2px 2px;
     text-align: right;
@@ -933,7 +935,7 @@ a.label:hover, a.label:focus {
 .manga-information {
     margin-left: 2%;
     position: absolute;
-    z-index: 1;
+    z-index: 3;
     width: 50%;
     text-shadow: black 1.5px 2px 2px;
 }
@@ -1220,4 +1222,23 @@ html {
     .btn-flip:hover:after {
         transform: translateY(0) rotateX(0) scale(0.8);
     }
+}
+
+.blur {
+    filter: blur(3px);
+    position: relative;
+    transition: opacity 0.5s ease;
+}
+
+.blur:hover {
+    opacity: 0;
+}
+
+.locked {
+    z-index: 0;
+    top: 0;
+    position: absolute;
+    pointer-events: none;
+    height: -webkit-fill-available;
+    width: -webkit-fill-available;
 }

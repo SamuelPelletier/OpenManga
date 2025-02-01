@@ -3,6 +3,7 @@
 {% block body_id 'search' %}
 
 {% block main %}
+    {% set route_name =  'search' %}
     {% if app.request.query.get('q') is not empty %}
         {{ include('manga_index.html.twig') }}
     {% endif %}

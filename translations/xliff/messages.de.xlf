@@ -169,9 +169,9 @@
                 <source>manga.paginator.next</source>
                 <target>Nächster</target>
             </trans-unit>
-            <trans-unit id="manga.unlock.patreon">
-                <source>manga.unlock.patreon</source>
-                <target>Mit Patreon freischalten</target>
+            <trans-unit id="manga.unlock">
+                <source>manga.unlock</source>
+                <target>Mit Abonnement freischalten</target>
             </trans-unit>
             <trans-unit id="manga.old">
                 <source>manga.old</source>
@@ -391,6 +391,10 @@
             <trans-unit id="account.favorite_manga">
                 <source>account.favorite_manga</source>
                 <target>Deine Lieblingsmangas</target>
+            </trans-unit>
+            <trans-unit id="account.favorite_manga.link">
+                <source>account.favorite_manga.link</source>
+                <target>(Alle anzeigen)</target>
             </trans-unit>
             <trans-unit id="account.manga.add_manga_favorite">
                 <source>account.manga.add_manga_favorite</source>
