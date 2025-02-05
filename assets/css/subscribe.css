@@ -294,6 +294,12 @@ h1 {
     }
 }
 
+@media (max-width: 624px) {
+    .col-sm-12 #card-container {
+        height: 104px;
+    }
+}
+
 #contact-credit {
     font-size: small;
     padding-top: 10%;
