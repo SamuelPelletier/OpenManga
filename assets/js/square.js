@@ -21,8 +21,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         let parentId = ref.parentElement.id
         ref.style.display = "none";
         document.querySelector("#" + parentId + ' .loader-payment').style.display = "block";
-       // let amount = document.querySelector("#" + parentId + ' .price-select')?.value
-        let amount = null
+        let amount = document.querySelector("#" + parentId + ' .price-select')?.value
         let url = 'pay_proceed';
         if (amount) {
             url = 'credit_proceed';
