@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('css/creator') }}
+{% endblock %}
+
+{% block main %}
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+        {% if user.email is null %}
+            <div class="center-div">
+                <p>{{ 'creator.missing_email.content'|trans }}</p>
+                <div class="button-effect">
+                    <a class="effect" href="{{ url('user_edit') }}">{{ 'creator.missing_email.button'|trans }}</a>
+                </div>
+            </div>
+        {% else %}
+            <div>
+                <h1>Creator Dashboard</h1>
+                <form>
+                    <select name="" id="">
+                        <option>Nouveauté</option>
+                        <option>Traduction</option>
+                        <option>Compilation</option>
+                    </select>
+                    <div>
+                        <p>Manga translate</p>
+                        <input>
+                    </div>
+                    <div>
+                        <p>donation</p>
+                    </div>
+                    <div>
+                        <p>donation</p>
+                    </div>
+                    <div>
+                        <p>price</p>
+                        <input>
+                    </div>
+                    <div>
+                        <p>Title</p>
+                        <input>
+                    </div>
+                    <div>
+                        <p>Tags</p>
+                        <input>
+                    </div>
+                    <div>
+                        <p>Langue</p>
+                        <input>
+                    </div>
+                    <div>
+                        <p>Theme</p>
+                        <input>
+                    </div>
+                </form>
+            </div>
+        {% endif %}
+    {% else %}
+        <div class="center-div">
+            <p>{{ 'creator.anonymous.content'|trans }}</p>
+            <div class="button-effect">
+                <a class="effect" href="{{ url('app_login') }}">{{ 'menu.login'|trans }}</a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

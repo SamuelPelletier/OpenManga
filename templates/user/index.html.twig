@@ -9,12 +9,21 @@
 
 {% block body %}
     <div class="row">
-        <div class="col-sm-3">
+        <div class="col-sm-9">
             {% if not user.patreonAccessToken %}
                 <a class="btn-effect pulse-orange" href="{{ patreonUrl }}">{{ 'account.bind.patreon'|trans }}</a>
             {% else %}
                 <p id="patreon-binded">{{ 'account.binded.patreon'|trans }}</p>
             {% endif %}
+        </div>
+        <div class="col-sm-3">
+            <a href="{{ url('creator_index') }}">
+                <button class="upload">
+                    <span class="fa-solid fa-user-ninja"></span>
+                    Creator
+                </button>
+            </a>
+
         </div>
     </div>
     <div class="row">

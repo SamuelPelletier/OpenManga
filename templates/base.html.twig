@@ -87,6 +87,14 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                             {{ 'account.index'|trans }}
                                         </a>
                                     </li>
+                                    <li {% if app.request.uri == url('creator_index') %}aria-checked="true"
+                                        class="active"
+                                        {% else %}aria-checked="false"{% endif %} role="menuitem">
+                                        <a href="{{ url('creator_index') }}">
+                                            <span class="fa-solid fa-user-ninja"></span>
+                                            {{ 'creator.title'|trans }}
+                                        </a>
+                                    </li>
                                     <li {% if app.request.uri == url('user_edit') %}aria-checked="true"
                                         class="active"
                                         {% else %}aria-checked="false"{% endif %} role="menuitem">

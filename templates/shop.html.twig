@@ -45,7 +45,21 @@
     </div>
     <hr>
     <div id="shop-container">
-        <h1>{{ 'shop.title'|trans }}</h1>
+        <div class="row">
+            <div class="col-sm-6">
+                <h1>{{ 'shop.title'|trans }}</h1>
+            </div>
+            <div class="col-sm-6">
+                {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                    <a href="{{ url('creator_index') }}">
+                        <button class="upload">
+                            <i class="fa-solid fa-arrow-up-from-bracket"></i>
+                            Upload
+                        </button>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
         <div id="shop-content">Coming soon</div>
     </div>
 {% endblock %}
