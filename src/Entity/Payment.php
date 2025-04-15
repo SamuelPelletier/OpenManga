@@ -31,6 +31,9 @@ class Payment implements \JsonSerializable
     #[ORM\Column(type: "string")]
     private string $target = "subscribe";
 
+    #[ORM\ManyToOne(targetEntity: "Manga")]
+    private ?Manga $manga;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -147,5 +150,21 @@ class Payment implements \JsonSerializable
     public function __toString(): string
     {
         return $this->uuid;
+    }
+
+    /**
+     * @return Manga|null
+     */
+    public function getManga(): ?Manga
+    {
+        return $this->manga;
+    }
+
+    /**
+     * @param Manga|null $manga
+     */
+    public function setManga(?Manga $manga): void
+    {
+        $this->manga = $manga;
     }
 }

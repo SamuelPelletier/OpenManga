@@ -76,6 +76,15 @@ class Manga
     #[ORM\Column(type: "boolean", options: ["default" => 0])]
     private bool $isCorrupted = false;
 
+    #[ORM\Column(type: "integer")]
+    private int $price = 0;
+
+    #[ORM\ManyToOne(targetEntity: "Manga")]
+    private ?Manga $translationFrom;
+
+    #[ORM\ManyToOne(targetEntity: "User", inversedBy: "mangas")]
+    private ?User $creator;
+
     public function __construct()
     {
         $this->publishedAt = new \DateTime();
@@ -304,4 +313,51 @@ class Manga
         $this->isCorrupted = $isCorrupted;
     }
 
+    /**
+     * @return int
+     */
+    public function getPrice(): int
+    {
+        return $this->price;
+    }
+
+    /**
+     * @param int $price
+     */
+    public function setPrice(int $price): void
+    {
+        $this->price = $price;
+    }
+
+    /**
+     * @return Manga|null
+     */
+    public function getTranslationFrom(): ?Manga
+    {
+        return $this->translationFrom;
+    }
+
+    /**
+     * @param Manga|null $translationFrom
+     */
+    public function setTranslationFrom(?Manga $translationFrom): void
+    {
+        $this->translationFrom = $translationFrom;
+    }
+
+    /**
+     * @return User|null
+     */
+    public function getCreator(): ?User
+    {
+        return $this->creator;
+    }
+
+    /**
+     * @param User|null $creator
+     */
+    public function setCreator(?User $creator): void
+    {
+        $this->creator = $creator;
+    }
 }

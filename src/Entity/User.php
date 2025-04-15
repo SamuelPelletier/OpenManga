@@ -83,10 +83,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: "integer")]
     private int $credits = 0;
 
+    #[ORM\OneToMany(targetEntity: "Manga", mappedBy: "creator")]
+    private $createdMangas;
+
     public function __construct()
     {
         $this->lastMangasRead = new ArrayCollection();
         $this->favoriteMangas = new ArrayCollection();
+        $this->createdMangas = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -402,5 +406,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCredits(int $credits): void
     {
         $this->credits = $credits;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedMangas()
+    {
+        return $this->createdMangas;
+    }
+
+    /**
+     * @param mixed $createdMangas
+     */
+    public function setCreatedMangas($createdMangas): void
+    {
+        $this->createdMangas = $createdMangas;
     }
 }

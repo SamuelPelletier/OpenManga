@@ -1,0 +1,28 @@
+.form {
+    max-width: 90%;
+}
+
+.tab-group li a {
+    width: 33%;
+}
+
+#comming-soon {
+    background: url("../images/shop_wait.webp") no-repeat scroll;
+    text-transform: uppercase;
+    font-family: "Bowlby One SC", sans-serif;
+    font-weight: 900;
+    font-size: 19vw;
+    background-size: cover;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-optical-sizing: auto;
+    font-style: normal;
+    background-position: center;
+    text-align: center;
+    line-height: 88%;
+}
+
+label.active{
+    transform: initial;
+    -webkit-transform:initial;
+}

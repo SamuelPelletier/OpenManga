@@ -2,6 +2,7 @@
 
 {% block stylesheets %}
     {{ parent() }}
+    {{ encore_entry_link_tags('css/form') }}
     {{ encore_entry_link_tags('css/creator') }}
 {% endblock %}
 
@@ -15,46 +16,31 @@
                 </div>
             </div>
         {% else %}
-            <div>
-                <h1>Creator Dashboard</h1>
-                <form>
-                    <select name="" id="">
-                        <option>Nouveauté</option>
-                        <option>Traduction</option>
-                        <option>Compilation</option>
-                    </select>
-                    <div>
-                        <p>Manga translate</p>
-                        <input>
+            <h1>Creator Dashboard</h1>
+            <div class="form">
+
+                <ul class="tab-group">
+                    <li class="tab active"><a href="#new">{{ 'creator.form.new.tab'|trans }}</a></li>
+                    <li class="tab"><a href="#traduction">{{ 'creator.form.traduction.tab'|trans }}</a></li>
+                    <li class="tab"><a href="#compilation">{{ 'creator.form.compilation.tab'|trans }}</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="new">
+                        {{ form_start(mangaNewForm) }}
+                        {{ form_end(mangaNewForm) }}
                     </div>
-                    <div>
-                        <p>donation</p>
+                    <div id="traduction">
+                        {{ form_start(mangaTranslationForm) }}
+                        {{ form_end(mangaTranslationForm) }}
                     </div>
-                    <div>
-                        <p>donation</p>
+                    <div id="compilation">
+                        <div id="comming-soon">Coming soon</div>
                     </div>
-                    <div>
-                        <p>price</p>
-                        <input>
-                    </div>
-                    <div>
-                        <p>Title</p>
-                        <input>
-                    </div>
-                    <div>
-                        <p>Tags</p>
-                        <input>
-                    </div>
-                    <div>
-                        <p>Langue</p>
-                        <input>
-                    </div>
-                    <div>
-                        <p>Theme</p>
-                        <input>
-                    </div>
-                </form>
-            </div>
+
+                </div><!-- tab-content -->
+
+            </div> <!-- /form -->
         {% endif %}
     {% else %}
         <div class="center-div">
@@ -64,4 +50,9 @@
             </div>
         </div>
     {% endif %}
+{% endblock %}
+
+{% block javascripts %}
+    {{ encore_entry_script_tags('js/form') }}
+    {{ encore_entry_script_tags('js/creator') }}
 {% endblock %}

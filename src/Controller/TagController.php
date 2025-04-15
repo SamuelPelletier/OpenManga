@@ -50,4 +50,10 @@ class TagController extends AbstractController
     {
         return $this->json(['response' => true, 'data' => array_column($tagRepository->findBests(), 'name')]);
     }
+
+    #[Route("/search", methods: ['GET'], name: 'tag_search')]
+    public function search(TagRepository $tagRepository): Response
+    {
+        return $this->json(['response' => true, 'data' => $tagRepository->findByNameWithStart($_GET['q'])]);
+    }
 }

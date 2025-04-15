@@ -23,6 +23,9 @@ services:
       - '../src/Kernel.php'
       - '../src/Tests/'
 
+  App\Form\Validator\FileExtensionValidator:
+    tags: [ 'validator.constraint_validator' ]
+
 when@test:
   services:
     test.user_password_hasher:
