@@ -23,6 +23,11 @@ services:
       - '../src/Kernel.php'
       - '../src/Tests/'
 
+  App\EventListener\LoginSuccessListener:
+    tags:
+      - { name: 'kernel.event_listener', event: Symfony\Component\Security\Http\Event\LoginSuccessEvent }
+
+
 when@test:
   services:
     test.user_password_hasher:

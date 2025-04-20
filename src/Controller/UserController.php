@@ -140,19 +140,13 @@ class UserController extends AbstractController
     }
 
     #[Route("/sync_patreon", name: 'user_sync_patreon')]
-    public function syncPatreon(EntityManagerInterface $entityManager, PatreonService $patreonService)
+    public function syncPatreon(PatreonService $patreonService)
     {
         $user = $this->getUser();
         if (!$user) {
             return $this->redirectToRoute('index');
         }
-        if ([$nextChargeDate, $tier] = $patreonService->getPatreonMembership($user)) {
-            $user->setPatreonNextCharge($nextChargeDate);
-            // todo change when new tier coming
-            $user->setPatreonTier(1);
-            $entityManager->persist($user);
-            $entityManager->flush();
-        }
+        $patreonService->updateUserFromPatreon($user);
         return $this->json(['response' => true]);
     }
 

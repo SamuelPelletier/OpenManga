@@ -26,6 +26,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: "string", unique: true, length: 180)]
     private string $username;
 
+    #[ORM\Column(type: "string", unique: true, length: 180)]
+    #[Assert\Regex('/^[A-Za-z0-9]{3,}$/')]
+    private string $publicName;
+
     #[ORM\Column(type: "json")]
     private array $roles = [];
 
@@ -83,6 +87,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: "integer")]
     private int $credits = 0;
 
+    #[ORM\Column(type: "boolean", options: ["default" => 0])]
+    private bool $isUnlockOldManga = false;
+
     public function __construct()
     {
         $this->lastMangasRead = new ArrayCollection();
@@ -109,6 +116,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->username = $username;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPublicName(): string
+    {
+        return $this->publicName;
+    }
+
+    /**
+     * @param string $publicName
+     */
+    public function setPublicName(string $publicName): void
+    {
+        $this->publicName = $publicName;
     }
 
     /**
@@ -402,5 +425,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCredits(int $credits): void
     {
         $this->credits = $credits;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isUnlockOldManga(): bool
+    {
+        return $this->isUnlockOldManga;
+    }
+
+    /**
+     * @param bool $isUnlockOldManga
+     */
+    public function setIsUnlockOldManga(bool $isUnlockOldManga): void
+    {
+        $this->isUnlockOldManga = $isUnlockOldManga;
     }
 }

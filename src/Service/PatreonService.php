@@ -38,6 +38,17 @@ class PatreonService
         return null;
     }
 
+    public function updateUserFromPatreon(User $user)
+    {
+        if ([$nextChargeDate, $tier] = $this->getPatreonMembership($user)) {
+            $user->setPatreonNextCharge($nextChargeDate);
+            // todo change when new tier coming
+            $user->setPatreonTier(1);
+            $this->entityManager->persist($user);
+            $this->entityManager->flush();
+        }
+    }
+
     private function getData(User $user, string $suffix): string|object|null
     {
         $apiClient = new API($user->getPatreonAccessToken());
