@@ -2,6 +2,7 @@
 
 namespace DoctrineMigrations;
 
+use Doctrine\DBAL\Platforms\MySQLPlatform;
 use Doctrine\DBAL\Schema\Schema;
 use Doctrine\Migrations\AbstractMigration;
 
@@ -10,10 +11,10 @@ use Doctrine\Migrations\AbstractMigration;
  */
 final class Version20190414164723 extends AbstractMigration
 {
-    public function up(Schema $schema) : void
+    public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
+        $this->abortIf(!($this->connection->getDatabasePlatform() instanceof MySQLPlatform), 'Migration can only be executed safely on \'mysql\'.');
 
         $this->addSql('CREATE TABLE author (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(190) NOT NULL, UNIQUE INDEX UNIQ_BDAFD8C85E237E06 (name), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
         $this->addSql('CREATE TABLE language (id INT AUTO_INCREMENT NOT NULL, name VARCHAR(190) NOT NULL, UNIQUE INDEX UNIQ_D4DB71B55E237E06 (name), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci ENGINE = InnoDB');
@@ -34,11 +35,10 @@ final class Version20190414164723 extends AbstractMigration
         $this->addSql('ALTER TABLE mangas_parodies ADD CONSTRAINT FK_FFC45F282F1BAF4 FOREIGN KEY (language_id) REFERENCES parody (id)');
     }
 
-    public function down(Schema $schema) : void
+    public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
-
+        
         $this->addSql('ALTER TABLE mangas_authors DROP FOREIGN KEY FK_E9183DD8F675F31B');
         $this->addSql('ALTER TABLE mangas_languages DROP FOREIGN KEY FK_C94392A882F1BAF4');
         $this->addSql('ALTER TABLE mangas_authors DROP FOREIGN KEY FK_E9183DD87B6461');

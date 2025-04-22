@@ -10,8 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
-#[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
+#[UniqueEntity(fields: ['username'], message: 'login.form.signup.form_type.username.exist')]
+#[UniqueEntity(fields: ['publicName'], message: 'edit_profile.form_type.public_name.exist')]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: "user")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -27,7 +29,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private string $username;
 
     #[ORM\Column(type: "string", unique: true, length: 180)]
-    #[Assert\Regex('/^[A-Za-z0-9]{3,}$/')]
+    #[Assert\Regex(pattern: '/^[A-Za-z0-9]{3,}$/', message: "edit_profile.form_type.public_name.regex")]
     private string $publicName;
 
     #[ORM\Column(type: "json")]

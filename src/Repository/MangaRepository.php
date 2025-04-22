@@ -158,6 +158,68 @@ class MangaRepository extends ServiceEntityRepository
         return $this->createPaginator($queryBuilder->getQuery(), $page);
     }
 
+    /**
+     * @return Manga[]
+     */
+    public function findBySearchQueryAdvanced(
+        string $rawQuery,
+        string $tagsQuery,
+        string $languesQuery,
+        string $orderBy,
+        bool   $isOld = false,
+        int    $page = 1
+    ): Paginator
+    {
+        $query = $this->sanitizeSearchQuery($rawQuery);
+        $tagsQuerySanitized = $this->sanitizeSearchQuery($tagsQuery);
+
+        $em = $this->getEntityManager();
+        $repoLanguage = $em->getRepository(Language::class);
+        $repoTag = $em->getRepository(Tag::class);
+
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->where('p.isCorrupted = false');
+
+        if (!$isOld) {
+            $queryBuilder->andWhere('p.isOld = false');
+        }
+
+        $orStatements = $queryBuilder->expr()->andX();
+        if ($query != '') {
+            $orStatements->add($queryBuilder->expr()->like('p.title', ':title'));
+            $queryBuilder->setParameter(':title', '%' . $query . '%');
+        }
+
+        foreach (explode(',', $tagsQuerySanitized) as $tagQuerySanitized) {
+            $tag = $repoTag->findOneByName($tagQuerySanitized);
+            if ($tag) {
+                $paramName = 'ta_' . $tag->getId();
+                $orStatements->add($queryBuilder->expr()->isMemberOf(':' . $paramName, 'p.tags'));
+                $queryBuilder->setParameter($paramName, $tag);
+            }
+        }
+
+        if ($languesQuery != '*') {
+            $language = $repoLanguage->findOneByName($languesQuery);
+            if ($language) {
+                $paramName = 'l_' . $language->getId();
+                $orStatements->add($queryBuilder->expr()->isMemberOf(':' . $paramName, 'p.languages'));
+                $queryBuilder->setParameter($paramName, $language);
+            }
+        }
+
+        $queryBuilder->andWhere($orStatements);
+        match ($orderBy) {
+            'old_to_recent' => $queryBuilder->orderBy('p.id', 'ASC'),
+            'increase_view' => $queryBuilder->orderBy('p.countViews', 'ASC'),
+            'decrease_view' => $queryBuilder->orderBy('p.countViews', 'DESC'),
+            'increase_count_page' => $queryBuilder->orderBy('p.countPages', 'ASC'),
+            'decrease_count_page' => $queryBuilder->orderBy('p.countPages', 'DESC'),
+            default => $queryBuilder->orderBy('p.id', 'DESC')
+        };
+        return $this->createPaginator($queryBuilder->getQuery(), $page);
+    }
+
     public function countByTag(Tag $tag): int
     {
         $queryBuilder = $this->createQueryBuilder('p')

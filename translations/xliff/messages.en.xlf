@@ -280,6 +280,10 @@
                 <source>login.form.signup.form_type.password.length</source>
                 <target>Your password should be at least 6 characters</target>
             </trans-unit>
+            <trans-unit id="login.form.signup.form_type.username.exist">
+                <source>login.form.signup.form_type.username.exist</source>
+                <target>This username already exist</target>
+            </trans-unit>
 
             <trans-unit id="reset_password.title">
                 <source>reset_password.title</source>
@@ -425,9 +429,21 @@
                 <source>edit_profile.link.change_password</source>
                 <target>Change password</target>
             </trans-unit>
-            <trans-unit id="edit_profile.form.text">
-                <source>edit_profile.form.text</source>
+            <trans-unit id="edit_profile.form.text_email">
+                <source>edit_profile.form.text_email</source>
                 <target>Any promotion mail will be send to you but we need your email if you forgot your password.</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text_username">
+                <source>edit_profile.form.text_username</source>
+                <target>Username used only for login</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text_public_name">
+                <source>edit_profile.form.text_public_name</source>
+                <target>Username that will be used for public display</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name">
+                <source>edit_profile.form_type.public_name</source>
+                <target>Public username</target>
             </trans-unit>
             <trans-unit id="edit_profile.form.button">
                 <source>edit_profile.form.button</source>
@@ -440,6 +456,14 @@
             <trans-unit id="edit_profile.save">
                 <source>edit_profile.save</source>
                 <target>Your information has been successfully saved</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name.exist">
+                <source>edit_profile.form_type.public_name.exist</source>
+                <target>This public username already exist</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name.regex">
+                <source>edit_profile.form_type.public_name.regex</source>
+                <target>The public username must contain at least 3 characters and only letters and numbers</target>
             </trans-unit>
 
             <trans-unit id="change_password.title">

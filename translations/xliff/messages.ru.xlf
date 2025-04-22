@@ -280,6 +280,10 @@
                 <source>login.form.signup.form_type.password.length</source>
                 <target>Ваш пароль должен быть не менее 6 символов</target>
             </trans-unit>
+            <trans-unit id="login.form.signup.form_type.username.exist">
+                <source>login.form.signup.form_type.username.exist</source>
+                <target>Это имя пользователя уже существует</target>
+            </trans-unit>
 
             <trans-unit id="reset_password.title">
                 <source>reset_password.title</source>
@@ -425,13 +429,25 @@
                 <source>edit_profile.link.change_password</source>
                 <target>Изменить пароль</target>
             </trans-unit>
-            <trans-unit id="edit_profile.form.text">
-                <source>edit_profile.form.text</source>
+            <trans-unit id="edit_profile.form.text_email">
+                <source>edit_profile.form.text_email</source>
                 <target>Любое рекламное письмо будет отправлено вам, но нам нужен ваш адрес электронной почты, если вы забыли пароль.</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text_username">
+                <source>edit_profile.form.text_username</source>
+                <target>Имя пользователя используется только для входа в систему</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text_public_name">
+                <source>edit_profile.form.text_public_name</source>
+                <target>Имя пользователя, которое будет использоваться для публичного отображения</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name">
+                <source>edit_profile.form_type.public_name</source>
+                <target>Общедоступное имя пользователя</target>
             </trans-unit>
             <trans-unit id="edit_profile.form.button">
                 <source>edit_profile.form.button</source>
-                <target>Validate</target>
+                <target>Подтвердить</target>
             </trans-unit>
             <trans-unit id="edit_profile.link.delete">
                 <source>edit_profile.link.delete</source>
@@ -440,6 +456,14 @@
             <trans-unit id="edit_profile.save">
                 <source>edit_profile.save</source>
                 <target>Ваша информация была успешно сохранена</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name.exist">
+                <source>edit_profile.form_type.public_name.exist</source>
+                <target>Это общедоступное имя пользователя уже существует</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name.regex">
+                <source>edit_profile.form_type.public_name.regex</source>
+                <target>Общедоступное имя пользователя должно содержать не менее 3 символов и только буквы и цифры</target>
             </trans-unit>
 
             <trans-unit id="change_password.title">

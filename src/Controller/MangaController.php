@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Language;
 use App\Entity\Manga;
 use App\Entity\User;
+use App\Repository\LanguageRepository;
 use App\Repository\MangaRepository;
 use App\Service\MangaService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -137,6 +139,33 @@ class MangaController extends BaseController
         }
 
         return $this->render('search.html.twig', ['mangas' => $foundMangas]);
+    }
+
+    #[Route("/advanced_search", methods: ['GET'], name: 'advanced_search')]
+    #[Route("/advanced_search/page/{page<[1-9]\d*>}", methods: ['GET'], name: 'advanced_search_paginated')]
+    public function advancedSearch(
+        Request            $request,
+        MangaRepository    $mangas,
+        LanguageRepository $languageRepository,
+        int                $page = 1
+    ): Response
+    {
+        // No query parameter
+        $foundMangas = null;
+        $languages = $languageRepository->createQueryBuilder('l')
+            ->where('l.name in (:language_allow)')
+            ->setParameter('language_allow', array_keys(Language::ISO_CODE))
+            ->orderBy('l.name', 'ASC')->getQuery()->getResult();
+
+        $query = $request->query->get('q', '');
+        $tagQuery = $request->query->get('t', '');
+        $languesQuery = $request->query->get('language', '*');
+        $isOld = $request->query->get('is_old', 'off');
+        $orderBy = $request->query->get('sort', 'recent_to_old');
+        if ($query != '' || $tagQuery != '' || $languesQuery != '*' || $isOld == 'off' || $orderBy != 'recent_to_old') {
+            $foundMangas = $mangas->findBySearchQueryAdvanced($query, $tagQuery, $languesQuery, $orderBy, $isOld == 'on',$page);
+        }
+        return $this->render('advanced_search.html.twig', ['mangas' => $foundMangas, 'languages' => $languages]);
     }
 
     #[Route("/download/{id}", methods: ['GET'], name: 'download')]

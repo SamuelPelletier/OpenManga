@@ -280,6 +280,10 @@
                 <source>login.form.signup.form_type.password.length</source>
                 <target>Ihr Passwort sollte mindestens 6 Zeichen lang sein</target>
             </trans-unit>
+            <trans-unit id="login.form.signup.form_type.username.exist">
+                <source>login.form.signup.form_type.username.exist</source>
+                <target>Dieser Benutzername existiert bereits</target>
+            </trans-unit>
 
             <trans-unit id="reset_password.title">
                 <source>reset_password.title</source>
@@ -425,9 +429,21 @@
                 <source>edit_profile.link.change_password</source>
                 <target>Passwort ändern</target>
             </trans-unit>
-            <trans-unit id="edit_profile.form.text">
-                <source>edit_profile.form.text</source>
+            <trans-unit id="edit_profile.form.text_email">
+                <source>edit_profile.form.text_email</source>
                 <target>Jede Werbemail wird an Sie gesendet, aber wir benötigen Ihre E-Mail, wenn Sie Ihr Passwort vergessen haben.</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text_username">
+                <source>edit_profile.form.text_username</source>
+                <target>Benutzername nur zur Anmeldung verwendet</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text_public_name">
+                <source>edit_profile.form.text_public_name</source>
+                <target>Benutzername, der für die öffentliche Anzeige verwendet wird</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name">
+                <source>edit_profile.form_type.public_name</source>
+                <target>Öffentlicher Benutzername</target>
             </trans-unit>
             <trans-unit id="edit_profile.form.button">
                 <source>edit_profile.form.button</source>
@@ -440,6 +456,14 @@
             <trans-unit id="edit_profile.save">
                 <source>edit_profile.save</source>
                 <target>Ihre Daten wurden erfolgreich gespeichert</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name.exist">
+                <source>edit_profile.form_type.public_name.exist</source>
+                <target>Dieser öffentliche Benutzername existiert bereits</target>
+            </trans-unit>
+            <trans-unit id="edit_form.form_type.public_name.regex">
+                <source>edit_form.form_type.public_name.regex</source>
+                <target>Der öffentliche Benutzername muss mindestens 3 Zeichen enthalten und darf nur Buchstaben und Zahlen enthalten</target>
             </trans-unit>
 
             <trans-unit id="change_password.title">

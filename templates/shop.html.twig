@@ -1,48 +1,72 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    {{ encore_entry_link_tags('css/shop') }}
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
-{% endblock %}
+{% set isDisplayLifeProduct = is_granted('IS_AUTHENTICATED_REMEMBERED') != 1 or (is_granted('IS_AUTHENTICATED_REMEMBERED') and app.user.isUnlockOldManga != 1) %}
+{% if isDisplayLifeProduct %}
+    {% set columSize = 4 %}
+{% else %}
+    {% set columSize = 6 %}
+{% endif %}
+
+    {% block stylesheets %}
+        {{ parent() }}
+        {{ encore_entry_link_tags('css/shop') }}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+    {% endblock %}
 
 {% block main %}
     <div id="shop-header-container" class="row">
-        <div class="col-sm-6">
+        <div class="col-sm-{{ columSize }}">
             <h1 class="premium">{{ 'subscribe.title'|trans }}</h1>
-            <div id="subscribe">
+            <div class="shop-menu">
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                     <p>{{ 'shop.subscribe.user.content'|trans }}</p>
-                    <div class="button-effect">
+                    <div class="button-effect shop-button">
                         <a class="effect" href="{{ url('user_pay') }}">{{ 'shop.subscribe.access'|trans }}</a>
                     </div>
                 {% else %}
                     <p>{{ 'shop.subscribe.anonymous.content'|trans }}</p>
-                    <div class="button-effect">
-                        <a class="effect" href="{{ url('app_login') }}">{{ 'menu.login'|trans }}</a>
-                    </div>
                 {% endif %}
             </div>
         </div>
-        <div class="col-sm-6">
+        {% if isDisplayLifeProduct %}
+            <div class="col-sm-4">
+                <h1 class="lifetime">{{ 'life_product.title'|trans }}</h1>
+                <div class="shop-menu">
+                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                        <p>{{ 'shop.life_product.user.content'|trans }}</p>
+                        <div class="button-effect shop-button">
+                            <a class="effect"
+                               href="{{ url('user_life_product') }}">{{ 'shop.life_product.access'|trans }}</a>
+                        </div>
+                    {% else %}
+                        <p>{{ 'shop.life_product.anonymous.content'|trans }}</p>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+        <div class="col-sm-{{ columSize }}">
             <h1 class="gold">{{ 'credit.title'|trans }}</h1>
-            <div id="subscribe">
+            <div class="shop-menu">
                 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
                     <p>{{ 'shop.credit.user.content'|trans }}</p>
-                    <div class="button-effect">
+                    <div class="button-effect shop-button">
                         <a class="effect" href="{{ url('user_credit') }}">{{ 'shop.credit.access'|trans }}</a>
                     </div>
                 {% else %}
                     <p>{{ 'shop.credit.anonymous.content'|trans }}</p>
-                    <div class="button-effect">
-                        <a class="effect" href="{{ url('app_login') }}">{{ 'menu.login'|trans }}</a>
-                    </div>
                 {% endif %}
             </div>
         </div>
     </div>
+    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') != 1 %}
+        <div class="row">
+            <div class="button-effect shop-button">
+                <a class="effect" href="{{ url('app_login') }}">{{ 'menu.login'|trans }}</a>
+            </div>
+        </div>
+    {% endif %}
     <hr>
     <div id="shop-container">
         <h1>{{ 'shop.title'|trans }}</h1>

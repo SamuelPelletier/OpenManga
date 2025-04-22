@@ -2,11 +2,10 @@
     font-weight: 500;
 }
 
-#subscribe p {
+.shop-menu p {
     margin-bottom: 12px !important;
 }
-
-#subscribe a:hover {
+.shop-button a:hover {
     color: white !important;
     cursor: pointer;
 }
@@ -25,6 +24,10 @@
     background-position: center;
     text-align: center;
     line-height: 88%;
+}
+
+#shop-login-button {
+    text-align: center;
 }
 
 .button-effect a {

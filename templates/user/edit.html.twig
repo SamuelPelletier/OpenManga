@@ -21,10 +21,14 @@
                 {% endif %}
 
                 <form action="{{ path('user_edit') }}" method="post">
-
-                    <p>{{ 'edit_profile.form.text'|trans }}</p>
-
+                    <p>{{ 'edit_profile.form.text_email'|trans }}</p>
                     {% include 'form/field.html.twig' with {'formField':editForm.email,'required':false} %}
+
+                    <p>{{ 'edit_profile.form.text_username'|trans }}</p>
+                    {% include 'form/field.html.twig' with {'formField':editForm.username,'required':false} %}
+
+                    <p>{{ 'edit_profile.form.text_public_name'|trans }}</p>
+                    {% include 'form/field.html.twig' with {'formField':editForm.public_name,'required':false} %}
 
                     {{ form_row(editForm._token) }}
 

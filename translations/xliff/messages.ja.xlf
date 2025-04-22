@@ -280,6 +280,10 @@
                 <source>login.form.signup.form_type.password.length</source>
                 <target>パスワードは6文字以上にしてください</target>
             </trans-unit>
+            <trans-unit id="login.form.signup.form_type.username.exist">
+                <source>login.form.signup.form_type.username.exist</source>
+                <target>このユーザー名は既に存在します</target>
+            </trans-unit>
 
             <trans-unit id="reset_password.title">
                 <source>reset_password.title</source>
@@ -425,9 +429,21 @@
                 <source>edit_profile.link.change_password</source>
                 <target>パスワードを変更する</target>
             </trans-unit>
-            <trans-unit id="edit_profile.form.text">
-                <source>edit_profile.form.text</source>
+            <trans-unit id="edit_profile.form.text_email">
+                <source>edit_profile.form.text_email</source>
                 <target>プロモーションメールが送信されますが、パスワードを忘れた場合はメールが必要です。</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text_username">
+                <source>edit_profile.form.text_username</source>
+                <target>ユーザー名はログインのみに使用されます</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text_public_name">
+                <source>edit_profile.form.text_public_name</source>
+                <target>公開表示に使用されるユーザー名</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name">
+                <source>edit_profile.form_type.public_name</source>
+                <target>パブリックユーザー名</target>
             </trans-unit>
             <trans-unit id="edit_profile.form.button">
                 <source>edit_profile.form.button</source>
@@ -440,6 +456,14 @@
             <trans-unit id="edit_profile.save">
                 <source>edit_profile.save</source>
                 <target>あなたの情報は正常に保存されました</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name.exist">
+                <source>edit_profile.form_type.public_name.exist</source>
+                <target>このパブリックユーザー名は既に存在します</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name.regex">
+                <source>edit_profile.form_type.public_name.regex</source>
+                <target>パブリックユーザー名は少なくとも3文字以上で、英数字のみを含む必要があります</target>
             </trans-unit>
 
             <trans-unit id="change_password.title">

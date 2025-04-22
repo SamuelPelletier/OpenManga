@@ -45,8 +45,11 @@ class PatreonController extends AbstractController
                         $user->setPatreonAccessToken($access_token);
                         $user->setPatreonRefreshToken($refresh_token);
                         $user->setUsername($patron_response->data->attributes->full_name . '_' . $patron_response->data->id);
+                        $user->setPublicName('NewUser' . rand(1, 10000));
                         $user->setPassword(ByteString::fromRandom(32)->toString());
                         $entityManager->persist($user);
+                        $entityManager->flush();
+                        $user->setPublicName('NewUser' . $user->getId());
                         $entityManager->flush();
                         $userAuthenticator->authenticateUser($user, $authenticator, $request);
                     }

@@ -280,6 +280,10 @@
                 <source>login.form.signup.form_type.password.length</source>
                 <target>비밀번호는 6 자 이상이어야합니다</target>
             </trans-unit>
+            <trans-unit id="login.form.signup.form_type.username.exist">
+                <source>login.form.signup.form_type.username.exist</source>
+                <target>이 사용자 이름은 이미 존재합니다</target>
+            </trans-unit>
 
             <trans-unit id="reset_password.title">
                 <source>reset_password.title</source>
@@ -425,9 +429,21 @@
                 <source>edit_profile.link.change_password</source>
                 <target>비밀번호 변경</target>
             </trans-unit>
-            <trans-unit id="edit_profile.form.text">
-                <source>edit_profile.form.text</source>
+            <trans-unit id="edit_profile.form.text_email">
+                <source>edit_profile.form.text_email</source>
                 <target>모든 프로모션 메일이 발송되지만 비밀번호를 잊어 버린 경우 이메일이 필요합니다.</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text_username">
+                <source>edit_profile.form.text_username</source>
+                <target>사용자 이름은 로그인에만 사용됩니다</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text_public_name">
+                <source>edit_profile.form.text_public_name</source>
+                <target>공개 표시에 사용될 사용자 이름입니다</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name">
+                <source>edit_profile.form_type.public_name</source>
+                <target>공용 사용자 이름</target>
             </trans-unit>
             <trans-unit id="edit_profile.form.button">
                 <source>edit_profile.form.button</source>
@@ -440,6 +456,14 @@
             <trans-unit id="edit_profile.save">
                 <source>edit_profile.save</source>
                 <target>귀하의 정보가 성공적으로 저장되었습니다</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name.exist">
+                <source>edit_profile.form_type.public_name.exist</source>
+                <target>이 공용 사용자 이름은 이미 존재합니다</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name.regex">
+                <source>edit_profile.form_type.public_name.regex</source>
+                <target>공용 사용자 이름은 최소 3자 이상이어야 하며 문자와 숫자만 포함해야 합니다</target>
             </trans-unit>
 
             <trans-unit id="change_password.title">

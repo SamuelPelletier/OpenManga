@@ -280,6 +280,10 @@
                 <source>login.form.signup.form_type.password.length</source>
                 <target>Votre mot de passe doit contenir au moins 6 caractéres</target>
             </trans-unit>
+            <trans-unit id="login.form.signup.form_type.username.exist">
+                <source>login.form.signup.form_type.username.exist</source>
+                <target>Ce nom d'utilisateur existe déjà</target>
+            </trans-unit>
 
             <trans-unit id="reset_password.title">
                 <source>reset_password.title</source>
@@ -425,9 +429,21 @@
                 <source>edit_profile.link.change_password</source>
                 <target>Changer de mot de passe</target>
             </trans-unit>
-            <trans-unit id="edit_profile.form.text">
-                <source>edit_profile.form.text</source>
+            <trans-unit id="edit_profile.form.text_email">
+                <source>edit_profile.form.text_email</source>
                 <target>Aucun email commercial ne vous serra envoyé mais nous avons besoin de votre email si vous perdez votre mot de passe.</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text_username">
+                <source>edit_profile.form.text_username</source>
+                <target>Nom qui sert uniquement à la connexion</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text_public_name">
+                <source>edit_profile.form.text_public_name</source>
+                <target>Nom qui sera utilisé pour un affichage public</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name">
+                <source>edit_profile.form_type.public_name</source>
+                <target>Nom public</target>
             </trans-unit>
             <trans-unit id="edit_profile.form.button">
                 <source>edit_profile.form.button</source>
@@ -440,6 +456,14 @@
             <trans-unit id="edit_profile.save">
                 <source>edit_profile.save</source>
                 <target>Vos informations ont été sauvegardé avec succés</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name.exist">
+                <source>edit_profile.form_type.public_name.exist</source>
+                <target>Ce nom d'utilisateur public existe déjà</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name.regex">
+                <source>edit_profile.form_type.public_name.regex</source>
+                <target>Le nom d'utilisateur public doit contenir 3 caractères minimum et uniquement des lettres et des chiffres</target>
             </trans-unit>
 
             <trans-unit id="change_password.title">
@@ -621,6 +645,35 @@ Mais ils ne sont pas exlusivement des mangas, il existe aussi des musiques, des 
             <trans-unit id="credit.payment_button">
                 <source>credit.payment_button</source>
                 <target>Acheter #credits# credits</target>
+            </trans-unit>
+
+            <trans-unit id="life_product.title">
+                <source>life_product.title</source>
+                <target>Lifetime</target>
+            </trans-unit>
+            <trans-unit id="shop.life_product.user.content">
+                <source>shop.life_product.user.content</source>
+                <target>Certaines fonctionnalités sont disponible avec un paiement unique sans expiration</target>
+            </trans-unit>
+            <trans-unit id="shop.life_product.access">
+                <source>shop.life_product.access</source>
+                <target>Accéder à l'offre Lifetime</target>
+            </trans-unit>
+            <trans-unit id="life_product.description">
+                <source>life_product.description</source>
+                <target>Dans cette offre à vie, vous aurez accès à l'entièreté des anciens mangas ainsi que ceux qui continueront d'être ajouté. Dans la recherche avancée vous pourrez utiliser le filtrage par ancien manga. De plus des nouvelles fonctionnalités viendront s'ajouter à cette offre par la suite.</target>
+            </trans-unit>
+            <trans-unit id="life_product.sub_description">
+                <source>life_product.sub_description</source>
+                <target>L'offre Lifetime est valable sans date de fin ou jusqu'à suppression du compte. Aucun remboursement ne peut être effectué</target>
+            </trans-unit>
+            <trans-unit id="life_product.price">
+                <source>life_product.price</source>
+                <target>1500 credits pour Lifetime</target>
+            </trans-unit>
+            <trans-unit id="life_product.button">
+                <source>life_product.button</source>
+                <target>Débloquer Lifetime</target>
             </trans-unit>
 
             <trans-unit id="square.error.internal">

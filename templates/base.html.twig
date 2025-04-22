@@ -45,24 +45,26 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <form action="{{ url('search') }}" method="get" class="navbar-form navbar-left">
-                            <div class="form-group search-navbar">
-                                <input name="q"
-                                       class="form-control search-field"
-                                       id="search_field"
-                                       placeholder="{{ 'post.search_for'|trans }}"
-                                       autocomplete="off"
-                                       minlength="3"
-                                       autofocus
-                                       value="{{ app.request.query.get('q') }}"
-                                >
-                                <button type="submit" class="btn btn-default search-button">GO !</button>
-                                {% include 'tag_search.html.twig' %}
+                    {% if 'advanced_search' in app.request.uri == false %}
+                        <ul class="nav navbar-nav">
+                            <form action="{{ url('search') }}" method="get" class="navbar-form navbar-left">
+                                <div class="form-group search-navbar">
+                                    <input name="q"
+                                           class="form-control search-field"
+                                           id="search_field"
+                                           placeholder="{{ 'post.search_for'|trans }}"
+                                           autocomplete="off"
+                                           minlength="3"
+                                           autofocus
+                                           value="{{ app.request.query.get('q') }}"
+                                    >
+                                    <button type="submit" class="btn btn-default search-button">GO !</button>
+                                    {% include 'tag_search.html.twig' %}
 
-                            </div>
-                        </form>
-                    </ul>
+                                </div>
+                            </form>
+                        </ul>
+                    {% endif %}
                     <ul class="nav navbar-nav navbar-right">
                         {% block header_navigation_links %}
                             <li>
@@ -152,6 +154,13 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                 </a>
                             </li>
                             <ul class="dropdown-menu" id="menu-app" role="menu" aria-labelledby="locales">
+                                <li {% if app.request.uri == url('advanced_search') %}aria-checked="true" class="active"
+                                    {% else %}aria-checked="false"{% endif %} role="menuitem">
+                                    <a href="{{ url('advanced_search') }}">
+                                        <span class="fa fa-magnifying-glass"></span>
+                                        {{ 'manga.advanced_search'|trans }}
+                                    </a>
+                                </li>
                                 <li {% if app.request.uri == url('tags') %}aria-checked="true" class="active"
                                     {% else %}aria-checked="false"{% endif %} role="menuitem">
                                     <a href="{{ url('tags') }}">

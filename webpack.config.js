@@ -55,6 +55,7 @@ Encore
     .addEntry('js/form', './assets/js/form.js')
     .addEntry('js/tag-search', './assets/js/tag-search.js')
     .addEntry('js/square', './assets/js/square.js')
+    .addEntry('js/life-product', './assets/js/life-product.js')
     .addStyleEntry('css/app', ['./assets/scss/app.scss', './assets/css/index.css', './assets/css/neon-color.css', './assets/css/button.css'])
     .addStyleEntry('css/show', ['./assets/css/show.css', './node_modules/lightgallery/css/lightgallery.css'])
     .addStyleEntry('css/disclaimer', './assets/css/disclaimer.css')
