@@ -170,7 +170,7 @@ class MangaController extends BaseController
         $languesQuery = $request->query->get('language', 'all');
         $isOld = 'on';
         if ($user?->isUnlockOldManga()) {
-            $isOld = $request->query->get('is_old', 'on');
+            $isOld = $request->query->get('is_old', 'off');
         }
         $orderBy = $request->query->get('sort', 'recent_to_old');
         $foundMangas = $mangas->findBySearchQueryAdvanced($query, $tagQuery, $languesQuery, $orderBy, $isOld == 'on', $page);
