@@ -270,6 +270,10 @@
     cursor: pointer;
 }
 
+.select-container select option {
+    background: #4c4c4c;
+}
+
 .select-container::after {
     content: "▾";
     position: absolute;
@@ -312,7 +316,7 @@
         margin-top: 18px;
     }
 
-    #menu-app{
+    #menu-app {
         top: 182px !important;
     }
 }
