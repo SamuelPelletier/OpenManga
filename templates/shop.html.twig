@@ -62,7 +62,7 @@
     </div>
     {% if is_granted('IS_AUTHENTICATED_REMEMBERED') != 1 %}
         <div class="row">
-            <div class="button-effect shop-button">
+            <div class="button-effect shop-button-login">
                 <a class="effect" href="{{ url('app_login') }}">{{ 'menu.login'|trans }}</a>
             </div>
         </div>
