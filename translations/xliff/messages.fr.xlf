@@ -659,6 +659,10 @@ Mais ils ne sont pas exlusivement des mangas, il existe aussi des musiques, des 
                 <source>shop.life_product.user.content</source>
                 <target>Certaines fonctionnalités sont disponible avec un paiement unique sans expiration</target>
             </trans-unit>
+            <trans-unit id="shop.life_product.anonymous.content">
+                <source>shop.life_product.anonymous.content</source>
+                <target>L'offre Lifetime est réservé aux utilisateurs possédant un compte</target>
+            </trans-unit>
             <trans-unit id="shop.life_product.access">
                 <source>shop.life_product.access</source>
                 <target>Accéder à l'offre Lifetime</target>

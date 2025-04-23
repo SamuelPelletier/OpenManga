@@ -657,6 +657,10 @@ Es handelt sich aber nicht nur um Manga, sondern auch um Musik, Romane oder Vide
                 <source>shop.life_product.user.content</source>
                 <target>Einige Funktionen sind mit einer einmaligen Zahlung ohne Ablaufdatum verfügbar</target>
             </trans-unit>
+            <trans-unit id="shop.life_product.anonymous.content">
+                <source>shop.life_product.anonymous.content</source>
+                <target>Das Lifetime-Angebot ist für Benutzer mit einem Konto reserviert</target>
+            </trans-unit>
             <trans-unit id="shop.life_product.access">
                 <source>shop.life_product.access</source>
                 <target>Greifen Sie auf das Lifetime-Angebot zu</target>

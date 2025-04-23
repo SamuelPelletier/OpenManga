@@ -659,6 +659,10 @@
                 <source>shop.life_product.user.content</source>
                 <target>Некоторые функции доступны за одноразовую оплату без срока истечения</target>
             </trans-unit>
+            <trans-unit id="shop.life_product.anonymous.content">
+                <source>shop.life_product.anonymous.content</source>
+                <target>Предложение Lifetime предназначено для пользователей с аккаунтом</target>
+            </trans-unit>
             <trans-unit id="shop.life_product.access">
                 <source>shop.life_product.access</source>
                 <target>Получите доступ к предложению Lifetime</target>

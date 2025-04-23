@@ -5,6 +5,10 @@
 .shop-menu p {
     margin-bottom: 12px !important;
 }
+.shop-button{
+    text-align: center;
+}
+
 .shop-button a:hover {
     color: white !important;
     cursor: pointer;

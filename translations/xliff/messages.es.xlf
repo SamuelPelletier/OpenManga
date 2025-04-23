@@ -659,6 +659,10 @@ Pero no son exclusivamente manga, también hay música, novelas o videojuegos.
                 <source>shop.life_product.user.content</source>
                 <target>Algunas funciones están disponibles con un pago único sin fecha de caducidad</target>
             </trans-unit>
+            <trans-unit id="shop.life_product.anonymous.content">
+                <source>shop.life_product.anonymous.content</source>
+                <target>La oferta Lifetime está reservada para usuarios con una cuenta</target>
+            </trans-unit>
             <trans-unit id="shop.life_product.access">
                 <source>shop.life_product.access</source>
                 <target>Accede a la oferta Lifetime</target>

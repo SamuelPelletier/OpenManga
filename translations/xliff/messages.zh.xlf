@@ -657,6 +657,10 @@ Doujin 或 doujinshi 是由业余作者制作的漫画，通常是对像《海�
                 <source>shop.life_product.user.content</source>
                 <target>某些功能可通过一次性付款无限期使用</target>
             </trans-unit>
+            <trans-unit id="shop.life_product.anonymous.content">
+                <source>shop.life_product.anonymous.content</source>
+                <target>Lifetime优惠仅限拥有账户的用户</target>
+            </trans-unit>
             <trans-unit id="shop.life_product.access">
                 <source>shop.life_product.access</source>
                 <target>访问Lifetime优惠</target>

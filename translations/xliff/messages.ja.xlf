@@ -659,6 +659,10 @@ My Anime List には1,300以上のアニメエロアニメも掲載されてい�
                 <source>shop.life_product.user.content</source>
                 <target>一部の機能は有効期限のない一度限りの支払いで利用できます</target>
             </trans-unit>
+            <trans-unit id="shop.life_product.anonymous.content">
+                <source>shop.life_product.anonymous.content</source>
+                <target>Lifetimeオファーはアカウントを持つユーザー専用です</target>
+            </trans-unit>
             <trans-unit id="shop.life_product.access">
                 <source>shop.life_product.access</source>
                 <target>Lifetimeオファーにアクセスする</target>
