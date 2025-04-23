@@ -70,7 +70,7 @@ class MangaController extends BaseController
         }
 
         // Add user permission
-        if (($manga->isOld() || $manga->isBlocked()) && !$user?->isPatreonAllow(1)) {
+        if ((($manga->isOld() || $manga->isBlocked()) && !$user?->isPatreonAllow(1)) and ($manga->isOld() && !$user->isUnlockOldManga())) {
             return $this->render('bundles/TwigBundle/Exception/error_403.html.twig');
         }
 
@@ -150,20 +150,31 @@ class MangaController extends BaseController
         int                $page = 1
     ): Response
     {
+        /**
+         * @var User $user
+         */
+        $user = $this->getUser();
+
         // No query parameter
         $foundMangas = null;
         $languages = $languageRepository->createQueryBuilder('l')
             ->where('l.name in (:language_allow)')
             ->setParameter('language_allow', array_keys(Language::ISO_CODE))
             ->orderBy('l.name', 'ASC')->getQuery()->getResult();
+        array_map(function ($language) {
+            $language->setName(ucfirst($language->getName()));
+        }, $languages);
 
         $query = $request->query->get('q', '');
         $tagQuery = $request->query->get('t', '');
-        $languesQuery = $request->query->get('language', '*');
-        $isOld = $request->query->get('is_old', 'off');
+        $languesQuery = $request->query->get('language', 'all');
+        $isOld = 'on';
+        if ($user?->isUnlockOldManga()) {
+            $isOld = $request->query->get('is_old', 'on');
+        }
         $orderBy = $request->query->get('sort', 'recent_to_old');
-        if ($query != '' || $tagQuery != '' || $languesQuery != '*' || $isOld == 'off' || $orderBy != 'recent_to_old') {
-            $foundMangas = $mangas->findBySearchQueryAdvanced($query, $tagQuery, $languesQuery, $orderBy, $isOld == 'on',$page);
+        if ($query != '' || $tagQuery != '' || $languesQuery != 'all' || $isOld == 'on' || $orderBy != 'recent_to_old') {
+            $foundMangas = $mangas->findBySearchQueryAdvanced($query, $tagQuery, $languesQuery, $orderBy, $isOld == 'on', $page);
         }
         return $this->render('advanced_search.html.twig', ['mangas' => $foundMangas, 'languages' => $languages]);
     }

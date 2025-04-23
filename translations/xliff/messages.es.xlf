@@ -171,7 +171,7 @@
             </trans-unit>
             <trans-unit id="manga.unlock">
                 <source>manga.unlock</source>
-                <target>Desbloquear con suscripción</target>
+                <target>Desbloquear con Premium o Lifetime</target>
             </trans-unit>
             <trans-unit id="manga.old">
                 <source>manga.old</source>
@@ -647,6 +647,43 @@ Pero no son exclusivamente manga, también hay música, novelas o videojuegos.
                 <target>Comprar #credits# credits</target>
             </trans-unit>
 
+            <trans-unit id="life_product.title">
+                <source>life_product.title</source>
+                <target>Lifetime</target>
+            </trans-unit>
+            <trans-unit id="invoice.life_product">
+                <source>invoice.life_product</source>
+                <target>Lifetime</target>
+            </trans-unit>
+            <trans-unit id="shop.life_product.user.content">
+                <source>shop.life_product.user.content</source>
+                <target>Algunas funciones están disponibles con un pago único sin fecha de caducidad</target>
+            </trans-unit>
+            <trans-unit id="shop.life_product.access">
+                <source>shop.life_product.access</source>
+                <target>Accede a la oferta Lifetime</target>
+            </trans-unit>
+            <trans-unit id="life_product.description">
+                <source>life_product.description</source>
+                <target>Con esta oferta Lifetime, tendrás acceso a todos los mangas antiguos, así como a los nuevos que se seguirán añadiendo. Puedes filtrar por manga antiguo en la búsqueda avanzada. También se añadirán nuevas funciones a esta oferta en el futuro.</target>
+            </trans-unit>
+            <trans-unit id="life_product.sub_description">
+                <source>life_product.sub_description</source>
+                <target>La oferta Lifetime es válida sin fecha de finalización o hasta que se elimine la cuenta. No se pueden realizar reembolsos.</target>
+            </trans-unit>
+            <trans-unit id="life_product.price">
+                <source>life_product.price</source>
+                <target>1500 credits para Lifetime</target>
+            </trans-unit>
+            <trans-unit id="life_product.button">
+                <source>life_product.button</source>
+                <target>Desbloquear Lifetime</target>
+            </trans-unit>
+            <trans-unit id="life_product.owned">
+                <source>life_product.owned</source>
+                <target>Lifetime ya desbloqueado</target>
+            </trans-unit>
+
             <trans-unit id="square.error.internal">
                 <source>square.error.internal</source>
                 <target>Error interno</target>
@@ -678,6 +715,10 @@ Pero no son exclusivamente manga, también hay música, novelas o videojuegos.
             <trans-unit id="square.error.invalid_account">
                 <source>square.error.invalid_account</source>
                 <target>Fondos insuficientes o rechazo bancario</target>
+            </trans-unit>
+            <trans-unit id="square.error.amount">
+                <source>square.error.amount</source>
+                <target>Cantidad incorrecta</target>
             </trans-unit>
             <trans-unit id="square.result.error">
                 <source>square.result.error</source>
@@ -759,6 +800,55 @@ Pero no son exclusivamente manga, también hay música, novelas o videojuegos.
             <trans-unit id="shop.back_to_shop">
                 <source>shop.back_to_shop</source>
                 <target>Volver a la tienda</target>
+            </trans-unit>
+
+            <trans-unit id="manga.advanced_search">
+                <source>manga.advanced_search</source>
+                <target>Búsqueda avanzada</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.name.placeholder">
+                <source>advanced_search.name.placeholder</source>
+                <target>Nombre del manga</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.tags.placeholder">
+                <source>advanced_search.tags.placeholder</source>
+                <target>tag1,tag2,tag3</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.language.all">
+                <source>advanced_search.language.all</source>
+                <target>Todos los idiomas</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.is_old.label">
+                <source>advanced_search.is_old.label</source>
+                <target>Mostrar mangas antiguos</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.recent_to_old">
+                <source>advanced_search.recent_to_old</source>
+                <target>De más nuevo a más antiguo</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.old_to_recent">
+                <source>advanced_search.old_to_recent</source>
+                <target>De más antiguo a más nuevo</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.increase_view">
+                <source>advanced_search.increase_view</source>
+                <target>Por número creciente de visitas</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.decrease_view">
+                <source>advanced_search.decrease_view</source>
+                <target>Por número decreciente de visitas</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.increase_count_page">
+                <source>advanced_search.increase_count_page</source>
+                <target>Por número creciente de páginas</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.decrease_count_page">
+                <source>advanced_search.decrease_count_page</source>
+                <target>Por número decreciente de páginas</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.search">
+                <source>advanced_search.search</source>
+                <target>Buscar</target>
             </trans-unit>
         </body>
     </file>

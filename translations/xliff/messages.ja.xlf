@@ -171,7 +171,7 @@
             </trans-unit>
             <trans-unit id="manga.unlock">
                 <source>manga.unlock</source>
-                <target>購読でアンロック</target>
+                <target>PremiumまたはLifetimeでアンロック</target>
             </trans-unit>
             <trans-unit id="manga.old">
                 <source>manga.old</source>
@@ -647,6 +647,43 @@ My Anime List には1,300以上のアニメエロアニメも掲載されてい�
                 <target>#credits# credits を購入する</target>
             </trans-unit>
 
+            <trans-unit id="life_product.title">
+                <source>life_product.title</source>
+                <target>Lifetime</target>
+            </trans-unit>
+            <trans-unit id="invoice.life_product">
+                <source>invoice.life_product</source>
+                <target>Lifetime</target>
+            </trans-unit>
+            <trans-unit id="shop.life_product.user.content">
+                <source>shop.life_product.user.content</source>
+                <target>一部の機能は有効期限のない一度限りの支払いで利用できます</target>
+            </trans-unit>
+            <trans-unit id="shop.life_product.access">
+                <source>shop.life_product.access</source>
+                <target>Lifetimeオファーにアクセスする</target>
+            </trans-unit>
+            <trans-unit id="life_product.description">
+                <source>life_product.description</source>
+                <target>このLifetimeオファーでは、古いマンガだけでなく、今後も追加される新しいマンガにもアクセスできます。高度な検索で古いマンガをフィルタリングできます。今後、このオファーには新機能も追加される予定です。</target>
+            </trans-unit>
+            <trans-unit id="life_product.sub_description">
+                <source>life_product.sub_description</source>
+                <target>Lifetimeオファーは、終了日なしまたはアカウントが削除されるまで有効です。返金はできません。</target>
+            </trans-unit>
+            <trans-unit id="life_product.price">
+                <source>life_product.price</source>
+                <target>Lifetimeのための1500 credits</target>
+            </trans-unit>
+            <trans-unit id="life_product.button">
+                <source>life_product.button</source>
+                <target>Lifetimeをアンロック</target>
+            </trans-unit>
+            <trans-unit id="life_product.owned">
+                <source>life_product.owned</source>
+                <target>Lifetimeはすでにアンロックされています</target>
+            </trans-unit>
+
             <trans-unit id="square.error.internal">
                 <source>square.error.internal</source>
                 <target>内部エラー</target>
@@ -678,6 +715,10 @@ My Anime List には1,300以上のアニメエロアニメも掲載されてい�
             <trans-unit id="square.error.invalid_account">
                 <source>square.error.invalid_account</source>
                 <target>残高不足または銀行の拒否</target>
+            </trans-unit>
+            <trans-unit id="square.error.amount">
+                <source>square.error.amount</source>
+                <target>金額が正しくありません</target>
             </trans-unit>
             <trans-unit id="square.result.error">
                 <source>square.result.error</source>
@@ -759,6 +800,55 @@ My Anime List には1,300以上のアニメエロアニメも掲載されてい�
             <trans-unit id="shop.back_to_shop">
                 <source>shop.back_to_shop</source>
                 <target>ストアに戻る</target>
+            </trans-unit>
+
+            <trans-unit id="manga.advanced_search">
+                <source>manga.advanced_search</source>
+                <target>高度な検索</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.name.placeholder">
+                <source>advanced_search.name.placeholder</source>
+                <target>マンガ名</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.tags.placeholder">
+                <source>advanced_search.tags.placeholder</source>
+                <target>tag1,tag2,tag3</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.language.all">
+                <source>advanced_search.language.all</source>
+                <target>すべての言語</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.is_old.label">
+                <source>advanced_search.is_old.label</source>
+                <target>古いマンガを表示</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.recent_to_old">
+                <source>advanced_search.recent_to_old</source>
+                <target>新しい順</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.old_to_recent">
+                <source>advanced_search.old_to_recent</source>
+                <target>古い順</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.increase_view">
+                <source>advanced_search.increase_view</source>
+                <target>閲覧数の多い順</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.decrease_view">
+                <source>advanced_search.decrease_view</source>
+                <target>閲覧数の少ない順</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.increase_count_page">
+                <source>advanced_search.increase_count_page</source>
+                <target>ページ数の多い順</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.decrease_count_page">
+                <source>advanced_search.decrease_count_page</source>
+                <target>ページ数の少ない順</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.search">
+                <source>advanced_search.search</source>
+                <target>検索</target>
             </trans-unit>
         </body>
     </file>

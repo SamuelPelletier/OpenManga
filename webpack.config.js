@@ -67,6 +67,7 @@ Encore
     .addStyleEntry('css/invoice', './assets/css/invoice.css')
     .addStyleEntry('css/bootstrap-grid', './node_modules/bootstrap/dist/css/bootstrap-grid.css')
     .addStyleEntry('css/tag-search', './assets/css/tag-search.css')
+    .addStyleEntry('css/advanced-search', './assets/css/advanced-search.css')
     .splitEntryChunks()
     .enableSingleRuntimeChunk()
     .addAliases({

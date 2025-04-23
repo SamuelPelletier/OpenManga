@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', async function () {
-    document.getElementById('main').innerHTML = document.getElementById('main').innerHTML.replace(/(\b lifetime\b)/gi, '<span class="lifetime">$1</span>');
+    document.getElementById('main').innerHTML = document.getElementById('main').innerHTML.replace(/( lifetime)/gi, '<span class="lifetime">$1</span>');
     let clickEvent = async function (event) {
         let ref = event.target
         let parentId = ref.parentElement.id
