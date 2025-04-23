@@ -168,11 +168,11 @@ class MangaController extends BaseController
         $query = $request->query->get('q', '');
         $tagQuery = $request->query->get('t', '');
         $languesQuery = $request->query->get('language', 'all');
+        $orderBy = $request->query->get('sort', 'recent_to_old');
         $isOld = 'on';
-        if ($user?->isUnlockOldManga()) {
+        if ($user?->isUnlockOldManga() && count($request->query->all()) > 0) {
             $isOld = $request->query->get('is_old', 'off');
         }
-        $orderBy = $request->query->get('sort', 'recent_to_old');
         $foundMangas = $mangas->findBySearchQueryAdvanced($query, $tagQuery, $languesQuery, $orderBy, $isOld == 'on', $page);
         return $this->render('advanced_search.html.twig', ['mangas' => $foundMangas, 'languages' => $languages]);
     }
