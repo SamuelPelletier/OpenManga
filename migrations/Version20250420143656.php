@@ -24,9 +24,10 @@ final class Version20250420143656 extends AbstractMigration
             ALTER TABLE user ADD public_name VARCHAR(180) NOT NULL after username, ADD is_unlock_old_manga TINYINT(1) DEFAULT 0 NOT NULL
         SQL
         );
-        /*$this->addSql(<<<'SQL'
+        $this->addSql(<<<'SQL'
             CREATE UNIQUE INDEX UNIQ_8D93D649257E3CD7 ON user (public_name)
-        SQL);*/
+        SQL
+        );
     }
 
     public function down(Schema $schema): void
@@ -36,8 +37,9 @@ final class Version20250420143656 extends AbstractMigration
             DROP INDEX UNIQ_8D93D649257E3CD7 ON user
         SQL
         );
-        /* $this->addSql(<<<'SQL'
-             ALTER TABLE user DROP public_name, DROP is_unlock_old_manga
-         SQL);*/
+        $this->addSql(<<<'SQL'
+            ALTER TABLE user DROP public_name, DROP is_unlock_old_manga
+        SQL
+        );
     }
 }

@@ -52,7 +52,7 @@ class SecurityController extends AbstractController
                     $form->get('plainPassword')->getData()
                 )
             );
-            $user->setPublicName('NewUser' . rand(1, 10000));
+            $user->setPublicName('TempNewUser' . rand(1, 10000));
             $entityManager->persist($user);
             $entityManager->flush();
 
