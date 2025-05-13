@@ -233,6 +233,17 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
             {% endif %}
         </nav>
     </header>
+    {% if 'preview=1' in app.request.uri %}
+        <a href="https://hubba.ai/?ref=t-{{ app.request.server.get('APP_NAME')|lower }}" id="banner">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+                  rel="stylesheet">
+            <img src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'banners/'~random(1,26)~'.jpg' ) }}'>
+            <span style="color:white;">hubba<span style="color:rgb(133 107 255)">.ai</span></span>
+            <img src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'banners/'~random(1,26)~'.jpg' ) }}'>
+        </a>
+    {% endif %}
 {% endblock %}
 
 <div class="container body-container">

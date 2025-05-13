@@ -343,7 +343,7 @@ article a:hover {
     transform: scale(1.03);
 }
 
-.uppercase-title{
+.uppercase-title {
     text-transform: uppercase;
     font-weight: bolder;
 }
@@ -1286,4 +1286,41 @@ html {
     margin-bottom: 0.5em;
 }
 
+#banner {
+    width: fit-content;
+    margin: auto;
+    --tw-shadow: 0 0 13px 0 #856bff inset;
+    --tw-shadow-colored: inset 0 0 13px 0 var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    background-color: rgb(23 23 23);
+    border-radius: 8px;
+}
+
+#banner img {
+    height: 140px;
+    scale: 90%;
+}
+
+@media (max-width: 768px) {
+    #banner {
+        margin: 0 1vw 20px 1vw;
+        width: inherit;
+    }
+
+    #banner img:last-child {
+        display: none;
+    }
+}
+
+#banner > span {
+    vertical-align: middle;
+    width: 30vmax;
+    display: inline-block;
+    text-align: center;
+}
+
+#banner > span {
+    font-family: Poppins, Poppins Fallback;
+    font-size: 40px;
+}
 
