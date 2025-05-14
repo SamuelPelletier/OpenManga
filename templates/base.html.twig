@@ -233,7 +233,7 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
             {% endif %}
         </nav>
     </header>
-    {% if 'preview=1' in app.request.uri %}
+    {% if 'preview=0' not in app.request.uri %}
         <a href="https://hubba.ai/?ref=t-{{ app.request.server.get('APP_NAME')|lower }}" id="banner">
             <link rel="preconnect" href="https://fonts.googleapis.com">
             <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
