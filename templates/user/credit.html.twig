@@ -8,7 +8,7 @@
 
 {% block main %}
     <div><a href="{{ path('shop') }}">{{ 'shop.back_to_shop'|trans }}</a></div>
-    <h1>{{ 'credit.title'|trans }}</h1>
+    <h1 class="uppercase-title">{{ 'credit.title'|trans }}</h1>
     <p>{{ 'credit.description'|trans }}</p>
     <p>{{ 'credit.sub_description'|trans }}</p>
     <div id="card-payment-form-container" class="form-credit">
@@ -17,6 +17,7 @@
             <select name="price-select" class="price-select">
                 <option value="500">5€</option>
                 <option value="1000">10€</option>
+                <option value="1500">15€</option>
                 <option value="2000">20€</option>
                 <option value="5000">50€</option>
             </select>

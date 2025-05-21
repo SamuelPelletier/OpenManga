@@ -1,3 +1,6 @@
+@import "tailwindcss";
+@import "basecoat-css";
+
 .form {
     max-width: 90%;
 }
@@ -22,7 +25,7 @@
     line-height: 88%;
 }
 
-label.active{
+label.active {
     transform: initial;
-    -webkit-transform:initial;
+    -webkit-transform: initial;
 }

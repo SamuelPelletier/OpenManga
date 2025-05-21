@@ -25,6 +25,9 @@ services:
 
   App\Form\Validator\FileExtensionValidator:
     tags: [ 'validator.constraint_validator' ]
+  App\EventListener\LoginSuccessListener:
+    tags:
+      - { name: 'kernel.event_listener', event: Symfony\Component\Security\Http\Event\LoginSuccessEvent }
 
 when@test:
   services:

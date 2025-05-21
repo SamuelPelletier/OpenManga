@@ -26,15 +26,17 @@
 
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-4"></div>
-        <div class="col-sm-4">
-            {% if user.isPatreonAllow(1) %}
+    <div class="account-title">
+            {% if user.isPatreonAllow(1) and user.isUnlockOldManga == 0 %}
                 <p class="premium premium-title">Premium</p>
             {% endif %}
-        </div>
-        <div class="col-sm-4"></div>
-
+            {% if user.isUnlockOldManga and user.isPatreonAllow(1) == 0 %}
+                <p class="lifetime lifetime-title">{{ 'life_product.title'|trans }}</p>
+            {% endif %}
+            {% if user.isPatreonAllow(1) and user.isUnlockOldManga %}
+                <span class="premium premium-title">Premium</span><span
+                    class="lifetime lifetime-title"> + {{ 'life_product.title'|trans }}</span>
+            {% endif %}
     </div>
 
     <div class="row stats">

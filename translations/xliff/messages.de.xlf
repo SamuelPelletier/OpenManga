@@ -171,7 +171,7 @@
             </trans-unit>
             <trans-unit id="manga.unlock">
                 <source>manga.unlock</source>
-                <target>Mit Abonnement freischalten</target>
+                <target>Mit Premium oder Lifetime freischalten</target>
             </trans-unit>
             <trans-unit id="manga.old">
                 <source>manga.old</source>
@@ -279,6 +279,10 @@
             <trans-unit id="login.form.signup.form_type.password.length">
                 <source>login.form.signup.form_type.password.length</source>
                 <target>Ihr Passwort sollte mindestens 6 Zeichen lang sein</target>
+            </trans-unit>
+            <trans-unit id="login.form.signup.form_type.username.exist">
+                <source>login.form.signup.form_type.username.exist</source>
+                <target>Dieser Benutzername existiert bereits</target>
             </trans-unit>
 
             <trans-unit id="reset_password.title">
@@ -425,9 +429,21 @@
                 <source>edit_profile.link.change_password</source>
                 <target>Passwort ändern</target>
             </trans-unit>
-            <trans-unit id="edit_profile.form.text">
-                <source>edit_profile.form.text</source>
+            <trans-unit id="edit_profile.form.text_email">
+                <source>edit_profile.form.text_email</source>
                 <target>Jede Werbemail wird an Sie gesendet, aber wir benötigen Ihre E-Mail, wenn Sie Ihr Passwort vergessen haben.</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text_username">
+                <source>edit_profile.form.text_username</source>
+                <target>Benutzername nur zur Anmeldung verwendet</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form.text_public_name">
+                <source>edit_profile.form.text_public_name</source>
+                <target>Benutzername, der für die öffentliche Anzeige verwendet wird</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name">
+                <source>edit_profile.form_type.public_name</source>
+                <target>Öffentlicher Benutzername</target>
             </trans-unit>
             <trans-unit id="edit_profile.form.button">
                 <source>edit_profile.form.button</source>
@@ -440,6 +456,14 @@
             <trans-unit id="edit_profile.save">
                 <source>edit_profile.save</source>
                 <target>Ihre Daten wurden erfolgreich gespeichert</target>
+            </trans-unit>
+            <trans-unit id="edit_profile.form_type.public_name.exist">
+                <source>edit_profile.form_type.public_name.exist</source>
+                <target>Dieser öffentliche Benutzername existiert bereits</target>
+            </trans-unit>
+            <trans-unit id="edit_form.form_type.public_name.regex">
+                <source>edit_form.form_type.public_name.regex</source>
+                <target>Der öffentliche Benutzername muss mindestens 3 Zeichen enthalten und darf nur Buchstaben und Zahlen enthalten</target>
             </trans-unit>
 
             <trans-unit id="change_password.title">
@@ -621,6 +645,47 @@ Es handelt sich aber nicht nur um Manga, sondern auch um Musik, Romane oder Vide
                 <target>Kaufe #credits# credits</target>
             </trans-unit>
 
+            <trans-unit id="life_product.title">
+                <source>life_product.title</source>
+                <target>Lifetime</target>
+            </trans-unit>
+            <trans-unit id="invoice.life_product">
+                <source>invoice.life_product</source>
+                <target>Lifetime</target>
+            </trans-unit>
+            <trans-unit id="shop.life_product.user.content">
+                <source>shop.life_product.user.content</source>
+                <target>Einige Funktionen sind mit einer einmaligen Zahlung ohne Ablaufdatum verfügbar</target>
+            </trans-unit>
+            <trans-unit id="shop.life_product.anonymous.content">
+                <source>shop.life_product.anonymous.content</source>
+                <target>Das Lifetime-Angebot ist für Benutzer mit einem Konto reserviert</target>
+            </trans-unit>
+            <trans-unit id="shop.life_product.access">
+                <source>shop.life_product.access</source>
+                <target>Greifen Sie auf das Lifetime-Angebot zu</target>
+            </trans-unit>
+            <trans-unit id="life_product.description">
+                <source>life_product.description</source>
+                <target>Mit diesem Lifetime-Angebot haben Sie Zugang zu allen alten Mangas sowie zu neuen, die weiterhin hinzugefügt werden. Sie können in der erweiterten Suche nach alten Mangas filtern. Diesem Angebot werden in Zukunft auch neue Funktionen hinzugefügt.</target>
+            </trans-unit>
+            <trans-unit id="life_product.sub_description">
+                <source>life_product.sub_description</source>
+                <target>Das Lifetime-Angebot ist gültig ohne Enddatum oder bis das Konto gelöscht wird. Es können keine Rückerstattungen gewährt werden.</target>
+            </trans-unit>
+            <trans-unit id="life_product.price">
+                <source>life_product.price</source>
+                <target>1500 credits für Lifetime</target>
+            </trans-unit>
+            <trans-unit id="life_product.button">
+                <source>life_product.button</source>
+                <target>Lifetime freischalten</target>
+            </trans-unit>
+            <trans-unit id="life_product.owned">
+                <source>life_product.owned</source>
+                <target>Lifetime bereits freigeschaltet</target>
+            </trans-unit>
+
             <trans-unit id="square.error.internal">
                 <source>square.error.internal</source>
                 <target>Interner Fehler</target>
@@ -652,6 +717,10 @@ Es handelt sich aber nicht nur um Manga, sondern auch um Musik, Romane oder Vide
             <trans-unit id="square.error.invalid_account">
                 <source>square.error.invalid_account</source>
                 <target>Unzureichende Mittel oder Bankablehnung</target>
+            </trans-unit>
+            <trans-unit id="square.error.amount">
+                <source>square.error.amount</source>
+                <target>Falscher Betrag</target>
             </trans-unit>
             <trans-unit id="square.result.error">
                 <source>square.result.error</source>
@@ -733,6 +802,55 @@ Es handelt sich aber nicht nur um Manga, sondern auch um Musik, Romane oder Vide
             <trans-unit id="shop.back_to_shop">
                 <source>shop.back_to_shop</source>
                 <target>Zurück zum Shop</target>
+            </trans-unit>
+
+            <trans-unit id="manga.advanced_search">
+                <source>manga.advanced_search</source>
+                <target>Erweiterte Suche</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.name.placeholder">
+                <source>advanced_search.name.placeholder</source>
+                <target>Manga-Name</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.tags.placeholder">
+                <source>advanced_search.tags.placeholder</source>
+                <target>tag1,tag2,tag3</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.language.all">
+                <source>advanced_search.language.all</source>
+                <target>Alle Sprachen</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.is_old.label">
+                <source>advanced_search.is_old.label</source>
+                <target>Alte Mangas anzeigen</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.recent_to_old">
+                <source>advanced_search.recent_to_old</source>
+                <target>Neueste zuerst</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.old_to_recent">
+                <source>advanced_search.old_to_recent</source>
+                <target>Älteste zuerst</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.increase_view">
+                <source>advanced_search.increase_view</source>
+                <target>Nach steigender Anzahl von Ansichten</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.decrease_view">
+                <source>advanced_search.decrease_view</source>
+                <target>Nach abnehmender Anzahl von Ansichten</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.increase_count_page">
+                <source>advanced_search.increase_count_page</source>
+                <target>Nach steigender Seitenzahl</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.decrease_count_page">
+                <source>advanced_search.decrease_count_page</source>
+                <target>Nach abnehmender Seitenzahl</target>
+            </trans-unit>
+            <trans-unit id="advanced_search.search">
+                <source>advanced_search.search</source>
+                <target>Suchen</target>
             </trans-unit>
         </body>
     </file>

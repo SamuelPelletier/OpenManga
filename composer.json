@@ -41,7 +41,7 @@
     "symfony/polyfill-php72": "^v1.31.0",
     "symfony/runtime": "^v7.2.0",
     "symfony/security-bundle": "^v7.2.0",
-    "symfony/string": "^v7.2.0",
+    "symfony/string": "*",
     "symfony/translation": "^v6.4.13",
     "symfony/twig-bundle": "^v6.4.13",
     "symfony/validator": "^v7.2.0",
@@ -54,6 +54,7 @@
     "twig/extra-bundle": "^v3.7.1",
     "twig/intl-extra": "^v3.7.1",
     "twig/markdown-extra": "^v3.7.1",
+    "twig/string-extra": "^3.7",
     "twig/twig": "^v2.16.1"
   },
   "require-dev": {

@@ -45,24 +45,26 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
 
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav">
-                        <form action="{{ url('search') }}" method="get" class="navbar-form navbar-left">
-                            <div class="form-group search-navbar">
-                                <input name="q"
-                                       class="form-control search-field"
-                                       id="search_field"
-                                       placeholder="{{ 'post.search_for'|trans }}"
-                                       autocomplete="off"
-                                       minlength="3"
-                                       autofocus
-                                       value="{{ app.request.query.get('q') }}"
-                                >
-                                <button type="submit" class="btn btn-default search-button">GO !</button>
-                                {% include 'tag_search.html.twig' %}
+                    {% if 'advanced_search' in app.request.uri == false %}
+                        <ul class="nav navbar-nav">
+                            <form action="{{ url('search') }}" method="get" class="navbar-form navbar-left">
+                                <div class="form-group search-navbar">
+                                    <input name="q"
+                                           class="form-control search-field"
+                                           id="search_field"
+                                           placeholder="{{ 'post.search_for'|trans }}"
+                                           autocomplete="off"
+                                           minlength="3"
+                                           autofocus
+                                           value="{{ app.request.query.get('q') }}"
+                                    >
+                                    <button type="submit" class="btn btn-default search-button">GO !</button>
+                                    {% include 'tag_search.html.twig' %}
 
-                            </div>
-                        </form>
-                    </ul>
+                                </div>
+                            </form>
+                        </ul>
+                    {% endif %}
                     <ul class="nav navbar-nav navbar-right">
                         {% block header_navigation_links %}
                             <li>
@@ -160,6 +162,13 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                 </a>
                             </li>
                             <ul class="dropdown-menu" id="menu-app" role="menu" aria-labelledby="locales">
+                                <li {% if app.request.uri == url('advanced_search') %}aria-checked="true" class="active"
+                                    {% else %}aria-checked="false"{% endif %} role="menuitem">
+                                    <a href="{{ url('advanced_search') }}">
+                                        <span class="fa fa-magnifying-glass"></span>
+                                        {{ 'manga.advanced_search'|trans }}
+                                    </a>
+                                </li>
                                 <li {% if app.request.uri == url('tags') %}aria-checked="true" class="active"
                                     {% else %}aria-checked="false"{% endif %} role="menuitem">
                                     <a href="{{ url('tags') }}">
@@ -232,6 +241,17 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
             {% endif %}
         </nav>
     </header>
+    {% if 'preview=0' not in app.request.uri %}
+        <a href="https://hubba.ai/?ref=t-{{ app.request.server.get('APP_NAME')|lower }}" id="banner">
+            <link rel="preconnect" href="https://fonts.googleapis.com">
+            <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+            <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+                  rel="stylesheet">
+            <img src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'banners/'~random(1,26)~'.jpg' ) }}'>
+            <span style="color:white;">hubba<span style="color:rgb(133 107 255)">.ai</span></span>
+            <img src='{{ app.request.getSchemeAndHttpHost() ~ asset( 'banners/'~random(1,26)~'.jpg' ) }}'>
+        </a>
+    {% endif %}
 {% endblock %}
 
 <div class="container body-container">

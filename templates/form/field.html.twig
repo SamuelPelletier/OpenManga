@@ -13,6 +13,17 @@
                 </ul>
             </div>
         {% endif %}
+        {% if formField.parent.vars.errors|length > 0 %}
+            <div class="form-error">
+                <ul>
+                    {% for error in formField.parent.vars.errors %}
+                        {% if  error.cause.propertyPath|u.snake == 'data_'~formField.vars.name %}
+                            <li>{{ error.message|trans }}</li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
     {% endapply %}
     <label for="{{ formField.vars.id }}">
         {{ formField.vars.label|trans }}{% if required is same as(true) %}<span class='req'>*</span>{% endif %}

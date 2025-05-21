@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('css/subscribe') }}
+{% endblock %}
+
+
+{% block main %}
+    <div><a href="{{ path('shop') }}">{{ 'shop.back_to_shop'|trans }}</a></div>
+    <h1 class="uppercase-title">{{ 'life_product.title'|trans }}</h1>
+    <p>{{ 'life_product.description'|trans }}</p>
+    <p>{{ 'life_product.sub_description'|trans }}</p>
+    <div id="credit-payment-form-container" class="form-credit">
+        {% if app.user.isUnlockOldManga %}
+            <h2 class="payment_card">🎉 {{ 'life_product.owned'|trans }} 🎉</h2>
+        {% else %}
+            <h2 class="payment_card">{{ 'subscribe.payment_credit'|trans }}</h2>
+            <h2 class="price">{{ 'life_product.price'|trans }}</h2>
+            {% include 'form/loader.html.twig' %}
+            <div class="success">
+                <p class="lifetime">{{ 'subscribe.success'|trans }}</p>
+                <p>{{ 'subscribe.thanks'|trans }}</p>
+            </div>
+            <button class="star-button" id="credit-button" type="button">
+                {{ 'life_product.button'|trans }}
+                {% include 'form/star_button.html.twig' %}
+            </button>
+            <p class="payment-status-container"></p>
+            <p class="payment-details-container"></p>
+            <p id="contact-credit">{{ 'help.contact'|trans({ '%contact_email%': app.request.server.get('CONTACT_MAIL') }) }}</p>
+        {% endif %}
+    </div>
+    {{ encore_entry_script_tags('js/life-product') }}
+{% endblock %}

@@ -10,8 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
-#[UniqueEntity(fields: ['username'], message: 'There is already an account with this username')]
+#[UniqueEntity(fields: ['username'], message: 'login.form.signup.form_type.username.exist')]
+#[UniqueEntity(fields: ['publicName'], message: 'edit_profile.form_type.public_name.exist')]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\Table(name: "user")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -25,6 +27,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(type: "string", unique: true, length: 180)]
     private string $username;
+
+    #[ORM\Column(type: "string", unique: true, length: 180)]
+    #[Assert\Regex(pattern: '/^[A-Za-z0-9]{3,}$/', message: "edit_profile.form_type.public_name.regex")]
+    private string $publicName;
 
     #[ORM\Column(type: "json")]
     private array $roles = [];
@@ -86,6 +92,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(targetEntity: "Manga", mappedBy: "creator")]
     private $createdMangas;
 
+    #[ORM\Column(type: "boolean", options: ["default" => 0])]
+    private bool $isUnlockOldManga = false;
+
     public function __construct()
     {
         $this->lastMangasRead = new ArrayCollection();
@@ -113,6 +122,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->username = $username;
 
         return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPublicName(): string
+    {
+        return $this->publicName;
+    }
+
+    /**
+     * @param string $publicName
+     */
+    public function setPublicName(string $publicName): void
+    {
+        $this->publicName = $publicName;
     }
 
     /**
@@ -422,5 +447,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function setCreatedMangas($createdMangas): void
     {
         $this->createdMangas = $createdMangas;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isUnlockOldManga(): bool
+    {
+        return $this->isUnlockOldManga;
+    }
+
+    /**
+     * @param bool $isUnlockOldManga
+     */
+    public function setIsUnlockOldManga(bool $isUnlockOldManga): void
+    {
+        $this->isUnlockOldManga = $isUnlockOldManga;
     }
 }

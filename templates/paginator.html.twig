@@ -1,4 +1,4 @@
-{% set page = app.request.pathInfo|trim('/')|split('/')|last|number_format %}
+{% set page = app.request.pathInfo|trim('/')|split('/')|last|number_format(0,'.','') %}
 {% if page == 0 %}
     {% set page = 1 %}
 {% endif %}

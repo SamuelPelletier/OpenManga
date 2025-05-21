@@ -1510,6 +1510,11 @@ base64-arraybuffer@^1.0.1:
   resolved "https://registry.npmjs.org/base64-arraybuffer/-/base64-arraybuffer-1.0.2.tgz"
   integrity sha512-I3yl4r9QB5ZRY3XuJVEPfc2XhZO6YweFPI+UovAzn+8/hb3oJ6lnysaFcjVpkCPfVWFUDvoZ8kmVDP7WyRtYtQ==
 
+basecoat-css@^0.1.2:
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/basecoat-css/-/basecoat-css-0.1.2.tgz#e9d572e5ed05626e6b6ec4ac3beec15f071d2cd6"
+  integrity sha512-nKlo9u7rLE7POTet5rId1Q8xjzHCqGxqRJxvF6qC7DY3ZgDDtEkLCYQN23Rluk2VMg/HPqWWf4+6rS49rXLzLw==
+
 batch@0.6.1:
   version "0.6.1"
   resolved "https://registry.npmjs.org/batch/-/batch-0.6.1.tgz"
@@ -4217,6 +4222,11 @@ sync-rpc@^1.3.6:
   integrity sha512-J8jTXuZzRlvU7HemDgHi3pGnh/rkoqR/OZSjhTyyZrEkkYQbk7Z33AXp37mkPfPpfdOuj7Ex3H/TJM1z48uPQw==
   dependencies:
     get-port "^3.1.0"
+
+tailwindcss@^4.1.7:
+  version "4.1.7"
+  resolved "https://registry.yarnpkg.com/tailwindcss/-/tailwindcss-4.1.7.tgz#949f76d50667946ddd7291e0c7a4b5a7dfc9e765"
+  integrity sha512-kr1o/ErIdNhTz8uzAYL7TpaUuzKIE6QPQ4qmSdxnoX/lo+5wmUHQA6h3L5yIqEImSRnAAURDirLu/BgiXGPAhg==
 
 tapable@^2.1.1, tapable@^2.2.0:
   version "2.2.1"

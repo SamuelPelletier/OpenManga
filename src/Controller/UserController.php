@@ -140,19 +140,13 @@ class UserController extends AbstractController
     }
 
     #[Route("/sync_patreon", name: 'user_sync_patreon')]
-    public function syncPatreon(EntityManagerInterface $entityManager, PatreonService $patreonService)
+    public function syncPatreon(PatreonService $patreonService)
     {
         $user = $this->getUser();
         if (!$user) {
             return $this->redirectToRoute('index');
         }
-        if ([$nextChargeDate, $tier] = $patreonService->getPatreonMembership($user)) {
-            $user->setPatreonNextCharge($nextChargeDate);
-            // todo change when new tier coming
-            $user->setPatreonTier(1);
-            $entityManager->persist($user);
-            $entityManager->flush();
-        }
+        $patreonService->updateUserFromPatreon($user);
         return $this->json(['response' => true]);
     }
 
@@ -298,7 +292,7 @@ class UserController extends AbstractController
         }
 
         $amount = $request->toArray()['amount'];
-        if (in_array($amount, [500, 1000, 2000, 5000])) {
+        if (in_array($amount, [500, 1000, 1500, 2000, 5000])) {
             $currency = 'EUR';
 
             $amount_money = new Money();
@@ -347,6 +341,52 @@ class UserController extends AbstractController
                     $details = $translator->trans('square.error.unknown');
                 }
             }
+        } else {
+            $success = false;
+            $details = $translator->trans('square.error.amount');
+        }
+
+        return $this->json(['success' => $success, 'message' => $success ? $translator->trans('square.result.success') : $translator->trans('square.result.error'), 'details' => $details]);
+    }
+
+    #[Route("/life_product", name: 'user_life_product')]
+    public function lifeProduct()
+    {
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        return $this->render('user/life_product.html.twig', ['user' => $user]);
+    }
+
+    #[Route("/life_product_proceed", name: 'life_product_proceed')]
+    public function lifeProductProceed(EntityManagerInterface $entityManager, Request $request, TranslatorInterface $translator, LoggerInterface $logger)
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('app_login');
+        }
+
+        $details = null;
+        if ($user->getCredits() >= 1500) {
+            $now = new \DateTime('now');
+
+            $payment = new Payment();
+            $payment->setUuid(uniqid());
+            $payment->setAmount(1500);
+            $payment->setCurrency('credit');
+            $payment->setCreatedAt($now);
+            $payment->setTarget('life_product');
+            $payment->setUser($user);
+            $entityManager->persist($payment);
+
+            $user->setIsUnlockOldManga(true);
+            $user->setCredits($user->getCredits() - 1500);
+            $entityManager->persist($user);
+            $entityManager->flush();
+            $success = true;
         } else {
             $success = false;
             $details = $translator->trans('square.error.amount');

@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Language;
 use App\Entity\Manga;
 use App\Entity\User;
+use App\Repository\LanguageRepository;
 use App\Repository\MangaRepository;
 use App\Service\MangaService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -68,7 +70,7 @@ class MangaController extends BaseController
         }
 
         // Add user permission
-        if (($manga->isOld() || $manga->isBlocked()) && !$user?->isPatreonAllow(1)) {
+        if ((($manga->isOld() || $manga->isBlocked()) && !$user?->isPatreonAllow(1)) and ($manga->isOld() && !$user->isUnlockOldManga())) {
             return $this->render('bundles/TwigBundle/Exception/error_403.html.twig');
         }
 
@@ -137,6 +139,42 @@ class MangaController extends BaseController
         }
 
         return $this->render('search.html.twig', ['mangas' => $foundMangas]);
+    }
+
+    #[Route("/advanced_search", methods: ['GET'], name: 'advanced_search')]
+    #[Route("/advanced_search/page/{page<[1-9]\d*>}", methods: ['GET'], name: 'advanced_search_paginated')]
+    public function advancedSearch(
+        Request            $request,
+        MangaRepository    $mangas,
+        LanguageRepository $languageRepository,
+        int                $page = 1
+    ): Response
+    {
+        /**
+         * @var User $user
+         */
+        $user = $this->getUser();
+
+        // No query parameter
+        $foundMangas = null;
+        $languages = $languageRepository->createQueryBuilder('l')
+            ->where('l.name in (:language_allow)')
+            ->setParameter('language_allow', array_keys(Language::ISO_CODE))
+            ->orderBy('l.name', 'ASC')->getQuery()->getResult();
+        array_map(function ($language) {
+            $language->setName(ucfirst($language->getName()));
+        }, $languages);
+
+        $query = $request->query->get('q', '');
+        $tagQuery = $request->query->get('t', '');
+        $languesQuery = $request->query->get('language', 'all');
+        $orderBy = $request->query->get('sort', 'recent_to_old');
+        $isOld = 'on';
+        if ($user?->isUnlockOldManga() && count($request->query->all()) > 0) {
+            $isOld = $request->query->get('is_old', 'off');
+        }
+        $foundMangas = $mangas->findBySearchQueryAdvanced($query, $tagQuery, $languesQuery, $orderBy, $isOld == 'on', $page);
+        return $this->render('advanced_search.html.twig', ['mangas' => $foundMangas, 'languages' => $languages]);
     }
 
     #[Route("/download/{id}", methods: ['GET'], name: 'download')]

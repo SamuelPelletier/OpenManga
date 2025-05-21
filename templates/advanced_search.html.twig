@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('css/advanced-search') }}
+{% endblock %}
+
+{% block body_id 'advanced_search' %}
+
+{% block main %}
+    {% set isLocked = is_granted('IS_AUTHENTICATED_REMEMBERED') == false or (app.user.isPatreonAllow(1) == false and app.user.isUnlockOldManga == false) %}
+    {% set route_name =  'advanced_search' %}
+    <div id="search-container">
+        <form action="{{ url('advanced_search') }}" id="search-container" method="get" class="navbar-form navbar-left">
+            <div class="components">
+                <div class="search">
+                    <input id="search-name" name="q" type="text" class="search-input"
+                           placeholder="{{ 'advanced_search.name.placeholder'|trans }}"
+                           autocomplete="off"
+                           minlength="3"
+                           autofocus
+                           value="{{ app.request.query.get('q') }}">
+                    <div class="search-icon">
+                        <span name="search" class="fa fa-magnifying-glass"></span>
+                    </div>
+                </div>
+                <div class="search search-tags">
+                    <input id="search-tags" name="t" type="text" class="search-input"
+                           placeholder="{{ 'advanced_search.tags.placeholder'|trans }}"
+                           autocomplete="off"
+                           minlength="3"
+                           autofocus
+                           value="{{ app.request.query.get('t') }}">
+                    <div class="search-icon">
+                        <span name="search" class="fa fa-hashtag"></span>
+                    </div>
+                </div>
+                <div class="switch">
+                    <label>{{ 'advanced_search.is_old.label'|trans }}</label>
+                    <div class="sub-switch {% if isLocked %}switch-disabled{% endif %}"
+                         {% if isLocked %}aria-label="{{ 'manga.unlock'|trans }}"{% endif %} >
+                        <input id="switch-2" type="checkbox"
+                               {% if isLocked %}disabled{% endif %}
+                                {% if app.request.query.get('is_old') == 'on' or app.request.query is empty or isLocked %}checked{% endif %}
+                               name="is_old">
+                        <label for="switch-2"></label>
+                    </div>
+                </div>
+
+                <div class="select-language select-container">
+                    <select name="language">
+                        <option value="all">{{ 'advanced_search.language.all'|trans }}</option>
+                        {% for language in languages %}
+                            <option value="{{ language.name }}"
+                                    {% if  app.request.query.get('language') == language.name %}selected{% endif %}>{{ language.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="select-sort select-container">
+                    <label>Ordre de tri</label>
+                    <select name="sort" required>
+                        <option value="recent_to_old"
+                                {% if  app.request.query.get('sort') == "recent_to_old" %}selected{% endif %}>{{ 'advanced_search.recent_to_old'|trans }}
+                        </option>
+                        <option value="old_to_recent"
+                                {% if app.request.query.get('sort') == "old_to_recent" %}selected{% endif %}>{{ 'advanced_search.old_to_recent'|trans }}
+                        </option>
+                        <option value="increase_view"
+                                {% if app.request.query.get('sort') == "increase_view" %}selected{% endif %}>{{ 'advanced_search.increase_view'|trans }}
+                        </option>
+                        <option value="decrease_view"
+                                {% if app.request.query.get('sort') == "decrease_view" %}selected{% endif %}>{{ 'advanced_search.decrease_view'|trans }}
+                        </option>
+                        <option value="increase_count_page"
+                                {% if app.request.query.get('sort') == "increase_count_page" %}selected{% endif %}>{{ 'advanced_search.increase_count_page'|trans }}
+                        </option>
+                        <option value="decrease_count_page"
+                                {% if  app.request.query.get('sort') == "decrease_count_page" %}selected{% endif %}>{{ 'advanced_search.decrease_count_page'|trans }}
+                        </option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn advanced_search_button">{{ 'advanced_search.search'|trans }}</button>
+            </div>
+        </form>
+    </div>
+    <div>
+        {{ include('manga_index.html.twig') }}
+    </div>
+{% endblock %}
+

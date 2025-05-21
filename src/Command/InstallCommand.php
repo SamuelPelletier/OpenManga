@@ -130,6 +130,7 @@ class InstallCommand extends Command
         );
 
         $admin->setUsername($adminUsername);
+        $admin->setPublicName("Admin");
         $admin->setPassword($adminPasswordEncoded);
         $admin->setRoles(['ROLE_ADMIN']);
         $this->em->persist($admin);
