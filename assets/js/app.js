@@ -207,12 +207,5 @@ $(function () {
         });
 
     })
-
-    $('.fi-en').addClass('fi-gb');
-    $('.fi-ko').addClass('fi-kr');
-    $('.fi-kp').addClass('fi-kr');
-    $('.fi-ja').addClass('fi-jp');
-    $('.fi-vi').addClass('fi-vn');
-    $('.fi-zh').addClass('fi-cn');
 });
 
