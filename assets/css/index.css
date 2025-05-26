@@ -1285,3 +1285,21 @@ html {
 #edit p {
     margin-bottom: 0.5em;
 }
+
+#banner {
+    margin: auto;
+    display: inline;
+    scale: 70%;
+}
+
+.footer {
+    display: flex;
+}
+
+@media (max-width: 768px) {
+    #banner {
+        margin: 0 1vw 20px 1vw;
+        width: inherit;
+    }
+}
+
