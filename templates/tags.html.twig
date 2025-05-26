@@ -12,8 +12,8 @@
         <div class="tags">
             {% for tagDTO in tagsDTOsort|slice(0,19) %}
                 <span class="label-container">
-                    <a href="{{ url('search', {'q': tagDTO.tag.name == app.request.query.get('tag') ? null : tagDTO.tag.name, 's':true}) }}"
-                    class="label label-{{ tagDTO.tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
+                    <a href="{{ url('search', {'q': tagDTO.tag.name == app.request.query.get('tag') ? null : tagDTO.tag.name, 't':'tag'}) }}"
+                       class="label label-{{ tagDTO.tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
                     >{{ tagDTO.tag.name }}
                         <i class="counter label">{{ tagDTO.countUse }}</i>
                     </a>
@@ -35,8 +35,8 @@
         <ul class="tag-list">
             {% for tagDTO in tagsDTO %}
                 <span class="label-container">
-                    <a href="{{ url('search', {'q': tagDTO.tag.name == app.request.query.get('tag') ? null : tagDTO.tag.name, 's':true}) }}"
-                    class="label label-{{ tagDTO.tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
+                    <a href="{{ url('search', {'q': tagDTO.tag.name == app.request.query.get('tag') ? null : tagDTO.tag.name, 't':'tag'}) }}"
+                       class="label label-{{ tagDTO.tag.name == app.request.query.get('tag') ? 'success' : 'default' }}"
                     >{{ tagDTO.tag.name }}
                         <i>{{ tagDTO.countUse }}</i>
                     </a>

@@ -58,8 +58,7 @@ class MangaRepository extends ServiceEntityRepository
      */
     public function findBySearchQuery(
         string $rawQuery,
-        int    $page = 1,
-        bool   $isStrict = false
+        int    $page = 1
     ): Paginator
     {
         $query = $this->sanitizeSearchQuery($rawQuery);
@@ -69,81 +68,20 @@ class MangaRepository extends ServiceEntityRepository
             return $this->findLatest();
         }
 
-        $em = $this->getEntityManager();
-        $repoLanguage = $em->getRepository(Language::class);
-        $repoTag = $em->getRepository(Tag::class);
-        $repoAuthor = $em->getRepository(Author::class);
-        $repoParody = $em->getRepository(Parody::class);
-
         $queryBuilder = $this->createQueryBuilder('p')
             ->where('p.isCorrupted = false');
 
         $orStatements = $queryBuilder->expr()->orX();
 
-        // If it's strict we use the entire query
-        if ($isStrict) {
-            $searchTerms = [$query];
-        } else {
-            $searchTerms = $this->extractSearchTerms($query);
-        }
+        $searchTerms = $this->extractSearchTerms($query);
 
         $i = 0;
-        foreach ($searchTerms as $key => $term) {
+        foreach ($searchTerms as $term) {
             if (strlen($term) <= 3) {
                 continue;
             }
             $i++;
-
-            if (!$isStrict) {
-                $term = '%' . $term . '%';
-            }
-
-            if ($isStrict) {
-                $tags = $repoTag->getEntityManager()->createQueryBuilder()
-                    ->select('a')
-                    ->from($repoTag->getEntityName(), 'a')->where('a.name like :name')
-                    ->setParameter('name', $term)->getQuery()->getResult();
-
-                foreach ($tags as $keyTag => $tag) {
-                    $paramName = 'ta_' . $keyTag;
-                    $orStatements->add($queryBuilder->expr()->isMemberOf(':' . $paramName, 'p.tags'));
-                    $queryBuilder->setParameter($paramName, $tag);
-                }
-
-                $languages = $repoLanguage->getEntityManager()->createQueryBuilder()
-                    ->select('a')
-                    ->from($repoLanguage->getEntityName(), 'a')->where('a.name like :name')
-                    ->setParameter('name', $term)->getQuery()->getResult();
-
-                foreach ($languages as $keyLanguage => $language) {
-                    $paramName = 'l_' . $keyLanguage;
-                    $orStatements->add($queryBuilder->expr()->isMemberOf(':' . $paramName, 'p.languages'));
-                    $queryBuilder->setParameter($paramName, $language);
-                }
-
-                $parodies = $repoParody->getEntityManager()->createQueryBuilder()
-                    ->select('a')
-                    ->from($repoParody->getEntityName(), 'a')->where('a.name like :name')
-                    ->setParameter('name', $term)->getQuery()->getResult();
-
-                foreach ($parodies as $keyParody => $parody) {
-                    $paramName = 'p_' . $keyParody;
-                    $orStatements->add($queryBuilder->expr()->isMemberOf(':' . $paramName, 'p.parodies'));
-                    $queryBuilder->setParameter($paramName, $parody);
-                }
-
-                $authors = $repoAuthor->getEntityManager()->createQueryBuilder()
-                    ->select('a')
-                    ->from($repoAuthor->getEntityName(), 'a')->where('a.name like :name')
-                    ->setParameter('name', $term)->getQuery()->getResult();
-
-                foreach ($authors as $keyAuthor => $author) {
-                    $paramName = 'a_' . $keyAuthor;
-                    $orStatements->add($queryBuilder->expr()->isMemberOf(':' . $paramName, 'p.parodies'));
-                    $queryBuilder->setParameter($paramName, $author);
-                }
-            }
-
+            $term = '%' . $term . '%';
             $orStatements->add($queryBuilder->expr()->like('p.title', ':title'));
             $queryBuilder->setParameter(':title', $term);
         }
@@ -151,6 +89,86 @@ class MangaRepository extends ServiceEntityRepository
         // Any term > 3
         if ($i === 0) {
             return $this->findLatest();
+        }
+
+        $queryBuilder->andWhere($orStatements)->orderBy('p.id', 'DESC');
+
+        return $this->createPaginator($queryBuilder->getQuery(), $page);
+    }
+
+    public function findByStrictTypeSearchQuery(
+        string $rawQuery,
+        int    $page = 1,
+        string $type
+    ): Paginator
+    {
+        $query = $this->sanitizeSearchQuery($rawQuery);
+
+        // Min 3 caracteres to search
+        if (strlen($query) <= 3) {
+            return $this->findLatest();
+        }
+
+        $queryBuilder = $this->createQueryBuilder('p')
+            ->where('p.isCorrupted = false');
+
+        $em = $this->getEntityManager();
+        $orStatements = $queryBuilder->expr()->orX();
+        switch ($type) {
+            case 'language':
+                $repoLanguage = $em->getRepository(Language::class);
+                $languages = $repoLanguage->getEntityManager()->createQueryBuilder()
+                    ->select('a')
+                    ->from($repoLanguage->getEntityName(), 'a')->where('a.name like :name')
+                    ->setParameter('name', $query)->getQuery()->getResult();
+
+                foreach ($languages as $keyLanguage => $language) {
+                    $paramName = 'l_' . $keyLanguage;
+                    $orStatements->add($queryBuilder->expr()->isMemberOf(':' . $paramName, 'p.languages'));
+                    $queryBuilder->setParameter($paramName, $language);
+                }
+                break;
+            case 'tag':
+                $repoTag = $em->getRepository(Tag::class);
+                $tags = $repoTag->getEntityManager()->createQueryBuilder()
+                    ->select('a')
+                    ->from($repoTag->getEntityName(), 'a')->where('a.name like :name')
+                    ->setParameter('name', $query)->getQuery()->getResult();
+
+                foreach ($tags as $keyTag => $tag) {
+                    $paramName = 'ta_' . $keyTag;
+                    $orStatements->add($queryBuilder->expr()->isMemberOf(':' . $paramName, 'p.tags'));
+                    $queryBuilder->setParameter($paramName, $tag);
+                }
+                break;
+            case 'author':
+                $repoAuthor = $em->getRepository(Author::class);
+                $authors = $repoAuthor->getEntityManager()->createQueryBuilder()
+                    ->select('a')
+                    ->from($repoAuthor->getEntityName(), 'a')->where('a.name like :name')
+                    ->setParameter('name', $query)->getQuery()->getResult();
+
+                foreach ($authors as $keyAuthor => $author) {
+                    $paramName = 'a_' . $keyAuthor;
+                    $orStatements->add($queryBuilder->expr()->isMemberOf(':' . $paramName, 'p.parodies'));
+                    $queryBuilder->setParameter($paramName, $author);
+                }
+                break;
+            case 'parody':
+                $repoParody = $em->getRepository(Parody::class);
+                $parodies = $repoParody->getEntityManager()->createQueryBuilder()
+                    ->select('a')
+                    ->from($repoParody->getEntityName(), 'a')->where('a.name like :name')
+                    ->setParameter('name', $query)->getQuery()->getResult();
+
+                foreach ($parodies as $keyParody => $parody) {
+                    $paramName = 'p_' . $keyParody;
+                    $orStatements->add($queryBuilder->expr()->isMemberOf(':' . $paramName, 'p.parodies'));
+                    $queryBuilder->setParameter($paramName, $parody);
+                }
+                break;
+            default:
+                return $this->findLatest();
         }
 
         $queryBuilder->andWhere($orStatements)->orderBy('p.id', 'DESC');

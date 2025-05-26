@@ -126,8 +126,11 @@ class MangaController extends BaseController
         } else {
             if ($request->query->get('q') != '') {
                 $query = $request->query->get('q', '');
-                $isStrict = $request->query->get('s', false);
-                $foundMangas = $mangas->findBySearchQuery($query, $page, $isStrict);
+                if ($type = $request->query->get('t')) {
+                    $foundMangas = $mangas->findByStrictTypeSearchQuery($query, $page, $type);
+                } else {
+                    $foundMangas = $mangas->findBySearchQuery($query, $page);
+                }
             }
         }
 

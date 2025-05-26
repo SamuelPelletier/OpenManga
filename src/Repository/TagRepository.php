@@ -41,6 +41,7 @@ class TagRepository extends ServiceEntityRepository
         $queryBuilder = $this->createQueryBuilder('p')
             ->leftJoin('p.mangas', 'mangas')
             ->addSelect('COUNT(mangas) as total')
+            ->where('mangas.isCorrupted = false')
             ->orderBy('p.name')
             ->groupBy('p')
             ->getQuery();
