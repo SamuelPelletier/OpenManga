@@ -150,7 +150,7 @@ class MangaRepository extends ServiceEntityRepository
 
                 foreach ($authors as $keyAuthor => $author) {
                     $paramName = 'a_' . $keyAuthor;
-                    $orStatements->add($queryBuilder->expr()->isMemberOf(':' . $paramName, 'p.parodies'));
+                    $orStatements->add($queryBuilder->expr()->isMemberOf(':' . $paramName, 'p.authors'));
                     $queryBuilder->setParameter($paramName, $author);
                 }
                 break;
