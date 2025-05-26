@@ -90,7 +90,7 @@ $(function () {
         success: function (data) {
             let tags = '';
             data.data.forEach(function (tag) {
-                tags += "<a href=\"/" + locale + "/search?q=" + tag + "&s=1\" totalx=\"158\" draggable=\"false\">\n" +
+                tags += "<a href=\"/" + locale + "/search?q=" + tag + "&t=tag\" totalx=\"158\" draggable=\"false\">\n" +
                     "                    <span class=\"tag-rounded\" totalx=\"158\">" + tag + "</span>\n" +
                     "                </a>"
             })

@@ -10,6 +10,9 @@ searchField.addEventListener('click', () => {
 });
 
 searchField.addEventListener('blur', () => {
-    searchRecommendation.style.opacity = '0';
-    searchRecommendation.style.pointerEvents = 'none';
+    setTimeout(
+        function () {
+            searchRecommendation.style.opacity = '0';
+            searchRecommendation.style.pointerEvents = 'none';
+        }, 100);
 });
