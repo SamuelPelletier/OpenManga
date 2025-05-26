@@ -1,0 +1,116 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <h1 class="title">{{ 'cgu.title'|trans }}</h1>
+    {% if app.request.locale == 'fr' %}
+        <p>Dernière mise à jour : 26/05/2025<br>
+            <br>
+            1. Présentation du site<br>
+            Le site {{ app.request.server.get('APP_NAME')|lower }}.org (ci-après "le Site") permet aux utilisateurs de
+            lire et de télécharger des mangas, y compris du contenu à caractère adulte. L'accès au site implique
+            l'acceptation pleine et entière des
+            présentes Conditions Générales d'Utilisation.<br>
+            <br>
+            2. Accès au site et contenu réservé aux adultes<br>
+            L’accès au site est strictement réservé aux personnes majeures selon la législation en vigueur dans leur
+            pays de résidence (ex : 18 ans en France).<br>
+            Le Site contient du contenu pouvant heurter la sensibilité de certains utilisateurs.<br>
+            En accédant au site, l’utilisateur confirme être majeur et avoir connaissance de la nature du contenu.<br>
+            <br>
+            3. Utilisation du contenu<br>
+            Le contenu mis à disposition (mangas, images, fichiers) est destiné à un usage strictement personnel et
+            privé.<br>
+            Toute reproduction, diffusion, modification ou exploitation commerciale du contenu est formellement
+            interdite, sauf autorisation expresse de l’ayant droit.<br>
+            Le site n’héberge pas toujours les fichiers directement mais peut agir en tant qu’agrégateur ou indexeur de
+            contenus disponibles en ligne. Il appartient à l’utilisateur de respecter les droits d’auteur en
+            vigueur.<br>
+            <br>
+            4. Propriété intellectuelle<br>
+            Tous les éléments présents sur le Site (logos, design, textes, images, scripts, base de données) sont
+            protégés par le droit d’auteur et le droit de la propriété intellectuelle.<br>
+            Les œuvres présentes sont la propriété de leurs auteurs respectifs. Si une œuvre a été partagée par erreur
+            ou sans autorisation, les ayants droit peuvent contacter l’administrateur pour demander son retrait.<br>
+            <br>
+            5. Responsabilité<br>
+            Le Site ne saurait être tenu responsable des téléchargements ou usages effectués par les utilisateurs.<br>
+            L’utilisateur est seul responsable de l’usage qu’il fait du contenu et s’engage à ne pas contrevenir aux
+            lois en vigueur.<br>
+            Le Site se réserve le droit de modifier, supprimer ou suspendre tout contenu sans préavis.<br>
+            <br>
+            6. Liens externes<br>
+            Le Site peut contenir des liens vers des sites tiers. {{ app.request.server.get('APP_NAME')|lower }}.org
+            n’exerce aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu ou leurs
+            pratiques.<br>
+            <br>
+            7. Collecte de données personnelles<br>
+            Le Site peut collecter des informations techniques (cookies, adresse IP, préférences de navigation) afin
+            d'améliorer l'expérience utilisateur.<br>
+            Aucune donnée personnelle sensible n’est collectée sans le consentement explicite de l’utilisateur. Pour
+            plus d’informations, veuillez consulter notre <a
+                    href="{{ path('confidentiality') }}">{{ 'confidentiality.title'|trans }}</a>.<br>
+            <br>
+            8. Modification des CGU<br>
+            Le Site se réserve le droit de modifier à tout moment les présentes Conditions Générales d'Utilisation. Les
+            utilisateurs sont invités à les consulter régulièrement.<br>
+            <br>
+            9. Droit applicable<br>
+            Les présentes CGU sont régies par les lois en vigueur dans le pays où est hébergé le site. En cas de litige,
+            les tribunaux compétents seront ceux du ressort du siège social du propriétaire du site.<br>
+        </p>
+    {% else %}
+        <p>Last updated: 05/26/2025<br>
+            <br>
+            1. Site Presentation<br>
+            The site {{ app.request.server.get('APP_NAME')|lower }}.org (hereinafter "the Site") allows users to
+            read and download mangas, including adult content. Access to the site implies
+            full and complete acceptance of these
+            Terms of Use.<br>
+            <br>
+            2. Access to the Site and Adult Content<br>
+            Access to the site is strictly reserved for adults according to the legislation in force in their
+            country of residence (e.g., 18 years old in France).<br>
+            The Site contains content that may offend the sensitivity of some users.<br>
+            By accessing the site, the user confirms that they are of legal age and are aware of the nature of the
+            content.<br>
+            <br>
+            3. Use of Content<br>
+            The content provided (mangas, images, files) is intended for strictly personal and private use.<br>
+            Any reproduction, distribution, modification, or commercial exploitation of the content is strictly
+            prohibited, except with the express permission of the rights holder.<br>
+            The site does not always host the files directly but may act as an aggregator or indexer of
+            content available online. It is the user's responsibility to respect the copyright laws in force.<br>
+            <br>
+            4. Intellectual Property<br>
+            All elements present on the Site (logos, design, texts, images, scripts, databases) are
+            protected by copyright and intellectual property law.<br>
+            The works present are the property of their respective authors. If a work has been shared by mistake
+            or without authorization, the rights holders can contact the administrator to request its removal.<br>
+            <br>
+            5. Liability<br>
+            The Site cannot be held responsible for the downloads or uses made by users.<br>
+            The user is solely responsible for the use they make of the content and undertakes not to violate
+            the laws in force.<br>
+            The Site reserves the right to modify, delete, or suspend any content without notice.<br>
+            <br>
+            6. External Links<br>
+            The Site may contain links to third-party sites. {{ app.request.server.get('APP_NAME')|lower }}.org
+            exercises no control over these sites and declines all responsibility for their content or practices.<br>
+            <br>
+            7. Collection of Personal Data<br>
+            The Site may collect technical information (cookies, IP address, browsing preferences) to
+            improve the user experience.<br>
+            No sensitive personal data is collected without the explicit consent of the user. For more information,
+            please consult our <a href="{{ path('confidentiality') }}">{{ 'confidentiality.title'|trans }}</a>.<br>
+            <br>
+            8. Modification of the Terms of Use<br>
+            The Site reserves the right to modify these Terms of Use at any time. Users are invited to consult them
+            regularly.<br>
+            <br>
+            9. Applicable Law<br>
+            These Terms of Use are governed by the laws in force in the country where the site is hosted. In case of
+            dispute,
+            the competent courts will be those of the jurisdiction of the registered office of the site owner.<br>
+        </p>
+    {% endif %}
+{% endblock %}

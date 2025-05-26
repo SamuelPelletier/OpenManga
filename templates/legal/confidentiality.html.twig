@@ -1,0 +1,120 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    <h1 class="title">{{ 'confidentiality.title'|trans }}</h1>
+    {% if app.request.locale == 'fr' %}
+        <p>Dernière mise à jour : 26/05/2025<br>
+            <br>
+            La présente Politique de Confidentialité a pour but d’informer les utilisateurs du
+            site {{ app.request.server.get('APP_NAME')|lower }}.org (ci-après "le Site") sur la manière dont leurs
+            données personnelles peuvent être collectées, utilisées et protégées.<br>
+            <br>
+            1. Nature des données collectées<br>
+            Le Site peut collecter les données suivantes :<br>
+            Données techniques : adresse IP, type de navigateur, système d’exploitation, pages consultées, temps de
+            connexion, etc.<br>
+            Cookies : fichiers texte enregistrés sur votre appareil pour améliorer votre expérience utilisateur.<br>
+            Données de navigation : historique de consultation, préférences, recherches.<br>
+            ⚠️ Aucune donnée sensible (identité, coordonnées personnelles, moyen de paiement) n’est requise ni collectée
+            pour naviguer sur le Site.<br>
+            <br>
+            2. Utilisation des données<br>
+            Les données collectées sont utilisées dans les finalités suivantes :<br>
+            Améliorer le fonctionnement du Site (ergonomie, performance, sécurité)<br>
+            Mesurer la fréquentation (statistiques anonymisées)<br>
+            Adapter les contenus affichés selon les préférences des utilisateurs<br>
+            Prévenir toute activité frauduleuse ou abusive<br>
+            <br>
+            3. Cookies et technologies similaires<br>
+            Le Site utilise des cookies pour :<br>
+            Faciliter la navigation<br>
+            Analyser l’audience<br>
+            Afficher de la publicité (bannières, contenu sponsorisé)<br>
+            L’utilisateur peut refuser ou supprimer les cookies via les paramètres de son navigateur.<br>
+            <br>
+            4. Partage des données<br>
+            Les données collectées ne sont pas revendues à des tiers. Elles peuvent être transmises uniquement :<br>
+            Aux prestataires techniques (hébergeur, services d’analyse anonymisée)<br>
+            Aux autorités compétentes en cas de demande légale ou judiciaire<br>
+            <br>
+            5. Conservation des données<br>
+            Les données techniques anonymes sont conservées pour une durée maximale de 12 mois. Passé ce délai, elles
+            sont automatiquement supprimées ou anonymisées.<br>
+            <br>
+            6. Sécurité des données<br>
+            Le Site met en œuvre des mesures techniques (chiffrement, pare-feu, surveillance serveur) pour protéger les
+            données contre toute perte, accès non autorisé ou altération.<br>
+            Toutefois, aucun système n’est infaillible. L’utilisateur reconnaît utiliser le Site à ses propres
+            risques.<br>
+            <br>
+            7. Droits de l’utilisateur<br>
+            Conformément au RGPD, les utilisateurs résidant en Union Européenne disposent des droits suivants :<br>
+            Droit d’accès : connaître les données collectées<br>
+            Droit de rectification : modifier ou corriger des données inexactes<br>
+            Droit d’opposition : refuser certaines utilisations<br>
+            Droit à l’effacement : demander la suppression des données<br>
+            Pour exercer ces droits, vous pouvez contacter l’administrateur via l'adresse mail
+            : {{ app.request.server.get('CONTACT_MAIL') }}.<br>
+            <br>
+            8. Modifications de la politique<br>
+            La présente politique peut être modifiée à tout moment. Les utilisateurs sont invités à la consulter
+            régulièrement. Toute modification substantielle sera signalée via un changement dans la date.<br>
+        </p>
+    {% else %}
+        <p>Last updated: 05/26/2025<br>
+            <br>
+            This Privacy Policy aims to inform users of the
+            site {{ app.request.server.get('APP_NAME')|lower }}.org (hereinafter "the Site") about how their
+            personal data may be collected, used, and protected.<br>
+            <br>
+            1. Nature of the data collected<br>
+            The Site may collect the following data:<br>
+            Technical data: IP address, browser type, operating system, pages visited, connection time, etc.<br>
+            Cookies: text files stored on your device to improve your user experience.<br>
+            Navigation data: browsing history, preferences, searches.<br>
+            ⚠️ No sensitive data (identity, personal contact details, payment methods) is required or collected
+            to browse the Site.<br>
+            <br>
+            2. Use of data<br>
+            The collected data is used for the following purposes:<br>
+            Improving the operation of the Site (ergonomics, performance, security)<br>
+            Measuring traffic (anonymous statistics)<br>
+            Adapting the displayed content according to user preferences<br>
+            Preventing any fraudulent or abusive activity<br>
+            <br>
+            3. Cookies and similar technologies<br>
+            The Site uses cookies to:<br>
+            Facilitate navigation<br>
+            Analyze audience<br>
+            Display advertising (banners, sponsored content)<br>
+            The user can refuse or delete cookies via their browser settings.<br>
+            <br>
+            4. Data sharing<br>
+            The collected data is not resold to third parties. It may be transmitted only to:<br>
+            Technical service providers (host, anonymized analysis services)<br>
+            Competent authorities in case of legal or judicial request<br>
+            <br>
+            5. Data retention<br>
+            Anonymous technical data is retained for a maximum period of 12 months. After this period, it is
+            automatically deleted or anonymized.<br>
+            <br>
+            6. Data security<br>
+            The Site implements technical measures (encryption, firewall, server monitoring) to protect data against
+            any loss, unauthorized access, or alteration.<br>
+            However, no system is infallible. The user acknowledges using the Site at their own risk.<br>
+            <br>
+            7. User rights<br>
+            In accordance with the GDPR, users residing in the European Union have the following rights:<br>
+            Right of access: to know the collected data<br>
+            Right of rectification: to modify or correct inaccurate data<br>
+            Right to object: to refuse certain uses<br>
+            Right to erasure: to request the deletion of data<br>
+            To exercise these rights, you can contact the administrator via the email address:
+            {{ app.request.server.get('CONTACT_MAIL') }}.<br>
+            <br>
+            8. Policy modifications<br>
+            This policy may be modified at any time. Users are invited to consult it regularly. Any substantial
+            modification will be indicated via a change in the date.<br>
+        </p>
+    {% endif %}
+{% endblock %}

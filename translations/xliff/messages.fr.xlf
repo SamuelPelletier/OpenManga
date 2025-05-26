@@ -856,6 +856,15 @@ nécessaire</target>
                 <source>advanced_search.search</source>
                 <target>Rechercher</target>
             </trans-unit>
+
+            <trans-unit id="cgu.title">
+                <source>cgu.title</source>
+                <target>Conditions Générales d'Utilisation (CGU)</target>
+            </trans-unit>
+            <trans-unit id="confidentiality.title">
+                <source>confidentiality.title</source>
+                <target>Politique de Confidentialité</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -855,6 +855,15 @@ Ma non sono esclusivamente manga, ci sono anche musica, romanzi o videogiochi.
                 <source>advanced_search.search</source>
                 <target>Cerca</target>
             </trans-unit>
+
+            <trans-unit id="cgu.title">
+                <source>cgu.title</source>
+                <target>General Terms of Use</target>
+            </trans-unit>
+            <trans-unit id="confidentiality.title">
+                <source>confidentiality.title</source>
+                <target>Privacy Policy</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

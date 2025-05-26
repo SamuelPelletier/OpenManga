@@ -854,6 +854,15 @@ My Anime List에 1,300 개가 넘는 애니메이션 헨타이가 있습니다.
                 <source>advanced_search.search</source>
                 <target>검색</target>
             </trans-unit>
+
+            <trans-unit id="cgu.title">
+                <source>cgu.title</source>
+                <target>General Terms of Use</target>
+            </trans-unit>
+            <trans-unit id="confidentiality.title">
+                <source>confidentiality.title</source>
+                <target>Privacy Policy</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

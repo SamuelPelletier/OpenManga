@@ -244,6 +244,19 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
     {% endblock %}
 </div>
 
+<footer class="footer">
+    {% block footer %}
+        <div class="row">
+            <div class="col-md-6">
+                <a href="{{ path('cgu') }}">{{ 'cgu.title'|trans }}</a>
+            </div>
+            <div class="col-md-6">
+                <a href="{{ path('confidentiality') }}">{{ 'confidentiality.title'|trans }}</a>
+            </div>
+        </div>
+    {% endblock %}
+</footer>
+
 {% block javascripts %}
     {{ encore_entry_script_tags('js/app') }}
 {% endblock %}

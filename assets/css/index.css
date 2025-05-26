@@ -303,6 +303,9 @@ a:hover, a:focus, a:active {
 
 footer {
     background-color: #4c4c4c;
+    margin: initial;
+    padding: 0 0 15px 0;
+    text-align: center;
 }
 
 .body-container {
@@ -1285,3 +1288,4 @@ html {
 #edit p {
     margin-bottom: 0.5em;
 }
+

@@ -20,6 +20,18 @@ class MainController extends AbstractController
         return $this->render('about.html.twig');
     }
 
+    #[Route("/cgu", methods: ['GET'], name: 'cgu')]
+    public function cgu(): Response
+    {
+        return $this->render('legal/cgu.html.twig');
+    }
+
+    #[Route("/confidentiality", methods: ['GET'], name: 'confidentiality')]
+    public function confidentiality(): Response
+    {
+        return $this->render('legal/confidentiality.html.twig');
+    }
+
     #[Route("/disclaimer", methods: ['POST', 'GET'], name: 'disclaimer')]
     public function disclaimer(Request $request): Response
     {
