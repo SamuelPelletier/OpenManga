@@ -159,21 +159,17 @@ class MangaController extends BaseController
         $user = $this->getUser();
 
         // No query parameter
-        $foundMangas = null;
         $languages = $languageRepository->createQueryBuilder('l')
             ->where('l.name in (:language_allow)')
             ->setParameter('language_allow', array_keys(Language::ISO_CODE))
             ->orderBy('l.name', 'ASC')->getQuery()->getResult();
-        array_map(function ($language) {
-            $language->setName(ucfirst($language->getName()));
-        }, $languages);
 
         $query = $request->query->get('q', '');
         $tagQuery = $request->query->get('t', '');
         $languesQuery = $request->query->get('language', 'all');
         $orderBy = $request->query->get('sort', 'recent_to_old');
-        $isOld = 'on';
-        if ($user?->isUnlockOldManga() && count($request->query->all()) > 0) {
+        $isOld = 'off';
+        if ($user?->isUnlockOldManga()) {
             $isOld = $request->query->get('is_old', 'off');
         }
         $foundMangas = $mangas->findBySearchQueryAdvanced($query, $tagQuery, $languesQuery, $orderBy, $isOld == 'on', $page);

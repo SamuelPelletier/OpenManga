@@ -41,7 +41,7 @@
                          {% if isLocked %}aria-label="{{ 'manga.unlock'|trans }}"{% endif %} >
                         <input id="switch-2" type="checkbox"
                                {% if isLocked %}disabled{% endif %}
-                                {% if app.request.query.get('is_old') == 'on' or app.request.query is empty or isLocked %}checked{% endif %}
+                                {% if app.request.query.get('is_old') == 'on' %}checked{% endif %}
                                name="is_old">
                         <label for="switch-2"></label>
                     </div>
@@ -52,7 +52,7 @@
                         <option value="all">{{ 'advanced_search.language.all'|trans }}</option>
                         {% for language in languages %}
                             <option value="{{ language.name }}"
-                                    {% if  app.request.query.get('language') == language.name %}selected{% endif %}>{{ language.name }}
+                                    {% if  app.request.query.get('language') == language.name %}selected{% endif %}>{{ language.name|capitalize }}
                             </option>
                         {% endfor %}
                     </select>

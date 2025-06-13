@@ -24,7 +24,9 @@ class MangaRepository extends ServiceEntityRepository
     public function findLatest(int $page = 1): Paginator
     {
         $queryBuilder = $this->createQueryBuilder('p')
-            ->where('p.isCorrupted = false')->orderBy('p.id', 'DESC')->getQuery();
+            ->where('p.isCorrupted = false')
+            ->andWhere('p.isOld = false')
+            ->orderBy('p.id', 'DESC')->getQuery();
 
         $queryBuilder->setResultCacheId('manga_latest_' . $page);
         $queryBuilder->setResultCacheLifeTime(300);
@@ -45,6 +47,7 @@ class MangaRepository extends ServiceEntityRepository
             ->andWhere('p.publishedAt < :five_minutes_ago')
             ->setParameter('five_minutes_ago', (new DateTime("5 minutes ago"))->format("Y-m-d H:i:s"))
             ->andWhere('p.isCorrupted = false')
+            ->andWhere('p.isOld = false')
             ->getQuery();
 
         $query->setResultCacheId('manga_trending_' . $page);
@@ -69,7 +72,8 @@ class MangaRepository extends ServiceEntityRepository
         }
 
         $queryBuilder = $this->createQueryBuilder('p')
-            ->where('p.isCorrupted = false');
+            ->where('p.isCorrupted = false')
+            ->andWhere('p.isOld = false');
 
         $orStatements = $queryBuilder->expr()->orX();
 
