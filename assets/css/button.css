@@ -140,11 +140,29 @@
     text-decoration: none;
 }
 
+#login .button {
+    height: 50px;
+}
+
 #patreon {
     background-color: white;
     margin-top: 1.5em;
     color: #ff424d;
     text-align: center;
+}
+
+#google-auth {
+    margin-top: 1.5em;
+    background-color: white;
+}
+
+#google-auth * {
+    border: none;
+}
+
+#google-auth .g_id_signin {
+    top: -4px;
+    position: relative;
 }
 
 .neon-button {

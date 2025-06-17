@@ -71,6 +71,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private int $bonusPoints = 0;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
+    private ?string $googleId;
+
+    #[ORM\Column(type: "string", length: 255, nullable: true)]
     private ?string $patreonAccessToken;
 
     #[ORM\Column(type: "string", length: 255, nullable: true)]
@@ -96,6 +99,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->lastMangasRead = new ArrayCollection();
         $this->favoriteMangas = new ArrayCollection();
+        $this->patreonAccessToken = null;
     }
 
     public function getId(): ?int
@@ -334,6 +338,22 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getUserIdentifier(): string
     {
         return (string)$this->username;
+    }
+
+    /**
+     * @return ?string
+     */
+    public function getGoogleId(): ?string
+    {
+        return $this->googleId;
+    }
+
+    /**
+     * @param string $googleId
+     */
+    public function setGoogleId(string $googleId): void
+    {
+        $this->googleId = $googleId;
     }
 
     /**

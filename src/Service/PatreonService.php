@@ -40,7 +40,7 @@ class PatreonService
 
     public function updateUserFromPatreon(User $user)
     {
-        if ([$nextChargeDate, $tier] = $this->getPatreonMembership($user)) {
+        if ($user->getPatreonAccessToken() && [$nextChargeDate, $tier] = $this->getPatreonMembership($user)) {
             $user->setPatreonNextCharge($nextChargeDate);
             // todo change when new tier coming
             $user->setPatreonTier(1);

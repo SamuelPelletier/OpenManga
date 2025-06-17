@@ -208,7 +208,17 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
                                     <li {% if app.request.locale == locale.code %}aria-checked="true" class="active"
                                         {% else %}aria-checked="false"{% endif %} role="menuitem">
                                         <a href="{{ url(app.request.get('_route', 'index'),app.request.get('_route_params', [])|merge(app.request.query.all())|merge({_locale: locale.code})) }}">
-                                            <span class="fi fi-{{ locale.code }}"></span>
+                                            {% if locale.code == 'en' %}
+                                                <span class="fi fi-gb"></span>
+                                            {% elseif locale.code == 'ja' %}
+                                                <span class="fi fi-jp"></span>
+                                            {% elseif locale.code == 'ko' %}
+                                                <span class="fi fi-kr"></span>
+                                            {% elseif locale.code == 'zh' %}
+                                                <span class="fi fi-cn"></span>
+                                            {% else %}
+                                                <span class="fi fi-{{ locale.code }}"></span>
+                                            {% endif %}
                                             {{ locale.name|capitalize }}
                                         </a>
                                     </li>
