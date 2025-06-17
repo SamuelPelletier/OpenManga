@@ -63,16 +63,9 @@
                     <div class="button button-block" id="google-auth">
                         <div id="g_id_onload"
                              data-client_id="987590718680-2gcv95f8epo9t06478hpp3t37bjjg2jd.apps.googleusercontent.com"
-                             data-login_uri="{{ path('google_login')~'?from=user' }}"
-                             data-auto_prompt="false">
+                             data-login_uri="{{ path('google_login')~'?from=user' }}">
                         </div>
-                        <div class="g_id_signin"
-                             data-type="standard"
-                             data-size="large"
-                             data-theme="outline"
-                             data-text="sign_in_with"
-                             data-shape="rectangular"
-                             data-logo_alignment="center">
+                        <div class="g_id_signin" data-logo_alignment="center">
                         </div>
                     </div>
                     <a href="{{ patreonUrl }}" id="patreon" class="button button-block">
