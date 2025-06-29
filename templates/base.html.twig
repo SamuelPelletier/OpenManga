@@ -13,8 +13,6 @@ See https://symfony.com/doc/current/book/templating.html#template-inheritance-an
           content="{% apply spaceless %}{% block meta_description %}{{ app.request.server.get('APP_NAME') ~ 'meta.description'|trans({"%tags%":app.request.server.get('APP_KEYWORD') }) }}{% endblock %}{% endapply %}"/>
     <meta name="keywords"
           content="{% apply spaceless %}{% block meta_keyword %}{{ app.request.server.get('APP_KEYWORD') }}{% endblock %}{% endapply %}"/>
-    <meta name="6a97888e-site-verification" content="12ff09ae50f8c27bd4b40f81c85dce12">
-    <meta name="yandex-verification" content="5455eaeb54a8dd97"/>
     {% block stylesheets %}
         {{ encore_entry_link_tags('css/app') }}
     {% endblock %}
