@@ -1289,3 +1289,7 @@ html {
     margin-bottom: 0.5em;
 }
 
+iframe {
+    margin: auto;
+}
+
