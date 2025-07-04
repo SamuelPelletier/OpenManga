@@ -1291,5 +1291,6 @@ html {
 
 iframe {
     margin: auto;
+    width: 80vw !important;
 }
 
