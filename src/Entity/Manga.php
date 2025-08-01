@@ -6,6 +6,9 @@ use App\Repository\MangaRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Ignore;
+use Symfony\Component\Serializer\Annotation\Context;
+use Symfony\Component\Serializer\Normalizer\DateTimeNormalizer;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: MangaRepository::class)]
@@ -19,9 +22,11 @@ class Manga
     #[ORM\Column]
     private int $id;
 
+    #[Ignore]
     #[ORM\Column(type: "integer", nullable: true, unique: true)]
     private ?int $externalId;
 
+    #[Ignore]
     #[ORM\Column(type: "string", nullable: true)]
     private ?string $externalToken;
 
@@ -32,6 +37,7 @@ class Manga
     #[ORM\Column(type: "integer")]
     private int $countPages;
 
+    #[Context([DateTimeNormalizer::FORMAT_KEY => 'Y-m-d'])]
     #[ORM\Column(type: "datetime")]
     private \DateTime $publishedAt;
 
@@ -73,6 +79,7 @@ class Manga
     #[ORM\Column(type: "boolean", options: ["default" => 0])]
     private bool $isBlocked = false;
 
+    #[Ignore]
     #[ORM\Column(type: "boolean", options: ["default" => 0])]
     private bool $isCorrupted = false;
 
@@ -259,6 +266,7 @@ class Manga
     /**
      * @return bool
      */
+    #[Ignore]
     public function isOld(): bool
     {
         return $this->isOld;
@@ -275,6 +283,7 @@ class Manga
     /**
      * @return bool
      */
+    #[Ignore]
     public function isBlocked(): bool
     {
         return $this->isBlocked;
@@ -291,6 +300,7 @@ class Manga
     /**
      * @return bool
      */
+    #[Ignore]
     public function isCorrupted(): bool
     {
         return $this->isCorrupted;
