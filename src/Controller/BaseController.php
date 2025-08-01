@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Entity\Manga;
 use Doctrine\ORM\Tools\Pagination\Paginator;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,11 +13,7 @@ class BaseController extends AbstractController
         $jsonQueryParameter = ($this->container->get('request_stack')->getCurrentRequest()->headers->get('Content-Type'));
         if ($jsonQueryParameter === 'application/json' || $this->container->get('request_stack')->getCurrentRequest()->query->getBoolean('json')) {
             if (current($parameters) instanceof Paginator) {
-                $data = current($parameters)->getQuery()->getArrayResult();
-                $data = array_map(function ($item) {
-                    // Force json serializer
-                    return new Manga($item);
-                }, $data);
+                $data = current($parameters)->getQuery()->getResult();
                 $total = current($parameters)->count();
                 $result = ['data' => $data, 'total' => $total];
             } else {
