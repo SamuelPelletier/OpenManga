@@ -110,6 +110,17 @@ class MangaController extends BaseController
             ]);
     }
 
+    #[Route("/mangas/{id}/recommended", methods: ['GET'], name: 'manga_recommended')]
+    public function mangaRecommended(
+        Manga        $manga,
+        MangaService $mangaService,
+    ): Response
+    {
+        $mangasRecommended = $mangaService->getRecommendationByManga($manga);
+        return $this->json(['data' => $mangasRecommended]);
+    }
+
+
     #[Route("/search", methods: ['GET'], name: 'search')]
     #[Route("/search/page/{page<[1-9]\d*>}", methods: ['GET'], name: 'search_paginated')]
     public function search(
