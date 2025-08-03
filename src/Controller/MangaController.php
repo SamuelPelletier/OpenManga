@@ -113,10 +113,13 @@ class MangaController extends BaseController
     #[Route("/mangas/{id}/recommended", methods: ['GET'], name: 'manga_recommended')]
     public function mangaRecommended(
         Manga        $manga,
+        Request      $request,
         MangaService $mangaService,
     ): Response
     {
-        $mangasRecommended = $mangaService->getRecommendationByManga($manga);
+        $maxResult = $request->query->get('max', 6);
+        $maxResult = $maxResult > 10 || $maxResult < 0 ? 6 : $maxResult;
+        $mangasRecommended = array_slice($mangaService->getRecommendationByManga($manga), 0, $maxResult);
         return $this->json(['data' => $mangasRecommended]);
     }
 
