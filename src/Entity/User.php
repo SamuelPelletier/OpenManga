@@ -10,6 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Serializer\Annotation\Ignore;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[UniqueEntity(fields: ['username'], message: 'login.form.signup.form_type.username.exist')]
@@ -20,6 +21,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
     public const MAX_LAST_MANGAS_READ = 5;
 
+    #[Ignore]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -32,9 +34,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Regex(pattern: '/^[A-Za-z0-9]{3,}$/', message: "edit_profile.form_type.public_name.regex")]
     private string $publicName;
 
+    #[Ignore]
     #[ORM\Column(type: "json")]
     private array $roles = [];
 
+    #[Ignore]
     #[ORM\Column(type: "string")]
     private string $password;
 
@@ -51,6 +55,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private int $countMangasDownload = 0;
 
     /** @var Manga[]|ArrayCollection */
+    #[Ignore]
     #[ORM\ManyToMany(targetEntity: "Manga")]
     #[ORM\JoinTable(name: "user_manga_read",
         joinColumns: [new ORM\JoinColumn(name: "user_id", referencedColumnName: "id", onDelete: "cascade")],
@@ -61,6 +66,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private int $points = 0;
 
     /** @var Manga[]|ArrayCollection */
+    #[Ignore]
     #[ORM\ManyToMany(targetEntity: "Manga")]
     #[ORM\JoinTable(name: "user_manga_favorite",
         joinColumns: [new ORM\JoinColumn(name: "user_id", referencedColumnName: "id")],
@@ -70,12 +76,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: "integer")]
     private int $bonusPoints = 0;
 
+    #[Ignore]
     #[ORM\Column(type: "string", length: 255, nullable: true)]
     private ?string $googleId;
 
+    #[Ignore]
     #[ORM\Column(type: "string", length: 255, nullable: true)]
     private ?string $patreonAccessToken;
 
+    #[Ignore]
     #[ORM\Column(type: "string", length: 255, nullable: true)]
     private ?string $patreonRefreshToken;
 
@@ -86,9 +95,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?DateTime $patreonNextCharge;
 
     /** @var Payment[]|ArrayCollection */
+    #[Ignore]
     #[ORM\OneToMany(targetEntity: "Payment", mappedBy: "user")]
     private $payments;
 
+    #[Ignore]
     #[ORM\Column(type: "integer")]
     private int $credits = 0;
 
@@ -177,6 +188,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @see UserInterface
      */
+    #[Ignore]
     public function getSalt()
     {
         // not needed when using the "bcrypt" algorithm in security.yaml
@@ -335,6 +347,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    #[Ignore]
     public function getUserIdentifier(): string
     {
         return (string)$this->username;
@@ -452,6 +465,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     /**
      * @return bool
      */
+    #[Ignore]
     public function isUnlockOldManga(): bool
     {
         return $this->isUnlockOldManga;

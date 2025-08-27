@@ -21,7 +21,7 @@ class MangaRepository extends ServiceEntityRepository
         parent::__construct($registry, Manga::class);
     }
 
-    public function findLatest(int $page = 1): Paginator
+    public function findLatest(int $page = 1, int $perPage = Manga::NUM_ITEMS): Paginator
     {
         $queryBuilder = $this->createQueryBuilder('p')
             ->where('p.isCorrupted = false')
@@ -31,7 +31,7 @@ class MangaRepository extends ServiceEntityRepository
         $queryBuilder->setResultCacheId('manga_latest_' . $page);
         $queryBuilder->setResultCacheLifeTime(300);
 
-        return $this->createPaginator($queryBuilder, $page);
+        return $this->createPaginator($queryBuilder, $page, $perPage);
     }
 
     public function findTrending(int $page = 1): Paginator
@@ -61,13 +61,14 @@ class MangaRepository extends ServiceEntityRepository
      */
     public function findBySearchQuery(
         string $rawQuery,
-        int    $page = 1
+        int    $page = 1,
+        int    $perPage = Manga::NUM_ITEMS
     ): Paginator
     {
         $query = $this->sanitizeSearchQuery($rawQuery);
 
         // Min 3 caracteres to search
-        if (strlen($query) <= 3) {
+        if (strlen($query) < 3) {
             return $this->findLatest();
         }
 
@@ -81,7 +82,7 @@ class MangaRepository extends ServiceEntityRepository
 
         $i = 0;
         foreach ($searchTerms as $term) {
-            if (strlen($term) <= 3) {
+            if (strlen($term) < 3) {
                 continue;
             }
             $i++;
@@ -97,19 +98,20 @@ class MangaRepository extends ServiceEntityRepository
 
         $queryBuilder->andWhere($orStatements)->orderBy('p.id', 'DESC');
 
-        return $this->createPaginator($queryBuilder->getQuery(), $page);
+        return $this->createPaginator($queryBuilder->getQuery(), $page, $perPage);
     }
 
     public function findByStrictTypeSearchQuery(
         string $rawQuery,
         int    $page = 1,
-        string $type
+        string $type,
+        int    $perPage = Manga::NUM_ITEMS
     ): Paginator
     {
         $query = $this->sanitizeSearchQuery($rawQuery);
 
         // Min 3 caracteres to search
-        if (strlen($query) <= 3) {
+        if (strlen($query) < 3) {
             return $this->findLatest();
         }
 
@@ -177,7 +179,7 @@ class MangaRepository extends ServiceEntityRepository
 
         $queryBuilder->andWhere($orStatements)->orderBy('p.id', 'DESC');
 
-        return $this->createPaginator($queryBuilder->getQuery(), $page);
+        return $this->createPaginator($queryBuilder->getQuery(), $page, $perPage);
     }
 
     /**
@@ -189,7 +191,8 @@ class MangaRepository extends ServiceEntityRepository
         string $languesQuery,
         string $orderBy,
         bool   $isOld = false,
-        int    $page = 1
+        int    $page = 1,
+        int    $perPage = Manga::NUM_ITEMS
     ): Paginator
     {
         $query = $this->sanitizeSearchQuery($rawQuery);
@@ -239,7 +242,7 @@ class MangaRepository extends ServiceEntityRepository
             'decrease_count_page' => $queryBuilder->orderBy('p.countPages', 'DESC'),
             default => $queryBuilder->orderBy('p.id', 'DESC')
         };
-        return $this->createPaginator($queryBuilder->getQuery(), $page);
+        return $this->createPaginator($queryBuilder->getQuery(), $page, $perPage);
     }
 
     public function countByTag(Tag $tag): int
@@ -381,10 +384,13 @@ class MangaRepository extends ServiceEntityRepository
         });
     }
 
-    private function createPaginator(Query $query, int $page): Paginator
+    private function createPaginator(Query $query, int $page, int $perPage = Manga::NUM_ITEMS): Paginator
     {
-        $premierResultat = ($page - 1) * Manga::NUM_ITEMS;
-        $query->setFirstResult($premierResultat)->setMaxResults(Manga::NUM_ITEMS);
+        if ($perPage > 100) {
+            $perPage = 100;
+        }
+        $premierResultat = ($page - 1) * $perPage;
+        $query->setFirstResult($premierResultat)->setMaxResults($perPage);
         $paginator = new Paginator($query);
 
         return $paginator;

@@ -28,7 +28,8 @@ class MangaController extends BaseController
         MangaRepository $mangas
     ): Response
     {
-        $latestMangas = $mangas->findLatest($page);
+        $perPage = $request->query->get('per_page', Manga::NUM_ITEMS);
+        $latestMangas = $mangas->findLatest($page, $perPage);
         if ($request->isXmlHttpRequest()) {
             return $this->render('manga_index.html.twig', ['mangas' => $latestMangas]);
         }
@@ -117,9 +118,9 @@ class MangaController extends BaseController
         MangaService $mangaService,
     ): Response
     {
-        $maxResult = $request->query->get('max', 6);
-        $maxResult = $maxResult > 10 || $maxResult < 0 ? 6 : $maxResult;
-        $mangasRecommended = array_slice($mangaService->getRecommendationByManga($manga), 0, $maxResult);
+        $perPage = $request->query->get('per_page', 6);
+        $perPage = $perPage > 10 || $perPage < 0 ? 6 : $perPage;
+        $mangasRecommended = array_slice($mangaService->getRecommendationByManga($manga), 0, $perPage);
         return $this->json(['data' => $mangasRecommended]);
     }
 
@@ -140,10 +141,11 @@ class MangaController extends BaseController
         } else {
             if ($request->query->get('q') != '') {
                 $query = $request->query->get('q', '');
+                $perPage = $request->query->get('per_page', Manga::NUM_ITEMS);
                 if ($type = $request->query->get('t')) {
-                    $foundMangas = $mangas->findByStrictTypeSearchQuery($query, $page, $type);
+                    $foundMangas = $mangas->findByStrictTypeSearchQuery($query, $page, $type, $perPage);
                 } else {
-                    $foundMangas = $mangas->findBySearchQuery($query, $page);
+                    $foundMangas = $mangas->findBySearchQuery($query, $page, $perPage);
                 }
             }
         }
@@ -186,7 +188,8 @@ class MangaController extends BaseController
         if ($user?->isUnlockOldManga()) {
             $isOld = $request->query->get('is_old', 'off');
         }
-        $foundMangas = $mangas->findBySearchQueryAdvanced($query, $tagQuery, $languesQuery, $orderBy, $isOld == 'on', $page);
+        $perPage = $request->query->get('per_page', Manga::NUM_ITEMS);
+        $foundMangas = $mangas->findBySearchQueryAdvanced($query, $tagQuery, $languesQuery, $orderBy, $isOld == 'on', $page, $perPage);
         return $this->render('advanced_search.html.twig', ['mangas' => $foundMangas, 'languages' => $languages]);
     }
 

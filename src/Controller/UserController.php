@@ -32,7 +32,7 @@ use Symfony\Component\Validator\Constraints\Uuid;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[Route("/user")]
-class UserController extends AbstractController
+class UserController extends BaseController
 {
     #[Route("/", name: 'user_index')]
     public function index(UserRepository $userRepository, UserService $userService, EntityManagerInterface $entityManager, Request $request)
@@ -422,5 +422,23 @@ class UserController extends AbstractController
         };
 
         return $this->render('user/manga_favorite.html.twig', ['mangas' => $user->getFavoriteMangas()->filter($filterFunction)->slice(($page - 1) * Manga::NUM_ITEMS, Manga::NUM_ITEMS), 'total' => $user->getFavoriteMangas()->filter($filterFunction)->count()]);
+    }
+
+    #[Route("/manga/read", defaults: ['page' => 1], methods: ['GET'], name: 'index_read')]
+    #[Route("/manga/read/page/{page<[1-9]\d*>}", methods: ['GET'], name: 'index_read_paginated')]
+    #[Cache(maxage: 10)]
+    public function mangaRead(int $page): Response
+    {
+        /** @var User $user */
+        $user = $this->getUser();
+        if (!$user) {
+            return $this->redirectToRoute('index');
+        }
+
+        $filterFunction = function (Manga $manga) {
+            return !$manga->isCorrupted();
+        };
+
+        return $this->render('user/manga_read.html.twig', ['mangas' => $user->getLastMangasRead()->filter($filterFunction)->slice(($page - 1) * Manga::NUM_ITEMS, Manga::NUM_ITEMS), 'total' => $user->getLastMangasRead()->filter($filterFunction)->count()]);
     }
 }

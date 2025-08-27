@@ -18,16 +18,16 @@
         </div>
     </div>
     <div class="account-title">
-            {% if user.isPatreonAllow(1) and user.isUnlockOldManga == 0 %}
-                <p class="premium premium-title">Premium</p>
-            {% endif %}
-            {% if user.isUnlockOldManga and user.isPatreonAllow(1) == 0 %}
-                <p class="lifetime lifetime-title">{{ 'life_product.title'|trans }}</p>
-            {% endif %}
-            {% if user.isPatreonAllow(1) and user.isUnlockOldManga %}
-                <span class="premium premium-title">Premium</span><span
-                    class="lifetime lifetime-title"> + {{ 'life_product.title'|trans }}</span>
-            {% endif %}
+        {% if user.isPatreonAllow(1) and user.isUnlockOldManga == 0 %}
+            <p class="premium premium-title">Premium</p>
+        {% endif %}
+        {% if user.isUnlockOldManga and user.isPatreonAllow(1) == 0 %}
+            <p class="lifetime lifetime-title">{{ 'life_product.title'|trans }}</p>
+        {% endif %}
+        {% if user.isPatreonAllow(1) and user.isUnlockOldManga %}
+            <span class="premium premium-title">Premium</span><span
+                class="lifetime lifetime-title"> + {{ 'life_product.title'|trans }}</span>
+        {% endif %}
     </div>
 
     <div class="row stats">
@@ -61,7 +61,8 @@
 
 
     <div class="row">
-        <h2>{{ 'account.last_manga_read'|trans }}</h2>
+        <h2>{{ 'account.last_manga_read'|trans }} <a
+                    href="{{ url('index_read') }}">{{ 'account.favorite_manga.link'|trans }}</a></h2>
         <div>
             {% for manga in user.lastMangasRead|slice(0,5)|reverse %}
                 {% include 'manga.html.twig' %}

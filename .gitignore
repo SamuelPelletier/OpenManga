@@ -39,3 +39,7 @@ yarn-error.log
 /public/logo.ico
 /public/wallpaper.webp
 .DS_Store
+
+###> lexik/jwt-authentication-bundle ###
+/config/jwt/*.pem
+###< lexik/jwt-authentication-bundle ###

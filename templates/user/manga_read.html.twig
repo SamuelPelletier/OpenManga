@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+
+{% block main %}
+    {% set route_name =  'index_read' %}
+    <div class="col"><a href="{{ path('user_index') }}">{{ 'edit_profile.link.back_account'|trans }}</a></div>
+    <h2 class="text-center">{{ 'account.last_manga_read'|trans }}</h2>
+    {{ include('manga_index.html.twig') }}
+{% endblock %}

@@ -1,12 +1,31 @@
 homepage:
   path: /
+
+api_login:
+  path: /api/login
+
+api_refresh_token:
+  path: /api/token/refresh
+
+api_user:
+  path: /api/user
+  controller: App\Controller\UserController::index
+
+api_manga_favorite:
+  path: /api/user/manga/favorite/page/{page}
+  controller: App\Controller\UserController::mangaFavorite
+
+api_manga_read:
+  path: /api/user/manga/read/page/{page}
+  controller: App\Controller\UserController::mangaRead
+
 controllers:
-    prefix: /{_locale}
-    resource: ../src/Controller/
-    type: attribute
-    requirements:
-      _locale: '%app_locales%'
+  prefix: /{_locale}
+  resource: ../src/Controller/
+  type: attribute
+  requirements:
+    _locale: '%app_locales%'
 
 kernel:
-    resource: ../src/Kernel.php
-    type: attribute
+  resource: ../src/Kernel.php
+  type: attribute
