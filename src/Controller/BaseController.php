@@ -18,6 +18,9 @@ class BaseController extends AbstractController
                 $result = ['data' => $data, 'total' => $total];
             } else {
                 $result = ['data' => current($parameters)];
+                if (isset($parameters['total'])) {
+                    $result['total'] = $parameters['total'];
+                }
             }
             return $this->json($result);
         }
