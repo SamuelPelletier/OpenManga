@@ -185,7 +185,7 @@ class MangaController extends BaseController
         $languesQuery = $request->query->get('language', 'all');
         $orderBy = $request->query->get('sort', 'recent_to_old');
         $isOld = 'off';
-        if ($user?->isUnlockOldManga() || $user->isPatreonAllow(1)) {
+        if ($user?->isUnlockOldManga() || $user?->isPatreonAllow(1)) {
             $isOld = $request->query->get('is_old', 'off');
         }
         $perPage = $request->query->get('per_page', Manga::NUM_ITEMS);
