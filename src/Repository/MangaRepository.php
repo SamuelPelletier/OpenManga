@@ -391,7 +391,7 @@ class MangaRepository extends ServiceEntityRepository
         }
         $premierResultat = ($page - 1) * $perPage;
         $query->setFirstResult($premierResultat)->setMaxResults($perPage);
-        $paginator = new Paginator($query);
+        $paginator = new Paginator($query, false);
 
         return $paginator;
     }
