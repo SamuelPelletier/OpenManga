@@ -71,7 +71,7 @@ class MangaController extends BaseController
         }
 
         // Add user permission
-        if ((($manga->isOld() || $manga->isBlocked()) && !$user?->isPatreonAllow(1)) and $manga->isOld() && !$user?->isUnlockOldManga()) {
+        if (($manga->isOld() && !$user?->isPatreonAllow(1) && !$user->isUnlockOldManga()) || ($manga->isBlocked() && !$user?->isPatreonAllow(1))) {
             return $this->render('bundles/TwigBundle/Exception/error_403.html.twig');
         }
 
