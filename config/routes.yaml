@@ -11,6 +11,21 @@ api_user:
   path: /api/user
   controller: App\Controller\UserController::index
 
+api_add_read:
+  path: /api/user/read/{id}
+  controller: App\Controller\MangaController::addRead
+  methods: POST
+
+api_add_favorite:
+  path: /api/user/favorite/{id}
+  controller: App\Controller\MangaController::addFavorite
+  methods: POST
+
+api_remove_favorite:
+  path: /api/user/favorite/{id}
+  controller: App\Controller\MangaController::removeFavorite
+  methods: DELETE
+
 api_manga_favorite:
   path: /api/user/manga/favorite/page/{page}
   controller: App\Controller\UserController::mangaFavorite

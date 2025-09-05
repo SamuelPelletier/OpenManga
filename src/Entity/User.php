@@ -19,7 +19,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Table(name: "user")]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
-    public const MAX_LAST_MANGAS_READ = 5;
+    public const MAX_LAST_MANGAS_READ = 42;
 
     #[Ignore]
     #[ORM\Id]

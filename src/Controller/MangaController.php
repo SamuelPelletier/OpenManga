@@ -247,6 +247,25 @@ class MangaController extends BaseController
 
     }
 
+    public function addRead(Manga $manga, EntityManagerInterface $entityManager, Request $request)
+    {
+        /**
+         * @var User $user
+         */
+        $user = $this->getUser();
+
+        $manga->setCountViews($manga->getCountViews() + 1);
+        $entityManager->persist($manga);
+        $entityManager->flush();
+        
+        $user->addLastMangasRead($manga);
+        $user->incrementCountMangasRead();
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->json(['response' => true]);
+    }
+
     #[Route("/favorite/{id}/add", methods: ['POST'], name: 'add_favorite')]
     public function addFavorite(Manga $manga, EntityManagerInterface $entityManager)
     {
