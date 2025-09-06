@@ -64,7 +64,7 @@
         <h2>{{ 'account.last_manga_read'|trans }} <a
                     href="{{ url('index_read') }}">{{ 'account.favorite_manga.link'|trans }}</a></h2>
         <div>
-            {% for manga in user.lastMangasRead|slice(0,5)|reverse %}
+            {% for manga in user.lastMangasRead|slice(0,5) %}
                 {% include 'manga.html.twig' %}
             {% else %}
                 <div class="gradient-border"><a
@@ -77,7 +77,7 @@
         <h2>{{ 'account.favorite_manga'|trans }} <a
                     href="{{ url('index_favorite') }}">{{ 'account.favorite_manga.link'|trans }}</a></h2>
         <div>
-            {% for manga in user.favoriteMangas|slice(0,5)|reverse %}
+            {% for manga in user.favoriteMangas|slice(0,5) %}
                 {% include 'manga.html.twig' %}
             {% else %}
                 <div class="gradient-border">{{ 'account.manga.add_manga_favorite'|trans }}</div>

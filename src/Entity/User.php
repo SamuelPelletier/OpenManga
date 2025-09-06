@@ -56,22 +56,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     /** @var Manga[]|ArrayCollection */
     #[Ignore]
-    #[ORM\ManyToMany(targetEntity: "Manga")]
-    #[ORM\JoinTable(name: "user_manga_read",
-        joinColumns: [new ORM\JoinColumn(name: "user_id", referencedColumnName: "id", onDelete: "cascade")],
-        inverseJoinColumns: [new ORM\JoinColumn(name: "manga_id", referencedColumnName: "id", onDelete: "cascade")])]
-    private $lastMangasRead;
+    #[ORM\OneToMany(mappedBy: "user", targetEntity: UserMangaRead::class, cascade: ["persist", "remove"], orphanRemoval: true)]
+    #[ORM\OrderBy(['id' => 'DESC'])]
+    private Collection $lastMangasRead;
 
     #[ORM\Column(type: "integer")]
     private int $points = 0;
 
     /** @var Manga[]|ArrayCollection */
     #[Ignore]
-    #[ORM\ManyToMany(targetEntity: "Manga")]
-    #[ORM\JoinTable(name: "user_manga_favorite",
-        joinColumns: [new ORM\JoinColumn(name: "user_id", referencedColumnName: "id")],
-        inverseJoinColumns: [new ORM\JoinColumn(name: "manga_id", referencedColumnName: "id")])]
-    private $favoriteMangas;
+    #[ORM\OneToMany(mappedBy: "user", targetEntity: UserMangaFavorite::class, cascade: ["persist", "remove"], orphanRemoval: true)]
+    #[ORM\OrderBy(['id' => 'DESC'])]
+    private Collection $favoriteMangas;
 
     #[ORM\Column(type: "integer")]
     private int $bonusPoints = 0;
@@ -270,30 +266,42 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getLastMangasRead(): Collection
     {
-        return $this->lastMangasRead;
+        $filterFunction = function (UserMangaRead $userMangaRead) {
+            return !$userMangaRead->getManga()->isCorrupted();
+        };
+        $mapFunction = function (UserMangaRead $userMangaRead) {
+            return $userMangaRead->getManga();
+        };
+        return $this->lastMangasRead->filter($filterFunction)->map($mapFunction);
     }
 
-    public function addLastMangasRead(Manga $lastMangasRead): self
+    public function addLastMangasRead(Manga $lastMangaReadToAdd): self
     {
-        if (!$this->lastMangasRead->contains($lastMangasRead)) {
-            $this->lastMangasRead[] = $lastMangasRead;
+        $exists = false;
+        foreach ($this->lastMangasRead as $lastMangaRead) {
+            if ($lastMangaRead->getManga()->getId() === $lastMangaReadToAdd->getId()) {
+                $exists = true;
+                break;
+            }
+        }
+        if (!$exists) {
+            $this->lastMangasRead->add(new UserMangaRead($this, $lastMangaReadToAdd));
         }
 
-        if ($this->lastMangasRead->count() > self::MAX_LAST_MANGAS_READ) {
-            // First = oldest
-            // Last = newest
-            $this->removeLastMangasRead($this->lastMangasRead->first());
+        if ($this->getLastMangasRead()->count() > 2) {
+            // First = newest
+            // Last = oldest
+            $this->removeLastReadManga();
         }
-
         return $this;
     }
 
-    public function removeLastMangasRead(Manga $lastMangasRead): self
+    public function removeLastReadManga(): self
     {
-        if ($this->lastMangasRead->contains($lastMangasRead)) {
-            $this->lastMangasRead->removeElement($lastMangasRead);
-        }
-
+        // Need to filter because when we add new UserMangaRead, id is null
+        $this->lastMangasRead->removeElement($this->lastMangasRead->filter(function (UserMangaRead $userMangaRead) {
+            return $userMangaRead->getId() !== null;
+        })->last());
         return $this;
     }
 
@@ -314,24 +322,38 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getFavoriteMangas(): Collection
     {
-        return $this->favoriteMangas;
+        $filterFunction = function (UserMangaFavorite $userMangaFavorite) {
+            return !$userMangaFavorite->getManga()->isCorrupted();
+        };
+        $mapFunction = function (UserMangaFavorite $userMangaFavorite) {
+            return $userMangaFavorite->getManga();
+        };
+        return $this->favoriteMangas->filter($filterFunction)->map($mapFunction);
     }
 
-    public function addFavoriteManga(Manga $favoriteManga): self
+    public function addFavoriteManga(Manga $favoriteMangaToAdd): self
     {
-        if (!$this->favoriteMangas->contains($favoriteManga)) {
-            $this->favoriteMangas[] = $favoriteManga;
+        $exists = false;
+        foreach ($this->favoriteMangas as $favoriteManga) {
+            if ($favoriteManga->getManga()->getId() === $favoriteMangaToAdd->getId()) {
+                $exists = true;
+                break;
+            }
         }
-
+        if (!$exists) {
+            $this->favoriteMangas->add(new UserMangaFavorite($this, $favoriteMangaToAdd));
+        }
         return $this;
     }
 
-    public function removeFavoriteManga(Manga $favoriteManga): self
+    public function removeFavoriteManga(Manga $favoriteMangaToRemove): self
     {
-        if ($this->favoriteMangas->contains($favoriteManga)) {
-            $this->favoriteMangas->removeElement($favoriteManga);
+        foreach ($this->favoriteMangas as $favoriteManga) {
+            if ($favoriteManga->getManga()->getId() === $favoriteMangaToRemove->getId()) {
+                $this->favoriteMangas->removeElement($favoriteManga);
+                break;
+            }
         }
-
         return $this;
     }
 

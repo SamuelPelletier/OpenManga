@@ -417,11 +417,7 @@ class UserController extends BaseController
             return $this->redirectToRoute('index');
         }
 
-        $filterFunction = function (Manga $manga) {
-            return !$manga->isCorrupted();
-        };
-
-        return $this->render('user/manga_favorite.html.twig', ['mangas' => $user->getFavoriteMangas()->filter($filterFunction)->slice(($page - 1) * Manga::NUM_ITEMS, Manga::NUM_ITEMS), 'total' => $user->getFavoriteMangas()->filter($filterFunction)->count()]);
+        return $this->render('user/manga_favorite.html.twig', ['mangas' => $user->getFavoriteMangas()->slice(($page - 1) * Manga::NUM_ITEMS, Manga::NUM_ITEMS), 'total' => $user->getFavoriteMangas()->count()]);
     }
 
     #[Route("/manga/read", defaults: ['page' => 1], methods: ['GET'], name: 'index_read')]
@@ -435,10 +431,6 @@ class UserController extends BaseController
             return $this->redirectToRoute('index');
         }
 
-        $filterFunction = function (Manga $manga) {
-            return !$manga->isCorrupted();
-        };
-
-        return $this->render('user/manga_read.html.twig', ['mangas' => $user->getLastMangasRead()->filter($filterFunction)->slice(($page - 1) * Manga::NUM_ITEMS, Manga::NUM_ITEMS), 'total' => $user->getLastMangasRead()->filter($filterFunction)->count()]);
+        return $this->render('user/manga_read.html.twig', ['mangas' => $user->getLastMangasRead()->slice(($page - 1) * Manga::NUM_ITEMS, Manga::NUM_ITEMS), 'total' => $user->getLastMangasRead()->count()]);
     }
 }
