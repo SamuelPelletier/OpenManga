@@ -288,7 +288,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             $this->lastMangasRead->add(new UserMangaRead($this, $lastMangaReadToAdd));
         }
 
-        if ($this->getLastMangasRead()->count() > 2) {
+        if ($this->getLastMangasRead()->count() > self::MAX_LAST_MANGAS_READ) {
             // First = newest
             // Last = oldest
             $this->removeLastReadManga();
