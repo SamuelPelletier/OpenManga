@@ -8,6 +8,7 @@ use App\Entity\Manga;
 use App\Entity\Parody;
 use App\Entity\Tag;
 use Doctrine\ORM\EntityManagerInterface;
+use Imagick;
 use Psr\Log\LoggerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Component\Console\Command\Command;
@@ -175,16 +176,28 @@ abstract class AbstractImportMangaCommand extends Command
                                 $destination = $path . $manga->getId() . '/thumb.webp';
 
                                 try {
-                                    $success = WebPConvert::convert($source, $destination, [
-                                        // It is not required that you set any options - all have sensible defaults.
-                                        // We set some, for the sake of the example.
-                                        'quality' => 10,
-                                        'max-quality' => 20,
+                                    WebPConvert::convert($source, $destination, [
+                                        'quality' => 5,
+                                        'metadata' => 'none',
+                                        'method' => 6,
                                         'converters' => ['imagick', 'gmagick', 'gd', 'imagickbinary']
                                     ]);
                                 } catch (\Exception $e) {
-                                    $fileSystem->copy($source, $destination);
+                                    if (mime_content_type($source) === 'image/webp') {
+                                        try {
+                                            $image = new Imagick($source);
+                                            $image->stripImage();
+                                            $image->setImageFormat('webp');
+                                            $image->setImageCompressionQuality(5);
+                                            $image->writeImage($destination);
+                                        } catch (\Exception $e) {
+                                            $fileSystem->copy($source, $destination);
+                                        }
+                                    } else {
+                                        $fileSystem->copy($source, $destination);
+                                    }
                                 }
+                                die;
                             }
                             $i++;
                         }
