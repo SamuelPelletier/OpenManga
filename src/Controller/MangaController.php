@@ -71,7 +71,7 @@ class MangaController extends BaseController
         }
 
         // Add user permission
-        if (($manga->isOld() && !$user?->isPatreonAllow(1) && !$user->isUnlockOldManga()) || ($manga->isBlocked() && !$user?->isPatreonAllow(1))) {
+        if (($manga->isOld() && !$user?->isPatreonAllow(1) && !$user?->isUnlockOldManga()) || ($manga->isBlocked() && !$user?->isPatreonAllow(1))) {
             return $this->render('bundles/TwigBundle/Exception/error_403.html.twig');
         }
 
@@ -210,7 +210,8 @@ class MangaController extends BaseController
             $zipFolder = 'media_zipped/';
 
             $zipName = htmlspecialchars_decode($manga->getTitle(), ENT_QUOTES) . ".zip";
-            $zipName = str_replace(['|', '/', '\\'], '', $zipName);
+            // Need to cut string because name too long
+            $zipName = substr(str_replace(['|', '/', '\\'], '', $zipName), 0, 250);
             if (!file_exists($zipFolder . $zipName)) {
                 $files = array();
                 $finder = new Finder();
@@ -257,7 +258,7 @@ class MangaController extends BaseController
         $manga->setCountViews($manga->getCountViews() + 1);
         $entityManager->persist($manga);
         $entityManager->flush();
-        
+
         $user->addLastMangasRead($manga);
         $user->incrementCountMangasRead();
         $entityManager->persist($user);

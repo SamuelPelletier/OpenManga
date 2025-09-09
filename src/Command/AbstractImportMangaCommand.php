@@ -197,7 +197,6 @@ abstract class AbstractImportMangaCommand extends Command
                                         $fileSystem->copy($source, $destination);
                                     }
                                 }
-                                die;
                             }
                             $i++;
                         }
