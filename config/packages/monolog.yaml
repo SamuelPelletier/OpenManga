@@ -64,4 +64,3 @@ when@prod:
                 path: "%kernel.logs_dir%/%kernel.environment%.log"
                 level: error
                 max_files: 3
-                excluded_http_codes: [404, 405]
