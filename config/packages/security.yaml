@@ -46,7 +46,7 @@ security:
       entry_point: 'form_login'
 
   access_control:
-    - { path: ^/api/(login|token/refresh), roles: PUBLIC_ACCESS }
+    - { path: ^/api/(login|login/google|token/refresh), roles: PUBLIC_ACCESS }
     - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
     - { path: ^/_locales/admin, roles: ROLE_ADMIN }
 

@@ -7,6 +7,10 @@ api_login:
 api_refresh_token:
   path: /api/token/refresh
 
+api_google_login:
+  path: /api/login/google
+  controller: App\Controller\GoogleController::login
+
 api_user:
   path: /api/user
   controller: App\Controller\UserController::index
