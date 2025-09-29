@@ -30,7 +30,7 @@ class GoogleController extends AbstractController
     #[Route("/google_login", name: 'google_login')]
     public function login(Request $request, UserRepository $userRepository, EntityManagerInterface $entityManager, UserAuthenticatorInterface $userAuthenticator, AuthenticatorInterface $authenticator, JWTTokenManagerInterface $JWTTokenManager, RefreshTokenManagerInterface $refreshTokenManager)
     {
-        $platform = $this::{'APP_' . strtoupper($request->get('platform', 'web'))};
+        $platform = constant('self::' . 'APP_' . strtoupper($request->get('platform', 'web')));
         $client = new Google_Client(['client_id' => $platform]);
         $payload = $client->verifyIdToken($request->get('credential'));
         if ($payload) {
