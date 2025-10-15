@@ -27,7 +27,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private int $id;
 
-    #[ORM\Column(type: "string", unique: true, length: 180)]
+    #[ORM\Column(type: "string", unique: true, length: 180, index: true)]
     private string $username;
 
     #[ORM\Column(type: "string", unique: true, length: 180)]
@@ -73,11 +73,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private int $bonusPoints = 0;
 
     #[Ignore]
-    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    #[ORM\Column(type: "string", length: 255, nullable: true, index: true)]
     private ?string $googleId;
 
     #[Ignore]
-    #[ORM\Column(type: "string", length: 255, nullable: true)]
+    #[ORM\Column(type: "string", length: 255, nullable: true, index: true)]
     private ?string $patreonAccessToken;
 
     #[Ignore]

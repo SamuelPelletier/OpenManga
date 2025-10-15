@@ -73,14 +73,14 @@ class Manga
     #[ORM\Column(type: "integer")]
     private int $countViews = 0;
 
-    #[ORM\Column(type: "boolean", options: ["default" => 0])]
+    #[ORM\Column(type: "boolean", options: ["default" => 0], index: true)]
     private bool $isOld = false;
 
-    #[ORM\Column(type: "boolean", options: ["default" => 0])]
+    #[ORM\Column(type: "boolean", options: ["default" => 0], index: true)]
     private bool $isBlocked = false;
 
     #[Ignore]
-    #[ORM\Column(type: "boolean", options: ["default" => 0])]
+    #[ORM\Column(type: "boolean", options: ["default" => 0], index: true)]
     private bool $isCorrupted = false;
 
     public function __construct()
