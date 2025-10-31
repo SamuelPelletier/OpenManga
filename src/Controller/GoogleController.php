@@ -33,8 +33,8 @@ class GoogleController extends AbstractController
         $platform = constant('self::' . 'APP_' . strtoupper($request->get('platform', 'web')));
         $client = new Google_Client(['client_id' => $platform]);
         $payload = $client->verifyIdToken($request->get('credential'));
-        if($request->get('test') === 1){
-            dd($platform,$request->get('credential'),$payload);
+        if ($request->get('test', 0) != 0) {
+            dd($platform, $request->get('credential'), $payload);
         }
         if ($payload) {
             $userid = $payload['sub'];
